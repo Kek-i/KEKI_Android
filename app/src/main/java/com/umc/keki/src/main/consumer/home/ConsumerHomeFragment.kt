@@ -11,8 +11,8 @@ import com.umc.keki.util.recycler.home.HomeStoreData
 class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
     (FragmentConsumerHomeBinding::bind, R.layout.fragment_consumer_home) {
 
-    lateinit var homeStoreAapter : HomeStoreAdapter
-    val homeStoreDatas = mutableListOf<HomeStoreData>()
+    lateinit var homeStoreFirstAapter : HomeStoreAdapter
+    val homeStoreFirstDatas = mutableListOf<HomeStoreData>()
 
     lateinit var homeStoreSecondAdapter : HomeStoreAdapter
     val homeStoreSecondDatas = mutableListOf<HomeStoreData>()
@@ -25,16 +25,16 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
     }
 
     private fun homeStoreFirstRecyclerView(){
-        homeStoreAapter = HomeStoreAdapter(requireActivity())
-        binding.recyclerFirstHome.adapter = homeStoreAapter
+        homeStoreFirstAapter = HomeStoreAdapter(requireActivity())
+        binding.recyclerFirstHome.adapter = homeStoreFirstAapter
 
         // 임시
         for(i in 1 until 10){
-            homeStoreDatas.apply { add(HomeStoreData(name = "가게 이름입니다")) }
+            homeStoreFirstDatas.apply { add(HomeStoreData(name = "가게 이름입니다")) }
         }
 
-        homeStoreAapter.homeStoreDatas = homeStoreDatas
-        homeStoreAapter.notifyDataSetChanged()
+        homeStoreFirstAapter.homeStoreDatas = homeStoreFirstDatas
+        homeStoreFirstAapter.notifyDataSetChanged()
     }
 
     private fun homeStoreSecondRecyclerView(){
