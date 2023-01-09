@@ -11,9 +11,12 @@
     <dimen name="home_ic_notifications_right">20dp</dimen>
     <dimen name="home_ic_message_right">64dp</dimen>
     <dimen name="home_logo_top_height">77dp</dimen>
+
     <dimen name="home_comment_top">9dp</dimen>
     <dimen name="home_comment_start">36dp</dimen>
     <dimen name="home_comment_size">20sp</dimen>
+    <dimen name="home_comment_line_space">4dp</dimen>
+
     <dimen name="home_img_cake">10.5dp</dimen>
     <dimen name="home_first_tag_top">5dp</dimen>
     <dimen name="home_recycler_margin_top">15dp</dimen>
@@ -32,6 +35,8 @@
     <dimen name="home_store_tv_margin_top">10dp</dimen>
     <dimen name="home_store_tv_size">14sp</dimen>
     <dimen name="home_store_tv_margin_start_end">9dp</dimen>
+    <dimen name="home_store_iv_elevation">5dp</dimen>
+    <dimen name="home_store_iv_rec_width">1dp</dimen>
 
 
 </resources>
