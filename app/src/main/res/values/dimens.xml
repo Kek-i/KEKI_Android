@@ -3,4 +3,11 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <!-- splash -->
+    <dimen name="splash_logo_width">160.5dp</dimen>
+    <dimen name="splash_logo_height">63dp</dimen>
+    <dimen name="splash_logo_top_margin">344dp</dimen>
+    <dimen name="splash_comment_top_margin">28.5dp</dimen>
+
 </resources>
