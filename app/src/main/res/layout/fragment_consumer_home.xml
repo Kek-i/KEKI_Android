@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
     tools:context=".src.main.consumer.home.ConsumerHomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -91,6 +92,7 @@
             android:textColor="@color/darkish_pink"
             android:fontFamily="@font/roboto_bold"
             android:textSize="@dimen/home_comment_size"
+            android:lineSpacingExtra="@dimen/home_comment_line_space"
             />
 
         <ImageView
@@ -103,7 +105,7 @@
             android:layout_marginEnd="@dimen/home_img_cake"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/contraint_home_first_tag"
+            android:id="@+id/constraint_first_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/iv_home_bg"
@@ -137,17 +139,16 @@
                 />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_first_home_first"
+                android:id="@+id/recycler_first_home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/iv_first_home_chevron_right"
-                app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="@dimen/home_tag_start"
                 android:layout_marginTop="@dimen/home_recycler_margin_top"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_home_first_recycler"
                 android:orientation="horizontal"
-                />
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_first_home_tag"
+                tools:listitem="@layout/item_home_store_recycler" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -157,7 +158,7 @@
             android:id="@+id/contraint_second_home_tag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/contraint_home_first_tag"
+            app:layout_constraintTop_toBottomOf="@+id/constraint_first_home"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="@dimen/home_second_recycler_margin_top"
             >
@@ -189,15 +190,15 @@
                 />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_home_first"
+                android:id="@+id/recycler_second_home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/iv_second_home_chevron_right"
+                app:layout_constraintTop_toBottomOf="@+id/tv_second_home_tag_second"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="@dimen/home_tag_start"
                 android:layout_marginTop="@dimen/home_recycler_margin_top"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_home_first_recycler"
+                tools:listitem="@layout/item_home_store_recycler"
                 android:orientation="horizontal"
                 />
 

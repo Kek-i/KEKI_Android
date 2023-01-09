@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:paddingEnd="@dimen/home_cake_store_img_margin_end"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cv_home_store_img"
-        android:layout_width="@dimen/home_cake_store_img_size"
-        android:layout_height="@dimen/home_cake_store_img_size"
+        android:id="@+id/cv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:cardCornerRadius="@dimen/home_cake_store_img_radius">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cardCornerRadius="@dimen/home_cake_store_img_radius"
+        app:cardElevation="@dimen/home_store_iv_elevation"
+        android:background="@color/white"
+        >
 
         <ImageView
             android:id="@+id/iv_home_store"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/softsquared_logo"
-            android:scaleType="fitCenter"/>
-
+            android:layout_width="@dimen/home_cake_store_img_size"
+            android:layout_height="@dimen/home_cake_store_img_size"
+            android:src="@drawable/ex_cake"
+            android:scaleType="centerCrop"
+            />
 
     </androidx.cardview.widget.CardView>
 
@@ -28,9 +34,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/home_store_name"
-        app:layout_constraintTop_toBottomOf="@+id/cv_home_store_img"
+        app:layout_constraintTop_toBottomOf="@+id/cv"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/cv_home_store_img"
+        app:layout_constraintEnd_toEndOf="@+id/cv"
         android:layout_marginTop="@dimen/home_store_tv_margin_top"
         android:textSize="@dimen/home_store_tv_size"
         android:fontFamily="@font/roboto_regular"
