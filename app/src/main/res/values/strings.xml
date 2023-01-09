@@ -10,4 +10,7 @@
     <string name="like">찜</string>
     <string name="mypage">마이페이지</string>
 
+    <!-- home -->
+    <string name="home_comment">특별한 하루를 준비해요!</string>
+
 </resources>

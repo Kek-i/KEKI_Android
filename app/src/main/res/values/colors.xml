@@ -17,4 +17,8 @@
     <color name="whiteForBackground">#FFFFFF</color>
     <color name="blackForText">#4a4a4a</color>
     <color name="redForText">#d9534f</color>
+
+    <color name="very_light_pink">#faecec</color>
+    <color name="darkish_pink">#d9486a</color>
+
 </resources>
