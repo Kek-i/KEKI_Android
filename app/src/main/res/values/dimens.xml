@@ -14,5 +14,24 @@
     <dimen name="home_comment_top">9dp</dimen>
     <dimen name="home_comment_start">36dp</dimen>
     <dimen name="home_comment_size">20sp</dimen>
+    <dimen name="home_img_cake">10.5dp</dimen>
+    <dimen name="home_first_tag_top">5dp</dimen>
+    <dimen name="home_recycler_margin_top">15dp</dimen>
+    <dimen name="home_tag_start">14dp</dimen>
+    <dimen name="home_tag_size">16sp</dimen>
+    <dimen name="home_tag_padding_top">5dp</dimen>
+    <dimen name="home_tag_padding_bottom">5dp</dimen>
+    <dimen name="home_tag_padding_start">10dp</dimen>
+    <dimen name="home_tag_padding_end">10dp</dimen>
+    <dimen name="home_ic_chevron_right_end">14dp</dimen>
+
+    <dimen name="home_cake_store_img_size">130dp</dimen>
+    <dimen name="home_cake_store_img_radius">20dp</dimen>
+    <dimen name="home_cake_store_img_margin_end">15dp</dimen>
+    <dimen name="home_second_recycler_margin_top">20dp</dimen>
+    <dimen name="home_store_tv_margin_top">10dp</dimen>
+    <dimen name="home_store_tv_size">14sp</dimen>
+    <dimen name="home_store_tv_margin_start_end">9dp</dimen>
+
 
 </resources>

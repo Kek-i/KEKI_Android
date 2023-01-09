@@ -20,5 +20,8 @@
 
     <color name="very_light_pink">#faecec</color>
     <color name="darkish_pink">#d9486a</color>
+    
+    <!-- tag -->
+    <color name="tag_light_yellow">#fcf4df</color>
 
 </resources>
