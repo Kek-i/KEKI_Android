@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <stroke
+        android:width="@dimen/home_store_iv_rec_width"
+        android:color="@color/white"/>
+
+    <corners
+        android:radius="@dimen/home_cake_store_img_radius"/>
+
+</shape>
