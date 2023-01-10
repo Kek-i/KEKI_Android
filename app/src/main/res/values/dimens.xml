@@ -4,6 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
+
     <!-- home-->
     <dimen name="home_keki_logo_top">16dp</dimen>
     <dimen name="home_keki_logo_left">12dp</dimen>
@@ -37,6 +38,13 @@
     <dimen name="home_store_tv_margin_start_end">9dp</dimen>
     <dimen name="home_store_iv_elevation">5dp</dimen>
     <dimen name="home_store_iv_rec_width">1dp</dimen>
+
+
+    <!-- splash -->
+    <dimen name="splash_logo_width">160.5dp</dimen>
+    <dimen name="splash_logo_height">63dp</dimen>
+    <dimen name="splash_logo_top_margin">344dp</dimen>
+    <dimen name="splash_comment_top_margin">28.5dp</dimen>
 
 
 </resources>
