@@ -51,7 +51,7 @@
     <dimen name="main_search_margin_side">24dp</dimen>
     <dimen name="search_tag_height">26dp</dimen>
     <dimen name="search_tag_margin">10dp</dimen>
-
+    <dimen name="search_icon_size">17dp</dimen>
     <dimen name="et_search_height">36dp</dimen>
     <dimen name="et_search_margin_top">15dp</dimen>
     <dimen name="et_search_padding_updown">8dp</dimen>

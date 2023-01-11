@@ -1,6 +1,6 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:width="17dp"
-        android:height="17dp"
+        android:width="@dimen/search_icon_size"
+        android:height="@dimen/search_icon_size"
         android:drawable="@drawable/ic_search" />
 </layer-list>
