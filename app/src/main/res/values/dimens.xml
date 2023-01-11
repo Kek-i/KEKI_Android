@@ -4,6 +4,42 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
+
+    <!-- home-->
+    <dimen name="home_keki_logo_top">16dp</dimen>
+    <dimen name="home_keki_logo_left">12dp</dimen>
+    <dimen name="home_ic_top">16dp</dimen>
+    <dimen name="home_ic_notifications_right">20dp</dimen>
+    <dimen name="home_ic_message_right">64dp</dimen>
+    <dimen name="home_logo_top_height">77dp</dimen>
+
+    <dimen name="home_comment_top">9dp</dimen>
+    <dimen name="home_comment_start">36dp</dimen>
+    <dimen name="home_comment_size">20sp</dimen>
+    <dimen name="home_comment_line_space">4dp</dimen>
+
+    <dimen name="home_img_cake">10.5dp</dimen>
+    <dimen name="home_first_tag_top">5dp</dimen>
+    <dimen name="home_recycler_margin_top">15dp</dimen>
+    <dimen name="home_tag_start">14dp</dimen>
+    <dimen name="home_tag_size">16sp</dimen>
+    <dimen name="home_tag_padding_top">5dp</dimen>
+    <dimen name="home_tag_padding_bottom">5dp</dimen>
+    <dimen name="home_tag_padding_start">10dp</dimen>
+    <dimen name="home_tag_padding_end">10dp</dimen>
+    <dimen name="home_ic_chevron_right_end">14dp</dimen>
+
+    <dimen name="home_cake_store_img_size">130dp</dimen>
+    <dimen name="home_cake_store_img_radius">20dp</dimen>
+    <dimen name="home_cake_store_img_margin_end">15dp</dimen>
+    <dimen name="home_second_recycler_margin_top">20dp</dimen>
+    <dimen name="home_store_tv_margin_top">10dp</dimen>
+    <dimen name="home_store_tv_size">14sp</dimen>
+    <dimen name="home_store_tv_margin_start_end">9dp</dimen>
+    <dimen name="home_store_iv_elevation">5dp</dimen>
+    <dimen name="home_store_iv_rec_width">1dp</dimen>
+
+
     <!-- splash -->
     <dimen name="splash_logo_width">160.5dp</dimen>
     <dimen name="splash_logo_height">63dp</dimen>
@@ -34,6 +70,7 @@
     <dimen name="tv_recent_seen_marginTop">36dp</dimen>
     <dimen name="rv_recent_seen_marginTop">10dp</dimen>
     <dimen name="rv_recent_seen_marginStart">12dp</dimen>
+
 
     <dimen name="splash_comment_size">14sp</dimen>
     <dimen name="et_search_textSize">14sp</dimen>
