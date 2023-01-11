@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item>
+        <shape>
+            <padding
+                android:bottom="@dimen/search_cv_shadow_padding"
+                android:left="0dp"
+                android:right="@dimen/search_cv_shadow_padding"
+                android:top="0dp" />
+            <corners android:radius="@dimen/search_cake_img_radius" />
+            <solid android:color="#17a79999" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <padding
+                android:bottom="@dimen/search_cv_shadow_padding"
+                android:left="0dp"
+                android:right="@dimen/search_cv_shadow_padding"
+                android:top="0dp" />
+            <corners android:radius="@dimen/search_cake_img_radius" />
+            <solid android:color="#1Aa79999" />
+        </shape>
+    </item>
+
+    <!-- Background -->
+    <item>
+        <shape>
+            <solid android:color="@android:color/white" />
+            <corners android:radius="@dimen/search_cake_img_radius" />
+        </shape>
+    </item>
+
+</layer-list>
