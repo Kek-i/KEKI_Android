@@ -28,15 +28,16 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_calendar_anniversary"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/calendar_rv_height"
             android:layout_marginTop="@dimen/calendar_rv_margin_top"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_calendar_cherry"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             tools:listitem="@layout/item_calendar_anniversary_recycler"
-            android:visibility="invisible"
+            android:visibility="visible"
             />
 
         <ImageView
@@ -48,7 +49,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="@dimen/calendar_cherry_margin_top"
             android:src="@drawable/img_calendar_cherry"
-            android:visibility="invisible"
+            android:visibility="visible"
             />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -63,6 +64,7 @@
             android:layout_marginStart="@dimen/calendar_empty_layout_margin_start"
             android:layout_marginEnd="@dimen/calendar_empty_layout_margin_end"
             android:layout_marginBottom="@dimen/calendar_empty_layout_margin_bottom"
+            android:visibility="invisible"
             >
 
             <ImageView

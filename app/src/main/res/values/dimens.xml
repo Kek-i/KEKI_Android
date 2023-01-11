@@ -53,6 +53,7 @@
     <dimen name="calendar_main_text_size">20sp</dimen>
     <dimen name="calendar_cherry_margin_top">18dp</dimen>
 
+    <dimen name="calendar_rv_height">0dp</dimen>
     <dimen name="calendar_rv_margin_top">-6dp</dimen>
     <dimen name="calendar_rv_padding_horizontal">12dp</dimen>
     <dimen name="calendar_rv_item_padding_bottom">10dp</dimen>
@@ -64,7 +65,7 @@
     <dimen name="calendar_rv_item_title_width">0dp</dimen>
     <dimen name="calendar_rv_item_title_height">24dp</dimen>
     <dimen name="calendar_rv_item_date_height">14dp</dimen>
-    <dimen name="calendar_rv_item_calendar_rv_item_dday_width">46dp</dimen>
+    <dimen name="calendar_rv_item_calendar_rv_item_dday_width">50dp</dimen>
 
     <dimen name="calendar_rv_item_title_margin_top">10dp</dimen>
     <dimen name="calendar_rv_item_title_margin_start">12dp</dimen>
