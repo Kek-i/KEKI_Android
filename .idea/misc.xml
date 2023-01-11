@@ -3,9 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/keki/app/src/main/res/layout/activity_main.xml" value="0.1765625" />
-        <entry key="..\:/keki/app/src/main/res/layout/activity_splash.xml" value="0.2390625" />
+        <entry key="..\:/keki/app/src/main/res/drawable-v24/bg_rectangle_radius_16_very_light_pink.xml" value="0.37743589743589745" />
+        <entry key="..\:/keki/app/src/main/res/drawable/bg_rectangle_radius_13_grey_border.xml" value="0.38333333333333336" />
+        <entry key="..\:/keki/app/src/main/res/drawable/bg_rectangle_radius_13_light_peach.xml" value="0.38333333333333336" />
+        <entry key="..\:/keki/app/src/main/res/drawable/bg_rectangle_radius_13_very_light_pink.xml" value="0.38333333333333336" />
+        <entry key="..\:/keki/app/src/main/res/drawable/bg_rectangle_radius_16_light_yellow.xml" value="0.37743589743589745" />
+        <entry key="..\:/keki/app/src/main/res/drawable/bg_rectangle_radius_23_very_light_pink.xml" value="0.28854166666666664" />
+        <entry key="..\:/keki/app/src/main/res/drawable/bg_underline_brown_grey.xml" value="0.38333333333333336" />
+        <entry key="..\:/keki/app/src/main/res/drawable/drawable_search_ic_resize.xml" value="0.28854166666666664" />
+        <entry key="..\:/keki/app/src/main/res/drawable/rec_radius_20.xml" value="0.16574074074074074" />
+        <entry key="..\:/keki/app/src/main/res/drawable/search_cv_shadow.xml" value="0.38333333333333336" />
+        <entry key="..\:/keki/app/src/main/res/layout/activity_main.xml" value="0.4466666666666667" />
+        <entry key="..\:/keki/app/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="..\:/keki/app/src/main/res/layout/dialog_loading.xml" value="0.2390625" />
+        <entry key="..\:/keki/app/src/main/res/layout/fragment_consumer_home.xml" value="0.1956521739130435" />
+        <entry key="..\:/keki/app/src/main/res/layout/fragment_consumer_search.xml" value="0.3333333333333333" />
+        <entry key="..\:/keki/app/src/main/res/layout/item_recent_seen_cake_recycler.xml" value="0.1" />
+        <entry key="..\:/keki/app/src/main/res/layout/item_recent_view_cake_recycler.xml" value="0.3515625" />
+        <entry key="..\:/keki/app/src/main/res/layout/item_search_popular_recycler.xml" value="0.3671875" />
+        <entry key="..\:/keki/app/src/main/res/layout/item_search_recent_recycler.xml" value="0.6" />
+        <entry key="..\:/keki/app/src/main/res/menu/menu_consumer_main_bottom_nav.xml" value="0.3671875" />
       </map>
     </option>
   </component>

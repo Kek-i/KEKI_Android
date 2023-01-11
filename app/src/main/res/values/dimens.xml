@@ -46,6 +46,42 @@
     <dimen name="splash_logo_top_margin">344dp</dimen>
     <dimen name="splash_comment_top_margin">28.5dp</dimen>
 
+    <!-- search -->
+    <!-- search_main -->
+    <dimen name="main_search_margin_side">24dp</dimen>
+    <dimen name="search_tag_height">26dp</dimen>
+    <dimen name="search_tag_margin">10dp</dimen>
+    <dimen name="search_icon_size">17dp</dimen>
+    <dimen name="et_search_height">36dp</dimen>
+    <dimen name="et_search_margin_top">15dp</dimen>
+    <dimen name="et_search_padding_updown">8dp</dimen>
+    <dimen name="et_search_padding_left">15dp</dimen>
+    <dimen name="et_search_between_ic_text">15dp</dimen>
+    <dimen name="tv_recent_search_marginTop">20dp</dimen>
+    <dimen name="tv_recent_search_delete_marginTop">25dp</dimen>
+    <dimen name="tv_recent_search_delete_marginEnd">10dp</dimen>
+    <dimen name="search_tag_marginStart">12dp</dimen>
+    <dimen name="search_recent_tag_padding_side">13dp</dimen>
+    <dimen name="search_recent_tag_padding_updown">5dp</dimen>
+    <dimen name="search_popular_tag_padding_side">14dp</dimen>
+    <dimen name="search_popular_tag_padding_up">4dp</dimen>
+    <dimen name="search_popular_tag_padding_down">6dp</dimen>
+    <dimen name="tv_popular_search_marginTop">25dp</dimen>
+    <dimen name="tv_recent_seen_marginTop">36dp</dimen>
+    <dimen name="rv_recent_seen_marginTop">10dp</dimen>
+    <dimen name="rv_recent_seen_marginStart">12dp</dimen>
+
+    <dimen name="et_search_textSize">14sp</dimen>
+    <dimen name="search_title_textSize">16sp</dimen>
+    <dimen name="search_tag_textSize">11sp</dimen>
+
+    <dimen name="search_cake_img_size">100dp</dimen>
+    <dimen name="search_cake_shadow_size">105dp</dimen>
+    <dimen name="search_iv_cake_margin">10dp</dimen>
+    <dimen name="search_cake_img_radius">20dp</dimen>
+    <dimen name="search_cv_paddingEnd">5dp</dimen>
+
+    <dimen name="search_cv_shadow_padding">2.5dp</dimen>
 
     <!-- calendar -->
     <dimen name="calendar_main_text_margin_top">12dp</dimen>
