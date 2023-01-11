@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginBottom="@dimen/splash_logo_margin"/>
+        android:layout_marginBottom="@dimen/splash_logo_marginBottom"/>
 
     <TextView
         android:id="@+id/tv_splash_comment"
