@@ -43,7 +43,7 @@
     <!-- splash -->
     <dimen name="splash_logo_width">160.5dp</dimen>
     <dimen name="splash_logo_height">63dp</dimen>
-    <dimen name="splash_logo_margin">50dp</dimen>
+    <dimen name="splash_logo_marginBottom">50dp</dimen>
     <dimen name="splash_comment_top_margin">28.5dp</dimen>
 
     <!-- search -->
