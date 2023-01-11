@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:paddingEnd="@dimen/search_cv_paddingEnd">
+
+    <ImageView
+        android:id="@+id/iv_shadow"
+        android:layout_width="@dimen/search_cake_shadow_size"
+        android:layout_height="@dimen/search_cake_shadow_size"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/search_cv_shadow"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cardCornerRadius="@dimen/search_cake_img_radius"
+        android:background="@android:color/transparent">
+
+        <ImageView
+            android:id="@+id/iv_cake"
+            android:layout_width="@dimen/search_cake_img_size"
+            android:layout_height="@dimen/search_cake_img_size"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</FrameLayout>

@@ -19,9 +19,18 @@
     <color name="redForText">#d9534f</color>
 
     <color name="very_light_pink">#faecec</color>
+
     <color name="darkish_pink">#d9486a</color>
     
     <!-- tag -->
     <color name="tag_light_yellow">#fcf4df</color>
+
+    <color name="pale_salmon">#e0bbbb</color>
+    <color name="light_peach_1">#f4dbcb</color>
+    <color name="light_peach_2">#f4cbcb</color>
+    <color name="pale_lavender">#f3e0fa</color>
+    <color name="off_white">#fcf4df</color>
+    <color name="brown_grey">#808080</color>
+    <color name="border_grey">#e3e3e3</color>
 
 </resources>
