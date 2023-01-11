@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,19 +11,23 @@
         android:layout_width="@dimen/splash_logo_width"
         android:layout_height="@dimen/splash_logo_height"
         android:src="@drawable/keki_korean_logo"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/splash_logo_top_margin"/>
+        android:layout_marginBottom="@dimen/splash_logo_margin"/>
 
-    <ImageView
-        android:id="@+id/iv_splash_comment"
+    <TextView
+        android:id="@+id/tv_splash_comment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/splash_comment"
+        android:text="@string/splash_comment"
+        android:textColor="@color/soft_pink"
+        android:textSize="@dimen/splash_comment_size"
+        android:fontFamily="@font/notosanskr_regular"
+        android:layout_marginTop="@dimen/splash_comment_top_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_splash_logo"
-        android:layout_marginTop="@dimen/splash_comment_top_margin"/>
+        app:layout_constraintTop_toBottomOf="@+id/iv_splash_logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
