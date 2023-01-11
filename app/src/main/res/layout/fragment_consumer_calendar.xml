@@ -36,6 +36,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_calendar_cherry"
             tools:listitem="@layout/item_calendar_anniversary_recycler"
+            android:visibility="invisible"
             />
 
         <ImageView
@@ -47,7 +48,53 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="@dimen/calendar_cherry_margin_top"
             android:src="@drawable/img_calendar_cherry"
+            android:visibility="invisible"
             />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_empty_calendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="@dimen/calendar_empty_layout_margin_top"
+            android:layout_marginStart="@dimen/calendar_empty_layout_margin_start"
+            android:layout_marginEnd="@dimen/calendar_empty_layout_margin_end"
+            android:layout_marginBottom="@dimen/calendar_empty_layout_margin_bottom"
+            >
+
+            <ImageView
+                android:id="@+id/iv_empty_calendar_cherry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tv_empty_calendar"
+                android:layout_marginStart="@dimen/calendar_empty_iv_margin_start"
+                android:layout_marginEnd="@dimen/calendar_empty_iv_margin_end"
+                android:layout_marginBottom="@dimen/calendar_empty_iv_margin_bottom"
+                android:src="@drawable/img_calendar_cherry"
+                />
+
+            <TextView
+                android:id="@+id/tv_empty_calendar"
+                android:layout_width="@dimen/calendar_empty_tv_width"
+                android:layout_height="@dimen/calendar_empty_tv_height"
+                app:layout_constraintTop_toBottomOf="@id/iv_empty_calendar_cherry"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="@string/calendar_empty_list"
+                android:textSize="@dimen/calendar_empty_tv_size"
+                android:textColor="@color/black"
+                android:fontFamily="@font/notosanskr_regular"
+                android:includeFontPadding="false"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_calendar_add"
