@@ -25,7 +25,7 @@
             android:includeFontPadding="false"
             />
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.umc.keki.util.recycler.RecyclerViewEmptySupport
             android:id="@+id/rv_calendar_anniversary"
             android:layout_width="match_parent"
             android:layout_height="@dimen/calendar_rv_height"

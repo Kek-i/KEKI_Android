@@ -16,7 +16,6 @@ class ConsumerCalendarFragment : BaseFragment<FragmentConsumerCalendarBinding>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setCalendarAnniversaryRecyclerView()
     }
 
@@ -30,6 +29,8 @@ class ConsumerCalendarFragment : BaseFragment<FragmentConsumerCalendarBinding>
             }
         }
 
+        binding.rvCalendarAnniversary.setEmptyView(binding.layoutEmptyCalendar)
+        binding.rvCalendarAnniversary.setFullView(binding.ivCalendarCherry)
         calendarAnniversaryAdapter = CalendarAnniversaryAdapter(calendarAnniversaryDataList)
         binding.rvCalendarAnniversary.adapter = calendarAnniversaryAdapter
     }

@@ -20,7 +20,7 @@ class CalendarAnniversaryAdapter(private val dataList: List<CalendarAnniversaryD
 
     override fun getItemCount(): Int = dataList.size
 
-    class CalendarAnniversaryViewHolder(val itemBinding: ItemCalendarAnniversaryRecyclerBinding): RecyclerView.ViewHolder(itemBinding.root) {
+    class CalendarAnniversaryViewHolder(private val itemBinding: ItemCalendarAnniversaryRecyclerBinding): RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(item: CalendarAnniversaryData) {
             itemBinding.tvAnniversaryTitle.text = item.title
             itemBinding.tvAnniversaryDate.text = item.date
