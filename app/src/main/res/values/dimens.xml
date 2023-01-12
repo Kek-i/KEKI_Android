@@ -43,7 +43,7 @@
     <!-- splash -->
     <dimen name="splash_logo_width">160.5dp</dimen>
     <dimen name="splash_logo_height">63dp</dimen>
-    <dimen name="splash_logo_top_margin">344dp</dimen>
+    <dimen name="splash_logo_marginBottom">50dp</dimen>
     <dimen name="splash_comment_top_margin">28.5dp</dimen>
 
     <!-- search -->
@@ -71,6 +71,8 @@
     <dimen name="rv_recent_seen_marginTop">10dp</dimen>
     <dimen name="rv_recent_seen_marginStart">12dp</dimen>
 
+
+    <dimen name="splash_comment_size">14sp</dimen>
     <dimen name="et_search_textSize">14sp</dimen>
     <dimen name="search_title_textSize">16sp</dimen>
     <dimen name="search_tag_textSize">11sp</dimen>
