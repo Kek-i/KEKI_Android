@@ -20,7 +20,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         binding.mainBtmNav.run {
             setOnItemSelectedListener { item ->
                 when (item.itemId) {
-                    R.id.menu_main_btm_nav_home -> {
+                    R.id.menu_consumer_main_btm_nav_home -> {
                         supportFragmentManager.beginTransaction()
                             .replace(R.id.main_frm, ConsumerHomeFragment())
                             .commitAllowingStateLoss()
