@@ -46,5 +46,13 @@
     <dimen name="splash_logo_top_margin">344dp</dimen>
     <dimen name="splash_comment_top_margin">28.5dp</dimen>
 
+    <!-- store main -->
+    <dimen name="store_main_ic_top">21dp</dimen>
+    <dimen name="store_main_ic_chevron_left_left">14dp</dimen>
+    <dimen name="store_main_ic_info_right">25dp</dimen>
+    <dimen name="store_main_ic_message_right">12dp</dimen>
+
+
+
 
 </resources>

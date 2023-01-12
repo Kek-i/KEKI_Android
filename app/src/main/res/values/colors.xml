@@ -20,8 +20,15 @@
 
     <color name="very_light_pink">#faecec</color>
     <color name="darkish_pink">#d9486a</color>
-    
+    <color name="light_pink">#f2d7e2</color>
+    <color name="off_white">#fcf4df</color>
+
+
     <!-- tag -->
     <color name="tag_light_yellow">#fcf4df</color>
+
+    <!-- tab -->
+    <color name="tab_select">#c9536b</color>
+    <color name="tab_unselect">#f8ecec</color>
 
 </resources>
