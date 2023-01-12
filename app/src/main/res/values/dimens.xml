@@ -87,6 +87,7 @@
 
 
     <!-- calendar -->
+    <!-- calendar main -->
     <dimen name="calendar_main_text_margin_top">12dp</dimen>
     <dimen name="calendar_main_text_margin_start">24dp</dimen>
     <dimen name="calendar_main_text_size">20sp</dimen>
@@ -131,5 +132,8 @@
     <dimen name="calendar_empty_tv_width">177dp</dimen>
     <dimen name="calendar_empty_tv_height">24dp</dimen>
 
+    <dimen name="calendar_tv_item_delete_width">60dp</dimen>
+    <dimen name="calendar_tv_item_delete_height">0dp</dimen>
+    <dimen name="calendar_tv_item_delete_size">16sp</dimen>
 
 </resources>
