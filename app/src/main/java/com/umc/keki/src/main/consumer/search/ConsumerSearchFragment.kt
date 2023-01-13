@@ -27,6 +27,12 @@ class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(Fragm
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //검색어 전체 지우기 클릭 이벤트
+        binding.tvRecentSearchDelete.setOnClickListener {
+            binding.llEmptyHistory.visibility = View.GONE
+        }
+
         searchRecentRecycler()
         searchPopularRecycler()
         searchRecentSeenRecycler()
@@ -63,7 +69,13 @@ class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(Fragm
 
             searchRecentAdapter.recentSearchData = searchRecentData
             searchRecentAdapter.notifyDataSetChanged()
+        }
 
+        if (searchRecentData.isEmpty()) {
+            binding.llEmptyHistory.visibility = View.GONE
+        }
+        else {
+            binding.llEmptyHistory.visibility = View.VISIBLE
         }
     }
 
