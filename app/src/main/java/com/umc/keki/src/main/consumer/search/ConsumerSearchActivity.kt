@@ -2,7 +2,10 @@ package com.umc.keki.src.main.consumer.search
 
 import android.annotation.SuppressLint
 import android.app.admin.DelegatedAdminReceiver
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -15,9 +18,7 @@ import com.umc.keki.util.recycler.search.*
 import android.view.MotionEvent
 
 import android.view.View.OnTouchListener
-
-
-
+import android.view.inputmethod.InputMethodManager
 
 
 class ConsumerSearchActivity : AppCompatActivity() {
@@ -48,11 +49,26 @@ class ConsumerSearchActivity : AppCompatActivity() {
 
         setCategory()
         searchListRecycler()
+        setListenerToEditText()
     }
 
 
     private fun deleteSearch(){
         binding.etSearch.text = null
+    }
+
+    //검색창에서 엔터키 이벤트
+    private fun setListenerToEditText() {
+        binding.etSearch.setOnKeyListener { view, keyCode, event ->
+            // Enter Key Action
+            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER)
+            {
+                val imm = this@ConsumerSearchActivity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(binding.etSearch.windowToken, 0)
+                val searchKey = binding.etSearch.text
+            }
+            false
+        }
     }
 
     //검색 결과 목록 보여주기

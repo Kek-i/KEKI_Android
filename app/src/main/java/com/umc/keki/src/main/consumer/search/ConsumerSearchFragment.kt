@@ -1,10 +1,12 @@
 package com.umc.keki.src.main.consumer.search
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.KeyEvent.KEYCODE_ENTER
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.umc.keki.R
@@ -32,25 +34,17 @@ class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(Fragm
 
     }
 
-
+    //검색창에서 엔터키로 동작 넘기기
     private fun setListenerToEditText() {
         binding.etSearch.setOnKeyListener { view, keyCode, event ->
             // Enter Key Action
-            if (event.action == KeyEvent.ACTION_DOWN
-                && keyCode == KEYCODE_ENTER
-            ) {
-                // 키패드 내리기
-//                val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-//                imm.hideSoftInputFromWindow(binding.etSearch.windowToken, 0)
-//                true
+            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KEYCODE_ENTER)
+            {
                 val searchKey = binding.etSearch.text
                 val intent = Intent(context, ConsumerSearchActivity::class.java)
-
                 intent.putExtra("search_key","$searchKey")
                 startActivity(intent)
-
             }
-
             false
         }
     }
