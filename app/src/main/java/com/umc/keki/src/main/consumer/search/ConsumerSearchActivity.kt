@@ -19,6 +19,7 @@ import android.view.MotionEvent
 
 import android.view.View.OnTouchListener
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 
 
 class ConsumerSearchActivity : AppCompatActivity() {
@@ -75,6 +76,12 @@ class ConsumerSearchActivity : AppCompatActivity() {
     private fun searchListRecycler() {
         searchListAdapter = SearchListAdapter(this@ConsumerSearchActivity)
         binding.rvSearchGrid.adapter = searchListAdapter
+        // 개별 아이템 클릭 시 이벤트
+        searchListAdapter.setItemClickListener(object: SearchListAdapter.OnItemClickListener{
+            override fun onClick(v: View, position: Int) {
+                Toast.makeText(binding.root.context,"${searchListData[position].cakeName} 선택됨",Toast.LENGTH_SHORT).show()
+            }
+        })
 
         //그리드뷰 컬럼 수 설정
         val myLayoutManager = GridLayoutManager(this, 3)
@@ -83,8 +90,8 @@ class ConsumerSearchActivity : AppCompatActivity() {
         //검색결과 목록 예시 데이터
         searchListData.apply {
             add(SearchListData(img= R.drawable.img_cake, "딸기 컵케이크", 26000))
-            add(SearchListData(img= R.drawable.img_cake, "딸기 컵케이크", 27000))
-            add(SearchListData(img= R.drawable.img_cake, "딸기 컵케이크", 28000))
+            add(SearchListData(img= R.drawable.img_cake, "바나나 컵케이크", 27000))
+            add(SearchListData(img= R.drawable.img_cake, "수박 컵케이크", 28000))
 
             searchListAdapter.searchListData = searchListData
             searchListAdapter.notifyDataSetChanged()
