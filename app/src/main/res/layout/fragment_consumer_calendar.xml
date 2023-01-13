@@ -30,6 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/calendar_rv_height"
             android:layout_marginTop="@dimen/calendar_rv_margin_top"
+            android:layout_marginHorizontal="@dimen/calendar_rv_padding_horizontal"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@id/iv_calendar_cherry"
