@@ -9,10 +9,10 @@
         android:radius="10dp"/>
 
     <padding
-        android:left="20dp"
-        android:right="20dp"
-        android:top="18dp"
-        android:bottom="25dp"
+        android:left="@dimen/store_main_dialog_left_right"
+        android:right="@dimen/store_main_dialog_left_right"
+        android:top="@dimen/store_main_dialog_top"
+        android:bottom="@dimen/store_main_dialog_bottom"
         />
 
 </shape>

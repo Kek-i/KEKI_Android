@@ -9,9 +9,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="6dp">
+        android:layout_marginLeft="@dimen/store_main_feed_left_right"
+        android:layout_marginRight="@dimen/store_main_feed_left_right"
+        android:layout_marginTop="@dimen/store_main_feed_top">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_product_feed"
@@ -33,8 +33,8 @@
         android:layout_gravity="end|bottom"
         android:src="@drawable/ic_store_main_plus"
         android:backgroundTint="@color/pinkish"
-        android:layout_marginRight="12dp"
-        android:layout_marginBottom="14dp"/>
+        android:layout_marginRight="@dimen/store_main_feed_float_right"
+        android:layout_marginBottom="@dimen/store_main_feed_float_bottom"/>
 
 
 </FrameLayout>

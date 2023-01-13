@@ -9,8 +9,10 @@
         android:radius="10dp"/>
 
     <padding
-        android:left="30dp"
-        android:right="30dp"
+        android:top="@dimen/store_main_store_order_padding_top_bottom"
+        android:bottom="@dimen/store_main_store_order_padding_top_bottom"
+        android:left="@dimen/store_main_store_order_padding_left_right"
+        android:right="@dimen/store_main_store_order_padding_left_right"
         />
 
 </shape>

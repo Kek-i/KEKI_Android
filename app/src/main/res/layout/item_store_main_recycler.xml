@@ -8,11 +8,11 @@
 
     <ImageView
         android:id="@+id/iv_store_main"
-        android:layout_width="105dp"
-        android:layout_height="105dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="@dimen/store_main_rv_width_height"
+        android:layout_height="@dimen/store_main_rv_width_height"
+        android:layout_marginRight="@dimen/store_main_rv_margin"
+        android:layout_marginLeft="@dimen/store_main_rv_margin"
+        android:layout_marginTop="@dimen/store_main_rv_margin"
         android:src="@drawable/bg_rectangle_radius_10_off_white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

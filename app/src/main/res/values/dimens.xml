@@ -50,9 +50,57 @@
     <dimen name="store_main_ic_top">21dp</dimen>
     <dimen name="store_main_ic_chevron_left_left">14dp</dimen>
     <dimen name="store_main_ic_info_right">25dp</dimen>
-    <dimen name="store_main_ic_message_right">12dp</dimen>
+    <dimen name="store_main_right">12dp</dimen>
+    <dimen name="store_main_info_height">80dp</dimen>
+    <dimen name="store_main_info_top">66dp</dimen>
+    <dimen name="store_main_info_left">25dp</dimen>
+    <dimen name="store_main_info_right">12dp</dimen>
+    <dimen name="store_main_profile_width_height">80dp</dimen>
+    <dimen name="store_main_store_name_left">15dp</dimen>
+    <dimen name="store_main_store_name_top">10dp</dimen>
+    <dimen name="store_main_store_name_text_size">18dp</dimen>
+    <dimen name="store_main_store_detail_width">0dp</dimen>
+    <dimen name="store_main_store_detail_top">10dp</dimen>
+    <dimen name="store_main_store_detail_text_size">11sp</dimen>
+    <dimen name="store_main_store_order_text_size">16sp</dimen>
+    <dimen name="store_main_store_order_padding_top_bottom">8dp</dimen>
+    <dimen name="store_main_store_order_padding_left_right">30dp</dimen>
+    <dimen name="store_main_store_order_top">11dp</dimen>
+    <dimen name="store_main_store_tab_width">0dp</dimen>
+    <dimen name="store_main_store_tab_top">27dp</dimen>
+    <dimen name="store_main_store_viewPager_width_height">0dp</dimen>
+    <dimen name="store_main_store_view_width">0dp</dimen>
+    <dimen name="store_main_store_view_height">2dp</dimen>
 
+    <!-- store main dialog -->
+    <dimen name="store_main_dialog_img_left">27.2dp</dimen>
+    <dimen name="store_main_dialog_img_right">163.2dp</dimen>
+    <dimen name="store_main_dialog_img_bottom">188dp</dimen>
+    <dimen name="store_main_dialog_width">310dp</dimen>
+    <dimen name="store_main_dialog_height">219dp</dimen>
+    <dimen name="store_main_dialog_title_left">114dp</dimen>
+    <dimen name="store_main_dialog_title_right">109dp</dimen>
+    <dimen name="store_main_dialog_title_text_size">18sp</dimen>
+    <dimen name="store_main_dialog_text_size">14sp</dimen>
+    <dimen name="store_main_dialog_first_text_top">20dp</dimen>
+    <dimen name="store_main_dialog_first_text_middle">48dp</dimen>
+    <dimen name="store_main_dialog_left_right">15dp</dimen>
+    <dimen name="store_main_dialog_top">18dp</dimen>
+    <dimen name="store_main_dialog_bottom">25dp</dimen>
+    <dimen name="store_main_dialog_text_top">10dp</dimen>
+    <dimen name="store_main_dialog_text_width">0dp</dimen>
+    <dimen name="store_main_dialog_text_last_top">30dp</dimen>
+    <dimen name="store_main_dialog_img_arm_left">21.8dp</dimen>
+    <dimen name="store_main_dialog_img_arm_right">87.4dp</dimen>
 
+    <!-- store main feed -->
+    <dimen name="store_main_feed_left_right">5dp</dimen>
+    <dimen name="store_main_feed_top">6dp</dimen>
+    <dimen name="store_main_feed_rv_width">0dp</dimen>
+    <dimen name="store_main_feed_float_right">12dp</dimen>
+    <dimen name="store_main_feed_float_bottom">14dp</dimen>
 
-
+    <!-- store main recyclerView -->
+    <dimen name="store_main_rv_width_height">105dp</dimen>
+    <dimen name="store_main_rv_margin">10dp</dimen>
 </resources>
