@@ -1,12 +1,16 @@
 package com.umc.keki.src.main.consumer.search
 
-import android.graphics.Insets.add
+import android.content.Intent
 import android.os.Bundle
+import android.view.KeyEvent
+import android.view.KeyEvent.KEYCODE_ENTER
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import com.umc.keki.R
 import com.umc.keki.config.BaseFragment
 import com.umc.keki.databinding.FragmentConsumerSearchBinding
-import com.umc.keki.util.recyler.search.*
+import com.umc.keki.util.recycler.search.*
 
 class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(FragmentConsumerSearchBinding::bind, R.layout.fragment_consumer_search) {
 
@@ -24,6 +28,31 @@ class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(Fragm
         searchRecentRecycler()
         searchPopularRecycler()
         searchRecentSeenRecycler()
+        setListenerToEditText()
+
+    }
+
+
+    private fun setListenerToEditText() {
+        binding.etSearch.setOnKeyListener { view, keyCode, event ->
+            // Enter Key Action
+            if (event.action == KeyEvent.ACTION_DOWN
+                && keyCode == KEYCODE_ENTER
+            ) {
+                // 키패드 내리기
+//                val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+//                imm.hideSoftInputFromWindow(binding.etSearch.windowToken, 0)
+//                true
+                val searchKey = binding.etSearch.text
+                val intent = Intent(context, ConsumerSearchActivity::class.java)
+
+                intent.putExtra("search_key","$searchKey")
+                startActivity(intent)
+
+            }
+
+            false
+        }
     }
 
     private fun searchRecentRecycler() {
@@ -73,6 +102,7 @@ class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(Fragm
             add(SearchCakeImgData(img= R.drawable.img_cake))
             add(SearchCakeImgData(img= R.drawable.img_cake))
             add(SearchCakeImgData(img= R.drawable.img_cake))
+
 
             searchRecentCakeImgAdapter.searchCakeImgData = searchCakeImgData
             searchRecentCakeImgAdapter.notifyDataSetChanged()
