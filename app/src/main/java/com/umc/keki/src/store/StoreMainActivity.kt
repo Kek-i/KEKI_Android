@@ -8,6 +8,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.umc.keki.R
 import com.umc.keki.config.BaseActivity
 import com.umc.keki.databinding.ActivityStoreMainBinding
+import com.umc.keki.util.viewpager.storemain.StoreMainDialog
 import com.umc.keki.util.viewpager.storemain.StoreMainVPAdapter
 
 class StoreMainActivity : BaseActivity<ActivityStoreMainBinding>(ActivityStoreMainBinding::inflate) {
@@ -38,6 +39,10 @@ class StoreMainActivity : BaseActivity<ActivityStoreMainBinding>(ActivityStoreMa
                 TODO("Not yet implemented")
             }
         })
+
+        binding.ivInfo.setOnClickListener{
+            StoreMainDialog(this).show()
+        }
     }
 }
 

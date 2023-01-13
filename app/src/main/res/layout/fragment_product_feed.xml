@@ -9,7 +9,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="5dp">
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="6dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_product_feed"
@@ -24,5 +26,15 @@
             app:spanCount="3"
             tools:listitem="@layout/item_store_main_recycler"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/float_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:src="@drawable/ic_store_main_plus"
+        android:backgroundTint="@color/pinkish"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="14dp"/>
+
 
 </FrameLayout>
