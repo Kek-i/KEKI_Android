@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/et_search"
-            android:layout_marginTop="@dimen/tv_recent_search_marginTop">
+            android:layout_marginTop="@dimen/ll_recent_search_marginTop">
 
             <TextView
                 android:id="@+id/tv_recent_search"
@@ -56,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/tv_recent_search_delete_marginEnd"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="@dimen/tv_recent_search_delete_marginTop"
                 android:background="@drawable/bg_underline_brown_grey"
                 android:text="@string/tv_recent_search_delete"
                 android:textColor="@color/brown_grey"
