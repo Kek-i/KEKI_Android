@@ -4,7 +4,9 @@
     android:layout_height="wrap_content"
     android:paddingBottom="@dimen/calendar_rv_item_padding_bottom"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:drag_edge="right">
+    app:show_mode="lay_down"
+    app:drag_edge="right"
+    >
 
     <FrameLayout
         android:id="@+id/layout_del_frame"
@@ -18,9 +20,9 @@
 
             <ImageView
                 android:id="@+id/iv_calendar_rv_del_bg"
-                android:layout_width="@dimen/calendar_rv_item_height"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/calendar_rv_item_height"
-                android:layout_marginStart="-10dp"
+                android:src="@drawable/bg_calendar_item_del"
                 android:scaleType="centerCrop"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
