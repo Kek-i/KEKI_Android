@@ -3,6 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+
     <!-- bottom -->
     <string name="home">홈</string>
     <string name="calendar">캘린더</string>
@@ -30,5 +31,9 @@
     <string name="tv_recent_search_delete">전체 지우기</string>
     <string name="tv_popular_search">인기 검색어</string>
     <string name="tv_recent_view">최근 본 케이크</string>
+    <string name="search_spinner_recent">최신순</string>
+    <string name="search_spinner_popular">인기순</string>
+    <string name="search_spinner_price">가격낮은순</string>
+    <string name="search_empty_list">검색결과가 없습니다.</string>
 
 </resources>

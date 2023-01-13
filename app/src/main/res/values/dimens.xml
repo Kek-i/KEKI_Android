@@ -45,20 +45,20 @@
     <dimen name="splash_logo_height">63dp</dimen>
     <dimen name="splash_logo_marginBottom">50dp</dimen>
     <dimen name="splash_comment_top_margin">28.5dp</dimen>
+    <dimen name="splash_comment_size">14sp</dimen>
 
     <!-- search -->
-    <!-- search_main -->
     <dimen name="main_search_margin_side">24dp</dimen>
     <dimen name="search_tag_height">26dp</dimen>
     <dimen name="search_tag_margin">10dp</dimen>
-    <dimen name="search_icon_size">17dp</dimen>
     <dimen name="et_search_height">36dp</dimen>
     <dimen name="et_search_margin_top">15dp</dimen>
     <dimen name="et_search_padding_updown">8dp</dimen>
     <dimen name="et_search_padding_left">15dp</dimen>
+    <dimen name="et_search_paddingEnd">20dp</dimen>
     <dimen name="et_search_between_ic_text">15dp</dimen>
-    <dimen name="tv_recent_search_marginTop">20dp</dimen>
-    <dimen name="tv_recent_search_delete_marginTop">25dp</dimen>
+    <dimen name="ll_recent_search_marginTop">20dp</dimen>
+    <dimen name="tv_recent_search_delete_marginTop">5dp</dimen>
     <dimen name="tv_recent_search_delete_marginEnd">10dp</dimen>
     <dimen name="search_tag_marginStart">12dp</dimen>
     <dimen name="search_recent_tag_padding_side">13dp</dimen>
@@ -70,21 +70,47 @@
     <dimen name="tv_recent_seen_marginTop">36dp</dimen>
     <dimen name="rv_recent_seen_marginTop">10dp</dimen>
     <dimen name="rv_recent_seen_marginStart">12dp</dimen>
+    <dimen name="search_spinner_width">90dp</dimen>
+    <dimen name="search_spinner_height">31dp</dimen>
+    <dimen name="search_spinner_marginTop">21dp</dimen>
+    <dimen name="search_spinner_marginStart">18dp</dimen>
+    <dimen name="search_spinner_bg_border_width">1.5dp</dimen>
+    <dimen name="search_spinner_bg_paddingRight">14dp</dimen>
+    <dimen name="search_spinner_bg_paddingTop">6dp</dimen>
+    <dimen name="search_spinner_bg_paddingBottom">9dp</dimen>
+    <dimen name="search_spinner_list_height">30dp</dimen>
+    <dimen name="search_spinner_list_padding">7dp</dimen>
+    <dimen name="search_sv_search_list_marginTop">118dp</dimen>
+    <dimen name="search_tv_empty_marginTop">10dp</dimen>
+    <dimen name="search_grid_item_padding_side">5dp</dimen>
+    <dimen name="search_grid_item_paddingBottom">15dp</dimen>
+    <dimen name="search_grid_name_marginTop">10dp</dimen>
+    <dimen name="search_grid_price_marginTop">3dp</dimen>
 
-
-    <dimen name="splash_comment_size">14sp</dimen>
-    <dimen name="et_search_textSize">14sp</dimen>
-    <dimen name="search_title_textSize">16sp</dimen>
-    <dimen name="search_tag_textSize">11sp</dimen>
-
+    <dimen name="search_icon_size">17dp</dimen>
+    <dimen name="delete_icon_size">8dp</dimen>
     <dimen name="search_cake_img_size">100dp</dimen>
     <dimen name="search_cake_shadow_size">105dp</dimen>
     <dimen name="search_iv_cake_margin">10dp</dimen>
-    <dimen name="search_cake_img_radius">20dp</dimen>
     <dimen name="search_cv_paddingEnd">5dp</dimen>
-
     <dimen name="search_cv_shadow_padding">2.5dp</dimen>
+    <dimen name="search_ic_cake_off_width">72dp</dimen>
+    <dimen name="search_ic_cake_off_height">79dp</dimen>
+    <dimen name="search_grid_item_img_size">105dp</dimen>
+    <dimen name="search_ic_chevron_down_width">8dp</dimen>
+    <dimen name="search_ic_chevron_down_height">4dp</dimen>
 
+
+    <dimen name="search_cake_img_radius">20dp</dimen>
+    <dimen name="search_spinner_radius">16dp</dimen>
+    <dimen name="search_grid_item_cv_radius">10dp</dimen>
+    <dimen name="et_search_textSize">14sp</dimen>
+    <dimen name="search_title_textSize">16sp</dimen>
+    <dimen name="search_tag_textSize">11sp</dimen>
+    <dimen name="search_grid_cakeName">14sp</dimen>
+    <dimen name="search_grid_cakePrice">12sp</dimen>
+    <dimen name="search_spinner_text">11sp</dimen>
+    <dimen name="search_tv_empty_list">16sp</dimen>
 
     <!-- calendar -->
     <dimen name="calendar_main_text_margin_top">12dp</dimen>
