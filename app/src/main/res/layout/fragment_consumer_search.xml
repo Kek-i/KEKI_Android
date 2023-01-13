@@ -24,7 +24,7 @@
             android:hint="검색어를 입력하세요."
             android:maxLines="1"
             android:singleLine="true"
-            android:textColor="@color/pale_salmon"
+            android:textColor="@color/black"
             android:textColorHint="@color/pale_salmon"
             android:textCursorDrawable="@null"
             android:textSize="@dimen/et_search_textSize"
