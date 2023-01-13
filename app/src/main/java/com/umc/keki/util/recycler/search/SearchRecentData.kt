@@ -1,4 +1,4 @@
-package com.umc.keki.util.recyler.search
+package com.umc.keki.util.recycler.search
 
 data class SearchRecentData (
     val bearer: String
