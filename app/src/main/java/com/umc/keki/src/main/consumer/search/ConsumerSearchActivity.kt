@@ -1,14 +1,23 @@
 package com.umc.keki.src.main.consumer.search
 
+import android.annotation.SuppressLint
+import android.app.admin.DelegatedAdminReceiver
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.umc.keki.R
 import com.umc.keki.databinding.ActivityConsumerSearchBinding
 import com.umc.keki.util.recycler.search.*
+import android.view.MotionEvent
+
+import android.view.View.OnTouchListener
+
+
+
 
 
 class ConsumerSearchActivity : AppCompatActivity() {
@@ -16,6 +25,7 @@ class ConsumerSearchActivity : AppCompatActivity() {
     private lateinit var searchListAdapter : SearchListAdapter
     val searchListData = mutableListOf<SearchListData>()
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityConsumerSearchBinding.inflate(layoutInflater)
@@ -25,10 +35,25 @@ class ConsumerSearchActivity : AppCompatActivity() {
         val searchKey = intent.getStringExtra("search_key")
         binding.etSearch.setText("$searchKey")
 
+        //검색창 x 누르면 삭제
+        binding.etSearch.setOnTouchListener(OnTouchListener { v, event ->
+            if (event.action == MotionEvent.ACTION_UP)
+                if (event.rawX  >= binding.etSearch.right - binding.etSearch.compoundDrawables.get(2).bounds.width() - 100 )
+                {
+                deleteSearch()
+                return@OnTouchListener true
+                }
+            false
+        })
+
         setCategory()
         searchListRecycler()
     }
 
+
+    private fun deleteSearch(){
+        binding.etSearch.text = null
+    }
 
     //검색 결과 목록 보여주기
     private fun searchListRecycler() {
@@ -51,12 +76,12 @@ class ConsumerSearchActivity : AppCompatActivity() {
 
         //EmptyView 설정
         if (searchListData.isEmpty()) {
-            binding.rvSearchGrid.setVisibility(View.GONE);
-            binding.layoutEmpty.setVisibility(View.VISIBLE);
+            binding.rvSearchGrid.visibility = View.GONE
+            binding.layoutEmpty.visibility = View.VISIBLE
         }
         else {
-            binding.rvSearchGrid.setVisibility(View.VISIBLE);
-            binding.layoutEmpty.setVisibility(View.GONE);
+            binding.rvSearchGrid.visibility = View.VISIBLE
+            binding.layoutEmpty.visibility = View.GONE
         }
 
     }
@@ -71,7 +96,7 @@ class ConsumerSearchActivity : AppCompatActivity() {
 
         binding.spinnerSearch.adapter = spinnerAdapter
 
-        binding.spinnerSearch.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
+        binding.spinnerSearch.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
                 view: View,
@@ -80,7 +105,8 @@ class ConsumerSearchActivity : AppCompatActivity() {
             ) {
 
             }
+
             override fun onNothingSelected(parent: AdapterView<*>?) {}
-        })
+        }
     }
 }
