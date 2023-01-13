@@ -2,9 +2,11 @@ package com.umc.keki.src.main.consumer.calendar
 
 import android.os.Bundle
 import android.view.View
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.umc.keki.R
 import com.umc.keki.config.BaseFragment
 import com.umc.keki.databinding.FragmentConsumerCalendarBinding
+import com.umc.keki.util.SwipeHelper
 import com.umc.keki.util.recycler.calendar.CalendarAnniversaryAdapter
 import com.umc.keki.util.recycler.calendar.CalendarAnniversaryData
 
@@ -13,10 +15,12 @@ class ConsumerCalendarFragment : BaseFragment<FragmentConsumerCalendarBinding>
     (FragmentConsumerCalendarBinding::bind, R.layout.fragment_consumer_calendar) {
     private lateinit var calendarAnniversaryAdapter: CalendarAnniversaryAdapter
     private val calendarAnniversaryDataList = mutableListOf<CalendarAnniversaryData>()
+    private val itemTouchHelper: ItemTouchHelper = ItemTouchHelper(SwipeHelper())
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setCalendarAnniversaryRecyclerView()
+        itemTouchHelper.attachToRecyclerView(binding.rvCalendarAnniversary)
     }
 
     private fun setCalendarAnniversaryRecyclerView() {

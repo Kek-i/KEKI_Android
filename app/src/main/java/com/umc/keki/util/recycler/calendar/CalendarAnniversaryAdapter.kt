@@ -21,10 +21,20 @@ class CalendarAnniversaryAdapter(private val dataList: List<CalendarAnniversaryD
     override fun getItemCount(): Int = dataList.size
 
     class CalendarAnniversaryViewHolder(private val itemBinding: ItemCalendarAnniversaryRecyclerBinding): RecyclerView.ViewHolder(itemBinding.root) {
+        private var isClamped: Boolean = false
+
         fun bind(item: CalendarAnniversaryData) {
             itemBinding.tvAnniversaryTitle.text = item.title
             itemBinding.tvAnniversaryDate.text = item.date
             itemBinding.tvAnniversaryDday.text = item.dday
+        }
+
+        fun getClamped(): Boolean {
+            return isClamped
+        }
+
+        fun setClamped(isClamped: Boolean) {
+            this.isClamped = isClamped
         }
     }
 }
