@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".src.main.consumer.store.ConsumerStoreFreedActivity">
+    tools:context=".src.main.consumer.store.ConsumerStoreFeedActivity">
 
     <TextView
         android:id="@+id/tv_store_feed"
@@ -31,16 +31,14 @@
         android:src="@drawable/ic_chevron_left"/>
 
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_store_feed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@id/tv_store_feed"
-        android:layout_marginTop="@dimen/store_feed_recycler_margin_top"
-        tools:listitem="@layout/item_store_feed_recycler"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
+        tools:layout_editor_absoluteX="0dp"
+        tools:listitem="@layout/item_store_feed_recycler" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

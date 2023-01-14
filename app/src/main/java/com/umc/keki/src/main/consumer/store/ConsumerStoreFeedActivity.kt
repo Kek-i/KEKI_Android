@@ -1,19 +1,12 @@
 package com.umc.keki.src.main.consumer.store
 
-import android.graphics.drawable.Drawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.umc.keki.R
 import com.umc.keki.config.BaseActivity
-import com.umc.keki.databinding.ActivityConsumerStoreFreedBinding
-import com.umc.keki.databinding.ActivityMainBinding.inflate
+import com.umc.keki.databinding.ActivityConsumerStoreFeedBinding
 import com.umc.keki.util.recycler.storefeed.StoreFeedAdapter
 import com.umc.keki.util.recycler.storefeed.StoreFeedData
 
-class ConsumerStoreFreedActivity : BaseActivity<ActivityConsumerStoreFreedBinding>(ActivityConsumerStoreFreedBinding::inflate) {
+class ConsumerStoreFeedActivity : BaseActivity<ActivityConsumerStoreFeedBinding>(ActivityConsumerStoreFeedBinding::inflate) {
 
     lateinit var storeFeedAdapter : StoreFeedAdapter
     val storeFeedDatas = mutableListOf<StoreFeedData>()
@@ -29,6 +22,7 @@ class ConsumerStoreFreedActivity : BaseActivity<ActivityConsumerStoreFreedBindin
         binding.recyclerStoreFeed.adapter = storeFeedAdapter
 
         storeFeedDatas.apply { add(StoreFeedData(nickname = "닉네임")) }
+        storeFeedDatas.apply { add(StoreFeedData(nickname = "닉네임2")) }
 
         storeFeedAdapter.storeFeedDatas = storeFeedDatas
         storeFeedAdapter.notifyDataSetChanged()
