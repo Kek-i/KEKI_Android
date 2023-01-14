@@ -12,6 +12,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/oval_light_yellow"
         android:layout_marginStart="@dimen/store_feed_margin_start_end"
+        android:layout_marginTop="@dimen/store_feed_seller_img_margin_top"
         />
 
     <TextView
@@ -43,7 +44,8 @@
         android:id="@+id/vp_store_feed_img"
         android:layout_width="match_parent"
         android:layout_height="@dimen/store_feed_img_height"
-        app:layout_constraintTop_toBottomOf="@+id/iv_store_feed_seller"/>
+        app:layout_constraintTop_toBottomOf="@+id/iv_store_feed_seller"
+        android:layout_marginTop="@dimen/store_feed_recycler_margin_top"/>
 
     <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
         android:id="@+id/worm_dots_indicator"
@@ -78,15 +80,16 @@
 
     <TextView
         android:id="@+id/tv_store_feed_cake_description"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/tv_store_feed_cake_name"
         app:layout_constraintStart_toStartOf="parent"
         android:textColor="@color/black"
         android:layout_marginStart="@dimen/store_feed_margin_start_end"
-        android:text="@string/store_feed_cake_description"
+        android:layout_marginEnd="@dimen/store_feed_margin_start_end"
         android:fontFamily="@font/notosanskr_regular"
         />
+
 
     <TextView
         android:id="@+id/tv_store_feed_first_tag"
@@ -118,22 +121,36 @@
         android:background="@drawable/bg_rectangle_radius_16_very_light_pink"
         />
 
+    <TextView
+        android:id="@+id/tv_store_feed_third_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tv_store_feed_cake_description"
+        app:layout_constraintStart_toEndOf="@+id/tv_store_feed_second_tag"
+        android:layout_marginStart="@dimen/store_feed_between_tag"
+        android:text="@string/anniversary"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/black"
+        android:textSize="@dimen/store_feed_tag_size"
+        android:gravity="center"
+        android:background="@drawable/bg_rectangle_radius_16_light_peach"/>
+
     <ImageView
-        android:id="@+id/iv_store_feed_heart"
+        android:id="@+id/iv_store_feed_heart_off"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/tv_store_feed_cake_description"
         app:layout_constraintEnd_toEndOf="parent"
         android:src="@drawable/ic_bottom_heart_off"
         android:layout_marginEnd="@dimen/store_feed_margin_start_end"
+        android:paddingBottom="@dimen/store_feed_line"
         />
 
     <View
         android:id="@+id/view_store_feed_bottom"
         android:layout_width="match_parent"
         android:layout_height="@dimen/store_feed_view_height"
-        app:layout_constraintTop_toBottomOf="@+id/iv_store_feed_heart"
-        android:layout_marginTop="@dimen/store_feed_line"
+        app:layout_constraintTop_toBottomOf="@+id/iv_store_feed_heart_off"
         android:background="@color/very_light_gray"
         />
 
