@@ -15,6 +15,12 @@ class StoreMainActivity : BaseActivity<ActivityStoreMainBinding>(ActivityStoreMa
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        tabSetting()
+        back()
+        infoClick()
+    }
+
+    private fun tabSetting(){
         val storeMainVPAdapter = StoreMainVPAdapter(this)
         binding.vpStore.adapter = storeMainVPAdapter
 
@@ -24,6 +30,10 @@ class StoreMainActivity : BaseActivity<ActivityStoreMainBinding>(ActivityStoreMa
             tab.setIcon(tabIconArray[position])
         }.attach()
 
+        tabClickColor()
+    }
+
+    private fun tabClickColor(){
         binding.tabStore.getTabAt(0)?.icon?.setTint(ResourcesCompat.getColor(getResources(),R.color.tab_select,null))
 
         binding.tabStore.addOnTabSelectedListener(object:TabLayout.OnTabSelectedListener{
@@ -39,7 +49,15 @@ class StoreMainActivity : BaseActivity<ActivityStoreMainBinding>(ActivityStoreMa
                 TODO("Not yet implemented")
             }
         })
+    }
 
+    private fun back(){
+        binding.ivBack.setOnClickListener{
+            finish()
+        }
+    }
+
+    private fun infoClick(){
         binding.ivInfo.setOnClickListener{
             StoreMainDialog(this).show()
         }

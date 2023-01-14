@@ -15,6 +15,10 @@ class ProductFeedFragment : BaseFragment<FragmentProductFeedBinding>
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        productFeedRecyclerView()
+    }
+
+    private fun productFeedRecyclerView(){
         val dataList : ArrayList<StoreMainData> = arrayListOf()
         for(i in 1 until 31) {
             dataList.apply {
