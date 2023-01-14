@@ -33,6 +33,7 @@
 
         </activity>
 
+
         <activity
             android:name=".src.store.StoreMainActivity"
             android:exported="true"
@@ -40,6 +41,14 @@
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
+
+        <activity
+            android:name=".src.main.consumer.search.ConsumerSearchActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
     </application>
 
 </manifest>
