@@ -2,10 +2,10 @@
 <com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingBottom="@dimen/calendar_rv_item_padding_bottom"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:show_mode="lay_down"
     app:drag_edge="right"
+    android:background="@drawable/bg_calendar_item_del"
     >
 
     <FrameLayout
@@ -16,26 +16,16 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/iv_calendar_rv_del_bg"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/calendar_rv_item_height"
-                android:src="@drawable/bg_calendar_item_del"
-                android:scaleType="centerCrop"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                />
+            android:layout_height="match_parent"
+            >
 
             <TextView
                 android:id="@+id/tv_calendar_item_delete"
                 android:layout_width="@dimen/calendar_tv_item_delete_width"
                 android:layout_height="@dimen/calendar_tv_item_delete_height"
-                app:layout_constraintTop_toTopOf="@id/iv_calendar_rv_del_bg"
-                app:layout_constraintEnd_toEndOf="@id/iv_calendar_rv_del_bg"
-                app:layout_constraintBottom_toBottomOf="@id/iv_calendar_rv_del_bg"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 android:gravity="center"
                 android:text="@string/calendar_item_delete"
                 android:textColor="@color/black"

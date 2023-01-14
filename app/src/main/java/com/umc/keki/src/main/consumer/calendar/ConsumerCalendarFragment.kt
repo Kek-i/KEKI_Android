@@ -1,8 +1,10 @@
 package com.umc.keki.src.main.consumer.calendar
 
+import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
-import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import com.umc.keki.R
 import com.umc.keki.config.BaseFragment
 import com.umc.keki.databinding.FragmentConsumerCalendarBinding
@@ -30,10 +32,22 @@ class ConsumerCalendarFragment : BaseFragment<FragmentConsumerCalendarBinding>
             }
         }
 
+        binding.rvCalendarAnniversary.addItemDecoration(RecyclerViewDecoration(15))
         binding.rvCalendarAnniversary.setEmptyView(binding.layoutEmptyCalendar)
         binding.rvCalendarAnniversary.setFullView(binding.ivCalendarCherry)
         calendarAnniversaryAdapter = CalendarAnniversaryAdapter(calendarAnniversaryDataList)
         binding.rvCalendarAnniversary.adapter = calendarAnniversaryAdapter
     }
 
+    class RecyclerViewDecoration(private val divHeight: Int) : ItemDecoration() {
+        override fun getItemOffsets(
+            outRect: Rect,
+            view: View,
+            parent: RecyclerView,
+            state: RecyclerView.State
+        ) {
+            super.getItemOffsets(outRect, view, parent, state)
+            outRect.bottom = divHeight
+        }
+    }
 }

@@ -96,7 +96,6 @@
     <dimen name="calendar_rv_height">0dp</dimen>
     <dimen name="calendar_rv_margin_top">-6dp</dimen>
     <dimen name="calendar_rv_margin_horizontal">12dp</dimen>
-    <dimen name="calendar_rv_item_padding_bottom">10dp</dimen>
     <dimen name="calendar_rv_item_width">60dp</dimen>
     <dimen name="calendar_rv_item_height">60dp</dimen>
     <dimen name="calendar_rv_item_title_size">16sp</dimen>
