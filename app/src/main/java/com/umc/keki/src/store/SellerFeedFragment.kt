@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.umc.keki.R
 import com.umc.keki.config.BaseFragment
 import com.umc.keki.databinding.FragmentSellerFeedBinding
-import com.umc.keki.util.viewpager.storemain.StoreMainAdapter
 import com.umc.keki.util.viewpager.storemain.StoreMainData
+import com.umc.keki.util.viewpager.storemain.StoreMainSellerAdapter
 
 class SellerFeedFragment : BaseFragment<FragmentSellerFeedBinding>
     (FragmentSellerFeedBinding::bind, R.layout.fragment_seller_feed){
@@ -26,9 +26,9 @@ class SellerFeedFragment : BaseFragment<FragmentSellerFeedBinding>
             }
         }
 
-        val storeMainAdapter = StoreMainAdapter(dataList)
+        val storeMainSellerAdapter = StoreMainSellerAdapter(dataList)
 
-        binding.recyclerSellerFeed.adapter = storeMainAdapter
+        binding.recyclerSellerFeed.adapter = storeMainSellerAdapter
         binding.recyclerSellerFeed.layoutManager=GridLayoutManager(context, 3)
 
     }
