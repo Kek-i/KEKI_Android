@@ -1,4 +1,4 @@
-package com.umc.keki.util.recyler.search
+package com.umc.keki.util.recycler.search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.umc.keki.R
 import com.umc.keki.databinding.ItemSearchPopularRecyclerBinding
 import com.umc.keki.src.main.consumer.search.ConsumerSearchFragment
-
+//
+//검색 - 인기 케이크 Adapter
+//
 class SearchPopularAdapter(val context: ConsumerSearchFragment) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var searchPopularData = mutableListOf<SearchPopularData>()

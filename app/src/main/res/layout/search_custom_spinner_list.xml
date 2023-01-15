@@ -1,0 +1,10 @@
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tv_spinner_list"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:textSize="@dimen/search_spinner_text"
+    android:textColor="@color/brown_grey"
+    android:height="@dimen/search_spinner_list_height"
+    android:paddingStart="@dimen/search_spinner_list_padding"
+    android:gravity="center_vertical">
+</TextView>
