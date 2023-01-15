@@ -3,6 +3,10 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    
+    <dimen name="store_feed_title_top">12dp</dimen>
+    <dimen name="store_feed_chevron_top">21dp</dimen>
+    <dimen name="store_feed_chevron_start">14dp</dimen>
 
 
     <!-- home-->
@@ -45,6 +49,32 @@
     <dimen name="splash_logo_height">63dp</dimen>
     <dimen name="splash_logo_marginBottom">50dp</dimen>
     <dimen name="splash_comment_top_margin">28.5dp</dimen>
+    
+    <!-- store feed -->
+    <dimen name="store_feed_title_size">20sp</dimen>
+    <dimen name="store_feed_nick_name_and_cake_name_size">16sp</dimen>
+    <dimen name="store_feed_cake_description_size">11sp</dimen>
+    <dimen name="store_feed_tag_size">11sp</dimen>
+    <dimen name="store_feed_recycler_margin_top">15dp</dimen>
+
+    <dimen name="store_feed_seller_img_size">50dp</dimen>
+    <dimen name="store_feed_margin_start_end">12dp</dimen>
+    <dimen name="store_feed_seller_nickname_margin_start">15dp</dimen>
+    <dimen name="store_feed_seller_nickname_tv_size">16sp</dimen>
+    <dimen name="store_feed_img_height">360dp</dimen>
+    <dimen name="store_feed_description_margin_end">21dp</dimen>
+    <dimen name="store_feed_between_tag">10dp</dimen>
+    <dimen name="store_feed_line">23.5dp</dimen>
+    <dimen name="store_feed_view_height">1dp</dimen>
+    <dimen name="store_feed_seller_img_margin_top">15.5dp</dimen>
+    <dimen name="report_size">16sp</dimen>
+    <dimen name="report_padding_start">15dp</dimen>
+    <dimen name="report_padding_end">96dp</dimen>
+    <dimen name="report_padding_top_bottom">5dp</dimen>
+    <dimen name="report_elevation">15dp</dimen>
+    <dimen name="report_rec_radius">10dp</dimen>
+    <dimen name="report_margin_top">5dp</dimen>
+    <dimen name="report_margin_end">4dp</dimen>
     <dimen name="splash_comment_size">14sp</dimen>
 
     <!--login-->
@@ -140,8 +170,6 @@
     <dimen name="bg_shadow_rec5_radius">18dp</dimen>
     <dimen name="bg_shadow_rec6_radius">20dp</dimen>
 
-
-
     <!-- search -->
     <dimen name="main_search_margin_side">24dp</dimen>
     <dimen name="search_tag_height">26dp</dimen>
@@ -208,6 +236,7 @@
     <dimen name="search_tv_empty_list">16sp</dimen>
 
     <!-- calendar -->
+    <!-- calendar main -->
     <dimen name="calendar_main_text_margin_top">12dp</dimen>
     <dimen name="calendar_main_text_margin_start">24dp</dimen>
     <dimen name="calendar_main_text_size">20sp</dimen>
@@ -215,8 +244,8 @@
 
     <dimen name="calendar_rv_height">0dp</dimen>
     <dimen name="calendar_rv_margin_top">-6dp</dimen>
-    <dimen name="calendar_rv_padding_horizontal">12dp</dimen>
-    <dimen name="calendar_rv_item_padding_bottom">10dp</dimen>
+    <dimen name="calendar_rv_margin_horizontal">12dp</dimen>
+    <dimen name="calendar_rv_item_width">60dp</dimen>
     <dimen name="calendar_rv_item_height">60dp</dimen>
     <dimen name="calendar_rv_item_title_size">16sp</dimen>
     <dimen name="calendar_rv_item_date_size">12sp</dimen>
@@ -225,11 +254,11 @@
     <dimen name="calendar_rv_item_title_width">0dp</dimen>
     <dimen name="calendar_rv_item_title_height">24dp</dimen>
     <dimen name="calendar_rv_item_date_height">14dp</dimen>
-    <dimen name="calendar_rv_item_calendar_rv_item_dday_width">50dp</dimen>
+    <dimen name="calendar_rv_item_calendar_rv_item_dday_width">67dp</dimen>
 
     <dimen name="calendar_rv_item_title_margin_top">10dp</dimen>
     <dimen name="calendar_rv_item_title_margin_start">12dp</dimen>
-    <dimen name="calendar_rv_item_title_margin_end">25dp</dimen>
+    <dimen name="calendar_rv_item_title_margin_end">5dp</dimen>
     <dimen name="calendar_rv_item_date_margin_top">2dp</dimen>
     <dimen name="calendar_rv_item_date_margin_start">12dp</dimen>
     <dimen name="calendar_rv_item_date_margin_bottom">10dp</dimen>
@@ -240,6 +269,7 @@
     <dimen name="calendar_add_fab_margin_end">12dp</dimen>
     <dimen name="calendar_add_fab_margin_bottom">15dp</dimen>
     <dimen name="calendar_add_fab_size">50dp</dimen>
+    <dimen name="calendar_add_fab_border_width">0dp</dimen>
 
     <dimen name="calendar_empty_layout_margin_top">263dp</dimen>
     <dimen name="calendar_empty_layout_margin_bottom">302dp</dimen>
@@ -252,6 +282,10 @@
     <dimen name="calendar_empty_tv_width">177dp</dimen>
     <dimen name="calendar_empty_tv_height">24dp</dimen>
 
+    <dimen name="calendar_tv_item_delete_width">60dp</dimen>
+    <dimen name="calendar_tv_item_delete_height">0dp</dimen>
+    <dimen name="calendar_tv_item_delete_size">16sp</dimen>
+    
     <!-- store main -->
     <dimen name="store_main_ic_top">21dp</dimen>
     <dimen name="store_main_ic_chevron_left_left">14dp</dimen>
@@ -305,6 +339,7 @@
     <dimen name="store_main_feed_rv_width">0dp</dimen>
     <dimen name="store_main_feed_float_right">12dp</dimen>
     <dimen name="store_main_feed_float_bottom">14dp</dimen>
+    <dimen name="store_main_feed_float_border">0dp</dimen>
 
     <!-- store main recyclerView -->
     <dimen name="store_main_rv_width_height">105dp</dimen>

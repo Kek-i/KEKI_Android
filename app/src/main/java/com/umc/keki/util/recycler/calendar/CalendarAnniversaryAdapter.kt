@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.umc.keki.databinding.ItemCalendarAnniversaryRecyclerBinding
 
-class CalendarAnniversaryAdapter(private val dataList: List<CalendarAnniversaryData>):
+class CalendarAnniversaryAdapter(private val dataList: MutableList<CalendarAnniversaryData>):
     RecyclerView.Adapter<ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -16,6 +16,7 @@ class CalendarAnniversaryAdapter(private val dataList: List<CalendarAnniversaryD
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         (holder as CalendarAnniversaryViewHolder).bind(dataList[position])
+        (holder as CalendarAnniversaryViewHolder).setClickListenerForDeleteItem(dataList, position, this)
     }
 
     override fun getItemCount(): Int = dataList.size
@@ -25,6 +26,19 @@ class CalendarAnniversaryAdapter(private val dataList: List<CalendarAnniversaryD
             itemBinding.tvAnniversaryTitle.text = item.title
             itemBinding.tvAnniversaryDate.text = item.date
             itemBinding.tvAnniversaryDday.text = item.dday
+        }
+
+        fun setClickListenerForDeleteItem(
+            dataList: MutableList<CalendarAnniversaryData>,
+            position: Int,
+            adapter: CalendarAnniversaryAdapter
+        ) {
+            itemBinding.layoutDelFrame.setOnClickListener {
+                dataList.removeAt(position)
+                adapter.notifyDataSetChanged()
+//                adapter.notifyItemRemoved(position)
+//                adapter.notifyItemRangeRemoved(position, dataList.size - position)
+            }
         }
     }
 }

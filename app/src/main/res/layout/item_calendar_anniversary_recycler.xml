@@ -1,67 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingHorizontal="@dimen/calendar_rv_padding_horizontal"
-    android:paddingBottom="@dimen/calendar_rv_item_padding_bottom"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:show_mode="lay_down"
+    app:drag_edge="right"
+    android:background="@drawable/bg_calendar_item_del"
+    >
 
-    <ImageView
-        android:id="@+id/iv_calendar_rv_bg"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/calendar_rv_item_height"
-        android:scaleType="fitXY"
-        android:src="@drawable/bg_calendar_rv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_anniversary_title"
-        android:layout_width="@dimen/calendar_rv_item_title_width"
-        android:layout_height="@dimen/calendar_rv_item_title_height"
-        app:layout_constraintTop_toTopOf="@id/iv_calendar_rv_bg"
-        app:layout_constraintStart_toStartOf="@id/iv_calendar_rv_bg"
-        app:layout_constraintEnd_toStartOf="@id/tv_anniversary_dday"
-        android:layout_marginTop="@dimen/calendar_rv_item_title_margin_top"
-        android:layout_marginStart="@dimen/calendar_rv_item_title_margin_start"
-        android:layout_marginEnd="@dimen/calendar_rv_item_title_margin_end"
-        android:text="@string/calendar_anniversary_name"
-        android:textSize="@dimen/calendar_rv_item_title_size"
-        android:textColor="@color/black"
-        android:textAlignment="viewStart"
-        android:fontFamily="@font/notosanskr_bold"
-        android:includeFontPadding="false"
-        />
-
-    <TextView
-        android:id="@+id/tv_anniversary_date"
+    <FrameLayout
+        android:id="@+id/layout_del_frame"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/calendar_rv_item_date_height"
-        app:layout_constraintTop_toBottomOf="@id/tv_anniversary_title"
-        app:layout_constraintStart_toStartOf="@id/iv_calendar_rv_bg"
-        app:layout_constraintBottom_toBottomOf="@id/iv_calendar_rv_bg"
-        android:layout_marginTop="@dimen/calendar_rv_item_date_margin_top"
-        android:layout_marginStart="@dimen/calendar_rv_item_date_margin_start"
-        android:layout_marginBottom="@dimen/calendar_rv_item_date_margin_bottom"
-        android:text="@string/calendar_anniversary_date"
-        android:textSize="@dimen/calendar_rv_item_date_size"
-        android:textColor="@color/brownish_grey"
-        />
+        android:layout_height="match_parent"
+        >
 
-    <TextView
-        android:id="@+id/tv_anniversary_dday"
-        android:layout_width="@dimen/calendar_rv_item_calendar_rv_item_dday_width"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/iv_calendar_rv_bg"
-        app:layout_constraintEnd_toEndOf="@id/iv_calendar_rv_bg"
-        android:layout_marginEnd="@dimen/calendar_rv_item_dday_margin_end"
-        android:text="@string/calendar_anniversary_dday"
-        android:textSize="@dimen/calendar_rv_item_dday_size"
-        android:textColor="@color/black"
-        android:textAlignment="viewEnd"
-        android:fontFamily="@font/roboto_bold"
-        />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/tv_calendar_item_delete"
+                android:layout_width="@dimen/calendar_tv_item_delete_width"
+                android:layout_height="@dimen/calendar_tv_item_delete_height"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:gravity="center"
+                android:text="@string/calendar_item_delete"
+                android:textColor="@color/black"
+                android:textSize="@dimen/calendar_tv_item_delete_size"
+                android:fontFamily="@font/notosanskr_bold"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/layout_item_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_calendar_rv_bg"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/calendar_rv_item_height"
+                android:scaleType="fitXY"
+                android:src="@drawable/bg_calendar_rv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/tv_anniversary_title"
+                android:layout_width="@dimen/calendar_rv_item_title_width"
+                android:layout_height="@dimen/calendar_rv_item_title_height"
+                app:layout_constraintTop_toTopOf="@id/iv_calendar_rv_bg"
+                app:layout_constraintStart_toStartOf="@id/iv_calendar_rv_bg"
+                app:layout_constraintEnd_toStartOf="@id/tv_anniversary_dday"
+                android:layout_marginTop="@dimen/calendar_rv_item_title_margin_top"
+                android:layout_marginStart="@dimen/calendar_rv_item_title_margin_start"
+                android:layout_marginEnd="@dimen/calendar_rv_item_title_margin_end"
+                android:text="@string/calendar_anniversary_name"
+                android:textSize="@dimen/calendar_rv_item_title_size"
+                android:textColor="@color/black"
+                android:textAlignment="viewStart"
+                android:fontFamily="@font/notosanskr_bold"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:ellipsize="end"
+                />
+
+            <TextView
+                android:id="@+id/tv_anniversary_date"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/calendar_rv_item_date_height"
+                app:layout_constraintTop_toBottomOf="@id/tv_anniversary_title"
+                app:layout_constraintStart_toStartOf="@id/iv_calendar_rv_bg"
+                app:layout_constraintBottom_toBottomOf="@id/iv_calendar_rv_bg"
+                android:layout_marginTop="@dimen/calendar_rv_item_date_margin_top"
+                android:layout_marginStart="@dimen/calendar_rv_item_date_margin_start"
+                android:layout_marginBottom="@dimen/calendar_rv_item_date_margin_bottom"
+                android:text="@string/calendar_anniversary_date"
+                android:textSize="@dimen/calendar_rv_item_date_size"
+                android:textColor="@color/brownish_grey"
+                android:maxLines="1"
+                />
+
+            <TextView
+                android:id="@+id/tv_anniversary_dday"
+                android:layout_width="@dimen/calendar_rv_item_calendar_rv_item_dday_width"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/iv_calendar_rv_bg"
+                app:layout_constraintEnd_toEndOf="@id/iv_calendar_rv_bg"
+                android:layout_marginEnd="@dimen/calendar_rv_item_dday_margin_end"
+                android:text="@string/calendar_anniversary_dday"
+                android:textSize="@dimen/calendar_rv_item_dday_size"
+                android:textColor="@color/black"
+                android:textAlignment="viewEnd"
+                android:fontFamily="@font/roboto_bold"
+                android:maxLines="1"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+
+</com.daimajia.swipe.SwipeLayout>
