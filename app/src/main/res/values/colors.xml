@@ -19,11 +19,32 @@
     <color name="redForText">#d9534f</color>
 
     <color name="very_light_pink">#faecec</color>
+
     <color name="darkish_pink">#d9486a</color>
     <color name="very_light_gray">#ebebeb</color>
     <color name="light_peach">#f4cbcb</color>
     
+
+
+    <color name="light_pink">#f2d7e2</color>
+    <color name="off_white">#fcf4df</color>
+    <color name="pinkish">#e0658b</color>
+    <color name="brownish_grey">#7e7070</color>
+
+
     <!-- tag -->
     <color name="tag_light_yellow">#fcf4df</color>
+    <color name="soft_pink">#edadc7</color>
+    <color name="pale_salmon">#e0bbbb</color>
+    <color name="light_peach_1">#f4dbcb</color>
+    <color name="light_peach_2">#f4cbcb</color>
+    <color name="pale_lavender">#f3e0fa</color>
+    <color name="brown_grey">#808080</color>
+    <color name="border_grey">#e3e3e3</color>
+
+    <!-- tab -->
+    <color name="tab_select">#c9536b</color>
+    <color name="tab_unselect">#f8ecec</color>
+
 
 </resources>

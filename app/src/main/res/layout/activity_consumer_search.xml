@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 검색창 -->
+    <EditText
+        android:id="@+id/et_search"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/et_search_height"
+        android:layout_marginStart="@dimen/main_search_margin_side"
+        android:layout_marginTop="@dimen/et_search_margin_top"
+        android:layout_marginEnd="@dimen/main_search_margin_side"
+        android:background="@drawable/bg_rectangle_radius_23_very_light_pink"
+        android:drawableLeft="@drawable/drawable_search_ic_resize"
+        android:drawablePadding="@dimen/et_search_between_ic_text"
+        android:drawableRight="@drawable/drawable_delete_ic_resize"
+        android:paddingEnd="@dimen/et_search_paddingEnd"
+        android:hint="검색어를 입력하세요."
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textColorHint="@color/pale_salmon"
+        android:textCursorDrawable="@null"
+        android:textSize="@dimen/et_search_textSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--드롭다운 -->
+    <Spinner
+        android:id="@+id/spinner_search"
+        android:layout_width="@dimen/search_spinner_width"
+        android:layout_height="@dimen/search_spinner_height"
+        android:layout_marginTop="@dimen/search_spinner_marginTop"
+        android:layout_marginStart="@dimen/search_spinner_marginStart"
+        android:background="@drawable/bg_spinner_box"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_search" />
+
+    <!-- 검색 결과 scrollview -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/sv_search_list"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/search_sv_search_list_marginTop"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_search">
+
+        <!-- 그리드뷰 리사이클러-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_search_grid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:listitem="@layout/item_search_list_recycler" />
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- 검색 결과 없을 때 보여지는뷰  -->
+    <LinearLayout
+        android:id="@+id/layout_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_search_empty_cake"
+            android:layout_width="@dimen/search_ic_cake_off_width"
+            android:layout_height="@dimen/search_ic_cake_off_height"
+            android:src="@drawable/ic_cake_off"/>
+        <TextView
+            android:id="@+id/tv_search_empty_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/search_tv_empty_marginTop"
+            android:fontFamily="@font/notosanskr_regular"
+            android:textSize="@dimen/search_tv_empty_list"
+            android:layout_gravity="center"
+            android:text="@string/search_empty_list"/>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
