@@ -72,6 +72,8 @@
                 android:textAlignment="viewStart"
                 android:fontFamily="@font/notosanskr_bold"
                 android:includeFontPadding="false"
+                android:maxLines="1"
+                android:ellipsize="end"
                 />
 
             <TextView
@@ -87,6 +89,7 @@
                 android:text="@string/calendar_anniversary_date"
                 android:textSize="@dimen/calendar_rv_item_date_size"
                 android:textColor="@color/brownish_grey"
+                android:maxLines="1"
                 />
 
             <TextView
@@ -102,6 +105,7 @@
                 android:textColor="@color/black"
                 android:textAlignment="viewEnd"
                 android:fontFamily="@font/roboto_bold"
+                android:maxLines="1"
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

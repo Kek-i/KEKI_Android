@@ -105,11 +105,11 @@
     <dimen name="calendar_rv_item_title_width">0dp</dimen>
     <dimen name="calendar_rv_item_title_height">24dp</dimen>
     <dimen name="calendar_rv_item_date_height">14dp</dimen>
-    <dimen name="calendar_rv_item_calendar_rv_item_dday_width">50dp</dimen>
+    <dimen name="calendar_rv_item_calendar_rv_item_dday_width">67dp</dimen>
 
     <dimen name="calendar_rv_item_title_margin_top">10dp</dimen>
     <dimen name="calendar_rv_item_title_margin_start">12dp</dimen>
-    <dimen name="calendar_rv_item_title_margin_end">25dp</dimen>
+    <dimen name="calendar_rv_item_title_margin_end">5dp</dimen>
     <dimen name="calendar_rv_item_date_margin_top">2dp</dimen>
     <dimen name="calendar_rv_item_date_margin_start">12dp</dimen>
     <dimen name="calendar_rv_item_date_margin_bottom">10dp</dimen>

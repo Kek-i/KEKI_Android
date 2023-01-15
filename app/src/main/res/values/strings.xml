@@ -22,7 +22,7 @@
     <string name="calendar_main_text">기념일</string>
     <string name="calendar_anniversary_name">기념일 제목</string>
     <string name="calendar_anniversary_date">20XX.XX.XX</string>
-    <string name="calendar_anniversary_dday">D-XXX</string>
+    <string name="calendar_anniversary_dday">D-XXXX</string>
     <string name="calendar_empty_list">추가된 기념일이 없습니다.</string>
     <string name="calendar_item_delete">삭제</string>
 
