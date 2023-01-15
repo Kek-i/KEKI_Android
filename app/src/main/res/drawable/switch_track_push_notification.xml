@@ -3,22 +3,22 @@
     <item android:state_checked="true">
         <shape android:shape="rectangle">
             <solid
-                android:color="#29787880"/>
-            <corners android:radius="50dp"/>
+                android:color="@color/very_light_pink"/>
+            <corners android:radius="@dimen/my_page_switch_track_radius"/>
             <size
-                android:width="51dp"
-                android:height="31dp"/>
+                android:width="@dimen/my_page_switch_track_width"
+                android:height="@dimen/my_page_switch_track_height"/>
         </shape>
     </item>
 
     <item android:state_checked="false">
         <shape android:shape="rectangle">
-            <corners android:radius="50dp"/>
+            <corners android:radius="@dimen/my_page_switch_track_radius"/>
             <solid
-                android:color="#29787880"/>
+                android:color="@color/switch_unchecked_track"/>
             <size
-                android:width="51dp"
-                android:height="31dp"/>
+                android:width="@dimen/my_page_switch_track_width"
+                android:height="@dimen/my_page_switch_track_height"/>
         </shape>
     </item>
 </selector>

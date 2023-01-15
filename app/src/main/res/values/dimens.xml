@@ -192,6 +192,12 @@
     <dimen name="my_page_notification_height">60dp</dimen>
     <dimen name="my_page_app_info_height">158dp</dimen>
 
+    <!-- my page switch -->
+    <dimen name="my_page_switch_track_width">51dp</dimen>
+    <dimen name="my_page_switch_track_height">31dp</dimen>
+    <dimen name="my_page_switch_track_radius">50dp</dimen>
+    <dimen name="my_page_switch_thumb_size">27dp</dimen>
+
     <!-- my page condition -->
     <dimen name="my_page_condition_ic_back_left">14dp</dimen>
     <dimen name="my_page_condition_ic_back_top">21dp</dimen>
