@@ -15,6 +15,7 @@ class ConsumerStoreFeedActivity : BaseActivity<ActivityConsumerStoreFeedBinding>
         super.onCreate(savedInstanceState)
 
         storeFeedRecyclerView()
+        navigateToStoreMain()
     }
 
     private fun storeFeedRecyclerView(){
@@ -28,5 +29,10 @@ class ConsumerStoreFeedActivity : BaseActivity<ActivityConsumerStoreFeedBinding>
         storeFeedAdapter.notifyDataSetChanged()
     }
 
+    private fun navigateToStoreMain(){
+        binding.ivStoreFeedLeftChevron.setOnClickListener {
+            finish()
+        }
+    }
 }
 
