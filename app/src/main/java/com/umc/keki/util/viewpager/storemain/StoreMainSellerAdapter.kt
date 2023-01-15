@@ -3,15 +3,10 @@ package com.umc.keki.util.viewpager.storemain
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.umc.keki.databinding.ItemHomeStoreRecyclerBinding
 import com.umc.keki.databinding.ItemStoreMainRecyclerBinding
-import com.umc.keki.util.recycler.home.HomeStoreAdapter
 
-class StoreMainAdapter(private val dataList: ArrayList<StoreMainData>): RecyclerView.Adapter<StoreMainAdapter.DataViewHolder>() {
+class StoreMainSellerAdapter(private val dataList: ArrayList<StoreMainData>): RecyclerView.Adapter<StoreMainSellerAdapter.DataViewHolder>() {
 
     inner class DataViewHolder(private val viewBinding: ItemStoreMainRecyclerBinding): RecyclerView.ViewHolder(viewBinding.root){
         fun bind(data:StoreMainData){
