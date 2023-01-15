@@ -113,6 +113,7 @@
     <dimen name="search_tv_empty_list">16sp</dimen>
 
     <!-- calendar -->
+    <!-- calendar main -->
     <dimen name="calendar_main_text_margin_top">12dp</dimen>
     <dimen name="calendar_main_text_margin_start">24dp</dimen>
     <dimen name="calendar_main_text_size">20sp</dimen>
@@ -120,8 +121,8 @@
 
     <dimen name="calendar_rv_height">0dp</dimen>
     <dimen name="calendar_rv_margin_top">-6dp</dimen>
-    <dimen name="calendar_rv_padding_horizontal">12dp</dimen>
-    <dimen name="calendar_rv_item_padding_bottom">10dp</dimen>
+    <dimen name="calendar_rv_margin_horizontal">12dp</dimen>
+    <dimen name="calendar_rv_item_width">60dp</dimen>
     <dimen name="calendar_rv_item_height">60dp</dimen>
     <dimen name="calendar_rv_item_title_size">16sp</dimen>
     <dimen name="calendar_rv_item_date_size">12sp</dimen>
@@ -130,11 +131,11 @@
     <dimen name="calendar_rv_item_title_width">0dp</dimen>
     <dimen name="calendar_rv_item_title_height">24dp</dimen>
     <dimen name="calendar_rv_item_date_height">14dp</dimen>
-    <dimen name="calendar_rv_item_calendar_rv_item_dday_width">50dp</dimen>
+    <dimen name="calendar_rv_item_calendar_rv_item_dday_width">67dp</dimen>
 
     <dimen name="calendar_rv_item_title_margin_top">10dp</dimen>
     <dimen name="calendar_rv_item_title_margin_start">12dp</dimen>
-    <dimen name="calendar_rv_item_title_margin_end">25dp</dimen>
+    <dimen name="calendar_rv_item_title_margin_end">5dp</dimen>
     <dimen name="calendar_rv_item_date_margin_top">2dp</dimen>
     <dimen name="calendar_rv_item_date_margin_start">12dp</dimen>
     <dimen name="calendar_rv_item_date_margin_bottom">10dp</dimen>
@@ -145,6 +146,7 @@
     <dimen name="calendar_add_fab_margin_end">12dp</dimen>
     <dimen name="calendar_add_fab_margin_bottom">15dp</dimen>
     <dimen name="calendar_add_fab_size">50dp</dimen>
+    <dimen name="calendar_add_fab_border_width">0dp</dimen>
 
     <dimen name="calendar_empty_layout_margin_top">263dp</dimen>
     <dimen name="calendar_empty_layout_margin_bottom">302dp</dimen>
@@ -157,6 +159,10 @@
     <dimen name="calendar_empty_tv_width">177dp</dimen>
     <dimen name="calendar_empty_tv_height">24dp</dimen>
 
+    <dimen name="calendar_tv_item_delete_width">60dp</dimen>
+    <dimen name="calendar_tv_item_delete_height">0dp</dimen>
+    <dimen name="calendar_tv_item_delete_size">16sp</dimen>
+    
     <!-- store main -->
     <dimen name="store_main_ic_top">21dp</dimen>
     <dimen name="store_main_ic_chevron_left_left">14dp</dimen>
