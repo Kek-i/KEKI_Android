@@ -59,6 +59,9 @@
     <string name="my_page_app_condition">약관안내</string>
     <string name="my_page_personal_info">개인정보처리방침</string>
 
+    <!-- my page condition -->
+    <string name="my_page_condition_comment_main">케키 서비스 이용약관</string>
+
     <!-- search -->
     <string name="tv_recent_search">최근 검색어</string>
     <string name="tv_recent_search_delete">전체 지우기</string>

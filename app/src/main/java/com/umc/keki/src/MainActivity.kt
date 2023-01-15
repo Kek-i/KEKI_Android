@@ -1,6 +1,7 @@
 package com.umc.keki.src
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import com.umc.keki.R
 import com.umc.keki.config.BaseActivity
 import com.umc.keki.databinding.ActivityMainBinding
@@ -50,5 +51,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             }
             selectedItemId = R.id.menu_main_btm_nav_home
         }
+    }
+
+    public fun replaceFragment(fragment:Fragment){
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.main_frm, fragment)
+            .commitAllowingStateLoss()
     }
 }

@@ -192,7 +192,16 @@
     <dimen name="my_page_notification_height">60dp</dimen>
     <dimen name="my_page_app_info_height">158dp</dimen>
 
-
+    <!-- my page condition -->
+    <dimen name="my_page_condition_ic_back_left">14dp</dimen>
+    <dimen name="my_page_condition_ic_back_top">21dp</dimen>
+    <dimen name="my_page_condition_main_text_size">20sp</dimen>
+    <dimen name="my_page_condition_main_text_top">12dp</dimen>
+    <dimen name="my_page_condition_main_text_left">25dp</dimen>
+    <dimen name="my_page_condition_comment_main_text_size">18sp</dimen>
+    <dimen name="my_page_condition_comment_main_text_top">25dp</dimen>
+    <dimen name="my_page_condition_comment_main_text_left">26dp</dimen>
+    <dimen name="my_page_condition_comment_iv_top">15dp</dimen>
 
     <!-- store main -->
     <dimen name="store_main_ic_top">21dp</dimen>

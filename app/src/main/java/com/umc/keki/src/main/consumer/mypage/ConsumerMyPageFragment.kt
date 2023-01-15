@@ -5,12 +5,17 @@ import android.view.View
 import com.umc.keki.R
 import com.umc.keki.config.BaseFragment
 import com.umc.keki.databinding.FragmentConsumerMyPageBinding
+import com.umc.keki.src.MainActivity
 
 class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
     (FragmentConsumerMyPageBinding::bind, R.layout.fragment_consumer_my_page) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.tvCondition.setOnClickListener{
+            (activity as MainActivity).replaceFragment(ConsumerConditionFragment())
+        }
     }
 
 }
