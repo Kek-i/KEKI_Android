@@ -44,6 +44,21 @@
     <string name="calendar_anniversary_dday">D-XXX</string>
     <string name="calendar_empty_list">추가된 기념일이 없습니다.</string>
 
+    <!-- my page -->
+    <string name="my_page_main_text">내 정보</string>
+    <string name="my_page_main_comment">유닝이님.\n오늘도 특별한 하루 보내세요!</string>
+    <string name="my_page_account">계정 설정</string>
+    <string name="my_page_profile_edit">프로필 편집</string>
+    <string name="my_page_signup">회원가입</string>
+    <string name="my_page_logout">로그아웃</string>
+    <string name="my_page_widthdrawal">회원탈퇴</string>
+    <string name="my_page_notification">알림 설정</string>
+    <string name="my_page_push_notification">푸쉬 알림</string>
+    <string name="my_page_app_info">앱 정보</string>
+    <string name="my_page_notice">공지사항</string>]
+    <string name="my_page_app_condition">약관안내</string>
+    <string name="my_page_personal_info">개인정보처리방침</string>
+
     <!-- search -->
     <string name="tv_recent_search">최근 검색어</string>
     <string name="tv_recent_search_delete">전체 지우기</string>
