@@ -15,7 +15,10 @@ class SellerFeedFragment : BaseFragment<FragmentSellerFeedBinding>
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        sellerFeedRecyclerView()
+    }
 
+    private fun sellerFeedRecyclerView(){
         val dataList : ArrayList<StoreMainData> = arrayListOf()
         for(i in 1 until 31) {
             dataList.apply {
@@ -27,5 +30,6 @@ class SellerFeedFragment : BaseFragment<FragmentSellerFeedBinding>
 
         binding.recyclerSellerFeed.adapter = storeMainAdapter
         binding.recyclerSellerFeed.layoutManager=GridLayoutManager(context, 3)
+
     }
 }
