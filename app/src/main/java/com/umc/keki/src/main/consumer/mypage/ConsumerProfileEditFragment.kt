@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.View
 import com.umc.keki.R
 import com.umc.keki.config.BaseFragment
-import com.umc.keki.databinding.FragmentConsumerConditionBinding
+import com.umc.keki.databinding.FragmentConsumerProfileEditBinding
 import com.umc.keki.src.MainActivity
 
-class ConsumerConditionFragment : BaseFragment<FragmentConsumerConditionBinding>
-    (FragmentConsumerConditionBinding::bind, R.layout.fragment_consumer_condition) {
+class ConsumerProfileEditFragment :BaseFragment<FragmentConsumerProfileEditBinding>
+    (FragmentConsumerProfileEditBinding::bind, R.layout.fragment_consumer_profile_edit) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

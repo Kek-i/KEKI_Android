@@ -13,6 +13,17 @@ class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        profileEditClicked()
+        ConditionClicked()
+
+    }
+
+    private fun profileEditClicked(){
+        binding.cslProfileEdit.setOnClickListener{
+            (activity as MainActivity).replaceFragment(ConsumerProfileEditFragment())
+        }
+    }
+    private fun ConditionClicked(){
         binding.tvCondition.setOnClickListener{
             (activity as MainActivity).replaceFragment(ConsumerConditionFragment())
         }

@@ -209,6 +209,28 @@
     <dimen name="my_page_condition_comment_main_text_left">26dp</dimen>
     <dimen name="my_page_condition_comment_iv_top">15dp</dimen>
 
+    <!-- my page profile edit -->
+    <dimen name="my_page_profile_edit_tv_complete_size">16sp</dimen>
+    <dimen name="my_page_profile_edit_tv_complete_top">18dp</dimen>
+    <dimen name="my_page_profile_edit_tv_complete_right">14dp</dimen>
+    <dimen name="my_page_profile_edit_iv_profile_size">104dp</dimen>
+    <dimen name="my_page_profile_edit_iv_profile_top">80dp</dimen>
+    <dimen name="my_page_profile_edit_iv_camera_background_size">29dp</dimen>
+    <dimen name="my_page_profile_edit_iv_camera_background_top">69dp</dimen>
+    <dimen name="my_page_profile_edit_iv_camera_background_left">71dp</dimen>
+    <dimen name="my_page_profile_edit_tv_nickname_condition_size">11sp</dimen>
+    <dimen name="my_page_profile_edit_tv_nickname_condition_top">35dp</dimen>
+    <dimen name="my_page_profile_edit_tv_nickname_condition_left">22dp</dimen>
+    <dimen name="my_page_profile_edit_tv_nickname_condition_right">10dp</dimen>
+    <dimen name="my_page_profile_edit_tv_nickname_size">16sp</dimen>
+    <dimen name="my_page_profile_edit_tv_nickname_width">0dp</dimen>
+    <dimen name="my_page_profile_edit_tv_nickname_height">45dp</dimen>
+    <dimen name="my_page_profile_edit_tv_nickname_padding_left">20dp</dimen>
+    <dimen name="my_page_profile_edit_tv_nickname_top">10dp</dimen>
+    <dimen name="my_page_profile_edit_tv_overlap_width">84dp</dimen>
+    <dimen name="my_page_profile_edit_tv_overlap_right">16dp</dimen>
+    <dimen name="my_page_profile_edit_shadow">10dp</dimen>
+
     <!-- store main -->
     <dimen name="store_main_ic_top">21dp</dimen>
     <dimen name="store_main_ic_chevron_left_left">14dp</dimen>
