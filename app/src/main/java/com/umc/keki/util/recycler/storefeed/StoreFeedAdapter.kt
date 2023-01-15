@@ -1,12 +1,10 @@
 package com.umc.keki.util.recycler.storefeed
 
 import android.graphics.drawable.Drawable
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -61,6 +59,7 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
             checkCakeDescription("이 제품은 어쩌구\n케이크어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구")
             seeMoreDescription("이 제품은 어쩌구\n케이크어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구")
             likeProduct()
+            report()
         }
 
         // 제품 내용 길이 확인
@@ -91,7 +90,22 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
             }
         }
 
+        // 신고하기
+        private fun report(){
+            binding.ivStoreFeedReport.setOnClickListener {
+                 //var intent = Intent(itemView.context, StoreFeedReportDialogActivity::class.java)
+                 //itemView.context.startActivity(intent)
 
+                binding.tvStoreFeedReport.isVisible = true
+
+                /*
+                val builder = AlertDialog.Builder(context)
+                builder.setTitle("신고하기")
+                builder.show()
+
+                 */
+            }
+        }
 
     }
 }
