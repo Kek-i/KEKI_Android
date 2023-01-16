@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item>
+        <shape>
+            <padding
+                android:bottom="@dimen/bg_shadow_true"
+                android:left="@dimen/bg_shadow_true"
+                android:right="@dimen/bg_shadow_true"
+                android:top="@dimen/bg_shadow_true" />
+            <corners android:radius="@dimen/bg_shadow_circle_radius" />
+            <solid android:color="#01987171" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <padding
+                android:bottom="@dimen/bg_shadow_true"
+                android:left="@dimen/bg_shadow_true"
+                android:right="@dimen/bg_shadow_true"
+                android:top="@dimen/bg_shadow_true" />
+            <corners android:radius="@dimen/bg_shadow_circle_radius" />
+            <solid android:color="#0D987171" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <padding
+                android:bottom="@dimen/bg_shadow_true"
+                android:left="@dimen/bg_shadow_true"
+                android:right="@dimen/bg_shadow_true"
+                android:top="@dimen/bg_shadow_true" />
+            <corners android:radius="@dimen/bg_shadow_circle_radius" />
+            <solid android:color="#0F987171" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <padding
+                android:bottom="@dimen/bg_shadow_true"
+                android:left="@dimen/bg_shadow_true"
+                android:right="@dimen/bg_shadow_true"
+                android:top="@dimen/bg_shadow_true" />
+            <corners android:radius="@dimen/bg_shadow_circle_radius" />
+            <solid android:color="#1A987171" />
+        </shape>
+    </item>
+
+    <item>
+        <shape android:shape="rectangle">
+
+        <solid
+            android:color="@color/white"/>
+        <corners
+            android:radius="@dimen/bg_shadow_circle_radius"/>
+
+        </shape>
+    </item>
+</layer-list>
+

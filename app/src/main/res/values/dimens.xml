@@ -77,6 +77,98 @@
     <dimen name="report_margin_end">4dp</dimen>
     <dimen name="splash_comment_size">14sp</dimen>
 
+    <!--login-->
+    <dimen name="login_check_btn_radius">20dp</dimen>
+    <dimen name="login_check_btn_paddingTop">6dp</dimen>
+    <dimen name="login_check_btn_paddingBottom">10dp</dimen>
+    <dimen name="login_check_btn_paddingSide">52dp</dimen>
+    <dimen name="login_logo_marginTop">200dp</dimen>
+    <dimen name="login_comment_marginTop">25dp</dimen>
+    <dimen name="login_social_btn_width">277dp</dimen>
+    <dimen name="login_social_btn_height">49dp</dimen>
+    <dimen name="login_google_btn_marginTop">135dp</dimen>
+    <dimen name="login_btn_between_margin">10dp</dimen>
+    <dimen name="dialog_access_width">340dp</dimen>
+    <dimen name="dialog_access_height">350dp</dimen>
+    <dimen name="dialog_access_mainName_marginTop">26dp</dimen>
+    <dimen name="dialog_access_subName_marginTop">2dp</dimen>
+    <dimen name="dialog_access_tv1_marginTop">20dp</dimen>
+    <dimen name="dialog_access_tv3_marginTop">9dp</dimen>
+    <dimen name="dialog_access_tv5_marginTop">9dp</dimen>
+    <dimen name="dialog_access_tv6_marginTop">14dp</dimen>
+    <dimen name="dialog_access_tv_marginLeft">15dp</dimen>
+    <dimen name="dialog_access_btn_width">110dp</dimen>
+    <dimen name="dialog_access_btn_height">40dp</dimen>
+    <dimen name="dialog_access_btn_marginTop">25dp</dimen>
+    <dimen name="dialog_title_size">16sp</dimen>
+    <dimen name="dialog_btn_text_size">16sp</dimen>
+    <dimen name="dialog_sub_size">11sp</dimen>
+
+    <!--intro-->
+    <dimen name="intro_logo_marginTop">150dp</dimen>
+    <dimen name="intro_logo_text_marginTop">22dp</dimen>
+    <dimen name="intro_img_width">107dp</dimen>
+    <dimen name="intro_img_marginTop">59dp</dimen>
+    <dimen name="intro_img_marginSide">50dp</dimen>
+    <dimen name="intro_select_shadow_width">115dp</dimen>
+    <dimen name="intro_select_shadow_marginTop">56dp</dimen>
+    <dimen name="intro_select_shadow_marginSide">46dp</dimen>
+    <dimen name="intro_role_text_marginTop">17dp</dimen>
+    <dimen name="intro_role_text_marginSide">80dp</dimen>
+    <dimen name="intro_btn_width">110dp</dimen>
+    <dimen name="intro_btn_height">40dp</dimen>
+    <dimen name="intro_btn_marginBottom">100dp</dimen>
+    <dimen name="intro_logo_comment_size">14sp</dimen>
+    <dimen name="intro_role_text_size">16sp</dimen>
+    <dimen name="intro_btn_text_size">16sp</dimen>
+
+    <!--edit profile-->
+    <dimen name="edit_back_logo_width">9dp</dimen>
+    <dimen name="edit_back_logo_height">18dp</dimen>
+    <dimen name="edit_back_logo_marginStart">16dp</dimen>
+    <dimen name="edit_back_logo_marginTop">41dp</dimen>
+    <dimen name="edit_title_marginTop">33dp</dimen>
+    <dimen name="edit_title_marginLeft">47dp</dimen>
+    <dimen name="edit_check_btn_marginTop">36dp</dimen>
+    <dimen name="edit_check_btn_marginRight">18dp</dimen>
+    <dimen name="edit_layout_marginTop">62dp</dimen>
+    <dimen name="edit_profile_photo_size">104dp</dimen>
+    <dimen name="edit_profile_border_width">1dp</dimen>
+    <dimen name="edit_profile_photo_marginTop">128dp</dimen>
+    <dimen name="edit_rule_marginLeft">22dp</dimen>
+    <dimen name="edit_rule_marginTop">35dp</dimen>
+    <dimen name="edit_et_width">240dp</dimen>
+    <dimen name="edit_et_height">45dp</dimen>
+    <dimen name="edit_et_marginTop">10dp</dimen>
+    <dimen name="edit_et_marginLeft">22dp</dimen>
+    <dimen name="edit_et_paddingStart">20dp</dimen>
+    <dimen name="edit_dbl_check_width">90dp</dimen>
+    <dimen name="edit_dbl_check_height">45dp</dimen>
+    <dimen name="edit_dbl_check_marginTop">10dp</dimen>
+    <dimen name="edit_naming_result_marginTop">0dp</dimen>
+    <dimen name="edit_naming_result_marginLeft">22dp</dimen>
+    <dimen name="edit_fab_marginTop">260dp</dimen>
+    <dimen name="edit_fab_marginLeft">70dp</dimen>
+    <dimen name="edit_fab_custom_size">30dp</dimen>
+    <dimen name="edit_fab_border_width">0dp</dimen>
+    <dimen name="edit_fab_padding">0dp</dimen>
+    <dimen name="edit_layout_title_size">20sp</dimen>
+    <dimen name="edit_check_btn_font_size">16sp</dimen>
+    <dimen name="edit_et_font_size">16sp</dimen>
+    <dimen name="edit_dbl_check_font_size">16sp</dimen>
+    <dimen name="edit_result_font_size">11sp</dimen>
+    <dimen name="edit_rule_font_size">11sp</dimen>
+
+    <!--BACKGROUND SHADOW-->
+    <dimen name="bg_shadow_true">2dp</dimen>
+    <dimen name="bg_shadow_false">0dp</dimen>
+    <dimen name="bg_shadow_circle_radius">50dp</dimen>
+    <dimen name="bg_shadow_rec1_radius">10dp</dimen>
+    <dimen name="bg_shadow_rec2_radius">13dp</dimen>
+    <dimen name="bg_shadow_rec3_radius">15dp</dimen>
+    <dimen name="bg_shadow_rec4_radius">17dp</dimen>
+    <dimen name="bg_shadow_rec5_radius">18dp</dimen>
+    <dimen name="bg_shadow_rec6_radius">20dp</dimen>
 
     <!-- search -->
     <dimen name="main_search_margin_side">24dp</dimen>

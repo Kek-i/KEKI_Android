@@ -12,7 +12,27 @@
     <string name="like">찜</string>
     <string name="mypage">마이페이지</string>
 
+
+    <!--login-->
     <string name="splash_comment">특별한 날, 하나뿐인 특별한 케키와 함께</string>
+    <string name="intro_comment">어서오세요, 케키입니다</string>
+    <string name="btn_check">완료</string>
+    <string name="btn_double_check">중복확인</string>
+    <string name="login_customer">구매자</string>
+    <string name="login_seller">판매자</string>
+    <string name="tv_edit_Profile_title">프로필 설정</string>
+    <string name="tv_edit_Profile_rule">한글,영어,숫자만 사용할 수 있어요.(최대 10자)</string>
+    <string name="edit_rule_pass">사용 가능한 닉네임입니다</string>
+    <string name="edit_rule_false">한글,영어,숫자만 사용할 수 있어요.(최대 10자)</string>
+    <string name="login_dialog_main">앱 접근권한 안내</string>
+    <string name="login_dialog_sub">케키에서는 다음 권한들을 사용합니다.</string>
+    <string name="login_dialog_text1">사진 및 저장공간(필수)</string>
+    <string name="login_dialog_text2">사진, 파일 등 기기 내 저장된 파일 및 기기의 외부 저장소 사용</string>
+    <string name="login_dialog_text3">휴대전화 권한 (선택)</string>
+    <string name="login_dialog_text4">푸시 알림 서비스 제공</string>
+    <string name="login_dialog_text5">선택적 접근 권한은 동의하지 않으셔도 앱 이용이 가능하며,\n비허용시에도 해당 기능 외 서비스 이용이 가능합니다.</string>
+    <string name="login_dialog_text6">앱 권한설정은 설정>케키에서 변경 가능</string>
+    <string name="login_dialog_check">확인</string>
 
     <!-- home -->
     <string name="home_comment">베이님!\n투리 생일이 3일 남았어요.\n특별한 하루를 준비해요!</string>
