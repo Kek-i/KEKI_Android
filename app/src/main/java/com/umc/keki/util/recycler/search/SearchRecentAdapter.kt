@@ -1,4 +1,4 @@
-package com.umc.keki.util.recyler.search
+package com.umc.keki.util.recycler.search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

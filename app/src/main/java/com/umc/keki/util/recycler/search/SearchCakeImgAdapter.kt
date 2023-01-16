@@ -1,4 +1,4 @@
-package com.umc.keki.util.recyler.search
+package com.umc.keki.util.recycler.search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.umc.keki.databinding.ItemRecentSeenCakeRecyclerBinding
 import com.umc.keki.src.main.consumer.search.ConsumerSearchFragment
-
+//
+//최근 본 케이크용 Adapter
+//
 class SearchCakeImgAdapter(val context: ConsumerSearchFragment) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var searchCakeImgData = mutableListOf<SearchCakeImgData>()
