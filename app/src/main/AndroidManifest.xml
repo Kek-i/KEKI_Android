@@ -41,7 +41,7 @@
 
 
         <activity
-            android:name=".src.store.StoreMainActivity"
+            android:name=".src.storeMain.StoreMainActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -63,6 +63,13 @@
 
         <activity
             android:name=".src.main.consumer.mypage.ConsumerProfileEditActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".src.main.consumer.mypage.NoticeActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">

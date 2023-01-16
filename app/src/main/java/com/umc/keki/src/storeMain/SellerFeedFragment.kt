@@ -1,24 +1,24 @@
-package com.umc.keki.src.store
+package com.umc.keki.src.storeMain
 
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.umc.keki.R
 import com.umc.keki.config.BaseFragment
-import com.umc.keki.databinding.FragmentProductFeedBinding
-import com.umc.keki.util.viewpager.storemain.StoreMainProductAdapter
+import com.umc.keki.databinding.FragmentSellerFeedBinding
 import com.umc.keki.util.viewpager.storemain.StoreMainData
+import com.umc.keki.util.viewpager.storemain.StoreMainSellerAdapter
 
-class ProductFeedFragment : BaseFragment<FragmentProductFeedBinding>
-    (FragmentProductFeedBinding::bind, R.layout.fragment_product_feed){
+class SellerFeedFragment : BaseFragment<FragmentSellerFeedBinding>
+    (FragmentSellerFeedBinding::bind, R.layout.fragment_seller_feed){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        productFeedRecyclerView()
+        sellerFeedRecyclerView()
     }
 
-    private fun productFeedRecyclerView(){
+    private fun sellerFeedRecyclerView(){
         val dataList : ArrayList<StoreMainData> = arrayListOf()
         for(i in 1 until 31) {
             dataList.apply {
@@ -26,9 +26,10 @@ class ProductFeedFragment : BaseFragment<FragmentProductFeedBinding>
             }
         }
 
-        val storeMainProductAdapter = StoreMainProductAdapter(dataList)
+        val storeMainSellerAdapter = StoreMainSellerAdapter(dataList)
 
-        binding.recyclerProductFeed.adapter = storeMainProductAdapter
-        binding.recyclerProductFeed.layoutManager= GridLayoutManager(context, 3)
+        binding.recyclerSellerFeed.adapter = storeMainSellerAdapter
+        binding.recyclerSellerFeed.layoutManager=GridLayoutManager(context, 3)
+
     }
 }

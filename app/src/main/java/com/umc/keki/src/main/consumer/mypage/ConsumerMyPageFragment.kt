@@ -14,8 +14,8 @@ class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
         super.onViewCreated(view, savedInstanceState)
 
         profileEditClicked()
-        ConditionClicked()
-
+        conditionClicked()
+        noticeClicked()
     }
 
     private fun profileEditClicked(){
@@ -24,9 +24,15 @@ class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
             startActivity(intent)
         }
     }
-    private fun ConditionClicked(){
+    private fun conditionClicked(){
         binding.tvCondition.setOnClickListener{
             val intent = Intent(context, ConsumerConditionActivity::class.java)
+            startActivity(intent)
+        }
+    }
+    private fun noticeClicked(){
+        binding.cslNotice.setOnClickListener{
+            val intent = Intent(context, NoticeActivity::class.java)
             startActivity(intent)
         }
     }

@@ -327,4 +327,20 @@
     <!-- store main recyclerView -->
     <dimen name="store_main_rv_width_height">105dp</dimen>
     <dimen name="store_main_rv_margin">10dp</dimen>
+
+    <!-- notice -->
+    <dimen name="notice_top">25dp</dimen>
+    <dimen name="notice_left_right">12dp</dimen>
+    <dimen name="notice_rv_width_height">0dp</dimen>
+
+    <!-- notice recyclerView -->
+    <dimen name="notice_rv_item_width">336dp</dimen>
+    <dimen name="notice_rv_item_height">50dp</dimen>
+    <dimen name="notice_rv_item_shadow">5dp</dimen>
+    <dimen name="notice_rv_item_left_right">12dp</dimen>
+    <dimen name="notice_rv_item_bottom">15dp</dimen>
+    <dimen name="notice_tv_left_right">12dp</dimen>
+    <dimen name="notice_tv_size">16sp</dimen>
+    <dimen name="notice_iv_right">12dp</dimen>
+
 </resources>
