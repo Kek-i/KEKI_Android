@@ -239,7 +239,7 @@
     <dimen name="my_page_condition_ic_back_left">14dp</dimen>
     <dimen name="my_page_condition_ic_back_top">21dp</dimen>
     <dimen name="my_page_condition_main_text_size">20sp</dimen>
-    <dimen name="my_page_condition_main_text_top">12dp</dimen>
+    <dimen name="my_page_condition_main_text_top">15dp</dimen>
     <dimen name="my_page_condition_main_text_left">25dp</dimen>
     <dimen name="my_page_condition_comment_main_text_size">18sp</dimen>
     <dimen name="my_page_condition_comment_main_text_top">25dp</dimen>
@@ -285,6 +285,7 @@
     <dimen name="store_main_store_detail_top">10dp</dimen>
     <dimen name="store_main_store_detail_text_size">11sp</dimen>
     <dimen name="store_main_store_order_text_size">16sp</dimen>
+    <dimen name="store_main_store_order_shadow">10dp</dimen>
     <dimen name="store_main_store_order_padding_top_bottom">8dp</dimen>
     <dimen name="store_main_store_order_padding_left_right">30dp</dimen>
     <dimen name="store_main_store_order_top">11dp</dimen>

@@ -49,12 +49,12 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
             // 나중에 데이터 구조 보고 변경 - ConsumerStoreFeedActivity
             var img = arrayOfNulls<Drawable>(2)
 
-            img[0] = context?.getDrawable(R.drawable.softsquared_logo)
+//            img[0] = context?.getDrawable(R.drawable.softsquared_logo)
             img[1] = context?.getDrawable(R.drawable.ex_cake)
 
             val pagerAdapter = DetailImageAdapter(context!!, img)
             binding.vpStoreFeedImg.adapter = pagerAdapter
-            binding.wormDotsIndicator.setViewPager2(binding.vpStoreFeedImg)
+//            binding.wormDotsIndicator.setViewPager2(binding.vpStoreFeedImg)
 
             checkCakeDescription("이 제품은 어쩌구\n케이크어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구")
             seeMoreDescription("이 제품은 어쩌구\n케이크어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구")
