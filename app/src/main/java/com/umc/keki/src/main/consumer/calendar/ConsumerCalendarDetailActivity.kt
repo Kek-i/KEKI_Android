@@ -34,11 +34,7 @@ class ConsumerCalendarDetailActivity : BaseActivity<ActivityConsumerCalendarDeta
                 binding.tvCalendarDetailThirdHashtag.visibility = GONE
             }
         }
-        else {
-            binding.tvCalendarDetailFirstHashtag.visibility = GONE
-            binding.tvCalendarDetailSecondHashtag.visibility = GONE
-            binding.tvCalendarDetailThirdHashtag.visibility = GONE
-        }
+        else binding.layoutCalendarDetailHashtag.visibility = GONE
     }
 
     private fun setClickListenerToBackBtn() {
