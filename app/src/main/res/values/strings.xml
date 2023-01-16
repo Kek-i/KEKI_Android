@@ -55,6 +55,31 @@
     <string name="calendar_empty_list">추가된 기념일이 없습니다.</string>
     <string name="calendar_item_delete">삭제</string>
 
+    <!-- my page -->
+    <string name="my_page_main_text">내 정보</string>
+    <string name="my_page_main_comment">유닝이님.\n오늘도 특별한 하루 보내세요!</string>
+    <string name="my_page_account">계정 설정</string>
+    <string name="my_page_profile_edit">프로필 편집</string>
+    <string name="my_page_signup">회원가입</string>
+    <string name="my_page_logout">로그아웃</string>
+    <string name="my_page_widthdrawal">회원탈퇴</string>
+    <string name="my_page_notification">알림 설정</string>
+    <string name="my_page_push_notification">푸쉬 알림</string>
+    <string name="my_page_app_info">앱 정보</string>
+    <string name="my_page_notice">공지사항</string>]
+    <string name="my_page_app_condition">약관안내</string>
+    <string name="my_page_personal_info">개인정보처리방침</string>
+
+    <!-- my page condition -->
+    <string name="my_page_condition_comment_main">케키 서비스 이용약관</string>
+
+    <!-- my page profile edit -->
+    <string name="my_page_profile_edit_main">프로필 편집</string>
+    <string name="my_page_profile_edit_complete">완료</string>
+    <string name="my_page_profile_nick_name_condition">한글,영어,숫자만 사용할 수 있어요.(최대10자)</string>
+    <string name="my_page_profile_nick_name_hint">닉네임을 입력해주세요.</string>
+    <string name="my_page_profile_nick_name_overlap">중복확인</string>
+
     <!-- search -->
     <string name="tv_recent_search">최근 검색어</string>
     <string name="tv_recent_search_delete">전체 지우기</string>

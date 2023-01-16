@@ -46,5 +46,10 @@
     <color name="tab_select">#c9536b</color>
     <color name="tab_unselect">#f8ecec</color>
 
+    <!-- line -->
+    <color name="my_page_line">#f8ecec</color>
+
+    <!-- switch -->
+    <color name="switch_unchecked_track">#29787880</color>
 
 </resources>

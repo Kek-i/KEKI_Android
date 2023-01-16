@@ -189,11 +189,85 @@
     <dimen name="calendar_empty_tv_size">16sp</dimen>
     <dimen name="calendar_empty_tv_width">177dp</dimen>
     <dimen name="calendar_empty_tv_height">24dp</dimen>
-
+    
     <dimen name="calendar_tv_item_delete_width">60dp</dimen>
     <dimen name="calendar_tv_item_delete_height">0dp</dimen>
     <dimen name="calendar_tv_item_delete_size">16sp</dimen>
-    
+
+    <!-- my page -->
+    <dimen name="my_page_ic_top">16dp</dimen>
+    <dimen name="my_page_ic_message_right">25dp</dimen>
+    <dimen name="my_page_ic_notification_right">20dp</dimen>
+    <dimen name="my_page_tv_main_text_size">20sp</dimen>
+    <dimen name="my_page_tv_main_text_left">24dp</dimen>
+    <dimen name="my_page_tv_main_text_top">16dp</dimen>
+    <dimen name="my_page_profile_width_height">60dp</dimen>
+    <dimen name="my_page_profile_top">35dp</dimen>
+    <dimen name="my_page_profile_left">24dp</dimen>
+    <dimen name="my_page_profile_right">79dp</dimen>
+    <dimen name="my_page_comment_text_size">16sp</dimen>
+    <dimen name="my_page_comment_text_top">11dp</dimen>
+    <dimen name="my_page_comment_text_left">15dp</dimen>
+    <dimen name="my_page_text_size">16sp</dimen>
+    <dimen name="my_page_large_text_left">14dp</dimen>
+    <dimen name="my_page_large_text_top">26dp</dimen>
+    <dimen name="my_page_box_width">0dp</dimen>
+    <dimen name="my_page_box_shadow">10dp</dimen>
+    <dimen name="my_page_box_radius">10dp</dimen>
+    <dimen name="my_page_box_top">10dp</dimen>
+    <dimen name="my_page_box_left_right">12dp</dimen>
+    <dimen name="my_page_account_height">205dp</dimen>
+    <dimen name="my_page_box_first_inner_top">16dp</dimen>
+    <dimen name="my_page_box_inner_left">20dp</dimen>
+    <dimen name="my_page_box_inner_right">19dp</dimen>
+    <dimen name="my_page_box_inner_top">9.3dp</dimen>
+    <dimen name="my_page_line_top">14.3dp</dimen>
+    <dimen name="my_page_box_last_inner_bottom">20dp</dimen>
+    <dimen name="my_page_line_width">0dp</dimen>
+    <dimen name="my_page_line_height">2dp</dimen>
+    <dimen name="my_page_line_left_right">12dp</dimen>
+    <dimen name="my_page_notification_height">60dp</dimen>
+    <dimen name="my_page_app_info_height">158dp</dimen>
+
+    <!-- my page switch -->
+    <dimen name="my_page_switch_track_width">51dp</dimen>
+    <dimen name="my_page_switch_track_height">31dp</dimen>
+    <dimen name="my_page_switch_track_radius">50dp</dimen>
+    <dimen name="my_page_switch_thumb_size">27dp</dimen>
+
+    <!-- my page condition -->
+    <dimen name="my_page_condition_ic_back_left">14dp</dimen>
+    <dimen name="my_page_condition_ic_back_top">21dp</dimen>
+    <dimen name="my_page_condition_main_text_size">20sp</dimen>
+    <dimen name="my_page_condition_main_text_top">12dp</dimen>
+    <dimen name="my_page_condition_main_text_left">25dp</dimen>
+    <dimen name="my_page_condition_comment_main_text_size">18sp</dimen>
+    <dimen name="my_page_condition_comment_main_text_top">25dp</dimen>
+    <dimen name="my_page_condition_comment_main_text_left">26dp</dimen>
+    <dimen name="my_page_condition_comment_iv_top">15dp</dimen>
+
+    <!-- my page profile edit -->
+    <dimen name="my_page_profile_edit_tv_complete_size">16sp</dimen>
+    <dimen name="my_page_profile_edit_tv_complete_top">18dp</dimen>
+    <dimen name="my_page_profile_edit_tv_complete_right">14dp</dimen>
+    <dimen name="my_page_profile_edit_iv_profile_size">104dp</dimen>
+    <dimen name="my_page_profile_edit_iv_profile_top">80dp</dimen>
+    <dimen name="my_page_profile_edit_iv_camera_background_size">29dp</dimen>
+    <dimen name="my_page_profile_edit_iv_camera_background_top">69dp</dimen>
+    <dimen name="my_page_profile_edit_iv_camera_background_left">71dp</dimen>
+    <dimen name="my_page_profile_edit_tv_nickname_condition_size">11sp</dimen>
+    <dimen name="my_page_profile_edit_tv_nickname_condition_top">35dp</dimen>
+    <dimen name="my_page_profile_edit_tv_nickname_condition_left">22dp</dimen>
+    <dimen name="my_page_profile_edit_tv_nickname_condition_right">10dp</dimen>
+    <dimen name="my_page_profile_edit_tv_nickname_size">16sp</dimen>
+    <dimen name="my_page_profile_edit_tv_nickname_width">0dp</dimen>
+    <dimen name="my_page_profile_edit_tv_nickname_height">45dp</dimen>
+    <dimen name="my_page_profile_edit_tv_nickname_padding_left">20dp</dimen>
+    <dimen name="my_page_profile_edit_tv_nickname_top">10dp</dimen>
+    <dimen name="my_page_profile_edit_tv_overlap_width">84dp</dimen>
+    <dimen name="my_page_profile_edit_tv_overlap_right">16dp</dimen>
+    <dimen name="my_page_profile_edit_shadow">10dp</dimen>
+
     <!-- store main -->
     <dimen name="store_main_ic_top">21dp</dimen>
     <dimen name="store_main_ic_chevron_left_left">14dp</dimen>
