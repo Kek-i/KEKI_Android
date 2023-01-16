@@ -158,6 +158,7 @@
     <dimen name="calendar_layout_hashtag_padding_top">15dp</dimen>
     <dimen name="calendar_layout_hashtag_padding_bottom">21dp</dimen>
     <dimen name="calendar_tv_hashtag_size">11sp</dimen>
+    <dimen name="calendar_tv_hashtag_margin_horizontal">5dp</dimen>
 
     <dimen name="calendar_tv_detail_type_height">20dp</dimen>
     <dimen name="calendar_tv_detail_type_size">14sp</dimen>
@@ -176,6 +177,7 @@
     <dimen name="calendar_bg_find_cake_width">0dp</dimen>
     <dimen name="calendar_bg_find_cake_height">50dp</dimen>
     <dimen name="calendar_ic_find_cake_margin_end">20dp</dimen>
-
+    <dimen name="calendar_find_cake_elevation">3dp</dimen>
+    <dimen name="calendar_detail_date_elevation">3dp</dimen>
 
 </resources>
