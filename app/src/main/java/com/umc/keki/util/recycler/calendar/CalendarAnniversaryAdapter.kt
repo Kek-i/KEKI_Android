@@ -52,8 +52,10 @@ class CalendarAnniversaryAdapter(private val dataList: MutableList<CalendarAnniv
                 intent.putExtra("title", data.title)
                 intent.putExtra("date", data.date)
                 intent.putExtra("dday", data.dday)
-                intent.putExtra("type", "날짜수")
-//              intent.putExtra("tag", "")
+                intent.putExtra("type", data.type)
+                intent.putExtra("firstTag", data.firstTag)
+                intent.putExtra("secondTag", data.secondTag)
+                intent.putExtra("thirdTag", data.thirdTag)
                 (it.context).startActivity(intent)
             }
         }
