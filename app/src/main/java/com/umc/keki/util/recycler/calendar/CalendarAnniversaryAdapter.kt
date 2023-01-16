@@ -1,22 +1,27 @@
 package com.umc.keki.util.recycler.calendar
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.umc.keki.databinding.ItemCalendarAnniversaryRecyclerBinding
+import com.umc.keki.src.main.consumer.calendar.ConsumerCalendarDetailActivity
 
 class CalendarAnniversaryAdapter(private val dataList: MutableList<CalendarAnniversaryData>):
     RecyclerView.Adapter<ViewHolder>() {
+    private lateinit var itemBinding: ItemCalendarAnniversaryRecyclerBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemBinding = ItemCalendarAnniversaryRecyclerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        this.itemBinding = itemBinding
         return CalendarAnniversaryViewHolder(itemBinding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         (holder as CalendarAnniversaryViewHolder).bind(dataList[position])
-        (holder as CalendarAnniversaryViewHolder).setClickListenerForDeleteItem(dataList, position, this)
+        (holder as CalendarAnniversaryViewHolder).setClickListenerToDeleteItem(dataList, position, this)
+        (holder as CalendarAnniversaryViewHolder).setClickListenerToViewDetail(dataList[position])
     }
 
     override fun getItemCount(): Int = dataList.size
@@ -28,7 +33,7 @@ class CalendarAnniversaryAdapter(private val dataList: MutableList<CalendarAnniv
             itemBinding.tvAnniversaryDday.text = item.dday
         }
 
-        fun setClickListenerForDeleteItem(
+        fun setClickListenerToDeleteItem(
             dataList: MutableList<CalendarAnniversaryData>,
             position: Int,
             adapter: CalendarAnniversaryAdapter
@@ -36,9 +41,22 @@ class CalendarAnniversaryAdapter(private val dataList: MutableList<CalendarAnniv
             itemBinding.layoutDelFrame.setOnClickListener {
                 dataList.removeAt(position)
                 adapter.notifyDataSetChanged()
-//                adapter.notifyItemRemoved(position)
-//                adapter.notifyItemRangeRemoved(position, dataList.size - position)
+    //            this@CalendarAnniversaryAdapter.notifyItemRemoved(position)
+    //            this@CalendarAnniversaryAdapter.notifyItemRangeRemoved(position, dataList.size - position)
+            }
+        }
+
+        fun setClickListenerToViewDetail(data: CalendarAnniversaryData) {
+            itemBinding.layoutItemFrame.setOnClickListener {
+                val intent = Intent(it.context, ConsumerCalendarDetailActivity::class.java)
+                intent.putExtra("title", data.title)
+                intent.putExtra("date", data.date)
+                intent.putExtra("dday", data.dday)
+                intent.putExtra("type", "날짜수")
+//              intent.putExtra("tag", "")
+                (it.context).startActivity(intent)
             }
         }
     }
+
 }

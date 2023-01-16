@@ -11,7 +11,6 @@ import com.umc.keki.databinding.FragmentConsumerCalendarBinding
 import com.umc.keki.util.recycler.calendar.CalendarAnniversaryAdapter
 import com.umc.keki.util.recycler.calendar.CalendarAnniversaryData
 
-
 class ConsumerCalendarFragment : BaseFragment<FragmentConsumerCalendarBinding>
     (FragmentConsumerCalendarBinding::bind, R.layout.fragment_consumer_calendar) {
     private lateinit var calendarAnniversaryAdapter: CalendarAnniversaryAdapter
