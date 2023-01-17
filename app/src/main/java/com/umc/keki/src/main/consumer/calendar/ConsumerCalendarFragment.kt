@@ -33,7 +33,7 @@ class ConsumerCalendarFragment : BaseFragment<FragmentConsumerCalendarBinding>
             }
         }
 
-        binding.rvCalendarAnniversary.addItemDecoration(RecyclerViewDecoration(15))
+        binding.rvCalendarAnniversary.addItemDecoration(RecyclerViewDecoration(18))
         binding.rvCalendarAnniversary.setEmptyView(binding.layoutEmptyCalendar)
         binding.rvCalendarAnniversary.setFullView(binding.ivCalendarCherry)
         calendarAnniversaryAdapter = CalendarAnniversaryAdapter(calendarAnniversaryDataList)

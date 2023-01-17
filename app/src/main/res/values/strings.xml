@@ -32,6 +32,28 @@
     <string name="calendar_detail_third_hashtag"># 기념일</string>
     <string name="calendar_detail_type">매년 반복</string>
     <string name="calendar_detail_go_to_find_cake">딱 맞는 케이크 찾으러 가기</string>
+    <string name="calendar_anniversary_add_main_text">기념일 추가</string>
+    <string name="calendar_anniversary_add_dday">D-DAY</string>
+    <string name="calendar_anniversary_type">기념일 종류</string>
+    <string name="calendar_anniversary_type_dday">디데이</string>
+    <string name="calendar_anniversary_type_number_of_days">날짜수</string>
+    <string name="calendar_anniversary_type_repeat_every_year">매년 반복</string>
+    <string name="calendar_add_anniversary_title">기념일 제목을 입력해주세요.</string>
+    <string name="calendar_add_anniversary_date">날짜를 선택해주세요.</string>
+    <string name="calendar_add_anniversary_hashtag">아래 #해시태그를 선택해주세요.</string>
+    <string name="calendar_add_max_hashtag">해시태그는 최대 3개까지 등록할 수 있습니다.</string>
+    <string name="calendar_add_completion">완료</string>
+
+    <!-- hashtag -->
+    <!-- 아직 확정되지 않음 -->
+    <string name="hashtag_friend"># 친구</string>
+    <string name="hashtag_family"># 가족</string>
+    <string name="hashtag_lover"># 연인</string>
+    <string name="hashtag_anniversary"># 기념일</string>
+    <string name="hashtag_birthday"># 생일</string>
+    <string name="hashtag_employment"># 취업</string>
+    <string name="hashtag_graduation_exhibition"># 졸업전시</string>
+    <string name="hashtag_party"># 파티</string>
 
     <!-- search -->
     <string name="tv_recent_search">최근 검색어</string>
