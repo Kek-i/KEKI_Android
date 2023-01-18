@@ -52,10 +52,4 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             selectedItemId = R.id.menu_main_btm_nav_home
         }
     }
-
-    public fun replaceFragment(fragment:Fragment){
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.main_frm, fragment)
-            .commitAllowingStateLoss()
-    }
 }

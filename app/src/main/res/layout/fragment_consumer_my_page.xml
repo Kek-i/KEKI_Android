@@ -80,7 +80,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/my_page_comment_text_left"
                     android:layout_marginTop="@dimen/my_page_comment_text_top"
-                    android:fontFamily="@font/roboto_bold"
+                    android:fontFamily="@font/notosanskr_bold"
                     android:includeFontPadding="false"
                     android:text="@string/my_page_main_comment"
                     android:textColor="@color/black"

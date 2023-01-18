@@ -43,9 +43,6 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
             nickname.text = item.nickname
 
 
-
-
-
             // 나중에 데이터 구조 보고 변경 - ConsumerStoreFeedActivity
             var img = arrayOfNulls<Drawable>(2)
 
