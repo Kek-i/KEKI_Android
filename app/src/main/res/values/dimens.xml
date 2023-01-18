@@ -100,6 +100,7 @@
     <dimen name="dialog_access_btn_width">110dp</dimen>
     <dimen name="dialog_access_btn_height">40dp</dimen>
     <dimen name="dialog_access_btn_marginTop">25dp</dimen>
+    <dimen name="dialog_access_btn_marginBottom">30dp</dimen>
     <dimen name="dialog_title_size">16sp</dimen>
     <dimen name="dialog_btn_text_size">16sp</dimen>
     <dimen name="dialog_sub_size">11sp</dimen>
