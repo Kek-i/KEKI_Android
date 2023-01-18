@@ -61,7 +61,7 @@
         app:layout_constraintTop_toBottomOf="@+id/topBar">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/Photo"
+            android:id="@+id/cv_photo"
             android:layout_width="@dimen/edit_profile_photo_size"
             android:layout_height="@dimen/edit_profile_photo_size"
             android:layout_marginTop="@dimen/edit_profile_photo_marginTop"
@@ -72,6 +72,25 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_camera_background"
+            android:layout_width="@dimen/my_page_profile_edit_iv_camera_background_size"
+            android:layout_height="@dimen/my_page_profile_edit_iv_camera_background_size"
+            android:layout_marginLeft="@dimen/my_page_profile_edit_iv_camera_background_left"
+            android:layout_marginTop="@dimen/my_page_profile_edit_iv_camera_background_top"
+            android:src="@drawable/bg_oval_pale_salmon"
+            app:layout_constraintStart_toStartOf="@id/cv_photo"
+            app:layout_constraintTop_toTopOf="@id/cv_photo" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_camera"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_camera_background"
+            app:layout_constraintEnd_toEndOf="@+id/iv_camera_background"
+            app:layout_constraintStart_toStartOf="@+id/iv_camera_background"
+            app:layout_constraintTop_toTopOf="@+id/iv_camera_background" />
 
         <TextView
             android:id="@+id/tv_edit_rule"
@@ -85,7 +104,7 @@
             android:textColor="@color/brown_grey"
             android:textSize="@dimen/edit_rule_font_size"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Photo" />
+            app:layout_constraintTop_toBottomOf="@+id/cv_photo" />
 
         <EditText
             android:id="@+id/editText"
@@ -134,22 +153,5 @@
             app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_add_profile_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:fabCustomSize="@dimen/edit_fab_custom_size"
-        android:layout_marginTop="@dimen/edit_fab_marginTop"
-        android:layout_marginLeft="@dimen/edit_fab_marginLeft"
-        android:backgroundTint="@color/pale_salmon"
-        android:src="@drawable/ic_camera"
-        android:gravity="center"
-        app:borderWidth="@dimen/edit_fab_border_width"
-        android:padding="@dimen/edit_fab_padding"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
