@@ -24,62 +24,71 @@
             android:hint="검색어를 입력하세요."
             android:maxLines="1"
             android:singleLine="true"
-            android:textColor="@color/pale_salmon"
+            android:textColor="@color/black"
             android:textColorHint="@color/pale_salmon"
             android:textCursorDrawable="@null"
             android:textSize="@dimen/et_search_textSize"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!--최근 검색어-->
-        <TextView
-            android:id="@+id/tv_recent_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/main_search_margin_side"
-            android:layout_marginTop="@dimen/tv_recent_search_marginTop"
-            android:text="@string/tv_recent_search"
-            android:textColor="@color/black"
-            android:textSize="@dimen/search_title_textSize"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_search" />
-
-        <TextView
-            android:id="@+id/tv_recent_search_delete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/tv_recent_search_delete_marginTop"
-            android:layout_marginEnd="@dimen/tv_recent_search_delete_marginEnd"
-            android:text="@string/tv_recent_search_delete"
-            android:textColor="@color/brown_grey"
-            android:textSize="@dimen/search_tag_textSize"
-            android:textStyle="bold"
-            android:background="@drawable/bg_underline_brown_grey"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_search" />
-
-        <HorizontalScrollView
-            android:id="@+id/sv_recent_search"
+        <!--최근 검색어 뷰-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ll_empty_history"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="none"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_recent_search">
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/et_search"
+            android:layout_marginTop="@dimen/ll_recent_search_marginTop">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_recent_search"
+            <TextView
+                android:id="@+id/tv_recent_search"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/search_tag_margin"
-                android:layout_marginStart="@dimen/search_tag_marginStart"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_search_recent_recycler" />
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/main_search_margin_side"
+                android:text="@string/tv_recent_search"
+                android:textColor="@color/black"
+                android:textSize="@dimen/search_title_textSize"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        </HorizontalScrollView>
+            <TextView
+                android:id="@+id/tv_recent_search_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/tv_recent_search_delete_marginEnd"
+                android:layout_marginTop="@dimen/tv_recent_search_delete_marginTop"
+                android:background="@drawable/bg_underline_brown_grey"
+                android:text="@string/tv_recent_search_delete"
+                android:textColor="@color/brown_grey"
+                android:textSize="@dimen/search_tag_textSize"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:onClick="deleteHistory"/>
+
+            <HorizontalScrollView
+                android:id="@+id/sv_recent_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_recent_search">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_recent_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/search_tag_margin"
+                    android:layout_marginStart="@dimen/search_tag_marginStart"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_search_recent_recycler" />
+
+            </HorizontalScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!--인기 검색어-->
         <TextView
@@ -93,7 +102,7 @@
             android:textSize="@dimen/search_title_textSize"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sv_recent_search" />
+            app:layout_constraintTop_toBottomOf="@+id/ll_empty_history" />
 
         <HorizontalScrollView
             android:id="@+id/sv_popular_search"

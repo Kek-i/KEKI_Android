@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_intro_logo"
+        android:layout_width="@dimen/splash_logo_width"
+        android:layout_height="@dimen/splash_logo_height"
+        android:src="@drawable/keki_korean_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/intro_logo_marginTop"/>
+
+    <TextView
+        android:id="@+id/tv_intro_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/intro_comment"
+        android:textColor="@color/soft_pink"
+        android:textSize="@dimen/intro_logo_comment_size"
+        android:fontFamily="@font/notosanskr_regular"
+        android:layout_marginTop="@dimen/intro_logo_text_marginTop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_intro_logo" />
+
+    <ImageView
+        android:id="@+id/ib_customer_select"
+        android:layout_width="@dimen/intro_select_shadow_width"
+        android:layout_height="@dimen/intro_select_shadow_width"
+        android:background="@drawable/bg_circle_radius_50_shadow"
+        android:layout_marginTop="@dimen/intro_select_shadow_marginTop"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="@dimen/intro_select_shadow_marginSide"
+        app:layout_constraintTop_toBottomOf="@+id/tv_intro_comment"
+        android:visibility="invisible">
+    </ImageView>
+
+    <ImageView
+        android:id="@+id/ib_customer_logo"
+        android:layout_width="@dimen/intro_img_width"
+        android:layout_height="@dimen/intro_img_width"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_customer"
+        android:layout_marginTop="@dimen/intro_img_marginTop"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="@dimen/intro_img_marginSide"
+        app:layout_constraintTop_toBottomOf="@+id/tv_intro_comment">
+    </ImageView>
+
+    <ImageButton
+        android:id="@+id/ib_seller_select"
+        android:layout_width="@dimen/intro_select_shadow_width"
+        android:layout_height="@dimen/intro_select_shadow_width"
+        android:background="@drawable/bg_circle_radius_50_shadow"
+        android:layout_marginTop="@dimen/intro_select_shadow_marginTop"
+        android:layout_marginRight="@dimen/intro_select_shadow_marginSide"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_intro_comment"
+        android:visibility="invisible">
+    </ImageButton>
+
+    <ImageButton
+        android:id="@+id/ib_seller_logo"
+        android:layout_width="@dimen/intro_img_width"
+        android:layout_height="@dimen/intro_img_width"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_seller"
+        android:layout_marginTop="@dimen/intro_img_marginTop"
+        android:layout_marginRight="@dimen/intro_img_marginSide"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_intro_comment"
+        >
+    </ImageButton>
+
+
+    <TextView
+        android:id="@+id/tv_intro_customer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/intro_role_text_marginTop"
+        android:text="@string/login_customer"
+        android:textColor="@color/black"
+        android:fontFamily="@font/notosanskr_bold"
+        android:includeFontPadding="false"
+        android:textSize="@dimen/intro_role_text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="@dimen/intro_role_text_marginSide"
+        app:layout_constraintTop_toBottomOf="@+id/ib_customer_logo">
+    </TextView>
+
+    <TextView
+        android:id="@+id/tv_intro_seller"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/intro_role_text_marginTop"
+        android:layout_marginRight="@dimen/intro_role_text_marginSide"
+        android:text="@string/login_seller"
+        android:textColor="@color/black"
+        android:includeFontPadding="false"
+        android:fontFamily="@font/notosanskr_bold"
+        android:textSize="@dimen/intro_role_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ib_seller_logo">
+    </TextView>
+
+    <Button
+        android:id="@+id/btn_check"
+        android:layout_width="@dimen/intro_btn_width"
+        android:layout_height="@dimen/intro_btn_height"
+        android:layout_marginBottom="@dimen/intro_btn_marginBottom"
+        android:background="@drawable/bg_rectangle_radius_20_darkish_pink"
+        android:text="@string/btn_check"
+        android:textColor="@color/white"
+        android:textSize="@dimen/intro_btn_text_size"
+        android:fontFamily="@font/notosanskr_bold"
+        android:includeFontPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="@dimen/edit_back_logo_width"
+            android:layout_height="@dimen/edit_back_logo_height"
+            android:layout_marginStart="@dimen/edit_back_logo_marginStart"
+            android:layout_marginTop="@dimen/edit_back_logo_marginTop"
+            android:src="@drawable/ic_chevron_left"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_layoutName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/edit_title_marginTop"
+            android:text="@string/tv_edit_Profile_title"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edit_layout_title_size"
+            android:fontFamily="@font/notosanskr_bold"
+            android:includeFontPadding="false"
+            android:layout_marginLeft="@dimen/edit_title_marginLeft"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_check"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edit_check_btn_font_size"
+            android:fontFamily="@font/notosanskr_regular"
+            android:includeFontPadding="false"
+            android:layout_marginTop="@dimen/edit_check_btn_marginTop"
+            android:layout_marginRight="@dimen/edit_check_btn_marginRight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/edit_layout_marginTop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topBar">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/Photo"
+            android:layout_width="@dimen/edit_profile_photo_size"
+            android:layout_height="@dimen/edit_profile_photo_size"
+            android:layout_marginTop="@dimen/edit_profile_photo_marginTop"
+            android:src="@drawable/ic_customer"
+            app:civ_border_color="@color/white"
+            app:civ_border_overlay="true"
+            app:civ_border_width="@dimen/edit_profile_border_width"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_edit_rule"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/edit_rule_marginLeft"
+            android:layout_marginTop="@dimen/edit_rule_marginTop"
+            android:includeFontPadding="false"
+            android:fontFamily="@font/notosanskr_regular"
+            android:text="@string/tv_edit_Profile_rule"
+            android:textColor="@color/brown_grey"
+            android:textSize="@dimen/edit_rule_font_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Photo" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="@dimen/edit_et_width"
+            android:layout_height="@dimen/edit_et_height"
+            android:layout_marginLeft="@dimen/edit_et_marginLeft"
+            android:layout_marginTop="@dimen/edit_et_marginTop"
+            android:background="@drawable/bg_rectangle_radius_10_shadow"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/edit_et_paddingStart"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edit_et_font_size"
+            android:text="안녕케키"
+            android:fontFamily="@font/notosanskr_regular"
+            android:includeFontPadding="false"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_edit_rule" />
+
+        <Button
+            android:id="@+id/btn_double_check"
+            android:layout_width="@dimen/edit_dbl_check_width"
+            android:layout_height="@dimen/edit_dbl_check_height"
+            android:layout_marginTop="@dimen/edit_dbl_check_marginTop"
+            android:background="@drawable/bg_rectangle_radius_10_shadow"
+            android:gravity="center"
+            android:text="@string/btn_double_check"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edit_dbl_check_font_size"
+            android:fontFamily="@font/notosanskr_regular"
+            android:includeFontPadding="false"
+            app:layout_constraintStart_toEndOf="@+id/editText"
+            app:layout_constraintTop_toBottomOf="@+id/tv_edit_rule" />
+
+        <TextView
+            android:id="@+id/tv_naming_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/edit_naming_result_marginTop"
+            android:layout_marginLeft="@dimen/edit_naming_result_marginLeft"
+            android:text="@string/edit_rule_pass"
+            android:fontFamily="@font/notosanskr_regular"
+            android:includeFontPadding="false"
+            android:textColor="@color/brown_grey"
+            android:textSize="@dimen/edit_result_font_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_profile_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fabCustomSize="@dimen/edit_fab_custom_size"
+        android:layout_marginTop="@dimen/edit_fab_marginTop"
+        android:layout_marginLeft="@dimen/edit_fab_marginLeft"
+        android:backgroundTint="@color/pale_salmon"
+        android:src="@drawable/ic_camera"
+        android:gravity="center"
+        app:borderWidth="@dimen/edit_fab_border_width"
+        android:padding="@dimen/edit_fab_padding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
