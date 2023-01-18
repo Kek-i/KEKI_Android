@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_chevron_left"
+        android:layout_marginLeft="@dimen/my_page_condition_ic_back_left"
+        android:layout_marginTop="@dimen/my_page_condition_ic_back_top"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_main_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/my_page_condition_main_text_left"
+        android:layout_marginTop="@dimen/my_page_condition_main_text_top"
+        android:fontFamily="@font/notosanskr_bold"
+        android:includeFontPadding="false"
+        android:text="@string/notice_main"
+        android:textColor="@color/black"
+        android:textSize="@dimen/my_page_condition_main_text_size"
+        app:layout_constraintStart_toEndOf="@id/iv_back"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="@dimen/notice_detail_width_height"
+        android:layout_height="@dimen/notice_detail_width_height"
+        android:layout_marginLeft="@dimen/notice_detail_left_right"
+        android:layout_marginTop="@dimen/notice_detail_csl_top"
+        android:layout_marginRight="@dimen/notice_detail_left_right"
+        android:background="@drawable/bg_rectangle_radius_10_white_not_padding"
+        android:elevation="@dimen/notice_detail_csl_shadow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_main_text"
+        android:layout_marginBottom="@dimen/notice_detail_csl_bottom">
+
+        <TextView
+            android:id="@+id/tv_notice_detail_main"
+            android:includeFontPadding="false"
+            android:layout_width="@dimen/notice_detail_tv_main_width"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosanskr_bold"
+            android:text="@string/notice_detail_main"
+            android:textColor="@color/black"
+            android:textSize="@dimen/notice_detail_tv_main_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/notice_detail_tv_main_top"
+            android:layout_marginLeft="@dimen/notice_detail_left_right"
+            android:layout_marginRight="@dimen/notice_detail_left_right"/>
+
+        <TextView
+            android:id="@+id/tv_notice_detail_text"
+            android:layout_width="@dimen/notice_detail_width_height"
+            android:layout_height="@dimen/notice_detail_width_height"
+            app:layout_constraintTop_toBottomOf="@id/tv_notice_detail_main"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginLeft="@dimen/notice_detail_left_right"
+            android:layout_marginRight="@dimen/notice_detail_left_right"
+            android:layout_marginTop="@dimen/notice_detail_tv_top"
+            android:layout_marginBottom="@dimen/notice_detail_tv_bottom"
+            android:text="@string/notice_detail_text"
+            android:textColor="@color/black"
+            android:fontFamily="@font/notosanskr_regular"
+            android:textSize="@dimen/notice_detail_tv_size"
+            android:includeFontPadding="false"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,11 +1,11 @@
 package com.umc.keki.src.main.consumer.mypage
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.umc.keki.R
 import com.umc.keki.config.BaseFragment
 import com.umc.keki.databinding.FragmentConsumerMyPageBinding
-import com.umc.keki.src.MainActivity
 
 class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
     (FragmentConsumerMyPageBinding::bind, R.layout.fragment_consumer_my_page) {
@@ -14,18 +14,26 @@ class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
         super.onViewCreated(view, savedInstanceState)
 
         profileEditClicked()
-        ConditionClicked()
-
+        conditionClicked()
+        noticeClicked()
     }
 
     private fun profileEditClicked(){
         binding.cslProfileEdit.setOnClickListener{
-            (activity as MainActivity).replaceFragment(ConsumerProfileEditFragment())
+            val intent = Intent(context, ConsumerProfileEditActivity::class.java)
+            startActivity(intent)
         }
     }
-    private fun ConditionClicked(){
+    private fun conditionClicked(){
         binding.tvCondition.setOnClickListener{
-            (activity as MainActivity).replaceFragment(ConsumerConditionFragment())
+            val intent = Intent(context, ConsumerConditionActivity::class.java)
+            startActivity(intent)
+        }
+    }
+    private fun noticeClicked(){
+        binding.cslNotice.setOnClickListener{
+            val intent = Intent(context, NoticeActivity::class.java)
+            startActivity(intent)
         }
     }
 

@@ -329,6 +329,72 @@
     <dimen name="calendar_find_cake_elevation">3dp</dimen>
     <dimen name="calendar_detail_date_elevation">3dp</dimen>
 
+    <!-- calendar add -->
+    <dimen name="calendar_add_top_bar_layout_margin_top">16dp</dimen>
+    <dimen name="calendar_add_ib_back_margin_top">5dp</dimen>
+    <dimen name="calendar_add_ib_back_margin_start">14dp</dimen>
+    <dimen name="calendar_add_ib_back_margin_bottom">4dp</dimen>
+    <dimen name="calendar_add_tv_main_text_size">20sp</dimen>
+    <dimen name="calendar_add_tv_main_text_margin_start">15dp</dimen>
+    <dimen name="calendar_add_tv_completion_size">16sp</dimen>
+    <dimen name="calendar_add_tv_completion_margin_end">19dp</dimen>
+    <dimen name="calendar_add_iv_cake_margin_top">40dp</dimen>
+    <dimen name="calendar_add_tv_dday_width">65.5dp</dimen>
+    <dimen name="calendar_add_tv_dday_height">24dp</dimen>
+    <dimen name="calendar_add_tv_dday_margin_top">10dp</dimen>
+
+    <dimen name="calendar_add_total_layout_type_width">0dp</dimen>
+    <dimen name="calendar_add_total_layout_type_margin_top">28dp</dimen>
+    <dimen name="calendar_add_total_layout_type_margin_horizontal">12dp</dimen>
+    <dimen name="calendar_bg_close_type_height">46dp</dimen>
+    <dimen name="calendar_ib_open_type_margin_start">20dp</dimen>
+    <dimen name="calendar_tv_select_type_height">24dp</dimen>
+    <dimen name="calendar_tv_select_type_margin_top">9dp</dimen>
+    <dimen name="calendar_tv_select_type_margin_start">10dp</dimen>
+    <dimen name="calendar_tv_select_type_margin_bottom">13dp</dimen>
+    <dimen name="calendar_tv_select_type_size">16sp</dimen>
+    <dimen name="calendar_layout_open_type_margin_top">-8dp</dimen>
+    <dimen name="calendar_layout_open_type_padding_start">44dp</dimen>
+    <dimen name="calendar_tv_open_type_height">24dp</dimen>
+    <dimen name="calendar_tv_open_type_size">16sp</dimen>
+    <dimen name="calendar_tv_num_of_days_margin_vertical">4dp</dimen>
+    <dimen name="calendar_tv_repeat_every_year_margin_bottom">13dp</dimen>
+    <dimen name="calendar_add_bg_input_width">0dp</dimen>
+    <dimen name="calendar_add_bg_input_height">46dp</dimen>
+    <dimen name="calendar_add_bg_input_title_margin_top">14dp</dimen>
+    <dimen name="calendar_add_bg_input_title_margin_horizontal">12dp</dimen>
+    <dimen name="calendar_add_et_width">0dp</dimen>
+    <dimen name="calendar_add_et_height">24dp</dimen>
+    <dimen name="calendar_add_et_title_margin_top">10dp</dimen>
+    <dimen name="calendar_add_et_margin_horizontal">20dp</dimen>
+    <dimen name="calendar_add_et_title_margin_bottom">12dp</dimen>
+    <dimen name="calendar_add_et_title_size">16sp</dimen>
+    <dimen name="calendar_add_bg_input_date_margin_top">14dp</dimen>
+    <dimen name="calendar_add_bg_input_date_margin_horizontal">12dp</dimen>
+    <dimen name="calendar_add_et_date_size">16sp</dimen>
+    <dimen name="calendar_add_ib_calendar_margin_end">20dp</dimen>
+
+    <dimen name="calendar_add_tv_select_hashtag_height">24dp</dimen>
+    <dimen name="calendar_add_tv_select_hashtag_margin_top">25dp</dimen>
+    <dimen name="calendar_add_tv_select_hashtag_margin_start">24dp</dimen>
+    <dimen name="calendar_add_tv_select_hashtag_size">16sp</dimen>
+    <dimen name="calendar_add_tv_max_hashtag_height">16dp</dimen>
+    <dimen name="calendar_add_tv_max_hashtag_margin_top">4dp</dimen>
+    <dimen name="calendar_add_tv_max_hashtag_margin_start">25dp</dimen>
+    <dimen name="calendar_add_tv_max_hashtag_size">11sp</dimen>
+
+    <dimen name="calendar_layout_flexbox_width">0dp</dimen>
+    <dimen name="calendar_layout_flexbox_margin_top">18dp</dimen>
+    <dimen name="calendar_layout_flexbox_padding_top">2dp</dimen>
+    <dimen name="calendar_layout_flexbox_padding_horizontal">24dp</dimen>
+    <dimen name="calendar_tv_hashtag_height">26dp</dimen>
+    <dimen name="calendar_tv_hashtag_margin_end">10dp</dimen>
+    <dimen name="calendar_tv_hashtag_margin_bottom">14dp</dimen>
+
+    <dimen name="calendar_add_component_elevation">3dp</dimen>
+    <dimen name="calendar_add_hashtag_elevation">2dp</dimen>
+
+
     <!-- my page -->
     <dimen name="my_page_ic_top">16dp</dimen>
     <dimen name="my_page_ic_message_right">25dp</dimen>
@@ -347,7 +413,7 @@
     <dimen name="my_page_large_text_left">14dp</dimen>
     <dimen name="my_page_large_text_top">26dp</dimen>
     <dimen name="my_page_box_width">0dp</dimen>
-    <dimen name="my_page_box_shadow">10dp</dimen>
+    <dimen name="my_page_box_shadow">3dp</dimen>
     <dimen name="my_page_box_radius">10dp</dimen>
     <dimen name="my_page_box_top">10dp</dimen>
     <dimen name="my_page_box_left_right">12dp</dimen>
@@ -366,7 +432,7 @@
 
     <!-- my page switch -->
     <dimen name="my_page_switch_track_width">51dp</dimen>
-    <dimen name="my_page_switch_track_height">31dp</dimen>
+    <dimen name="my_page_switch_track_height">27dp</dimen>
     <dimen name="my_page_switch_track_radius">50dp</dimen>
     <dimen name="my_page_switch_thumb_size">27dp</dimen>
 
@@ -374,7 +440,7 @@
     <dimen name="my_page_condition_ic_back_left">14dp</dimen>
     <dimen name="my_page_condition_ic_back_top">21dp</dimen>
     <dimen name="my_page_condition_main_text_size">20sp</dimen>
-    <dimen name="my_page_condition_main_text_top">12dp</dimen>
+    <dimen name="my_page_condition_main_text_top">15dp</dimen>
     <dimen name="my_page_condition_main_text_left">25dp</dimen>
     <dimen name="my_page_condition_comment_main_text_size">18sp</dimen>
     <dimen name="my_page_condition_comment_main_text_top">25dp</dimen>
@@ -401,7 +467,7 @@
     <dimen name="my_page_profile_edit_tv_nickname_top">10dp</dimen>
     <dimen name="my_page_profile_edit_tv_overlap_width">84dp</dimen>
     <dimen name="my_page_profile_edit_tv_overlap_right">16dp</dimen>
-    <dimen name="my_page_profile_edit_shadow">10dp</dimen>
+    <dimen name="my_page_profile_edit_shadow">3dp</dimen>
 
     <!-- store main -->
     <dimen name="store_main_ic_top">21dp</dimen>
@@ -420,6 +486,7 @@
     <dimen name="store_main_store_detail_top">10dp</dimen>
     <dimen name="store_main_store_detail_text_size">11sp</dimen>
     <dimen name="store_main_store_order_text_size">16sp</dimen>
+    <dimen name="store_main_store_order_shadow">3dp</dimen>
     <dimen name="store_main_store_order_padding_top_bottom">8dp</dimen>
     <dimen name="store_main_store_order_padding_left_right">30dp</dimen>
     <dimen name="store_main_store_order_top">11dp</dimen>
@@ -461,4 +528,52 @@
     <!-- store main recyclerView -->
     <dimen name="store_main_rv_width_height">105dp</dimen>
     <dimen name="store_main_rv_margin">10dp</dimen>
+
+    <!-- notice -->
+    <dimen name="notice_top">25dp</dimen>
+    <dimen name="notice_left_right">12dp</dimen>
+    <dimen name="notice_rv_width_height">0dp</dimen>
+
+    <!-- notice recyclerView -->
+    <dimen name="notice_rv_item_width">336dp</dimen>
+    <dimen name="notice_rv_item_height">50dp</dimen>
+    <dimen name="notice_rv_item_shadow">3dp</dimen>
+    <dimen name="notice_rv_item_left_right">12dp</dimen>
+    <dimen name="notice_rv_item_bottom">15dp</dimen>
+    <dimen name="notice_tv_left_right">12dp</dimen>
+    <dimen name="notice_tv_size">16sp</dimen>
+    <dimen name="notice_iv_right">12dp</dimen>
+
+    <!-- notice detail -->
+    <dimen name="notice_detail_csl_top">25dp</dimen>
+    <dimen name="notice_detail_csl_bottom">21dp</dimen>
+    <dimen name="notice_detail_csl_shadow">3dp</dimen>
+    <dimen name="notice_detail_tv_main_width">0dp</dimen>
+    <dimen name="notice_detail_tv_main_size">18sp</dimen>
+    <dimen name="notice_detail_tv_main_top">15dp</dimen>
+    <dimen name="notice_detail_left_right">12dp</dimen>
+    <dimen name="notice_detail_tv_top">10dp</dimen>
+    <dimen name="notice_detail_tv_bottom">15dp</dimen>
+    <dimen name="notice_detail_tv_size">16sp</dimen>
+    <dimen name="notice_detail_width_height">0dp</dimen>
+
+    <!-- customer store product detail feed -->
+    <dimen name="store_product_detail_chevron_marginTop">21dp</dimen>
+    <dimen name="store_product_detail_chevron_marginStart">14dp</dimen>
+    <dimen name="store_product_detail_store_name_marginTop">16dp</dimen>
+    <dimen name="store_product_detail_store_name_marginStart">15dp</dimen>
+    <dimen name="store_product_detail_setting_marginTop">21dp</dimen>
+    <dimen name="store_product_detail_setting_marginEnd">12dp</dimen>
+    <dimen name="store_product_detail_img_size">284dp</dimen>
+    <dimen name="store_product_detail_vp_marginTop">30dp</dimen>
+    <dimen name="store_product_detail_cake_name_marginTop">15dp</dimen>
+    <dimen name="store_product_detail_cake_name_marginStart">20dp</dimen>
+    <dimen name="store_product_detail_cake_price_marginTop">15dp</dimen>
+    <dimen name="store_product_detail_cake_price_marginStart">20dp</dimen>
+    <dimen name="store_product_detail_cake_detail_marginTop">15dp</dimen>
+    <dimen name="store_product_detail_cake_detail_marginStart">20dp</dimen>
+    <dimen name="store_product_detail_cake_name_font">16sp</dimen>
+    <dimen name="store_product_detail_cake_price_font">16sp</dimen>
+    <dimen name="store_product_detail_cake_detail_font">11sp</dimen>
+
 </resources>
