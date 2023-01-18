@@ -66,7 +66,7 @@
                 android:layout_marginTop="@dimen/calendar_rv_item_title_margin_top"
                 android:layout_marginStart="@dimen/calendar_rv_item_title_margin_start"
                 android:layout_marginEnd="@dimen/calendar_rv_item_title_margin_end"
-                android:text="@string/calendar_anniversary_name"
+                android:text="@string/calendar_anniversary_title"
                 android:textSize="@dimen/calendar_rv_item_title_size"
                 android:textColor="@color/black"
                 android:textAlignment="viewStart"
