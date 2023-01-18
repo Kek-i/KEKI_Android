@@ -28,16 +28,19 @@ class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(Fragm
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //검색어 전체 지우기 클릭 이벤트
-        binding.tvRecentSearchDelete.setOnClickListener {
-            binding.llEmptyHistory.visibility = View.GONE
-        }
-
+        deleteSearchHistory()
         searchRecentRecycler()
         searchPopularRecycler()
         searchRecentSeenRecycler()
         setListenerToEditText()
 
+    }
+
+    //검색어 전체 지우기 클릭 이벤트
+    private fun deleteSearchHistory(){
+        binding.tvRecentSearchDelete.setOnClickListener {
+            binding.llEmptyHistory.visibility = View.GONE
+        }
     }
 
     //검색창에서 엔터키로 동작 넘기기

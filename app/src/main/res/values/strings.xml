@@ -12,7 +12,27 @@
     <string name="like">찜</string>
     <string name="mypage">마이페이지</string>
 
+
+    <!--login-->
     <string name="splash_comment">특별한 날, 하나뿐인 특별한 케키와 함께</string>
+    <string name="intro_comment">어서오세요, 케키입니다</string>
+    <string name="btn_check">완료</string>
+    <string name="btn_double_check">중복확인</string>
+    <string name="login_customer">구매자</string>
+    <string name="login_seller">판매자</string>
+    <string name="tv_edit_Profile_title">프로필 설정</string>
+    <string name="tv_edit_Profile_rule">한글,영어,숫자만 사용할 수 있어요.(최대 10자)</string>
+    <string name="edit_rule_pass">사용 가능한 닉네임입니다</string>
+    <string name="edit_rule_false">한글,영어,숫자만 사용할 수 있어요.(최대 10자)</string>
+    <string name="login_dialog_main">앱 접근권한 안내</string>
+    <string name="login_dialog_sub">케키에서는 다음 권한들을 사용합니다.</string>
+    <string name="login_dialog_text1">사진 및 저장공간(필수)</string>
+    <string name="login_dialog_text2">사진, 파일 등 기기 내 저장된 파일 및 기기의 외부 저장소 사용</string>
+    <string name="login_dialog_text3">휴대전화 권한 (선택)</string>
+    <string name="login_dialog_text4">푸시 알림 서비스 제공</string>
+    <string name="login_dialog_text5">선택적 접근 권한은 동의하지 않으셔도 앱 이용이 가능하며,\n비허용시에도 해당 기능 외 서비스 이용이 가능합니다.</string>
+    <string name="login_dialog_text6">앱 권한설정은 설정>케키에서 변경 가능</string>
+    <string name="login_dialog_check">확인</string>
 
     <!-- home -->
     <string name="home_comment">베이님!\n투리 생일이 3일 남았어요.\n특별한 하루를 준비해요!</string>
@@ -49,11 +69,40 @@
 
     <!-- calendar -->
     <string name="calendar_main_text">기념일</string>
-    <string name="calendar_anniversary_name">기념일 제목</string>
+    <string name="calendar_anniversary_title">기념일 제목</string>
     <string name="calendar_anniversary_date">20XX.XX.XX</string>
     <string name="calendar_anniversary_dday">D-XXXX</string>
     <string name="calendar_empty_list">추가된 기념일이 없습니다.</string>
     <string name="calendar_item_delete">삭제</string>
+    <string name="calendar_detail_first_title">투리 생일</string>
+    <string name="calendar_detail_first_dday">D-DAY</string>
+    <string name="calendar_detail_first_hashtag"># 친구</string>
+    <string name="calendar_detail_second_hashtag"># 가족</string>
+    <string name="calendar_detail_third_hashtag"># 기념일</string>
+    <string name="calendar_detail_type">매년 반복</string>
+    <string name="calendar_detail_go_to_find_cake">딱 맞는 케이크 찾으러 가기</string>
+    <string name="calendar_anniversary_add_main_text">기념일 추가</string>
+    <string name="calendar_anniversary_add_dday">D-DAY</string>
+    <string name="calendar_anniversary_type">기념일 종류</string>
+    <string name="calendar_anniversary_type_dday">디데이</string>
+    <string name="calendar_anniversary_type_number_of_days">날짜수</string>
+    <string name="calendar_anniversary_type_repeat_every_year">매년 반복</string>
+    <string name="calendar_add_anniversary_title">기념일 제목을 입력해주세요.</string>
+    <string name="calendar_add_anniversary_date">날짜를 선택해주세요.</string>
+    <string name="calendar_add_anniversary_hashtag">아래 #해시태그를 선택해주세요.</string>
+    <string name="calendar_add_max_hashtag">해시태그는 최대 3개까지 등록할 수 있습니다.</string>
+    <string name="calendar_add_completion">완료</string>
+
+    <!-- hashtag -->
+    <!-- 아직 확정되지 않음 -->
+    <string name="hashtag_friend"># 친구</string>
+    <string name="hashtag_family"># 가족</string>
+    <string name="hashtag_lover"># 연인</string>
+    <string name="hashtag_anniversary"># 기념일</string>
+    <string name="hashtag_birthday"># 생일</string>
+    <string name="hashtag_employment"># 취업</string>
+    <string name="hashtag_graduation_exhibition"># 졸업전시</string>
+    <string name="hashtag_party"># 파티</string>
 
     <!-- my page -->
     <string name="my_page_main_text">내 정보</string>
