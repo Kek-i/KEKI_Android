@@ -268,9 +268,11 @@
             android:layout_marginHorizontal="@dimen/calendar_add_et_margin_horizontal"
             app:layout_constraintTop_toTopOf="@id/bg_calendar_add_input_date"
             app:layout_constraintStart_toStartOf="@id/bg_calendar_add_input_date"
-            app:layout_constraintEnd_toEndOf="@id/bg_calendar_add_input_date"
+            app:layout_constraintEnd_toStartOf="@id/ib_calendar_select_date"
             app:layout_constraintBottom_toBottomOf="@id/bg_calendar_add_input_date"
             android:inputType="date"
+
+            android:enabled="false"
             android:hint="@string/calendar_add_anniversary_date"
             android:textColorHint="@color/brown_grey"
             android:textSize="@dimen/calendar_add_et_date_size"
@@ -364,7 +366,7 @@
                 android:textSize="@dimen/calendar_tv_hashtag_size"
                 android:fontFamily="@font/notosanskr_regular"
                 android:includeFontPadding="false"
-                android:background="@drawable/bg_rectangle_radius_13_off_white"
+                android:background="@drawable/bg_rectangle_radius_13_white"
                 android:elevation="@dimen/calendar_add_hashtag_elevation"
                 />
 
@@ -394,7 +396,7 @@
                 android:textSize="@dimen/calendar_tv_hashtag_size"
                 android:fontFamily="@font/notosanskr_regular"
                 android:includeFontPadding="false"
-                android:background="@drawable/bg_rectangle_radius_13_light_peach_2"
+                android:background="@drawable/bg_rectangle_radius_13_white"
                 android:elevation="@dimen/calendar_add_hashtag_elevation"
                 />
 
@@ -454,7 +456,7 @@
                 android:textSize="@dimen/calendar_tv_hashtag_size"
                 android:fontFamily="@font/notosanskr_regular"
                 android:includeFontPadding="false"
-                android:background="@drawable/bg_rectangle_radius_13_very_light_pink"
+                android:background="@drawable/bg_rectangle_radius_13_white"
                 android:elevation="@dimen/calendar_add_hashtag_elevation"
                 />
 
