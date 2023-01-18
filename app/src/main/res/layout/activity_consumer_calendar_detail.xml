@@ -190,7 +190,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_calendar_detail_type"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:background="@drawable/bg_rectangle_radius_10_white"
+            android:background="@drawable/bg_rectangle_radius_10_white_padding"
             android:elevation="@dimen/calendar_detail_date_elevation"
 
             />
@@ -220,7 +220,7 @@
             app:layout_constraintTop_toBottomOf="@id/bg_calendar_detail_date"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:background="@drawable/bg_rectangle_radius_10_light_pink"
+            android:background="@drawable/bg_rectangle_radius_10_light_pink_no_padding"
             android:elevation="@dimen/calendar_find_cake_elevation"
             />
 
