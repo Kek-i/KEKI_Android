@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".src.main.consumer.store.ConsumerStoreFeedActivity"
+            android:name=".src.main.consumer.store.storefeed.ConsumerStoreDetailFeedActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -60,7 +60,7 @@
 
 
         <activity
-            android:name=".src.store.StoreMainActivity"
+            android:name=".src.main.consumer.store.ConsumerStoreMainActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
