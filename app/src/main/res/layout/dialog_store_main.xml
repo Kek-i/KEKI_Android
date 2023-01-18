@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/store_main_dialog_img_left"
+        android:layout_marginRight="@dimen/store_main_dialog_img_right"
+        android:layout_marginBottom="@dimen/store_main_dialog_img_bottom"
+        android:src="@drawable/img_store_main_dialog"
+        app:layout_constraintBottom_toBottomOf="@+id/csl_dialog"
+        app:layout_constraintEnd_toEndOf="@+id/csl_dialog"
+        app:layout_constraintStart_toStartOf="@+id/csl_dialog" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/csl_dialog"
+        android:layout_width="@dimen/store_main_dialog_width"
+        android:layout_height="@dimen/store_main_dialog_height"
+        android:background="@drawable/bg_rectangle_radius_10_white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <TextView
+            android:includeFontPadding="false"
+            android:id="@+id/tv_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/store_main_dialog_title_left"
+            android:layout_marginRight="@dimen/store_main_dialog_title_right"
+            android:fontFamily="@font/notosanskr_bold"
+            android:text="@string/store_main_dialog_info"
+            android:textSize="@dimen/store_main_dialog_title_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:includeFontPadding="false"
+            android:id="@+id/tv_representative_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosanskr_bold"
+            android:text="@string/store_main_dialog_representative_name"
+            android:textSize="@dimen/store_main_dialog_text_size"
+            android:layout_marginTop="@dimen/store_main_dialog_first_text_top"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_info" />
+
+        <TextView
+            android:includeFontPadding="false"
+            android:id="@+id/tv_representative_name_data"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/store_main_dialog_first_text_middle"
+            android:layout_marginTop="@dimen/store_main_dialog_first_text_top"
+            android:fontFamily="@font/notosanskr_regular"
+            android:text="@string/store_main_dialog_representative_name_data"
+            android:textSize="@dimen/store_main_dialog_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_representative_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_info"
+            />
+
+        <TextView
+            android:id="@+id/tv_store_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/store_main_dialog_text_top"
+            android:fontFamily="@font/notosanskr_bold"
+            android:includeFontPadding="false"
+            android:text="@string/store_main_dialog_store_name"
+            android:textSize="@dimen/store_main_dialog_text_size"
+            app:layout_constraintStart_toStartOf="@+id/tv_representative_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_representative_name" />
+
+        <TextView
+            android:id="@+id/tv_store_name_data"
+            android:layout_width="@dimen/store_main_dialog_text_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/store_main_dialog_text_top"
+            android:fontFamily="@font/notosanskr_regular"
+            android:includeFontPadding="false"
+            android:text="@string/store_main_dialog_store_name_data"
+            android:textSize="@dimen/store_main_dialog_text_size"
+            app:layout_constraintEnd_toEndOf="@+id/tv_representative_name_data"
+            app:layout_constraintStart_toStartOf="@+id/tv_representative_name_data"
+            app:layout_constraintTop_toBottomOf="@+id/tv_representative_name_data" />
+
+        <TextView
+            android:id="@+id/tv_store_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/store_main_dialog_text_top"
+            android:fontFamily="@font/notosanskr_bold"
+            android:includeFontPadding="false"
+            android:text="@string/store_main_dialog_store_address"
+            android:textSize="@dimen/store_main_dialog_text_size"
+            app:layout_constraintStart_toStartOf="@+id/tv_store_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_store_name" />
+
+        <TextView
+            android:id="@+id/tv_store_address_data"
+            android:layout_width="@dimen/store_main_dialog_text_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/store_main_dialog_text_top"
+            android:fontFamily="@font/notosanskr_regular"
+            android:includeFontPadding="false"
+            android:text="@string/store_main_dialog_store_address_data"
+            android:textSize="@dimen/store_main_dialog_text_size"
+            app:layout_constraintEnd_toEndOf="@+id/tv_store_name_data"
+            app:layout_constraintStart_toStartOf="@+id/tv_store_name_data"
+            app:layout_constraintTop_toBottomOf="@+id/tv_store_name_data" />
+
+        <TextView
+            android:id="@+id/tv_store_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/store_main_dialog_text_last_top"
+            android:fontFamily="@font/notosanskr_bold"
+            android:includeFontPadding="false"
+            android:text="@string/store_main_dialog_store_num"
+            android:textSize="@dimen/store_main_dialog_text_size"
+            app:layout_constraintStart_toStartOf="@+id/tv_store_address"
+            app:layout_constraintTop_toBottomOf="@+id/tv_store_address" />
+
+        <TextView
+            android:id="@+id/tv_store_num_data"
+            android:layout_width="@dimen/store_main_dialog_text_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/store_main_dialog_text_top"
+            android:fontFamily="@font/notosanskr_regular"
+            android:includeFontPadding="false"
+            android:text="@string/store_main_dialog_store_num_data"
+            android:textSize="@dimen/store_main_dialog_text_size"
+            app:layout_constraintEnd_toEndOf="@+id/tv_store_address_data"
+            app:layout_constraintStart_toStartOf="@+id/tv_store_address_data"
+            app:layout_constraintTop_toBottomOf="@+id/tv_store_address_data" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/store_main_dialog_img_arm_left"
+        android:layout_marginTop="@dimen/store_main_dialog_img_arm_right"
+        android:src="@drawable/img_store_main_dialog_arm"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
