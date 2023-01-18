@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topBar"
@@ -13,8 +14,8 @@
 
         <ImageView
             android:id="@+id/iv_back"
-            android:layout_width="@dimen/edit_back_logo_width"
-            android:layout_height="@dimen/edit_back_logo_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/edit_back_logo_marginStart"
             android:layout_marginTop="@dimen/edit_back_logo_marginTop"
             android:src="@drawable/ic_chevron_left"
