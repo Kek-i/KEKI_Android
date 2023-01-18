@@ -129,6 +129,14 @@
     <string name="my_page_profile_nick_name_hint">닉네임을 입력해주세요.</string>
     <string name="my_page_profile_nick_name_overlap">중복확인</string>
 
+    <!-- notice -->
+    <string name="notice_main">공지사항</string>
+    <string name="notice_text">새로운 디저트가 등록되었어요!</string>
+
+    <!-- notice detail -->
+    <string name="notice_detail_main">새로운 디저트가 등록되었어요! 어서 확인해보세요!</string>
+    <string name="notice_detail_text">새로운 디저트가 등록되었어요!</string>
+
     <!-- search -->
     <string name="tv_recent_search">최근 검색어</string>
     <string name="tv_recent_search_delete">전체 지우기</string>
