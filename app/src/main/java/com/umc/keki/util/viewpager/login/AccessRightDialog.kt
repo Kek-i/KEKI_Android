@@ -6,8 +6,9 @@ import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Window
-import com.umc.keki.databinding.DialogAccessRightBinding
+import com.umc.keki.src.MainActivity
 import com.umc.keki.src.main.login.IntroActivity
+import com.umc.keki.src.main.login.LoginActivity
 
 
 class AccessRightDialog(context: Context): Dialog(context) {
@@ -29,6 +30,7 @@ class AccessRightDialog(context: Context): Dialog(context) {
 
     private fun checkBtn(){
         binding.btnCheck1.setOnClickListener{
+            this.dismiss()
             context.startActivity(Intent(context, IntroActivity::class.java))
         }
     }
