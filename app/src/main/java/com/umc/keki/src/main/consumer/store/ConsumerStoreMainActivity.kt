@@ -1,4 +1,4 @@
-package com.umc.keki.src.store
+package com.umc.keki.src.main.consumer.store
 
 
 import android.os.Bundle
@@ -7,11 +7,11 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.umc.keki.R
 import com.umc.keki.config.BaseActivity
-import com.umc.keki.databinding.ActivityStoreMainBinding
+import com.umc.keki.databinding.ActivityConsumerStoreMainBinding
 import com.umc.keki.util.viewpager.storemain.StoreMainDialog
 import com.umc.keki.util.viewpager.storemain.StoreMainVPAdapter
 
-class StoreMainActivity : BaseActivity<ActivityStoreMainBinding>(ActivityStoreMainBinding::inflate) {
+class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>(ActivityConsumerStoreMainBinding::inflate) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

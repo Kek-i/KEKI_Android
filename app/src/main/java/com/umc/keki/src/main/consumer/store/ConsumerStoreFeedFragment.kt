@@ -1,16 +1,16 @@
-package com.umc.keki.src.store
+package com.umc.keki.src.main.consumer.store
 
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.umc.keki.R
 import com.umc.keki.config.BaseFragment
-import com.umc.keki.databinding.FragmentSellerFeedBinding
+import com.umc.keki.databinding.FragmentConsumerStoreFeedBinding
 import com.umc.keki.util.viewpager.storemain.StoreMainData
 import com.umc.keki.util.viewpager.storemain.StoreMainSellerAdapter
 
-class SellerFeedFragment : BaseFragment<FragmentSellerFeedBinding>
-    (FragmentSellerFeedBinding::bind, R.layout.fragment_seller_feed){
+class ConsumerStoreFeedFragment : BaseFragment<FragmentConsumerStoreFeedBinding>
+    (FragmentConsumerStoreFeedBinding::bind, R.layout.fragment_consumer_store_feed){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
