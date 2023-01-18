@@ -1,4 +1,4 @@
-package com.umc.keki.src.main.consumer.store
+package com.umc.keki.src.main.consumer.store.storefeed
 
 import android.graphics.drawable.Drawable
 import androidx.fragment.app.Fragment
