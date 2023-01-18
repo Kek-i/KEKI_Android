@@ -418,4 +418,24 @@
     <!-- store main recyclerView -->
     <dimen name="store_main_rv_width_height">105dp</dimen>
     <dimen name="store_main_rv_margin">10dp</dimen>
+
+    <!-- customer store product detail feed -->
+    <dimen name="store_product_detail_chevron_marginTop">21dp</dimen>
+    <dimen name="store_product_detail_chevron_marginStart">14dp</dimen>
+    <dimen name="store_product_detail_store_name_marginTop">16dp</dimen>
+    <dimen name="store_product_detail_store_name_marginStart">15dp</dimen>
+    <dimen name="store_product_detail_setting_marginTop">21dp</dimen>
+    <dimen name="store_product_detail_setting_marginEnd">12dp</dimen>
+    <dimen name="store_product_detail_img_size">284dp</dimen>
+    <dimen name="store_product_detail_vp_marginTop">30dp</dimen>
+    <dimen name="store_product_detail_cake_name_marginTop">15dp</dimen>
+    <dimen name="store_product_detail_cake_name_marginStart">20dp</dimen>
+    <dimen name="store_product_detail_cake_price_marginTop">15dp</dimen>
+    <dimen name="store_product_detail_cake_price_marginStart">20dp</dimen>
+    <dimen name="store_product_detail_cake_detail_marginTop">15dp</dimen>
+    <dimen name="store_product_detail_cake_detail_marginStart">20dp</dimen>
+    <dimen name="store_product_detail_cake_name_font">16sp</dimen>
+    <dimen name="store_product_detail_cake_price_font">16sp</dimen>
+    <dimen name="store_product_detail_cake_detail_font">11sp</dimen>
+
 </resources>
