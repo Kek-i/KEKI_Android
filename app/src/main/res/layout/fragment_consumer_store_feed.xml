@@ -26,6 +26,8 @@
            app:spanCount="3"
            tools:listitem="@layout/item_store_main_recycler"/>
    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/float_btn"
         android:layout_width="wrap_content"
@@ -36,5 +38,6 @@
         android:layout_marginRight="@dimen/store_main_feed_float_right"
         android:layout_marginBottom="@dimen/store_main_feed_float_bottom"
         app:borderWidth="@dimen/store_main_feed_float_border"/>
-
+    -->
+    
 </FrameLayout>
