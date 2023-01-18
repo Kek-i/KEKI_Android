@@ -43,13 +43,10 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
             nickname.text = item.nickname
 
 
-
-
-
             // 나중에 데이터 구조 보고 변경 - ConsumerStoreFeedActivity
             var img = arrayOfNulls<Drawable>(2)
 
-            img[0] = context?.getDrawable(R.drawable.softsquared_logo)
+            img[0] = context?.getDrawable(R.drawable.ex_cake)
             img[1] = context?.getDrawable(R.drawable.ex_cake)
 
             val pagerAdapter = DetailImageAdapter(context!!, img)

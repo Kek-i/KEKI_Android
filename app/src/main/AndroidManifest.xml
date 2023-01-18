@@ -83,6 +83,9 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+
+        <activity android:name=".src.main.consumer.store.productfeed.ConsumerStoreProductFeedActivity"/>
+
     </application>
 
 </manifest>
