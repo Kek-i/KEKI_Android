@@ -4,131 +4,129 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/csl_dialog"
         android:layout_width="@dimen/dialog_access_width"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dialog_access_csl_marginTop"
+        android:layout_marginBottom="@dimen/dialog_access_csl_marginBottom"
         android:background="@drawable/bg_rectangle_radius_10_white_no_padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         >
-
         <TextView
             android:id="@+id/tv_mainName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dialog_access_mainName_marginTop"
-            android:gravity="center"
             android:fontFamily="@font/notosanskr_bold"
-            android:text="@string/login_dialog_main"
-            android:textSize="@dimen/dialog_title_size"
-            android:textColor="@color/black"
+            android:gravity="center"
             android:includeFontPadding="false"
+            android:text="@string/login_dialog_main"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dialog_title_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
             android:id="@+id/tv_subName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dialog_access_text_width"
             android:layout_marginTop="@dimen/dialog_access_subName_marginTop"
             android:fontFamily="@font/notosanskr_regular"
-            android:textColor="@color/black"
             android:gravity="center"
             android:includeFontPadding="false"
             android:text="@string/login_dialog_sub"
+            android:textColor="@color/black"
             android:textSize="@dimen/dialog_sub_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_mainName" />
-
-
         <TextView
             android:id="@+id/tv_text_1"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/dialog_access_text_width"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dialog_access_text_width"
             android:layout_marginTop="@dimen/dialog_access_tv1_marginTop"
             android:fontFamily="@font/notosanskr_bold"
-            android:textColor="@color/black"
             android:includeFontPadding="false"
             android:text="@string/login_dialog_text1"
+            android:textColor="@color/black"
             android:textSize="@dimen/dialog_sub_size"
-            android:layout_marginLeft="@dimen/dialog_access_tv_marginLeft"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_subName" />
-
-
         <TextView
             android:id="@+id/tv_text_2"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/dialog_access_text_width"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dialog_access_side_margin"
             android:fontFamily="@font/notosanskr_regular"
-            android:textColor="@color/black"
             android:includeFontPadding="false"
             android:text="@string/login_dialog_text2"
+            android:textColor="@color/black"
             android:textSize="@dimen/dialog_sub_size"
-            android:layout_marginLeft="@dimen/dialog_access_tv_marginLeft"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_text_1" />
-
         <TextView
             android:id="@+id/tv_text_3"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/dialog_access_text_width"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dialog_access_side_margin"
             android:layout_marginTop="@dimen/dialog_access_tv3_marginTop"
             android:fontFamily="@font/notosanskr_bold"
-            android:textColor="@color/black"
             android:includeFontPadding="false"
             android:text="@string/login_dialog_text3"
+            android:textColor="@color/black"
             android:textSize="@dimen/dialog_sub_size"
-            android:layout_marginLeft="@dimen/dialog_access_tv_marginLeft"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_text_2" />
-
-
         <TextView
             android:id="@+id/tv_text_4"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/dialog_access_text_width"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dialog_access_side_margin"
             android:fontFamily="@font/notosanskr_regular"
-            android:textColor="@color/black"
             android:includeFontPadding="false"
             android:text="@string/login_dialog_text4"
+            android:textColor="@color/black"
             android:textSize="@dimen/dialog_sub_size"
-            android:layout_marginLeft="@dimen/dialog_access_tv_marginLeft"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_text_3" />
-
         <TextView
             android:id="@+id/tv_text_5"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/dialog_access_text_width"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dialog_access_tv5_marginTop"
-            android:layout_marginLeft="@dimen/dialog_access_tv_marginLeft"
+            android:layout_marginHorizontal="@dimen/dialog_access_side_margin"
             android:fontFamily="@font/notosanskr_regular"
-            android:textColor="@color/black"
             android:includeFontPadding="false"
             android:text="@string/login_dialog_text5"
+            android:textColor="@color/black"
             android:textSize="@dimen/dialog_sub_size"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_text_4" />
-
         <TextView
             android:id="@+id/tv_text_6"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/dialog_access_text_width"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dialog_access_side_margin"
             android:layout_marginTop="@dimen/dialog_access_tv6_marginTop"
-            android:layout_marginLeft="@dimen/dialog_access_tv_marginLeft"
             android:fontFamily="@font/notosanskr_regular"
-            android:textColor="@color/black"
             android:includeFontPadding="false"
             android:text="@string/login_dialog_text6"
+            android:textColor="@color/black"
             android:textSize="@dimen/dialog_sub_size"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_text_5" />
 
@@ -144,13 +142,10 @@
             android:text="@string/login_dialog_check"
             android:textColor="@color/white"
             android:textSize="@dimen/dialog_btn_text_size"
-            android:layout_marginTop="@dimen/dialog_access_btn_marginTop"
-            android:layout_marginBottom="@dimen/dialog_access_btn_marginBottom"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_text_6"
-            app:layout_constraintBottom_toBottomOf="@+id/csl_dialog"/>
-
+            app:layout_constraintTop_toBottomOf="@+id/tv_text_6" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
