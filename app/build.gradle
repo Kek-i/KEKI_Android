@@ -68,9 +68,10 @@ dependencies {
 
     implementation 'de.hdodenhof:circleimageview:3.1.0' //Circle ImageView
 
-
     implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
-
     implementation "com.daimajia.swipelayout:library:1.2.0@aar"
+
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
+
 
 }
