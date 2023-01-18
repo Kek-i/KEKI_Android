@@ -10,7 +10,7 @@
         android:id="@+id/csl_dialog"
         android:layout_width="@dimen/dialog_access_width"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_rectangle_radius_10_white"
+        android:background="@drawable/bg_rectangle_radius_10_white_no_padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -143,9 +143,11 @@
             android:includeFontPadding="false"
             android:fontFamily="@font/notosanskr_bold"
             android:layout_marginTop="@dimen/dialog_access_btn_marginTop"
+            android:layout_marginBottom="@dimen/dialog_access_btn_marginBottom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_text_6"/>
+            app:layout_constraintTop_toBottomOf="@+id/tv_text_6"
+            app:layout_constraintBottom_toBottomOf="@+id/csl_dialog"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
