@@ -9,8 +9,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/csl_dialog"
         android:layout_width="@dimen/dialog_access_width"
-        android:layout_height="@dimen/dialog_access_width"
-        android:background="@drawable/bg_rectangle_radius_10_white_padding"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_rectangle_radius_10_white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -136,16 +136,18 @@
             android:id="@+id/btn_check1"
             android:layout_width="@dimen/dialog_access_btn_width"
             android:layout_height="@dimen/dialog_access_btn_height"
+            android:layout_marginTop="@dimen/dialog_access_btn_marginTop"
+            android:layout_marginBottom="@dimen/dialog_access_btn_marginBottom"
             android:background="@drawable/bg_rectangle_radius_20_darkish_pink"
+            android:fontFamily="@font/notosanskr_bold"
+            android:includeFontPadding="false"
             android:text="@string/login_dialog_check"
             android:textColor="@color/white"
             android:textSize="@dimen/dialog_btn_text_size"
-            android:includeFontPadding="false"
-            android:fontFamily="@font/notosanskr_bold"
-            android:layout_marginTop="@dimen/dialog_access_btn_marginTop"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_text_6"/>
+            app:layout_constraintTop_toBottomOf="@+id/tv_text_6" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

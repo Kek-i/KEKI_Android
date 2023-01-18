@@ -1,12 +1,12 @@
 package com.umc.keki.util.viewpager.login
 
+import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Window
-import com.umc.keki.databinding.DialogAccessRightBinding
 import com.umc.keki.src.main.login.IntroActivity
 
 

@@ -51,6 +51,7 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
             img[0] = context?.getDrawable(R.drawable.ex_cake)
             img[1] = context?.getDrawable(R.drawable.ex_cake)
 
+
             val pagerAdapter = DetailImageAdapter(context!!, img)
             binding.vpStoreFeedImg.adapter = pagerAdapter
             binding.wormDotsIndicator.setViewPager2(binding.vpStoreFeedImg)
