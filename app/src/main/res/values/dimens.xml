@@ -212,7 +212,7 @@
     <dimen name="my_page_large_text_left">14dp</dimen>
     <dimen name="my_page_large_text_top">26dp</dimen>
     <dimen name="my_page_box_width">0dp</dimen>
-    <dimen name="my_page_box_shadow">10dp</dimen>
+    <dimen name="my_page_box_shadow">3dp</dimen>
     <dimen name="my_page_box_radius">10dp</dimen>
     <dimen name="my_page_box_top">10dp</dimen>
     <dimen name="my_page_box_left_right">12dp</dimen>
@@ -231,7 +231,7 @@
 
     <!-- my page switch -->
     <dimen name="my_page_switch_track_width">51dp</dimen>
-    <dimen name="my_page_switch_track_height">31dp</dimen>
+    <dimen name="my_page_switch_track_height">27dp</dimen>
     <dimen name="my_page_switch_track_radius">50dp</dimen>
     <dimen name="my_page_switch_thumb_size">27dp</dimen>
 
@@ -266,7 +266,7 @@
     <dimen name="my_page_profile_edit_tv_nickname_top">10dp</dimen>
     <dimen name="my_page_profile_edit_tv_overlap_width">84dp</dimen>
     <dimen name="my_page_profile_edit_tv_overlap_right">16dp</dimen>
-    <dimen name="my_page_profile_edit_shadow">10dp</dimen>
+    <dimen name="my_page_profile_edit_shadow">3dp</dimen>
 
     <!-- store main -->
     <dimen name="store_main_ic_top">21dp</dimen>
@@ -285,7 +285,7 @@
     <dimen name="store_main_store_detail_top">10dp</dimen>
     <dimen name="store_main_store_detail_text_size">11sp</dimen>
     <dimen name="store_main_store_order_text_size">16sp</dimen>
-    <dimen name="store_main_store_order_shadow">10dp</dimen>
+    <dimen name="store_main_store_order_shadow">3dp</dimen>
     <dimen name="store_main_store_order_padding_top_bottom">8dp</dimen>
     <dimen name="store_main_store_order_padding_left_right">30dp</dimen>
     <dimen name="store_main_store_order_top">11dp</dimen>
@@ -346,7 +346,7 @@
     <!-- notice detail -->
     <dimen name="notice_detail_csl_top">25dp</dimen>
     <dimen name="notice_detail_csl_bottom">21dp</dimen>
-    <dimen name="notice_detail_csl_shadow">5dp</dimen>
+    <dimen name="notice_detail_csl_shadow">3dp</dimen>
     <dimen name="notice_detail_tv_main_width">0dp</dimen>
     <dimen name="notice_detail_tv_main_size">18sp</dimen>
     <dimen name="notice_detail_tv_main_top">15dp</dimen>
