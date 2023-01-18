@@ -21,14 +21,11 @@ class ConsumerStoreProductFeedActivity : BaseActivity<ActivityStoreProductFeedBi
     }
 
     private fun getData(){
-        val storeId: TextView = binding.tvProductFeedId
-        val cakeName: TextView = binding.tvProductFeedCakeName
-        val cakePrice: TextView = binding.tvProductFeedCakePrice
-        val cakeDetail: TextView = binding.tvProductFeedCakeDetail
-        storeId.text = storeProductFeedDatas[0].storeName
-        cakeName.text = storeProductFeedDatas[0].cakeName
-        cakePrice.text = storeProductFeedDatas[0].cakePrice
-        cakeDetail.text = storeProductFeedDatas[0].cakeDetail
+        binding.tvProductFeedId.text = storeProductFeedDatas[0].storeName
+        binding.tvProductFeedCakeName.text = storeProductFeedDatas[0].cakeName
+        binding.tvProductFeedCakePrice.text = storeProductFeedDatas[0].cakePrice
+        binding.tvProductFeedCakeDetail.text = storeProductFeedDatas[0].cakeDetail
+       
 
         // 나중에 데이터 구조 보고 변경 - ConsumerStoreFeedActivity
         var img = arrayOfNulls<Drawable>(4)
