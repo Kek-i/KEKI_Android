@@ -2,6 +2,7 @@ package com.umc.keki.src.main.consumer.store
 
 
 import android.os.Bundle
+import android.util.Log
 import androidx.core.content.res.ResourcesCompat
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -15,9 +16,16 @@ class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        getNickname()
         tabSetting()
         back()
         infoClick()
+    }
+
+    private fun getNickname(){
+        var nickname = intent.getStringExtra("nickname")
+        Log.d("nickname", nickname!!)
+        binding.tvStoreName.text = nickname
     }
 
     private fun tabSetting(){

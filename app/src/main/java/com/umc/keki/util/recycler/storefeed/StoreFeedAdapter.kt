@@ -1,5 +1,6 @@
 package com.umc.keki.util.recycler.storefeed
 
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.umc.keki.R
 import com.umc.keki.databinding.ItemStoreFeedRecyclerBinding
+import com.umc.keki.src.main.consumer.store.ConsumerStoreMainActivity
 import com.umc.keki.src.main.consumer.store.storefeed.DetailImageAdapter
 
 class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<ViewHolder>() {
@@ -60,6 +62,7 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
             seeMoreDescription("이 제품은 어쩌구\n케이크어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구")
             likeProduct()
             report()
+            navigateToStoreMain()
         }
 
         // 제품 내용 길이 확인
@@ -104,6 +107,14 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
                 builder.show()
 
                  */
+            }
+        }
+
+        private fun navigateToStoreMain(){
+            binding.tvStoreFeedSellerNickname.setOnClickListener {
+                val intent = Intent(itemView.context, ConsumerStoreMainActivity::class.java)
+                intent.putExtra("nickname", binding.tvStoreFeedSellerNickname.text)
+                itemView.context.startActivity(intent)
             }
         }
 
