@@ -118,7 +118,6 @@
             android:paddingStart="@dimen/edit_et_paddingStart"
             android:textColor="@color/black"
             android:textSize="@dimen/edit_et_font_size"
-            android:text="안녕케키"
             android:fontFamily="@font/notosanskr_regular"
             android:includeFontPadding="false"
             app:layout_constraintStart_toStartOf="parent"
