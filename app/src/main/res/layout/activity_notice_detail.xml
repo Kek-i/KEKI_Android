@@ -34,7 +34,7 @@
         android:layout_marginLeft="@dimen/notice_detail_left_right"
         android:layout_marginTop="@dimen/notice_detail_csl_top"
         android:layout_marginRight="@dimen/notice_detail_left_right"
-        android:background="@drawable/bg_rectangle_radius_10_white_not_padding"
+        android:background="@drawable/bg_rectangle_radius_10_white_no_padding"
         android:elevation="@dimen/notice_detail_csl_shadow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

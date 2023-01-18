@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:app/src/main/java/com/umc/keki/src/main/consumer/store/ConsumerStoreMainActivity.kt
-package com.umc.keki.src.main.consumer.store
-========
 package com.umc.keki.src.storeMain
->>>>>>>> origin/develop:app/src/main/java/com/umc/keki/src/storeMain/StoreMainActivity.kt
 
 
 import android.os.Bundle
