@@ -10,7 +10,7 @@
         android:id="@+id/csl_dialog"
         android:layout_width="@dimen/dialog_access_width"
         android:layout_height="@dimen/dialog_access_width"
-        android:background="@drawable/bg_rectangle_radius_10_white"
+        android:background="@drawable/bg_rectangle_radius_10_white_padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

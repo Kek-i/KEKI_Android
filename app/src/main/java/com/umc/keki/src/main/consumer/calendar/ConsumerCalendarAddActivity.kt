@@ -4,7 +4,6 @@ import android.app.DatePickerDialog
 import android.app.Dialog
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -18,20 +17,21 @@ import java.util.*
 
 class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBinding>(
     ActivityConsumerCalendarAddBinding::inflate) {
+    // 기념일 종류 메뉴 열고 닫기 여부
     private var openForLayoutOfType: Boolean = false
-    // 해시태그별 클릭 여부
-    private var bFriendTagIsClicked: Boolean = false
-    private var bFamilyTagIsClicked: Boolean = false
-    private var bLoverTagIsClicked: Boolean = false
-    private var bAnniversaryTagIsClicked: Boolean = false
-    private var bBirthdayTagIsClicked: Boolean = false
-    private var bEmploymentTagIsClicked: Boolean = false
-    private var bGraduationExhibitionTagIsClicked: Boolean = false
-    private var bPartyTagIsClicked: Boolean = false
-    // 몇번째 태그가 클릭되었는지
-    private var firstTag: String? = null
-    private var secondTag: String? = null
-    private var thirdTag: String? = null
+    // 해시태그별 선택 여부
+    private var bFriendTagIsSelected: Boolean = false
+    private var bFamilyTagIsSelected: Boolean = false
+    private var bLoverTagIsSelected: Boolean = false
+    private var bAnniversaryTagIsSelected: Boolean = false
+    private var bBirthdayTagIsSelected: Boolean = false
+    private var bEmploymentTagIsSelected: Boolean = false
+    private var bGraduationExhibitionTagIsSelected: Boolean = false
+    private var bPartyTagIsSelected: Boolean = false
+    // 무슨색(몇번째) 태그가 클릭되었는지
+    private var bOffWhiteIsUsed: Boolean = false
+    private var bVeryLightPinkIsUsed: Boolean = false
+    private var bLightPeach2IsUsed: Boolean = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -88,235 +88,246 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
         }
     }
 
+    // 무슨 태그가 선택되었는지는 각 태그별 Boolean 값으로 알 수 있음
     private fun setClickListenerToHashTag() {
         binding.tvHashtagFriend.setOnClickListener {
-            // 이미 클릭된 상태였다면
-            if(bFriendTagIsClicked) {
-                if(firstTag.equals(binding.tvHashtagFriend.text.toString()))
-                    firstTag = null
-                else if(secondTag.equals(binding.tvHashtagFriend.text.toString()))
-                    secondTag = null
-                else if(thirdTag.equals(binding.tvHashtagFriend.text.toString()))
-                    thirdTag = null
-                bFriendTagIsClicked = false
+            // 이미 선택된 상태에서 클릭했다면 -> 배경 하얀색으로 변경, 선택 false, 해당 태그 번호 false
+            if(bFriendTagIsSelected) {
+                // 첫번째 태그(off_white)를 사용했다면
+                if(binding.tvHashtagFriend.background.constantState == resources.getDrawable(R.drawable.bg_rectangle_radius_13_off_white, null).constantState)
+                    bOffWhiteIsUsed = false
+                // 두번째 태그(very_light_pink)를 사용했다면
+                else if(binding.tvHashtagFriend.background.constantState == resources.getDrawable(R.drawable.bg_rectangle_radius_13_very_light_pink, null).constantState)
+                    bVeryLightPinkIsUsed = false
+                // 세번째 태그(light_peach_2)를 사용했다면
+                else if(binding.tvHashtagFriend.background.constantState == resources.getDrawable(R.drawable.bg_rectangle_radius_13_light_peach_2, null).constantState)
+                    bLightPeach2IsUsed = false
+                bFriendTagIsSelected = false
                 binding.tvHashtagFriend.setBackgroundResource(R.drawable.bg_rectangle_radius_13_white)
             }
+            // 해당 태그 선택
             else {
-                bFriendTagIsClicked = true
-                if(firstTag == null) {
+                // 첫번째 태그(off_white)를 쓸 수 있다면
+                if(!bOffWhiteIsUsed) {
+                    bFriendTagIsSelected = true
                     binding.tvHashtagFriend.setBackgroundResource(R.drawable.bg_rectangle_radius_13_off_white)
-                    firstTag = binding.tvHashtagFriend.text.toString()
+                    bOffWhiteIsUsed = true
                 }
-                else if(secondTag == null) {
+                // 두번째 태그(very_light_pink)를 쓸 수 있다면
+                else if(!bVeryLightPinkIsUsed) {
+                    bFriendTagIsSelected = true
                     binding.tvHashtagFriend.setBackgroundResource(R.drawable.bg_rectangle_radius_13_very_light_pink)
-                    secondTag = binding.tvHashtagFriend.text.toString()
+                    bVeryLightPinkIsUsed = true
                 }
-                else if(thirdTag == null) {
+                // 세번째 태그(light_peach_2)를 쓸 수 있다면
+                else if(!bLightPeach2IsUsed) {
+                    bFriendTagIsSelected = true
                     binding.tvHashtagFriend.setBackgroundResource(R.drawable.bg_rectangle_radius_13_light_peach_2)
-                    thirdTag = binding.tvHashtagFriend.text.toString()
+                    bLightPeach2IsUsed = true
                 }
+                // 모든 3개의 태그가 사용 중이라면
                 else this.showCustomToast("이미 해시태그 3개를 모두 선택하셨습니다.")
             }
         }
         binding.tvHashtagFamily.setOnClickListener {
-            // 이미 클릭된 상태였다면
-            if(bFamilyTagIsClicked) {
-                if(firstTag.equals(binding.tvHashtagFamily.text.toString()))
-                    firstTag = null
-                else if(secondTag.equals(binding.tvHashtagFamily.text.toString()))
-                    secondTag = null
-                else if(thirdTag.equals(binding.tvHashtagFamily.text.toString()))
-                    thirdTag = null
-                bFamilyTagIsClicked = false
+            if(bFamilyTagIsSelected) {
+                when (binding.tvHashtagFamily.background.constantState) {
+                    resources.getDrawable(R.drawable.bg_rectangle_radius_13_off_white, null).constantState -> bOffWhiteIsUsed = false
+                    resources.getDrawable(R.drawable.bg_rectangle_radius_13_very_light_pink, null).constantState -> bVeryLightPinkIsUsed = false
+                    resources.getDrawable(R.drawable.bg_rectangle_radius_13_light_peach_2, null).constantState -> bLightPeach2IsUsed = false
+                }
+                bFamilyTagIsSelected = false
                 binding.tvHashtagFamily.setBackgroundResource(R.drawable.bg_rectangle_radius_13_white)
             }
             else {
-                bFamilyTagIsClicked = true
-                if(firstTag == null) {
+                if(!bOffWhiteIsUsed) {
+                    bFamilyTagIsSelected = true
                     binding.tvHashtagFamily.setBackgroundResource(R.drawable.bg_rectangle_radius_13_off_white)
-                    firstTag = binding.tvHashtagFriend.text.toString()
+                    bOffWhiteIsUsed = true
                 }
-                else if(secondTag == null) {
+                else if(!bVeryLightPinkIsUsed) {
+                    bFamilyTagIsSelected = true
                     binding.tvHashtagFamily.setBackgroundResource(R.drawable.bg_rectangle_radius_13_very_light_pink)
-                    secondTag = binding.tvHashtagFriend.text.toString()
+                    bVeryLightPinkIsUsed = true
                 }
-                else if(thirdTag == null) {
+                else if(!bLightPeach2IsUsed) {
+                    bFamilyTagIsSelected = true
                     binding.tvHashtagFamily.setBackgroundResource(R.drawable.bg_rectangle_radius_13_light_peach_2)
-                    thirdTag = binding.tvHashtagFamily.text.toString()
+                    bLightPeach2IsUsed = true
                 }
                 else this.showCustomToast("이미 해시태그 3개를 모두 선택하셨습니다.")
             }
         }
         binding.tvHashtagLover.setOnClickListener {
-            // 이미 클릭된 상태였다면
-            if(bLoverTagIsClicked) {
-                if(firstTag.equals(binding.tvHashtagLover.text.toString()))
-                    firstTag = null
-                else if(secondTag.equals(binding.tvHashtagLover.text.toString()))
-                    secondTag = null
-                else if(thirdTag.equals(binding.tvHashtagLover.text.toString()))
-                    thirdTag = null
-                bLoverTagIsClicked = false
+            if(bLoverTagIsSelected) {
+                when (binding.tvHashtagLover.background.constantState) {
+                    resources.getDrawable(R.drawable.bg_rectangle_radius_13_off_white, null).constantState -> bOffWhiteIsUsed = false
+                    resources.getDrawable(R.drawable.bg_rectangle_radius_13_very_light_pink, null).constantState -> bVeryLightPinkIsUsed = false
+                    resources.getDrawable(R.drawable.bg_rectangle_radius_13_light_peach_2, null).constantState -> bLightPeach2IsUsed = false
+                }
+                bLoverTagIsSelected = false
                 binding.tvHashtagLover.setBackgroundResource(R.drawable.bg_rectangle_radius_13_white)
             }
             else {
-                bLoverTagIsClicked = true
-                if(firstTag == null) {
+                if(!bOffWhiteIsUsed) {
+                    bLoverTagIsSelected = true
                     binding.tvHashtagLover.setBackgroundResource(R.drawable.bg_rectangle_radius_13_off_white)
-                    firstTag = binding.tvHashtagLover.text.toString()
+                    bOffWhiteIsUsed = true
                 }
-                else if(secondTag == null) {
+                else if(!bVeryLightPinkIsUsed) {
+                    bLoverTagIsSelected = true
                     binding.tvHashtagLover.setBackgroundResource(R.drawable.bg_rectangle_radius_13_very_light_pink)
-                    secondTag = binding.tvHashtagLover.text.toString()
+                    bVeryLightPinkIsUsed = true
                 }
-                else if(thirdTag == null) {
+                else if(!bLightPeach2IsUsed) {
+                    bLoverTagIsSelected = true
                     binding.tvHashtagLover.setBackgroundResource(R.drawable.bg_rectangle_radius_13_light_peach_2)
-                    thirdTag = binding.tvHashtagLover.text.toString()
+                    bLightPeach2IsUsed = true
                 }
                 else this.showCustomToast("이미 해시태그 3개를 모두 선택하셨습니다.")
             }
         }
         binding.tvHashtagAnniversary.setOnClickListener {
-            // 이미 클릭된 상태였다면
-            if(bAnniversaryTagIsClicked) {
-                if(firstTag.equals(binding.tvHashtagAnniversary.text.toString()))
-                    firstTag = null
-                else if(secondTag.equals(binding.tvHashtagAnniversary.text.toString()))
-                    secondTag = null
-                else if(thirdTag.equals(binding.tvHashtagAnniversary.text.toString()))
-                    thirdTag = null
-                bAnniversaryTagIsClicked = false
+            if(bAnniversaryTagIsSelected) {
+                when (binding.tvHashtagAnniversary.background.constantState) {
+                    resources.getDrawable(R.drawable.bg_rectangle_radius_13_off_white, null).constantState -> bOffWhiteIsUsed = false
+                    resources.getDrawable(R.drawable.bg_rectangle_radius_13_very_light_pink, null).constantState -> bVeryLightPinkIsUsed = false
+                    resources.getDrawable(R.drawable.bg_rectangle_radius_13_light_peach_2, null).constantState -> bLightPeach2IsUsed = false
+                }
+                bAnniversaryTagIsSelected = false
                 binding.tvHashtagAnniversary.setBackgroundResource(R.drawable.bg_rectangle_radius_13_white)
             }
             else {
-                bAnniversaryTagIsClicked = true
-                if(firstTag == null) {
+                if(!bOffWhiteIsUsed) {
+                    bAnniversaryTagIsSelected = true
                     binding.tvHashtagAnniversary.setBackgroundResource(R.drawable.bg_rectangle_radius_13_off_white)
-                    firstTag = binding.tvHashtagAnniversary.text.toString()
+                    bOffWhiteIsUsed = true
                 }
-                else if(secondTag == null) {
+                else if(!bVeryLightPinkIsUsed) {
+                    bAnniversaryTagIsSelected = true
                     binding.tvHashtagAnniversary.setBackgroundResource(R.drawable.bg_rectangle_radius_13_very_light_pink)
-                    secondTag = binding.tvHashtagAnniversary.text.toString()
+                    bVeryLightPinkIsUsed = true
                 }
-                else if(thirdTag == null) {
+                else if(!bLightPeach2IsUsed) {
+                    bAnniversaryTagIsSelected = true
                     binding.tvHashtagAnniversary.setBackgroundResource(R.drawable.bg_rectangle_radius_13_light_peach_2)
-                    thirdTag = binding.tvHashtagAnniversary.text.toString()
+                    bLightPeach2IsUsed = true
                 }
                 else this.showCustomToast("이미 해시태그 3개를 모두 선택하셨습니다.")
             }
         }
         binding.tvHashtagBirthday.setOnClickListener {
-            // 이미 클릭된 상태였다면
-            if(bBirthdayTagIsClicked) {
+            if(bBirthdayTagIsSelected) {
+                when (binding.tvHashtagBirthday.background.constantState) {
+                    resources.getDrawable(R.drawable.bg_rectangle_radius_13_off_white, null).constantState -> bOffWhiteIsUsed = false
+                    resources.getDrawable(R.drawable.bg_rectangle_radius_13_very_light_pink, null).constantState -> bVeryLightPinkIsUsed = false
+                    resources.getDrawable(R.drawable.bg_rectangle_radius_13_light_peach_2, null).constantState -> bLightPeach2IsUsed = false
+                }
+                bBirthdayTagIsSelected = false
                 binding.tvHashtagBirthday.setBackgroundResource(R.drawable.bg_rectangle_radius_13_white)
-                if(firstTag.equals(binding.tvHashtagBirthday.text.toString()))
-                    firstTag = null
-                else if(secondTag.equals(binding.tvHashtagBirthday.text.toString()))
-                    secondTag = null
-                else if(thirdTag.equals(binding.tvHashtagBirthday.text.toString()))
-                    thirdTag = null
-                bBirthdayTagIsClicked = false
             }
             else {
-                bBirthdayTagIsClicked = true
-                if(firstTag == null) {
+                if(!bOffWhiteIsUsed) {
+                    bBirthdayTagIsSelected = true
                     binding.tvHashtagBirthday.setBackgroundResource(R.drawable.bg_rectangle_radius_13_off_white)
-                    firstTag = binding.tvHashtagBirthday.text.toString()
+                    bOffWhiteIsUsed = true
                 }
-                else if(secondTag == null) {
+                else if(!bVeryLightPinkIsUsed) {
+                    bBirthdayTagIsSelected = true
                     binding.tvHashtagBirthday.setBackgroundResource(R.drawable.bg_rectangle_radius_13_very_light_pink)
-                    secondTag = binding.tvHashtagBirthday.text.toString()
+                    bVeryLightPinkIsUsed = true
                 }
-                else if(thirdTag == null) {
+                else if(!bLightPeach2IsUsed) {
+                    bBirthdayTagIsSelected = true
                     binding.tvHashtagBirthday.setBackgroundResource(R.drawable.bg_rectangle_radius_13_light_peach_2)
-                    thirdTag = binding.tvHashtagBirthday.text.toString()
+                    bLightPeach2IsUsed = true
                 }
                 else this.showCustomToast("이미 해시태그 3개를 모두 선택하셨습니다.")
             }
         }
         binding.tvHashtagEmployment.setOnClickListener {
-            // 이미 클릭된 상태였다면
-            if(bEmploymentTagIsClicked) {
-                if(firstTag.equals(binding.tvHashtagEmployment.text.toString()))
-                    firstTag = null
-                else if(secondTag.equals(binding.tvHashtagEmployment.text.toString()))
-                    secondTag = null
-                else if(thirdTag.equals(binding.tvHashtagEmployment.text.toString()))
-                    thirdTag = null
-                bEmploymentTagIsClicked = false
+            if(bEmploymentTagIsSelected) {
+                when (binding.tvHashtagEmployment.background.constantState) {
+                    resources.getDrawable(R.drawable.bg_rectangle_radius_13_off_white, null).constantState -> bOffWhiteIsUsed = false
+                    resources.getDrawable(R.drawable.bg_rectangle_radius_13_very_light_pink, null).constantState -> bVeryLightPinkIsUsed = false
+                    resources.getDrawable(R.drawable.bg_rectangle_radius_13_light_peach_2, null).constantState -> bLightPeach2IsUsed = false
+                }
+                bEmploymentTagIsSelected = false
                 binding.tvHashtagEmployment.setBackgroundResource(R.drawable.bg_rectangle_radius_13_white)
             }
             else {
-                bEmploymentTagIsClicked = true
-                if(firstTag == null) {
+                if(!bOffWhiteIsUsed) {
+                    bEmploymentTagIsSelected = true
                     binding.tvHashtagEmployment.setBackgroundResource(R.drawable.bg_rectangle_radius_13_off_white)
-                    firstTag = binding.tvHashtagEmployment.text.toString()
+                    bOffWhiteIsUsed = true
                 }
-                else if(secondTag == null) {
+                else if(!bVeryLightPinkIsUsed) {
+                    bEmploymentTagIsSelected = true
                     binding.tvHashtagEmployment.setBackgroundResource(R.drawable.bg_rectangle_radius_13_very_light_pink)
-                    secondTag = binding.tvHashtagEmployment.text.toString()
+                    bVeryLightPinkIsUsed = true
                 }
-                else if(thirdTag == null) {
+                else if(!bLightPeach2IsUsed) {
+                    bEmploymentTagIsSelected = true
                     binding.tvHashtagEmployment.setBackgroundResource(R.drawable.bg_rectangle_radius_13_light_peach_2)
-                    thirdTag = binding.tvHashtagEmployment.text.toString()
+                    bLightPeach2IsUsed = true
                 }
                 else this.showCustomToast("이미 해시태그 3개를 모두 선택하셨습니다.")
             }
         }
         binding.tvHashtagGraduationExhibition.setOnClickListener {
-            // 이미 클릭된 상태였다면
-            if(bGraduationExhibitionTagIsClicked) {
-                if(firstTag.equals(binding.tvHashtagGraduationExhibition.text.toString()))
-                    firstTag = null
-                else if(secondTag.equals(binding.tvHashtagGraduationExhibition.text.toString()))
-                    secondTag = null
-                else if(thirdTag.equals(binding.tvHashtagGraduationExhibition.text.toString()))
-                    thirdTag = null
-                bGraduationExhibitionTagIsClicked = false
+            if(bGraduationExhibitionTagIsSelected) {
+                when (binding.tvHashtagGraduationExhibition.background.constantState) {
+                    resources.getDrawable(R.drawable.bg_rectangle_radius_13_off_white, null).constantState -> bOffWhiteIsUsed = false
+                    resources.getDrawable(R.drawable.bg_rectangle_radius_13_very_light_pink, null).constantState -> bVeryLightPinkIsUsed = false
+                    resources.getDrawable(R.drawable.bg_rectangle_radius_13_light_peach_2, null).constantState -> bLightPeach2IsUsed = false
+                }
+                bGraduationExhibitionTagIsSelected = false
                 binding.tvHashtagGraduationExhibition.setBackgroundResource(R.drawable.bg_rectangle_radius_13_white)
             }
             else {
-                bGraduationExhibitionTagIsClicked = true
-                if(firstTag == null) {
+                if(!bOffWhiteIsUsed) {
+                    bGraduationExhibitionTagIsSelected = true
                     binding.tvHashtagGraduationExhibition.setBackgroundResource(R.drawable.bg_rectangle_radius_13_off_white)
-                    firstTag = binding.tvHashtagGraduationExhibition.text.toString()
+                    bOffWhiteIsUsed = true
                 }
-                else if(secondTag == null) {
+                else if(!bVeryLightPinkIsUsed) {
+                    bGraduationExhibitionTagIsSelected = true
                     binding.tvHashtagGraduationExhibition.setBackgroundResource(R.drawable.bg_rectangle_radius_13_very_light_pink)
-                    secondTag = binding.tvHashtagGraduationExhibition.text.toString()
+                    bVeryLightPinkIsUsed = true
                 }
-                else if(thirdTag == null) {
+                else if(!bLightPeach2IsUsed) {
+                    bGraduationExhibitionTagIsSelected = true
                     binding.tvHashtagGraduationExhibition.setBackgroundResource(R.drawable.bg_rectangle_radius_13_light_peach_2)
-                    thirdTag = binding.tvHashtagGraduationExhibition.text.toString()
+                    bLightPeach2IsUsed = true
                 }
                 else this.showCustomToast("이미 해시태그 3개를 모두 선택하셨습니다.")
             }
         }
         binding.tvHashtagParty.setOnClickListener {
-            // 이미 클릭된 상태였다면
-            if(bPartyTagIsClicked) {
-                if(firstTag.equals(binding.tvHashtagParty.text.toString()))
-                    firstTag = null
-                else if(secondTag.equals(binding.tvHashtagParty.text.toString()))
-                    secondTag = null
-                else if(thirdTag.equals(binding.tvHashtagParty.text.toString()))
-                    thirdTag = null
-                bPartyTagIsClicked = false
+            if(bPartyTagIsSelected) {
+                when (binding.tvHashtagParty.background.constantState) {
+                    resources.getDrawable(R.drawable.bg_rectangle_radius_13_off_white, null).constantState -> bOffWhiteIsUsed = false
+                    resources.getDrawable(R.drawable.bg_rectangle_radius_13_very_light_pink, null).constantState -> bVeryLightPinkIsUsed = false
+                    resources.getDrawable(R.drawable.bg_rectangle_radius_13_light_peach_2, null).constantState -> bLightPeach2IsUsed = false
+                }
+                bPartyTagIsSelected = false
                 binding.tvHashtagParty.setBackgroundResource(R.drawable.bg_rectangle_radius_13_white)
             }
             else {
-                bPartyTagIsClicked = true
-                if(firstTag == null) {
+                if(!bOffWhiteIsUsed) {
+                    bPartyTagIsSelected = true
                     binding.tvHashtagParty.setBackgroundResource(R.drawable.bg_rectangle_radius_13_off_white)
-                    firstTag = binding.tvHashtagParty.text.toString()
+                    bOffWhiteIsUsed = true
                 }
-                else if(secondTag == null) {
+                else if(!bVeryLightPinkIsUsed) {
+                    bPartyTagIsSelected = true
                     binding.tvHashtagParty.setBackgroundResource(R.drawable.bg_rectangle_radius_13_very_light_pink)
-                    secondTag = binding.tvHashtagParty.text.toString()
+                    bVeryLightPinkIsUsed = true
                 }
-                else if(thirdTag == null) {
+                else if(!bLightPeach2IsUsed) {
+                    bPartyTagIsSelected = true
                     binding.tvHashtagParty.setBackgroundResource(R.drawable.bg_rectangle_radius_13_light_peach_2)
-                    thirdTag = binding.tvHashtagParty.text.toString()
+                    bLightPeach2IsUsed = true
                 }
                 else this.showCustomToast("이미 해시태그 3개를 모두 선택하셨습니다.")
             }

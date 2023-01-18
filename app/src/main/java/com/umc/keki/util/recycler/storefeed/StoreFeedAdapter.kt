@@ -46,7 +46,6 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
             // 나중에 데이터 구조 보고 변경 - ConsumerStoreFeedActivity
             var img = arrayOfNulls<Drawable>(2)
 
-
             img[0] = context?.getDrawable(R.drawable.ex_cake)
             img[1] = context?.getDrawable(R.drawable.ex_cake)
 
