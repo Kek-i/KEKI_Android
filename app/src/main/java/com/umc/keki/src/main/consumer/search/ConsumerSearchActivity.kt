@@ -5,6 +5,7 @@ import android.app.admin.DelegatedAdminReceiver
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.widget.AdapterView
@@ -33,10 +34,19 @@ class ConsumerSearchActivity : AppCompatActivity() {
         binding = ActivityConsumerSearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        checkNavigateFromHome()
         deleteSearch()
         setCategory()
         searchListRecycler()
         setListenerToEditText()
+    }
+
+    private fun checkNavigateFromHome(){
+        if(intent.getStringExtra("searchTag") != null){
+            var searchTag = intent.getStringExtra("searchTag")
+            binding.etSearch.setText(searchTag)
+            Log.d("searchTag", binding.etSearch.text.toString())
+        }
     }
 
 

@@ -39,5 +39,5 @@
         android:layout_marginBottom="@dimen/store_main_feed_float_bottom"
         app:borderWidth="@dimen/store_main_feed_float_border"/>
     -->
-    
+
 </FrameLayout>
