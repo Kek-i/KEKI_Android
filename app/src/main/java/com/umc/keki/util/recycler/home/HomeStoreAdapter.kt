@@ -6,14 +6,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.bumptech.glide.Glide
 import com.umc.keki.databinding.ItemHomeStoreRecyclerBinding
-import com.umc.keki.src.store.StoreMainActivity
+import com.umc.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedActivity
 
 
 class HomeStoreAdapter(val context: FragmentActivity?): RecyclerView.Adapter<ViewHolder>(){
@@ -54,8 +51,8 @@ class HomeStoreAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
             img.clipToOutline = true
 
             itemView.setOnClickListener{
-                val intent = Intent(context, StoreMainActivity::class.java)
-                intent.run{context?.startActivity(intent)}
+                val intent = Intent(itemView.context, ConsumerStoreDetailFeedActivity::class.java)
+                intent.run { itemView.context?.startActivity(intent) }
             }
         }
     }

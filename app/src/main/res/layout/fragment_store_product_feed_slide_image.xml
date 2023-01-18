@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".src.main.consumer.store.storefeed.StoreFeedSlideImageFragment">
+    tools:context=".src.main.consumer.store.productfeed.StoreProductFeedSlideImageFragment">
 
     <ImageView
-        android:id="@+id/iv_store_feed_img_viewer"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/store_feed_img_height"
+        android:id="@+id/iv_product_feed_img_viewer"
+        android:layout_width="@dimen/store_product_detail_img_size"
+        android:layout_height="@dimen/store_product_detail_img_size"
         android:scaleType="centerCrop"/>
 
 </FrameLayout>

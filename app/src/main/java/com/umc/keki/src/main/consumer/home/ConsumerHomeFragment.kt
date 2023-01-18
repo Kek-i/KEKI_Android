@@ -1,10 +1,13 @@
 package com.umc.keki.src.main.consumer.home
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.umc.keki.R
 import com.umc.keki.config.BaseFragment
 import com.umc.keki.databinding.FragmentConsumerHomeBinding
+import com.umc.keki.src.main.consumer.search.ConsumerSearchActivity
 import com.umc.keki.util.recycler.home.HomeStoreAdapter
 import com.umc.keki.util.recycler.home.HomeStoreData
 
@@ -22,6 +25,8 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
 
         homeStoreFirstRecyclerView()
         homeStoreSecondRecyclerView()
+        navigateToSearchFirstTag()
+        navigateToSearchSecondTag()
     }
 
     private fun homeStoreFirstRecyclerView(){
@@ -48,6 +53,26 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
 
         homeStoreSecondAdapter.homeStoreDatas = homeStoreSecondDatas
         homeStoreSecondAdapter.notifyDataSetChanged()
+    }
+
+    // 첫번째 태그 서치 화면으로 이동
+    private fun navigateToSearchFirstTag(){
+        binding.ivFirstHomeChevronRight.setOnClickListener {
+            val intent = Intent(context, ConsumerSearchActivity::class.java)
+            // tag 넘기기
+            intent.putExtra("searchTag", binding.tvFirstHomeTag.text)
+            startActivity(intent)
+        }
+    }
+
+    // 두번째 태그 서치 화면으로 이동
+    private fun navigateToSearchSecondTag(){
+        binding.ivSecondHomeChevronRight.setOnClickListener {
+            val intent = Intent(context, ConsumerSearchActivity::class.java)
+            // tag 넘기기
+            intent.putExtra("tag", binding.tvSecondHomeTagSecond.text)
+            startActivity(intent)
+        }
     }
 
 }

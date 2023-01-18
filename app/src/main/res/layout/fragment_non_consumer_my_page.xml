@@ -105,7 +105,7 @@
             android:layout_marginLeft="@dimen/my_page_box_left_right"
             android:layout_marginTop="@dimen/my_page_box_top"
             android:layout_marginRight="@dimen/my_page_box_left_right"
-            android:background="@drawable/bg_rectangle_radius_10_white_not_padding"
+            android:background="@drawable/bg_rectangle_radius_10_white_no_padding"
             android:elevation="@dimen/my_page_box_shadow"
             android:layout_marginBottom="@dimen/my_page_large_text_top"
             app:layout_constraintCircleRadius="@dimen/my_page_box_radius"

@@ -1,23 +1,31 @@
-package com.umc.keki.src.store
+package com.umc.keki.src.main.consumer.store
 
 
 import android.os.Bundle
+import android.util.Log
 import androidx.core.content.res.ResourcesCompat
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.umc.keki.R
 import com.umc.keki.config.BaseActivity
-import com.umc.keki.databinding.ActivityStoreMainBinding
+import com.umc.keki.databinding.ActivityConsumerStoreMainBinding
 import com.umc.keki.util.viewpager.storemain.StoreMainDialog
 import com.umc.keki.util.viewpager.storemain.StoreMainVPAdapter
 
-class StoreMainActivity : BaseActivity<ActivityStoreMainBinding>(ActivityStoreMainBinding::inflate) {
+class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>(ActivityConsumerStoreMainBinding::inflate) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        getNickname()
         tabSetting()
         back()
         infoClick()
+    }
+
+    private fun getNickname(){
+        var nickname = intent.getStringExtra("nickname")
+        Log.d("nickname", nickname!!)
+        binding.tvStoreName.text = nickname
     }
 
     private fun tabSetting(){
