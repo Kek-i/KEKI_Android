@@ -6,7 +6,7 @@ import android.widget.TextView
 import com.umc.keki.R
 import com.umc.keki.config.BaseActivity
 import com.umc.keki.databinding.ActivityStoreProductFeedBinding
-import com.umc.keki.src.main.consumer.store.DetailImageAdapter
+import com.umc.keki.src.main.consumer.store.storefeed.DetailImageAdapter
 
 class ConsumerStoreProductFeedActivity : BaseActivity<ActivityStoreProductFeedBinding>(ActivityStoreProductFeedBinding::inflate) {
 

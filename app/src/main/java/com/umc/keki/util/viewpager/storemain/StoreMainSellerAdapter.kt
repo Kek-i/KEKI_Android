@@ -1,16 +1,26 @@
 package com.umc.keki.util.viewpager.storemain
 
 
+import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.umc.keki.databinding.ItemStoreMainRecyclerBinding
+import com.umc.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedActivity
 
 class StoreMainSellerAdapter(private val dataList: ArrayList<StoreMainData>): RecyclerView.Adapter<StoreMainSellerAdapter.DataViewHolder>() {
 
     inner class DataViewHolder(private val viewBinding: ItemStoreMainRecyclerBinding): RecyclerView.ViewHolder(viewBinding.root){
         fun bind(data:StoreMainData){
             viewBinding.ivStoreMain.setImageResource(data.img)
+
+
+            itemView.setOnClickListener{
+                Log.d("itemView", "click")
+                val intent = Intent(itemView.context, ConsumerStoreDetailFeedActivity::class.java)
+                intent.run { itemView.context?.startActivity(intent) }
+            }
         }
     }
 

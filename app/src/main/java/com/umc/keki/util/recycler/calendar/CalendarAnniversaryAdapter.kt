@@ -20,8 +20,8 @@ class CalendarAnniversaryAdapter(private val dataList: MutableList<CalendarAnniv
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         (holder as CalendarAnniversaryViewHolder).bind(dataList[position])
-        (holder as CalendarAnniversaryViewHolder).setClickListenerToDeleteItem(dataList, position, this)
-        (holder as CalendarAnniversaryViewHolder).setClickListenerToViewDetail(dataList[position])
+        holder.setClickListenerToDeleteItem(dataList, position, this)
+        holder.setClickListenerToViewDetail(dataList[position])
     }
 
     override fun getItemCount(): Int = dataList.size
