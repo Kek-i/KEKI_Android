@@ -32,40 +32,37 @@ class ConsumerSearchActivity : AppCompatActivity() {
         binding = ActivityConsumerSearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //검색어 그대로 가져와서 보여주기
-        val searchKey = intent.getStringExtra("search_key")
-        binding.etSearch.setText("$searchKey")
-
-        //검색창 x 누르면 삭제
-        binding.etSearch.setOnTouchListener(OnTouchListener { v, event ->
-            if (event.action == MotionEvent.ACTION_UP)
-                if (event.rawX  >= binding.etSearch.right - binding.etSearch.compoundDrawables.get(2).bounds.width() - 100 )
-                {
-                deleteSearch()
-                return@OnTouchListener true
-                }
-            false
-        })
-
+        deleteSearch()
         setCategory()
         searchListRecycler()
         setListenerToEditText()
     }
 
 
+    //검색창 x 누르면 삭제
     private fun deleteSearch(){
-        binding.etSearch.text = null
+        binding.etSearch.setOnTouchListener(OnTouchListener { v, event ->
+            if (event.action == MotionEvent.ACTION_UP)
+                if (event.rawX  >= binding.etSearch.right - binding.etSearch.compoundDrawables.get(2).bounds.width() - 100 )
+                {
+                    binding.etSearch.text = null
+                    return@OnTouchListener true
+                }
+            false
+        })
     }
 
-    //검색창에서 엔터키 이벤트
+    //검색창 엔터키 이벤트
     private fun setListenerToEditText() {
+        //검색어 그대로 가져와서 보여주기
+        val searchKey = intent.getStringExtra("search_key")
+        binding.etSearch.setText("$searchKey")
+        // 엔터치면 키보드 내리기
         binding.etSearch.setOnKeyListener { view, keyCode, event ->
-            // Enter Key Action
             if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER)
             {
                 val imm = this@ConsumerSearchActivity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(binding.etSearch.windowToken, 0)
-                val searchKey = binding.etSearch.text
             }
             false
         }
