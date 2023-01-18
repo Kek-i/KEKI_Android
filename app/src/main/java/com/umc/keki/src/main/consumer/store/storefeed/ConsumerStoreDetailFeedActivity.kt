@@ -1,12 +1,12 @@
-package com.umc.keki.src.main.consumer.store
+package com.umc.keki.src.main.consumer.store.storefeed
 
 import android.os.Bundle
 import com.umc.keki.config.BaseActivity
-import com.umc.keki.databinding.ActivityConsumerStoreFeedBinding
+import com.umc.keki.databinding.ActivityConsumerStoreDetailFeedBinding
 import com.umc.keki.util.recycler.storefeed.StoreFeedAdapter
 import com.umc.keki.util.recycler.storefeed.StoreFeedData
 
-class ConsumerStoreFeedActivity : BaseActivity<ActivityConsumerStoreFeedBinding>(ActivityConsumerStoreFeedBinding::inflate) {
+class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetailFeedBinding>(ActivityConsumerStoreDetailFeedBinding::inflate) {
 
     lateinit var storeFeedAdapter : StoreFeedAdapter
     val storeFeedDatas = mutableListOf<StoreFeedData>()
