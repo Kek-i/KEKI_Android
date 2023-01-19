@@ -10,7 +10,8 @@
         android:id="@+id/main_frm"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="?attr/actionBarSize" />
+        android:layout_marginBottom="?attr/actionBarSize"
+        app:layout_constraintBottom_toTopOf="@id/main_btm_nav"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/main_btm_nav"

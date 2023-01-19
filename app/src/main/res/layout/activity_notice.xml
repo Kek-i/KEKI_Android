@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_chevron_left"
+        android:layout_marginLeft="@dimen/my_page_condition_ic_back_left"
+        android:layout_marginTop="@dimen/my_page_condition_ic_back_top"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_main_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/my_page_condition_main_text_left"
+        android:layout_marginTop="@dimen/my_page_condition_main_text_top"
+        android:fontFamily="@font/notosanskr_bold"
+        android:includeFontPadding="false"
+        android:text="@string/notice_main"
+        android:textColor="@color/black"
+        android:textSize="@dimen/my_page_condition_main_text_size"
+        app:layout_constraintStart_toEndOf="@id/iv_back"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_notice"
+        android:layout_width="@dimen/notice_rv_width_height"
+        android:layout_height="@dimen/notice_rv_width_height"
+        android:layout_marginTop="@dimen/notice_top"
+        android:layout_marginLeft="@dimen/notice_left_right"
+        android:layout_marginRight="@dimen/notice_left_right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_main_text"
+        tools:listitem="@layout/item_notice_recycler"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

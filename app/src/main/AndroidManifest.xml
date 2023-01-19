@@ -1,20 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.umc.keki">
+    package="com.codepatissier.keki">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".config.ApplicationClass"
+        android:name="com.codepatissier.keki.config.ApplicationClass"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        >
+        android:theme="@style/AppTheme">
+
         <activity
-            android:name=".src.splash.SplashActivity"
+            android:name="com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity
+            android:name="com.codepatissier.keki.src.main.login.EditProfileActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name="com.codepatissier.keki.src.main.login.IntroActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name="com.codepatissier.keki.src.main.login.LoginActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name="com.codepatissier.keki.src.splash.SplashActivity"
             android:screenOrientation="portrait"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">
@@ -26,27 +52,72 @@
         </activity>
 
         <activity
-            android:name=".src.MainActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-
-
-        <activity
-            android:name=".src.store.StoreMainActivity"
+            android:name="com.codepatissier.keki.src.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustNothing"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
+
         <activity
-            android:name=".src.main.consumer.search.ConsumerSearchActivity"
+            android:name="com.codepatissier.keki.src.main.consumer.store.ConsumerStoreMainActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+            android:name="com.codepatissier.keki.src.main.consumer.calendar.ConsumerCalendarDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name="com.codepatissier.keki.src.main.consumer.calendar.ConsumerCalendarAddActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name="com.codepatissier.keki.src.main.consumer.search.ConsumerSearchActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name="com.codepatissier.keki.src.main.consumer.mypage.ConsumerConditionActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name="com.codepatissier.keki.src.main.consumer.mypage.ConsumerProfileEditActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name="com.codepatissier.keki.src.main.consumer.mypage.NoticeActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name="com.codepatissier.keki.src.main.consumer.mypage.NoticeDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity android:name="com.codepatissier.keki.src.main.consumer.store.productfeed.ConsumerStoreProductDetailFeedActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
 
     </application>
 
