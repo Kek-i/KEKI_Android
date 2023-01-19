@@ -29,7 +29,11 @@ class AccessRightDialog(context: Context): Dialog(context) {
 
     private fun checkBtn(){
         binding.btnCheck1.setOnClickListener{
-            context.startActivity(Intent(context, IntroActivity::class.java))
+            this.dismiss()
+            //확인 버튼 눌렀을 때 종료 flag
+            val intro = Intent(context, IntroActivity::class.java)
+            intro.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            context.startActivity(intro)
         }
     }
 }
