@@ -35,7 +35,7 @@
         android:layout_height="@dimen/intro_select_shadow_width"
         android:layout_marginTop="@dimen/intro_select_shadow_marginTop"
         android:background="@drawable/bg_circle_radius_50_shadow"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="@+id/ib_customer_logo"
         app:layout_constraintTop_toBottomOf="@+id/tv_intro_comment"/>
 
@@ -57,7 +57,7 @@
         android:layout_height="@dimen/intro_select_shadow_width"
         android:layout_marginTop="@dimen/intro_select_shadow_marginTop"
         android:background="@drawable/bg_circle_radius_50_shadow"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="@+id/ib_seller_logo"
         app:layout_constraintTop_toBottomOf="@+id/tv_intro_comment"/>
 
