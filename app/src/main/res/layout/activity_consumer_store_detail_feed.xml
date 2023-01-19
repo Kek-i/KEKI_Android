@@ -28,6 +28,9 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="@dimen/store_feed_chevron_top"
         android:layout_marginStart="@dimen/store_feed_chevron_start"
+        android:paddingTop="@dimen/chevron_padding_top_bottom"
+        android:paddingBottom="@dimen/chevron_padding_top_bottom"
+        android:paddingEnd="@dimen/chevron_padding_start"
         android:src="@drawable/ic_chevron_left"/>
 
 
