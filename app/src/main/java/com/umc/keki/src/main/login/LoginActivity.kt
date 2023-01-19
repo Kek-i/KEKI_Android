@@ -3,16 +3,15 @@ package com.umc.keki.src.main.login
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.umc.keki.config.BaseActivity
+import com.umc.keki.databinding.ActivityIntroBinding
 import com.umc.keki.databinding.ActivityLoginBinding
 import com.umc.keki.util.viewpager.login.AccessRightDialog
 
-class LoginActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityLoginBinding
+class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
         checkAccessRight()
     }
