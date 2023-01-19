@@ -142,6 +142,9 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_first_home_tag"
+                    android:paddingStart="@dimen/chevron_padding_start"
+                    android:paddingTop="@dimen/chevron_padding_top_bottom"
+                    android:paddingBottom="@dimen/chevron_padding_top_bottom"
                     android:layout_marginEnd="@dimen/home_ic_chevron_right_end"
                     />
 
@@ -194,6 +197,9 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_second_home_tag_second"
+                    android:paddingStart="@dimen/chevron_padding_start"
+                    android:paddingTop="@dimen/chevron_padding_top_bottom"
+                    android:paddingBottom="@dimen/chevron_padding_top_bottom"
                     android:layout_marginEnd="@dimen/home_ic_chevron_right_end"
                     />
 

@@ -32,6 +32,8 @@
     <dimen name="home_tag_padding_start">10dp</dimen>
     <dimen name="home_tag_padding_end">10dp</dimen>
     <dimen name="home_ic_chevron_right_end">14dp</dimen>
+    <dimen name="chevron_padding_start">20dp</dimen>
+    <dimen name="chevron_padding_top_bottom">10dp</dimen>
 
     <dimen name="home_cake_store_img_size">130dp</dimen>
     <dimen name="home_cake_store_img_radius">20dp</dimen>
