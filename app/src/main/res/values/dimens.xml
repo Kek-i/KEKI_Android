@@ -42,6 +42,7 @@
     <dimen name="home_store_tv_margin_start_end">9dp</dimen>
     <dimen name="home_store_iv_elevation">5dp</dimen>
     <dimen name="home_store_iv_rec_width">1dp</dimen>
+    <dimen name="home_store_padding_bottom">10dp</dimen>
 
 
     <!-- splash -->
