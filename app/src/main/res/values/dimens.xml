@@ -40,7 +40,7 @@
     <dimen name="home_store_tv_margin_top">10dp</dimen>
     <dimen name="home_store_tv_size">14sp</dimen>
     <dimen name="home_store_tv_margin_start_end">9dp</dimen>
-    <dimen name="home_store_iv_elevation">5dp</dimen>
+    <dimen name="home_store_iv_elevation">0dp</dimen>
     <dimen name="home_store_iv_rec_width">1dp</dimen>
     <dimen name="home_store_padding_bottom">10dp</dimen>
 
