@@ -61,7 +61,7 @@
 
 
         <activity
-            android:name=".src.main.consumer.store.ConsumerStoreMainActivity"
+            android:name=".src.storeMain.ConsumerStoreMainActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">

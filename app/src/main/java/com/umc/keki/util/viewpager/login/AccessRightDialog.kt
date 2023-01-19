@@ -1,12 +1,12 @@
 package com.umc.keki.util.viewpager.login
 
+import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Window
-import com.umc.keki.databinding.DialogAccessRightBinding
 import com.umc.keki.src.main.login.IntroActivity
 
 
@@ -29,7 +29,11 @@ class AccessRightDialog(context: Context): Dialog(context) {
 
     private fun checkBtn(){
         binding.btnCheck1.setOnClickListener{
-            context.startActivity(Intent(context, IntroActivity::class.java))
+            this.dismiss()
+            //확인 버튼 눌렀을 때 종료 flag
+            val intro = Intent(context, IntroActivity::class.java)
+            intro.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            context.startActivity(intro)
         }
     }
 }

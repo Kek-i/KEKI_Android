@@ -3,8 +3,8 @@ package com.umc.keki.util.viewpager.storemain
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.umc.keki.src.main.consumer.store.ConsumerProductFeedFragment
-import com.umc.keki.src.main.consumer.store.ConsumerStoreFeedFragment
+import com.umc.keki.src.storeMain.ConsumerProductFeedFragment
+import com.umc.keki.src.storeMain.ConsumerStoreFeedFragment
 
 
 class StoreMainVPAdapter(fragmentActivity: FragmentActivity):FragmentStateAdapter(fragmentActivity) {

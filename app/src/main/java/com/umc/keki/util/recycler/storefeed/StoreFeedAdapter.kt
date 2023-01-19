@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.umc.keki.R
 import com.umc.keki.databinding.ItemStoreFeedRecyclerBinding
-import com.umc.keki.src.main.consumer.store.ConsumerStoreMainActivity
+import com.umc.keki.src.storeMain.ConsumerStoreMainActivity
 import com.umc.keki.src.main.consumer.store.storefeed.DetailImageAdapter
 
 class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<ViewHolder>() {
@@ -50,6 +50,7 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
 
             img[0] = context?.getDrawable(R.drawable.ex_cake)
             img[1] = context?.getDrawable(R.drawable.ex_cake)
+
 
             val pagerAdapter = DetailImageAdapter(context!!, img)
             binding.vpStoreFeedImg.adapter = pagerAdapter

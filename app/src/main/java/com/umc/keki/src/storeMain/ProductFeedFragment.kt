@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:app/src/main/java/com/umc/keki/src/main/consumer/store/ConsumerProductFeedFragment.kt
-package com.umc.keki.src.main.consumer.store
-========
 package com.umc.keki.src.storeMain
->>>>>>>> origin/develop:app/src/main/java/com/umc/keki/src/storeMain/ProductFeedFragment.kt
 
 import android.os.Bundle
 import android.view.View

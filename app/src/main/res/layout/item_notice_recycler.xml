@@ -6,7 +6,7 @@
     android:layout_marginBottom="@dimen/notice_rv_item_bottom"
     android:layout_marginLeft="@dimen/notice_rv_item_left_right"
     android:layout_marginRight="@dimen/notice_rv_item_left_right"
-    android:background="@drawable/bg_rectangle_radius_10_white_not_padding"
+    android:background="@drawable/bg_rectangle_radius_10_white_no_padding"
     android:elevation="@dimen/notice_rv_item_shadow">
 
     <TextView

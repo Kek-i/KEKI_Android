@@ -93,15 +93,14 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
         binding.tvHashtagFriend.setOnClickListener {
             // 이미 선택된 상태에서 클릭했다면 -> 배경 하얀색으로 변경, 선택 false, 해당 태그 번호 false
             if(bFriendTagIsSelected) {
-                // 첫번째 태그(off_white)를 사용했다면
-                if(binding.tvHashtagFriend.background.constantState == resources.getDrawable(R.drawable.bg_rectangle_radius_13_off_white, null).constantState)
-                    bOffWhiteIsUsed = false
-                // 두번째 태그(very_light_pink)를 사용했다면
-                else if(binding.tvHashtagFriend.background.constantState == resources.getDrawable(R.drawable.bg_rectangle_radius_13_very_light_pink, null).constantState)
-                    bVeryLightPinkIsUsed = false
-                // 세번째 태그(light_peach_2)를 사용했다면
-                else if(binding.tvHashtagFriend.background.constantState == resources.getDrawable(R.drawable.bg_rectangle_radius_13_light_peach_2, null).constantState)
-                    bLightPeach2IsUsed = false
+                when (binding.tvHashtagFriend.background.constantState) {
+                    // 첫번째 태그(off_white)를 사용했다면
+                    resources.getDrawable(R.drawable.bg_rectangle_radius_13_off_white, null).constantState -> bOffWhiteIsUsed = false
+                    // 두번째 태그(very_light_pink)를 사용했다면
+                    resources.getDrawable(R.drawable.bg_rectangle_radius_13_very_light_pink, null).constantState -> bVeryLightPinkIsUsed = false
+                    // 세번째 태그(light_peach_2)를 사용했다면
+                    resources.getDrawable(R.drawable.bg_rectangle_radius_13_light_peach_2, null).constantState -> bLightPeach2IsUsed = false
+                }
                 bFriendTagIsSelected = false
                 binding.tvHashtagFriend.setBackgroundResource(R.drawable.bg_rectangle_radius_13_white)
             }

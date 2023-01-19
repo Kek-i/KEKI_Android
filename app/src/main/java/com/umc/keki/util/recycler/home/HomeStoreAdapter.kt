@@ -10,7 +10,6 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.umc.keki.databinding.ItemHomeStoreRecyclerBinding
-import com.umc.keki.src.main.consumer.store.ConsumerStoreMainActivity
 import com.umc.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedActivity
 
 
