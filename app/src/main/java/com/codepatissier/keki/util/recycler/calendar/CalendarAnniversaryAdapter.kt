@@ -7,14 +7,22 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.codepatissier.keki.databinding.ItemCalendarAnniversaryRecyclerBinding
 import com.codepatissier.keki.src.main.consumer.calendar.ConsumerCalendarDetailActivity
+import com.codepatissier.keki.src.main.consumer.calendar.ConsumerCalendarFragment
+import com.daimajia.swipe.adapters.RecyclerSwipeAdapter
 
-class CalendarAnniversaryAdapter(private val dataList: MutableList<CalendarAnniversaryData>):
-    RecyclerView.Adapter<ViewHolder>() {
+
+class CalendarAnniversaryAdapter(
+    private val dataList: MutableList<CalendarAnniversaryData>,
+    swipeListener: ConsumerCalendarFragment.SwipeListener
+):
+    RecyclerSwipeAdapter<ViewHolder>() {
     private lateinit var itemBinding: ItemCalendarAnniversaryRecyclerBinding
+    private val swipeListener = swipeListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemBinding = ItemCalendarAnniversaryRecyclerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         this.itemBinding = itemBinding
+        itemBinding.swipeLayout.addSwipeListener(swipeListener)
         return CalendarAnniversaryViewHolder(itemBinding)
     }
 
@@ -25,6 +33,10 @@ class CalendarAnniversaryAdapter(private val dataList: MutableList<CalendarAnniv
     }
 
     override fun getItemCount(): Int = dataList.size
+
+    override fun getSwipeLayoutResourceId(position: Int): Int {
+        return com.codepatissier.keki.R.id.swipe_layout
+    }
 
     class CalendarAnniversaryViewHolder(private val itemBinding: ItemCalendarAnniversaryRecyclerBinding): RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(item: CalendarAnniversaryData) {
@@ -60,5 +72,4 @@ class CalendarAnniversaryAdapter(private val dataList: MutableList<CalendarAnniv
             }
         }
     }
-
 }
