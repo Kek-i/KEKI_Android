@@ -27,7 +27,7 @@
             android:includeFontPadding="false"
             />
 
-        <com.umc.keki.util.recycler.RecyclerViewEmptySupport
+        <com.codepatissier.keki.util.recycler.RecyclerViewEmptySupport
             android:id="@+id/rv_calendar_anniversary"
             android:layout_width="match_parent"
             android:layout_height="@dimen/calendar_rv_height"

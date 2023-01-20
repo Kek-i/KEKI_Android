@@ -39,6 +39,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/iv_store_feed_seller"
+        android:paddingStart="@dimen/report_padding_start"
+        android:paddingTop="@dimen/report_padding_top_bottom"
+        android:paddingBottom="@dimen/report_padding_top_bottom"
         android:src="@drawable/ic_report"
         android:layout_marginEnd="@dimen/store_feed_margin_start_end"
         />
