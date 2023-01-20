@@ -2,34 +2,48 @@ package com.codepatissier.keki.util.recycler.calendar
 
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.codepatissier.keki.databinding.FragmentConsumerCalendarBinding
 import com.codepatissier.keki.databinding.ItemCalendarAnniversaryRecyclerBinding
 import com.codepatissier.keki.src.main.consumer.calendar.ConsumerCalendarDetailActivity
-import com.codepatissier.keki.src.main.consumer.calendar.ConsumerCalendarFragment
+import com.daimajia.swipe.SimpleSwipeListener
+import com.daimajia.swipe.SwipeLayout
 import com.daimajia.swipe.adapters.RecyclerSwipeAdapter
 
 
 class CalendarAnniversaryAdapter(
     private val dataList: MutableList<CalendarAnniversaryData>,
-    swipeListener: ConsumerCalendarFragment.SwipeListener
+    fragmentBinding: FragmentConsumerCalendarBinding
 ):
-    RecyclerSwipeAdapter<ViewHolder>() {
+    RecyclerSwipeAdapter<CalendarAnniversaryAdapter.CalendarAnniversaryViewHolder>() {
     private lateinit var itemBinding: ItemCalendarAnniversaryRecyclerBinding
-    private val swipeListener = swipeListener
+    private val fragmentBinding = fragmentBinding
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarAnniversaryViewHolder {
         val itemBinding = ItemCalendarAnniversaryRecyclerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         this.itemBinding = itemBinding
-        itemBinding.swipeLayout.addSwipeListener(swipeListener)
         return CalendarAnniversaryViewHolder(itemBinding)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        (holder as CalendarAnniversaryViewHolder).bind(dataList[position])
+    override fun onBindViewHolder(holder: CalendarAnniversaryViewHolder, position: Int) {
+        var position = position
+        holder.bind(dataList[position])
         holder.setClickListenerToDeleteItem(dataList, position, this)
         holder.setClickListenerToViewDetail(dataList[position])
+        holder.swipeLayout.addSwipeListener(object : SimpleSwipeListener() {
+            override fun onOpen(layout: SwipeLayout?) {
+                // fab 사라지기
+                fragmentBinding.fabCalendarAdd.visibility = View.GONE
+//                openItem(position)
+            }
+            override fun onClose(layout: SwipeLayout?) {
+                // fab 생기기
+                fragmentBinding.fabCalendarAdd.visibility = View.VISIBLE
+//                closeItem(position)
+            }
+        })
     }
 
     override fun getItemCount(): Int = dataList.size
@@ -39,6 +53,8 @@ class CalendarAnniversaryAdapter(
     }
 
     class CalendarAnniversaryViewHolder(private val itemBinding: ItemCalendarAnniversaryRecyclerBinding): RecyclerView.ViewHolder(itemBinding.root) {
+        var swipeLayout = itemBinding.swipeLayout
+
         fun bind(item: CalendarAnniversaryData) {
             itemBinding.tvAnniversaryTitle.text = item.title
             itemBinding.tvAnniversaryDate.text = item.date
@@ -72,4 +88,5 @@ class CalendarAnniversaryAdapter(
             }
         }
     }
+
 }

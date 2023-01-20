@@ -3,10 +3,7 @@ package com.codepatissier.keki.src.main.consumer.calendar
 import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import com.codepatissier.keki.R
@@ -14,8 +11,6 @@ import com.codepatissier.keki.config.BaseFragment
 import com.codepatissier.keki.databinding.FragmentConsumerCalendarBinding
 import com.codepatissier.keki.util.recycler.calendar.CalendarAnniversaryAdapter
 import com.codepatissier.keki.util.recycler.calendar.CalendarAnniversaryData
-import com.daimajia.swipe.SimpleSwipeListener
-import com.daimajia.swipe.SwipeLayout
 import com.daimajia.swipe.adapters.RecyclerSwipeAdapter
 import com.daimajia.swipe.util.Attributes
 
@@ -46,7 +41,7 @@ class ConsumerCalendarFragment : BaseFragment<FragmentConsumerCalendarBinding>
         binding.rvCalendarAnniversary.addItemDecoration(RecyclerViewDecoration(18))
         binding.rvCalendarAnniversary.setEmptyView(binding.layoutEmptyCalendar)
         binding.rvCalendarAnniversary.setFullView(binding.ivCalendarCherry)
-        calendarAnniversaryAdapter = CalendarAnniversaryAdapter(calendarAnniversaryDataList, SwipeListener(binding))
+        calendarAnniversaryAdapter = CalendarAnniversaryAdapter(calendarAnniversaryDataList, binding)
         (calendarAnniversaryAdapter as RecyclerSwipeAdapter<*>).mode = Attributes.Mode.Single
         binding.rvCalendarAnniversary.adapter = calendarAnniversaryAdapter
     }
@@ -67,19 +62,6 @@ class ConsumerCalendarFragment : BaseFragment<FragmentConsumerCalendarBinding>
         binding.fabCalendarAdd.setOnClickListener {
             val intent = Intent(this.context, ConsumerCalendarAddActivity::class.java)
             this.startActivity(intent)
-        }
-    }
-
-    class SwipeListener(binding: FragmentConsumerCalendarBinding) : SimpleSwipeListener() {
-        val binding = binding
-
-        override fun onStartOpen(layout: SwipeLayout) {
-            // fab 사라지기
-            binding.fabCalendarAdd.visibility = GONE
-        }
-        override fun onClose(layout: SwipeLayout) {
-            // fab 생기기
-            binding.fabCalendarAdd.visibility = VISIBLE
         }
     }
 
