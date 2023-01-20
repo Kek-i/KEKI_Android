@@ -21,7 +21,7 @@
         app:itemBackground="@color/white"
         app:itemIconTint="@drawable/main_btm_nav_item_color"
         app:itemTextColor="@drawable/main_btm_nav_item_color"
-        app:labelVisibilityMode="labeled"
+        app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/menu_consumer_main_bottom_nav" />
 
