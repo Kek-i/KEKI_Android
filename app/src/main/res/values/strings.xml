@@ -147,6 +147,8 @@
     <string name="search_spinner_price">가격낮은순</string>
     <string name="search_empty_list">검색결과가 없습니다.</string>
 
+    <string name="like_comment">준비중인 기능입니다.</string>
+
 
 
 </resources>
