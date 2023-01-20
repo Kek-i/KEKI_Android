@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView.inflate
 import com.codepatissier.keki.R
 import com.codepatissier.keki.databinding.ItemStoreFeedRecyclerBinding
 import com.codepatissier.keki.src.main.consumer.store.ConsumerStoreMainActivity
+import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedDialog
 import com.codepatissier.keki.src.main.consumer.store.storefeed.DetailImageAdapter
 
 class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<ViewHolder>() {
@@ -104,7 +105,9 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
                     when(it.itemId){
                         R.id.popup_report -> {
                             Log.d("click", "report")
-                            // 신고하기
+                            // 이후에 해당 게시물 신고되는거 맞는지 확인하기
+                            ConsumerStoreDetailFeedDialog(context!!).show()
+
                             return@setOnMenuItemClickListener true
                         }else -> {
                             return@setOnMenuItemClickListener false
