@@ -23,6 +23,10 @@ class CalendarAnniversaryAdapter(
     private val fragmentBinding = fragmentBinding
     // 아이템이 스와이프됐는지 여부 List
     private var isSwipedItemList: MutableList<Boolean> = MutableList(dataList.size) { false }
+    // SwipeListener에서 스와이프 시 플로팅 버튼 안 보이게 하기 위한 변수
+    private var swipedLayout: SwipeLayout? = null // 스와이프된 가장 최근 레이아웃
+    private var isOpenLayout: Boolean = false // var swipedLayout이 open인지 여부
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarAnniversaryViewHolder {
         val itemBinding = ItemCalendarAnniversaryRecyclerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -38,40 +42,28 @@ class CalendarAnniversaryAdapter(
         holder.setClickListenerToDeleteItem(dataList, isSwipedItemList, position, this)
         holder.setClickListenerToViewDetail(dataList[position], isSwipedItemList, this)
         holder.swipeLayout.addSwipeListener(object : SimpleSwipeListener() {
-            private var swipedLayout: SwipeLayout? = null // // 스와이프된 가장 최근 레이아웃
-            private var isOpenLayout: Boolean = false // var swipeLayout이 open인지 여부
-
-            override fun onStartOpen(layout: SwipeLayout?) {
-//                if(fragmentBinding.fabCalendarAdd.visibility == View.VISIBLE)
-//                    fragmentBinding.fabCalendarAdd.visibility = View.GONE
-                Log.d("position: onStartOpen", "$position")
-            }
             override fun onOpen(layout: SwipeLayout?) {
-//                if(fragmentBinding.fabCalendarAdd.visibility == View.VISIBLE)
-//                fragmentBinding.fabCalendarAdd.visibility = View.GONE
+                fragmentBinding.fabCalendarAdd.visibility = View.GONE
                 if(position < isSwipedItemList.size) {
                     isSwipedItemList[position] = true
                     swipedLayout = layout
                     isOpenLayout = true
                 }
+            }
 
-                Log.d("position: onOpen", "$position")
-            }
-            override fun onStartClose(layout: SwipeLayout?) {
-//                if(fragmentBinding.fabCalendarAdd.visibility == View.GONE)
-//                    fragmentBinding.fabCalendarAdd.visibility = View.VISIBLE
-                Log.d("position: onStartClose", "$position")
-            }
             override fun onClose(layout: SwipeLayout?) {
                 if(position < isSwipedItemList.size) {
                     isSwipedItemList[position] = false
                     if(swipedLayout == layout) {
-                        isOpenLayout = false
-//                        fragmentBinding.fabCalendarAdd.visibility = View.VISIBLE
+                        if(isOpenLayout) {
+                            isOpenLayout = false
+                        }
+                        fragmentBinding.fabCalendarAdd.visibility = View.VISIBLE
+                    }
+                    else {
+                        fragmentBinding.fabCalendarAdd.visibility = View.GONE
                     }
                 }
-
-                Log.d("position: onClose", "$position")
             }
         })
     }
@@ -87,6 +79,7 @@ class CalendarAnniversaryAdapter(
         for(i in 0 until isSwipedItemList.size) {
             isSwipedItemList[i] = false
         }
+        isOpenLayout = false
     }
 
     class CalendarAnniversaryViewHolder(private val itemBinding: ItemCalendarAnniversaryRecyclerBinding): RecyclerView.ViewHolder(itemBinding.root) {
@@ -108,6 +101,7 @@ class CalendarAnniversaryAdapter(
                 isSwipedItemList.removeLast()
                 adapter.removeShownLayouts(itemBinding.swipeLayout)
                 adapter.closeAllItems()
+                adapter.fragmentBinding.fabCalendarAdd.visibility = View.VISIBLE
                 dataList.removeAt(position)
                 adapter.notifyDataSetChanged()
                 // 아래의 removed가 붙은 함수를 사용하면 empty view가 뜨지 않음
