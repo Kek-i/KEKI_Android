@@ -37,7 +37,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_store_feed"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/consumer_store_detail_recycler_height"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@id/tv_store_feed"
         app:layout_constraintBottom_toBottomOf="parent"

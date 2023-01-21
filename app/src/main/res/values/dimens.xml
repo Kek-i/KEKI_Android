@@ -79,6 +79,7 @@
     <dimen name="report_margin_top">5dp</dimen>
     <dimen name="report_margin_end">4dp</dimen>
     <dimen name="splash_comment_size">14sp</dimen>
+    <dimen name="consumer_store_detail_recycler_height">0dp</dimen>
 
     <!-- report -->
     <dimen name="dialog_report_title_size">18sp</dimen>
