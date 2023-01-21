@@ -148,5 +148,19 @@
     <string name="search_empty_list">검색결과가 없습니다.</string>
 
 
+    <!-- 판매자 -->
+
+    <!-- edit_profile -->
+    <string name="tv_seller_profile_setting_title">판매자 프로필 설정</string>
+    <string name="tv_seller_profile_edit_title">프로필 편집</string>
+    <string name="seller_profile_setting_tv1">사업자정보</string>
+    <string name="seller_profile_setting_et1">가게이름을 입력해주세요.</string>
+    <string name="seller_profile_setting_et2">가게주소를 입력해주세요.</string>
+    <string name="seller_profile_setting_et3">간단히 가게를 소개해주세요. (최대 100자)</string>
+    <string name="seller_profile_setting_et4">주문 링크를 입력해주세요.</string>
+    <string name="seller_profile_setting_et6">대표자명을 입력해주세요.</string>
+    <string name="seller_profile_setting_et7">사업자등록증에 표기된 사업자주소\n입력해주세요.</string>
+    <string name="seller_profile_setting_et8">사업자등록번호를 입력해주세요.</string>
+
 
 </resources>
