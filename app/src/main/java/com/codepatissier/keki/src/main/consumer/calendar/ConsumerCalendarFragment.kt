@@ -7,6 +7,7 @@ import android.view.View
 import android.view.View.GONE
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
+import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseFragment
 import com.codepatissier.keki.databinding.FragmentConsumerCalendarBinding
@@ -43,6 +44,13 @@ class ConsumerCalendarFragment : BaseFragment<FragmentConsumerCalendarBinding>
         binding.rvCalendarAnniversary.setEmptyView(binding.layoutEmptyCalendar)
         binding.rvCalendarAnniversary.setFullView(binding.ivCalendarCherry)
         calendarAnniversaryAdapter = CalendarAnniversaryAdapter(calendarAnniversaryDataList, binding)
+        binding.rvCalendarAnniversary.addOnScrollListener(object : OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if(newState == RecyclerView.SCROLL_STATE_DRAGGING)
+                    calendarAnniversaryAdapter.closeAllItems()
+            }
+        })
         calendarAnniversaryAdapter.mode = Attributes.Mode.Single
         binding.rvCalendarAnniversary.adapter = calendarAnniversaryAdapter
     }

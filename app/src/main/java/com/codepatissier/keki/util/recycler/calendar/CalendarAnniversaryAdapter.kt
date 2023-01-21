@@ -107,7 +107,6 @@ class CalendarAnniversaryAdapter(
             itemBinding.layoutDelFrame.setOnClickListener {
                 isSwipedItemList.removeLast()
                 adapter.removeShownLayouts(itemBinding.swipeLayout)
-                adapter.closeItem(position)
                 adapter.closeAllItems()
                 dataList.removeAt(position)
                 adapter.notifyDataSetChanged()
@@ -136,6 +135,11 @@ class CalendarAnniversaryAdapter(
                     intent.putExtra("secondTag", data.secondTag)
                     intent.putExtra("thirdTag", data.thirdTag)
                     (it.context).startActivity(intent)
+
+//                    if(!adapter.openLayouts.contains(swipeLayout))
+//                        adapter.openLayouts.add(swipeLayout)
+                    itemBinding.swipeLayout.close()
+                    isSwipedItemList[adapterPosition] = false
                 }
             }
         }
