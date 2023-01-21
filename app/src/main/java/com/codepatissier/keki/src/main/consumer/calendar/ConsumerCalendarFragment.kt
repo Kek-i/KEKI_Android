@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
+import android.view.View.GONE
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import com.codepatissier.keki.R
@@ -38,11 +39,11 @@ class ConsumerCalendarFragment : BaseFragment<FragmentConsumerCalendarBinding>
             }
         }
 
-        binding.rvCalendarAnniversary.addItemDecoration(RecyclerViewDecoration(18))
+        binding.rvCalendarAnniversary.addItemDecoration(RecyclerViewDecoration(20))
         binding.rvCalendarAnniversary.setEmptyView(binding.layoutEmptyCalendar)
         binding.rvCalendarAnniversary.setFullView(binding.ivCalendarCherry)
         calendarAnniversaryAdapter = CalendarAnniversaryAdapter(calendarAnniversaryDataList, binding)
-        (calendarAnniversaryAdapter as RecyclerSwipeAdapter<*>).mode = Attributes.Mode.Single
+        calendarAnniversaryAdapter.mode = Attributes.Mode.Single
         binding.rvCalendarAnniversary.adapter = calendarAnniversaryAdapter
     }
 
