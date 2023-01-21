@@ -584,4 +584,21 @@
     <dimen name="store_product_detail_cake_price_font">16sp</dimen>
     <dimen name="store_product_detail_cake_detail_font">11sp</dimen>
 
+    <dimen name="seller_product_detail_feed_delete_dialog_btn_width">109dp</dimen>
+    <dimen name="seller_product_detail_feed_delete_dialog_btn_height">36dp</dimen>
+    <dimen name="seller_product_detail_feed_delete_dialog_btn_marginTop">15dp</dimen>
+    <dimen name="seller_product_detail_feed_delete_dialog_btn_marginBottom">30dp</dimen>
+    <dimen name="seller_product_detail_feed_delete_dialog_title">18sp</dimen>
+    <dimen name="seller_product_detail_feed_delete_dialog_text">14sp</dimen>
+    <dimen name="seller_product_detail_feed_delete_dialog_width">310dp</dimen>
+    <dimen name="seller_product_detail_feed_delete_dialog_marginTop">257dp</dimen>
+    <dimen name="seller_product_detail_feed_delete_dialog_marginBottom">216dp</dimen>
+    <dimen name="seller_product_detail_feed_delete_dialog_title_marginTop">20dp</dimen>
+    <dimen name="seller_product_detail_feed_delete_dialog_text_width">0dp</dimen>
+    <dimen name="seller_product_detail_feed_delete_dialog_text_marginTop">20dp</dimen>
+    <dimen name="seller_product_detail_feed_delete_dialog_text_marginSide">17dp</dimen>
+
+
+
+
 </resources>
