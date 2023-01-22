@@ -1,7 +1,6 @@
 package com.codepatissier.keki.util.recycler.calendar
 
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -80,6 +79,7 @@ class CalendarAnniversaryAdapter(
             isSwipedItemList[i] = false
         }
         isOpenLayout = false
+        fragmentBinding.fabCalendarAdd.visibility = View.VISIBLE
     }
 
     class CalendarAnniversaryViewHolder(private val itemBinding: ItemCalendarAnniversaryRecyclerBinding): RecyclerView.ViewHolder(itemBinding.root) {
