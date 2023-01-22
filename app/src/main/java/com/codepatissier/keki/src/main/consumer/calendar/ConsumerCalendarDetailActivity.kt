@@ -1,9 +1,12 @@
 package com.codepatissier.keki.src.main.consumer.calendar
 
+import android.os.Build
 import android.os.Bundle
 import android.view.View.GONE
+import androidx.annotation.RequiresApi
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityConsumerCalendarDetailBinding
+import com.codepatissier.keki.util.recycler.calendar.CalendarAnniversaryData
 
 class ConsumerCalendarDetailActivity : BaseActivity<ActivityConsumerCalendarDetailBinding>(ActivityConsumerCalendarDetailBinding::inflate) {
 
@@ -14,19 +17,28 @@ class ConsumerCalendarDetailActivity : BaseActivity<ActivityConsumerCalendarDeta
     }
 
     private fun setLayoutFromIntent() {
-        binding.tvCalendarDetailTitle.text = intent.getStringExtra("title")
-        binding.tvCalendarDetailDate.text = intent.getStringExtra("date")
-        binding.tvCalendarDetailDday.text = intent.getStringExtra("dday")
-        binding.tvCalendarDetailType.text = intent.getStringExtra("type")
-        var tag = intent.getStringExtra("firstTag")
+        val data =
+            if (Build.VERSION.SDK_INT >= 33)
+                intent.getParcelableExtra("detail_data", CalendarAnniversaryData::class.java)
+            else
+                @Suppress("DEPRECATION") intent.getParcelableExtra("detail_data") as? CalendarAnniversaryData
+
+        // 기본 정보
+        binding.tvCalendarDetailTitle.text = data!!.title
+        binding.tvCalendarDetailDate.text = data!!.date
+        binding.tvCalendarDetailDday.text = data!!.dday
+        binding.tvCalendarDetailType.text = data!!.type
+
+        // 해시태그
+        var tag = data.firstTag
         if(tag != null) {
-            binding.tvCalendarDetailFirstHashtag.text = "# " + intent.getStringExtra("firstTag")
-            tag = intent.getStringExtra("secondTag")
+            binding.tvCalendarDetailFirstHashtag.text = "# $tag"
+            tag = data.secondTag
             if(tag != null) {
-                binding.tvCalendarDetailSecondHashtag.text = "# " + intent.getStringExtra("secondTag")
-                tag = intent.getStringExtra("thirdTag")
+                binding.tvCalendarDetailSecondHashtag.text = "# $tag"
+                tag = data.thirdTag
                 if(tag != null)
-                    binding.tvCalendarDetailThirdHashtag.text = "# " + intent.getStringExtra("thirdTag")
+                    binding.tvCalendarDetailThirdHashtag.text = "# $tag"
                 else binding.tvCalendarDetailThirdHashtag.visibility = GONE
             }
             else {
