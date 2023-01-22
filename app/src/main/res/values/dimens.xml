@@ -130,7 +130,7 @@
     <dimen name="intro_role_text_size">16sp</dimen>
     <dimen name="intro_btn_text_size">16sp</dimen>
 
-    <!--edit profile-->
+    <!--edit profile -> profile_setting -->
     <dimen name="edit_back_logo_width">9dp</dimen>
     <dimen name="edit_back_logo_height">18dp</dimen>
     <dimen name="edit_back_logo_marginStart">16dp</dimen>
@@ -143,18 +143,21 @@
     <dimen name="edit_profile_photo_size">104dp</dimen>
     <dimen name="edit_profile_border_width">1dp</dimen>
     <dimen name="edit_profile_photo_marginTop">128dp</dimen>
-    <dimen name="edit_rule_marginLeft">27dp</dimen>
+    <dimen name="edit_rule_marginLeft">22dp</dimen>
     <dimen name="edit_rule_marginTop">35dp</dimen>
-    <dimen name="edit_et_width">230dp</dimen>
+    <dimen name="edit_et_width">0dp</dimen>
     <dimen name="edit_et_height">55dp</dimen>
     <dimen name="edit_et_marginTop">10dp</dimen>
-    <dimen name="edit_et_marginLeft">27dp</dimen>
+    <dimen name="edit_et_marginRight">10dp</dimen>
+    <dimen name="edit_et_marginLeft">22dp</dimen>
     <dimen name="edit_et_paddingStart">20dp</dimen>
     <dimen name="edit_dbl_check_width">90dp</dimen>
     <dimen name="edit_dbl_check_height">55dp</dimen>
     <dimen name="edit_dbl_check_marginTop">10dp</dimen>
-    <dimen name="edit_naming_result_marginTop">0dp</dimen>
-    <dimen name="edit_naming_result_marginLeft">27dp</dimen>
+    <dimen name="edit_dbl_check_marginRight">16dp</dimen>
+    <dimen name="edit_naming_result_marginTop">10dp</dimen>
+    <dimen name="edit_naming_result_marginLeft">22dp</dimen>
+    <dimen name="profile_setting_shadow">3dp</dimen>
     <dimen name="edit_fab_marginTop">260dp</dimen>
     <dimen name="edit_fab_marginLeft">70dp</dimen>
     <dimen name="edit_fab_custom_size">30dp</dimen>

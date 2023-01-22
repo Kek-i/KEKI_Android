@@ -3,11 +3,12 @@ package com.codepatissier.keki.src.main.login
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import com.codepatissier.keki.databinding.ActivityConsumerProfileSettingBinding
 import com.codepatissier.keki.config.BaseActivity
-import com.codepatissier.keki.databinding.ActivityEditProfileBinding
 import com.codepatissier.keki.src.MainActivity
 
-class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>(ActivityEditProfileBinding::inflate) {
+class EditProfileActivity : BaseActivity<ActivityConsumerProfileSettingBinding>(
+    ActivityConsumerProfileSettingBinding::inflate) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

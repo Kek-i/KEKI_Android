@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.Window
 import com.codepatissier.keki.src.main.login.IntroActivity
 
@@ -22,9 +23,14 @@ class AccessRightDialog(context: Context): Dialog(context) {
         checkBtn()
     }
 
+    override fun onStop() {
+        super.dismiss()
+    }
+
     override fun show(){
         if(!this.isShowing) super.show()
     }
+
 
     private fun checkBtn(){
         binding.btnCheck1.setOnClickListener{
