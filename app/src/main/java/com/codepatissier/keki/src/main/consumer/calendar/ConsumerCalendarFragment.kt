@@ -4,8 +4,6 @@ import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener
@@ -14,7 +12,6 @@ import com.codepatissier.keki.config.BaseFragment
 import com.codepatissier.keki.databinding.FragmentConsumerCalendarBinding
 import com.codepatissier.keki.util.recycler.calendar.CalendarAnniversaryAdapter
 import com.codepatissier.keki.util.recycler.calendar.CalendarAnniversaryData
-import com.daimajia.swipe.adapters.RecyclerSwipeAdapter
 import com.daimajia.swipe.util.Attributes
 
 

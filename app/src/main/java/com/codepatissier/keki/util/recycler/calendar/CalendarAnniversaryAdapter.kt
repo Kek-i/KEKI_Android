@@ -121,13 +121,7 @@ class CalendarAnniversaryAdapter(
                 }
                 else {
                     val intent = Intent(it.context, ConsumerCalendarDetailActivity::class.java)
-                    intent.putExtra("title", data.title)
-                    intent.putExtra("date", data.date)
-                    intent.putExtra("dday", data.dday)
-                    intent.putExtra("type", data.type)
-                    intent.putExtra("firstTag", data.firstTag)
-                    intent.putExtra("secondTag", data.secondTag)
-                    intent.putExtra("thirdTag", data.thirdTag)
+                    intent.putExtra("detail_data", data)
                     (it.context).startActivity(intent)
 
 //                    if(!adapter.openLayouts.contains(swipeLayout))
@@ -138,5 +132,4 @@ class CalendarAnniversaryAdapter(
             }
         }
     }
-
 }
