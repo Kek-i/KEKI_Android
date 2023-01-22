@@ -50,6 +50,15 @@
     <string name="more_see">••• 더보기</string>
     <string name="report">사용자 신고</string>
 
+    <!-- report -->
+    <string name="dialog_report_title">신고하기</string>
+    <string name="dialog_report_content">타당한 신고 사유를 선택해주세요.\n신고 사유에 맞지않은 신고를 했을경우,\n해당 신고는 처리되지 않습니다.</string>
+    <string name="dialog_report_first">스팸홍보/도배</string>
+    <string name="dialog_report_second">욕설/혐오/차별</string>
+    <string name="dialog_report_third">음란물/유해한 정보</string>
+    <string name="dialog_report_fourth">사기/불법 정보</string>
+    <string name="dialog_report_fifth">게시글 성격에 부적절함</string>
+
     <!-- store main -->
     <string name ="store_main_store_name">가게이름</string>
     <string name ="store_main_store_detail">가게설명입니다.</string>

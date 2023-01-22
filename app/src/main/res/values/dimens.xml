@@ -79,6 +79,23 @@
     <dimen name="report_margin_top">5dp</dimen>
     <dimen name="report_margin_end">4dp</dimen>
     <dimen name="splash_comment_size">14sp</dimen>
+    <dimen name="consumer_store_detail_recycler_height">0dp</dimen>
+
+    <!-- report -->
+    <dimen name="dialog_report_title_size">18sp</dimen>
+    <dimen name="dialog_report_title_margin_top">25dp</dimen>
+    <dimen name="dialog_report_title_margin_start_end">124dp</dimen>
+    <dimen name="dialog_report_content_size">14sp</dimen>
+    <dimen name="dialog_report_content_margin_top">10dp</dimen>
+    <dimen name="dialog_report_content_check_margin_top">20dp</dimen>
+    <dimen name="dialog_report_check_margin_start">39.6dp</dimen>
+    <dimen name="dialog_report_between_check">18.2dp</dimen>
+    <dimen name="dialog_report_btn_size">16sp</dimen>
+    <dimen name="dialog_report_btn_margin_top">23dp</dimen>
+    <dimen name="dialog_report_padding_bottom">26dp</dimen>
+    <dimen name="dialog_report_btn_padding_top_bottom">9dp</dimen>
+    <dimen name="dialog_report_btn_padding_start_end">27dp</dimen>
+
 
     <!--login-->
     <dimen name="login_check_btn_radius">20dp</dimen>

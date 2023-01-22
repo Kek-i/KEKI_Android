@@ -2,17 +2,21 @@ package com.codepatissier.keki.util.recycler.storefeed
 
 import android.content.Intent
 import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import androidx.recyclerview.widget.RecyclerView.inflate
 import com.codepatissier.keki.R
 import com.codepatissier.keki.databinding.ItemStoreFeedRecyclerBinding
 import com.codepatissier.keki.src.main.consumer.store.ConsumerStoreMainActivity
+import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedDialog
 import com.codepatissier.keki.src.main.consumer.store.storefeed.DetailImageAdapter
 
 class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<ViewHolder>() {
@@ -94,17 +98,24 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
         // 신고하기
         private fun report(){
             binding.ivStoreFeedReport.setOnClickListener {
-                 //var intent = Intent(itemView.context, StoreFeedReportDialogActivity::class.java)
-                 //itemView.context.startActivity(intent)
+                var popupMenu = PopupMenu(context, it)
+                popupMenu.menuInflater?.inflate(R.menu.popup_menu_report_consumer_store_detail_feed, popupMenu.menu)
+                popupMenu.show()
+                popupMenu.setOnMenuItemClickListener {
+                    when(it.itemId){
+                        R.id.popup_report -> {
+                            Log.d("click", "report")
+                            // 이후에 해당 게시물 신고되는거 맞는지 확인하기
+                            ConsumerStoreDetailFeedDialog(context!!).show()
 
-                binding.tvStoreFeedReport.isVisible = true
+                            return@setOnMenuItemClickListener true
+                        }else -> {
+                            return@setOnMenuItemClickListener false
+                        }
+                    }
+                }
 
-                /*
-                val builder = AlertDialog.Builder(context)
-                builder.setTitle("신고하기")
-                builder.show()
 
-                 */
             }
         }
 
