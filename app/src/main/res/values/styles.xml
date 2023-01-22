@@ -1,8 +1,10 @@
 <resources>
     <style name="AppTheme" parent="Theme.AppCompat.DayNight">
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimaryDark">@color/darkish_pink</item>
+        <item name="colorAccent">@color/pale_salmon</item>
+        <item name="android:statusBarColor">@color/colorPrimary</item>
+        <item name="android:windowLightStatusBar">true</item>
         <item name="android:datePickerStyle">@style/DatePickerSetting</item>
     </style>
 
