@@ -121,7 +121,7 @@ class CalendarAnniversaryAdapter(
                 }
                 else {
                     val intent = Intent(it.context, ConsumerCalendarDetailActivity::class.java)
-                    intent.putExtra("detail_data", data)
+//                    intent.putExtra("detail_data", data)
                     (it.context).startActivity(intent)
 
 //                    if(!adapter.openLayouts.contains(swipeLayout))

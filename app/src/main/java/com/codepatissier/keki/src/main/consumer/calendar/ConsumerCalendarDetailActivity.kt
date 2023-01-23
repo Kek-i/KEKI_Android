@@ -17,36 +17,36 @@ class ConsumerCalendarDetailActivity : BaseActivity<ActivityConsumerCalendarDeta
     }
 
     private fun setLayoutFromIntent() {
-        val data =
-            if (Build.VERSION.SDK_INT >= 33)
-                intent.getParcelableExtra("detail_data", CalendarAnniversaryData::class.java)
-            else
-                @Suppress("DEPRECATION") intent.getParcelableExtra("detail_data") as? CalendarAnniversaryData
-
-        // 기본 정보
-        binding.tvCalendarDetailTitle.text = data!!.title
-        binding.tvCalendarDetailDate.text = data!!.date
-        binding.tvCalendarDetailDday.text = data!!.dday
-        binding.tvCalendarDetailType.text = data!!.type
-
-        // 해시태그
-        var tag = data.firstTag
-        if(tag != null) {
-            binding.tvCalendarDetailFirstHashtag.text = "# $tag"
-            tag = data.secondTag
-            if(tag != null) {
-                binding.tvCalendarDetailSecondHashtag.text = "# $tag"
-                tag = data.thirdTag
-                if(tag != null)
-                    binding.tvCalendarDetailThirdHashtag.text = "# $tag"
-                else binding.tvCalendarDetailThirdHashtag.visibility = GONE
-            }
-            else {
-                binding.tvCalendarDetailSecondHashtag.visibility = GONE
-                binding.tvCalendarDetailThirdHashtag.visibility = GONE
-            }
-        }
-        else binding.layoutCalendarDetailHashtag.visibility = GONE
+//        val data =
+//            if (Build.VERSION.SDK_INT >= 33)
+//                intent.getParcelableExtra("detail_data", CalendarAnniversaryData::class.java)
+//            else
+//                @Suppress("DEPRECATION") intent.getParcelableExtra("detail_data") as? CalendarAnniversaryData
+//
+//        // 기본 정보
+//        binding.tvCalendarDetailTitle.text = data!!.title
+//        binding.tvCalendarDetailDate.text = data!!.date
+//        binding.tvCalendarDetailDday.text = data!!.dday
+//        binding.tvCalendarDetailType.text = data!!.type
+//
+//        // 해시태그
+//        var tag = data.firstTag
+//        if(tag != null) {
+//            binding.tvCalendarDetailFirstHashtag.text = "# $tag"
+//            tag = data.secondTag
+//            if(tag != null) {
+//                binding.tvCalendarDetailSecondHashtag.text = "# $tag"
+//                tag = data.thirdTag
+//                if(tag != null)
+//                    binding.tvCalendarDetailThirdHashtag.text = "# $tag"
+//                else binding.tvCalendarDetailThirdHashtag.visibility = GONE
+//            }
+//            else {
+//                binding.tvCalendarDetailSecondHashtag.visibility = GONE
+//                binding.tvCalendarDetailThirdHashtag.visibility = GONE
+//            }
+//        }
+//        else binding.layoutCalendarDetailHashtag.visibility = GONE
     }
 
     private fun setClickListenerToBackBtn() {
