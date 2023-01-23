@@ -1,4 +1,4 @@
-package com.codepatissier.keki.src.main.consumer.mypage
+package com.codepatissier.keki.src.main.consumer.mypage.notice
 
 import android.os.Bundle
 import com.codepatissier.keki.config.BaseActivity
