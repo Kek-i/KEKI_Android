@@ -422,6 +422,7 @@
     <dimen name="calendar_add_component_elevation">3dp</dimen>
     <dimen name="calendar_add_hashtag_elevation">2dp</dimen>
 
+    <dimen name="date_picker_padding">15dp</dimen>
 
     <!-- my page -->
     <dimen name="my_page_ic_top">16dp</dimen>
