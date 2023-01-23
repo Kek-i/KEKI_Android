@@ -1,9 +1,8 @@
 package com.codepatissier.keki.src.main.consumer.search
 
-import com.codepatissier.keki.src.main.consumer.search.model.PopularSearchesResponse
+import com.codepatissier.keki.src.main.consumer.search.model.MainSearchesResponse
 
 interface SearchView {
-    fun onGetPopularSearchesSuccess(response: PopularSearchesResponse)
-
-    fun onGetPopularSearchesFailure(message: String)
+    fun onGetMainSearchesSuccess(response: MainSearchesResponse)
+    fun onGetMainSearchesFailure(message: String)
 }

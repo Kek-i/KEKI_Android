@@ -1,47 +1,41 @@
 package com.codepatissier.keki.src.main.consumer.search
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.KeyEvent
 import android.view.KeyEvent.KEYCODE_ENTER
 import android.view.View
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseFragment
 import com.codepatissier.keki.databinding.FragmentConsumerSearchBinding
-import com.codepatissier.keki.src.main.consumer.search.model.PopularSearchesResponse
+import com.codepatissier.keki.src.main.consumer.search.model.MainSearchesResponse
 import com.codepatissier.keki.util.recycler.search.*
 
 class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(FragmentConsumerSearchBinding::bind, R.layout.fragment_consumer_search) , SearchView{
 
-    lateinit var searchRecentAdapter : SearchRecentAdapter
-    val searchRecentData = mutableListOf<SearchRecentData>()
+    private lateinit var searchRecentAdapter : SearchRecentAdapter
+    private lateinit var searchPopularAdapter : SearchPopularAdapter
+    private lateinit var searchRecentPostAdapter: SearchRecentPostAdapter
+    private lateinit var searchData : com.codepatissier.keki.src.main.consumer.search.model.Result
 
-    lateinit var searchPopularAdapter : SearchPopularAdapter
-    val searchPopularData = mutableListOf<SearchPopularData>()
-
-    lateinit var searchRecentCakeImgAdapter: SearchCakeImgAdapter
-    val searchCakeImgData = mutableListOf<SearchCakeImgData>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         deleteSearchHistory()
-        searchRecentRecycler()
-        searchRecentSeenRecycler()
         setListenerToEditText()
 
         showLoadingDialog(requireContext())
-        SearchService(this).tryGetPopularSearches()
+        SearchService(this).tryGetMainSearches()
     }
 
-    override fun onGetPopularSearchesSuccess(response: PopularSearchesResponse) {
+    override fun onGetMainSearchesSuccess(response: MainSearchesResponse) {
         dismissLoadingDialog()
-        searchPopularRecycler(response)
+        searchMainRecycler(response)
     }
 
-    override fun onGetPopularSearchesFailure(message: String) {
+    override fun onGetMainSearchesFailure(message: String) {
         dismissLoadingDialog()
         showCustomToast("오류 : $message")
     }
@@ -68,62 +62,18 @@ class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(Fragm
         }
     }
 
-    private fun searchRecentRecycler() {
-        searchRecentAdapter = SearchRecentAdapter(this)
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun searchMainRecycler(response: MainSearchesResponse) {
+        searchRecentAdapter = SearchRecentAdapter(response.result, this)
+        searchPopularAdapter = SearchPopularAdapter(response.result, this)
+        searchRecentPostAdapter = SearchRecentPostAdapter(response.result, this)
         binding.rvRecentSearch.adapter = searchRecentAdapter
-
-        //최근 검색어 예시 데이터
-        searchRecentData.apply {
-            add(SearchRecentData(bearer = "생일 케이크"))
-            add(SearchRecentData(bearer = "합격축하"))
-            add(SearchRecentData(bearer = "크리스마스"))
-            add(SearchRecentData(bearer = "당근 케이크 맛집"))
-            add(SearchRecentData(bearer = "레터링 케이크"))
-
-            searchRecentAdapter.recentSearchData = searchRecentData
-            searchRecentAdapter.notifyDataSetChanged()
-        }
-
-        if (searchRecentData.isEmpty()) {
-            binding.llEmptyHistory.visibility = View.GONE
-        }
-        else {
-            binding.llEmptyHistory.visibility = View.VISIBLE
-        }
-    }
-
-    private fun searchPopularRecycler(response: PopularSearchesResponse) {
-        searchPopularAdapter = SearchPopularAdapter(this)
         binding.rvPopularSearch.adapter = searchPopularAdapter
-
-        for(i in response.result.indices){
-            searchPopularData.apply {
-                add(SearchPopularData(popular = "# " + response.result[i].searchWord))
-            }
-        }
-
-        searchPopularAdapter.searchPopularData = searchPopularData
+        binding.rvRecentSeen.adapter = searchRecentPostAdapter
+        searchRecentAdapter.notifyDataSetChanged()
         searchPopularAdapter.notifyDataSetChanged()
+        searchRecentPostAdapter.notifyDataSetChanged()
     }
-
-    private fun searchRecentSeenRecycler() {
-        searchRecentCakeImgAdapter = SearchCakeImgAdapter(this)
-        binding.rvRecentSeen.adapter = searchRecentCakeImgAdapter
-
-        //최근 본 가게 예시 데이터
-        searchCakeImgData.apply {
-            add(SearchCakeImgData(img= R.drawable.img_cake))
-            add(SearchCakeImgData(img= R.drawable.img_cake))
-            add(SearchCakeImgData(img= R.drawable.img_cake))
-            add(SearchCakeImgData(img= R.drawable.img_cake))
-            add(SearchCakeImgData(img= R.drawable.img_cake))
-
-
-            searchRecentCakeImgAdapter.searchCakeImgData = searchCakeImgData
-            searchRecentCakeImgAdapter.notifyDataSetChanged()
-
-        }
-    }
-
 
 }
