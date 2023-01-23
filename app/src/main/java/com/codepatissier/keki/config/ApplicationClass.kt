@@ -9,13 +9,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 class ApplicationClass : Application() {
-    val API_URL = "https://edu-api-test.softsquared.com/" // 변경
+    val API_URL = "http://13.124.234.58/"
 
     companion object {
         lateinit var sSharedPreferences: SharedPreferences
         lateinit var editor: SharedPreferences.Editor
 
-        val X_ACCESS_TOKEN = "X-ACCESS-TOKEN"
+        val X_ACCESS_TOKEN = "Authorization"
 
         lateinit var sRetrofit: Retrofit
     }
@@ -32,7 +32,7 @@ class ApplicationClass : Application() {
             .readTimeout(5000, TimeUnit.MILLISECONDS)
             .connectTimeout(5000, TimeUnit.MILLISECONDS)
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-            .addNetworkInterceptor(XAccessTokenInterceptor()) // X_ACCESS_TOKEN 이름 변경되면 XAccessTokenInterceptor()에서 바꾸기
+            .addNetworkInterceptor(XAccessTokenInterceptor())
             .build()
 
         sRetrofit = Retrofit.Builder()

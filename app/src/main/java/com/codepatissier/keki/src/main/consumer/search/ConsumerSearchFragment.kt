@@ -2,15 +2,17 @@ package com.codepatissier.keki.src.main.consumer.search
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.view.KeyEvent.KEYCODE_ENTER
 import android.view.View
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseFragment
 import com.codepatissier.keki.databinding.FragmentConsumerSearchBinding
+import com.codepatissier.keki.src.main.consumer.search.model.PopularSearchesResponse
 import com.codepatissier.keki.util.recycler.search.*
 
-class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(FragmentConsumerSearchBinding::bind, R.layout.fragment_consumer_search) {
+class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(FragmentConsumerSearchBinding::bind, R.layout.fragment_consumer_search) , SearchView{
 
     lateinit var searchRecentAdapter : SearchRecentAdapter
     val searchRecentData = mutableListOf<SearchRecentData>()
@@ -24,12 +26,24 @@ class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(Fragm
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         deleteSearchHistory()
         searchRecentRecycler()
-        searchPopularRecycler()
         searchRecentSeenRecycler()
         setListenerToEditText()
 
+        showLoadingDialog(requireContext())
+        SearchService(this).tryGetPopularSearches()
+    }
+
+    override fun onGetPopularSearchesSuccess(response: PopularSearchesResponse) {
+        dismissLoadingDialog()
+        searchPopularRecycler(response)
+    }
+
+    override fun onGetPopularSearchesFailure(message: String) {
+        dismissLoadingDialog()
+        showCustomToast("오류 : $message")
     }
 
     //검색어 전체 지우기 클릭 이벤트
@@ -78,22 +92,18 @@ class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(Fragm
         }
     }
 
-    private fun searchPopularRecycler() {
+    private fun searchPopularRecycler(response: PopularSearchesResponse) {
         searchPopularAdapter = SearchPopularAdapter(this)
         binding.rvPopularSearch.adapter = searchPopularAdapter
 
-        //인기 검색어 예시 데이터
-        searchPopularData.apply {
-            add(SearchPopularData(popular = "#친구"))
-            add(SearchPopularData(popular = "#가족"))
-            add(SearchPopularData(popular = "#기념일"))
-            add(SearchPopularData(popular = "#1주년"))
-            add(SearchPopularData(popular = "#생일파티"))
-
-            searchPopularAdapter.searchPopularData = searchPopularData
-            searchPopularAdapter.notifyDataSetChanged()
-
+        for(i in response.result.indices){
+            searchPopularData.apply {
+                add(SearchPopularData(popular = "# " + response.result[i].searchWord))
+            }
         }
+
+        searchPopularAdapter.searchPopularData = searchPopularData
+        searchPopularAdapter.notifyDataSetChanged()
     }
 
     private fun searchRecentSeenRecycler() {
@@ -114,4 +124,6 @@ class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(Fragm
 
         }
     }
+
+
 }
