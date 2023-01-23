@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.codepatissier.keki.databinding.ItemNoticeRecyclerBinding
-import com.codepatissier.keki.src.main.consumer.mypage.notice.NoticeDetailActivity
+import com.codepatissier.keki.src.main.consumer.mypage.notice.noticedetail.NoticeDetailActivity
 
 class NoticeAdapter(private val dataList:ArrayList<NoticeData>):RecyclerView.Adapter<NoticeAdapter.DataViewHolder>() {
 

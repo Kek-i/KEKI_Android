@@ -1,7 +1,7 @@
 package com.codepatissier.keki.src.main.consumer.mypage.notice
 
 import com.codepatissier.keki.config.ApplicationClass
-import com.codepatissier.keki.src.main.consumer.mypage.notice.model.ConsumerNoticeResponse
+import com.codepatissier.keki.src.main.consumer.mypage.notice.noticeall.model.ConsumerNoticeResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

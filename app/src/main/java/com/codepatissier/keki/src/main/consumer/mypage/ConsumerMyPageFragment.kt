@@ -6,7 +6,7 @@ import android.view.View
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseFragment
 import com.codepatissier.keki.databinding.FragmentConsumerMyPageBinding
-import com.codepatissier.keki.src.main.consumer.mypage.notice.NoticeActivity
+import com.codepatissier.keki.src.main.consumer.mypage.notice.noticeall.NoticeActivity
 
 class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
     (FragmentConsumerMyPageBinding::bind, R.layout.fragment_consumer_my_page) {
