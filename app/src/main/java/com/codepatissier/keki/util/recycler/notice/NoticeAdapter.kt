@@ -1,33 +1,45 @@
 package com.codepatissier.keki.util.recycler.notice
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.codepatissier.keki.databinding.ItemNoticeRecyclerBinding
 import com.codepatissier.keki.src.main.consumer.mypage.notice.noticedetail.NoticeDetailActivity
 
-class NoticeAdapter(private val dataList:ArrayList<NoticeData>):RecyclerView.Adapter<NoticeAdapter.DataViewHolder>() {
+class NoticeAdapter(val context: FragmentActivity?): RecyclerView.Adapter<ViewHolder>() {
 
-    inner class DataViewHolder(private val viewBinding: ItemNoticeRecyclerBinding):RecyclerView.ViewHolder(viewBinding.root){
-        fun bind(data:NoticeData){
-            viewBinding.tvNotice.setText(data.notice)
+    var noticeDatas = mutableListOf<NoticeData>()
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val itemBinding = ItemNoticeRecyclerBinding.inflate(layoutInflater, parent, false)
+        return ViewHolder(context, itemBinding)
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        (holder as ViewHolder).bind(noticeDatas[position])
+    }
+
+    override fun getItemCount(): Int = noticeDatas.size
+
+    class ViewHolder(val context: FragmentActivity?, val binding: ItemNoticeRecyclerBinding): RecyclerView.ViewHolder(binding.root){
+        private val noticeTitle : TextView = binding.tvNotice
+
+        fun bind(item: NoticeData){
+            noticeTitle.text = item.noticeTitle
+
+            itemView.setOnClickListener {
+                var intent = Intent(itemView.context, NoticeDetailActivity::class.java)
+                intent.putExtra("noticeIdx", item.noticeIdx)
+                itemView.context.startActivity(intent)
+            }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataViewHolder {
-        val viewBinding = ItemNoticeRecyclerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return DataViewHolder(viewBinding)
-    }
-
-    override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
-        holder.bind(dataList[position])
-        holder.itemView.setOnClickListener{
-            val intent = Intent(holder.itemView.context, NoticeDetailActivity::class.java)
-            ContextCompat.startActivity(holder.itemView.context, intent, null)
-        }
-    }
-
-    override fun getItemCount(): Int = dataList.size
 }

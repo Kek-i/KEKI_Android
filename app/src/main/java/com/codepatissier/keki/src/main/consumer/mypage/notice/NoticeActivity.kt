@@ -10,6 +10,10 @@ import com.codepatissier.keki.util.recycler.notice.NoticeData
 
 class NoticeActivity :BaseActivity<ActivityNoticeBinding>(ActivityNoticeBinding::inflate),
     ConsumerNoticeView {
+
+    lateinit var noticeAdapter: NoticeAdapter
+    val noticeDatas = mutableListOf<NoticeData>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -29,18 +33,18 @@ class NoticeActivity :BaseActivity<ActivityNoticeBinding>(ActivityNoticeBinding:
     }
 
     private fun noticeRecyclerView(response: ConsumerNoticeResponse){
-        val dataList : ArrayList<NoticeData> = arrayListOf()
+        noticeAdapter = NoticeAdapter(this)
+        binding.rvNotice.adapter = noticeAdapter
 
         for(i in response.result.indices){
-            dataList.apply{
-                add(NoticeData(notice = response.result[i].noticeTitle))
+            noticeDatas.apply{
+                add(NoticeData(noticeTitle = response.result[i].noticeTitle,
+                    noticeIdx = response.result[i].noticeIdx))
             }
         }
 
-        val noticeAdapter = NoticeAdapter(dataList)
-
-        binding.rvNotice.adapter = noticeAdapter
-        binding.rvNotice.layoutManager = LinearLayoutManager(this)
+        noticeAdapter.noticeDatas = noticeDatas
+        noticeAdapter.notifyDataSetChanged()
     }
 
 
