@@ -9,6 +9,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.DatePicker
 import android.widget.TextView
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.DialogFragment
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
@@ -83,7 +84,7 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
 
     private fun setClickListenerToDatePicker() {
         binding.ibCalendarSelectDate.setOnClickListener {
-            showDatePickerDialog(it)
+            showDatePickerDialog()
         }
     }
 
@@ -189,11 +190,11 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
     private fun restoreBackgroundResourceOfTag(tag: TextView) {
         when (tag.background.constantState) {
             // off_white를 사용했다면
-            resources.getDrawable(R.drawable.bg_rectangle_radius_13_off_white, null).constantState -> bOffWhiteIsUsed = false
+            ResourcesCompat.getDrawable(resources, R.drawable.bg_rectangle_radius_13_off_white, null)!!.constantState -> bOffWhiteIsUsed = false
             // very_light_pink를 사용했다면
-            resources.getDrawable(R.drawable.bg_rectangle_radius_13_very_light_pink, null).constantState -> bVeryLightPinkIsUsed = false
+            ResourcesCompat.getDrawable(resources, R.drawable.bg_rectangle_radius_13_very_light_pink, null)!!.constantState -> bVeryLightPinkIsUsed = false
             // light_peach_2를 사용했다면
-            resources.getDrawable(R.drawable.bg_rectangle_radius_13_light_peach_2, null).constantState -> bLightPeach2IsUsed = false
+            ResourcesCompat.getDrawable(resources, R.drawable.bg_rectangle_radius_13_light_peach_2, null)!!.constantState -> bLightPeach2IsUsed = false
         }
     }
 
@@ -215,7 +216,7 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
         }
     }
 
-    private fun showDatePickerDialog(v: View) {
+    private fun showDatePickerDialog() {
         val newFragment = DatePickerFragment()
         newFragment.binding = this.binding
         newFragment.show(supportFragmentManager, "datePicker")
