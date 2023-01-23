@@ -101,7 +101,7 @@
         </activity>
 
         <activity
-            android:name="com.codepatissier.keki.src.main.consumer.mypage.notice.noticeall.NoticeActivity"
+            android:name="com.codepatissier.keki.src.main.consumer.mypage.notice.NoticeActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">

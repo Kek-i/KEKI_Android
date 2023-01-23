@@ -1,4 +1,4 @@
-package com.codepatissier.keki.src.main.consumer.mypage.notice.noticeall.model
+package com.codepatissier.keki.src.main.consumer.mypage.notice.model
 
 data class ConsumerNoticeResponse(
     val code: Int,

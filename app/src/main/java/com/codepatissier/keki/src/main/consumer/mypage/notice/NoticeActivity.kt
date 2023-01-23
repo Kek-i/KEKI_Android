@@ -1,12 +1,10 @@
-package com.codepatissier.keki.src.main.consumer.mypage.notice.noticeall
+package com.codepatissier.keki.src.main.consumer.mypage.notice
 
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityNoticeBinding
-import com.codepatissier.keki.src.main.consumer.mypage.notice.ConsumerNoticeService
-import com.codepatissier.keki.src.main.consumer.mypage.notice.ConsumerNoticeView
-import com.codepatissier.keki.src.main.consumer.mypage.notice.noticeall.model.ConsumerNoticeResponse
+import com.codepatissier.keki.src.main.consumer.mypage.notice.model.ConsumerNoticeResponse
 import com.codepatissier.keki.util.recycler.notice.NoticeAdapter
 import com.codepatissier.keki.util.recycler.notice.NoticeData
 
