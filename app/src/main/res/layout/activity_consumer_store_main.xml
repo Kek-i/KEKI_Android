@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".src.storeMain.ConsumerProductFeedFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -84,7 +83,7 @@
                 android:ellipsize="end"
                 android:fontFamily="@font/notosanskr_regular"
                 android:includeFontPadding="false"
-                android:lines="1"
+                android:maxLength="40"
                 android:text="@string/store_main_store_detail"                android:textColor="@color/black"
                 android:textSize="@dimen/store_main_store_detail_text_size"
                 app:layout_constraintBottom_toBottomOf="parent"
