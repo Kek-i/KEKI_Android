@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.codepatissier.keki.databinding.FragmentConsumerCalendarBinding
 import com.codepatissier.keki.databinding.ItemCalendarAnniversaryRecyclerBinding
-import com.codepatissier.keki.src.main.consumer.calendar.ConsumerCalendarDetailActivity
+import com.codepatissier.keki.src.main.consumer.calendar.calendardetail.ConsumerCalendarDetailActivity
 import com.daimajia.swipe.SimpleSwipeListener
 import com.daimajia.swipe.SwipeLayout
 import com.daimajia.swipe.adapters.RecyclerSwipeAdapter
@@ -121,7 +121,7 @@ class CalendarAnniversaryAdapter(
                 }
                 else {
                     val intent = Intent(it.context, ConsumerCalendarDetailActivity::class.java)
-//                    intent.putExtra("detail_data", data)
+                    intent.putExtra("calendarIdx", data.calendarIdx)
                     (it.context).startActivity(intent)
 
 //                    if(!adapter.openLayouts.contains(swipeLayout))
