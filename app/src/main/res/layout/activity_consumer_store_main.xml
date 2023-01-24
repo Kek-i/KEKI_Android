@@ -78,18 +78,31 @@
             <TextView
                 android:id="@+id/tv_store_detail"
                 android:layout_width="@dimen/store_main_store_detail_width_height"
-                android:layout_height="@dimen/store_main_store_detail_width_height"
+                android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/store_main_right"
                 android:ellipsize="end"
                 android:fontFamily="@font/notosanskr_regular"
                 android:includeFontPadding="false"
-                android:maxLength="40"
-                android:text="@string/store_main_store_detail"                android:textColor="@color/black"
+                android:maxLines="1"
+                android:text="@string/store_main_store_detail"
+                android:textColor="@color/black"
                 android:textSize="@dimen/store_main_store_detail_text_size"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tv_store_name"
                 app:layout_constraintTop_toBottomOf="@id/tv_store_name" />
+
+            <TextView
+                android:id="@+id/tv_view_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:text="더보기"
+                app:layout_constraintStart_toStartOf="@+id/tv_store_detail"
+                app:layout_constraintTop_toBottomOf="@id/tv_store_detail"
+                android:textSize="@dimen/store_main_store_detail_text_size"
+                android:visibility="gone"/>
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -2,6 +2,8 @@ package com.codepatissier.keki.src.main.consumer.store
 
 
 import android.os.Bundle
+import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import com.bumptech.glide.Glide
@@ -13,6 +15,7 @@ import com.codepatissier.keki.databinding.ActivityConsumerStoreMainBinding
 import com.codepatissier.keki.src.main.consumer.store.model.ConsumerStoreMainResponse
 import com.codepatissier.keki.util.viewpager.storemain.StoreMainDialog
 import com.codepatissier.keki.util.viewpager.storemain.StoreMainVPAdapter
+import org.w3c.dom.Text
 
 class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>(ActivityConsumerStoreMainBinding::inflate),
     ConsumerStoreMainView{
@@ -90,11 +93,29 @@ class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>
             .fallback(defaultImg)
             .circleCrop()
             .into(imageView)
+        setViewMore(binding.tvStoreDetail, binding.tvViewMore)
+
     }
 
     override fun onGetStoreMainFailure(message: String) {
         dismissLoadingDialog()
         showCustomToast("오류 : $message")
+    }
+
+    private fun setViewMore(contentTextView: TextView, viewMoreTextView:TextView){
+        contentTextView.post{
+            val lineCount = contentTextView.layout.lineCount
+            if (lineCount > 0) {
+                if (contentTextView.layout.getEllipsisCount(lineCount - 1) > 0) {
+                    viewMoreTextView.visibility = View.VISIBLE
+
+                    viewMoreTextView.setOnClickListener {
+                        contentTextView.maxLines = Int.MAX_VALUE
+                        viewMoreTextView.visibility = View.GONE
+                    }
+                }
+            }
+        }
     }
 }
 
