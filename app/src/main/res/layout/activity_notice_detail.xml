@@ -13,13 +13,13 @@
         android:layout_marginLeft="@dimen/my_page_condition_ic_back_left"
         android:layout_marginTop="@dimen/my_page_condition_ic_back_top"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingEnd="@dimen/my_page_condition_main_text_left" />
 
     <TextView
         android:id="@+id/tv_main_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/my_page_condition_main_text_left"
         android:layout_marginTop="@dimen/my_page_condition_main_text_top"
         android:fontFamily="@font/notosanskr_bold"
         android:includeFontPadding="false"

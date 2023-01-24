@@ -568,7 +568,7 @@
     <dimen name="notice_rv_item_height">50dp</dimen>
     <dimen name="notice_rv_item_shadow">3dp</dimen>
     <dimen name="notice_rv_item_left_right">12dp</dimen>
-    <dimen name="notice_rv_item_bottom">15dp</dimen>
+    <dimen name="notice_rv_item_top">15dp</dimen>
     <dimen name="notice_tv_left_right">12dp</dimen>
     <dimen name="notice_tv_size">16sp</dimen>
     <dimen name="notice_iv_right">12dp</dimen>
