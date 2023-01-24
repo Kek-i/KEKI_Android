@@ -15,7 +15,7 @@ class ApplicationClass : Application() {
         lateinit var sSharedPreferences: SharedPreferences
         lateinit var editor: SharedPreferences.Editor
 
-        val X_ACCESS_TOKEN = "Authorization"
+        val Authorization = "Authorization"
 
         lateinit var sRetrofit: Retrofit
     }
@@ -24,6 +24,8 @@ class ApplicationClass : Application() {
         super.onCreate()
         sSharedPreferences =
             applicationContext.getSharedPreferences("KEKI_APP", MODE_PRIVATE) // 변경
+        editor = sSharedPreferences.edit()
+
         initRetrofitInstance()
     }
 
