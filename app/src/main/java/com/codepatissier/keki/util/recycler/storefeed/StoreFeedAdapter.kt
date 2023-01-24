@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -41,13 +42,22 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
         private val firstTag: TextView = binding.tvStoreFeedFirstTag
         private val secondTag: TextView = binding.tvStoreFeedSecondTag
         private val thirdTag: TextView = binding.tvStoreFeedThirdTag
+        private val tagArray = arrayOf(firstTag, secondTag, thirdTag)
         private var heart = false
 
         fun bind(item: StoreFeedData){
-            nickname.text = item.nickname
+            nickname.text = item.brandName
+            cakeName.text = item.dessertName
+
+            for(i in item.tags.indices){
+                tagArray[i].isVisible = true
+                tagArray[i].text = "# " + item.tags[i]
+            }
+
+            // 이후에 storeProfileImg 넣기
 
 
-            // 나중에 데이터 구조 보고 변경 - ConsumerStoreFeedActivity
+            // 나중에 데이터 구조 보고 변경 - ConsumerStoreFeedActivity & 나중에 postImgUrls 넣기
             var img = arrayOfNulls<Drawable>(2)
 
             img[0] = context?.getDrawable(R.drawable.ex_cake)
@@ -58,8 +68,13 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
             binding.vpStoreFeedImg.adapter = pagerAdapter
             binding.wormDotsIndicator.setViewPager2(binding.vpStoreFeedImg)
 
-            checkCakeDescription("이 제품은 어쩌구\n케이크어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구")
-            seeMoreDescription("이 제품은 어쩌구\n케이크어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구")
+            if(item.like){
+                binding.ivStoreFeedHeartOff.setImageResource(R.drawable.ic_bottom_heart_on)
+                heart = true
+            }
+
+            checkCakeDescription(item.description)
+            seeMoreDescription(item.description)
             likeProduct()
             report()
             navigateToStoreMain()

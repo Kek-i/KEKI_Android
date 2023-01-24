@@ -109,6 +109,7 @@
         android:textColor="@color/black"
         android:textSize="@dimen/store_feed_tag_size"
         android:gravity="center"
+        android:visibility="invisible"
         android:background="@drawable/bg_rectangle_radius_16_light_yellow"
         />
 
@@ -124,6 +125,7 @@
         android:textColor="@color/black"
         android:textSize="@dimen/store_feed_tag_size"
         android:gravity="center"
+        android:visibility="invisible"
         android:background="@drawable/bg_rectangle_radius_16_very_light_pink"
         />
 
@@ -138,6 +140,7 @@
         android:fontFamily="@font/roboto_regular"
         android:textColor="@color/black"
         android:textSize="@dimen/store_feed_tag_size"
+        android:visibility="invisible"
         android:gravity="center"
         android:background="@drawable/bg_rectangle_radius_16_light_peach"/>
 
