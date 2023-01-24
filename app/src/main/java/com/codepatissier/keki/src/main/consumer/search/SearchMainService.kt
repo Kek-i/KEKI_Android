@@ -10,9 +10,9 @@ import retrofit2.Response
 class SearchMainService(val searchMainView: SearchMainView) {
 
     fun tryGetMainSearches(){
-        val searchRetrofitInterface = ApplicationClass.sRetrofit.create(SearchRetrofitInterface::class.java)
+        val searchMainRetrofitInterface = ApplicationClass.sRetrofit.create(SearchMainRetrofitInterface::class.java)
 
-        searchRetrofitInterface.getSearchMain().enqueue(object: Callback<MainSearchesResponse>{
+        searchMainRetrofitInterface.getSearchMain().enqueue(object: Callback<MainSearchesResponse>{
             override fun onResponse(call: Call<MainSearchesResponse>,response: Response<MainSearchesResponse>)
             {
                 searchMainView.onGetMainSearchesSuccess(response.body() as MainSearchesResponse)
@@ -25,9 +25,9 @@ class SearchMainService(val searchMainView: SearchMainView) {
     }
 
     fun tryPatchSearchHistories(){
-        val searchRetrofitInterface = ApplicationClass.sRetrofit.create(SearchRetrofitInterface::class.java)
+        val searchMainRetrofitInterface = ApplicationClass.sRetrofit.create(SearchMainRetrofitInterface::class.java)
 
-        searchRetrofitInterface.deleteRecentSearch().enqueue(object: Callback<PatchSearchResponse>{
+        searchMainRetrofitInterface.deleteRecentSearch().enqueue(object: Callback<PatchSearchResponse>{
             override fun onResponse(call: Call<PatchSearchResponse>,response: Response<PatchSearchResponse>)
             {
                 searchMainView.onPatchSearchesSuccess(response.body() as PatchSearchResponse)

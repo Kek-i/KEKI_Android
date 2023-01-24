@@ -1,4 +1,4 @@
-package com.codepatissier.keki.src.main.consumer.search
+package com.codepatissier.keki.src.main.consumer.search.searchresult
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -8,7 +8,6 @@ import android.view.KeyEvent
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.codepatissier.keki.R
 import com.codepatissier.keki.databinding.ActivityConsumerSearchBinding
@@ -17,12 +16,12 @@ import android.view.MotionEvent
 
 import android.view.View.OnTouchListener
 import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
 import com.codepatissier.keki.config.BaseActivity
-import com.codepatissier.keki.src.main.consumer.search.model.SearchResultResponse
+import com.codepatissier.keki.src.main.consumer.search.searchresult.model.SearchResultResponse
 
 
-class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(ActivityConsumerSearchBinding::inflate), SearchResultView {
+class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(ActivityConsumerSearchBinding::inflate),
+    SearchResultView {
     private lateinit var searchListAdapter : SearchListAdapter
 
     @SuppressLint("ClickableViewAccessibility")

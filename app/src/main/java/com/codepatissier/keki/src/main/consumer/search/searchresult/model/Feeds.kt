@@ -1,4 +1,4 @@
-package com.codepatissier.keki.src.main.consumer.search.model
+package com.codepatissier.keki.src.main.consumer.search.searchresult.model
 
 data class Feeds (
     val postIdx : Int,

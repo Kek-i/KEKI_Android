@@ -8,11 +8,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.codepatissier.keki.databinding.ItemSearchListRecyclerBinding
-import com.codepatissier.keki.src.main.consumer.search.ConsumerSearchActivity
-import com.codepatissier.keki.src.main.consumer.search.model.Feeds
+import com.codepatissier.keki.src.main.consumer.search.searchresult.ConsumerSearchActivity
+import com.codepatissier.keki.src.main.consumer.search.searchresult.model.Feeds
+import com.codepatissier.keki.src.main.consumer.search.searchresult.model.SearchResult
 import java.text.DecimalFormat
 
-class SearchListAdapter(var searchListData: com.codepatissier.keki.src.main.consumer.search.model.SearchResult, val context: ConsumerSearchActivity) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SearchListAdapter(var searchListData: SearchResult, val context: ConsumerSearchActivity) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)

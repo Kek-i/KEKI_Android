@@ -11,6 +11,7 @@ import com.codepatissier.keki.config.BaseFragment
 import com.codepatissier.keki.databinding.FragmentConsumerSearchBinding
 import com.codepatissier.keki.src.main.consumer.search.model.MainSearchesResponse
 import com.codepatissier.keki.src.main.consumer.search.model.PatchSearchResponse
+import com.codepatissier.keki.src.main.consumer.search.searchresult.ConsumerSearchActivity
 import com.codepatissier.keki.util.recycler.search.*
 
 class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(FragmentConsumerSearchBinding::bind, R.layout.fragment_consumer_search) , SearchMainView{
