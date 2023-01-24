@@ -72,6 +72,7 @@ class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>
 
     private fun infoClick(){
         binding.ivInfo.setOnClickListener{
+            StoreMainDialog(this).setStoreIdx(storeIdx)
             StoreMainDialog(this).show()
         }
     }
