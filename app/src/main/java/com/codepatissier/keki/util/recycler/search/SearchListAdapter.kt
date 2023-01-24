@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.codepatissier.keki.databinding.ItemSearchListRecyclerBinding
 import com.codepatissier.keki.src.main.consumer.search.ConsumerSearchActivity
+import com.codepatissier.keki.src.main.consumer.search.model.Feeds
+import java.text.DecimalFormat
 
-class SearchListAdapter(val context: ConsumerSearchActivity) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    var searchListData = mutableListOf<SearchListData>()
+class SearchListAdapter(var searchListData: com.codepatissier.keki.src.main.consumer.search.model.SearchResult, val context: ConsumerSearchActivity) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -20,10 +20,10 @@ class SearchListAdapter(val context: ConsumerSearchActivity) : RecyclerView.Adap
         return SearchListHolder(context, itemBinding)
     }
 
-    override fun getItemCount(): Int = searchListData.size
+    override fun getItemCount(): Int = searchListData.feeds.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as SearchListHolder).bind(searchListData[position])
+        (holder as SearchListHolder).bind(searchListData.feeds[position])
         holder.itemView.setOnClickListener {
             itemClickListener.onClick(it, position)
         }
@@ -35,13 +35,13 @@ class SearchListAdapter(val context: ConsumerSearchActivity) : RecyclerView.Adap
         private val cakeName: TextView = binding.tvGridName
         private val cakePrice: TextView = binding.tvGridPrice
 
-        fun bind(item: SearchListData) {
+        fun bind(item: Feeds) {
             Glide.with(context!!)
-                .load(item.img)
+                .load(item.postImgUrls)
                 .centerCrop()
                 .into(cakeImg)
-            cakeName.text = item.cakeName
-            cakePrice.text = item.price.toString()
+            cakeName.text = item.dessertName
+            cakePrice.text = DecimalFormat("###,###").format(item.dessertPrice.toLong())
         }
 
     }

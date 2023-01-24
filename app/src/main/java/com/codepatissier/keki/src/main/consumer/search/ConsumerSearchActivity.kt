@@ -18,36 +18,60 @@ import android.view.MotionEvent
 import android.view.View.OnTouchListener
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import com.codepatissier.keki.config.BaseActivity
+import com.codepatissier.keki.src.main.consumer.search.model.SearchResultResponse
 
 
-class ConsumerSearchActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityConsumerSearchBinding
+class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(ActivityConsumerSearchBinding::inflate), SearchResultView {
     private lateinit var searchListAdapter : SearchListAdapter
-    val searchListData = mutableListOf<SearchListData>()
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityConsumerSearchBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
         checkNavigateFromHome()
         deleteSearch()
         setCategory()
-        searchListRecycler()
         setListenerToEditText()
+
+    }
+    override fun onGetSearchResultsSuccess(response: SearchResultResponse) {
+        searchListRecycler(response)
     }
 
-    private fun checkNavigateFromHome(){
-        if(intent.getStringExtra("searchTag") != null){
-            var searchTag = intent.getStringExtra("searchTag")
-            binding.etSearch.setText(searchTag)
-            Log.d("searchTag", binding.etSearch.text.toString())
+    override fun onGetSearchResultsFailure(message: String) {
+        showCustomToast("오류 : $message")    }
+
+    //검색 결과 목록 보여주기
+    @SuppressLint("NotifyDataSetChanged")
+    private fun searchListRecycler(response: SearchResultResponse) {
+        val myLayoutManager = GridLayoutManager(this, 3)
+        binding.rvSearchGrid.layoutManager = myLayoutManager
+        searchListAdapter = SearchListAdapter(response.result, this@ConsumerSearchActivity)
+        binding.rvSearchGrid.adapter = searchListAdapter
+        searchListAdapter.notifyDataSetChanged()
+
+        // 개별 아이템 클릭 시 이벤트
+        searchListAdapter.setItemClickListener(object: SearchListAdapter.OnItemClickListener{
+            override fun onClick(v: View, position: Int) {
+               }
+        })
+
+        //EmptyView 설정
+        if (response.result.feeds.isEmpty()) {
+            binding.rvSearchGrid.visibility = View.GONE
+            binding.layoutEmpty.visibility = View.VISIBLE
         }
+        else {
+            binding.rvSearchGrid.visibility = View.VISIBLE
+            binding.layoutEmpty.visibility = View.GONE
+        }
+
     }
 
 
     //검색창 x 누르면 삭제
+    @SuppressLint("ClickableViewAccessibility")
     private fun deleteSearch(){
         binding.etSearch.setOnTouchListener(OnTouchListener { v, event ->
             if (event.action == MotionEvent.ACTION_UP)
@@ -65,75 +89,40 @@ class ConsumerSearchActivity : AppCompatActivity() {
         //검색어 그대로 가져와서 보여주기
         val searchKey = intent.getStringExtra("search_key")
         binding.etSearch.setText("$searchKey")
-        // 엔터치면 키보드 내리기
+        // 엔터치면 키보드 내리기, 검색창에 있는 단어 검색하기
         binding.etSearch.setOnKeyListener { view, keyCode, event ->
             if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER)
             {
                 val imm = this@ConsumerSearchActivity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(binding.etSearch.windowToken, 0)
+                //엑티비티 내에서 검색할 경우
+                SearchResultService(this).tryGetSearchResults(keyword = "${binding.etSearch.text}")
             }
             false
         }
-    }
-
-    //검색 결과 목록 보여주기
-    private fun searchListRecycler() {
-        searchListAdapter = SearchListAdapter(this@ConsumerSearchActivity)
-        binding.rvSearchGrid.adapter = searchListAdapter
-        // 개별 아이템 클릭 시 이벤트
-        searchListAdapter.setItemClickListener(object: SearchListAdapter.OnItemClickListener{
-            override fun onClick(v: View, position: Int) {
-                Toast.makeText(binding.root.context,"${searchListData[position].cakeName} 선택됨",Toast.LENGTH_SHORT).show()
-            }
-        })
-
-        //그리드뷰 컬럼 수 설정
-        val myLayoutManager = GridLayoutManager(this, 3)
-        binding.rvSearchGrid.layoutManager = myLayoutManager
-
-        //검색결과 목록 예시 데이터
-        searchListData.apply {
-            add(SearchListData(img= R.drawable.img_cake, "딸기 컵케이크", 26000))
-            add(SearchListData(img= R.drawable.img_cake, "바나나 컵케이크", 27000))
-            add(SearchListData(img= R.drawable.img_cake, "수박 컵케이크", 28000))
-
-            searchListAdapter.searchListData = searchListData
-            searchListAdapter.notifyDataSetChanged()
-        }
-
-        //EmptyView 설정
-        if (searchListData.isEmpty()) {
-            binding.rvSearchGrid.visibility = View.GONE
-            binding.layoutEmpty.visibility = View.VISIBLE
-        }
-        else {
-            binding.rvSearchGrid.visibility = View.VISIBLE
-            binding.layoutEmpty.visibility = View.GONE
-        }
-
+        //처음 검색하기
+        SearchResultService(this).tryGetSearchResults(keyword = "$searchKey")
     }
 
     //최신순,인기순,가격순 스피너 설정, 정렬
     private fun setCategory() {
-
         val spinnerAdapter: ArrayAdapter<*> =
             ArrayAdapter.createFromResource(this@ConsumerSearchActivity, R.array.spinner_array, R.layout.search_custom_spinner)
         spinnerAdapter.setDropDownViewResource(com.codepatissier.keki.R.layout.search_custom_spinner_list)
 
-
         binding.spinnerSearch.adapter = spinnerAdapter
-
         binding.spinnerSearch.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View,
-                position: Int,
-                id: Long
-            ) {
-
-            }
-
+            override fun onItemSelected(parent: AdapterView<*>?,view: View,position: Int,id: Long) {}
             override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+    }
+
+    //홈화면에서 넘어오는 해시태그
+    private fun checkNavigateFromHome(){
+        if(intent.getStringExtra("searchTag") != null){
+            var searchTag = intent.getStringExtra("searchTag")
+            binding.etSearch.setText(searchTag)
+            Log.d("searchTag", binding.etSearch.text.toString())
         }
     }
 }

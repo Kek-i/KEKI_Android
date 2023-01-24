@@ -10,24 +10,21 @@ import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseFragment
 import com.codepatissier.keki.databinding.FragmentConsumerSearchBinding
 import com.codepatissier.keki.src.main.consumer.search.model.MainSearchesResponse
+import com.codepatissier.keki.src.main.consumer.search.model.PatchSearchResponse
 import com.codepatissier.keki.util.recycler.search.*
 
-class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(FragmentConsumerSearchBinding::bind, R.layout.fragment_consumer_search) , SearchView{
+class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(FragmentConsumerSearchBinding::bind, R.layout.fragment_consumer_search) , SearchMainView{
 
     private lateinit var searchRecentAdapter : SearchRecentAdapter
     private lateinit var searchPopularAdapter : SearchPopularAdapter
     private lateinit var searchRecentPostAdapter: SearchRecentPostAdapter
-    private lateinit var searchData : com.codepatissier.keki.src.main.consumer.search.model.Result
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        deleteSearchHistory()
         setListenerToEditText()
-
         showLoadingDialog(requireContext())
-        SearchService(this).tryGetMainSearches()
+        SearchMainService(this).tryGetMainSearches()
+        deleteSearchHistory()
     }
 
     override fun onGetMainSearchesSuccess(response: MainSearchesResponse) {
@@ -40,9 +37,23 @@ class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(Fragm
         showCustomToast("오류 : $message")
     }
 
-    //검색어 전체 지우기 클릭 이벤트
+    override fun onPatchSearchesSuccess(response: PatchSearchResponse) {
+        deleteSearchHistory()
+    }
+
+    override fun onPatchSearchesFailure(message: String) {
+        showCustomToast("삭제 오류 : $message")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        SearchMainService(this).tryGetMainSearches()
+    }
+
+    //검색어 전체 지우기 -> 최근 검색어 뷰 없어짐
     private fun deleteSearchHistory(){
         binding.tvRecentSearchDelete.setOnClickListener {
+            SearchMainService(this).tryPatchSearchHistories()
             binding.llEmptyHistory.visibility = View.GONE
         }
     }
@@ -62,17 +73,24 @@ class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(Fragm
         }
     }
 
-
+    //데이터 - 어뎁터 연결
     @SuppressLint("NotifyDataSetChanged")
     private fun searchMainRecycler(response: MainSearchesResponse) {
         searchRecentAdapter = SearchRecentAdapter(response.result, this)
-        searchPopularAdapter = SearchPopularAdapter(response.result, this)
-        searchRecentPostAdapter = SearchRecentPostAdapter(response.result, this)
         binding.rvRecentSearch.adapter = searchRecentAdapter
-        binding.rvPopularSearch.adapter = searchPopularAdapter
-        binding.rvRecentSeen.adapter = searchRecentPostAdapter
         searchRecentAdapter.notifyDataSetChanged()
+        if (response.result.recentSearches.isEmpty()){
+            binding.llEmptyHistory.visibility = View.GONE
+        }else{
+            binding.llEmptyHistory.visibility = View.VISIBLE
+        }
+
+        searchPopularAdapter = SearchPopularAdapter(response.result, this)
+        binding.rvPopularSearch.adapter = searchPopularAdapter
         searchPopularAdapter.notifyDataSetChanged()
+
+        searchRecentPostAdapter = SearchRecentPostAdapter(response.result, this)
+        binding.rvRecentSeen.adapter = searchRecentPostAdapter
         searchRecentPostAdapter.notifyDataSetChanged()
     }
 
