@@ -1,4 +1,4 @@
-package com.codepatissier.keki.src.main.consumer.store.storefeed
+package com.codepatissier.keki.src.main.consumer.store.storefeed.report
 
 import android.app.Dialog
 import android.content.Context
