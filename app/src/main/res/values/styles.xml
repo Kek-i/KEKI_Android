@@ -16,6 +16,6 @@
     <style name="DatePickerSetting" parent="@android:style/Widget.DatePicker">
         <item name="android:calendarViewShown">false</item>
         <item name="android:datePickerMode">spinner</item>
-        <item name="android:padding">15dp</item>
+        <item name="android:padding">@dimen/date_picker_padding</item>
     </style>
 </resources>

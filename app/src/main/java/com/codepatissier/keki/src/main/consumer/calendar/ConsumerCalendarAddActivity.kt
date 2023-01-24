@@ -1,15 +1,12 @@
 package com.codepatissier.keki.src.main.consumer.calendar
 
 import android.app.DatePickerDialog
-import android.app.Dialog
 import android.graphics.Color
 import android.os.Bundle
-import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.widget.DatePicker
 import android.widget.TextView
-import androidx.fragment.app.DialogFragment
+import androidx.core.content.res.ResourcesCompat
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityConsumerCalendarAddBinding
@@ -83,7 +80,7 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
 
     private fun setClickListenerToDatePicker() {
         binding.ibCalendarSelectDate.setOnClickListener {
-            showDatePickerDialog(it)
+            showDatePickerDialog()
         }
     }
 
@@ -189,11 +186,11 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
     private fun restoreBackgroundResourceOfTag(tag: TextView) {
         when (tag.background.constantState) {
             // off_white를 사용했다면
-            resources.getDrawable(R.drawable.bg_rectangle_radius_13_off_white, null).constantState -> bOffWhiteIsUsed = false
+            ResourcesCompat.getDrawable(resources, R.drawable.bg_rectangle_radius_13_off_white, null)!!.constantState -> bOffWhiteIsUsed = false
             // very_light_pink를 사용했다면
-            resources.getDrawable(R.drawable.bg_rectangle_radius_13_very_light_pink, null).constantState -> bVeryLightPinkIsUsed = false
+            ResourcesCompat.getDrawable(resources, R.drawable.bg_rectangle_radius_13_very_light_pink, null)!!.constantState -> bVeryLightPinkIsUsed = false
             // light_peach_2를 사용했다면
-            resources.getDrawable(R.drawable.bg_rectangle_radius_13_light_peach_2, null).constantState -> bLightPeach2IsUsed = false
+            ResourcesCompat.getDrawable(resources, R.drawable.bg_rectangle_radius_13_light_peach_2, null)!!.constantState -> bLightPeach2IsUsed = false
         }
     }
 
@@ -215,31 +212,28 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
         }
     }
 
-    private fun showDatePickerDialog(v: View) {
-        val newFragment = DatePickerFragment()
-        newFragment.binding = this.binding
-        newFragment.show(supportFragmentManager, "datePicker")
-    }
+    private fun showDatePickerDialog() {
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd")
+        val selectedDate: Calendar = Calendar.getInstance()
 
-    // 날짜 선택 다이얼로그 Class
-    class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener {
-        lateinit var binding: ActivityConsumerCalendarAddBinding
-        private val c: Calendar = Calendar.getInstance()
-
-        override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-            val year = c.get(Calendar.YEAR)
-            val month = c.get(Calendar.MONTH)
-            val day = c.get(Calendar.DAY_OF_MONTH)
-
-            return DatePickerDialog(this.requireContext(), this, year, month, day)
+        // date edittext에 값이 있으면 해당 값으로 날짜 지정해줘야 함. 없으면 현재 날짜로 지정.
+        if(binding.etSelectDate.text.isNotEmpty()) {
+            selectedDate.time = dateFormat.parse(binding.etSelectDate.text.toString())
         }
 
-        override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
-            c.set(year, month, day)
-            val dateFormat = SimpleDateFormat("yyyy-MM-dd")
-            val strDate: String = dateFormat.format(c.time)
+        DatePickerDialog(this, DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
+            selectedDate.set(year, month, dayOfMonth)
+            val strDate: String = dateFormat.format(selectedDate.time)
             binding.etSelectDate.setText(strDate)
             binding.etSelectDate.setTextColor(Color.BLACK)
-        }
+        },
+            selectedDate.get(Calendar.YEAR),
+            selectedDate.get(Calendar.MONTH),
+            selectedDate.get(Calendar.DAY_OF_MONTH)
+        ).apply {
+            // 날짜수로 선택한 경우 미래 날짜는 입력 불가능
+            if(binding.tvSelectType.text.equals(binding.tvTypeNumberOfDays.text))
+                datePicker.maxDate = System.currentTimeMillis()
+        }.show()
     }
 }
