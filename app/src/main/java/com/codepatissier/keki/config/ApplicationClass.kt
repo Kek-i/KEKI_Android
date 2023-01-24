@@ -10,12 +10,12 @@ import java.util.concurrent.TimeUnit
 
 class ApplicationClass : Application() {
     val API_URL = "http://13.124.234.58/"
-
+//    val API_URL = "http://192.168.0.16:8080/"
     companion object {
         lateinit var sSharedPreferences: SharedPreferences
         lateinit var editor: SharedPreferences.Editor
 
-        val X_ACCESS_TOKEN = "Authorization"
+        val Authorization = "Authorization"
 
         lateinit var sRetrofit: Retrofit
     }
@@ -24,6 +24,7 @@ class ApplicationClass : Application() {
         super.onCreate()
         sSharedPreferences =
             applicationContext.getSharedPreferences("KEKI_APP", MODE_PRIVATE) // 변경
+        editor = sSharedPreferences.edit()
         initRetrofitInstance()
     }
 
