@@ -101,14 +101,14 @@
         </activity>
 
         <activity
-            android:name="com.codepatissier.keki.src.main.consumer.mypage.NoticeActivity"
+            android:name="com.codepatissier.keki.src.main.consumer.mypage.notice.NoticeActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
         <activity
-            android:name="com.codepatissier.keki.src.main.consumer.mypage.NoticeDetailActivity"
+            android:name="com.codepatissier.keki.src.main.consumer.mypage.notice.noticedetail.NoticeDetailActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
