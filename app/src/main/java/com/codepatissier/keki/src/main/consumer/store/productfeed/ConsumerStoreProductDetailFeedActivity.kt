@@ -25,6 +25,9 @@ class ConsumerStoreProductDetailFeedActivity : BaseActivity<ActivityConsumerStor
         binding.tvProductFeedCakePrice.text = storeProductFeedData[0].cakePrice
         binding.tvProductFeedCakeDetail.text = storeProductFeedData[0].cakeDetail
        
+        /*
+        이 부분 원래 String 값이어야 하는데 이미지를 임시로 넣어야해서 Drawable로 해놨었어요!
+        나중에 이 부분 수정해주세요!!
 
         var img = arrayOfNulls<Drawable>(4)
 
@@ -33,9 +36,12 @@ class ConsumerStoreProductDetailFeedActivity : BaseActivity<ActivityConsumerStor
         img[2] = this@ConsumerStoreProductDetailFeedActivity?.getDrawable(R.drawable.ex_cake)
         img[3] = this@ConsumerStoreProductDetailFeedActivity?.getDrawable(R.drawable.img_cake)
 
+
         val pagerAdapter = DetailImageAdapter(this@ConsumerStoreProductDetailFeedActivity!!, img)
         binding.vpProductFeedImg.adapter = pagerAdapter
         binding.wormDotsIndicator.setViewPager2(binding.vpProductFeedImg)
+        */
+
     }
 
     private fun navigateToStoreMain(){

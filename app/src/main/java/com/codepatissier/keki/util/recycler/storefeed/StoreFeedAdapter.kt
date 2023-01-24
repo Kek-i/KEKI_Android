@@ -12,6 +12,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.bumptech.glide.Glide
 import com.codepatissier.keki.R
 import com.codepatissier.keki.databinding.ItemStoreFeedRecyclerBinding
 import com.codepatissier.keki.src.main.consumer.store.ConsumerStoreMainActivity
@@ -54,14 +55,16 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
                 tagArray[i].text = "# " + item.tags[i]
             }
 
-            // 이후에 storeProfileImg 넣기
+            Glide.with(context!!)
+                .load(item.storeProfileImg)
+                .centerCrop()
+                .into(sellerImg)
+            
+            var img = arrayOfNulls<String>(item.postImgUrls.size)
 
-
-            // 나중에 데이터 구조 보고 변경 - ConsumerStoreFeedActivity & 나중에 postImgUrls 넣기
-            var img = arrayOfNulls<Drawable>(2)
-
-            img[0] = context?.getDrawable(R.drawable.ex_cake)
-            img[1] = context?.getDrawable(R.drawable.ex_cake)
+            for(i in item.postImgUrls.indices){
+                img[i] = item.postImgUrls[i]
+            }
 
 
             val pagerAdapter = DetailImageAdapter(context!!, img)
