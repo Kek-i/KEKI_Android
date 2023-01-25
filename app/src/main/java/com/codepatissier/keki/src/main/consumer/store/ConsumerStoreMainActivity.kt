@@ -2,30 +2,38 @@ package com.codepatissier.keki.src.main.consumer.store
 
 
 import android.os.Bundle
-import android.util.Log
+import android.view.View
+import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
+import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityConsumerStoreMainBinding
+import com.codepatissier.keki.src.main.consumer.store.model.ConsumerStoreMainResponse
 import com.codepatissier.keki.util.viewpager.storemain.StoreMainDialog
 import com.codepatissier.keki.util.viewpager.storemain.StoreMainVPAdapter
+import org.w3c.dom.Text
 
-class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>(ActivityConsumerStoreMainBinding::inflate) {
+class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>(ActivityConsumerStoreMainBinding::inflate),
+    ConsumerStoreMainView{
+    var storeIdx: Long = 1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        getNickname()
+        getStoreIdx()
         tabSetting()
         back()
         infoClick()
+        showLoadingDialog(this)
+        ConsumerStoreMainService(this).tryGetStoreMain(storeIdx)
     }
 
-    private fun getNickname(){
-        var nickname = intent.getStringExtra("nickname")
-        Log.d("nickname", nickname!!)
-        binding.tvStoreName.text = nickname
+    private fun getStoreIdx(){
+        storeIdx = intent.getLongExtra("storeIdx", 1)
     }
 
     private fun tabSetting(){
@@ -67,7 +75,46 @@ class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>
 
     private fun infoClick(){
         binding.ivInfo.setOnClickListener{
+            StoreMainDialog(this).setStoreIdx(storeIdx)
             StoreMainDialog(this).show()
+        }
+    }
+
+    override fun onGetStoreMainSuccess(response: ConsumerStoreMainResponse) {
+        dismissLoadingDialog()
+        binding.tvStoreName.text = response.result.nickname
+        binding.tvStoreDetail.text = response.result.introduction
+        val defaultImg = R.drawable.bg_oval_light_yellow
+        val imageView = binding.ivProfile
+        Glide.with(this)
+            .load(response.result.storeImgUrl)
+            .placeholder(defaultImg)
+            .error(defaultImg)
+            .fallback(defaultImg)
+            .circleCrop()
+            .into(imageView)
+        setViewMore(binding.tvStoreDetail, binding.tvViewMore)
+
+    }
+
+    override fun onGetStoreMainFailure(message: String) {
+        dismissLoadingDialog()
+        showCustomToast("오류 : $message")
+    }
+
+    private fun setViewMore(contentTextView: TextView, viewMoreTextView:TextView){
+        contentTextView.post{
+            val lineCount = contentTextView.layout.lineCount
+            if (lineCount > 0) {
+                if (contentTextView.layout.getEllipsisCount(lineCount - 1) > 0) {
+                    viewMoreTextView.visibility = View.VISIBLE
+
+                    viewMoreTextView.setOnClickListener {
+                        contentTextView.maxLines = Int.MAX_VALUE
+                        viewMoreTextView.visibility = View.GONE
+                    }
+                }
+            }
         }
     }
 }

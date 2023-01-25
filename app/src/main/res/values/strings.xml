@@ -62,6 +62,7 @@
     <!-- store main -->
     <string name ="store_main_store_name">가게이름</string>
     <string name ="store_main_store_detail">가게설명입니다.</string>
+    <string name ="store_main_store_view_more">더보기.</string>
     <string name ="store_main_store_order">주문하기</string>
 
     <!-- store main dialog-->

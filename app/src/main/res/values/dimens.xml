@@ -511,7 +511,7 @@
     <dimen name="store_main_store_name_left">15dp</dimen>
     <dimen name="store_main_store_name_top">10dp</dimen>
     <dimen name="store_main_store_name_text_size">18dp</dimen>
-    <dimen name="store_main_store_detail_width">0dp</dimen>
+    <dimen name="store_main_store_detail_width_height">0dp</dimen>
     <dimen name="store_main_store_detail_top">10dp</dimen>
     <dimen name="store_main_store_detail_text_size">11sp</dimen>
     <dimen name="store_main_store_order_text_size">16sp</dimen>
