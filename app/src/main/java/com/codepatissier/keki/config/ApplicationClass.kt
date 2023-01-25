@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 class ApplicationClass : Application() {
-    val API_URL = "http://13.124.234.58/"
+    val API_URL = "https://keki-dev.store/"
 
     companion object {
         lateinit var sSharedPreferences: SharedPreferences

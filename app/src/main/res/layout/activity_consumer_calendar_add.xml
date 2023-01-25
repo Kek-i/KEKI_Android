@@ -325,188 +325,46 @@
             android:includeFontPadding="false"
             />
 
-        <com.google.android.flexbox.FlexboxLayout
-            android:id="@+id/layout_hashtag_collection"
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group_hashtag"
             android:layout_width="@dimen/calendar_layout_flexbox_width"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/calendar_layout_flexbox_margin_top"
-            android:paddingTop="@dimen/calendar_layout_flexbox_padding_top"
             android:paddingHorizontal="@dimen/calendar_layout_flexbox_padding_horizontal"
+            android:paddingTop="@dimen/calendar_layout_flexbox_padding_top"
+            android:paddingBottom="5dp"
             android:clipToPadding="false"
             app:layout_constraintTop_toBottomOf="@id/tv_max_hashtag"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:flexWrap="wrap"
-            app:justifyContent="flex_start"
+            app:flow_wrapMode="aligned"
+            app:chipSpacingHorizontal="10dp"
+            app:chipSpacingVertical="14dp"
             >
 
-            <!-- 선택 시 앞으로 정렬할 때 사용하는 textView -->
-            <TextView
-                android:id="@+id/tv_first_tag"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/calendar_tv_hashtag_height"
-                android:layout_marginEnd="@dimen/calendar_tv_hashtag_margin_end"
-                android:layout_marginBottom="@dimen/calendar_tv_hashtag_margin_bottom"
-                android:textColor="@color/black"
-                android:textSize="@dimen/calendar_tv_hashtag_size"
-                android:fontFamily="@font/notosanskr_regular"
-                android:includeFontPadding="false"
-                android:background="@drawable/bg_rectangle_radius_13_white"
-                android:elevation="@dimen/calendar_add_hashtag_elevation"
+            <!-- 선택 시 앞으로 정렬할 때 사용하는 chip -->
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_first_sorted_tag"
+                android:text="# 첫번째"
                 android:visibility="gone"
+                style="@style/CustomChipStyle"
                 />
 
-            <TextView
-                android:id="@+id/tv_second_tag"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/calendar_tv_hashtag_height"
-                android:layout_marginEnd="@dimen/calendar_tv_hashtag_margin_end"
-                android:layout_marginBottom="@dimen/calendar_tv_hashtag_margin_bottom"
-                android:textColor="@color/black"
-                android:textSize="@dimen/calendar_tv_hashtag_size"
-                android:fontFamily="@font/notosanskr_regular"
-                android:includeFontPadding="false"
-                android:background="@drawable/bg_rectangle_radius_13_white"
-                android:elevation="@dimen/calendar_add_hashtag_elevation"
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_second_sorted_tag"
+                android:text="# 두번째"
                 android:visibility="gone"
+                style="@style/CustomChipStyle"
                 />
 
-            <TextView
-                android:id="@+id/tv_third_tag"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/calendar_tv_hashtag_height"
-                android:layout_marginEnd="@dimen/calendar_tv_hashtag_margin_end"
-                android:layout_marginBottom="@dimen/calendar_tv_hashtag_margin_bottom"
-                android:textColor="@color/black"
-                android:textSize="@dimen/calendar_tv_hashtag_size"
-                android:fontFamily="@font/notosanskr_regular"
-                android:includeFontPadding="false"
-                android:background="@drawable/bg_rectangle_radius_13_white"
-                android:elevation="@dimen/calendar_add_hashtag_elevation"
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_third_sorted_tag"
+                android:text="# 세번째"
                 android:visibility="gone"
+                style="@style/CustomChipStyle"
                 />
 
-            <TextView
-                android:id="@+id/tv_hashtag_friend"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/calendar_tv_hashtag_height"
-                android:layout_marginEnd="@dimen/calendar_tv_hashtag_margin_end"
-                android:layout_marginBottom="@dimen/calendar_tv_hashtag_margin_bottom"
-                android:text="@string/hashtag_friend"
-                android:textColor="@color/black"
-                android:textSize="@dimen/calendar_tv_hashtag_size"
-                android:fontFamily="@font/notosanskr_regular"
-                android:includeFontPadding="false"
-                android:background="@drawable/bg_rectangle_radius_13_white"
-                android:elevation="@dimen/calendar_add_hashtag_elevation"
-                />
-
-            <TextView
-                android:id="@+id/tv_hashtag_family"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/calendar_tv_hashtag_height"
-                android:layout_marginEnd="@dimen/calendar_tv_hashtag_margin_end"
-                android:layout_marginBottom="@dimen/calendar_tv_hashtag_margin_bottom"
-                android:text="@string/hashtag_family"
-                android:textColor="@color/black"
-                android:textSize="@dimen/calendar_tv_hashtag_size"
-                android:fontFamily="@font/notosanskr_regular"
-                android:includeFontPadding="false"
-                android:background="@drawable/bg_rectangle_radius_13_white"
-                android:elevation="@dimen/calendar_add_hashtag_elevation"
-                />
-
-            <TextView
-                android:id="@+id/tv_hashtag_lover"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/calendar_tv_hashtag_height"
-                android:layout_marginEnd="@dimen/calendar_tv_hashtag_margin_end"
-                android:layout_marginBottom="@dimen/calendar_tv_hashtag_margin_bottom"
-                android:text="@string/hashtag_lover"
-                android:textColor="@color/black"
-                android:textSize="@dimen/calendar_tv_hashtag_size"
-                android:fontFamily="@font/notosanskr_regular"
-                android:includeFontPadding="false"
-                android:background="@drawable/bg_rectangle_radius_13_white"
-                android:elevation="@dimen/calendar_add_hashtag_elevation"
-                />
-
-            <TextView
-                android:id="@+id/tv_hashtag_anniversary"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/calendar_tv_hashtag_height"
-                android:layout_marginEnd="@dimen/calendar_tv_hashtag_margin_end"
-                android:layout_marginBottom="@dimen/calendar_tv_hashtag_margin_bottom"
-                android:text="@string/hashtag_anniversary"
-                android:textColor="@color/black"
-                android:textSize="@dimen/calendar_tv_hashtag_size"
-                android:fontFamily="@font/notosanskr_regular"
-                android:includeFontPadding="false"
-                android:background="@drawable/bg_rectangle_radius_13_white"
-                android:elevation="@dimen/calendar_add_hashtag_elevation"
-                />
-
-            <TextView
-                android:id="@+id/tv_hashtag_birthday"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/calendar_tv_hashtag_height"
-                android:layout_marginEnd="@dimen/calendar_tv_hashtag_margin_end"
-                android:layout_marginBottom="@dimen/calendar_tv_hashtag_margin_bottom"
-                android:text="@string/hashtag_birthday"
-                android:textColor="@color/black"
-                android:textSize="@dimen/calendar_tv_hashtag_size"
-                android:fontFamily="@font/notosanskr_regular"
-                android:includeFontPadding="false"
-                android:background="@drawable/bg_rectangle_radius_13_white"
-                android:elevation="@dimen/calendar_add_hashtag_elevation"
-                />
-
-            <TextView
-                android:id="@+id/tv_hashtag_employment"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/calendar_tv_hashtag_height"
-                android:layout_marginEnd="@dimen/calendar_tv_hashtag_margin_end"
-                android:layout_marginBottom="@dimen/calendar_tv_hashtag_margin_bottom"
-                android:text="@string/hashtag_employment"
-                android:textColor="@color/black"
-                android:textSize="@dimen/calendar_tv_hashtag_size"
-                android:fontFamily="@font/notosanskr_regular"
-                android:includeFontPadding="false"
-                android:background="@drawable/bg_rectangle_radius_13_white"
-                android:elevation="@dimen/calendar_add_hashtag_elevation"
-                />
-
-            <TextView
-                android:id="@+id/tv_hashtag_graduation_exhibition"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/calendar_tv_hashtag_height"
-                android:layout_marginEnd="@dimen/calendar_tv_hashtag_margin_end"
-                android:layout_marginBottom="@dimen/calendar_tv_hashtag_margin_bottom"
-                android:text="@string/hashtag_graduation_exhibition"
-                android:textColor="@color/black"
-                android:textSize="@dimen/calendar_tv_hashtag_size"
-                android:fontFamily="@font/notosanskr_regular"
-                android:includeFontPadding="false"
-                android:background="@drawable/bg_rectangle_radius_13_white"
-                android:elevation="@dimen/calendar_add_hashtag_elevation"
-                />
-
-            <TextView
-                android:id="@+id/tv_hashtag_party"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/calendar_tv_hashtag_height"
-                android:layout_marginEnd="@dimen/calendar_tv_hashtag_margin_end"
-                android:layout_marginBottom="@dimen/calendar_tv_hashtag_margin_bottom"
-                android:text="@string/hashtag_party"
-                android:textColor="@color/black"
-                android:textSize="@dimen/calendar_tv_hashtag_size"
-                android:fontFamily="@font/notosanskr_regular"
-                android:includeFontPadding="false"
-                android:background="@drawable/bg_rectangle_radius_13_white"
-                android:elevation="@dimen/calendar_add_hashtag_elevation"
-                />
-
-        </com.google.android.flexbox.FlexboxLayout>
+        </com.google.android.material.chip.ChipGroup>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

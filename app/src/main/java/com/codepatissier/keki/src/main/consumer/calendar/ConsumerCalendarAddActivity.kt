@@ -3,13 +3,15 @@ package com.codepatissier.keki.src.main.consumer.calendar
 import android.app.DatePickerDialog
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.widget.TextView
-import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.get
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityConsumerCalendarAddBinding
+import com.google.android.material.chip.Chip
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -29,19 +31,14 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
         setClickListenerToDatePicker()
         setClickListenerToBackBtn()
 
-        // 해시태그별로 ClickListener 설정
-        setClickListenerToHashTag(binding.tvHashtagFriend)
-        setClickListenerToHashTag(binding.tvHashtagFamily)
-        setClickListenerToHashTag(binding.tvHashtagLover)
-        setClickListenerToHashTag(binding.tvHashtagAnniversary)
-        setClickListenerToHashTag(binding.tvHashtagBirthday)
-        setClickListenerToHashTag(binding.tvHashtagEmployment)
-        setClickListenerToHashTag(binding.tvHashtagGraduationExhibition)
-        setClickListenerToHashTag(binding.tvHashtagParty)
-        // 정렬용 태그 ClickListener 설정
-        setClickListenerToSortedTag(binding.tvFirstTag, 1)
-        setClickListenerToSortedTag(binding.tvSecondTag, 2)
-        setClickListenerToSortedTag(binding.tvThirdTag, 3)
+        val hashTagArray = listOf<String>("친구", "가족", "졸업", "기념일", "크리스마스", "합격", "파티")
+
+        // 해시태그 리스트 받아와서 chip 생성 및 Click Listener 설정
+        createChip(hashTagArray)
+        // 정렬용 태그 Click Listener 설정
+        setClickListenerToSortedTag(binding.chipFirstSortedTag, 1)
+        setClickListenerToSortedTag(binding.chipSecondSortedTag, 2)
+        setClickListenerToSortedTag(binding.chipThirdSortedTag, 3)
     }
 
     private fun setClickListenerToLayoutOfType() {
@@ -90,79 +87,91 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
         }
     }
 
-    private fun setClickListenerToHashTag(tvHashtag: TextView) {
-        val firstTag = binding.tvFirstTag
-        val secondTag = binding.tvSecondTag
-        val thirdTag = binding.tvThirdTag
+    private fun createChip(hashTagArray: List<String>) {
+        // scroll view 필요한가? 테스트해보기
+        for (i in hashTagArray.indices) {
+            val chip = layoutInflater.inflate(
+                R.layout.single_chip_layout,
+                binding.chipGroupHashtag,
+                false
+            ) as Chip
+            chip.id = View.generateViewId()
+            Log.d("id", "${chip.id}")
+            chip.text = "# ${hashTagArray[i]}"
+            binding.chipGroupHashtag.addView(chip)
 
-        // 해당 태그 선택
-        tvHashtag.setOnClickListener {
-            // 첫번째 태그 자리가 비어있다면 == 아무것도 선택하지 않은 상태
-            if(firstTag.visibility == GONE) {
-                firstTag.text = tvHashtag.text
-                setBackgroundResourceOfTag(firstTag)
-                tvHashtag.visibility = GONE
-                firstTag.visibility = VISIBLE
-            }
-            // 두번째 태그 자리가 비어있다면 == 첫번째 태그 사용 중
-            else if(secondTag.visibility == GONE) {
-                secondTag.text = tvHashtag.text
-                setBackgroundResourceOfTag(secondTag)
-                tvHashtag.visibility = GONE
-                secondTag.visibility = VISIBLE
-            }
-            // 세번째 태그 자리가 비어있다면 == 두,세번째 태그 사용 중
-            else if(thirdTag.visibility == GONE) {
-                thirdTag.text = tvHashtag.text
-                setBackgroundResourceOfTag(thirdTag)
-                tvHashtag.visibility = GONE
-                thirdTag.visibility = VISIBLE
-            }
-            // 모든 태그가 사용 중이라면
-            else {
-                this.showCustomToast("이미 해시태그 3개를 모두 선택하셨습니다.")
+            val firstTag = binding.chipFirstSortedTag
+            val secondTag = binding.chipSecondSortedTag
+            val thirdTag = binding.chipThirdSortedTag
+
+            // 선택용 태그 ClickListener 설정
+            chip.setOnClickListener {
+                // 첫번째 태그 자리가 비어있다면 == 아무것도 선택하지 않은 상태
+                if(firstTag.visibility == GONE) {
+                    firstTag.text = chip.text
+                    setBackgroundColor(firstTag)
+                    chip.visibility = GONE
+                    chip.isChecked = true
+                    firstTag.visibility = VISIBLE
+                }
+                // 두번째 태그 자리가 비어있다면 == 첫번째 태그 사용 중
+                else if(secondTag.visibility == GONE) {
+                    secondTag.text = chip.text
+                    setBackgroundColor(secondTag)
+                    chip.visibility = GONE
+                    chip.isChecked = true
+                    secondTag.visibility = VISIBLE
+                }
+                // 세번째 태그 자리가 비어있다면 == 두,세번째 태그 사용 중
+                else if(thirdTag.visibility == GONE) {
+                    thirdTag.text = chip.text
+                    setBackgroundColor(thirdTag)
+                    chip.visibility = GONE
+                    chip.isChecked = true
+                    thirdTag.visibility = VISIBLE
+                }
+                // 모든 태그가 사용 중이라면
+                else {
+                    this.showCustomToast("이미 해시태그 3개를 모두 선택하셨습니다.")
+                }
             }
         }
-
     }
 
-    private fun setClickListenerToSortedTag(sortedTag: TextView, tagNumber: Int) {
-        // 이미 선택된 상태에서 클릭했다면 -> 클릭된 거 지우기 : 색깔 반환, , 앞쪽부터 채워지게 정렬태그 이동, 정렬태그 GONE 처리, 해당 tv VISIBLE 처리
+    private fun setClickListenerToSortedTag(sortedTag: Chip, tagNumber: Int) {
+        // 이미 선택된 상태에서 클릭했다면
         sortedTag.setOnClickListener {
-            when (sortedTag.text) {
-                // 원래 태그 보여주기
-                binding.tvHashtagFriend.text -> binding.tvHashtagFriend.visibility = VISIBLE
-                binding.tvHashtagFamily.text -> binding.tvHashtagFamily.visibility = VISIBLE
-                binding.tvHashtagLover.text -> binding.tvHashtagLover.visibility = VISIBLE
-                binding.tvHashtagAnniversary.text -> binding.tvHashtagAnniversary.visibility = VISIBLE
-                binding.tvHashtagBirthday.text -> binding.tvHashtagBirthday.visibility = VISIBLE
-                binding.tvHashtagEmployment.text -> binding.tvHashtagEmployment.visibility = VISIBLE
-                binding.tvHashtagGraduationExhibition.text -> binding.tvHashtagGraduationExhibition.visibility = VISIBLE
-                binding.tvHashtagParty.text -> binding.tvHashtagParty.visibility = VISIBLE
+            // 원래 태그 보여주기
+            for (id in binding.chipGroupHashtag.checkedChipIds) {
+                val chip: Chip = binding.chipGroupHashtag.findViewById(id)
+                if(chip.text.equals(sortedTag.text)) {
+                    chip.visibility = VISIBLE
+                    chip.isChecked = false
+                }
             }
             // 색 반환
-            restoreBackgroundResourceOfTag(sortedTag)
+            returnBackgroundColor(sortedTag)
             // 자리 이동
             moveTagPlace(tagNumber)
         }
     }
 
     private fun moveTagPlace(tagNumber: Int) {
-        val firstTag = binding.tvFirstTag
-        val secondTag = binding.tvSecondTag
-        val thirdTag = binding.tvThirdTag
-        
+        val firstTag = binding.chipFirstSortedTag
+        val secondTag = binding.chipSecondSortedTag
+        val thirdTag = binding.chipThirdSortedTag
+
         when(tagNumber) {
             1 -> {
                 firstTag.text = ""
                 if (secondTag.visibility != GONE) {
                     firstTag.text = secondTag.text
-                    firstTag.background = secondTag.background
+                    firstTag.chipBackgroundColor = secondTag.chipBackgroundColor
                     secondTag.text = ""
                     if (thirdTag.visibility != GONE) {
                         thirdTag.visibility = GONE
                         secondTag.text = thirdTag.text
-                        secondTag.background = thirdTag.background
+                        secondTag.chipBackgroundColor = thirdTag.chipBackgroundColor
                         thirdTag.text = ""
                     } else secondTag.visibility = GONE
                 } else firstTag.visibility = GONE
@@ -170,7 +179,7 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
             2 -> {
                 secondTag.text = ""
                 if (thirdTag.visibility != GONE) {
-                    secondTag.background = thirdTag.background
+                    secondTag.chipBackgroundColor = thirdTag.chipBackgroundColor
                     thirdTag.visibility = GONE
                     secondTag.text = thirdTag.text
                     thirdTag.text = ""
@@ -183,31 +192,40 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
         }
     }
 
-    private fun restoreBackgroundResourceOfTag(tag: TextView) {
-        when (tag.background.constantState) {
+    private fun returnBackgroundColor(tag: Chip) {
+        when (tag.chipBackgroundColor) {
             // off_white를 사용했다면
-            ResourcesCompat.getDrawable(resources, R.drawable.bg_rectangle_radius_13_off_white, null)!!.constantState -> bOffWhiteIsUsed = false
+            resources.getColorStateList(R.color.off_white, null) -> {
+                Log.d("off_white", "")
+                bOffWhiteIsUsed = false
+            }
             // very_light_pink를 사용했다면
-            ResourcesCompat.getDrawable(resources, R.drawable.bg_rectangle_radius_13_very_light_pink, null)!!.constantState -> bVeryLightPinkIsUsed = false
+            resources.getColorStateList(R.color.very_light_pink, null) -> {
+                Log.d("very_light_pink", "")
+                bVeryLightPinkIsUsed = false
+            }
             // light_peach_2를 사용했다면
-            ResourcesCompat.getDrawable(resources, R.drawable.bg_rectangle_radius_13_light_peach_2, null)!!.constantState -> bLightPeach2IsUsed = false
+            resources.getColorStateList(R.color.light_peach_2, null) -> {
+                Log.d("light_peach_2", "")
+                bLightPeach2IsUsed = false
+            }
         }
     }
 
-    private fun setBackgroundResourceOfTag(tvHashtagSorted: TextView) {
+    private fun setBackgroundColor(chipSortedTag: Chip) {
         // off_white를 쓸 수 있다면
         if (!bOffWhiteIsUsed) {
-            tvHashtagSorted.setBackgroundResource(R.drawable.bg_rectangle_radius_13_off_white)
+            chipSortedTag.setChipBackgroundColorResource(R.color.off_white)
             bOffWhiteIsUsed = true
         }
         // very_light_pink를 쓸 수 있다면
         else if (!bVeryLightPinkIsUsed) {
-            tvHashtagSorted.setBackgroundResource(R.drawable.bg_rectangle_radius_13_very_light_pink)
+            chipSortedTag.setChipBackgroundColorResource(R.color.very_light_pink)
             bVeryLightPinkIsUsed = true
         }
         // light_peach_2를 쓸 수 있다면
         else if (!bLightPeach2IsUsed) {
-            tvHashtagSorted.setBackgroundResource(R.drawable.bg_rectangle_radius_13_light_peach_2)
+            chipSortedTag.setChipBackgroundColorResource(R.color.light_peach_2)
             bLightPeach2IsUsed = true
         }
     }
@@ -218,10 +236,10 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
 
         // date edittext에 값이 있으면 해당 값으로 날짜 지정해줘야 함. 없으면 현재 날짜로 지정.
         if(binding.etSelectDate.text.isNotEmpty()) {
-            selectedDate.time = dateFormat.parse(binding.etSelectDate.text.toString())
+            selectedDate.time = dateFormat.parse(binding.etSelectDate.text.toString()) as Date
         }
 
-        DatePickerDialog(this, DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
+        DatePickerDialog(this, { _, year, month, dayOfMonth ->
             selectedDate.set(year, month, dayOfMonth)
             val strDate: String = dateFormat.format(selectedDate.time)
             binding.etSelectDate.setText(strDate)
