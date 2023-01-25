@@ -96,7 +96,6 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
                 false
             ) as Chip
             chip.id = View.generateViewId()
-            Log.d("id", "${chip.id}")
             chip.text = "# ${hashTagArray[i]}"
             binding.chipGroupHashtag.addView(chip)
 
@@ -111,7 +110,6 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
                     firstTag.text = chip.text
                     setBackgroundColor(firstTag)
                     chip.visibility = GONE
-                    chip.isChecked = true
                     firstTag.visibility = VISIBLE
                 }
                 // 두번째 태그 자리가 비어있다면 == 첫번째 태그 사용 중
@@ -119,7 +117,6 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
                     secondTag.text = chip.text
                     setBackgroundColor(secondTag)
                     chip.visibility = GONE
-                    chip.isChecked = true
                     secondTag.visibility = VISIBLE
                 }
                 // 세번째 태그 자리가 비어있다면 == 두,세번째 태그 사용 중
@@ -127,11 +124,11 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
                     thirdTag.text = chip.text
                     setBackgroundColor(thirdTag)
                     chip.visibility = GONE
-                    chip.isChecked = true
                     thirdTag.visibility = VISIBLE
                 }
                 // 모든 태그가 사용 중이라면
                 else {
+                    chip.isChecked = false
                     this.showCustomToast("이미 해시태그 3개를 모두 선택하셨습니다.")
                 }
             }

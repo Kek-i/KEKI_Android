@@ -411,13 +411,19 @@
     <dimen name="calendar_add_tv_max_hashtag_margin_start">25dp</dimen>
     <dimen name="calendar_add_tv_max_hashtag_size">11sp</dimen>
 
-    <dimen name="calendar_layout_flexbox_width">0dp</dimen>
-    <dimen name="calendar_layout_flexbox_margin_top">18dp</dimen>
-    <dimen name="calendar_layout_flexbox_padding_top">2dp</dimen>
-    <dimen name="calendar_layout_flexbox_padding_horizontal">24dp</dimen>
-    <dimen name="calendar_tv_hashtag_height">26dp</dimen>
-    <dimen name="calendar_tv_hashtag_margin_end">10dp</dimen>
-    <dimen name="calendar_tv_hashtag_margin_bottom">14dp</dimen>
+    <dimen name="calendar_chip_group_width">0dp</dimen>
+    <dimen name="calendar_chip_group_margin_top">18dp</dimen>
+    <dimen name="calendar_chip_group_padding_top">2dp</dimen>
+    <dimen name="calendar_chip_group_padding_bottom">5dp</dimen>
+    <dimen name="calendar_chip_group_padding_horizontal">24dp</dimen>
+    <dimen name="calendar_chip_hashtag_height">26dp</dimen>
+    <dimen name="calendar_chip_hashtag_radius">13dp</dimen>
+    <dimen name="calendar_chip_hashtag_padding_top">4dp</dimen>
+    <dimen name="calendar_chip_hashtag_padding_bottom">6dp</dimen>
+    <dimen name="calendar_chip_spacing_horizontal">10dp</dimen>
+    <dimen name="calendar_chip_spacing_vertical">14dp</dimen>
+    <dimen name="calendar_chip_text_padding_horizontal">0dp</dimen>
+    <dimen name="calendar_chip_padding_horizontal">14dp</dimen>
 
     <dimen name="calendar_add_component_elevation">3dp</dimen>
     <dimen name="calendar_add_hashtag_elevation">2dp</dimen>

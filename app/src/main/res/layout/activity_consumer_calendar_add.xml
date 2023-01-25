@@ -327,39 +327,36 @@
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/chip_group_hashtag"
-            android:layout_width="@dimen/calendar_layout_flexbox_width"
+            android:layout_width="@dimen/calendar_chip_group_width"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/calendar_layout_flexbox_margin_top"
-            android:paddingHorizontal="@dimen/calendar_layout_flexbox_padding_horizontal"
-            android:paddingTop="@dimen/calendar_layout_flexbox_padding_top"
-            android:paddingBottom="5dp"
+            android:layout_marginTop="@dimen/calendar_chip_group_margin_top"
+            android:paddingHorizontal="@dimen/calendar_chip_group_padding_horizontal"
+            android:paddingTop="@dimen/calendar_chip_group_padding_top"
+            android:paddingBottom="@dimen/calendar_chip_group_padding_bottom"
             android:clipToPadding="false"
             app:layout_constraintTop_toBottomOf="@id/tv_max_hashtag"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:flow_wrapMode="aligned"
-            app:chipSpacingHorizontal="10dp"
-            app:chipSpacingVertical="14dp"
+            app:chipSpacingHorizontal="@dimen/calendar_chip_spacing_horizontal"
+            app:chipSpacingVertical="@dimen/calendar_chip_spacing_vertical"
             >
 
             <!-- 선택 시 앞으로 정렬할 때 사용하는 chip -->
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_first_sorted_tag"
-                android:text="# 첫번째"
                 android:visibility="gone"
                 style="@style/CustomChipStyle"
                 />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_second_sorted_tag"
-                android:text="# 두번째"
                 android:visibility="gone"
                 style="@style/CustomChipStyle"
                 />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_third_sorted_tag"
-                android:text="# 세번째"
                 android:visibility="gone"
                 style="@style/CustomChipStyle"
                 />

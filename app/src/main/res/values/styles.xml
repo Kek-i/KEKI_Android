@@ -21,19 +21,25 @@
     </style>
 
     <style name="CustomChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
-        <item name="chipCornerRadius">13dp</item>
+        <item name="chipCornerRadius">@dimen/calendar_chip_hashtag_radius</item>
         <item name="chipBackgroundColor">@color/white</item>
-        <item name="chipMinTouchTargetSize">0dp</item>
+        <item name="chipMinTouchTargetSize">@dimen/calendar_chip_hashtag_height</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">@dimen/calendar_tv_hashtag_height</item>
+        <item name="android:layout_height">@dimen/calendar_chip_hashtag_height</item>
+        <item name="android:paddingTop">@dimen/calendar_chip_hashtag_padding_top</item>
+        <item name="android:paddingBottom">@dimen/calendar_chip_hashtag_padding_bottom</item>
+        <item name="android:textAppearance">@style/ChipFontStyle</item>
+        <item name="textStartPadding">@dimen/calendar_chip_text_padding_horizontal</item>
+        <item name="textEndPadding">@dimen/calendar_chip_text_padding_horizontal</item>
+        <item name="chipStartPadding">@dimen/calendar_chip_padding_horizontal</item>
+        <item name="chipEndPadding">@dimen/calendar_chip_padding_horizontal</item>
+        <item name="android:elevation">@dimen/calendar_add_hashtag_elevation</item>
+    </style>
+
+    <style name="ChipFontStyle">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">@dimen/calendar_tv_hashtag_size</item>
         <item name="android:fontFamily">@font/notosanskr_regular</item>
         <item name="android:includeFontPadding">false</item>
-        <item name="textStartPadding">0dp</item>
-        <item name="textEndPadding">0dp</item>
-        <item name="chipStartPadding">12dp</item>
-        <item name="chipEndPadding">12dp</item>
-        <item name="android:elevation">@dimen/calendar_add_hashtag_elevation</item>
     </style>
 </resources>
