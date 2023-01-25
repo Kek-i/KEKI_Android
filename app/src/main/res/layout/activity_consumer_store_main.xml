@@ -96,7 +96,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:includeFontPadding="false"
-                android:text="더보기"
+                android:text="@string/store_main_store_view_more"
                 app:layout_constraintStart_toStartOf="@+id/tv_store_detail"
                 app:layout_constraintTop_toBottomOf="@id/tv_store_detail"
                 android:textSize="@dimen/store_main_store_detail_text_size"
