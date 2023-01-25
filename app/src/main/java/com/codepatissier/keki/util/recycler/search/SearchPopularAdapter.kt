@@ -7,12 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.codepatissier.keki.R
 import com.codepatissier.keki.databinding.ItemSearchPopularRecyclerBinding
 import com.codepatissier.keki.src.main.consumer.search.ConsumerSearchFragment
-//
-//검색 - 인기 케이크 Adapter
-//
-class SearchPopularAdapter(val context: ConsumerSearchFragment) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+import com.codepatissier.keki.src.main.consumer.search.model.PopularSearch
+import com.codepatissier.keki.src.main.consumer.search.model.Result
 
-    var searchPopularData = mutableListOf<SearchPopularData>()
+class SearchPopularAdapter(private var searchMainData: Result, val context: ConsumerSearchFragment) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -20,20 +18,18 @@ class SearchPopularAdapter(val context: ConsumerSearchFragment) : RecyclerView.A
         return SearchPopularViewHolder(context, itemBinding)
     }
 
-    override fun getItemCount(): Int = searchPopularData.size
+    override fun getItemCount(): Int = searchMainData.popularSearches.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as SearchPopularViewHolder).bind(searchPopularData[position])
+        (holder as SearchPopularViewHolder).bind(searchMainData.popularSearches[position])
     }
 
     class SearchPopularViewHolder(val context: ConsumerSearchFragment, binding: ItemSearchPopularRecyclerBinding) : RecyclerView.ViewHolder(binding.root) {
 
         private val popularTagName: TextView = itemView.findViewById(R.id.tv_popular_search_tag)
 
-        fun bind(item: SearchPopularData) {
-            popularTagName.text = item.popular
+        fun bind(item: PopularSearch) {
+            popularTagName.text = item.searchWord
         }
     }
-
-
 }

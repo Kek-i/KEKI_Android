@@ -7,12 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.codepatissier.keki.databinding.ItemRecentSeenCakeRecyclerBinding
 import com.codepatissier.keki.src.main.consumer.search.ConsumerSearchFragment
-//
-//최근 본 케이크용 Adapter
-//
-class SearchCakeImgAdapter(val context: ConsumerSearchFragment) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+import com.codepatissier.keki.src.main.consumer.search.model.RecentPostSearch
+import com.codepatissier.keki.src.main.consumer.search.model.Result
 
-    var searchCakeImgData = mutableListOf<SearchCakeImgData>()
+class SearchRecentPostAdapter(private var searchMainData: Result, val context: ConsumerSearchFragment) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -20,19 +18,19 @@ class SearchCakeImgAdapter(val context: ConsumerSearchFragment) : RecyclerView.A
         return SearchCakeImgHolder(context, itemBinding)
     }
 
-    override fun getItemCount(): Int = searchCakeImgData.size
+    override fun getItemCount(): Int = searchMainData.recentPostSearches.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as SearchCakeImgHolder).bind(searchCakeImgData[position])
+        (holder as SearchCakeImgHolder).bind(searchMainData.recentPostSearches[position])
     }
 
     class SearchCakeImgHolder(val context: ConsumerSearchFragment, binding: ItemRecentSeenCakeRecyclerBinding) : RecyclerView.ViewHolder(binding.root) {
 
         private val seenCakeImg: ImageView = binding.ivCake
 
-        fun bind(item: SearchCakeImgData) {
+        fun bind(item:RecentPostSearch) {
             Glide.with(context!!)
-                .load(item.img)
+                .load(item.postImgUrl)
                 .centerCrop()
                 .into(seenCakeImg)
         }
