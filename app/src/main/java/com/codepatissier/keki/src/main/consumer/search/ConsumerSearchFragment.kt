@@ -25,7 +25,7 @@ class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(Fragm
         setListenerToEditText()
         showLoadingDialog(requireContext())
         SearchMainService(this).tryGetMainSearches()
-        deleteSearchHistory()
+        clickDeleteSearchHistory()
     }
 
     override fun onGetMainSearchesSuccess(response: MainSearchesResponse) {
@@ -39,7 +39,7 @@ class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(Fragm
     }
 
     override fun onPatchSearchesSuccess(response: PatchSearchResponse) {
-        deleteSearchHistory()
+        binding.llEmptyHistory.visibility = View.GONE
     }
 
     override fun onPatchSearchesFailure(message: String) {
@@ -52,10 +52,9 @@ class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(Fragm
     }
 
     //검색어 전체 지우기 -> 최근 검색어 뷰 없어짐
-    private fun deleteSearchHistory(){
+    private fun clickDeleteSearchHistory(){
         binding.tvRecentSearchDelete.setOnClickListener {
             SearchMainService(this).tryPatchSearchHistories()
-            binding.llEmptyHistory.visibility = View.GONE
         }
     }
 

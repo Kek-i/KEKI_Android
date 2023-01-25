@@ -29,7 +29,7 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
         super.onCreate(savedInstanceState)
 
         checkNavigateFromHome()
-        deleteSearch()
+        clickDeleteSearch()
         setCategory()
         setListenerToEditText()
 
@@ -71,7 +71,7 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
 
     //검색창 x 누르면 삭제
     @SuppressLint("ClickableViewAccessibility")
-    private fun deleteSearch(){
+    private fun clickDeleteSearch(){
         binding.etSearch.setOnTouchListener(OnTouchListener { v, event ->
             if (event.action == MotionEvent.ACTION_UP)
                 if (event.rawX  >= binding.etSearch.right - binding.etSearch.compoundDrawables.get(2).bounds.width() - 100 )
