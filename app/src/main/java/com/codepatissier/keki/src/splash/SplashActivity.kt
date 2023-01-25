@@ -10,6 +10,7 @@ import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivitySplashBinding
 import com.codepatissier.keki.src.MainActivity
 import com.codepatissier.keki.src.main.login.LoginActivity
+import kotlinx.coroutines.MainScope
 
 class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding::inflate) {
 

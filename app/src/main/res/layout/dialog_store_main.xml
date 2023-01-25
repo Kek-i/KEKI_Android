@@ -135,14 +135,13 @@
             android:id="@+id/tv_store_num_data"
             android:layout_width="@dimen/store_main_dialog_text_width"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/store_main_dialog_text_top"
             android:fontFamily="@font/notosanskr_regular"
             android:includeFontPadding="false"
             android:text="@string/store_main_dialog_store_num_data"
             android:textSize="@dimen/store_main_dialog_text_size"
             app:layout_constraintEnd_toEndOf="@+id/tv_store_address_data"
             app:layout_constraintStart_toStartOf="@+id/tv_store_address_data"
-            app:layout_constraintTop_toBottomOf="@+id/tv_store_address_data" />
+            app:layout_constraintTop_toTopOf="@+id/tv_store_num" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

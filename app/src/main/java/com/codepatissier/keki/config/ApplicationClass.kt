@@ -9,8 +9,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 class ApplicationClass : Application() {
+<<<<<<< feature/59-calendar-main-server
     val API_URL = "https://keki-dev.store/"
 
+=======
+    val API_URL = "http://13.124.234.58/"
+>>>>>>> develop
     companion object {
         lateinit var sSharedPreferences: SharedPreferences
         lateinit var editor: SharedPreferences.Editor
@@ -25,7 +29,6 @@ class ApplicationClass : Application() {
         sSharedPreferences =
             applicationContext.getSharedPreferences("KEKI_APP", MODE_PRIVATE) // 변경
         editor = sSharedPreferences.edit()
-
         initRetrofitInstance()
     }
 

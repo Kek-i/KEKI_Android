@@ -1,8 +1,7 @@
 package com.codepatissier.keki.src.main.consumer.search.model
 
-data class PopularSearchesResponse(
+data class PatchSearchResponse(
     val code: Int,
     val isSuccess: Boolean,
-    val message: String,
-    val result: List<Result>
+    val message: String
 )
