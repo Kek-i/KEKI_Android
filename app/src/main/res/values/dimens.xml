@@ -404,7 +404,7 @@
     <dimen name="calendar_add_ib_calendar_margin_end">15dp</dimen>
 
     <dimen name="calendar_add_tv_select_hashtag_height">24dp</dimen>
-    <dimen name="calendar_add_tv_select_hashtag_margin_top">25dp</dimen>
+    <dimen name="calendar_add_tv_select_hashtag_margin_top">20dp</dimen>
     <dimen name="calendar_add_tv_select_hashtag_margin_start">24dp</dimen>
     <dimen name="calendar_add_tv_select_hashtag_size">16sp</dimen>
     <dimen name="calendar_add_tv_max_hashtag_height">16dp</dimen>
@@ -428,8 +428,12 @@
 
     <dimen name="calendar_add_component_elevation">3dp</dimen>
     <dimen name="calendar_add_hashtag_elevation">2dp</dimen>
-
     <dimen name="date_picker_padding">15dp</dimen>
+
+    <dimen name="calendar_add_tv_error_size">11sp</dimen>
+    <dimen name="calendar_add_tv_error_height">16sp</dimen>
+    <dimen name="calendar_add_tv_error_margin_top">5dp</dimen>
+    <dimen name="calendar_add_tv_error_margin_start">24dp</dimen>
 
     <!-- my page -->
     <dimen name="my_page_ic_top">16dp</dimen>

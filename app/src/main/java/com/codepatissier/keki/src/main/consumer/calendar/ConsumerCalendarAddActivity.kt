@@ -1,10 +1,8 @@
 package com.codepatissier.keki.src.main.consumer.calendar
 
 import android.app.DatePickerDialog
-import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -32,8 +30,12 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
         setClickListenerToLayoutOfType()
         setClickListenerToDatePicker()
         setClickListenerToBackBtn()
+        setListenerForFocus()
 
-        val hashTagArray = listOf<String>("친구", "가족", "졸업", "기념일", "크리스마스", "합격", "파티")
+        val hashTagArray = listOf<String>("친구", "가족", "졸업", "기념일", "크리스마스", "합격", "파티",
+                                            "할로윈", "발렌타인데이", "부모님", "결혼", "연인", "화이트데이",
+                                            "생일", "취업", "선생님", "어버이날", "N주년", "스승의날",
+                                            "승진", "나", "새해", "연말", "명절", "졸업", "전시")
 
         // 해시태그 리스트 받아와서 chip 생성 및 Click Listener 설정
         createChip(hashTagArray)
@@ -41,22 +43,12 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
         setClickListenerToSortedTag(binding.chipFirstSortedTag, 1)
         setClickListenerToSortedTag(binding.chipSecondSortedTag, 2)
         setClickListenerToSortedTag(binding.chipThirdSortedTag, 3)
-
-        binding.etTitle.setOnEditorActionListener { _, actionId, _ ->
-            if(actionId == EditorInfo.IME_ACTION_DONE) {
-                // 키보드 내리기
-                val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                inputMethodManager.hideSoftInputFromWindow(binding.etTitle.windowToken, 0)
-                binding.etTitle.clearFocus()
-                return@setOnEditorActionListener true
-            }
-            else return@setOnEditorActionListener false
-        }
     }
 
     private fun setClickListenerToLayoutOfType() {
         // 화살표 있는 레이아웃 눌렀을 때
         binding.layoutCloseCalendarAddType.setOnClickListener {
+            outOfFocusOnTitle()
             // 선택 메뉴 펼쳐져 있을 때
             if(openForLayoutOfType) {
                 binding.layoutOpenCalendarAddType.visibility = GONE
@@ -68,20 +60,35 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
                 openForLayoutOfType = true
             }
         }
+        binding.ibOpenType.setOnClickListener {
+            outOfFocusOnTitle()
+            if(openForLayoutOfType) {
+                binding.layoutOpenCalendarAddType.visibility = GONE
+                openForLayoutOfType = false
+            }
+            else {
+                binding.layoutOpenCalendarAddType.visibility = VISIBLE
+                openForLayoutOfType = true
+            }
+        }
+
         // 디데이 클릭
         binding.tvTypeDday.setOnClickListener {
+            outOfFocusOnTitle()
             binding.layoutOpenCalendarAddType.visibility = GONE
             openForLayoutOfType = false
             binding.tvSelectType.text = binding.tvTypeDday.text
         }
         // 날짜수 클릭
         binding.tvTypeNumberOfDays.setOnClickListener {
+            outOfFocusOnTitle()
             binding.layoutOpenCalendarAddType.visibility = GONE
             openForLayoutOfType = false
             binding.tvSelectType.text = binding.tvTypeNumberOfDays.text
         }
         // 매년 반복 클릭
         binding.tvTypeRepeatEveryYear.setOnClickListener {
+            outOfFocusOnTitle()
             binding.layoutOpenCalendarAddType.visibility = GONE
             openForLayoutOfType = false
             binding.tvSelectType.text = binding.tvTypeRepeatEveryYear.text
@@ -100,8 +107,29 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
         }
     }
 
+    private fun setListenerForFocus() {
+        binding.etTitle.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                outOfFocusOnTitle()
+                return@setOnEditorActionListener true
+            } else return@setOnEditorActionListener false
+        }
+        binding.layoutOpenCalendarAddType.setOnClickListener {
+            outOfFocusOnTitle()
+        }
+    }
+
+    // edittext 포커스 해제
+    private fun outOfFocusOnTitle() {
+        // 키보드 내리기
+        val inputMethodManager =
+            getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(binding.etTitle.windowToken, 0)
+        // focus 해제
+        binding.etTitle.clearFocus()
+    }
+
     private fun createChip(hashTagArray: List<String>) {
-        // scroll view 필요한가? 테스트해보기
         for (i in hashTagArray.indices) {
             val chip = layoutInflater.inflate(
                 R.layout.single_chip_layout,
@@ -206,17 +234,14 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
         when (tag.chipBackgroundColor) {
             // off_white를 사용했다면
             resources.getColorStateList(R.color.off_white, null) -> {
-                Log.d("off_white", "")
                 bOffWhiteIsUsed = false
             }
             // very_light_pink를 사용했다면
             resources.getColorStateList(R.color.very_light_pink, null) -> {
-                Log.d("very_light_pink", "")
                 bVeryLightPinkIsUsed = false
             }
             // light_peach_2를 사용했다면
             resources.getColorStateList(R.color.light_peach_2, null) -> {
-                Log.d("light_peach_2", "")
                 bLightPeach2IsUsed = false
             }
         }
@@ -241,6 +266,7 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
     }
 
     private fun showDatePickerDialog() {
+        outOfFocusOnTitle()
         val dateFormat = SimpleDateFormat("yyyy-MM-dd")
         val selectedDate: Calendar = Calendar.getInstance()
 
