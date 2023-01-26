@@ -316,7 +316,7 @@
 
     <!-- calendar detail -->
     <dimen name="calendar_top_bar_layout_margin_top">13dp</dimen>
-    <dimen name="calendar_content_layout_height">0dp</dimen>
+    <dimen name="calendar_scroll_view_content_height">0dp</dimen>
     <dimen name="calendar_ib_modify_margin_end">12dp</dimen>
     <dimen name="calendar_ib_back_margin_top">6dp</dimen>
     <dimen name="calendar_ib_back_margin_start">14dp</dimen>
@@ -415,7 +415,7 @@
     <dimen name="calendar_chip_group_width">0dp</dimen>
     <dimen name="calendar_chip_group_margin_top">18dp</dimen>
     <dimen name="calendar_chip_group_padding_top">2dp</dimen>
-    <dimen name="calendar_chip_group_padding_bottom">5dp</dimen>
+    <dimen name="calendar_chip_group_padding_bottom">30dp</dimen>
     <dimen name="calendar_chip_group_padding_horizontal">24dp</dimen>
     <dimen name="calendar_chip_hashtag_height">26dp</dimen>
     <dimen name="calendar_chip_hashtag_radius">13dp</dimen>
