@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_calendar_add_top_bar"
@@ -244,8 +246,12 @@
             android:textSize="@dimen/calendar_add_et_title_size"
             android:fontFamily="@font/notosanskr_regular"
             android:includeFontPadding="false"
-            android:background="@android:color/transparent"
+            android:background="@null"
             android:elevation="@dimen/calendar_add_component_elevation"
+            android:inputType="textNoSuggestions"
+            android:imeOptions="actionDone"
+            android:maxLines="1"
+            android:maxLength="30"
             />
 
         <View
@@ -259,6 +265,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:background="@drawable/bg_rectangle_radius_10_white_padding"
             android:elevation="@dimen/calendar_add_component_elevation"
+
             />
 
         <EditText
@@ -271,7 +278,6 @@
             app:layout_constraintEnd_toStartOf="@id/ib_calendar_select_date"
             app:layout_constraintBottom_toBottomOf="@id/bg_calendar_add_input_date"
             android:inputType="date"
-
             android:enabled="false"
             android:hint="@string/calendar_add_anniversary_date"
             android:textColorHint="@color/brown_grey"

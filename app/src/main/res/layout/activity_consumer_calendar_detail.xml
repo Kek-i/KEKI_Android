@@ -81,7 +81,6 @@
             android:textAlignment="center"
             android:fontFamily="@font/notosanskr_bold"
             android:includeFontPadding="false"
-            android:maxLines="2"
             />
 
         <TextView

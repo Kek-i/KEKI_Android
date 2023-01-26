@@ -1,16 +1,15 @@
 package com.codepatissier.keki.src.main.consumer.calendar
 
 import android.app.DatePickerDialog
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import androidx.core.view.get
-import androidx.core.view.marginEnd
-import androidx.core.view.marginLeft
-import androidx.core.view.marginStart
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityConsumerCalendarAddBinding
@@ -42,6 +41,17 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
         setClickListenerToSortedTag(binding.chipFirstSortedTag, 1)
         setClickListenerToSortedTag(binding.chipSecondSortedTag, 2)
         setClickListenerToSortedTag(binding.chipThirdSortedTag, 3)
+
+        binding.etTitle.setOnEditorActionListener { _, actionId, _ ->
+            if(actionId == EditorInfo.IME_ACTION_DONE) {
+                // 키보드 내리기
+                val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                inputMethodManager.hideSoftInputFromWindow(binding.etTitle.windowToken, 0)
+                binding.etTitle.clearFocus()
+                return@setOnEditorActionListener true
+            }
+            else return@setOnEditorActionListener false
+        }
     }
 
     private fun setClickListenerToLayoutOfType() {
@@ -244,6 +254,7 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
             val strDate: String = dateFormat.format(selectedDate.time)
             binding.etSelectDate.setText(strDate)
             binding.etSelectDate.setTextColor(Color.BLACK)
+            binding.etTitle.clearFocus()
         },
             selectedDate.get(Calendar.YEAR),
             selectedDate.get(Calendar.MONTH),
@@ -254,7 +265,7 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
             if(binding.tvSelectType.text.equals(binding.tvTypeNumberOfDays.text))
                 datePicker.maxDate = System.currentTimeMillis()
         }.show()
-        dialog.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(resources.getColor(R.color.pinkish, null))
+        dialog.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(resources.getColor(R.color.soft_pink, null))
         dialog.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(resources.getColor(R.color.pinkish, null))
     }
 }
