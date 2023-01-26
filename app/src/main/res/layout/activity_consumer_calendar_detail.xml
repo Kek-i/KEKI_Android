@@ -46,7 +46,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_calendar_detail_content"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/calendar_content_layout_height"
+        android:layout_height="@dimen/calendar_content_height"
         app:layout_constraintTop_toBottomOf="@id/layout_calendar_detail_top_bar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
