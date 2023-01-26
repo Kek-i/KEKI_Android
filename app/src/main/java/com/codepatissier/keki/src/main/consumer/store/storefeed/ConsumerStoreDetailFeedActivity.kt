@@ -14,14 +14,18 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
 
     lateinit var storeFeedAdapter : StoreFeedAdapter
     val storeFeedDatas = mutableListOf<StoreFeedData>()
+    var feedTag : String = "친구"
+    var feedSize = 12
+    var cursorIdx : Int? = null
+    var hasNext : Boolean? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         navigateToStoreMain()
-        checkScrollEvent()
         showLoadingDialog(this)
-        ConsumerStoreFeedDetailService(this).tryGetConsumerStoreFeedDetailRetrofitInterface("친구", null,null)
+        ConsumerStoreFeedDetailService(this).tryGetConsumerStoreFeedDetailRetrofitInterface(feedTag, cursorIdx, feedSize)
+        checkScrollEvent()
     }
 
     override fun onGetConsumerStoreFeedDetailSuccess(response: ConsumerStoreDetailFeedResponse) {
@@ -53,6 +57,9 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
             hasNext = response.result.hasNext)) }
         }
 
+        cursorIdx = response.result.cursorIdx
+        hasNext = response.result.hasNext
+
         storeFeedAdapter.storeFeedDatas = storeFeedDatas
         storeFeedAdapter.notifyDataSetChanged()
     }
@@ -64,6 +71,13 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
 
                 if(!binding.recyclerStoreFeed.canScrollVertically(1)){
                     Log.d("vertical_scroll", "success")
+
+                    if(hasNext!!){
+                        showLoadingDialog(this@ConsumerStoreDetailFeedActivity)
+                        ConsumerStoreFeedDetailService(this@ConsumerStoreDetailFeedActivity)
+                            .tryGetConsumerStoreFeedDetailRetrofitInterface(feedTag, cursorIdx, feedSize)
+                    }
+
                 }
             }
         })
