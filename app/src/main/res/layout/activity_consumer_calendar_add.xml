@@ -287,6 +287,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/calendar_add_ib_calendar_margin_end"
+            android:padding="@dimen/calendar_add_ib_calendar_padding"
             app:layout_constraintTop_toTopOf="@id/bg_calendar_add_input_date"
             app:layout_constraintEnd_toEndOf="@id/bg_calendar_add_input_date"
             app:layout_constraintBottom_toBottomOf="@id/bg_calendar_add_input_date"

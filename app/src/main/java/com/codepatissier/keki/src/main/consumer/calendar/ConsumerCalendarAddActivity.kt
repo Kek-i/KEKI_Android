@@ -8,6 +8,9 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.core.view.get
+import androidx.core.view.marginEnd
+import androidx.core.view.marginLeft
+import androidx.core.view.marginStart
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityConsumerCalendarAddBinding
@@ -236,7 +239,7 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
             selectedDate.time = dateFormat.parse(binding.etSelectDate.text.toString()) as Date
         }
 
-        DatePickerDialog(this, { _, year, month, dayOfMonth ->
+        val dialog = DatePickerDialog(this, { _, year, month, dayOfMonth ->
             selectedDate.set(year, month, dayOfMonth)
             val strDate: String = dateFormat.format(selectedDate.time)
             binding.etSelectDate.setText(strDate)
@@ -245,10 +248,13 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
             selectedDate.get(Calendar.YEAR),
             selectedDate.get(Calendar.MONTH),
             selectedDate.get(Calendar.DAY_OF_MONTH)
-        ).apply {
+        )
+        dialog.apply {
             // 날짜수로 선택한 경우 미래 날짜는 입력 불가능
             if(binding.tvSelectType.text.equals(binding.tvTypeNumberOfDays.text))
                 datePicker.maxDate = System.currentTimeMillis()
         }.show()
+        dialog.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(resources.getColor(R.color.pinkish, null))
+        dialog.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(resources.getColor(R.color.pinkish, null))
     }
 }

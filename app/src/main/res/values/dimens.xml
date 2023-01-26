@@ -400,7 +400,8 @@
     <dimen name="calendar_add_bg_input_date_margin_top">14dp</dimen>
     <dimen name="calendar_add_bg_input_date_margin_horizontal">12dp</dimen>
     <dimen name="calendar_add_et_date_size">16sp</dimen>
-    <dimen name="calendar_add_ib_calendar_margin_end">20dp</dimen>
+    <dimen name="calendar_add_ib_calendar_padding">5dp</dimen>
+    <dimen name="calendar_add_ib_calendar_margin_end">15dp</dimen>
 
     <dimen name="calendar_add_tv_select_hashtag_height">24dp</dimen>
     <dimen name="calendar_add_tv_select_hashtag_margin_top">25dp</dimen>
