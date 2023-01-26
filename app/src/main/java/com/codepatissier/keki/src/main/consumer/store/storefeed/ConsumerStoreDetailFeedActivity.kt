@@ -2,6 +2,7 @@ package com.codepatissier.keki.src.main.consumer.store.storefeed
 
 import android.os.Bundle
 import android.util.Log
+import androidx.recyclerview.widget.RecyclerView
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityConsumerStoreDetailFeedBinding
 import com.codepatissier.keki.src.main.consumer.store.storefeed.model.ConsumerStoreDetailFeedResponse
@@ -18,6 +19,7 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
         super.onCreate(savedInstanceState)
 
         navigateToStoreMain()
+        checkScrollEvent()
         showLoadingDialog(this)
         ConsumerStoreFeedDetailService(this).tryGetConsumerStoreFeedDetailRetrofitInterface("친구", null,null)
     }
@@ -55,6 +57,18 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
         storeFeedAdapter.notifyDataSetChanged()
     }
 
+    private fun checkScrollEvent(){
+        binding.recyclerStoreFeed.addOnScrollListener(object: RecyclerView.OnScrollListener(){
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+
+                if(!binding.recyclerStoreFeed.canScrollVertically(1)){
+                    Log.d("vertical_scroll", "success")
+                }
+            }
+        })
+    }
+
     private fun navigateToStoreMain(){
         binding.ivStoreFeedLeftChevron.setOnClickListener {
             finish()
@@ -62,4 +76,5 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
     }
 
 }
+
 
