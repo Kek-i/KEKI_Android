@@ -68,7 +68,7 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name="com.codepatissier.keki.src.main.consumer.calendar.ConsumerCalendarDetailActivity"
+            android:name="com.codepatissier.keki.src.main.consumer.calendar.calendardetail.ConsumerCalendarDetailActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -80,7 +80,7 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name="com.codepatissier.keki.src.main.consumer.search.ConsumerSearchActivity"
+            android:name="com.codepatissier.keki.src.main.consumer.search.searchresult.ConsumerSearchActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
