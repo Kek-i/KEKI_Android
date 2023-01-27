@@ -45,7 +45,8 @@ class StoreMainStoreAdapter(val context: FragmentActivity?): RecyclerView.Adapte
 
             itemView.setOnClickListener {
                 var intent = Intent(itemView.context, ConsumerStoreDetailFeedActivity::class.java)
-                intent.putExtra("storeIdx", item.storeIdx)
+                // 스토어번호, 피드 번호 StoreMainStoreData 객체로 detailFeed로 넘기기
+                intent.putExtra("StoreMainStoreData", item)
                 itemView.context.startActivity(intent)
             }
         }

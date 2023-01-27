@@ -21,4 +21,18 @@ class ConsumerStoreFeedService(val consumerStoreFeedView: ConsumerStoreFeedView)
 
         })
     }
+
+    fun tryGetConsumerStoreNextFeed(storeIdx:Long, cursorIdx:Long, size:Int){
+        val searchResultRetrofitInterface = ApplicationClass.sRetrofit.create(SearchResultRetrofitInterface::class.java)
+        searchResultRetrofitInterface.getSearchResult(storeIdx = storeIdx, cursorIdx=cursorIdx, size=size).enqueue(object : Callback<SearchResultResponse> {
+            override fun onResponse( call: Call<SearchResultResponse>, response: Response<SearchResultResponse>) {
+                consumerStoreFeedView.onGetStoreNextFeedSuccess(response.body() as SearchResultResponse)
+            }
+
+            override fun onFailure(call: Call<SearchResultResponse>, t: Throwable) {
+                consumerStoreFeedView.onGetStoreNextFeedFailure(t.message ?: "통신 오류")
+            }
+
+        })
+    }
 }
