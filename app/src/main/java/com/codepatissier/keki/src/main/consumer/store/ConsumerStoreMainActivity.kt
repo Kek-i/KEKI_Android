@@ -1,6 +1,8 @@
 package com.codepatissier.keki.src.main.consumer.store
 
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -80,10 +82,15 @@ class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>
 
     override fun onGetStoreMainSuccess(response: ConsumerStoreMainResponse) {
         dismissLoadingDialog()
+
         binding.tvStoreName.text = response.result.nickname
         binding.tvStoreDetail.text = response.result.introduction
+
         val defaultImg = R.drawable.bg_oval_light_yellow
         val imageView = binding.ivProfile
+        val uri = "http://"+response.result.orderUrl
+
+        // 프로필 이미지 띄우기기
         Glide.with(this)
             .load(response.result.storeImgUrl)
             .placeholder(defaultImg)
@@ -93,6 +100,11 @@ class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>
             .into(imageView)
         setViewMore(binding.tvStoreDetail, binding.tvViewMore)
 
+        // 버튼 클릭시 주문링크로 이동
+        binding.tvOrder.setOnClickListener{
+            var intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
+            startActivity(intent)
+        }
     }
 
     override fun onGetStoreMainFailure(message: String) {
