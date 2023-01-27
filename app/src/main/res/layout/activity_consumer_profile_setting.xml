@@ -108,7 +108,7 @@
             app:layout_constraintTop_toBottomOf="@+id/cv_photo" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/et_nickname"
             android:layout_width="@dimen/edit_et_width"
             android:layout_height="@dimen/edit_et_height"
             android:layout_marginLeft="@dimen/edit_et_marginLeft"
