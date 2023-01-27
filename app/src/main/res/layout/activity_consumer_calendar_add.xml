@@ -264,11 +264,11 @@
                 android:fontFamily="@font/notosanskr_regular"
                 android:includeFontPadding="false"
                 android:background="@null"
-                android:elevation="@dimen/calendar_add_component_elevation"
                 android:inputType="textNoSuggestions"
                 android:imeOptions="actionDone"
                 android:maxLines="1"
                 android:maxLength="30"
+                android:elevation="@dimen/calendar_add_component_elevation"
                 />
 
             <TextView

@@ -1,4 +1,4 @@
-package com.codepatissier.keki.src.main.consumer.calendar
+package com.codepatissier.keki.src.main.consumer.calendar.calendaradd
 
 import android.app.DatePickerDialog
 import android.graphics.Color
@@ -10,13 +10,15 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
+import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.databinding.ActivityConsumerCalendarAddBinding
+import com.codepatissier.keki.src.main.consumer.calendar.calendaradd.model.PostCalendarRequest
 import com.google.android.material.chip.Chip
 import java.text.SimpleDateFormat
 import java.util.*
 
 class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBinding>(
-    ActivityConsumerCalendarAddBinding::inflate) {
+    ActivityConsumerCalendarAddBinding::inflate), ConsumerCalendarAddView {
     // 기념일 종류 메뉴 열고 닫기 여부
     private var openForLayoutOfType: Boolean = false
     // 무슨색 태그가 사용 중인지
@@ -27,12 +29,14 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // 레이아웃 뷰, 버튼 Click Listener 설정
-        setClickListenerToLayoutOfType()
-        setClickListenerToDatePicker()
-        setClickListenerToBackBtn()
+        setListenerToLayoutOfType()
+        setListenerToDatePicker()
+        setListenerToBackBtn()
         setListenerForFocus()
+        setListenerToCompletionBtn()
 
-        val hashTagArray = listOf<String>("친구", "가족", "졸업", "기념일", "크리스마스", "합격", "파티",
+        // 임시 데이터
+        val hashTagArray = listOf("친구", "가족", "졸업", "기념일", "크리스마스", "합격", "파티",
                                             "할로윈", "발렌타인데이", "부모님", "결혼", "연인", "화이트데이",
                                             "생일", "취업", "선생님", "어버이날", "N주년", "스승의날",
                                             "승진", "나", "새해", "연말", "명절", "졸업", "전시")
@@ -45,7 +49,61 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
         setClickListenerToSortedTag(binding.chipThirdSortedTag, 3)
     }
 
-    private fun setClickListenerToLayoutOfType() {
+    override fun onPostCalendarSuccess(response: BaseResponse) {
+        dismissLoadingDialog()
+        finish()
+    }
+
+    override fun onPostCalendarFailure(message: String) {
+        dismissLoadingDialog()
+        showCustomToast(message)
+    }
+
+    private fun setListenerToCompletionBtn() {
+        binding.btnCalendarAddCompletion.setOnClickListener {
+            // 필수 입력 항목 다 채웠는지 확인
+            if(checkAllRequiredInputIsEntered()) {
+                val type = binding.tvSelectType.text.toString()
+                val title = binding.etTitle.text.toString()
+                val date = binding.etSelectDate.text.toString()
+                val hashTags: MutableList<Map<String, String>> = mutableListOf()
+
+                for(id in binding.chipGroupHashtag.checkedChipIds) {
+                    val tag: Chip = binding.chipGroupHashtag.findViewById(id)
+                    var tagText = tag.text.toString().replace(" ", "")
+                    tagText = tagText.replace("#", "")
+                    hashTags.add(mapOf("calendarHashTag" to tagText))
+                }
+
+                val postCalendarRequest = PostCalendarRequest(
+                    kindOfCalendar = type, title = title, date = date, hashTags = hashTags
+                )
+                showLoadingDialog(this)
+                ConsumerCalendarAddService(this).tryPostCalendar(postCalendarRequest)
+            }
+        }
+    }
+
+    private fun checkAllRequiredInputIsEntered(): Boolean {
+        var check = true
+
+        if(binding.tvSelectType.text.equals(getString(R.string.calendar_anniversary_type))) {
+            binding.tvTypeErrorNoInput.visibility = VISIBLE
+            check = false
+        } else binding.tvTypeErrorNoInput.visibility = GONE
+        if(binding.etTitle.text.isNullOrBlank()) {
+            binding.tvTitleErrorNoInput.visibility = VISIBLE
+            check = false
+        } else binding.tvTitleErrorNoInput.visibility = GONE
+        if(binding.etSelectDate.text.isNullOrEmpty()) {
+            binding.tvDateErrorNoInput.visibility = VISIBLE
+            check = false
+        } else binding.tvDateErrorNoInput.visibility = GONE
+
+        return check
+    }
+
+    private fun setListenerToLayoutOfType() {
         // 화살표 있는 레이아웃 눌렀을 때
         binding.layoutCloseCalendarAddType.setOnClickListener {
             outOfFocusOnTitle()
@@ -74,6 +132,7 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
 
         // 디데이 클릭
         binding.tvTypeDday.setOnClickListener {
+            binding.tvTypeErrorNoInput.visibility = GONE
             outOfFocusOnTitle()
             binding.layoutOpenCalendarAddType.visibility = GONE
             openForLayoutOfType = false
@@ -81,6 +140,7 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
         }
         // 날짜수 클릭
         binding.tvTypeNumberOfDays.setOnClickListener {
+            binding.tvTypeErrorNoInput.visibility = GONE
             outOfFocusOnTitle()
             binding.layoutOpenCalendarAddType.visibility = GONE
             openForLayoutOfType = false
@@ -88,6 +148,7 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
         }
         // 매년 반복 클릭
         binding.tvTypeRepeatEveryYear.setOnClickListener {
+            binding.tvTypeErrorNoInput.visibility = GONE
             outOfFocusOnTitle()
             binding.layoutOpenCalendarAddType.visibility = GONE
             openForLayoutOfType = false
@@ -95,13 +156,13 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
         }
     }
 
-    private fun setClickListenerToDatePicker() {
+    private fun setListenerToDatePicker() {
         binding.ibCalendarSelectDate.setOnClickListener {
             showDatePickerDialog()
         }
     }
 
-    private fun setClickListenerToBackBtn() {
+    private fun setListenerToBackBtn() {
         binding.ibCalendarAddBack.setOnClickListener {
             finish()
         }
@@ -110,6 +171,8 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
     private fun setListenerForFocus() {
         binding.etTitle.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
+                if(!binding.etTitle.text.isNullOrBlank())
+                    binding.tvTitleErrorNoInput.visibility = GONE
                 outOfFocusOnTitle()
                 return@setOnEditorActionListener true
             } else return@setOnEditorActionListener false
@@ -281,6 +344,7 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
             binding.etSelectDate.setText(strDate)
             binding.etSelectDate.setTextColor(Color.BLACK)
             binding.etTitle.clearFocus()
+            binding.tvDateErrorNoInput.visibility = GONE
         },
             selectedDate.get(Calendar.YEAR),
             selectedDate.get(Calendar.MONTH),

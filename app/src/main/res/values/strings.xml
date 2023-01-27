@@ -96,7 +96,7 @@
     <string name="calendar_anniversary_type_dday">디데이</string>
     <string name="calendar_anniversary_type_number_of_days">날짜수</string>
     <string name="calendar_anniversary_type_repeat_every_year">매년 반복</string>
-    <string name="calendar_add_anniversary_title">기념일 제목을 입력해주세요.</string>
+    <string name="calendar_add_anniversary_title">기념일 제목을 입력해주세요. (30자)</string>
     <string name="calendar_add_anniversary_date">날짜를 선택해주세요.</string>
     <string name="calendar_add_anniversary_hashtag">아래 #해시태그를 선택해주세요.</string>
     <string name="calendar_add_max_hashtag">해시태그는 최대 3개까지 등록할 수 있습니다.</string>
