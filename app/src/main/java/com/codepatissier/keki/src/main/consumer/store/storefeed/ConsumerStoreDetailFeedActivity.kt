@@ -1,6 +1,7 @@
 package com.codepatissier.keki.src.main.consumer.store.storefeed
 
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import com.codepatissier.keki.config.BaseActivity
@@ -15,9 +16,10 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
     lateinit var storeFeedAdapter : StoreFeedAdapter
     val storeFeedDatas = mutableListOf<StoreFeedData>()
     var feedTag : String = "친구"
-    var feedSize = 12
+    var feedSize = 2
     var cursorIdx : Int? = null
     var hasNext : Boolean? = null
+    var lastPostIdx : Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +57,8 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
             like = result[i].like,
             cursorIdx = response.result.cursorIdx,
             hasNext = response.result.hasNext)) }
+
+            lastPostIdx = result[i].postIdx
         }
 
         cursorIdx = response.result.cursorIdx
@@ -76,7 +80,17 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
                         showLoadingDialog(this@ConsumerStoreDetailFeedActivity)
                         ConsumerStoreFeedDetailService(this@ConsumerStoreDetailFeedActivity)
                             .tryGetConsumerStoreFeedDetailRetrofitInterface(feedTag, cursorIdx, feedSize)
+
+                        // instagram에서는 로딩하고 그 자리에 그 다음거 생성됨 -> 화면위치는 그대로
+                        Handler().postDelayed(
+                            {
+                                binding.recyclerStoreFeed.scrollToPosition(storeFeedAdapter.itemCount - feedSize)
+                            }, 200)
+
+                        Log.d("lastPostIdx", lastPostIdx.toString())
+                        //binding.recyclerStoreFeed.scrollToPosition(storeFeedAdapter.itemCount -1)
                     }
+
 
                 }
             }
