@@ -22,17 +22,13 @@ class ConsumerProductFeedFragment(storeIdx : Long) : BaseFragment<FragmentConsum
     val storeMainProductDatas = mutableListOf<StoreMainProductData>()
     val storeIdx = storeIdx
     var hasNext = false
-    val size = 1
+    val size = 21
     var positionStart = 0
     var itemSize = 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        for(i in 1..12){
-            storeMainProductDatas.apply {
-                add(StoreMainProductData(dessertIdx = 1, dessertImgUrl = "", storeIdx = storeIdx))
-            }
-        }
+
         showLoadingDialog(requireContext())
         ConsumerStoreProductFeedService(this).tryGetProductFeed(storeIdx, size)
     }
