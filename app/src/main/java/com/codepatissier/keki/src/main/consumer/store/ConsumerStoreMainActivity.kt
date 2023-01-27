@@ -4,7 +4,6 @@ package com.codepatissier.keki.src.main.consumer.store
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
@@ -14,8 +13,7 @@ import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityConsumerStoreMainBinding
 import com.codepatissier.keki.src.main.consumer.store.model.ConsumerStoreMainResponse
 import com.codepatissier.keki.util.viewpager.storemain.StoreMainDialog
-import com.codepatissier.keki.util.viewpager.storemain.StoreMainVPAdapter
-import org.w3c.dom.Text
+import com.codepatissier.keki.util.viewpager.storemain.StoreMainTabAdapter
 
 class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>(ActivityConsumerStoreMainBinding::inflate),
     ConsumerStoreMainView{
@@ -37,8 +35,8 @@ class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>
     }
 
     private fun tabSetting(){
-        val storeMainVPAdapter = StoreMainVPAdapter(this)
-        binding.vpStore.adapter = storeMainVPAdapter
+        val storeMainTabAdapter = StoreMainTabAdapter(this, storeIdx)
+        binding.vpStore.adapter = storeMainTabAdapter
 
         val tabIconArray = arrayOf(R.drawable.ic_store_main_grid, R.drawable.ic_store_main_cake)
 
