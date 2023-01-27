@@ -22,11 +22,17 @@ class ConsumerProductFeedFragment(storeIdx : Long) : BaseFragment<FragmentConsum
     val storeMainProductDatas = mutableListOf<StoreMainProductData>()
     val storeIdx = storeIdx
     var hasNext = false
-    val size = 21
+    val size = 1
+    var positionStart = 0
+    var itemSize = 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        for(i in 1..12){
+            storeMainProductDatas.apply {
+                add(StoreMainProductData(dessertIdx = 1, dessertImgUrl = "", storeIdx = storeIdx))
+            }
+        }
         showLoadingDialog(requireContext())
         ConsumerStoreProductFeedService(this).tryGetProductFeed(storeIdx, size)
     }
@@ -51,7 +57,6 @@ class ConsumerProductFeedFragment(storeIdx : Long) : BaseFragment<FragmentConsum
            storeMainProductDatas.apply {
                add(StoreMainProductData(dessertIdx = response.result.desserts[i].dessertIdx, dessertImgUrl = response.result.desserts[i].dessertImgUrl, storeIdx = storeIdx))
            }
-           Log.e("merong",response.result.desserts[i].dessertImgUrl)
        }
         storeMainProductAdapter.storeMainProductDatas = storeMainProductDatas
 
@@ -60,6 +65,7 @@ class ConsumerProductFeedFragment(storeIdx : Long) : BaseFragment<FragmentConsum
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 if (!binding.recyclerProductFeed.canScrollVertically(1) && hasNext) {
                     showLoadingDialog(requireContext())
+                    positionStart = storeMainProductDatas.size
                     ConsumerStoreProductFeedService(this@ConsumerProductFeedFragment).tryGetProductNextFeed(storeIdx, cursorIdx,size)
                 }
             }
@@ -77,7 +83,9 @@ class ConsumerProductFeedFragment(storeIdx : Long) : BaseFragment<FragmentConsum
                 add(StoreMainProductData(dessertIdx = response.result.desserts[i].dessertIdx, dessertImgUrl = response.result.desserts[i].dessertImgUrl, storeIdx = storeIdx))
             }
         }
-        storeMainProductAdapter.notifyDataSetChanged()
+
+        itemSize = storeMainProductDatas.size - positionStart
+        storeMainProductAdapter.notifyItemRangeChanged(positionStart, itemSize)
 
     }
 

@@ -25,7 +25,8 @@ class ConsumerStoreFeedFragment(storeIdx : Long) : BaseFragment<FragmentConsumer
     val storeIdx = storeIdx
     var hasNext = false
     val size = 21
-
+    var positionStart = 0
+    var itemSize = 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -62,6 +63,7 @@ class ConsumerStoreFeedFragment(storeIdx : Long) : BaseFragment<FragmentConsumer
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 if (!binding.recyclerSellerFeed.canScrollVertically(1) && hasNext) {
                     showLoadingDialog(requireContext())
+                    positionStart = storeMainStoreDatas.size
                     ConsumerStoreFeedService(this@ConsumerStoreFeedFragment).tryGetConsumerStoreNextFeed(storeIdx, cursorIdx,size)
                 }
             }
@@ -79,7 +81,9 @@ class ConsumerStoreFeedFragment(storeIdx : Long) : BaseFragment<FragmentConsumer
                 add(StoreMainStoreData(postImgUrl = response.result.feeds[i].postImgUrls[0], storeIdx = storeIdx, postIdx = response.result.feeds[i].postIdx))
             }
         }
-        storeMainStoreAdapter.notifyDataSetChanged()
+
+        itemSize = storeMainStoreDatas.size - positionStart
+        storeMainStoreAdapter.notifyItemRangeChanged(positionStart, itemSize)
 
     }
 
