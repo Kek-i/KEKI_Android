@@ -9,6 +9,8 @@ import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.codepatissier.keki.R
 import com.codepatissier.keki.databinding.ItemStoreMainRecyclerBinding
 import com.codepatissier.keki.src.main.consumer.mypage.notice.noticedetail.NoticeDetailActivity
@@ -37,15 +39,16 @@ class StoreMainStoreAdapter(val context: FragmentActivity?): RecyclerView.Adapte
 
         fun bind(item:StoreMainStoreData){
             Glide.with(context!!)
-                .load(item.img)
+                .load(item.postImgUrl)
                 .placeholder(defaultImg)
                 .error(defaultImg)
                 .fallback(defaultImg)
+                .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
                 .into(FeedImg)
 
             itemView.setOnClickListener {
                 var intent = Intent(itemView.context, ConsumerStoreDetailFeedActivity::class.java)
-                // 스토어번호, 피드 번호 StoreMainStoreData 객체로 detailFeed로 넘기기
+                // 스토어번호, 피드 번호 StoreMainStoreData 객체로 detailFeed에 넘기기
                 intent.putExtra("StoreMainStoreData", item)
                 itemView.context.startActivity(intent)
             }

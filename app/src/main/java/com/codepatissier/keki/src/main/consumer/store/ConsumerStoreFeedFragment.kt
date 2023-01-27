@@ -52,7 +52,7 @@ class ConsumerStoreFeedFragment(storeIdx : Long) : BaseFragment<FragmentConsumer
 
         for(i in response.result.feeds.indices) {
             storeMainStoreDatas.apply {
-                add(StoreMainStoreData(img = response.result.feeds[i].postImgUrls[0], storeIdx = storeIdx, postIdx = response.result.feeds[i].postIdx))
+                add(StoreMainStoreData(postImgUrl = response.result.feeds[i].postImgUrls[0], storeIdx = storeIdx, postIdx = response.result.feeds[i].postIdx))
             }
         }
         storeMainStoreAdapter.storeMainStoreDatas = storeMainStoreDatas
@@ -76,7 +76,7 @@ class ConsumerStoreFeedFragment(storeIdx : Long) : BaseFragment<FragmentConsumer
 
         for(i in response.result.feeds.indices) {
             storeMainStoreDatas.apply {
-                add(StoreMainStoreData(img = response.result.feeds[i].postImgUrls[0], storeIdx = storeIdx, postIdx = response.result.feeds[i].postIdx))
+                add(StoreMainStoreData(postImgUrl = response.result.feeds[i].postImgUrls[0], storeIdx = storeIdx, postIdx = response.result.feeds[i].postIdx))
             }
         }
         storeMainStoreAdapter.notifyDataSetChanged()

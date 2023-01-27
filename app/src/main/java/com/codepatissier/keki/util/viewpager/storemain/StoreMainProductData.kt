@@ -2,8 +2,8 @@ package com.codepatissier.keki.util.viewpager.storemain
 
 import java.io.Serializable
 
-data class StoreMainStoreData(
-    var postImgUrl: String,
+data class StoreMainProductData(
+    var dessertImgUrl: String,
     var storeIdx: Long,
-    var postIdx:Long
+    var dessertIdx:Long
 ): Serializable

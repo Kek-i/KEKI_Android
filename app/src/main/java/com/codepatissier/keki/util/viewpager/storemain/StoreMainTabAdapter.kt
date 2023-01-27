@@ -15,7 +15,7 @@ class StoreMainTabAdapter(fragmentActivity: FragmentActivity, storeIdx:Long):Fra
     override fun createFragment(position: Int): Fragment {
         return when(position){
             0 -> ConsumerStoreFeedFragment(storeIdx)
-            1 -> ConsumerProductFeedFragment()
+            1 -> ConsumerProductFeedFragment(storeIdx)
             else -> ConsumerStoreFeedFragment(storeIdx)
         }
     }
