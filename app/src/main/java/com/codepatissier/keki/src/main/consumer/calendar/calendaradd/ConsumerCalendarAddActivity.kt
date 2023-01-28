@@ -12,6 +12,7 @@ import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.databinding.ActivityConsumerCalendarAddBinding
+import com.codepatissier.keki.src.main.consumer.calendar.calendaradd.model.ConsumerCalendarTagListResponse
 import com.codepatissier.keki.src.main.consumer.calendar.calendaradd.model.PostCalendarRequest
 import com.google.android.material.chip.Chip
 import java.text.SimpleDateFormat
@@ -28,25 +29,21 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         // 레이아웃 뷰, 버튼 Click Listener 설정
         setListenerToLayoutOfType()
         setListenerToDatePicker()
         setListenerToBackBtn()
         setListenerForFocus()
         setListenerToCompletionBtn()
-
-        // 임시 데이터
-        val hashTagArray = listOf("친구", "가족", "졸업", "기념일", "크리스마스", "합격", "파티",
-                                            "할로윈", "발렌타인데이", "부모님", "결혼", "연인", "화이트데이",
-                                            "생일", "취업", "선생님", "어버이날", "N주년", "스승의날",
-                                            "승진", "나", "새해", "연말", "명절", "졸업", "전시")
-
-        // 해시태그 리스트 받아와서 chip 생성 및 Click Listener 설정
-        createChip(hashTagArray)
         // 정렬용 태그 Click Listener 설정
-        setClickListenerToSortedTag(binding.chipFirstSortedTag, 1)
-        setClickListenerToSortedTag(binding.chipSecondSortedTag, 2)
-        setClickListenerToSortedTag(binding.chipThirdSortedTag, 3)
+        setListenerToSortedTag(binding.chipFirstSortedTag, 1)
+        setListenerToSortedTag(binding.chipSecondSortedTag, 2)
+        setListenerToSortedTag(binding.chipThirdSortedTag, 3)
+
+        // 해시태그 목록 서버에서 가져오기
+        showLoadingDialog(this)
+        ConsumerCalendarAddService(this).tryGetCalendarTag()
     }
 
     override fun onPostCalendarSuccess(response: BaseResponse) {
@@ -55,6 +52,23 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
     }
 
     override fun onPostCalendarFailure(message: String) {
+        dismissLoadingDialog()
+        showCustomToast(message)
+    }
+
+    override fun onGetCalendarTagSuccess(response: ConsumerCalendarTagListResponse) {
+        dismissLoadingDialog()
+
+        val hashTagList = mutableListOf<String>()
+        for(i in response.result.indices) {
+            hashTagList.add(response.result[i].tagName)
+        }
+
+        // 해시태그 리스트 받아와서 chip 생성 및 Click Listener 설정
+        createChip(hashTagList)
+    }
+
+    override fun onGetCalendarTagFailure(message: String) {
         dismissLoadingDialog()
         showCustomToast(message)
     }
@@ -192,15 +206,15 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
         binding.etTitle.clearFocus()
     }
 
-    private fun createChip(hashTagArray: List<String>) {
-        for (i in hashTagArray.indices) {
+    private fun createChip(hashTagList: List<String>) {
+        for (i in hashTagList.indices) {
             val chip = layoutInflater.inflate(
                 R.layout.single_chip_layout,
                 binding.chipGroupHashtag,
                 false
             ) as Chip
             chip.id = View.generateViewId()
-            chip.text = "# ${hashTagArray[i]}"
+            chip.text = "# ${hashTagList[i]}"
             binding.chipGroupHashtag.addView(chip)
 
             val firstTag = binding.chipFirstSortedTag
@@ -239,7 +253,7 @@ class ConsumerCalendarAddActivity : BaseActivity<ActivityConsumerCalendarAddBind
         }
     }
 
-    private fun setClickListenerToSortedTag(sortedTag: Chip, tagNumber: Int) {
+    private fun setListenerToSortedTag(sortedTag: Chip, tagNumber: Int) {
         // 이미 선택된 상태에서 클릭했다면
         sortedTag.setOnClickListener {
             // 원래 태그 보여주기

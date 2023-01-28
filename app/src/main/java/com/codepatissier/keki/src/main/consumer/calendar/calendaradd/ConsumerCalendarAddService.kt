@@ -2,6 +2,7 @@ package com.codepatissier.keki.src.main.consumer.calendar.calendaradd
 
 import com.codepatissier.keki.config.ApplicationClass
 import com.codepatissier.keki.config.BaseResponse
+import com.codepatissier.keki.src.main.consumer.calendar.calendaradd.model.ConsumerCalendarTagListResponse
 import com.codepatissier.keki.src.main.consumer.calendar.calendaradd.model.PostCalendarRequest
 import retrofit2.Call
 import retrofit2.Callback
@@ -14,10 +15,7 @@ class ConsumerCalendarAddService(val consumerCalendarAddView: ConsumerCalendarAd
             ConsumerCalendarAddRetrofitInterface::class.java)
         consumerCalendarAddRetrofitInterface.postCalendar(postCalendarRequest).enqueue(object:
             Callback<BaseResponse> {
-            override fun onResponse( // 에러코드를 알고 싶으면 여기서 넣으면 됨
-                call: Call<BaseResponse>,
-                response: Response<BaseResponse>
-            ) {
+            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
                 if (response.body()!!.isSuccess) {
                     consumerCalendarAddView.onPostCalendarSuccess(response.body() as BaseResponse)
                 }
@@ -33,6 +31,20 @@ class ConsumerCalendarAddService(val consumerCalendarAddView: ConsumerCalendarAd
 
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
                 consumerCalendarAddView.onPostCalendarFailure(t.message ?: "통신 오류")
+            }
+        })
+    }
+
+    fun tryGetCalendarTag() {
+        val consumerCalendarAddRetrofitInterface = ApplicationClass.sRetrofit.create(
+            ConsumerCalendarAddRetrofitInterface::class.java)
+        consumerCalendarAddRetrofitInterface.getCalendarTag().enqueue(object: Callback<ConsumerCalendarTagListResponse> {
+            override fun onResponse(call: Call<ConsumerCalendarTagListResponse>, response: Response<ConsumerCalendarTagListResponse>) {
+                consumerCalendarAddView.onGetCalendarTagSuccess(response.body() as ConsumerCalendarTagListResponse)
+            }
+
+            override fun onFailure(call: Call<ConsumerCalendarTagListResponse>, t: Throwable) {
+                consumerCalendarAddView.onGetCalendarTagFailure(t.message ?: "통신 오류")
             }
         })
     }

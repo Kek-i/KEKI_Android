@@ -416,7 +416,7 @@
     <dimen name="calendar_chip_group_width">0dp</dimen>
     <dimen name="calendar_chip_group_margin_top">18dp</dimen>
     <dimen name="calendar_chip_group_padding_top">2dp</dimen>
-    <dimen name="calendar_chip_group_padding_bottom">30dp</dimen>
+    <dimen name="calendar_chip_group_padding_bottom">60dp</dimen>
     <dimen name="calendar_chip_group_padding_horizontal">24dp</dimen>
     <dimen name="calendar_chip_hashtag_height">26dp</dimen>
     <dimen name="calendar_chip_hashtag_radius">13dp</dimen>
