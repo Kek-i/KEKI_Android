@@ -14,6 +14,7 @@ import com.codepatissier.keki.src.main.consumer.calendar.model.ConsumerCalendarL
 import com.codepatissier.keki.util.recycler.calendar.CalendarAnniversaryAdapter
 import com.codepatissier.keki.util.recycler.calendar.CalendarAnniversaryData
 import com.daimajia.swipe.util.Attributes
+import kotlin.math.roundToInt
 
 
 class ConsumerCalendarFragment : BaseFragment<FragmentConsumerCalendarBinding>
@@ -30,7 +31,7 @@ class ConsumerCalendarFragment : BaseFragment<FragmentConsumerCalendarBinding>
 
     // recyclerview 초기 설정
     private fun initRecyclerviewSetting() {
-        binding.rvCalendarAnniversary.addItemDecoration(RecyclerViewDecoration(20))
+        binding.rvCalendarAnniversary.addItemDecoration(RecyclerViewDecoration(changeDP(11)))
         binding.rvCalendarAnniversary.addOnScrollListener(object : OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
@@ -87,6 +88,11 @@ class ConsumerCalendarFragment : BaseFragment<FragmentConsumerCalendarBinding>
             super.getItemOffsets(outRect, view, parent, state)
             outRect.bottom = divHeight
         }
+    }
+
+    private fun changeDP(value: Int): Int {
+        val displayMetrics = resources.displayMetrics
+        return (value * displayMetrics.density).roundToInt()
     }
 
     private fun setClickListenerToFab() {
