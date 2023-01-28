@@ -5,7 +5,9 @@
     <string name="kakao_native_key">e2abb1dfec5ae90f3ac6233769bfafec</string>
     <string name="kakao_key">kakaoe2abb1dfec5ae90f3ac6233769bfafec</string>
     <string name="google_server_client_id">183252467381-3tpvroj1ucm87o4g8e8uh0om17eak4qr.apps.googleusercontent.com</string>
-    
+    <string name="social_login_info_naver_client_id">XZHzyRgQditsj_BuDAHZ</string>
+    <string name="social_login_info_naver_client_secret">XEK5Tv83wP</string>
+    <string name="social_login_info_naver_client_name">네이버아이디 로그인</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
