@@ -64,8 +64,7 @@
                 android:textSize="@dimen/search_tag_textSize"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:onClick="deleteHistory"/>
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <HorizontalScrollView
                 android:id="@+id/sv_recent_search"

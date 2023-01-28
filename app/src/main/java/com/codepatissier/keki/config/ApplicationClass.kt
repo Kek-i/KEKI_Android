@@ -25,7 +25,6 @@ class ApplicationClass : Application() {
         sSharedPreferences =
             applicationContext.getSharedPreferences("KEKI_APP", MODE_PRIVATE) // 변경
         editor = sSharedPreferences.edit()
-
         initRetrofitInstance()
     }
 
