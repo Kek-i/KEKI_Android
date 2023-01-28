@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import com.codepatissier.keki.R
 import com.kakao.sdk.common.KakaoSdk
 import com.kakao.sdk.common.util.Utility
+import com.navercorp.nid.NaverIdLoginSDK
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -30,6 +31,11 @@ class ApplicationClass : Application() {
 
         //카카오 초기화
         KakaoSdk.init(this, getString(R.string.kakao_native_key))
+        //네이버 초기화
+        val naverClientId = getString(R.string.social_login_info_naver_client_id)
+        val naverClientSecret = getString(R.string.social_login_info_naver_client_secret)
+        val naverClientName = getString(R.string.social_login_info_naver_client_name)
+        NaverIdLoginSDK.initialize(this, naverClientId, naverClientSecret , naverClientName)
 
 
     }
