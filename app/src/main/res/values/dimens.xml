@@ -436,7 +436,7 @@
     <dimen name="my_page_profile_left">24dp</dimen>
     <dimen name="my_page_profile_right">79dp</dimen>
     <dimen name="my_page_comment_text_size">16sp</dimen>
-    <dimen name="my_page_comment_text_top">11dp</dimen>
+    <dimen name="my_page_comment_text_top">5dp</dimen>
     <dimen name="my_page_comment_text_left">15dp</dimen>
     <dimen name="my_page_text_size">16sp</dimen>
     <dimen name="my_page_large_text_left">14dp</dimen>
