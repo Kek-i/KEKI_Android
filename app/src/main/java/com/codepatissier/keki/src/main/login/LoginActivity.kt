@@ -4,10 +4,16 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import com.codepatissier.keki.R
 import com.codepatissier.keki.config.ApplicationClass
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityLoginBinding
 import com.codepatissier.keki.src.MainActivity
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.Task
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
@@ -23,33 +29,51 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
 
     private fun socialLogin() {
         binding.ibGoogleBtn.setOnClickListener {
-
+            googleLogin()
         }
         binding.ibNaverBtn.setOnClickListener {
 
         }
         binding.ibKakaoBtn.setOnClickListener {
             kakaoLogin()
-            //만약 로그인했을때 비회원이면 -> intro엑티비티로
-
-            //로그인했을때 회원이면 -> 메인으로
-
         }
     }
 
-    private fun checkRole(){
-//        val role = response.role
-//        if (role == "비회원"){
-//        val intent = Intent(this, IntroActivity::class.java)
-//        startActivity(intent)
-//        finish()
-//        }
-//        else{
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
-//            finish()
-//        }
+
+    fun googleLogin(){
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.google_server_client_id))
+            .requestEmail()
+            .build()
+        // Build a GoogleSignInClient with the options specified by gso.
+        val mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        val intent = mGoogleSignInClient.signInIntent
+        startActivityForResult(intent, 1)
+
     }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
+        if (requestCode == 1) {
+            // The Task returned from this call is always completed, no need to attach
+            // a listener.
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            handleSignInResult(task)
+        }
+    }
+    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
+        try {
+            val account = completedTask.getResult(ApiException::class.java)
+            val email = account.email
+            Log.d("sss", email.toString())
+        } catch (e: ApiException) {
+            // The ApiException status code indicates the detailed failure reason.
+            // Please refer to the GoogleSignInStatusCodes class reference for more information.
+            Log.i("SSS", "signInResult:failed code=" + e.statusCode)
+        }
+    }
+
 
 
     fun kakaoLogin() {
