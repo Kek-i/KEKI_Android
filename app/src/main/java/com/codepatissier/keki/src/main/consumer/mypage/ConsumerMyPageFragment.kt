@@ -49,7 +49,7 @@ class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
         val defaultImg = R.drawable.bg_oval_off_white
         val imageView = binding.ivProfile
 
-        binding.tvNickName.text = response.result.nickname + "님"
+        binding.tvNickName.text = response.result.nickname + "님."
         Glide.with(this)
             .load(response.result.profileImg)
             .placeholder(defaultImg)
