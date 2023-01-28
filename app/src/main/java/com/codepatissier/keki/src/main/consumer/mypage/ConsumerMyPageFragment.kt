@@ -16,8 +16,9 @@ class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
         super.onViewCreated(view, savedInstanceState)
 
         profileEditClicked()
-        conditionClicked()
         noticeClicked()
+        conditionClicked()
+        personalInfoClicked()
     }
 
     private fun profileEditClicked(){
@@ -26,17 +27,24 @@ class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
             startActivity(intent)
         }
     }
+
+    private fun noticeClicked(){
+        binding.cslNotice.setOnClickListener{
+            val intent = Intent(context, NoticeActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
     private fun conditionClicked(){
         binding.tvCondition.setOnClickListener{
             val intent = Intent(context, ConsumerConditionActivity::class.java)
             startActivity(intent)
-//            var intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://sites.google.com/view/keki-privacy-policy/%ED%99%88"))
-//            startActivity(intent)
         }
     }
-    private fun noticeClicked(){
-        binding.cslNotice.setOnClickListener{
-            val intent = Intent(context, NoticeActivity::class.java)
+
+    private fun personalInfoClicked(){
+        binding.tvPersonalInfo.setOnClickListener{
+            val intent = Intent(context, ConsumerPersonalInfoActivity::class.java)
             startActivity(intent)
         }
     }

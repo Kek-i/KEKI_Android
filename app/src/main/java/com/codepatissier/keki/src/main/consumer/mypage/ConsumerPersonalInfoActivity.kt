@@ -4,8 +4,9 @@ import android.os.Bundle
 import android.webkit.WebSettings
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityConsumerConditionBinding
+import com.codepatissier.keki.databinding.ActivityConsumerPersonalInfoBinding
 
-class ConsumerConditionActivity : BaseActivity<ActivityConsumerConditionBinding>(ActivityConsumerConditionBinding::inflate) {
+class ConsumerPersonalInfoActivity : BaseActivity<ActivityConsumerPersonalInfoBinding>(ActivityConsumerPersonalInfoBinding::inflate) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         backClicked()
@@ -22,6 +23,6 @@ class ConsumerConditionActivity : BaseActivity<ActivityConsumerConditionBinding>
         binding.wvComment.settings.apply{
             javaScriptEnabled= true
         }
-        binding.wvComment.loadUrl("https://sites.google.com/view/keki-tos/홈")
+        binding.wvComment.loadUrl("https://sites.google.com/view/keki-privacy-policy/%ED%99%88")
     }
 }
