@@ -1,79 +1,101 @@
 package com.codepatissier.keki.src.main.login
 
 import android.content.Intent
-import android.net.Uri
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
+import com.codepatissier.keki.config.ApplicationClass
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityLoginBinding
-import com.codepatissier.keki.src.main.login.model.SocialLoginResponse
-import java.io.BufferedReader
-import java.io.IOException
-import java.io.InputStream
-import java.io.InputStreamReader
-import java.net.URL
+import com.codepatissier.keki.src.MainActivity
+import com.kakao.sdk.auth.model.OAuthToken
+import com.kakao.sdk.common.model.ClientError
+import com.kakao.sdk.common.model.ClientErrorCause
+import com.kakao.sdk.user.UserApiClient
 
 
-class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate), LoginView{
+class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate){
 
-    private var urlString : String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         socialLogin()
     }
 
-    override fun onRestart() {
-        super.onRestart()
-        val thread = ThreadExtends(urlString)
-        thread.start()
+    private fun socialLogin() {
+        binding.ibGoogleBtn.setOnClickListener {
+
+        }
+        binding.ibNaverBtn.setOnClickListener {
+
+        }
+        binding.ibKakaoBtn.setOnClickListener {
+            kakaoLogin()
+            //만약 로그인했을때 비회원이면 -> intro엑티비티로
+
+            //로그인했을때 회원이면 -> 메인으로
+
+        }
     }
 
-    class ThreadExtends(val  urlString: String) : Thread(){
-        override fun run() {
-            if(urlString != null) {
-                println("original URL: $urlString")
-                val redUrl = GetRedirectUrl(urlString)
-                println("ReDirect URL : $redUrl")
-                try {
+    private fun checkRole(){
+//        val role = response.role
+//        if (role == "비회원"){
+//        val intent = Intent(this, IntroActivity::class.java)
+//        startActivity(intent)
+//        finish()
+//        }
+//        else{
+//            val intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
+    }
 
-                    //URL에서 JSON 값 구하는 코드
-                    val link = URL(redUrl).openStream()
-                    val rd = BufferedReader(InputStreamReader(link, "UTF-8"))
-                    var str: String?
-                    val buffer = StringBuffer()
-                    while (rd.readLine().also { str = it } != null) {
-                        buffer.append(str)
+
+    fun kakaoLogin() {
+        // 카카오계정으로 로그인 공통 callback 구성
+        // 카카오톡으로 로그인 할 수 없어 카카오계정으로 로그인할 경우 사용됨
+        val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
+            if (error != null) {
+                Log.d("Kakao_token", "카카오계정으로 로그인 실패 : ${error}")
+            } else if (token != null) {
+                UserApiClient.instance.me { user, error ->
+                    if (user != null) {
+                        Log.d(
+                            "Kakao_token", "카카오계정으로 로그인 성공 \n"+
+                                    "email: ${user.kakaoAccount?.email}"
+                        )
                     }
-                    val receiveMsg = buffer.toString()
-                    println(receiveMsg)
-                } catch (e: IOException) {
-                    e.printStackTrace()
                 }
             }
+        }
 
+        // 카카오톡이 설치되어 있으면 카카오톡으로 로그인, 아니면 카카오계정으로 로그인
+        if (UserApiClient.instance.isKakaoTalkLoginAvailable(this)) {
+            UserApiClient.instance.loginWithKakaoTalk(this) { token, error ->
+                if (error != null) {
+                    Log.d("Kakao_token", "카카오톡으로 로그인 실패 : ${error}")
+
+                    // 사용자가 카카오톡 설치 후 디바이스 권한 요청 화면에서 로그인을 취소한 경우,
+                    // 의도적인 로그인 취소로 보고 카카오계정으로 로그인 시도 없이 로그인 취소로 처리 (예: 뒤로 가기)
+                    if (error is ClientError && error.reason == ClientErrorCause.Cancelled) {
+                        return@loginWithKakaoTalk
+                    }
+
+                    // 카카오톡에 연결된 카카오계정이 없는 경우, 카카오계정으로 로그인 시도
+                    UserApiClient.instance.loginWithKakaoAccount(this, callback = callback)
+                } else if (token != null) {
+                    UserApiClient.instance.me { user, error ->
+                    Log.d(
+                        "Kakao_token",
+                        "카카오톡으로 로그인 성공\nemail:${user?.kakaoAccount?.email}"
+                    )}
+                }
+            }
+        } else {
+            UserApiClient.instance.loginWithKakaoAccount(this, callback = callback)
         }
     }
 
-
-    override fun onGetLoginSuccess(response: SocialLoginResponse) {
-        var intent = Intent(Intent.ACTION_VIEW, Uri.parse(response.result))
-        urlString = "${response.result}"
-        startActivity(intent)
-    }
-
-    override fun onGetLoginFailure(message: String) {
-        showCustomToast("오류 : $message")
-    }
-
-    private fun socialLogin(){
-        binding.ibGoogleBtn.setOnClickListener{
-            LoginService(this).tryGetGoogleLogin()
-        }
-        binding.ibNaverBtn.setOnClickListener{
-            LoginService(this).tryGetNaverLogin()
-        }
-        binding.ibKakaoBtn.setOnClickListener{
-            LoginService(this).tryGetKakaoLogin()
-        }
-    }
 
 }

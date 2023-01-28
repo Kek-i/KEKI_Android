@@ -61,6 +61,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="@dimen/login_btn_between_margin"
-        app:layout_constraintTop_toBottomOf="@+id/ib_kakao_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/ib_kakao_btn"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
