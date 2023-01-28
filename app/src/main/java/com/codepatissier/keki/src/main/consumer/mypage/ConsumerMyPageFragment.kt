@@ -1,6 +1,7 @@
 package com.codepatissier.keki.src.main.consumer.mypage
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import com.codepatissier.keki.R
@@ -29,6 +30,8 @@ class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
         binding.tvCondition.setOnClickListener{
             val intent = Intent(context, ConsumerConditionActivity::class.java)
             startActivity(intent)
+//            var intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://sites.google.com/view/keki-privacy-policy/%ED%99%88"))
+//            startActivity(intent)
         }
     }
     private fun noticeClicked(){

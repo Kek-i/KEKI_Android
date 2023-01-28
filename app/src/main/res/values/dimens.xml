@@ -471,10 +471,13 @@
     <dimen name="my_page_condition_main_text_size">20sp</dimen>
     <dimen name="my_page_condition_main_text_top">15dp</dimen>
     <dimen name="my_page_condition_main_text_left">25dp</dimen>
-    <dimen name="my_page_condition_comment_main_text_size">18sp</dimen>
-    <dimen name="my_page_condition_comment_main_text_top">25dp</dimen>
-    <dimen name="my_page_condition_comment_main_text_left">26dp</dimen>
-    <dimen name="my_page_condition_comment_iv_top">15dp</dimen>
+<!--    <dimen name="my_page_condition_comment_main_text_size">18sp</dimen>-->
+<!--    <dimen name="my_page_condition_comment_main_text_top">25dp</dimen>-->
+<!--    <dimen name="my_page_condition_comment_main_text_left">26dp</dimen>-->
+    <dimen name="my_page_condition_comment_webview_top">25dp</dimen>
+    <dimen name="my_page_condition_comment_webview_left_right">24dp</dimen>
+    <dimen name="my_page_condition_comment_webview_width_heigh">0dp</dimen>
+
 
     <!-- my page profile edit -->
     <dimen name="my_page_profile_edit_tv_complete_size">16sp</dimen>
