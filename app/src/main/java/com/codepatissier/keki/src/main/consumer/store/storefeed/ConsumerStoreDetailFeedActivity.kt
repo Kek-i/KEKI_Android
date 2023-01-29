@@ -3,6 +3,7 @@ package com.codepatissier.keki.src.main.consumer.store.storefeed
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityConsumerStoreDetailFeedBinding
@@ -16,7 +17,7 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
     lateinit var storeFeedAdapter : StoreFeedAdapter
     val storeFeedDatas = mutableListOf<StoreFeedData>()
     var feedTag : String = "친구"
-    var feedSize = 2
+    var feedSize = 3
     var cursorIdx : Int? = null
     var hasNext : Boolean? = null
     var positionStart = 0
@@ -25,10 +26,17 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+        initRecyclerView()
         navigateToStoreMain()
         showLoadingDialog(this)
         ConsumerStoreFeedDetailService(this).tryGetConsumerStoreFeedDetailRetrofitInterface(feedTag, cursorIdx, feedSize)
         checkScrollEvent()
+    }
+
+    private fun initRecyclerView(){
+        storeFeedAdapter = StoreFeedAdapter(this)
+        binding.recyclerStoreFeed.adapter = storeFeedAdapter
     }
 
     override fun onGetConsumerStoreFeedDetailSuccess(response: ConsumerStoreDetailFeedResponse) {
@@ -42,8 +50,7 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
     }
 
     private fun storeFeedRecyclerView(response: ConsumerStoreDetailFeedResponse){
-        storeFeedAdapter = StoreFeedAdapter(this)
-        binding.recyclerStoreFeed.adapter = storeFeedAdapter
+        storeFeedDatas.clear()
 
         val result = response.result.feeds
 
@@ -65,8 +72,9 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
         cursorIdx = response.result.cursorIdx
         hasNext = response.result.hasNext
 
-        storeFeedAdapter.storeFeedDatas = storeFeedDatas
-        storeFeedAdapter.notifyItemRangeChanged(positionStart, itemSize)
+
+        storeFeedAdapter.setList(storeFeedDatas)
+        storeFeedAdapter.notifyItemRangeInserted(positionStart, response.result.feeds.size)
     }
 
     private fun checkScrollEvent(){
@@ -74,22 +82,19 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
 
-                if(!binding.recyclerStoreFeed.canScrollVertically(1)){
-                    Log.d("vertical_scroll", "success")
-
+                val lastVisibleItemPosition =
+                    (recyclerView.layoutManager as LinearLayoutManager?)!!.findLastCompletelyVisibleItemPosition()
+                val itemTotalCount = recyclerView.adapter!!.itemCount-1
+                
+                if(!binding.recyclerStoreFeed.canScrollVertically(1) && lastVisibleItemPosition == itemTotalCount){
                     if(hasNext!!){
-                        showLoadingDialog(this@ConsumerStoreDetailFeedActivity)
+                        storeFeedAdapter.deleteLoading()
+
                         positionStart = storeFeedDatas.size
                         ConsumerStoreFeedDetailService(this@ConsumerStoreDetailFeedActivity)
                             .tryGetConsumerStoreFeedDetailRetrofitInterface(feedTag, cursorIdx, feedSize)
 
-                        Handler().postDelayed(
-                            {
-                                binding.recyclerStoreFeed.smoothScrollToPosition(storeFeedAdapter.itemCount - feedSize - 1)
-                            }, 200)
-
                     }
-
 
                 }
             }

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.codepatissier.keki.R
+import com.codepatissier.keki.databinding.ItemProgressbarLoadingBinding
 import com.codepatissier.keki.databinding.ItemStoreFeedRecyclerBinding
 import com.codepatissier.keki.src.main.consumer.store.ConsumerStoreMainActivity
 import com.codepatissier.keki.src.main.consumer.store.storefeed.report.ConsumerStoreDetailFeedDialog
@@ -22,18 +23,42 @@ import com.codepatissier.keki.src.main.consumer.store.storefeed.DetailImageAdapt
 class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<ViewHolder>() {
 
     var storeFeedDatas = mutableListOf<StoreFeedData>()
+    private val VIEW_TYPE_ITEM = 0
+    private val VIEW_TYPE_LOADING = 1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        val itemBinding = ItemStoreFeedRecyclerBinding.inflate(layoutInflater, parent, false)
-        return StoreFeedViewHolder(context, itemBinding)
+        return when (viewType){
+            VIEW_TYPE_ITEM -> {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val itemBinding = ItemStoreFeedRecyclerBinding.inflate(layoutInflater, parent, false)
+                StoreFeedViewHolder(context, itemBinding)
+            }
+            else -> {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val itemBinding = ItemProgressbarLoadingBinding.inflate(layoutInflater, parent, false)
+                LoadingViewHolder(itemBinding)
+            }
+        }
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        (holder as StoreFeedViewHolder).bind(storeFeedDatas[position])
+        if(holder is StoreFeedViewHolder){
+            (holder as StoreFeedViewHolder).bind(storeFeedDatas[position])
+        }else{
+
+        }
     }
 
     override fun getItemCount(): Int = storeFeedDatas.size
+
+    fun setList(storeFeed: MutableList<StoreFeedData>){
+        storeFeedDatas.addAll(storeFeed)
+        storeFeedDatas.add(StoreFeedData(0, " ", " ", List(1) { "" }, List(1){""}, " ", " ", false, 0, false))
+    }
+
+    fun deleteLoading(){
+        storeFeedDatas.removeAt(storeFeedDatas.lastIndex)
+    }
 
     class StoreFeedViewHolder(val context: FragmentActivity?, val binding: ItemStoreFeedRecyclerBinding): ViewHolder(binding.root){
         private val sellerImg: ImageView = binding.ivStoreFeedSeller
@@ -143,5 +168,17 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
             }
         }
 
+    }
+
+    class LoadingViewHolder(private val binding: ItemProgressbarLoadingBinding): RecyclerView.ViewHolder(binding.root){
+
+    }
+
+    // 뷰 타입 정하기
+    override fun getItemViewType(position: Int): Int {
+        return when (storeFeedDatas[position].dessertName){
+            " " -> VIEW_TYPE_LOADING
+            else -> VIEW_TYPE_ITEM
+        }
     }
 }
