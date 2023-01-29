@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -73,5 +74,7 @@ dependencies {
 
     implementation 'com.google.android.flexbox:flexbox:3.0.0'
 
-    implementation 'com.google.firebase:firebase-storage-ktx:20.1.0'
+    implementation platform('com.google.firebase:firebase-bom:31.2.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-firestore'
 }
