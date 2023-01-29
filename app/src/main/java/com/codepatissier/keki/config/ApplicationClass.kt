@@ -14,11 +14,12 @@ import java.util.concurrent.TimeUnit
 
 
 class ApplicationClass : Application() {
-    val API_URL = "http://keki-dev.store/"
+    val API_URL = "https://keki-dev.store/"
     companion object {
         lateinit var sSharedPreferences: SharedPreferences
         lateinit var userInfo: SharedPreferences.Editor
         val Authorization = "Authorization"
+        val UserRole = "UserRole"
         lateinit var sRetrofit: Retrofit
     }
 

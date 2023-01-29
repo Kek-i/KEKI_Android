@@ -6,7 +6,7 @@ import android.util.Log
 import android.view.View
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityIntroBinding
-import com.codepatissier.keki.src.main.login.profilesetting.EditProfileActivity
+import com.codepatissier.keki.src.main.login.profilesetting.CustomerProfileSettingActivity
 
 class IntroActivity: BaseActivity<ActivityIntroBinding>(ActivityIntroBinding::inflate) {
     private var isCustomer = false
@@ -14,7 +14,6 @@ class IntroActivity: BaseActivity<ActivityIntroBinding>(ActivityIntroBinding::in
         super.onCreate(savedInstanceState)
         selectRole()
         clickCheck()
-
     }
 
 
@@ -35,8 +34,10 @@ class IntroActivity: BaseActivity<ActivityIntroBinding>(ActivityIntroBinding::in
 
     private fun clickCheck(){
         binding.btnCheck.setOnClickListener{
-            startActivity(Intent(this, EditProfileActivity::class.java))
-            finish()
+            if(isCustomer) {
+                startActivity(Intent(this, CustomerProfileSettingActivity::class.java))
+                finish()
+            }
         }
     }
 

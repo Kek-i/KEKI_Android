@@ -36,7 +36,7 @@
 
         </activity>
         <activity
-            android:name="com.codepatissier.keki.src.main.login.profilesetting.EditProfileActivity"
+            android:name="com.codepatissier.keki.src.main.login.profilesetting.CustomerProfileSettingActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">

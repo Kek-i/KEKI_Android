@@ -33,6 +33,7 @@
     <string name="tv_edit_Profile_rule">한글,영어,숫자만 사용할 수 있어요.(최대 10자)</string>
     <string name="edit_rule_pass">사용 가능한 닉네임입니다</string>
     <string name="edit_rule_false">이미 사용 중인 닉네임입니다.</string>
+    <string name="edit_rule_null">사용 가능한 닉네임을 입력해주세요.</string>
     <string name="login_dialog_main">앱 접근권한 안내</string>
     <string name="login_dialog_sub">케키에서는 다음 권한들을 사용합니다.</string>
     <string name="login_dialog_text1">사진 및 저장공간(필수)</string>

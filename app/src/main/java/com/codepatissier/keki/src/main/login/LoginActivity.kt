@@ -1,15 +1,19 @@
 package com.codepatissier.keki.src.main.login
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.ApplicationClass
+import com.codepatissier.keki.config.ApplicationClass.Companion.Authorization
+import com.codepatissier.keki.config.ApplicationClass.Companion.UserRole
+import com.codepatissier.keki.config.ApplicationClass.Companion.userInfo
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityLoginBinding
 import com.codepatissier.keki.src.MainActivity
+import com.codepatissier.keki.src.main.login.model.PostLoginRequest
+import com.codepatissier.keki.src.main.login.model.SocialTokenResponse
+import com.codepatissier.keki.util.viewpager.login.AccessRightDialog
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -26,8 +30,8 @@ import com.navercorp.nid.profile.NidProfileCallback
 import com.navercorp.nid.profile.data.NidProfileResponse
 
 
-class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate){
-
+class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate),LoginView{
+    private var userEmail :String?= null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         socialLogin()
@@ -45,25 +49,51 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
         }
     }
 
+    //POST로 로그인id에 대한 정보(토큰값, role) 받아오기 성공하면,  role에 따라서 엑티비티 설정
+    override fun onGetUserInfoSuccess(response: SocialTokenResponse) {
+        checkRole(response)
+    }
+    override fun onGetUserInfoFailure(message: String) {
+    }
 
-    fun googleLogin(){
+    //로그인 하면 토큰값, 회원 role 가져오기
+    fun getRole(userEmail: String, provider:String){
+        val postLoginRequest = PostLoginRequest(email = userEmail, provider = provider)
+        LoginService(this).tryPostUserLogin(postLoginRequest)
+    }
+
+    private fun checkRole(response: SocialTokenResponse){
+        //토큰 저장
+        userInfo.putString(Authorization, response.result.accessToken)
+        Log.d("here", "$userEmail")
+        if(response.result.role == "비회원"){
+            userInfo.putString(UserRole, "비회원")
+            AccessRightDialog(this).show() //앱 권한 확인 -> introActivity
+        }else if(response.result.role =="구매자"){
+            userInfo.putString(UserRole, "구매자")
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+        userInfo.commit()
+    }
+
+
+
+    //소셜 로그인 구현 파트
+
+    private fun googleLogin(){
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.google_server_client_id))
             .requestEmail()
             .build()
-        // Build a GoogleSignInClient with the options specified by gso.
         val mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         val intent = mGoogleSignInClient.signInIntent
         startActivityForResult(intent, 1)
-
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
         // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
         if (requestCode == 1) {
-            // The Task returned from this call is always completed, no need to attach
-            // a listener.
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             handleSignInResult(task)
         }
@@ -71,43 +101,42 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
     private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
         try {
             val account = completedTask.getResult(ApiException::class.java)
-            val email = account.email
-            Log.d("sss", email.toString())
+            val gmail = account.email
+            Log.d("google", "user_google_email: $gmail")
+            if (gmail != null) {
+                getRole(gmail,"구글")
+            }
         } catch (e: ApiException) {
-            // The ApiException status code indicates the detailed failure reason.
-            // Please refer to the GoogleSignInStatusCodes class reference for more information.
-            Log.i("SSS", "signInResult:failed code=" + e.statusCode)
+            Log.i("google", "signInResult:failed code=" + e.statusCode)
         }
     }
 
-    fun naverLogin(){
-
+    private fun naverLogin(){
         val profileCallback = object : NidProfileCallback<NidProfileResponse> {
             override fun onSuccess(response: NidProfileResponse) {
-                val userEmail=response.profile?.email
-                Log.d("naver", "네이버 아이디 로그인 성공!\nemail: $userEmail")
+                val email=response.profile?.email
+                if (email != null) {
+                    getRole(email,"네이버")
+                }
+                Log.d("naver", "user_naver_email: $email")
             }
             override fun onFailure(httpStatus: Int, message: String) {
                 val errorCode = NaverIdLoginSDK.getLastErrorCode().code
                 val errorDescription = NaverIdLoginSDK.getLastErrorDescription()
-                Log.d("naver", "errorCode: ${errorCode}\n" +
-                        "errorDescription: ${errorDescription}")
+                Log.d("naver", "errorCode: ${errorCode}\nerrorDescription: ${errorDescription}")
             }
             override fun onError(errorCode: Int, message: String) {
                 onFailure(errorCode, message)
             }
         }
-        /** OAuthLoginCallback을 authenticate() 메서드 호출 시 파라미터로 전달하거나 NidOAuthLoginButton 객체에 등록하면 인증이 종료되는 것을 확인할 수 있습니다. */
-        val oauthLoginCallback = object : OAuthLoginCallback {
+          val oauthLoginCallback = object : OAuthLoginCallback {
             override fun onSuccess() {
-                //로그인 유저 정보 가져오기
                 NidOAuthLogin().callProfileApi(profileCallback)
             }
             override fun onFailure(httpStatus: Int, message: String) {
                 val errorCode = NaverIdLoginSDK.getLastErrorCode().code
                 val errorDescription = NaverIdLoginSDK.getLastErrorDescription()
-                Log.d("naver", "errorCode: ${errorCode}\n" +
-                        "errorDescription: ${errorDescription}")
+                Log.d("naver", "errorCode: ${errorCode}\nerrorDescription: ${errorDescription}")
             }
             override fun onError(errorCode: Int, message: String) {
                 onFailure(errorCode, message)
@@ -117,51 +146,42 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
     }
 
 
-
-    fun kakaoLogin() {
-        // 카카오계정으로 로그인 공통 callback 구성
+    private fun kakaoLogin() {
         // 카카오톡으로 로그인 할 수 없어 카카오계정으로 로그인할 경우 사용됨
         val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
             if (error != null) {
-                Log.d("Kakao_token", "카카오계정으로 로그인 실패 : ${error}")
+                Log.d("kakao", "카카오계정으로 로그인 실패 : ${error}")
             } else if (token != null) {
                 UserApiClient.instance.me { user, error ->
                     if (user != null) {
-                        Log.d(
-                            "Kakao_token", "카카오계정으로 로그인 성공 \n"+
-                                    "email: ${user.kakaoAccount?.email}"
-                        )
+                        Log.d("kakao", "user_kakao_email: ${user.kakaoAccount?.email}")
+                        val email = user.kakaoAccount?.email
+                        if (email != null) {
+                            getRole(email,"카카오")
+                        }
                     }
                 }
             }
         }
-
-        // 카카오톡이 설치되어 있으면 카카오톡으로 로그인, 아니면 카카오계정으로 로그인
         if (UserApiClient.instance.isKakaoTalkLoginAvailable(this)) {
             UserApiClient.instance.loginWithKakaoTalk(this) { token, error ->
                 if (error != null) {
-                    Log.d("Kakao_token", "카카오톡으로 로그인 실패 : ${error}")
-
-                    // 사용자가 카카오톡 설치 후 디바이스 권한 요청 화면에서 로그인을 취소한 경우,
-                    // 의도적인 로그인 취소로 보고 카카오계정으로 로그인 시도 없이 로그인 취소로 처리 (예: 뒤로 가기)
+                    Log.d("kakao", "카카오톡으로 로그인 실패 : ${error}")
                     if (error is ClientError && error.reason == ClientErrorCause.Cancelled) {
                         return@loginWithKakaoTalk
-                    }
-
-                    // 카카오톡에 연결된 카카오계정이 없는 경우, 카카오계정으로 로그인 시도
+                    }// 카톡 로그인 에러일 경우 카카오계정으로 로그인 시도
                     UserApiClient.instance.loginWithKakaoAccount(this, callback = callback)
-                } else if (token != null) {
+                } //카카오톡으로 로그인
+                else if (token != null) {
                     UserApiClient.instance.me { user, error ->
-                    Log.d(
-                        "Kakao_token",
-                        "카카오톡으로 로그인 성공\nemail:${user?.kakaoAccount?.email}"
-                    )}
+                    Log.d("kakao","user_kakao_email:${user?.kakaoAccount?.email}")
+                        val email = user?.kakaoAccount?.email
+                        if (email != null) {
+                            getRole(email,"카카오") } }
                 }
             }
-        } else {
+        } else { //카톡 없는 경우 카카오계정 로그인 시도
             UserApiClient.instance.loginWithKakaoAccount(this, callback = callback)
         }
     }
-
-
 }
