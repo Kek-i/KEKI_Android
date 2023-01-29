@@ -21,6 +21,7 @@ class ApplicationClass : Application() {
         lateinit var userInfo: SharedPreferences.Editor
         val Authorization = "Authorization"
         val UserRole = "UserRole"
+        val UserEmail = "UserEmail"
         lateinit var sRetrofit: Retrofit
     }
 

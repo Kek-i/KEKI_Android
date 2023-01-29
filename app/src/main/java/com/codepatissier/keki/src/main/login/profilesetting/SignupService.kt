@@ -1,5 +1,6 @@
 package com.codepatissier.keki.src.main.login.profilesetting
 
+import android.util.Log
 import com.codepatissier.keki.config.ApplicationClass
 import com.codepatissier.keki.src.main.login.model.PostSignupRequest
 import com.codepatissier.keki.src.main.login.model.SocialTokenResponse
@@ -15,15 +16,11 @@ class SignupService(val signupView: SignupView) {
         val signupRetrofitInterface = ApplicationClass.sRetrofit.create(SignupRetrofitInterface::class.java)
 
         signupRetrofitInterface.checkNickname(postNickRequest).enqueue(object: Callback<PostNickname>{
-            override fun onResponse(
-                call: Call<PostNickname>,
-                response: Response<PostNickname>
-            ) {
+            override fun onResponse(call: Call<PostNickname>,response: Response<PostNickname>) {
                 signupView.onPostNickSuccess(response.body() as PostNickname)
             }
-
             override fun onFailure(call: Call<PostNickname>, t: Throwable) {
-                signupView.onPostNickFailure(t.message ?: "통신 오류")
+                Log.e("signup-error","${t.message}")
             }
 
         })
@@ -37,7 +34,7 @@ class SignupService(val signupView: SignupView) {
                 signupView.onPostSignupSuccess(response.body() as SocialTokenResponse)
             }
             override fun onFailure(call: Call<SocialTokenResponse>, t: Throwable) {
-                signupView.onPostSignupFailure(t.message ?: "통신 오류")
+                Log.e("Signup-error","${t.message}")
             }
         })
     }

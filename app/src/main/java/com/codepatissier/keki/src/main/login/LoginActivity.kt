@@ -8,6 +8,7 @@ import androidx.fragment.app.replace
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.ApplicationClass
 import com.codepatissier.keki.config.ApplicationClass.Companion.Authorization
+import com.codepatissier.keki.config.ApplicationClass.Companion.UserEmail
 import com.codepatissier.keki.config.ApplicationClass.Companion.UserRole
 import com.codepatissier.keki.config.ApplicationClass.Companion.userInfo
 import com.codepatissier.keki.config.BaseActivity
@@ -68,6 +69,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
     private fun checkRole(response: SocialTokenResponse){
         //토큰 저장
         userInfo.putString(Authorization, response.result.accessToken)
+        userInfo.putString(UserEmail, userEmail)
         Log.d("here", "$userEmail")
         if(response.result.role == "비회원"){
             userInfo.putString(UserRole, "비회원")
@@ -76,9 +78,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
             userInfo.putString(UserRole, "구매자")
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-//            supportFragmentManager.beginTransaction()
-//                .add(R.id.main_frm, ConsumerMyPageFragment())
-//                .commitAllowingStateLoss()
         }
         userInfo.commit()
     }
@@ -107,10 +106,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
     private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
         try {
             val account = completedTask.getResult(ApiException::class.java)
-            val gmail = account.email
-            Log.d("google", "user_google_email: $gmail")
-            if (gmail != null) {
-                getRole(gmail,"구글")
+            userEmail = account.email
+            Log.d("google", "user_google_email: $userEmail")
+            if (userEmail != null) {
+                getRole(userEmail!!,"구글")
             }
         } catch (e: ApiException) {
             Log.i("google", "signInResult:failed code=" + e.statusCode)
@@ -120,11 +119,11 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
     private fun naverLogin(){
         val profileCallback = object : NidProfileCallback<NidProfileResponse> {
             override fun onSuccess(response: NidProfileResponse) {
-                val email=response.profile?.email
-                if (email != null) {
-                    getRole(email,"네이버")
+                userEmail=response.profile?.email
+                if (userEmail != null) {
+                    getRole(userEmail!!,"네이버")
                 }
-                Log.d("naver", "user_naver_email: $email")
+                Log.d("naver", "user_naver_email: $userEmail")
             }
             override fun onFailure(httpStatus: Int, message: String) {
                 val errorCode = NaverIdLoginSDK.getLastErrorCode().code
@@ -161,9 +160,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
                 UserApiClient.instance.me { user, error ->
                     if (user != null) {
                         Log.d("kakao", "user_kakao_email: ${user.kakaoAccount?.email}")
-                        val email = user.kakaoAccount?.email
-                        if (email != null) {
-                            getRole(email,"카카오")
+                        userEmail = user.kakaoAccount?.email
+                        if (userEmail != null) {
+                            getRole(userEmail!!,"카카오")
                         }
                     }
                 }
@@ -180,10 +179,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
                 } //카카오톡으로 로그인
                 else if (token != null) {
                     UserApiClient.instance.me { user, error ->
-                    Log.d("kakao","user_kakao_email:${user?.kakaoAccount?.email}")
-                        val email = user?.kakaoAccount?.email
-                        if (email != null) {
-                            getRole(email,"카카오") } }
+                    Log.d("kakao","카카오 로그인 성공:${user?.kakaoAccount?.email}")
+                        userEmail = user?.kakaoAccount?.email
+                        if (userEmail != null) {
+                            getRole(userEmail!!,"카카오") } }
                 }
             }
         } else { //카톡 없는 경우 카카오계정 로그인 시도

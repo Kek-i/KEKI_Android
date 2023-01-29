@@ -5,8 +5,8 @@ import com.codepatissier.keki.src.main.login.profilesetting.model.PostNickname
 
 interface SignupView {
     fun onPostNickSuccess(response: PostNickname)
-    fun onPostNickFailure(message: String)
+//    fun onPostNickFailure(message: String)
 
     fun onPostSignupSuccess(response: SocialTokenResponse)
-    fun onPostSignupFailure(message: String)
+//    fun onPostSignupFailure(message: String)
 }

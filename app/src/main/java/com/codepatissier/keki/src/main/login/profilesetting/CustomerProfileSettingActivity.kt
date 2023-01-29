@@ -11,6 +11,7 @@ import android.provider.MediaStore
 import android.util.Log
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.ApplicationClass
+import com.codepatissier.keki.config.ApplicationClass.Companion.UserEmail
 import com.codepatissier.keki.config.ApplicationClass.Companion.userInfo
 import com.codepatissier.keki.databinding.ActivityConsumerProfileSettingBinding
 import com.codepatissier.keki.config.BaseActivity
@@ -33,9 +34,12 @@ class CustomerProfileSettingActivity : BaseActivity<ActivityConsumerProfileSetti
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        clickConfirm()
         clickBack()
         clickDoubleCheck()
+        setTextUserEmail()
         getProfileImg()
+
     }
 
     //완료 버튼 클릭
@@ -78,6 +82,11 @@ class CustomerProfileSettingActivity : BaseActivity<ActivityConsumerProfileSetti
         }
     }
 
+    //유저 이메일 표시하기
+    private fun setTextUserEmail(){
+        binding.tvUserEmail.text = ApplicationClass.sSharedPreferences.getString(UserEmail, null)
+    }
+
     //닉네임 조건
     fun isValidNickname(nickname: String?): Boolean {
         val trimmedNickname = nickname?.trim().toString()
@@ -85,6 +94,7 @@ class CustomerProfileSettingActivity : BaseActivity<ActivityConsumerProfileSetti
         return !trimmedNickname.isNullOrEmpty() && exp.matches(trimmedNickname)
     }
 
+    //중복확인 결과에 따라 문구 넣어주기
     @SuppressLint("SetTextI18n")
     override fun onPostNickSuccess(response: PostNickname) {
         if (response.isSuccess) {
@@ -94,21 +104,14 @@ class CustomerProfileSettingActivity : BaseActivity<ActivityConsumerProfileSetti
             binding.tvNamingResult.setTextColor(resources.getColor(R.color.darkish_pink))
             binding.tvNamingResult.setText(R.string.edit_rule_false)
         }
-
-        clickConfirm()
-    }
-    override fun onPostNickFailure(message: String) {
     }
 
+    //회원가입 성공하면 role 값 다시 설정,  메인 엑티비티로 이동
     override fun onPostSignupSuccess(response: SocialTokenResponse) {
-        //회원가입 성공하면 role 값 다시 설정,  메인 엑티비티로 이동
         userInfo.putString(ApplicationClass.UserRole, "구매자")
         userInfo.commit()
         startActivity(Intent(this, MainActivity::class.java))
         finish()
-    }
-
-    override fun onPostSignupFailure(message: String) {
     }
 
 
