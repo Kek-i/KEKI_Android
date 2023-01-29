@@ -96,7 +96,7 @@
         </activity>
 
         <activity
-            android:name="com.codepatissier.keki.src.main.consumer.mypage.ConsumerProfileEditActivity"
+            android:name="com.codepatissier.keki.src.main.consumer.mypage.profileEdit.ConsumerProfileEditActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">

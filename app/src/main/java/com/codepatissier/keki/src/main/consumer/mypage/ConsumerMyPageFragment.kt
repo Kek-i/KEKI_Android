@@ -9,12 +9,16 @@ import com.codepatissier.keki.config.BaseFragment
 import com.codepatissier.keki.databinding.FragmentConsumerMyPageBinding
 import com.codepatissier.keki.src.main.consumer.mypage.model.ConsumerMyPageResponse
 import com.codepatissier.keki.src.main.consumer.mypage.notice.NoticeActivity
+import com.codepatissier.keki.src.main.consumer.mypage.profileEdit.ConsumerProfileEditActivity
+import com.google.firebase.storage.FirebaseStorage
 
 class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
     (FragmentConsumerMyPageBinding::bind, R.layout.fragment_consumer_my_page),ConsumerMyPageView {
+    var fbStorage : FirebaseStorage?= null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        fbStorage = FirebaseStorage.getInstance()
 
         profileEditClicked()
         conditionClicked()
