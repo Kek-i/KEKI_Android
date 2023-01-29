@@ -94,6 +94,13 @@
         </activity>
 
         <activity
+            android:name="com.codepatissier.keki.src.main.consumer.mypage.ConsumerPersonalInfoActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
             android:name="com.codepatissier.keki.src.main.consumer.mypage.ConsumerProfileEditActivity"
             android:exported="false"
             android:screenOrientation="portrait"
