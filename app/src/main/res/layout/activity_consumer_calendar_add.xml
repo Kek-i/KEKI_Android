@@ -61,452 +61,365 @@
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_calendar_add_content"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/calendar_content_layout_height"
+        android:layout_height="@dimen/calendar_scroll_view_content_height"
         app:layout_constraintTop_toBottomOf="@id/layout_calendar_add_top_bar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        >
-
-        <ImageView
-            android:id="@+id/iv_calendar_add_cake"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/calendar_add_iv_cake_margin_top"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:src="@drawable/img_calendar_detail_cake"
-            />
-
-        <TextView
-            android:id="@+id/tv_calendar_add_dday"
-            android:layout_width="@dimen/calendar_add_tv_dday_width"
-            android:layout_height="@dimen/calendar_add_tv_dday_height"
-            android:layout_marginTop="@dimen/calendar_add_tv_dday_margin_top"
-            app:layout_constraintTop_toBottomOf="@id/iv_calendar_add_cake"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:gravity="center"
-            android:text="@string/calendar_anniversary_add_dday"
-            android:textColor="@color/black"
-            android:textSize="@dimen/calendar_tv_dday_size"
-            android:textAlignment="center"
-            android:fontFamily="@font/roboto_bold"
-            android:includeFontPadding="false"
-            />
+        android:overScrollMode="never">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_total_calendar_add_type"
-            android:layout_width="@dimen/calendar_add_total_layout_type_width"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/calendar_add_total_layout_type_margin_top"
-            android:layout_marginHorizontal="@dimen/calendar_add_total_layout_type_margin_horizontal"
-            app:layout_constraintTop_toBottomOf="@id/tv_calendar_add_dday"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:background="@drawable/bg_rectangle_radius_10_white_no_padding"
-            android:elevation="@dimen/calendar_add_component_elevation">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layout_close_calendar_add_type"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                >
-
-                <View
-                    android:id="@+id/bg_close_type"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/calendar_bg_close_type_height"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    />
-
-                <ImageButton
-                    android:id="@+id/ib_open_type"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/calendar_ib_open_type_margin_start"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:src="@drawable/ic_down_arrow"
-                    android:background="@android:color/transparent"
-                    />
-
-                <TextView
-                    android:id="@+id/tv_select_type"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/calendar_tv_select_type_height"
-                    android:layout_marginTop="@dimen/calendar_tv_select_type_margin_top"
-                    android:layout_marginStart="@dimen/calendar_tv_select_type_margin_start"
-                    android:layout_marginBottom="@dimen/calendar_tv_select_type_margin_bottom"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/ib_open_type"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:text="@string/calendar_anniversary_type"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/calendar_tv_select_type_size"
-                    android:fontFamily="@font/notosanskr_bold"
-                    android:includeFontPadding="false"
-                    />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layout_open_calendar_add_type"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/calendar_layout_open_type_margin_top"
-                android:paddingStart="@dimen/calendar_layout_open_type_padding_start"
-                app:layout_constraintTop_toBottomOf="@id/layout_close_calendar_add_type"
-                android:visibility="gone"
-                >
-
-                <TextView
-                    android:id="@+id/tv_type_dday"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/calendar_tv_open_type_height"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:text="@string/calendar_anniversary_type_dday"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/calendar_tv_open_type_size"
-                    android:fontFamily="@font/notosanskr_bold"
-                    android:includeFontPadding="false"
-
-                    />
-
-                <TextView
-                    android:id="@+id/tv_type_number_of_days"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/calendar_tv_open_type_height"
-                    android:layout_marginVertical="@dimen/calendar_tv_num_of_days_margin_vertical"
-                    app:layout_constraintTop_toBottomOf="@id/tv_type_dday"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/tv_type_repeat_every_year"
-                    android:text="@string/calendar_anniversary_type_number_of_days"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/calendar_tv_open_type_size"
-                    android:fontFamily="@font/notosanskr_bold"
-                    android:includeFontPadding="false"
-                    />
-
-                <TextView
-                    android:id="@+id/tv_type_repeat_every_year"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/calendar_tv_open_type_height"
-                    android:layout_marginBottom="@dimen/calendar_tv_repeat_every_year_margin_bottom"
-                    app:layout_constraintTop_toBottomOf="@id/tv_type_number_of_days"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:text="@string/calendar_anniversary_type_repeat_every_year"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/calendar_tv_open_type_size"
-                    android:fontFamily="@font/notosanskr_bold"
-                    android:includeFontPadding="false"
-                    />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-        
-        <View
-            android:id="@+id/bg_calendar_add_input_title"
-            android:layout_width="@dimen/calendar_add_bg_input_width"
-            android:layout_height="@dimen/calendar_add_bg_input_height"
-            android:layout_marginTop="@dimen/calendar_add_bg_input_title_margin_top"
-            android:layout_marginHorizontal="@dimen/calendar_add_bg_input_title_margin_horizontal"
-            app:layout_constraintTop_toBottomOf="@id/layout_total_calendar_add_type"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:background="@drawable/bg_rectangle_radius_10_white_padding"
-            android:elevation="@dimen/calendar_add_component_elevation"
-            />
-
-        <EditText
-            android:id="@+id/et_title"
-            android:layout_width="@dimen/calendar_add_et_width"
-            android:layout_height="@dimen/calendar_add_et_height"
-            android:layout_marginTop="@dimen/calendar_add_et_title_margin_top"
-            android:layout_marginHorizontal="@dimen/calendar_add_et_margin_horizontal"
-            android:layout_marginBottom="@dimen/calendar_add_et_title_margin_bottom"
-            app:layout_constraintTop_toTopOf="@id/bg_calendar_add_input_title"
-            app:layout_constraintStart_toStartOf="@id/bg_calendar_add_input_title"
-            app:layout_constraintEnd_toEndOf="@id/bg_calendar_add_input_title"
-            app:layout_constraintBottom_toBottomOf="@id/bg_calendar_add_input_title"
-            android:hint="@string/calendar_add_anniversary_title"
-            android:textColorHint="@color/brown_grey"
-            android:textSize="@dimen/calendar_add_et_title_size"
-            android:fontFamily="@font/notosanskr_regular"
-            android:includeFontPadding="false"
-            android:background="@android:color/transparent"
-            android:elevation="@dimen/calendar_add_component_elevation"
-            />
-
-        <View
-            android:id="@+id/bg_calendar_add_input_date"
-            android:layout_width="@dimen/calendar_add_bg_input_width"
-            android:layout_height="@dimen/calendar_add_bg_input_height"
-            android:layout_marginTop="@dimen/calendar_add_bg_input_date_margin_top"
-            android:layout_marginHorizontal="@dimen/calendar_add_bg_input_date_margin_horizontal"
-            app:layout_constraintTop_toBottomOf="@id/bg_calendar_add_input_title"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:background="@drawable/bg_rectangle_radius_10_white_padding"
-            android:elevation="@dimen/calendar_add_component_elevation"
-            />
-
-        <EditText
-            android:id="@+id/et_select_date"
-            android:layout_width="@dimen/calendar_add_et_width"
-            android:layout_height="@dimen/calendar_add_et_height"
-            android:layout_marginHorizontal="@dimen/calendar_add_et_margin_horizontal"
-            app:layout_constraintTop_toTopOf="@id/bg_calendar_add_input_date"
-            app:layout_constraintStart_toStartOf="@id/bg_calendar_add_input_date"
-            app:layout_constraintEnd_toStartOf="@id/ib_calendar_select_date"
-            app:layout_constraintBottom_toBottomOf="@id/bg_calendar_add_input_date"
-            android:inputType="date"
-
-            android:enabled="false"
-            android:hint="@string/calendar_add_anniversary_date"
-            android:textColorHint="@color/brown_grey"
-            android:textSize="@dimen/calendar_add_et_date_size"
-            android:fontFamily="@font/notosanskr_regular"
-            android:includeFontPadding="false"
-            android:background="@android:color/transparent"
-            android:elevation="@dimen/calendar_add_component_elevation"
-            />
-
-        <ImageButton
-            android:id="@+id/ib_calendar_select_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/calendar_add_ib_calendar_margin_end"
-            app:layout_constraintTop_toTopOf="@id/bg_calendar_add_input_date"
-            app:layout_constraintEnd_toEndOf="@id/bg_calendar_add_input_date"
-            app:layout_constraintBottom_toBottomOf="@id/bg_calendar_add_input_date"
-            android:src="@drawable/ic_calendar_select_date"
-            android:background="@android:color/transparent"
-            android:elevation="@dimen/calendar_add_component_elevation"
-            />
-
-        <TextView
-            android:id="@+id/tv_select_hashtag"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/calendar_add_tv_select_hashtag_height"
-            android:layout_marginTop="@dimen/calendar_add_tv_select_hashtag_margin_top"
-            android:layout_marginStart="@dimen/calendar_add_tv_select_hashtag_margin_start"
-            app:layout_constraintTop_toBottomOf="@id/bg_calendar_add_input_date"
-            app:layout_constraintStart_toStartOf="parent"
-            android:text="@string/calendar_add_anniversary_hashtag"
-            android:textColor="@color/black"
-            android:textSize="@dimen/calendar_add_tv_select_hashtag_size"
-            android:fontFamily="@font/notosanskr_regular"
-            android:includeFontPadding="false"
-            />
-
-        <TextView
-            android:id="@+id/tv_max_hashtag"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/calendar_add_tv_max_hashtag_height"
-            android:layout_marginTop="@dimen/calendar_add_tv_max_hashtag_margin_top"
-            android:layout_marginStart="@dimen/calendar_add_tv_max_hashtag_margin_start"
-            app:layout_constraintTop_toBottomOf="@id/tv_select_hashtag"
-            app:layout_constraintStart_toStartOf="parent"
-            android:text="@string/calendar_add_max_hashtag"
-            android:textColor="@color/brown_grey"
-            android:textSize="@dimen/calendar_add_tv_max_hashtag_size"
-            android:fontFamily="@font/notosanskr_regular"
-            android:includeFontPadding="false"
-            />
-
-        <com.google.android.flexbox.FlexboxLayout
-            android:id="@+id/layout_hashtag_collection"
-            android:layout_width="@dimen/calendar_layout_flexbox_width"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/calendar_layout_flexbox_margin_top"
-            android:paddingTop="@dimen/calendar_layout_flexbox_padding_top"
-            android:paddingHorizontal="@dimen/calendar_layout_flexbox_padding_horizontal"
-            android:clipToPadding="false"
-            app:layout_constraintTop_toBottomOf="@id/tv_max_hashtag"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:flexWrap="wrap"
-            app:justifyContent="flex_start"
+            android:id="@+id/layout_calendar_add_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             >
 
-            <!-- 선택 시 앞으로 정렬할 때 사용하는 textView -->
-            <TextView
-                android:id="@+id/tv_first_tag"
+            <ImageView
+                android:id="@+id/iv_calendar_add_cake"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/calendar_tv_hashtag_height"
-                android:layout_marginEnd="@dimen/calendar_tv_hashtag_margin_end"
-                android:layout_marginBottom="@dimen/calendar_tv_hashtag_margin_bottom"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/calendar_add_iv_cake_margin_top"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:src="@drawable/img_calendar_detail_cake"
+                />
+
+            <TextView
+                android:id="@+id/tv_calendar_add_dday"
+                android:layout_width="@dimen/calendar_add_tv_dday_width"
+                android:layout_height="@dimen/calendar_add_tv_dday_height"
+                android:layout_marginTop="@dimen/calendar_add_tv_dday_margin_top"
+                app:layout_constraintTop_toBottomOf="@id/iv_calendar_add_cake"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:gravity="center"
+                android:text="@string/calendar_anniversary_add_dday"
                 android:textColor="@color/black"
-                android:textSize="@dimen/calendar_tv_hashtag_size"
+                android:textSize="@dimen/calendar_tv_dday_size"
+                android:textAlignment="center"
+                android:fontFamily="@font/roboto_bold"
+                android:includeFontPadding="false"
+                />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_total_calendar_add_type"
+                android:layout_width="@dimen/calendar_add_total_layout_type_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/calendar_add_total_layout_type_margin_top"
+                android:layout_marginHorizontal="@dimen/calendar_add_total_layout_type_margin_horizontal"
+                app:layout_constraintTop_toBottomOf="@id/tv_calendar_add_dday"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@drawable/bg_rectangle_radius_10_white_no_padding"
+                android:elevation="@dimen/calendar_add_component_elevation">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_close_calendar_add_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+
+                    <View
+                        android:id="@+id/bg_close_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/calendar_bg_close_type_height"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        />
+
+                    <ImageButton
+                        android:id="@+id/ib_open_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/calendar_ib_open_type_margin_start"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:src="@drawable/ic_down_arrow"
+                        android:background="@android:color/transparent"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_select_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/calendar_tv_select_type_height"
+                        android:layout_marginTop="@dimen/calendar_tv_select_type_margin_top"
+                        android:layout_marginStart="@dimen/calendar_tv_select_type_margin_start"
+                        android:layout_marginBottom="@dimen/calendar_tv_select_type_margin_bottom"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/ib_open_type"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:text="@string/calendar_anniversary_type"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/calendar_tv_select_type_size"
+                        android:fontFamily="@font/notosanskr_bold"
+                        android:includeFontPadding="false"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_open_calendar_add_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/calendar_layout_open_type_margin_top"
+                    android:paddingStart="@dimen/calendar_layout_open_type_padding_start"
+                    app:layout_constraintTop_toBottomOf="@id/layout_close_calendar_add_type"
+                    android:visibility="gone"
+                    >
+
+                    <TextView
+                        android:id="@+id/tv_type_dday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/calendar_tv_open_type_height"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:text="@string/calendar_anniversary_type_dday"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/calendar_tv_open_type_size"
+                        android:fontFamily="@font/notosanskr_bold"
+                        android:includeFontPadding="false"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_type_number_of_days"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/calendar_tv_open_type_height"
+                        android:layout_marginVertical="@dimen/calendar_tv_num_of_days_margin_vertical"
+                        app:layout_constraintTop_toBottomOf="@id/tv_type_dday"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/tv_type_repeat_every_year"
+                        android:text="@string/calendar_anniversary_type_number_of_days"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/calendar_tv_open_type_size"
+                        android:fontFamily="@font/notosanskr_bold"
+                        android:includeFontPadding="false"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_type_repeat_every_year"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/calendar_tv_open_type_height"
+                        android:layout_marginBottom="@dimen/calendar_tv_repeat_every_year_margin_bottom"
+                        app:layout_constraintTop_toBottomOf="@id/tv_type_number_of_days"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:text="@string/calendar_anniversary_type_repeat_every_year"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/calendar_tv_open_type_size"
+                        android:fontFamily="@font/notosanskr_bold"
+                        android:includeFontPadding="false"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_type_error_no_input"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/calendar_add_tv_error_height"
+                android:layout_marginTop="@dimen/calendar_add_tv_error_margin_top"
+                android:layout_marginStart="@dimen/calendar_add_tv_error_margin_start"
+                app:layout_constraintTop_toBottomOf="@id/layout_total_calendar_add_type"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/calendar_add_error_no_select"
+                android:textColor="@color/darkish_pink"
+                android:textSize="@dimen/calendar_add_tv_error_size"
                 android:fontFamily="@font/notosanskr_regular"
                 android:includeFontPadding="false"
-                android:background="@drawable/bg_rectangle_radius_13_white"
-                android:elevation="@dimen/calendar_add_hashtag_elevation"
+                android:visibility="gone"
+                />
+
+            <View
+                android:id="@+id/bg_calendar_add_input_title"
+                android:layout_width="@dimen/calendar_add_bg_input_width"
+                android:layout_height="@dimen/calendar_add_bg_input_height"
+                android:layout_marginTop="@dimen/calendar_add_bg_input_title_margin_top"
+                android:layout_marginHorizontal="@dimen/calendar_add_bg_input_title_margin_horizontal"
+                app:layout_constraintTop_toBottomOf="@id/tv_type_error_no_input"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@drawable/bg_rectangle_radius_10_white_padding"
+                android:elevation="@dimen/calendar_add_component_elevation"
+                />
+
+            <EditText
+                android:id="@+id/et_title"
+                android:layout_width="@dimen/calendar_add_et_width"
+                android:layout_height="@dimen/calendar_add_et_height"
+                android:layout_marginTop="@dimen/calendar_add_et_title_margin_top"
+                android:layout_marginHorizontal="@dimen/calendar_add_et_margin_horizontal"
+                android:layout_marginBottom="@dimen/calendar_add_et_title_margin_bottom"
+                app:layout_constraintTop_toTopOf="@id/bg_calendar_add_input_title"
+                app:layout_constraintStart_toStartOf="@id/bg_calendar_add_input_title"
+                app:layout_constraintEnd_toEndOf="@id/bg_calendar_add_input_title"
+                app:layout_constraintBottom_toBottomOf="@id/bg_calendar_add_input_title"
+                android:hint="@string/calendar_add_anniversary_title"
+                android:textColorHint="@color/brown_grey"
+                android:textSize="@dimen/calendar_add_et_title_size"
+                android:fontFamily="@font/notosanskr_regular"
+                android:includeFontPadding="false"
+                android:background="@null"
+                android:inputType="textNoSuggestions"
+                android:imeOptions="actionDone"
+                android:maxLines="1"
+                android:maxLength="30"
+                android:elevation="@dimen/calendar_add_component_elevation"
+                />
+
+            <TextView
+                android:id="@+id/tv_title_error_no_input"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/calendar_add_tv_error_height"
+                android:layout_marginTop="@dimen/calendar_add_tv_error_margin_top"
+                android:layout_marginStart="@dimen/calendar_add_tv_error_margin_start"
+                app:layout_constraintTop_toBottomOf="@id/bg_calendar_add_input_title"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/calendar_add_error_no_input"
+                android:textColor="@color/darkish_pink"
+                android:textSize="@dimen/calendar_add_tv_error_size"
+                android:fontFamily="@font/notosanskr_regular"
+                android:includeFontPadding="false"
+                android:visibility="gone"
+                />
+
+            <View
+                android:id="@+id/bg_calendar_add_input_date"
+                android:layout_width="@dimen/calendar_add_bg_input_width"
+                android:layout_height="@dimen/calendar_add_bg_input_height"
+                android:layout_marginTop="@dimen/calendar_add_bg_input_date_margin_top"
+                android:layout_marginHorizontal="@dimen/calendar_add_bg_input_date_margin_horizontal"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_error_no_input"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@drawable/bg_rectangle_radius_10_white_padding"
+                android:elevation="@dimen/calendar_add_component_elevation"
+
+                />
+
+            <EditText
+                android:id="@+id/et_select_date"
+                android:layout_width="@dimen/calendar_add_et_width"
+                android:layout_height="@dimen/calendar_add_et_height"
+                android:layout_marginHorizontal="@dimen/calendar_add_et_margin_horizontal"
+                app:layout_constraintTop_toTopOf="@id/bg_calendar_add_input_date"
+                app:layout_constraintStart_toStartOf="@id/bg_calendar_add_input_date"
+                app:layout_constraintEnd_toStartOf="@id/ib_calendar_select_date"
+                app:layout_constraintBottom_toBottomOf="@id/bg_calendar_add_input_date"
+                android:inputType="date"
+                android:enabled="false"
+                android:hint="@string/calendar_add_anniversary_date"
+                android:textColorHint="@color/brown_grey"
+                android:textSize="@dimen/calendar_add_et_date_size"
+                android:fontFamily="@font/notosanskr_regular"
+                android:includeFontPadding="false"
+                android:background="@android:color/transparent"
+                android:elevation="@dimen/calendar_add_component_elevation"
+                />
+
+            <ImageButton
+                android:id="@+id/ib_calendar_select_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/calendar_add_ib_calendar_margin_end"
+                android:padding="@dimen/calendar_add_ib_calendar_padding"
+                app:layout_constraintTop_toTopOf="@id/bg_calendar_add_input_date"
+                app:layout_constraintEnd_toEndOf="@id/bg_calendar_add_input_date"
+                app:layout_constraintBottom_toBottomOf="@id/bg_calendar_add_input_date"
+                android:src="@drawable/ic_calendar_select_date"
+                android:background="@android:color/transparent"
+                android:elevation="@dimen/calendar_add_component_elevation"
+                />
+
+            <TextView
+                android:id="@+id/tv_date_error_no_input"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/calendar_add_tv_error_height"
+                android:layout_marginTop="@dimen/calendar_add_tv_error_margin_top"
+                android:layout_marginStart="@dimen/calendar_add_tv_error_margin_start"
+                app:layout_constraintTop_toBottomOf="@id/bg_calendar_add_input_date"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/calendar_add_error_no_select"
+                android:textColor="@color/darkish_pink"
+                android:textSize="@dimen/calendar_add_tv_error_size"
+                android:fontFamily="@font/notosanskr_regular"
+                android:includeFontPadding="false"
                 android:visibility="gone"
                 />
 
             <TextView
-                android:id="@+id/tv_second_tag"
+                android:id="@+id/tv_select_hashtag"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/calendar_tv_hashtag_height"
-                android:layout_marginEnd="@dimen/calendar_tv_hashtag_margin_end"
-                android:layout_marginBottom="@dimen/calendar_tv_hashtag_margin_bottom"
+                android:layout_height="@dimen/calendar_add_tv_select_hashtag_height"
+                android:layout_marginTop="@dimen/calendar_add_tv_select_hashtag_margin_top"
+                android:layout_marginStart="@dimen/calendar_add_tv_select_hashtag_margin_start"
+                app:layout_constraintTop_toBottomOf="@id/tv_date_error_no_input"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/calendar_add_anniversary_hashtag"
                 android:textColor="@color/black"
-                android:textSize="@dimen/calendar_tv_hashtag_size"
+                android:textSize="@dimen/calendar_add_tv_select_hashtag_size"
                 android:fontFamily="@font/notosanskr_regular"
                 android:includeFontPadding="false"
-                android:background="@drawable/bg_rectangle_radius_13_white"
-                android:elevation="@dimen/calendar_add_hashtag_elevation"
-                android:visibility="gone"
                 />
 
             <TextView
-                android:id="@+id/tv_third_tag"
+                android:id="@+id/tv_max_hashtag"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/calendar_tv_hashtag_height"
-                android:layout_marginEnd="@dimen/calendar_tv_hashtag_margin_end"
-                android:layout_marginBottom="@dimen/calendar_tv_hashtag_margin_bottom"
-                android:textColor="@color/black"
-                android:textSize="@dimen/calendar_tv_hashtag_size"
+                android:layout_height="@dimen/calendar_add_tv_max_hashtag_height"
+                android:layout_marginTop="@dimen/calendar_add_tv_max_hashtag_margin_top"
+                android:layout_marginStart="@dimen/calendar_add_tv_max_hashtag_margin_start"
+                app:layout_constraintTop_toBottomOf="@id/tv_select_hashtag"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/calendar_add_max_hashtag"
+                android:textColor="@color/brown_grey"
+                android:textSize="@dimen/calendar_add_tv_max_hashtag_size"
                 android:fontFamily="@font/notosanskr_regular"
                 android:includeFontPadding="false"
-                android:background="@drawable/bg_rectangle_radius_13_white"
-                android:elevation="@dimen/calendar_add_hashtag_elevation"
-                android:visibility="gone"
                 />
 
-            <TextView
-                android:id="@+id/tv_hashtag_friend"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/calendar_tv_hashtag_height"
-                android:layout_marginEnd="@dimen/calendar_tv_hashtag_margin_end"
-                android:layout_marginBottom="@dimen/calendar_tv_hashtag_margin_bottom"
-                android:text="@string/hashtag_friend"
-                android:textColor="@color/black"
-                android:textSize="@dimen/calendar_tv_hashtag_size"
-                android:fontFamily="@font/notosanskr_regular"
-                android:includeFontPadding="false"
-                android:background="@drawable/bg_rectangle_radius_13_white"
-                android:elevation="@dimen/calendar_add_hashtag_elevation"
-                />
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group_hashtag"
+                android:layout_width="@dimen/calendar_chip_group_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/calendar_chip_group_margin_top"
+                android:paddingHorizontal="@dimen/calendar_chip_group_padding_horizontal"
+                android:paddingTop="@dimen/calendar_chip_group_padding_top"
+                android:paddingBottom="@dimen/calendar_chip_group_padding_bottom"
+                android:clipToPadding="false"
+                app:layout_constraintTop_toBottomOf="@id/tv_max_hashtag"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:flow_wrapMode="aligned"
+                app:chipSpacingHorizontal="@dimen/calendar_chip_spacing_horizontal"
+                app:chipSpacingVertical="@dimen/calendar_chip_spacing_vertical"
+                >
 
-            <TextView
-                android:id="@+id/tv_hashtag_family"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/calendar_tv_hashtag_height"
-                android:layout_marginEnd="@dimen/calendar_tv_hashtag_margin_end"
-                android:layout_marginBottom="@dimen/calendar_tv_hashtag_margin_bottom"
-                android:text="@string/hashtag_family"
-                android:textColor="@color/black"
-                android:textSize="@dimen/calendar_tv_hashtag_size"
-                android:fontFamily="@font/notosanskr_regular"
-                android:includeFontPadding="false"
-                android:background="@drawable/bg_rectangle_radius_13_white"
-                android:elevation="@dimen/calendar_add_hashtag_elevation"
-                />
+                <!-- 선택 시 앞으로 정렬할 때 사용하는 chip -->
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_first_sorted_tag"
+                    android:visibility="gone"
+                    style="@style/CustomChipStyle"
+                    />
 
-            <TextView
-                android:id="@+id/tv_hashtag_lover"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/calendar_tv_hashtag_height"
-                android:layout_marginEnd="@dimen/calendar_tv_hashtag_margin_end"
-                android:layout_marginBottom="@dimen/calendar_tv_hashtag_margin_bottom"
-                android:text="@string/hashtag_lover"
-                android:textColor="@color/black"
-                android:textSize="@dimen/calendar_tv_hashtag_size"
-                android:fontFamily="@font/notosanskr_regular"
-                android:includeFontPadding="false"
-                android:background="@drawable/bg_rectangle_radius_13_white"
-                android:elevation="@dimen/calendar_add_hashtag_elevation"
-                />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_second_sorted_tag"
+                    android:visibility="gone"
+                    style="@style/CustomChipStyle"
+                    />
 
-            <TextView
-                android:id="@+id/tv_hashtag_anniversary"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/calendar_tv_hashtag_height"
-                android:layout_marginEnd="@dimen/calendar_tv_hashtag_margin_end"
-                android:layout_marginBottom="@dimen/calendar_tv_hashtag_margin_bottom"
-                android:text="@string/hashtag_anniversary"
-                android:textColor="@color/black"
-                android:textSize="@dimen/calendar_tv_hashtag_size"
-                android:fontFamily="@font/notosanskr_regular"
-                android:includeFontPadding="false"
-                android:background="@drawable/bg_rectangle_radius_13_white"
-                android:elevation="@dimen/calendar_add_hashtag_elevation"
-                />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_third_sorted_tag"
+                    android:visibility="gone"
+                    style="@style/CustomChipStyle"
+                    />
 
-            <TextView
-                android:id="@+id/tv_hashtag_birthday"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/calendar_tv_hashtag_height"
-                android:layout_marginEnd="@dimen/calendar_tv_hashtag_margin_end"
-                android:layout_marginBottom="@dimen/calendar_tv_hashtag_margin_bottom"
-                android:text="@string/hashtag_birthday"
-                android:textColor="@color/black"
-                android:textSize="@dimen/calendar_tv_hashtag_size"
-                android:fontFamily="@font/notosanskr_regular"
-                android:includeFontPadding="false"
-                android:background="@drawable/bg_rectangle_radius_13_white"
-                android:elevation="@dimen/calendar_add_hashtag_elevation"
-                />
+            </com.google.android.material.chip.ChipGroup>
 
-            <TextView
-                android:id="@+id/tv_hashtag_employment"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/calendar_tv_hashtag_height"
-                android:layout_marginEnd="@dimen/calendar_tv_hashtag_margin_end"
-                android:layout_marginBottom="@dimen/calendar_tv_hashtag_margin_bottom"
-                android:text="@string/hashtag_employment"
-                android:textColor="@color/black"
-                android:textSize="@dimen/calendar_tv_hashtag_size"
-                android:fontFamily="@font/notosanskr_regular"
-                android:includeFontPadding="false"
-                android:background="@drawable/bg_rectangle_radius_13_white"
-                android:elevation="@dimen/calendar_add_hashtag_elevation"
-                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/tv_hashtag_graduation_exhibition"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/calendar_tv_hashtag_height"
-                android:layout_marginEnd="@dimen/calendar_tv_hashtag_margin_end"
-                android:layout_marginBottom="@dimen/calendar_tv_hashtag_margin_bottom"
-                android:text="@string/hashtag_graduation_exhibition"
-                android:textColor="@color/black"
-                android:textSize="@dimen/calendar_tv_hashtag_size"
-                android:fontFamily="@font/notosanskr_regular"
-                android:includeFontPadding="false"
-                android:background="@drawable/bg_rectangle_radius_13_white"
-                android:elevation="@dimen/calendar_add_hashtag_elevation"
-                />
-
-            <TextView
-                android:id="@+id/tv_hashtag_party"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/calendar_tv_hashtag_height"
-                android:layout_marginEnd="@dimen/calendar_tv_hashtag_margin_end"
-                android:layout_marginBottom="@dimen/calendar_tv_hashtag_margin_bottom"
-                android:text="@string/hashtag_party"
-                android:textColor="@color/black"
-                android:textSize="@dimen/calendar_tv_hashtag_size"
-                android:fontFamily="@font/notosanskr_regular"
-                android:includeFontPadding="false"
-                android:background="@drawable/bg_rectangle_radius_13_white"
-                android:elevation="@dimen/calendar_add_hashtag_elevation"
-                />
-
-        </com.google.android.flexbox.FlexboxLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

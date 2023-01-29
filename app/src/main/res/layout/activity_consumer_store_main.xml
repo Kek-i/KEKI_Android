@@ -57,7 +57,7 @@
                 android:id="@+id/iv_profile"
                 android:layout_width="@dimen/store_main_profile_width_height"
                 android:layout_height="@dimen/store_main_profile_width_height"
-                android:src="@drawable/bg_oval_light_yellow"
+                android:background="@drawable/bg_oval_light_yellow"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -80,6 +80,7 @@
                 android:layout_width="@dimen/store_main_store_detail_width_height"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/store_main_right"
+                android:layout_marginTop="@dimen/store_main_store_detail_top"
                 android:ellipsize="end"
                 android:fontFamily="@font/notosanskr_regular"
                 android:includeFontPadding="false"

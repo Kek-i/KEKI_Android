@@ -81,13 +81,13 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name="com.codepatissier.keki.src.main.consumer.calendar.ConsumerCalendarDetailActivity"
+            android:name="com.codepatissier.keki.src.main.consumer.calendar.calendardetail.ConsumerCalendarDetailActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name="com.codepatissier.keki.src.main.consumer.calendar.ConsumerCalendarAddActivity"
+            android:name="com.codepatissier.keki.src.main.consumer.calendar.calendaradd.ConsumerCalendarAddActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -101,6 +101,13 @@
 
         <activity
             android:name="com.codepatissier.keki.src.main.consumer.mypage.ConsumerConditionActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name="com.codepatissier.keki.src.main.consumer.mypage.ConsumerPersonalInfoActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -12,11 +13,13 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.codepatissier.keki.R
 import com.codepatissier.keki.databinding.ItemStoreMainRecyclerBinding
-import com.codepatissier.keki.src.main.consumer.store.productfeed.ConsumerStoreProductDetailFeedActivity
+import com.codepatissier.keki.src.main.consumer.mypage.notice.noticedetail.NoticeDetailActivity
+import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedActivity
+import com.codepatissier.keki.util.recycler.notice.NoticeData
 
-class StoreMainProductAdapter(val context: FragmentActivity?): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class StoreMainStoreAdapter(val context: FragmentActivity?): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    var storeMainProductDatas = mutableListOf<StoreMainProductData>()
+    var storeMainStoreDatas = mutableListOf<StoreMainStoreData>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -25,18 +28,18 @@ class StoreMainProductAdapter(val context: FragmentActivity?): RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as ViewHolder).bind(storeMainProductDatas[position])
+        (holder as ViewHolder).bind(storeMainStoreDatas[position])
     }
 
-    override fun getItemCount(): Int = storeMainProductDatas.size
+    override fun getItemCount(): Int = storeMainStoreDatas.size
 
     class ViewHolder(val context: FragmentActivity?, val binding: ItemStoreMainRecyclerBinding): RecyclerView.ViewHolder(binding.root){
         private val FeedImg : ImageView = binding.ivStoreMain
         val defaultImg = R.drawable.bg_rectangle_radius_10_off_white
 
-        fun bind(item:StoreMainProductData){
+        fun bind(item:StoreMainStoreData){
             Glide.with(context!!)
-                .load(item.dessertImgUrl)
+                .load(item.postImgUrl)
                 .placeholder(defaultImg)
                 .error(defaultImg)
                 .fallback(defaultImg)
@@ -44,9 +47,9 @@ class StoreMainProductAdapter(val context: FragmentActivity?): RecyclerView.Adap
                 .into(FeedImg)
 
             itemView.setOnClickListener {
-                var intent = Intent(itemView.context,  ConsumerStoreProductDetailFeedActivity::class.java)
-                // 디저트번호, 스토어 번호 StoreMainProductData 객체로 detailFeed에 넘기기
-                intent.putExtra("StoreMainProductData", item)
+                var intent = Intent(itemView.context, ConsumerStoreDetailFeedActivity::class.java)
+                // 스토어번호, 피드 번호 StoreMainStoreData 객체로 detailFeed에 넘기기
+                intent.putExtra("StoreMainStoreData", item)
                 itemView.context.startActivity(intent)
             }
         }

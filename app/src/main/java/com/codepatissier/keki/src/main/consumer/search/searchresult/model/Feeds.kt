@@ -1,7 +1,7 @@
 package com.codepatissier.keki.src.main.consumer.search.searchresult.model
 
 data class Feeds (
-    val postIdx : Int,
+    val postIdx : Long,
     val dessertName : String,
     val dessertPrice : Int,
     val description : String,

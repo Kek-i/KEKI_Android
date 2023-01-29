@@ -1,10 +1,11 @@
 package com.codepatissier.keki.src.main.consumer.store
 
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
@@ -14,8 +15,7 @@ import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityConsumerStoreMainBinding
 import com.codepatissier.keki.src.main.consumer.store.model.ConsumerStoreMainResponse
 import com.codepatissier.keki.util.viewpager.storemain.StoreMainDialog
-import com.codepatissier.keki.util.viewpager.storemain.StoreMainVPAdapter
-import org.w3c.dom.Text
+import com.codepatissier.keki.util.viewpager.storemain.StoreMainTabAdapter
 
 class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>(ActivityConsumerStoreMainBinding::inflate),
     ConsumerStoreMainView{
@@ -37,8 +37,8 @@ class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>
     }
 
     private fun tabSetting(){
-        val storeMainVPAdapter = StoreMainVPAdapter(this)
-        binding.vpStore.adapter = storeMainVPAdapter
+        val storeMainTabAdapter = StoreMainTabAdapter(this, storeIdx)
+        binding.vpStore.adapter = storeMainTabAdapter
 
         val tabIconArray = arrayOf(R.drawable.ic_store_main_grid, R.drawable.ic_store_main_cake)
 
@@ -82,10 +82,15 @@ class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>
 
     override fun onGetStoreMainSuccess(response: ConsumerStoreMainResponse) {
         dismissLoadingDialog()
+
         binding.tvStoreName.text = response.result.nickname
         binding.tvStoreDetail.text = response.result.introduction
+
         val defaultImg = R.drawable.bg_oval_light_yellow
         val imageView = binding.ivProfile
+        val uri = "http://"+response.result.orderUrl
+
+        // 프로필 이미지 띄우기기
         Glide.with(this)
             .load(response.result.storeImgUrl)
             .placeholder(defaultImg)
@@ -95,6 +100,11 @@ class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>
             .into(imageView)
         setViewMore(binding.tvStoreDetail, binding.tvViewMore)
 
+        // 버튼 클릭시 주문링크로 이동
+        binding.tvOrder.setOnClickListener{
+            var intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
+            startActivity(intent)
+        }
     }
 
     override fun onGetStoreMainFailure(message: String) {
