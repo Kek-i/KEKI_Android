@@ -19,7 +19,8 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
     var feedSize = 2
     var cursorIdx : Int? = null
     var hasNext : Boolean? = null
-    var lastPostIdx : Int? = null
+    var positionStart = 0
+    var itemSize = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,38 +58,36 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
             like = result[i].like,
             cursorIdx = response.result.cursorIdx,
             hasNext = response.result.hasNext)) }
-
-            lastPostIdx = result[i].postIdx
         }
+
+        itemSize = storeFeedDatas.size - positionStart
 
         cursorIdx = response.result.cursorIdx
         hasNext = response.result.hasNext
 
         storeFeedAdapter.storeFeedDatas = storeFeedDatas
-        storeFeedAdapter.notifyDataSetChanged()
+        storeFeedAdapter.notifyItemRangeChanged(positionStart, itemSize)
     }
 
     private fun checkScrollEvent(){
         binding.recyclerStoreFeed.addOnScrollListener(object: RecyclerView.OnScrollListener(){
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
 
                 if(!binding.recyclerStoreFeed.canScrollVertically(1)){
                     Log.d("vertical_scroll", "success")
 
                     if(hasNext!!){
                         showLoadingDialog(this@ConsumerStoreDetailFeedActivity)
+                        positionStart = storeFeedDatas.size
                         ConsumerStoreFeedDetailService(this@ConsumerStoreDetailFeedActivity)
                             .tryGetConsumerStoreFeedDetailRetrofitInterface(feedTag, cursorIdx, feedSize)
 
-                        // instagram에서는 로딩하고 그 자리에 그 다음거 생성됨 -> 화면위치는 그대로
                         Handler().postDelayed(
                             {
-                                binding.recyclerStoreFeed.scrollToPosition(storeFeedAdapter.itemCount - feedSize)
+                                binding.recyclerStoreFeed.smoothScrollToPosition(storeFeedAdapter.itemCount - feedSize - 1)
                             }, 200)
 
-                        Log.d("lastPostIdx", lastPostIdx.toString())
-                        //binding.recyclerStoreFeed.scrollToPosition(storeFeedAdapter.itemCount -1)
                     }
 
 
