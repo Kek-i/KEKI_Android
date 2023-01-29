@@ -163,13 +163,13 @@
     <dimen name="edit_rule_marginLeft">22dp</dimen>
     <dimen name="edit_rule_marginTop">35dp</dimen>
     <dimen name="edit_et_width">0dp</dimen>
-    <dimen name="edit_et_height">55dp</dimen>
+    <dimen name="edit_et_height">45dp</dimen>
     <dimen name="edit_et_marginTop">10dp</dimen>
     <dimen name="edit_et_marginRight">10dp</dimen>
     <dimen name="edit_et_marginLeft">22dp</dimen>
     <dimen name="edit_et_paddingStart">20dp</dimen>
     <dimen name="edit_dbl_check_width">90dp</dimen>
-    <dimen name="edit_dbl_check_height">55dp</dimen>
+    <dimen name="edit_dbl_check_height">45dp</dimen>
     <dimen name="edit_dbl_check_marginTop">10dp</dimen>
     <dimen name="edit_dbl_check_marginRight">16dp</dimen>
     <dimen name="edit_naming_result_marginTop">10dp</dimen>
