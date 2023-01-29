@@ -3,6 +3,8 @@ package com.codepatissier.keki.src.main.login
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.replace
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.ApplicationClass
 import com.codepatissier.keki.config.ApplicationClass.Companion.Authorization
@@ -11,6 +13,7 @@ import com.codepatissier.keki.config.ApplicationClass.Companion.userInfo
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityLoginBinding
 import com.codepatissier.keki.src.MainActivity
+import com.codepatissier.keki.src.main.consumer.mypage.ConsumerMyPageFragment
 import com.codepatissier.keki.src.main.login.model.PostLoginRequest
 import com.codepatissier.keki.src.main.login.model.SocialTokenResponse
 import com.codepatissier.keki.util.viewpager.login.AccessRightDialog
@@ -73,6 +76,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
             userInfo.putString(UserRole, "구매자")
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+//            supportFragmentManager.beginTransaction()
+//                .add(R.id.main_frm, ConsumerMyPageFragment())
+//                .commitAllowingStateLoss()
         }
         userInfo.commit()
     }
