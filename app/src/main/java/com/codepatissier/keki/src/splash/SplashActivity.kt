@@ -34,7 +34,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
             //소셜 로그인 진행하면 유저 토큰이 나오기 때문에, 토큰은 있으나 아직 role선택/닉네임 설정 안하고 종료했을 경우
             if(userRole == "비회원") {
                 Handler(Looper.getMainLooper()).postDelayed({
-                    AccessRightDialog(this).show()
+                    startActivity(Intent(this, LoginActivity::class.java))
                     finish()
                 }, 1500)
             }
@@ -48,7 +48,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
         //토큰이 없을 경우 비회원 메인화면으로
         else{
             Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
             }, 1500)
 
