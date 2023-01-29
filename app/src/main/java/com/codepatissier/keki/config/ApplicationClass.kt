@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit
 
 class ApplicationClass : Application() {
     val API_URL = "https://keki-dev.store/"
+
     companion object {
         lateinit var sSharedPreferences: SharedPreferences
         lateinit var userInfo: SharedPreferences.Editor
