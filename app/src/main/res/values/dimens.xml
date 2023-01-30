@@ -324,7 +324,7 @@
     <dimen name="calendar_ib_back_padding_horizontal">14dp</dimen>
     <dimen name="calendar_ib_back_margin_bottom">10dp</dimen>
 
-    <dimen name="calendar_iv_cake_margin_top">35dp</dimen>
+    <dimen name="calendar_iv_cake_margin_top">32dp</dimen>
     <dimen name="calendar_tv_title_margin_top">15dp</dimen>
     <dimen name="calendar_tv_dday_margin_top">5dp</dimen>
     <dimen name="calendar_tv_title_size">20sp</dimen>
@@ -360,17 +360,17 @@
     <dimen name="calendar_detail_date_elevation">3dp</dimen>
 
     <!-- calendar add -->
-    <dimen name="calendar_add_top_bar_layout_margin_top">16dp</dimen>
+    <dimen name="calendar_add_top_bar_layout_margin_top">11dp</dimen>
     <dimen name="calendar_add_ib_back_padding_horizontal">14dp</dimen>
-    <dimen name="calendar_add_ib_back_padding_top">6dp</dimen>
-    <dimen name="calendar_add_ib_back_padding_bottom">3dp</dimen>
+    <dimen name="calendar_add_ib_back_padding_top">8dp</dimen>
+    <dimen name="calendar_add_ib_back_padding_bottom">7dp</dimen>
     <dimen name="calendar_add_tv_main_text_size">20sp</dimen>
     <dimen name="calendar_add_tv_main_text_margin_start">1dp</dimen>
     <dimen name="calendar_add_tv_completion_size">16sp</dimen>
     <dimen name="calendar_add_tv_completion_height">0dp</dimen>
     <dimen name="calendar_add_tv_completion_margin_end">9dp</dimen>
     <dimen name="calendar_add_tv_completion_padding_horizontal">10dp</dimen>
-    <dimen name="calendar_add_iv_cake_margin_top">40dp</dimen>
+    <dimen name="calendar_add_iv_cake_margin_top">35dp</dimen>
     <dimen name="calendar_add_tv_dday_width">65.5dp</dimen>
     <dimen name="calendar_add_tv_dday_height">24dp</dimen>
     <dimen name="calendar_add_tv_dday_margin_top">10dp</dimen>
@@ -404,8 +404,8 @@
     <dimen name="calendar_add_bg_input_date_margin_top">14dp</dimen>
     <dimen name="calendar_add_bg_input_date_margin_horizontal">12dp</dimen>
     <dimen name="calendar_add_et_date_size">16sp</dimen>
-    <dimen name="calendar_add_ib_calendar_padding">5dp</dimen>
-    <dimen name="calendar_add_ib_calendar_margin_end">15dp</dimen>
+    <dimen name="calendar_add_ib_calendar_padding">10dp</dimen>
+    <dimen name="calendar_add_ib_calendar_margin_end">10dp</dimen>
 
     <dimen name="calendar_add_tv_select_hashtag_height">24dp</dimen>
     <dimen name="calendar_add_tv_select_hashtag_margin_top">20dp</dimen>
