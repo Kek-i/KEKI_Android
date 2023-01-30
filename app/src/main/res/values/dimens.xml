@@ -135,9 +135,7 @@
     <dimen name="intro_img_width">107dp</dimen>
     <dimen name="intro_img_marginTop">59dp</dimen>
     <dimen name="intro_img_marginSide">50dp</dimen>
-    <dimen name="intro_select_shadow_width">115dp</dimen>
-    <dimen name="intro_select_shadow_marginTop">56dp</dimen>
-    <dimen name="intro_select_shadow_marginSide">46dp</dimen>
+    <dimen name="intro_img_border_width">3dp</dimen>
     <dimen name="intro_role_text_marginTop">17dp</dimen>
     <dimen name="intro_role_text_marginSide">30dp</dimen>
     <dimen name="intro_btn_width">110dp</dimen>
