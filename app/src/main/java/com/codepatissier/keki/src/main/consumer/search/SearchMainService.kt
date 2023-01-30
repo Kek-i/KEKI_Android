@@ -24,6 +24,21 @@ class SearchMainService(val searchMainView: SearchMainView) {
         })
     }
 
+    fun tryGetPopularSearches(){
+        val searchMainRetrofitInterface = ApplicationClass.sRetrofit.create(SearchMainRetrofitInterface::class.java)
+
+        searchMainRetrofitInterface.getSearchMain().enqueue(object: Callback<MainSearchesResponse>{
+            override fun onResponse(call: Call<MainSearchesResponse>,response: Response<MainSearchesResponse>)
+            {
+                searchMainView.onGetPopularSearchesSuccess(response.body() as MainSearchesResponse)
+            }
+            override fun onFailure(call: Call<MainSearchesResponse>, t: Throwable) {
+                searchMainView.onGetPopularSearchesFailure(t.message ?: "메인 검색어 불러오기 통신 오류")
+            }
+
+        })
+    }
+
     fun tryPatchSearchHistories(){
         val searchMainRetrofitInterface = ApplicationClass.sRetrofit.create(SearchMainRetrofitInterface::class.java)
 

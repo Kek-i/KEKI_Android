@@ -7,6 +7,11 @@ interface SearchMainView {
     //검색 메인 페이지
     fun onGetMainSearchesSuccess(response: MainSearchesResponse)
     fun onGetMainSearchesFailure(message: String)
+
+    //검색 메인 페이지
+    fun onGetPopularSearchesSuccess(response: MainSearchesResponse)
+    fun onGetPopularSearchesFailure(message: String)
+
     //검색기록 전체 삭제
     fun onPatchSearchesSuccess(response: PatchSearchResponse)
     fun onPatchSearchesFailure(message: String)
