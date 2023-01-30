@@ -315,15 +315,16 @@
     <dimen name="calendar_tv_item_delete_size">16sp</dimen>
 
     <!-- calendar detail -->
-    <dimen name="calendar_top_bar_layout_margin_top">13dp</dimen>
+    <dimen name="calendar_top_bar_layout_margin_top">9dp</dimen>
     <dimen name="calendar_scroll_view_content_height">0dp</dimen>
     <dimen name="calendar_content_height">0dp</dimen>
-    <dimen name="calendar_ib_modify_margin_end">12dp</dimen>
-    <dimen name="calendar_ib_back_margin_top">6dp</dimen>
-    <dimen name="calendar_ib_back_margin_start">14dp</dimen>
-    <dimen name="calendar_ib_back_margin_bottom">1dp</dimen>
+    <dimen name="calendar_ib_modify_height">0dp</dimen>
+    <dimen name="calendar_ib_modify_padding_horizontal">12dp</dimen>
+    <dimen name="calendar_ib_back_padding_vertical">10dp</dimen>
+    <dimen name="calendar_ib_back_padding_horizontal">14dp</dimen>
+    <dimen name="calendar_ib_back_margin_bottom">10dp</dimen>
 
-    <dimen name="calendar_iv_cake_margin_top">41dp</dimen>
+    <dimen name="calendar_iv_cake_margin_top">35dp</dimen>
     <dimen name="calendar_tv_title_margin_top">15dp</dimen>
     <dimen name="calendar_tv_dday_margin_top">5dp</dimen>
     <dimen name="calendar_tv_title_size">20sp</dimen>
