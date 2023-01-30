@@ -320,6 +320,8 @@
     <dimen name="calendar_content_height">0dp</dimen>
     <dimen name="calendar_ib_modify_height">0dp</dimen>
     <dimen name="calendar_ib_modify_padding_horizontal">12dp</dimen>
+    <dimen name="calendar_ib_modify_padding_top">4dp</dimen>
+    <dimen name="calendar_ib_modify_padding_bottom">9dp</dimen>
     <dimen name="calendar_ib_back_padding_vertical">10dp</dimen>
     <dimen name="calendar_ib_back_padding_horizontal">14dp</dimen>
     <dimen name="calendar_ib_back_margin_bottom">10dp</dimen>
