@@ -121,7 +121,7 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
-        <activity android:name="com.codepatissier.keki.src.main.consumer.store.productfeed.ConsumerStoreProductDetailFeedActivity"
+        <activity android:name="com.codepatissier.keki.src.main.consumer.store.productfeed.productdetail.ConsumerStoreProductDetailFeedActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
