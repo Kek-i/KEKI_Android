@@ -34,10 +34,13 @@ class ConsumerProfileEditActivity :BaseActivity<ActivityConsumerProfileEditBindi
         fbStorage = FirebaseStorage.getInstance()
 
         showLoadingDialog(this)
+        // 이전 프로필 가져오기
         ConsumerMyPageService(this).tryGetMyPage()
 
         backClicked()
         profileClicked()
+        profileEditClick()
+
     }
 
     private fun backClicked(){
@@ -47,14 +50,14 @@ class ConsumerProfileEditActivity :BaseActivity<ActivityConsumerProfileEditBindi
     }
 
     private fun profileClicked(){
-        // 사진 클릭시 이미지 가져오기
+        // 갤러리에서 이미지 가져오기
         binding.ivProfile.setOnClickListener{
             var intent = Intent(Intent.ACTION_GET_CONTENT)
             intent.setType("image/*")
             launcher.launch(intent)
         }
 
-        // 가져온 이미지 사진 부분에 삽입
+        // 갤러리에서 가져온 프로필 이미지 부분에 삽입
         launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result ->
             if(result.resultCode == RESULT_OK){
                 ProfileUri = result.data?.data
@@ -71,8 +74,6 @@ class ConsumerProfileEditActivity :BaseActivity<ActivityConsumerProfileEditBindi
                     .into(imageView)
             }
         }
-
-        profileEditClick()
     }
 
     private fun firebaseUpload(){
@@ -81,11 +82,12 @@ class ConsumerProfileEditActivity :BaseActivity<ActivityConsumerProfileEditBindi
             // 파이어베이스 이전 사진 삭제
             fbStorage?.reference?.child(editImg)?.delete()
 
+            // 파이어베이스에 사진 업로드
             var timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
             var profileImgName = "PROFILE_IMAGE_"+timeStamp+"_.png"
             var storageRef = fbStorage?.reference?.child("profiles/$profileImgName")
             editImg = "profiles/$profileImgName";
-            // 파이어베이스에 사진 업로드
+
             storageRef
                 ?.putFile(ProfileUri!!)?.addOnProgressListener {
                      showLoadingDialog(this)
@@ -95,28 +97,30 @@ class ConsumerProfileEditActivity :BaseActivity<ActivityConsumerProfileEditBindi
                     finish()
                 }
                 ?.addOnFailureListener{
-//                     dismissLoadingDialog()
+                    dismissLoadingDialog()
                     Toast.makeText(this, "프로필이 수정에 실패했습니다.", Toast.LENGTH_SHORT).show()
                 }
 
         }
     }
 
-
+    // 완료 버튼 클릭시 서버에 patch
     private fun profileEditClick(){
-           binding.tvEdit.setOnClickListener{
-               firebaseUpload()
-               if(binding.etNickname.text != null){
-                   editNickname = binding.etNickname.text.toString()
-               }
+        binding.tvEdit.setOnClickListener{
+            firebaseUpload()
 
-               // 서버에 편집한 닉네임, 사진 보내기.
-               var consumerProfileEditBody = ConsumerProfileEditBody(editNickname, editImg)
-               showLoadingDialog(this)
-               ConsumerProfileEditService(this).tryPatchProfile(consumerProfileEditBody)
-           }
-       }
 
+            editNickname = binding.etNickname.text.toString()
+
+
+            // 서버에 편집한 닉네임, 사진 보내기.
+            var consumerProfileEditBody = ConsumerProfileEditBody(editNickname, editImg)
+            showLoadingDialog(this)
+            ConsumerProfileEditService(this).tryPatchProfile(consumerProfileEditBody)
+        }
+    }
+
+    // 프로필 편집 서버 patch 성공
     override fun onPatchProfileSuccess(response: ConsumerProfileEditResponse) {
         dismissLoadingDialog()
         if(ProfileUri == null){
@@ -124,42 +128,45 @@ class ConsumerProfileEditActivity :BaseActivity<ActivityConsumerProfileEditBindi
         }
     }
 
+    // 프로필 편집 서버 patch 실패
     override fun onPatchProfileFailure(message: String) {
         dismissLoadingDialog()
         showCustomToast("오류 : $message")
     }
 
+    // 이전 프로필 서버에서 가져오기 성공
     override fun onGetMyPageSuccess(response: ConsumerMyPageResponse) {
         dismissLoadingDialog()
 
+        // 프로필 이미지 또는 닉네임 중 한가지만 수정 시 null 값 뜨지 않도록 변수로 이전 프로필 또는 닉네임 가져오기
         editImg = response.result.profileImg
-        editNickname = "response.result.nickname"
 
         // 이전 닉네임 삽입
-        binding.etNickname.hint = "response.result.nickname"
+        binding.etNickname.setText(response.result.nickname)
 
         val defaultImg = R.drawable.bg_oval_off_white
         val imageView = binding.ivProfile
 
-        // 이전 프로필 이미지 삽입
-        var storageRef = fbStorage?.reference?.child(response.result.profileImg)
-        storageRef?.downloadUrl?.addOnCompleteListener {
-            if(it.isSuccessful){
-                Glide.with(this)
-                    .load(it.result)
-                    .placeholder(defaultImg)
-                    .error(defaultImg)
-                    .fallback(defaultImg)
-                    .circleCrop()
-                    .into(imageView)
+        if(response.result.profileImg != null) {
+            // 이전 프로필 이미지 삽입
+            var storageRef = fbStorage?.reference?.child(response.result.profileImg)
+            storageRef?.downloadUrl?.addOnCompleteListener {
+                if (it.isSuccessful) {
+                    Glide.with(this)
+                        .load(it.result)
+                        .placeholder(defaultImg)
+                        .error(defaultImg)
+                        .fallback(defaultImg)
+                        .circleCrop()
+                        .into(imageView)
+                }
             }
         }
     }
 
+    // 이전 프로필 서버에서 가져오기 실패
     override fun onGetMyPageFailure(message: String) {
         dismissLoadingDialog()
         showCustomToast("오류 : $message")
     }
-
-
 }
