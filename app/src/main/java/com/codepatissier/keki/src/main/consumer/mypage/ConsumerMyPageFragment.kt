@@ -2,6 +2,7 @@ package com.codepatissier.keki.src.main.consumer.mypage
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.bumptech.glide.Glide
 import com.codepatissier.keki.R
@@ -54,18 +55,31 @@ class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
         val imageView = binding.ivProfile
 
         binding.tvNickName.text = response.result.nickname + "님."
-        Glide.with(this)
-            .load(response.result.profileImg)
-            .placeholder(defaultImg)
-            .error(defaultImg)
-            .fallback(defaultImg)
-            .circleCrop()
-            .into(imageView)
+
+        // 이미지 가져오기
+        var storageRef = fbStorage?.reference?.child(response.result.profileImg)
+        storageRef?.downloadUrl?.addOnCompleteListener {
+            if(it.isSuccessful){
+                Glide.with(this)
+                    .load(it.result)
+                    .placeholder(defaultImg)
+                    .error(defaultImg)
+                    .fallback(defaultImg)
+                    .circleCrop()
+                    .into(imageView)
+            }
+        }
+
     }
 
     override fun onGetMyPageFailure(message: String) {
         dismissLoadingDialog()
         showCustomToast("오류 : $message")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        ConsumerMyPageService(this).tryGetMyPage()
     }
 
 }
