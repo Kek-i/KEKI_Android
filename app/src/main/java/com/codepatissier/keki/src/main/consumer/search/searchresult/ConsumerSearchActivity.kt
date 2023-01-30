@@ -28,6 +28,9 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+//        val searchKey = intent.getStringExtra("search_key")
+//        Log.d("서치", "$searchKey 전달 받음!")
+
         checkNavigateFromHome()
         clickDeleteSearch()
         setCategory()
