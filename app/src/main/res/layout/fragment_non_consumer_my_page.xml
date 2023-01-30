@@ -77,7 +77,7 @@
                 android:layout_marginTop="@dimen/my_page_comment_text_top"
                 android:fontFamily="@font/roboto_bold"
                 android:includeFontPadding="false"
-                android:text="@string/my_page_main_comment"
+                android:text="@string/my_page_non_main_comment"
                 android:textColor="@color/black"
                 android:textSize="@dimen/my_page_comment_text_size"
                 app:layout_constraintBottom_toBottomOf="parent"
