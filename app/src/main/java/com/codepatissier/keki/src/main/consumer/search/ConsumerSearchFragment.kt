@@ -68,9 +68,10 @@ class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(Fragm
         }
     }
 
-    //데이터 - 어뎁터 연결
+    //개별 검색어 데이터 뷰 연결하기
     @SuppressLint("NotifyDataSetChanged")
-    private fun searchMainRecycler(response: MainSearchesResponse) {
+    private fun searchUserRecycler(response: MainSearchesResponse) {
+        //최근 검색어 연결
         searchRecentAdapter = SearchRecentAdapter(response.result, this)
         binding.rvRecentSearch.adapter = searchRecentAdapter
         searchRecentAdapter.notifyDataSetChanged()
@@ -80,7 +81,6 @@ class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(Fragm
         }else{
             binding.llEmptyHistory.visibility = View.VISIBLE
         }
-
         //최근 검색어 태그 클릭 시 이벤트
         searchRecentAdapter.setItemClickListener(object: SearchRecentAdapter.OnItemClickListener {
             override fun onClick(v: View, position: Int) {
@@ -89,14 +89,14 @@ class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(Fragm
                 startActivity(intent)
             }
         })
-
+        //최근 본 케이크 연결
         searchRecentPostAdapter = SearchRecentPostAdapter(response.result, this)
         binding.rvRecentSeen.adapter = searchRecentPostAdapter
         searchRecentPostAdapter.notifyDataSetChanged()
     }
 
 
-    //데이터 - 어뎁터 연결
+    //인기 검색어 뷰 연결하기
     @SuppressLint("NotifyDataSetChanged")
     private fun searchPopularRecycler(response: MainSearchesResponse) {
 
@@ -117,7 +117,7 @@ class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(Fragm
 
     override fun onGetMainSearchesSuccess(response: MainSearchesResponse) {
         dismissLoadingDialog()
-        searchMainRecycler(response)
+        searchUserRecycler(response)
     }
 
     override fun onGetMainSearchesFailure(message: String) {
