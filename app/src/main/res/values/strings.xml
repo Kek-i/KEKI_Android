@@ -161,6 +161,12 @@
 
     <string name="like_comment">준비중인 기능입니다.</string>
 
+    <!-- logout -->
+    <string name="dialog_logout_title">로그아웃</string>
+    <string name="logout_tv_content">로그아웃 하시겠습니까?</string>
+    <string name="logout_tv_cancel">취소</string>
+    <string name="logout_tv_logout">로그아웃</string>
 
+    <!-- withdrawal -->
 
 </resources>

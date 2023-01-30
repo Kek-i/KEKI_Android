@@ -617,4 +617,22 @@
     <dimen name="store_product_detail_cake_price_font">16sp</dimen>
     <dimen name="store_product_detail_cake_detail_font">11sp</dimen>
 
+    <!-- logout dialog -->
+    <dimen name="my_page_logout_dialog_width">277dp</dimen>
+    <dimen name="my_page_logout_dialog_height">164dp</dimen>
+    <dimen name="my_page_logout_tv_title_height">26dp</dimen>
+    <dimen name="my_page_logout_tv_title_margin_top">21dp</dimen>
+    <dimen name="my_page_logout_tv_title_size">18sp</dimen>
+    <dimen name="my_page_logout_tv_content_height">16dp</dimen>
+    <dimen name="my_page_logout_tv_content_margin_top">13dp</dimen>
+    <dimen name="my_page_logout_tv_content_size">11sp</dimen>
+    <dimen name="my_page_logout_btn_width">109dp</dimen>
+    <dimen name="my_page_logout_btn_height">36dp</dimen>
+    <dimen name="my_page_logout_btn_margin_top">24dp</dimen>
+    <dimen name="my_page_logout_btn_margin_bottom">28dp</dimen>
+    <dimen name="my_page_logout_btn_chain_margin">15dp</dimen>
+    <dimen name="my_page_logout_btn_text_size">16sp</dimen>
+
+
+
 </resources>
