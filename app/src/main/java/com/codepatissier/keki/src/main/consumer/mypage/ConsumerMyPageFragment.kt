@@ -7,6 +7,8 @@ import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseFragment
 import com.codepatissier.keki.databinding.FragmentConsumerMyPageBinding
 import com.codepatissier.keki.src.main.consumer.mypage.notice.NoticeActivity
+import com.codepatissier.keki.util.dialog.LogoutDialog
+import com.codepatissier.keki.util.viewpager.storemain.StoreMainDialog
 
 class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
     (FragmentConsumerMyPageBinding::bind, R.layout.fragment_consumer_my_page) {
@@ -17,6 +19,7 @@ class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
         profileEditClicked()
         conditionClicked()
         noticeClicked()
+        logoutClicked()
     }
 
     private fun profileEditClicked(){
@@ -35,6 +38,12 @@ class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
         binding.cslNotice.setOnClickListener{
             val intent = Intent(context, NoticeActivity::class.java)
             startActivity(intent)
+        }
+    }
+
+    private fun logoutClicked() {
+        binding.tvLogout.setOnClickListener {
+            LogoutDialog(requireContext()).show()
         }
     }
 
