@@ -43,8 +43,7 @@ class StoreMainStoreAdapter(val context: FragmentActivity?): RecyclerView.Adapte
                 .placeholder(defaultImg)
                 .error(defaultImg)
                 .fallback(defaultImg)
-                .fitCenter()
-                .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
+                .centerCrop()
                 .into(FeedImg)
 
 

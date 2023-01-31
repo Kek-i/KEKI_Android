@@ -45,8 +45,7 @@ class StoreMainProductAdapter(val context: FragmentActivity?): RecyclerView.Adap
                 .placeholder(defaultImg)
                 .error(defaultImg)
                 .fallback(defaultImg)
-                .fitCenter()
-                .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
+                .centerCrop()
                 .into(FeedImg)
 
         }
