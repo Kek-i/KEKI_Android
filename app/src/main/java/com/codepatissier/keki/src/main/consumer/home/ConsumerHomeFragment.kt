@@ -1,17 +1,19 @@
 package com.codepatissier.keki.src.main.consumer.home
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseFragment
 import com.codepatissier.keki.databinding.FragmentConsumerHomeBinding
+import com.codepatissier.keki.src.main.consumer.home.model.ConsumerHomeResponse
 import com.codepatissier.keki.src.main.consumer.search.searchresult.ConsumerSearchActivity
 import com.codepatissier.keki.util.recycler.home.HomeStoreAdapter
 import com.codepatissier.keki.util.recycler.home.HomeStoreData
 
 class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
-    (FragmentConsumerHomeBinding::bind, R.layout.fragment_consumer_home) {
+    (FragmentConsumerHomeBinding::bind, R.layout.fragment_consumer_home), ConsumerHomeView{
 
     lateinit var homeStoreFirstAdapter : HomeStoreAdapter
     val homeStoreFirstDatas = mutableListOf<HomeStoreData>()
@@ -22,10 +24,28 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        homeStoreFirstRecyclerView()
-        homeStoreSecondRecyclerView()
-        navigateToSearchFirstTag()
-        navigateToSearchSecondTag()
+        showLoadingDialog(requireContext())
+        ConsumerHomeService(this).tryGetConsumerHome()
+        //homeStoreFirstRecyclerView()
+        //homeStoreSecondRecyclerView()
+        //navigateToSearchFirstTag()
+        //navigateToSearchSecondTag()
+    }
+
+    override fun onGetConsumerHomeSuccess(response: ConsumerHomeResponse) {
+        dismissLoadingDialog()
+        binding.tvHomeComment.text = response.result.nickname + "님!\n" + response.result.calendarTitle + "이 " + response.result.calendarDate.toString() + "일 남았어요\n 특별한 하루를 준비해요!"
+        //initUser(response.result)
+    }
+
+    override fun onGetConsumerHomeFailure(message: String) {
+        dismissLoadingDialog()
+        showCustomToast("오류 : $message")
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun initUser(response: com.codepatissier.keki.src.main.consumer.home.model.Result){
+        binding.tvHomeComment.text = response.nickname + "님!\n" + response.calendarTitle + "이 " + response.calendarDate.toString() + "일 남았어요\n 특별한 하루를 준비해요!"
     }
 
     private fun homeStoreFirstRecyclerView(){

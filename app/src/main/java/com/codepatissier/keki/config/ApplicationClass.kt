@@ -49,6 +49,7 @@ class ApplicationClass : Application() {
             .connectTimeout(5000, TimeUnit.MILLISECONDS)
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
             .addNetworkInterceptor(XAccessTokenInterceptor())
+            .retryOnConnectionFailure(false)
             .build()
 
         sRetrofit = Retrofit.Builder()
