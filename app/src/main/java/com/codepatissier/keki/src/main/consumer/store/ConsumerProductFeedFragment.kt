@@ -1,5 +1,6 @@
 package com.codepatissier.keki.src.main.consumer.store
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -10,7 +11,10 @@ import com.codepatissier.keki.databinding.FragmentConsumerProductFeedBinding
 import com.codepatissier.keki.src.main.consumer.store.productfeed.ConsumerStoreProductFeedService
 import com.codepatissier.keki.src.main.consumer.store.productfeed.ConsumerStoreProductFeedView
 import com.codepatissier.keki.src.main.consumer.store.productfeed.model.ConsumerStoreProductFeedResponse
+import com.codepatissier.keki.src.main.consumer.store.productfeed.productdetail.ConsumerStoreProductDetailFeedActivity
+import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedActivity
 import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreFeedService
+import com.codepatissier.keki.util.recycler.search.SearchRecentPostAdapter
 import com.codepatissier.keki.util.viewpager.storemain.StoreMainProductAdapter
 import com.codepatissier.keki.util.viewpager.storemain.StoreMainProductData
 
@@ -55,6 +59,16 @@ class ConsumerProductFeedFragment(storeIdx : Long) : BaseFragment<FragmentConsum
            }
        }
         storeMainProductAdapter.storeMainProductDatas = storeMainProductDatas
+
+        storeMainProductAdapter.setItemClickListener(object:
+            StoreMainProductAdapter.OnItemClickListener {
+            override fun onClick(v: View, position: Int) {
+                val intent = Intent(context, ConsumerStoreProductDetailFeedActivity::class.java)
+                intent.putExtra("dessertIdx", "${response.result.desserts[position].dessertIdx}")
+                Log.d("디저트 id체크", "디저트idx: ${response.result.desserts[position].dessertIdx}")
+                startActivity(intent)
+            }
+        })
 
         // 스크롤이 바닥에 닿았을 때
         binding.recyclerProductFeed.addOnScrollListener(object : RecyclerView.OnScrollListener(){
