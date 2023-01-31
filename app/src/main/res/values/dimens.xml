@@ -307,7 +307,6 @@
     <dimen name="calendar_empty_iv_margin_start">37dp</dimen>
     <dimen name="calendar_empty_iv_margin_end">46dp</dimen>
     <dimen name="calendar_empty_tv_size">16sp</dimen>
-    <dimen name="calendar_empty_tv_width">177dp</dimen>
     <dimen name="calendar_empty_tv_height">24dp</dimen>
     
     <dimen name="calendar_tv_item_delete_width">60dp</dimen>

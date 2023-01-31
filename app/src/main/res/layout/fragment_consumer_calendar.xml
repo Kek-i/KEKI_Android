@@ -86,7 +86,7 @@
 
             <TextView
                 android:id="@+id/tv_empty_calendar"
-                android:layout_width="@dimen/calendar_empty_tv_width"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/calendar_empty_tv_height"
                 app:layout_constraintTop_toBottomOf="@id/iv_empty_calendar_cherry"
                 app:layout_constraintStart_toStartOf="parent"
