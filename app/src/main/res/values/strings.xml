@@ -115,6 +115,7 @@
     <string name="calendar_add_completion">완료</string>
     <string name="calendar_add_error_no_select">필수 선택 항목입니다.</string>
     <string name="calendar_add_error_no_input">필수 입력 항목입니다.</string>
+    <string name="calendar_non_consumer_like_comment">로그인 시 사용 가능한 기능입니다!</string>
 
     <!-- hashtag -->
     <!-- 아직 확정되지 않음 -->
