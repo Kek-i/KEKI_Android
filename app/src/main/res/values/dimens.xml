@@ -448,8 +448,7 @@
     <dimen name="my_page_tv_main_text_top">16dp</dimen>
     <dimen name="my_page_profile_width_height">60dp</dimen>
     <dimen name="my_page_profile_top">35dp</dimen>
-    <dimen name="my_page_profile_left">24dp</dimen>
-    <dimen name="my_page_profile_right">79dp</dimen>
+    <dimen name="my_page_profile_margin_horizontal">24dp</dimen>
     <dimen name="my_page_comment_text_size">16sp</dimen>
     <dimen name="my_page_comment_text_top">5dp</dimen>
     <dimen name="my_page_comment_text_left">15dp</dimen>
