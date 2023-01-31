@@ -454,6 +454,8 @@
     <dimen name="my_page_comment_text_size">16sp</dimen>
     <dimen name="my_page_comment_text_top">5dp</dimen>
     <dimen name="my_page_comment_text_left">15dp</dimen>
+    <dimen name="my_page_ib_login_margin_top">4dp</dimen>
+    <dimen name="my_page_ib_login_margin_start">12dp</dimen>
     <dimen name="my_page_text_size">16sp</dimen>
     <dimen name="my_page_large_text_left">14dp</dimen>
     <dimen name="my_page_large_text_top">26dp</dimen>
