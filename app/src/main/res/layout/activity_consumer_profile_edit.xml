@@ -118,4 +118,17 @@
         android:textSize="@dimen/my_page_profile_edit_tv_nickname_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_nick_name_condition" />
+
+    <TextView
+        android:id="@+id/tv_naming_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/edit_naming_result_marginLeft"
+        android:layout_marginTop="@dimen/edit_naming_result_marginTop"
+        android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
+        android:textColor="@color/brown_grey"
+        android:textSize="@dimen/edit_result_font_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_nickname" />
 </androidx.constraintlayout.widget.ConstraintLayout>
