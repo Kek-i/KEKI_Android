@@ -70,10 +70,12 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
         private val thirdTag: TextView = binding.tvStoreFeedThirdTag
         private val tagArray = arrayOf(firstTag, secondTag, thirdTag)
         private var heart = false
+        private var postIdx : Int? = null
 
         fun bind(item: StoreFeedData){
             nickname.text = item.brandName
             cakeName.text = item.dessertName
+            postIdx = item.postIdx
 
             for(i in item.tags.indices){
                 tagArray[i].isVisible = true
@@ -145,10 +147,9 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
                 popupMenu.setOnMenuItemClickListener {
                     when(it.itemId){
                         R.id.popup_report -> {
-                            Log.d("click", "report")
-                            // 이후에 해당 게시물 신고되는거 맞는지 확인하기
-                            ConsumerStoreDetailFeedDialog(context!!).show()
-
+                            val reportDialog = ConsumerStoreDetailFeedDialog(context!!)
+                            reportDialog.postIdx = postIdx // postIdx 값 전달
+                            reportDialog.show()
                             return@setOnMenuItemClickListener true
                         }else -> {
                             return@setOnMenuItemClickListener false

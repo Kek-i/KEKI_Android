@@ -12,7 +12,8 @@ import com.codepatissier.keki.databinding.DialogReportConsumerStoreDetailFeedBin
 class ConsumerStoreDetailFeedDialog(context: Context): Dialog(context){
 
     private lateinit var binding: DialogReportConsumerStoreDetailFeedBinding
-    var reportList = Array(5){i -> false}
+    var reportList = Array(5){ _ -> false}
+    var postIdx : Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,8 +29,13 @@ class ConsumerStoreDetailFeedDialog(context: Context): Dialog(context){
 
     private fun btnReport(){
         binding.btnReport.setOnClickListener {
+            Log.d("postIdx", postIdx.toString())
+            
             // 신고하기 서버 통신
-
+            for(i in reportList.indices){
+                if(reportList[i])
+                    Log.d("report", reportList[i].toString())
+            }
             dismiss()
         }
     }
