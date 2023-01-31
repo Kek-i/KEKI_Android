@@ -89,7 +89,6 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
     private fun homeStoreRecyclerView(response: HomeTagRes, number: Int){
         when(number){
             0 -> {
-                // 이미지는 glide로, 가게 이름은 text로 데이터 구조 수정되면 변경하기!
                 binding.tvFirstHomeTag.text = "# " + response.tagName
                 homeStoreFirstRecyclerView(response)
             }

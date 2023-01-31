@@ -6,13 +6,22 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.Window
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.Toast
 import com.codepatissier.keki.R
+import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.databinding.DialogReportConsumerStoreDetailFeedBinding
 
-class ConsumerStoreDetailFeedDialog(context: Context): Dialog(context){
+class ConsumerStoreDetailFeedDialog(context: Context): Dialog(context), ConsumerStoreDetailFeedReportView{
 
     private lateinit var binding: DialogReportConsumerStoreDetailFeedBinding
-    var reportList = Array(5){i -> false}
+    var reportList = Array(5){ _ -> false}
+    var postIdx : Int? = null
+    var reportName: String? = null
+    var linearLayouts = arrayOfNulls<LinearLayout>(5)
+    var reportNames = arrayOfNulls<String>(5)
+    var images = arrayOfNulls<ImageView>(5)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,74 +31,63 @@ class ConsumerStoreDetailFeedDialog(context: Context): Dialog(context){
         setContentView(binding.root)
         window!!.setBackgroundDrawable(ColorDrawable())
 
+        init()
         btnReport()
-        checkReportList()
+        clickLinearLayouts()
+    }
+
+    private fun init(){
+        linearLayouts = arrayOf(binding.linearDialogReportFirst, binding.linearDialogReportSecond,
+            binding.linearDialogReportThird, binding.linearDialogReportFourth, binding.linearDialogReportFifth)
+        reportNames = arrayOf(binding.tvReportFirst.text.toString(), binding.tvReportSecond.text.toString()
+            , binding.tvReportThird.text.toString(), binding.tvReportFourth.text.toString(), binding.tvReportFifth.text.toString())
+        images = arrayOf(binding.ivReportCheckFirst, binding.ivReportCheckSecond, binding.ivReportCheckThird
+            , binding.ivReportCheckFourth, binding.ivReportCheckFifth)
     }
 
     private fun btnReport(){
         binding.btnReport.setOnClickListener {
             // 신고하기 서버 통신
-
-            dismiss()
+            ConsumerStoreDetailFeedReportService(this).tryPostConsumerStoreDetailFeedReportRetrofitInterface(postIdx!!, reportName!!)
         }
     }
 
-    private fun checkReportList(){
-        // first
-        binding.linearDialogReportFirst.setOnClickListener {
-            if(!reportList[0]){
+    private fun clickLinearLayouts(){
+        for(i in linearLayouts.indices){
+            linearLayouts[i]?.setOnClickListener {
+                checkReport(i)
+            }
+        }
+    }
+
+    private fun checkReport(num: Int){
+        if(!reportList[num]){
+            // 다른 한 카테고리가 선택되어있으면
+            if(!checkIfCategoryClicked()){
                 // non-check 상태
-                binding.ivReportCheckFirst.setImageResource(R.drawable.ic_check)
-                reportList[0] = true
-            }else{
-                // check 상태
-                binding.ivReportCheckFirst.setImageResource(R.drawable.ic_none_check)
-                reportList[0] = false
+                images[num]?.setImageResource(R.drawable.ic_check)
+                reportList[num] = true
+                reportName = reportNames[num]
             }
+        }else{
+            // check 상태
+            images[num]?.setImageResource(R.drawable.ic_none_check)
+            reportList[num] = false
         }
+    }
 
-        // second
-        binding.linearDialogReportSecond.setOnClickListener {
-            if(!reportList[1]){
-                binding.ivReportCheckSecond.setImageResource(R.drawable.ic_check)
-                reportList[1] = true
-            }else{
-                binding.ivReportCheckSecond.setImageResource(R.drawable.ic_none_check)
-                reportList[1] = false
-            }
-        }
+    private fun checkIfCategoryClicked(): Boolean{
+        return reportList.contains(true)
+    }
 
-        // third
-        binding.linearDialogReportThird.setOnClickListener {
-            if(!reportList[2]){
-                binding.ivReportCheckThird.setImageResource(R.drawable.ic_check)
-                reportList[2] = true
-            }else{
-                binding.ivReportCheckThird.setImageResource(R.drawable.ic_none_check)
-                reportList[2] = false
-            }
-        }
+    override fun onPostConsumerStoreDetailFeedReportSuccess(response: BaseResponse) {
+        Toast.makeText(context, "신고를 완료했습니다", Toast.LENGTH_SHORT).show()
+        // 완료되면 화면 끄기
+        dismiss()
+      }
 
-        // fourth
-        binding.linearDialogReportFourth.setOnClickListener {
-            if(!reportList[3]){
-                binding.ivReportCheckFourth.setImageResource(R.drawable.ic_check)
-                reportList[3] = true
-            }else{
-                binding.ivReportCheckFourth.setImageResource(R.drawable.ic_none_check)
-                reportList[3] = false
-            }
-        }
-
-        //fifth
-        binding.linearDialogReportFifth.setOnClickListener {
-            if(!reportList[4]){
-                binding.ivReportCheckFifth.setImageResource(R.drawable.ic_check)
-                reportList[4] = true
-            }else{
-                binding.ivReportCheckFifth.setImageResource(R.drawable.ic_none_check)
-                reportList[4] = false
-            }
-        }
+    override fun onPostConsumerStoreDetailFeedReportFailure(message: String) {
+        Toast.makeText(context, "신고를 실패했습니다", Toast.LENGTH_SHORT).show()
+        dismiss()
     }
 }

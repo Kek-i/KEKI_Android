@@ -51,6 +51,7 @@ class HomeStoreAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
 
             itemView.setOnClickListener{
                 val intent = Intent(itemView.context, ConsumerStoreDetailFeedActivity::class.java)
+                intent.putExtra("tag", item.tagName)
                 intent.run { itemView.context?.startActivity(intent) }
             }
         }

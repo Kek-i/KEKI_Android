@@ -66,7 +66,7 @@
     <string name="dialog_report_first">스팸홍보/도배</string>
     <string name="dialog_report_second">욕설/혐오/차별</string>
     <string name="dialog_report_third">음란물/유해한 정보</string>
-    <string name="dialog_report_fourth">사기/불법 정보</string>
+    <string name="dialog_report_fourth">사기/불법정보</string>
     <string name="dialog_report_fifth">게시글 성격에 부적절함</string>
 
     <!-- store main -->
