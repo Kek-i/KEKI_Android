@@ -1,4 +1,4 @@
-package com.codepatissier.keki.src.main.login.model
+package com.codepatissier.keki.src.main.auth.model
 
 
 data class Result (

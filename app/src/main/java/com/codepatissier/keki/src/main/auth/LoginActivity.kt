@@ -1,12 +1,9 @@
-package com.codepatissier.keki.src.main.login
+package com.codepatissier.keki.src.main.auth
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.replace
 import com.codepatissier.keki.R
-import com.codepatissier.keki.config.ApplicationClass
 import com.codepatissier.keki.config.ApplicationClass.Companion.Authorization
 import com.codepatissier.keki.config.ApplicationClass.Companion.UserEmail
 import com.codepatissier.keki.config.ApplicationClass.Companion.UserRole
@@ -14,9 +11,8 @@ import com.codepatissier.keki.config.ApplicationClass.Companion.userInfo
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityLoginBinding
 import com.codepatissier.keki.src.MainActivity
-import com.codepatissier.keki.src.main.consumer.mypage.ConsumerMyPageFragment
-import com.codepatissier.keki.src.main.login.model.PostLoginRequest
-import com.codepatissier.keki.src.main.login.model.SocialTokenResponse
+import com.codepatissier.keki.src.main.auth.model.PostLoginRequest
+import com.codepatissier.keki.src.main.auth.model.SocialTokenResponse
 import com.codepatissier.keki.util.viewpager.login.AccessRightDialog
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount

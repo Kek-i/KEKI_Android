@@ -1,14 +1,12 @@
-package com.codepatissier.keki.src.main.login
+package com.codepatissier.keki.src.main.auth
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityIntroBinding
-import com.codepatissier.keki.src.main.login.profilesetting.CustomerProfileSettingActivity
+import com.codepatissier.keki.src.main.auth.profilesetting.CustomerProfileSettingActivity
 
 class IntroActivity: BaseActivity<ActivityIntroBinding>(ActivityIntroBinding::inflate) {
     private var isCustomer = false
