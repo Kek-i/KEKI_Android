@@ -47,9 +47,6 @@ class ConsumerStoreDetailFeedDialog(context: Context): Dialog(context), Consumer
 
     private fun btnReport(){
         binding.btnReport.setOnClickListener {
-            Log.d("postIdx", postIdx.toString())
-            Log.d("reportName", reportName!!)
-
             // 신고하기 서버 통신
             ConsumerStoreDetailFeedReportService(this).tryPostConsumerStoreDetailFeedReportRetrofitInterface(postIdx!!, reportName!!)
         }
@@ -85,7 +82,6 @@ class ConsumerStoreDetailFeedDialog(context: Context): Dialog(context), Consumer
 
     override fun onPostConsumerStoreDetailFeedReportSuccess(response: BaseResponse) {
         Toast.makeText(context, "신고를 완료했습니다", Toast.LENGTH_SHORT).show()
-        Log.d("report", "success")
         // 완료되면 화면 끄기
         dismiss()
       }
