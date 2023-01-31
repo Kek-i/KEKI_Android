@@ -121,24 +121,38 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_user_email" />
 
+        <View
+            android:id="@+id/bg_input_nickname"
+            android:layout_width="@dimen/edit_bg_width"
+            android:layout_height="@dimen/edit_bg_height"
+            android:layout_marginLeft="@dimen/edit_bg_marginLeft"
+            android:layout_marginTop="@dimen/edit_bg_marginTop"
+            android:layout_marginRight="@dimen/edit_bg_marginRight"
+            app:layout_constraintEnd_toStartOf="@+id/btn_double_check"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_edit_rule"
+            android:background="@drawable/bg_rectangle_radius_10_white_padding"
+            android:elevation="@dimen/calendar_add_component_elevation" />
+
         <EditText
             android:id="@+id/et_nickname"
             android:layout_width="@dimen/edit_et_width"
             android:layout_height="@dimen/edit_et_height"
-            android:layout_marginLeft="@dimen/edit_et_marginLeft"
-            android:layout_marginTop="@dimen/edit_et_marginTop"
-            android:layout_marginRight="@dimen/edit_et_marginRight"
-            android:background="@drawable/bg_rectangle_radius_10_white_no_padding"
+            android:layout_marginHorizontal="@dimen/edit_et_margin_horizontal"
+            android:background="@null"
             android:elevation="@dimen/profile_setting_shadow"
             android:fontFamily="@font/notosanskr_regular"
-            android:gravity="center_vertical"
             android:includeFontPadding="false"
-            android:paddingStart="@dimen/edit_et_paddingStart"
             android:textColor="@color/black"
             android:textSize="@dimen/edit_et_font_size"
-            app:layout_constraintEnd_toStartOf="@+id/btn_double_check"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_edit_rule" />
+            android:maxLines="1"
+            android:maxLength="10"
+            android:imeOptions="actionDone"
+            android:inputType="textNoSuggestions"
+            app:layout_constraintTop_toTopOf="@id/bg_input_nickname"
+            app:layout_constraintStart_toStartOf="@id/bg_input_nickname"
+            app:layout_constraintEnd_toEndOf="@id/bg_input_nickname"
+            app:layout_constraintBottom_toBottomOf="@id/bg_input_nickname" />
 
         <Button
             android:id="@+id/btn_double_check"
@@ -155,7 +169,7 @@
             android:textColor="@color/black"
             android:textSize="@dimen/edit_dbl_check_font_size"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/et_nickname"
+            app:layout_constraintStart_toEndOf="@+id/bg_input_nickname"
             app:layout_constraintTop_toBottomOf="@+id/tv_edit_rule" />
 
         <TextView
@@ -169,7 +183,7 @@
             android:textColor="@color/brown_grey"
             android:textSize="@dimen/edit_result_font_size"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_nickname" />
+            app:layout_constraintTop_toBottomOf="@+id/bg_input_nickname" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
