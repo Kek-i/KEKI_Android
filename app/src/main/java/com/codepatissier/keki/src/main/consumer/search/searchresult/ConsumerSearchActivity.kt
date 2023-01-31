@@ -23,24 +23,25 @@ import com.codepatissier.keki.src.main.consumer.search.searchresult.model.Search
 class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(ActivityConsumerSearchBinding::inflate),
     SearchResultView {
     private lateinit var searchListAdapter : SearchListAdapter
-
+    private var sortType : String = "인기순"
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-//        val searchKey = intent.getStringExtra("search_key")
-//        Log.d("서치", "$searchKey 전달 받음!")
-
-        checkNavigateFromHome()
+        val searchTag = intent.getStringExtra("searchTag")
+        if (searchTag == null){
+            setListenerToEditText()
+        }
+        else{
+            setTagResult()
+        }
         clickDeleteSearch()
         setCategory()
-        setListenerToEditText()
-
     }
+
     override fun onGetSearchResultsSuccess(response: SearchResultResponse) {
         searchListRecycler(response)
     }
-
     override fun onGetSearchResultsFailure(message: String) {
         showCustomToast("오류 : $message")    }
 
@@ -98,33 +99,52 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
                 val imm = this@ConsumerSearchActivity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(binding.etSearch.windowToken, 0)
                 //엑티비티 내에서 검색할 경우
-                SearchResultService(this).tryGetSearchResults(keyword = "${binding.etSearch.text}")
+                SearchResultService(this).tryGetSearchResults(keyword = "${binding.etSearch.text}",sortType = sortType)
             }
             false
         }
         //처음 검색하기
-        SearchResultService(this).tryGetSearchResults(keyword = "$searchKey")
+        SearchResultService(this).tryGetSearchResults(keyword = "$searchKey", sortType = sortType)
     }
+
+
+    //홈 화면에서 태그 받아오기
+    private fun setTagResult() {
+        //검색어 그대로 가져와서 보여주기
+        val searchTag = intent.getStringExtra("searchTag")
+        binding.etSearch.setText("#$searchTag")
+
+        binding.etSearch.setOnKeyListener { view, keyCode, event ->
+            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER)
+            {
+                val imm = this@ConsumerSearchActivity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(binding.etSearch.windowToken, 0)
+                //엑티비티 내에서 검색할 경우
+                SearchResultService(this).tryGetSearchResults(keyword = "${binding.etSearch.text}", sortType = sortType)
+            }
+            false
+        }
+
+        SearchResultService(this).tryGetTagResults(tag = "$searchTag", sortType)
+    }
+
+
 
     //최신순,인기순,가격순 스피너 설정, 정렬
     private fun setCategory() {
         val spinnerAdapter: ArrayAdapter<*> =
             ArrayAdapter.createFromResource(this@ConsumerSearchActivity, R.array.spinner_array, R.layout.search_custom_spinner)
-        spinnerAdapter.setDropDownViewResource(com.codepatissier.keki.R.layout.search_custom_spinner_list)
-
+        spinnerAdapter.setDropDownViewResource(R.layout.search_custom_spinner_list)
         binding.spinnerSearch.adapter = spinnerAdapter
         binding.spinnerSearch.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?,view: View,position: Int,id: Long) {}
+            override fun onItemSelected(parent: AdapterView<*>?,view: View,position: Int,id: Long) {
+                sortType = "${binding.spinnerSearch.getItemAtPosition(position)}"
+                Log.d("정렬", sortType)
+                //카테고리 바꾸면 다시 불러오기
+                setListenerToEditText()
+            }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
     }
 
-    //홈화면에서 넘어오는 해시태그
-    private fun checkNavigateFromHome(){
-        if(intent.getStringExtra("searchTag") != null){
-            var searchTag = intent.getStringExtra("searchTag")
-            binding.etSearch.setText(searchTag)
-            Log.d("searchTag", binding.etSearch.text.toString())
-        }
-    }
 }

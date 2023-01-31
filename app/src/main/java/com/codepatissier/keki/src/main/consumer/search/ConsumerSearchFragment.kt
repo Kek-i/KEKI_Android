@@ -14,6 +14,7 @@ import com.codepatissier.keki.databinding.FragmentConsumerSearchBinding
 import com.codepatissier.keki.src.main.consumer.search.model.MainSearchesResponse
 import com.codepatissier.keki.src.main.consumer.search.model.PatchSearchResponse
 import com.codepatissier.keki.src.main.consumer.search.searchresult.ConsumerSearchActivity
+import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedActivity
 import com.codepatissier.keki.util.recycler.search.*
 
 class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(FragmentConsumerSearchBinding::bind, R.layout.fragment_consumer_search) , SearchMainView{
@@ -93,6 +94,16 @@ class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(Fragm
         searchRecentPostAdapter = SearchRecentPostAdapter(response.result, this)
         binding.rvRecentSeen.adapter = searchRecentPostAdapter
         searchRecentPostAdapter.notifyDataSetChanged()
+
+        //최근 본 케이크 클릭 시 이벤트 -> 상품 전체 조회로 넘어가기기(수정 필요)
+       searchRecentPostAdapter.setItemClickListener(object:SearchRecentPostAdapter.OnItemClickListener {
+            override fun onClick(v: View, position: Int) {
+                val intent = Intent(context, ConsumerStoreDetailFeedActivity::class.java)
+                intent.putExtra("postIdx", response.result.recentPostSearches[position].postIdx)
+                startActivity(intent)
+            }
+        })
+
     }
 
 

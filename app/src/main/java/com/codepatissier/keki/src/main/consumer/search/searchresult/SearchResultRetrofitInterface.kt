@@ -14,6 +14,7 @@ interface SearchResultRetrofitInterface {
         @Query("storeIdx") storeIdx: Long? = null,
         @Query("searchWord") searchWord: String? = null,
         @Query("searchTag") searchTag: String? = null,
+        @Query("sortType") sortType: String= "인기순",
         @Query("cursorIdx") cursorIdx: Long? = null,
         @Query("size") size: Int? = null
     ): Call<SearchResultResponse>
