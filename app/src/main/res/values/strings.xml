@@ -95,12 +95,8 @@
     <string name="calendar_anniversary_dday">D-XXXX</string>
     <string name="calendar_empty_list">추가된 기념일이 없습니다.</string>
     <string name="calendar_item_delete">삭제</string>
-    <string name="calendar_detail_first_title">투리 생일</string>
     <string name="calendar_detail_first_dday">D-DAY</string>
-    <string name="calendar_detail_first_hashtag"># 친구</string>
-    <string name="calendar_detail_second_hashtag"># 가족</string>
-    <string name="calendar_detail_third_hashtag"># 기념일</string>
-    <string name="calendar_detail_type">매년 반복</string>
+    <string name="calendar_detail_type">기념일 종류</string>
     <string name="calendar_detail_go_to_find_cake">딱 맞는 케이크 찾으러 가기</string>
     <string name="calendar_anniversary_add_main_text">기념일 추가</string>
     <string name="calendar_anniversary_add_dday">D-DAY</string>
@@ -115,17 +111,6 @@
     <string name="calendar_add_completion">완료</string>
     <string name="calendar_add_error_no_select">필수 선택 항목입니다.</string>
     <string name="calendar_add_error_no_input">필수 입력 항목입니다.</string>
-
-    <!-- hashtag -->
-    <!-- 아직 확정되지 않음 -->
-    <string name="hashtag_friend"># 친구</string>
-    <string name="hashtag_family"># 가족</string>
-    <string name="hashtag_lover"># 연인</string>
-    <string name="hashtag_anniversary"># 기념일</string>
-    <string name="hashtag_birthday"># 생일</string>
-    <string name="hashtag_employment"># 취업</string>
-    <string name="hashtag_graduation_exhibition"># 졸업전시</string>
-    <string name="hashtag_party"># 파티</string>
 
     <!-- my page -->
     <string name="my_page_main_text">내 정보</string>
