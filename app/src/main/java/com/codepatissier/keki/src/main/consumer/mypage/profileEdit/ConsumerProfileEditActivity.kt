@@ -26,7 +26,7 @@ class ConsumerProfileEditActivity :BaseActivity<ActivityConsumerProfileEditBindi
     private lateinit var launcher : ActivityResultLauncher<Intent>
     var ProfileUri : Uri ?= null
     var fbStorage : FirebaseStorage ?= null
-    private lateinit var editImg : String
+    private lateinit var editImg:String
     private lateinit var editNickname : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,9 +79,10 @@ class ConsumerProfileEditActivity :BaseActivity<ActivityConsumerProfileEditBindi
     private fun firebaseUpload(){
         if(ProfileUri != null){
 
-            // 파이어베이스 이전 사진 삭제
-            fbStorage?.reference?.child(editImg)?.delete()
-
+            if(!editImg.equals(null)){
+                // 파이어베이스 이전 사진 삭제
+                fbStorage?.reference?.child(editImg)?.delete()
+            }
             // 파이어베이스에 사진 업로드
             var timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
             var profileImgName = "PROFILE_IMAGE_"+timeStamp+"_.png"
@@ -109,9 +110,7 @@ class ConsumerProfileEditActivity :BaseActivity<ActivityConsumerProfileEditBindi
         binding.tvEdit.setOnClickListener{
             firebaseUpload()
 
-
             editNickname = binding.etNickname.text.toString()
-
 
             // 서버에 편집한 닉네임, 사진 보내기.
             var consumerProfileEditBody = ConsumerProfileEditBody(editNickname, editImg)
@@ -139,7 +138,9 @@ class ConsumerProfileEditActivity :BaseActivity<ActivityConsumerProfileEditBindi
         dismissLoadingDialog()
 
         // 프로필 이미지 또는 닉네임 중 한가지만 수정 시 null 값 뜨지 않도록 변수로 이전 프로필 또는 닉네임 가져오기
-        editImg = response.result.profileImg
+        if(response.result.profileImg != null){
+            editImg = response.result.profileImg
+        }
 
         // 이전 닉네임 삽입
         binding.etNickname.setText(response.result.nickname)
