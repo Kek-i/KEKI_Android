@@ -94,6 +94,20 @@
             app:layout_constraintTop_toTopOf="@+id/iv_camera_background" />
 
         <TextView
+            android:id="@+id/tv_user_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/notosanskr_regular"
+            android:includeFontPadding="false"
+            android:text="keki@gmail.com"
+            android:textColor="@color/brown_grey"
+            android:textSize="@dimen/edit_rule_font_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cv_photo" />
+
+        <TextView
             android:id="@+id/tv_edit_rule"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -105,10 +119,10 @@
             android:textColor="@color/brown_grey"
             android:textSize="@dimen/edit_rule_font_size"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cv_photo" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_user_email" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/et_nickname"
             android:layout_width="@dimen/edit_et_width"
             android:layout_height="@dimen/edit_et_height"
             android:layout_marginLeft="@dimen/edit_et_marginLeft"
@@ -141,7 +155,7 @@
             android:textColor="@color/black"
             android:textSize="@dimen/edit_dbl_check_font_size"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/editText"
+            app:layout_constraintStart_toEndOf="@+id/et_nickname"
             app:layout_constraintTop_toBottomOf="@+id/tv_edit_rule" />
 
         <TextView
@@ -152,11 +166,10 @@
             android:layout_marginTop="@dimen/edit_naming_result_marginTop"
             android:fontFamily="@font/notosanskr_regular"
             android:includeFontPadding="false"
-            android:text="@string/edit_rule_pass"
             android:textColor="@color/brown_grey"
             android:textSize="@dimen/edit_result_font_size"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText" />
+            app:layout_constraintTop_toBottomOf="@+id/et_nickname" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

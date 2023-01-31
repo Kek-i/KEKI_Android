@@ -20,9 +20,8 @@
             android:id="@+id/ib_calendar_detail_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/calendar_ib_back_margin_top"
-            android:layout_marginStart="@dimen/calendar_ib_back_margin_start"
-            android:layout_marginBottom="@dimen/calendar_ib_back_margin_bottom"
+            android:paddingVertical="@dimen/calendar_ib_back_padding_vertical"
+            android:paddingHorizontal="@dimen/calendar_ib_back_padding_horizontal"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -33,8 +32,10 @@
         <ImageButton
             android:id="@+id/ib_calendar_detail_modify"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/calendar_ib_modify_margin_end"
+            android:layout_height="@dimen/calendar_ib_modify_height"
+            android:paddingTop="@dimen/calendar_ib_modify_padding_top"
+            android:paddingBottom="@dimen/calendar_ib_modify_padding_bottom"
+            android:paddingHorizontal="@dimen/calendar_ib_modify_padding_horizontal"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -46,7 +47,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_calendar_detail_content"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/calendar_content_layout_height"
+        android:layout_height="@dimen/calendar_content_height"
         app:layout_constraintTop_toBottomOf="@id/layout_calendar_detail_top_bar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,7 +82,6 @@
             android:textAlignment="center"
             android:fontFamily="@font/notosanskr_bold"
             android:includeFontPadding="false"
-            android:maxLines="2"
             />
 
         <TextView

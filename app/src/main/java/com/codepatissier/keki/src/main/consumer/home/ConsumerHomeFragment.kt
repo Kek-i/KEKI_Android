@@ -6,7 +6,7 @@ import android.view.View
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseFragment
 import com.codepatissier.keki.databinding.FragmentConsumerHomeBinding
-import com.codepatissier.keki.src.main.consumer.search.ConsumerSearchActivity
+import com.codepatissier.keki.src.main.consumer.search.searchresult.ConsumerSearchActivity
 import com.codepatissier.keki.util.recycler.home.HomeStoreAdapter
 import com.codepatissier.keki.util.recycler.home.HomeStoreData
 
