@@ -39,7 +39,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
 
     private fun socialLogin() {
         binding.ibGoogleBtn.setOnClickListener {
-            googleLogin()
+            //googleLogin()
         }
         binding.ibNaverBtn.setOnClickListener {
             naverLogin()
@@ -82,35 +82,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
 
     //소셜 로그인 구현 파트
 
-    private fun googleLogin(){
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.google_server_client_id))
-            .requestEmail()
-            .build()
-        val mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-        val intent = mGoogleSignInClient.signInIntent
-        startActivityForResult(intent, 1)
-    }
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
-        if (requestCode == 1) {
-            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            handleSignInResult(task)
-        }
-    }
-    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
-        try {
-            val account = completedTask.getResult(ApiException::class.java)
-            userEmail = account.email
-            Log.d("google", "user_google_email: $userEmail")
-            if (userEmail != null) {
-                getRole(userEmail!!,"구글")
-            }
-        } catch (e: ApiException) {
-            Log.i("google", "signInResult:failed code=" + e.statusCode)
-        }
-    }
 
     private fun naverLogin(){
         val profileCallback = object : NidProfileCallback<NidProfileResponse> {
