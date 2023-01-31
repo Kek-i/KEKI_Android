@@ -109,7 +109,9 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
         binding.recyclerFirstHome.adapter = homeStoreFirstAdapter
 
         for(i in response.homePostRes.indices){
-            homeStoreFirstDatas.apply { add(HomeStoreData(name = response.homePostRes[i].postImgUrl)) }
+            homeStoreFirstDatas.apply { add(HomeStoreData(img = response.homePostRes[i].postImgUrl,
+                postIdx = response.homePostRes[i].postIdx,
+                name = response.homePostRes[i].storeTitle)) }
         }
 
         homeStoreFirstAdapter.homeStoreDatas = homeStoreFirstDatas
@@ -121,7 +123,9 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
         binding.recyclerSecondHome.adapter = homeStoreSecondAdapter
 
         for(i in response.homePostRes.indices){
-            homeStoreSecondDatas.apply { add(HomeStoreData(name = response.homePostRes[i].postImgUrl)) }
+            homeStoreSecondDatas.apply { add(HomeStoreData(img = response.homePostRes[i].postImgUrl,
+                postIdx = response.homePostRes[i].postIdx,
+                name = response.homePostRes[i].storeTitle)) }
         }
 
         homeStoreSecondAdapter.homeStoreDatas = homeStoreSecondDatas
@@ -133,7 +137,9 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
         binding.recyclerThirdHome.adapter = homeStoreThirdAdapter
 
         for(i in response.homePostRes.indices){
-            homeStoreThirdDatas.apply { add(HomeStoreData(name = response.homePostRes[i].postImgUrl)) }
+            homeStoreThirdDatas.apply { add(HomeStoreData(img = response.homePostRes[i].postImgUrl,
+                postIdx = response.homePostRes[i].postIdx,
+                name = response.homePostRes[i].storeTitle)) }
         }
 
         homeStoreThirdAdapter.homeStoreDatas = homeStoreThirdDatas
