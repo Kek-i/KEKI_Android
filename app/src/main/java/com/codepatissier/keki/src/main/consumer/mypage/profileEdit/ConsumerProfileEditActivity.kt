@@ -11,6 +11,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.bumptech.glide.Glide
 import com.codepatissier.keki.R
+import com.codepatissier.keki.config.ApplicationClass
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityConsumerProfileEditBinding
 import com.codepatissier.keki.src.main.auth.model.SocialTokenResponse
@@ -47,6 +48,7 @@ class ConsumerProfileEditActivity :BaseActivity<ActivityConsumerProfileEditBindi
         // 이전 프로필 가져오기
         ConsumerMyPageService(this).tryGetMyPage()
 
+        setTextUserEmail()
         backClicked()
         profileClicked()
         clickConfirm()
@@ -58,6 +60,11 @@ class ConsumerProfileEditActivity :BaseActivity<ActivityConsumerProfileEditBindi
         binding.ivBack.setOnClickListener{
             finish()
         }
+    }
+
+    //유저 이메일 표시하기
+    private fun setTextUserEmail(){
+        binding.tvUserEmail.text = ApplicationClass.sSharedPreferences.getString(ApplicationClass.UserEmail, null)
     }
 
     private fun profileClicked(){

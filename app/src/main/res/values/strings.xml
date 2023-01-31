@@ -4,7 +4,6 @@
     <!-- Auth -->
     <string name="kakao_native_key">e2abb1dfec5ae90f3ac6233769bfafec</string>
     <string name="kakao_key">kakaoe2abb1dfec5ae90f3ac6233769bfafec</string>
-    <string name="google_server_client_id">183252467381-3tpvroj1ucm87o4g8e8uh0om17eak4qr.apps.googleusercontent.com</string>
     <string name="social_login_info_naver_client_id">XZHzyRgQditsj_BuDAHZ</string>
     <string name="social_login_info_naver_client_secret">XEK5Tv83wP</string>
     <string name="social_login_info_naver_client_name">네이버아이디 로그인</string>
@@ -111,6 +110,7 @@
     <string name="calendar_add_completion">완료</string>
     <string name="calendar_add_error_no_select">필수 선택 항목입니다.</string>
     <string name="calendar_add_error_no_input">필수 입력 항목입니다.</string>
+    <string name="calendar_non_consumer_like_comment">로그인 시 사용 가능한 기능입니다!</string>
 
     <!-- my page -->
     <string name="my_page_main_text">내 정보</string>

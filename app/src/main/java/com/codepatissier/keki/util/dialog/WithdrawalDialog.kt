@@ -13,9 +13,20 @@ import com.codepatissier.keki.databinding.DialogWithdrawalBinding
 import com.codepatissier.keki.src.MainActivity
 import com.codepatissier.keki.src.main.auth.SignoutService
 import com.codepatissier.keki.src.main.auth.SignoutView
+import com.codepatissier.keki.src.main.consumer.mypage.ConsumerMyPageService
+import com.codepatissier.keki.src.main.consumer.mypage.ConsumerMyPageView
+import com.codepatissier.keki.src.main.consumer.mypage.model.ConsumerMyPageResponse
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.storage.FirebaseStorage
 
-class WithdrawalDialog(context: Context): Dialog(context), SignoutView {
+
+class WithdrawalDialog(context: Context): Dialog(context), SignoutView, ConsumerMyPageView {
     private lateinit var binding: DialogWithdrawalBinding
+    var fbStorage : FirebaseStorage?= null
+    private var fbAuth: FirebaseAuth? = null
+    private lateinit var Profileimg : String
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +36,12 @@ class WithdrawalDialog(context: Context): Dialog(context), SignoutView {
         setContentView(binding.root)
         window!!.setBackgroundDrawable(ColorDrawable())
         window!!.setDimAmount(0.5f)
+
+        ConsumerMyPageService(this).tryGetMyPage()
+
+        fbStorage = FirebaseStorage.getInstance()
+        fbAuth = FirebaseAuth.getInstance();
+        Profileimg = null.toString()
 
         clickCancelBtn()
         clickWithdrawalBtn()
@@ -44,14 +61,32 @@ class WithdrawalDialog(context: Context): Dialog(context), SignoutView {
 
     override fun onPatchSignoutSuccess(response: BaseResponse) {
         this.dismiss()
-        //확인 버튼 눌렀을 때 종료 flag
-        ApplicationClass.userInfo.remove("Authorization");
-        ApplicationClass.userInfo.commit();
+
+        ApplicationClass.userInfo.remove("Authorization")
+        ApplicationClass.userInfo.commit()
+
+        if(Profileimg != null){
+            fbStorage?.reference?.child(Profileimg)?.delete()
+        }
+
+        fbAuth?.currentUser?.delete() //firebase에서도 회원 탈퇴
+
         val intent = Intent(context, MainActivity::class.java)
         context.startActivity(intent)
         Toast.makeText(context, "회원탈퇴 완료", Toast.LENGTH_SHORT).show()
     }
 
     override fun onPatchSignoutFailure(message: String) {
+    }
+
+    override fun onGetMyPageSuccess(response: ConsumerMyPageResponse) {
+        if(response.result.profileImg != null){
+            Profileimg = response.result.profileImg
+        }
+
+    }
+
+    override fun onGetMyPageFailure(message: String) {
+        TODO("Not yet implemented")
     }
 }

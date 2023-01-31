@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import com.codepatissier.keki.config.ApplicationClass.Companion.Authorization
+import com.codepatissier.keki.config.ApplicationClass.Companion.userInfo
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivitySplashBinding
 import com.codepatissier.keki.src.MainActivity

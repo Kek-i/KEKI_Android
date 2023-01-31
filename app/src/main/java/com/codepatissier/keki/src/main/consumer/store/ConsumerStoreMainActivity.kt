@@ -62,7 +62,7 @@ class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>
             }
 
             override fun onTabReselected(tab: TabLayout.Tab?) {
-                TODO("Not yet implemented")
+                tab?.icon?.setTint(ResourcesCompat.getColor(getResources(),R.color.tab_select,null))
             }
         })
     }
