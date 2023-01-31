@@ -8,6 +8,7 @@ import com.codepatissier.keki.config.BaseFragment
 import com.codepatissier.keki.databinding.FragmentConsumerMyPageBinding
 import com.codepatissier.keki.src.main.consumer.mypage.notice.NoticeActivity
 import com.codepatissier.keki.util.dialog.LogoutDialog
+import com.codepatissier.keki.util.dialog.WithdrawalDialog
 import com.codepatissier.keki.util.viewpager.storemain.StoreMainDialog
 
 class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
@@ -20,6 +21,7 @@ class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
         conditionClicked()
         noticeClicked()
         logoutClicked()
+        withdrawalClicked()
     }
 
     private fun profileEditClicked(){
@@ -44,6 +46,12 @@ class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
     private fun logoutClicked() {
         binding.tvLogout.setOnClickListener {
             LogoutDialog(requireContext()).show()
+        }
+    }
+
+    private fun withdrawalClicked() {
+        binding.tvWithdrawal.setOnClickListener {
+            WithdrawalDialog(requireContext()).show()
         }
     }
 
