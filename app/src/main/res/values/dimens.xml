@@ -633,6 +633,19 @@
     <dimen name="my_page_logout_btn_chain_margin">15dp</dimen>
     <dimen name="my_page_logout_btn_text_size">16sp</dimen>
 
-
+    <!-- withdrawal dialog -->
+    <dimen name="my_page_withdrawal_dialog_width">288dp</dimen>
+    <dimen name="my_page_withdrawal_dialog_height">206dp</dimen>
+    <dimen name="my_page_withdrawal_tv_title_height">26dp</dimen>
+    <dimen name="my_page_withdrawal_tv_title_margin_top">23dp</dimen>
+    <dimen name="my_page_withdrawal_tv_title_size">18sp</dimen>
+    <dimen name="my_page_withdrawal_tv_content_margin_top">18dp</dimen>
+    <dimen name="my_page_withdrawal_tv_content_size">11sp</dimen>
+    <dimen name="my_page_withdrawal_btn_width">109dp</dimen>
+    <dimen name="my_page_withdrawal_btn_height">36dp</dimen>
+    <dimen name="my_page_withdrawal_btn_margin_top">20dp</dimen>
+    <dimen name="my_page_withdrawal_btn_margin_bottom">35dp</dimen>
+    <dimen name="my_page_withdrawal_btn_chain_margin">15dp</dimen>
+    <dimen name="my_page_withdrawal_btn_text_size">16sp</dimen>
 
 </resources>
