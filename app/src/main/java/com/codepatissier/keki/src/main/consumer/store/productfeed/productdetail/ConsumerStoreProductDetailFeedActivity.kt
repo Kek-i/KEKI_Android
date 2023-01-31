@@ -28,7 +28,7 @@ class ConsumerStoreProductDetailFeedActivity : BaseActivity<ActivityConsumerStor
 
     //스토어 메인 피드에서 넘어올때 dessertIdx 받아와서 디테일 피드 api 호출
     private fun getDessertIdx(){
-        val clickItem = intent.getStringExtra("StoreMainProductData")
+        val clickItem = intent.getStringExtra("dessertIdx")
         if (clickItem != null) {
             ConsumerStoreProductFeedDetailService(this).tryGetProductFeedDetail(dessertIdx = clickItem.toLong())
         }
@@ -46,7 +46,7 @@ class ConsumerStoreProductDetailFeedActivity : BaseActivity<ActivityConsumerStor
     private fun getFeedView(response: ConsumerStoreProductFeedDetailResponse){
         binding.tvProductFeedId.text = response.result.nickname
         binding.tvProductFeedCakeName.text = response.result.dessertName
-        binding.tvProductFeedCakePrice.text = DecimalFormat("###,###").format(response.result.dessertPrice.toString()) + "원"
+        binding.tvProductFeedCakePrice.text = response.result.dessertPrice.toString() + "원"
         binding.tvProductFeedCakeDetail.text = response.result.dessertDescription
 
         Log.d("item체크", "아이템 값:${response.result}")
@@ -77,4 +77,5 @@ class ConsumerStoreProductDetailFeedActivity : BaseActivity<ActivityConsumerStor
     }
 
 }
+
 

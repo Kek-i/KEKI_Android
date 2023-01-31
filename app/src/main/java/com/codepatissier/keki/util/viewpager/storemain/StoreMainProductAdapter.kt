@@ -2,7 +2,9 @@ package com.codepatissier.keki.util.viewpager.storemain
 
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.FragmentActivity
@@ -26,6 +28,9 @@ class StoreMainProductAdapter(val context: FragmentActivity?): RecyclerView.Adap
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as ViewHolder).bind(storeMainProductDatas[position])
+        holder.itemView.setOnClickListener {
+            itemClickListener.onClick(it, position)
+        }
     }
 
     override fun getItemCount(): Int = storeMainProductDatas.size
@@ -44,13 +49,18 @@ class StoreMainProductAdapter(val context: FragmentActivity?): RecyclerView.Adap
                 .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
                 .into(FeedImg)
 
-            itemView.setOnClickListener {
-                var intent = Intent(itemView.context,  ConsumerStoreProductDetailFeedActivity::class.java)
-                // 디저트번호, 스토어 번호 StoreMainProductData 객체로 detailFeed에 넘기기
-                intent.putExtra("StoreMainProductData", item.dessertIdx)
-                itemView.context.startActivity(intent)
-            }
         }
     }
+
+    // (2) 리스너 인터페이스
+    interface OnItemClickListener {
+        fun onClick(v: View, position: Int)
+    }
+    // (3) 외부에서 클릭 시 이벤트 설정
+    fun setItemClickListener(onItemClickListener: OnItemClickListener) {
+        this.itemClickListener = onItemClickListener
+    }
+    // (4) setItemClickListener로 설정한 함수 실행
+    private lateinit var itemClickListener : OnItemClickListener
 
 }
