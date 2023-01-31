@@ -70,7 +70,8 @@ class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
         val defaultImg = R.drawable.bg_oval_off_white
         val imageView = binding.ivProfile
 
-        binding.tvNickName.text = response.result.nickname + "님."
+        val nim = getString(R.string.my_page_tv_nickname)
+        binding.tvNickName.text = response.result.nickname + nim
 
         if(response.result.profileImg != null){
             // 이미지 가져오기
