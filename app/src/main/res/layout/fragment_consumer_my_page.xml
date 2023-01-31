@@ -296,7 +296,6 @@
                 android:background="@drawable/bg_rectangle_radius_10_white_no_padding"
                 android:elevation="@dimen/my_page_box_shadow"
                 android:layout_marginBottom="@dimen/my_page_large_text_top"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintCircleRadius="@dimen/my_page_box_radius"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
