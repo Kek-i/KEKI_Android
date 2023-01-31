@@ -1,6 +1,7 @@
 package com.codepatissier.keki.src.main.consumer.mypage
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import com.codepatissier.keki.R
@@ -18,10 +19,11 @@ class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
         super.onViewCreated(view, savedInstanceState)
 
         profileEditClicked()
-        conditionClicked()
         noticeClicked()
         logoutClicked()
         withdrawalClicked()
+        conditionClicked()
+        personalInfoClicked()
     }
 
     private fun profileEditClicked(){
@@ -30,15 +32,24 @@ class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
             startActivity(intent)
         }
     }
+
+    private fun noticeClicked(){
+        binding.cslNotice.setOnClickListener{
+            val intent = Intent(context, NoticeActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
     private fun conditionClicked(){
         binding.tvCondition.setOnClickListener{
             val intent = Intent(context, ConsumerConditionActivity::class.java)
             startActivity(intent)
         }
     }
-    private fun noticeClicked(){
-        binding.cslNotice.setOnClickListener{
-            val intent = Intent(context, NoticeActivity::class.java)
+
+    private fun personalInfoClicked(){
+        binding.tvPersonalInfo.setOnClickListener{
+            val intent = Intent(context, ConsumerPersonalInfoActivity::class.java)
             startActivity(intent)
         }
     }
