@@ -51,10 +51,9 @@ class ConsumerStoreProductDetailFeedActivity : BaseActivity<ActivityConsumerStor
 
         Log.d("item체크", "아이템 값:${response.result}")
         //이미지개수 크기의 리스트 생성
-        var img = arrayOfNulls<Drawable>(response.result.images.size)
-        //response의 이미지 url을 drawable 속성으로 바꿔서 img리스트에 다시 넣어줌
+        var img = arrayOfNulls<String>(response.result.images.size)
         for(i in response.result.images.indices) {
-            img[i] = drawableFromUrl(response.result.images[i].postImgUrl)
+            img[i] = response.result.images[i].postImgUrl
         }
         val pagerAdapter = DetailImageAdapter(this@ConsumerStoreProductDetailFeedActivity!!, img)
         binding.vpProductFeedImg.adapter = pagerAdapter
