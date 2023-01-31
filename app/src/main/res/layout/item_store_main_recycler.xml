@@ -13,7 +13,8 @@
         android:layout_marginRight="@dimen/store_main_rv_margin"
         android:layout_marginLeft="@dimen/store_main_rv_margin"
         android:layout_marginTop="@dimen/store_main_rv_margin"
-        android:background="@drawable/bg_rectangle_radius_10_off_white"
+        android:scaleType="fitXY"
+        android:src="@drawable/bg_rectangle_radius_10_off_white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
