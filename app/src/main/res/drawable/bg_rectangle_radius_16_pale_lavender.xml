@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <solid
+        android:color="@color/pale_lavender"/>
+
+    <corners
+        android:radius="16dp"/>
+
+    <padding
+        android:top="@dimen/home_tag_padding_top"
+        android:bottom="@dimen/home_tag_padding_bottom"
+        android:left="@dimen/home_tag_padding_start"
+        android:right="@dimen/home_tag_padding_end"
+        />
+
+</shape>

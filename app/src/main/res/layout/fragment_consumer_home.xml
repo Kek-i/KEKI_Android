@@ -218,6 +218,60 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint_third_home_tag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/constraint_second_home_tag"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/home_second_recycler_margin_top"
+                >
+
+                <TextView
+                    android:id="@+id/tv_third_home_tag_second"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="@dimen/home_tag_start"
+                    android:text="@string/home_tag_two"
+                    android:fontFamily="@font/notosanskr_bold"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/home_tag_size"
+                    android:gravity="center"
+                    android:background="@drawable/bg_rectangle_radius_16_pale_lavender"
+                    />
+
+                <ImageView
+                    android:id="@+id/iv_third_home_chevron_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_chevron_right"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_third_home_tag_second"
+                    android:paddingStart="@dimen/chevron_padding_start"
+                    android:paddingTop="@dimen/chevron_padding_top_bottom"
+                    android:paddingBottom="@dimen/chevron_padding_top_bottom"
+                    android:layout_marginEnd="@dimen/home_ic_chevron_right_end"
+                    />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_third_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_third_home_tag_second"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="@dimen/home_tag_start"
+                    android:layout_marginTop="@dimen/home_recycler_margin_top"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_home_store_recycler"
+                    android:orientation="horizontal"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </FrameLayout>
