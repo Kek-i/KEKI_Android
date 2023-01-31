@@ -584,6 +584,9 @@
     <!-- store main recyclerView -->
     <dimen name="store_main_rv_width_height">105dp</dimen>
     <dimen name="store_main_rv_margin">10dp</dimen>
+    <dimen name="store_main_img_radius">10dp</dimen>
+    <dimen name="store_main_iv_elevation">0dp</dimen>
+
 
     <!-- notice -->
     <dimen name="notice_top">25dp</dimen>
