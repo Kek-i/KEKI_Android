@@ -20,4 +20,19 @@ class SearchResultService(val searchResultView: SearchResultView) {
             }
         })
     }
+
+    fun tryGetTagResults(tag : String, sortType: String){
+        val searchResultRetrofitInterface = ApplicationClass.sRetrofit.create(SearchResultRetrofitInterface::class.java)
+        searchResultRetrofitInterface.getSearchResult(searchTag = tag, sortType = sortType).enqueue(object: Callback<SearchResultResponse>{
+            override fun onResponse(call: Call<SearchResultResponse>, response: Response<SearchResultResponse>)
+            {
+                searchResultView.onGetSearchResultsSuccess(response.body() as SearchResultResponse)
+            }
+            override fun onFailure(call: Call<SearchResultResponse>, t: Throwable) {
+                searchResultView.onGetSearchResultsFailure(t.message ?: "통신 오류")
+            }
+        })
+    }
+
+
 }

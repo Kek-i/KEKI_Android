@@ -28,19 +28,20 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-//        val searchKey = intent.getStringExtra("search_key")
-//        Log.d("서치", "$searchKey 전달 받음!")
-
-        checkNavigateFromHome()
+        val searchTag = intent.getStringExtra("searchTag")
+        if (searchTag == null){
+            setListenerToEditText()
+        }
+        else{
+            setTagResult()
+        }
         clickDeleteSearch()
         setCategory()
-        setListenerToEditText()
-
     }
+
     override fun onGetSearchResultsSuccess(response: SearchResultResponse) {
         searchListRecycler(response)
     }
-
     override fun onGetSearchResultsFailure(message: String) {
         showCustomToast("오류 : $message")    }
 
@@ -106,7 +107,30 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
         SearchResultService(this).tryGetSearchResults(keyword = "$searchKey", sortType = sortType)
     }
 
-    //인기순,최신순,가격순 스피너 설정, 정렬
+
+    //홈 화면에서 태그 받아오기
+    private fun setTagResult() {
+        //검색어 그대로 가져와서 보여주기
+        val searchTag = intent.getStringExtra("searchTag")
+        binding.etSearch.setText("#$searchTag")
+
+        binding.etSearch.setOnKeyListener { view, keyCode, event ->
+            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER)
+            {
+                val imm = this@ConsumerSearchActivity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(binding.etSearch.windowToken, 0)
+                //엑티비티 내에서 검색할 경우
+                SearchResultService(this).tryGetSearchResults(keyword = "${binding.etSearch.text}", sortType = sortType)
+            }
+            false
+        }
+
+        SearchResultService(this).tryGetTagResults(tag = "$searchTag", sortType)
+    }
+
+
+
+    //최신순,인기순,가격순 스피너 설정, 정렬
     private fun setCategory() {
         val spinnerAdapter: ArrayAdapter<*> =
             ArrayAdapter.createFromResource(this@ConsumerSearchActivity, R.array.spinner_array, R.layout.search_custom_spinner)
@@ -123,12 +147,4 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
         }
     }
 
-    //홈화면에서 넘어오는 해시태그
-    private fun checkNavigateFromHome(){
-        if(intent.getStringExtra("searchTag") != null){
-            var searchTag = intent.getStringExtra("searchTag")
-            binding.etSearch.setText(searchTag)
-            Log.d("searchTag", binding.etSearch.text.toString())
-        }
-    }
 }
