@@ -139,8 +139,10 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
         binding.spinnerSearch.adapter = spinnerAdapter
         binding.spinnerSearch.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?,view: View,position: Int,id: Long) {
-                sortType = "${binding.spinnerSearch.getItemAtPosition(position)}"
-                Log.d("정렬", sortType)
+                if (binding.spinnerSearch.getItemAtPosition(position) != sortType){
+                    sortType = "${binding.spinnerSearch.getItemAtPosition(position)}"
+                    setListenerToEditText()
+                }
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
