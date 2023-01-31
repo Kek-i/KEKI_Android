@@ -72,6 +72,22 @@ class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
 
         binding.tvNickName.text = response.result.nickname + "님."
 
+        if(response.result.profileImg != null){
+            // 이미지 가져오기
+            var storageRef = fbStorage?.reference?.child(response.result.profileImg)
+            storageRef?.downloadUrl?.addOnCompleteListener {
+                if(it.isSuccessful){
+                    Glide.with(this)
+                        .load(it.result)
+                        .placeholder(defaultImg)
+                        .error(defaultImg)
+                        .fallback(defaultImg)
+                        .circleCrop()
+                        .into(imageView)
+                }
+            }
+        }
+
        if(response.result.profileImg != null){
            // 이미지 가져오기
            var storageRef = fbStorage?.reference?.child(response.result.profileImg)
@@ -88,6 +104,7 @@ class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
            }
        }
 
+
     }
 
     override fun onGetMyPageFailure(message: String) {
@@ -99,7 +116,13 @@ class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
         super.onResume()
         ConsumerMyPageService(this).tryGetMyPage()
 
+    }
+
+    private fun logoutClicked() {
+
+
 private fun logoutClicked() {
+
         binding.tvLogout.setOnClickListener {
             LogoutDialog(requireContext()).show()
         }
@@ -110,5 +133,4 @@ private fun logoutClicked() {
             WithdrawalDialog(requireContext()).show()
         }
     }
-
 }
