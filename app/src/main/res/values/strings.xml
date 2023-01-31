@@ -1,5 +1,14 @@
 <resources>
     <string name="app_name">Keki</string>
+
+    <!-- Auth -->
+    <string name="kakao_native_key">e2abb1dfec5ae90f3ac6233769bfafec</string>
+    <string name="kakao_key">kakaoe2abb1dfec5ae90f3ac6233769bfafec</string>
+    <string name="google_server_client_id">183252467381-3tpvroj1ucm87o4g8e8uh0om17eak4qr.apps.googleusercontent.com</string>
+    <string name="social_login_info_naver_client_id">XZHzyRgQditsj_BuDAHZ</string>
+    <string name="social_login_info_naver_client_secret">XEK5Tv83wP</string>
+    <string name="social_login_info_naver_client_name">네이버아이디 로그인</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="nickname">닉네임</string>
@@ -23,7 +32,9 @@
     <string name="tv_edit_Profile_title">프로필 설정</string>
     <string name="tv_edit_Profile_rule">한글,영어,숫자만 사용할 수 있어요.(최대 10자)</string>
     <string name="edit_rule_pass">사용 가능한 닉네임입니다</string>
-    <string name="edit_rule_false">한글,영어,숫자만 사용할 수 있어요.(최대 10자)</string>
+    <string name="edit_rule_false">이미 사용 중인 닉네임입니다.</string>
+    <string name="edit_rule_null">사용 가능한 닉네임을 입력해주세요.</string>
+    <string name="edit_rule_wrong">닉네임 조건을 확인해주세요.</string>
     <string name="login_dialog_main">앱 접근권한 안내</string>
     <string name="login_dialog_sub">케키에서는 다음 권한들을 사용합니다.</string>
     <string name="login_dialog_text1">사진 및 저장공간(필수)</string>
@@ -118,8 +129,13 @@
 
     <!-- my page -->
     <string name="my_page_main_text">내 정보</string>
+
+    <string name="my_page_main_comment">유닝이님.\n오늘도 특별한 하루 보내세요!</string>
+    <string name="my_page_non_main_comment">로그인이 필요합니다</string>
+
     <string name="my_page_tv_nickname">유닝이님.</string>
     <string name="my_page_main_comment">오늘도 특별한 하루 보내세요!</string>
+
     <string name="my_page_account">계정 설정</string>
     <string name="my_page_profile_edit">프로필 편집</string>
     <string name="my_page_signup">회원가입</string>

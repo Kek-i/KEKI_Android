@@ -1,11 +1,14 @@
 package com.codepatissier.keki.src.main.login
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityIntroBinding
+import com.codepatissier.keki.src.main.login.profilesetting.CustomerProfileSettingActivity
 
 class IntroActivity: BaseActivity<ActivityIntroBinding>(ActivityIntroBinding::inflate) {
     private var isCustomer = false
@@ -13,20 +16,19 @@ class IntroActivity: BaseActivity<ActivityIntroBinding>(ActivityIntroBinding::in
         super.onCreate(savedInstanceState)
         selectRole()
         clickCheck()
-
     }
 
 
     private fun selectRole(){
         binding.ibCustomerLogo.setOnClickListener{
-            binding.ibCustomerSelect.visibility = View.VISIBLE
-            binding.ibSellerSelect.visibility = View.INVISIBLE
+            binding.ibCustomerLogo.borderColor = resources.getColor(R.color.muted_pink)
+            binding.ibSellerLogo.borderColor = resources.getColor(R.color.white)
             isCustomer = true
             Log.d("iscustomer", "{$isCustomer} 로그-구매자")
         }
         binding.ibSellerLogo.setOnClickListener{
-            binding.ibSellerSelect.visibility = View.VISIBLE
-            binding.ibCustomerSelect.visibility = View.INVISIBLE
+            binding.ibSellerLogo.borderColor = resources.getColor(R.color.muted_pink)
+            binding.ibCustomerLogo.borderColor = resources.getColor(R.color.white)
             isCustomer = false
             Log.d("iscustomer", "{$isCustomer} 로그-판매자")
         }
@@ -34,8 +36,10 @@ class IntroActivity: BaseActivity<ActivityIntroBinding>(ActivityIntroBinding::in
 
     private fun clickCheck(){
         binding.btnCheck.setOnClickListener{
-            startActivity(Intent(this,EditProfileActivity::class.java))
-            finish()
+            if(isCustomer) {
+                startActivity(Intent(this, CustomerProfileSettingActivity::class.java))
+                finish()
+            }
         }
     }
 
