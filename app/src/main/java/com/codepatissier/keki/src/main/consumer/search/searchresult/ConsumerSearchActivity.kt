@@ -23,7 +23,7 @@ import com.codepatissier.keki.src.main.consumer.search.searchresult.model.Search
 class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(ActivityConsumerSearchBinding::inflate),
     SearchResultView {
     private lateinit var searchListAdapter : SearchListAdapter
-
+    private var sortType : String = "인기순"
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -98,23 +98,27 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
                 val imm = this@ConsumerSearchActivity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(binding.etSearch.windowToken, 0)
                 //엑티비티 내에서 검색할 경우
-                SearchResultService(this).tryGetSearchResults(keyword = "${binding.etSearch.text}")
+                SearchResultService(this).tryGetSearchResults(keyword = "${binding.etSearch.text}",sortType = sortType)
             }
             false
         }
         //처음 검색하기
-        SearchResultService(this).tryGetSearchResults(keyword = "$searchKey")
+        SearchResultService(this).tryGetSearchResults(keyword = "$searchKey", sortType = sortType)
     }
 
-    //최신순,인기순,가격순 스피너 설정, 정렬
+    //인기순,최신순,가격순 스피너 설정, 정렬
     private fun setCategory() {
         val spinnerAdapter: ArrayAdapter<*> =
             ArrayAdapter.createFromResource(this@ConsumerSearchActivity, R.array.spinner_array, R.layout.search_custom_spinner)
-        spinnerAdapter.setDropDownViewResource(com.codepatissier.keki.R.layout.search_custom_spinner_list)
-
+        spinnerAdapter.setDropDownViewResource(R.layout.search_custom_spinner_list)
         binding.spinnerSearch.adapter = spinnerAdapter
         binding.spinnerSearch.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?,view: View,position: Int,id: Long) {}
+            override fun onItemSelected(parent: AdapterView<*>?,view: View,position: Int,id: Long) {
+                sortType = "${binding.spinnerSearch.getItemAtPosition(position)}"
+                Log.d("정렬", sortType)
+                //카테고리 바꾸면 다시 불러오기
+                setListenerToEditText()
+            }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
     }
