@@ -10,7 +10,7 @@ class SearchResultService(val searchResultView: SearchResultView) {
 
     fun tryGetSearchResults(keyword : String){
         val searchResultRetrofitInterface = ApplicationClass.sRetrofit.create(SearchResultRetrofitInterface::class.java)
-        searchResultRetrofitInterface.getSearchResult(searchWord = "$keyword").enqueue(object: Callback<SearchResultResponse>{
+        searchResultRetrofitInterface.getSearchResult(searchWord = keyword).enqueue(object: Callback<SearchResultResponse>{
             override fun onResponse(call: Call<SearchResultResponse>, response: Response<SearchResultResponse>)
             {
                 searchResultView.onGetSearchResultsSuccess(response.body() as SearchResultResponse)
