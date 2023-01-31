@@ -176,7 +176,7 @@
                 >
 
                 <TextView
-                    android:id="@+id/tv_second_home_tag_second"
+                    android:id="@+id/tv_second_home_tag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
@@ -198,7 +198,7 @@
                     android:src="@drawable/ic_chevron_right"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="@+id/tv_second_home_tag_second"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_second_home_tag"
                     android:paddingStart="@dimen/chevron_padding_start"
                     android:paddingTop="@dimen/chevron_padding_top_bottom"
                     android:paddingBottom="@dimen/chevron_padding_top_bottom"
@@ -209,7 +209,7 @@
                     android:id="@+id/recycler_second_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_second_home_tag_second"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_second_home_tag"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="@dimen/home_tag_start"
                     android:layout_marginTop="@dimen/home_recycler_margin_top"
@@ -231,7 +231,7 @@
                 >
 
                 <TextView
-                    android:id="@+id/tv_third_home_tag_second"
+                    android:id="@+id/tv_third_home_tag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
@@ -252,7 +252,7 @@
                     android:src="@drawable/ic_chevron_right"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="@+id/tv_third_home_tag_second"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_third_home_tag"
                     android:paddingStart="@dimen/chevron_padding_start"
                     android:paddingTop="@dimen/chevron_padding_top_bottom"
                     android:paddingBottom="@dimen/chevron_padding_top_bottom"
@@ -263,7 +263,7 @@
                     android:id="@+id/recycler_third_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_third_home_tag_second"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_third_home_tag"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="@dimen/home_tag_start"
                     android:layout_marginTop="@dimen/home_recycler_margin_top"
