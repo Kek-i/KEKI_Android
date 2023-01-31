@@ -155,7 +155,7 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
         binding.ivSecondHomeChevronRight.setOnClickListener {
             val intent = Intent(context, ConsumerSearchActivity::class.java)
             // tag 넘기기
-            intent.putExtra("tag", binding.tvSecondHomeTag.text.replace("# ".toRegex(), ""))
+            intent.putExtra("searchTag", binding.tvSecondHomeTag.text.replace("# ".toRegex(), ""))
             startActivity(intent)
         }
     }
@@ -164,7 +164,7 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
     private fun navigateToSearchThirdTag(){
         binding.ivThirdHomeChevronRight.setOnClickListener {
             val intent = Intent(context, ConsumerSearchActivity::class.java)
-            intent.putExtra("tag", binding.tvThirdHomeTag.text.replace("# ".toRegex(), ""))
+            intent.putExtra("searchTag", binding.tvThirdHomeTag.text.replace("# ".toRegex(), ""))
             startActivity(intent)
         }
     }
