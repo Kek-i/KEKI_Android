@@ -312,6 +312,10 @@
     <dimen name="calendar_tv_item_delete_height">0dp</dimen>
     <dimen name="calendar_tv_item_delete_size">16sp</dimen>
 
+    <!-- calendar non consumer -->
+    <dimen name="calendar_non_consumer_size">20sp</dimen>
+    <dimen name="calendar_non_consumer_line_space">4dp</dimen>
+
     <!-- calendar detail -->
     <dimen name="calendar_top_bar_layout_margin_top">9dp</dimen>
     <dimen name="calendar_scroll_view_content_height">0dp</dimen>
