@@ -77,10 +77,23 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/tv_nick_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/my_page_comment_text_left"
                     android:layout_marginTop="@dimen/my_page_comment_text_top"
+                    android:fontFamily="@font/notosanskr_bold"
+                    android:includeFontPadding="false"
+                    android:text="@string/my_page_tv_nickname"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/my_page_comment_text_size"
+                    app:layout_constraintStart_toEndOf="@id/iv_profile"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/my_page_comment_text_left"
                     android:fontFamily="@font/notosanskr_bold"
                     android:includeFontPadding="false"
                     android:text="@string/my_page_main_comment"
@@ -88,7 +101,7 @@
                     android:textSize="@dimen/my_page_comment_text_size"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/iv_profile"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_nick_name"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
