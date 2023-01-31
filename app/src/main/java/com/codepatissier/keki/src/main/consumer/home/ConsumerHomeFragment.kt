@@ -34,8 +34,7 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
 
     override fun onGetConsumerHomeSuccess(response: ConsumerHomeResponse) {
         dismissLoadingDialog()
-        binding.tvHomeComment.text = response.result.nickname + "님!\n" + response.result.calendarTitle + "이 " + response.result.calendarDate.toString() + "일 남았어요\n 특별한 하루를 준비해요!"
-        //initUser(response.result)
+        initUser(response.result)
     }
 
     override fun onGetConsumerHomeFailure(message: String) {

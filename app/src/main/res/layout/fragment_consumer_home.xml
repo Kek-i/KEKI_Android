@@ -94,7 +94,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="@dimen/home_comment_start"
                 android:layout_marginTop="@dimen/home_comment_top"
-                android:text="@string/home_comment"
                 android:textColor="@color/darkish_pink"
                 android:fontFamily="@font/notosanskr_bold"
                 android:includeFontPadding="false"
