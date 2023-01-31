@@ -9,7 +9,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import android.widget.Toast
+import android.view.KeyEvent
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.bumptech.glide.Glide
@@ -51,12 +52,16 @@ class CustomerProfileSettingActivity : BaseActivity<ActivityConsumerProfileSetti
         clickDoubleCheck()
         setTextUserEmail()
         getProfileImg()
+        keyboardEnterClicked()
 
     }
 
     //완료 버튼 클릭
     private fun clickConfirm() {
         binding.tvCheck.setOnClickListener {
+            // 키패드 내리기
+            keyboardDown()
+
             //null값이 아니고, 중복 확인한 값일 경우(중복확인 누르고 값 바꾸는것 방지), 닉네임 조건에 맞을 경우
             if (nickname != null && nickname == binding.etNickname.text.toString()
             ) {
@@ -92,6 +97,8 @@ class CustomerProfileSettingActivity : BaseActivity<ActivityConsumerProfileSetti
                 binding.tvNamingResult.setText(R.string.edit_rule_wrong)
                 binding.tvNamingResult.setTextColor(resources.getColor(R.color.darkish_pink))
             }
+            // 키패드 내리기
+            keyboardDown()
         }
     }
 
@@ -169,7 +176,6 @@ class CustomerProfileSettingActivity : BaseActivity<ActivityConsumerProfileSetti
         }
     }
 
-
     //사진 저장하기 전에 보여주는 함수
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -194,6 +200,23 @@ class CustomerProfileSettingActivity : BaseActivity<ActivityConsumerProfileSetti
         var result = c?.getString(index!!)
 
         return result!!
+    }
+
+    // 엔터 클릭 시 키패드 내리기
+    private fun keyboardEnterClicked(){
+        binding.etNickname.setOnKeyListener{view, keyCode, event ->
+            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+                keyboardDown()
+                return@setOnKeyListener true
+            }
+            return@setOnKeyListener false
+        }
+    }
+
+    // 키패드 내리는 함수
+    private fun keyboardDown(){
+        val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.etNickname.windowToken, 0)
     }
 
 }

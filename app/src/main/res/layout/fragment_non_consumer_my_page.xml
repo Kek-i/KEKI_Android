@@ -11,7 +11,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:overScrollMode="never">
 
         <TextView
             android:id="@+id/tv_main_text"
@@ -54,8 +55,7 @@
             android:id="@+id/constraintLayout_user"
             android:layout_width="match_parent"
             android:layout_height="@dimen/my_page_profile_width_height"
-            android:layout_marginLeft="@dimen/my_page_profile_left"
-            android:layout_marginRight="@dimen/my_page_profile_right"
+            android:layout_marginHorizontal="@dimen/my_page_profile_margin_horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="@dimen/my_page_profile_top"
@@ -71,6 +71,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/tv_need_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/my_page_comment_text_left"
@@ -83,6 +84,19 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/iv_profile"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/ib_go_to_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/my_page_ib_login_margin_top"
+                android:layout_marginStart="@dimen/my_page_ib_login_margin_start"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_chevron_right"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_need_login"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
@@ -127,7 +141,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/my_page_box_inner_left"
-                    android:layout_marginTop="@dimen/my_page_box_first_inner_top"
+                    android:layout_marginTop="@dimen/my_page_box_first_text_inner_top"
                     android:fontFamily="@font/notosanskr_regular"
                     android:includeFontPadding="false"
                     android:text="@string/my_page_notice"
@@ -139,7 +153,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/my_page_box_first_inner_top"
+                    android:layout_marginTop="@dimen/my_page_box_first_chevron_inner_top"
                     android:layout_marginRight="@dimen/my_page_box_inner_right"
                     android:src="@drawable/ic_chevron_right"
                     app:layout_constraintEnd_toEndOf="parent"

@@ -8,6 +8,7 @@ import com.codepatissier.keki.config.ApplicationClass.Companion.sSharedPreferenc
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityMainBinding
 import com.codepatissier.keki.src.main.consumer.calendar.ConsumerCalendarFragment
+import com.codepatissier.keki.src.main.consumer.calendar.NonConsumerCalendarFragment
 import com.codepatissier.keki.src.main.consumer.home.ConsumerHomeFragment
 import com.codepatissier.keki.src.main.consumer.like.ConsumerLikeFragment
 import com.codepatissier.keki.src.main.consumer.mypage.ConsumerMyPageFragment
@@ -15,8 +16,9 @@ import com.codepatissier.keki.src.main.consumer.mypage.NonConsumerMyPageFragment
 import com.codepatissier.keki.src.main.consumer.search.ConsumerSearchFragment
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
-    private val AccessToken = sSharedPreferences.getString(Authorization, null)
+    private val accessToken = sSharedPreferences.getString(Authorization, null)
     private val userRole = sSharedPreferences.getString(ApplicationClass.UserRole, "비회원")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportFragmentManager.beginTransaction().replace(R.id.main_frm, ConsumerHomeFragment()).commitAllowingStateLoss()
@@ -30,9 +32,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                             .commitAllowingStateLoss()
                     }
                     R.id.menu_consumer_main_btm_nav_calendar -> {
-                        supportFragmentManager.beginTransaction()
-                            .replace(R.id.main_frm, ConsumerCalendarFragment())
-                            .commitAllowingStateLoss()
+                        if(accessToken != null && userRole == "구매자") {
+                            supportFragmentManager.beginTransaction()
+                                .replace(R.id.main_frm, ConsumerCalendarFragment())
+                                .commitAllowingStateLoss()
+                        } else {
+                            supportFragmentManager.beginTransaction()
+                                .replace(R.id.main_frm, NonConsumerCalendarFragment())
+                                .commitAllowingStateLoss()
+                        }
                     }
                     R.id.menu_consumer_main_btm_nav_search -> {
                         supportFragmentManager.beginTransaction()
@@ -45,7 +53,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                             .commitAllowingStateLoss()
                     }
                     R.id.menu_consumer_main_btm_nav_my_page -> {
-                        if (AccessToken != null && userRole == "구매자") {
+                        if (accessToken != null && userRole == "구매자") {
                             supportFragmentManager.beginTransaction()
                                 .replace(R.id.main_frm, ConsumerMyPageFragment())
                                 .commitAllowingStateLoss()

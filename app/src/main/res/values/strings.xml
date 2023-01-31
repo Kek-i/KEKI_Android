@@ -29,7 +29,7 @@
     <string name="login_customer">구매자</string>
     <string name="login_seller">판매자</string>
     <string name="tv_edit_Profile_title">프로필 설정</string>
-    <string name="tv_edit_Profile_rule">한글,영어,숫자만 사용할 수 있어요.(최대 10자)</string>
+    <string name="tv_edit_Profile_rule">한글, 영어, 숫자만 사용할 수 있어요. (최대 10자)</string>
     <string name="edit_rule_pass">사용 가능한 닉네임입니다</string>
     <string name="edit_rule_false">이미 사용 중인 닉네임입니다.</string>
     <string name="edit_rule_null">사용 가능한 닉네임을 입력해주세요.</string>
@@ -94,12 +94,8 @@
     <string name="calendar_anniversary_dday">D-XXXX</string>
     <string name="calendar_empty_list">추가된 기념일이 없습니다.</string>
     <string name="calendar_item_delete">삭제</string>
-    <string name="calendar_detail_first_title">투리 생일</string>
     <string name="calendar_detail_first_dday">D-DAY</string>
-    <string name="calendar_detail_first_hashtag"># 친구</string>
-    <string name="calendar_detail_second_hashtag"># 가족</string>
-    <string name="calendar_detail_third_hashtag"># 기념일</string>
-    <string name="calendar_detail_type">매년 반복</string>
+    <string name="calendar_detail_type">기념일 종류</string>
     <string name="calendar_detail_go_to_find_cake">딱 맞는 케이크 찾으러 가기</string>
     <string name="calendar_anniversary_add_main_text">기념일 추가</string>
     <string name="calendar_anniversary_add_dday">D-DAY</string>
@@ -116,22 +112,11 @@
     <string name="calendar_add_error_no_input">필수 입력 항목입니다.</string>
     <string name="calendar_non_consumer_like_comment">로그인 시 사용 가능한 기능입니다!</string>
 
-    <!-- hashtag -->
-    <!-- 아직 확정되지 않음 -->
-    <string name="hashtag_friend"># 친구</string>
-    <string name="hashtag_family"># 가족</string>
-    <string name="hashtag_lover"># 연인</string>
-    <string name="hashtag_anniversary"># 기념일</string>
-    <string name="hashtag_birthday"># 생일</string>
-    <string name="hashtag_employment"># 취업</string>
-    <string name="hashtag_graduation_exhibition"># 졸업전시</string>
-    <string name="hashtag_party"># 파티</string>
-
     <!-- my page -->
     <string name="my_page_main_text">내 정보</string>
 
-    <string name="my_page_non_main_comment">로그인이 필요합니다</string>
-    <string name="my_page_tv_nickname">유닝이님.</string>
+    <string name="my_page_non_main_comment">로그인이 필요합니다.</string>
+    <string name="my_page_tv_nickname">님.</string>
     <string name="my_page_main_comment">오늘도 특별한 하루 보내세요!</string>
 
     <string name="my_page_account">계정 설정</string>
@@ -152,7 +137,7 @@
     <!-- my page profile edit -->
     <string name="my_page_profile_edit_main">프로필 편집</string>
     <string name="my_page_profile_edit_complete">완료</string>
-    <string name="my_page_profile_nick_name_condition">한글,영어,숫자만 사용할 수 있어요.(최대10자)</string>
+    <string name="my_page_profile_nick_name_condition">한글, 영어, 숫자만 사용할 수 있어요. (최대 10자)</string>
     <string name="my_page_profile_nick_name_hint">닉네임을 입력해주세요.</string>
     <string name="my_page_profile_nick_name_overlap">중복확인</string>
 
@@ -174,7 +159,8 @@
     <string name="search_spinner_price">가격낮은순</string>
     <string name="search_empty_list">검색결과가 없습니다.</string>
 
-    <string name="like_comment">준비중인 기능입니다.</string>
+    <!-- like -->
+    <string name="like_comment">준비 중인 기능입니다.</string>
 
     <!-- logout -->
     <string name="dialog_logout_title">로그아웃</string>
