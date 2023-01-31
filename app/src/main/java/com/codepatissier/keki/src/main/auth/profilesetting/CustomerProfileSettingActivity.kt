@@ -1,4 +1,4 @@
-package com.codepatissier.keki.src.main.login.profilesetting
+package com.codepatissier.keki.src.main.auth.profilesetting
 
 import android.annotation.SuppressLint
 import android.content.ContentValues
@@ -16,11 +16,11 @@ import com.codepatissier.keki.config.ApplicationClass.Companion.userInfo
 import com.codepatissier.keki.databinding.ActivityConsumerProfileSettingBinding
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.src.MainActivity
-import com.codepatissier.keki.src.main.login.IntroActivity
-import com.codepatissier.keki.src.main.login.model.PostSignupRequest
-import com.codepatissier.keki.src.main.login.model.SocialTokenResponse
-import com.codepatissier.keki.src.main.login.profilesetting.model.PostNickRequest
-import com.codepatissier.keki.src.main.login.profilesetting.model.PostNickname
+import com.codepatissier.keki.src.main.auth.IntroActivity
+import com.codepatissier.keki.src.main.auth.model.PostSignupRequest
+import com.codepatissier.keki.src.main.auth.model.SocialTokenResponse
+import com.codepatissier.keki.src.main.auth.profilesetting.model.PostNickRequest
+import com.codepatissier.keki.src.main.auth.profilesetting.model.PostNickname
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
