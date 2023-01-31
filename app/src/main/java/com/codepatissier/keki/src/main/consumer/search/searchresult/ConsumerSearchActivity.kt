@@ -23,7 +23,7 @@ import com.codepatissier.keki.src.main.consumer.search.searchresult.model.Search
 class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(ActivityConsumerSearchBinding::inflate),
     SearchResultView {
     private lateinit var searchListAdapter : SearchListAdapter
-    private var sortType : String = "인기순"
+    var sortType : String = "인기순"
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -138,10 +138,10 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
         binding.spinnerSearch.adapter = spinnerAdapter
         binding.spinnerSearch.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?,view: View,position: Int,id: Long) {
-                sortType = "${binding.spinnerSearch.getItemAtPosition(position)}"
-                Log.d("정렬", sortType)
-                //카테고리 바꾸면 다시 불러오기
-                setListenerToEditText()
+                if (binding.spinnerSearch.getItemAtPosition(position) != sortType){
+                    sortType = "${binding.spinnerSearch.getItemAtPosition(position)}"
+                    setListenerToEditText()
+                }
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
