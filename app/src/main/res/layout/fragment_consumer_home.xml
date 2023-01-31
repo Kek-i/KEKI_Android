@@ -116,6 +116,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/iv_home_bg"
                 app:layout_constraintStart_toStartOf="parent"
+                android:visibility="gone"
                 android:layout_marginTop="@dimen/home_first_tag_top">
 
                 <TextView
@@ -165,12 +166,13 @@
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraint_second_home_tag"
+                android:id="@+id/constraint_second_home"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/constraint_first_home"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="@dimen/home_second_recycler_margin_top"
+                android:visibility="gone"
                 >
 
                 <TextView
@@ -219,12 +221,13 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraint_third_home_tag"
+                android:id="@+id/constraint_third_home"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/constraint_second_home_tag"
+                app:layout_constraintTop_toBottomOf="@+id/constraint_second_home"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="@dimen/home_second_recycler_margin_top"
+                android:visibility="gone"
                 >
 
                 <TextView
@@ -234,7 +237,6 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="@dimen/home_tag_start"
-                    android:text="@string/home_tag_two"
                     android:fontFamily="@font/notosanskr_bold"
                     android:includeFontPadding="false"
                     android:textColor="@color/black"
