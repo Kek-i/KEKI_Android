@@ -8,18 +8,17 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Window
 import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import com.codepatissier.keki.config.ApplicationClass.Companion.userInfo
 import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.databinding.DialogLogoutBinding
 import com.codepatissier.keki.src.MainActivity
-import com.codepatissier.keki.src.main.auth.IntroActivity
 import com.codepatissier.keki.src.main.auth.LogoutService
 import com.codepatissier.keki.src.main.auth.LogoutView
+import com.google.firebase.auth.FirebaseAuth
 
 class LogoutDialog(context: Context): Dialog(context), LogoutView {
     private lateinit var binding: DialogLogoutBinding
-
+    private var fbAuth: FirebaseAuth? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -28,6 +27,7 @@ class LogoutDialog(context: Context): Dialog(context), LogoutView {
         setContentView(binding.root)
         window!!.setBackgroundDrawable(ColorDrawable())
         window!!.setDimAmount(0.5f)
+        fbAuth = FirebaseAuth.getInstance();
 
         clickCancelBtn()
         clickLogoutBtn()
@@ -49,7 +49,9 @@ class LogoutDialog(context: Context): Dialog(context), LogoutView {
         this.dismiss()
         //확인 버튼 눌렀을 때 종료 flag
         userInfo.remove("Authorization")
-        userInfo.commit();
+        userInfo.commit()
+
+        fbAuth?.signOut()  //firebase 로그아웃
         val intent = Intent(context, MainActivity::class.java)
         context.startActivity(intent)
         Toast.makeText(context, "로그아웃 완료", Toast.LENGTH_SHORT).show()
