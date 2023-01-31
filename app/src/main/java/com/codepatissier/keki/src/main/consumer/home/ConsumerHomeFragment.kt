@@ -38,8 +38,9 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
 
         showLoadingDialog(requireContext())
         ConsumerHomeService(this).tryGetConsumerHome()
-        //navigateToSearchFirstTag()
-        //navigateToSearchSecondTag()
+        navigateToSearchFirstTag()
+        navigateToSearchSecondTag()
+        navigateToSearchThirdTag()
     }
 
     override fun onGetConsumerHomeSuccess(response: ConsumerHomeResponse) {
@@ -80,19 +81,20 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun homeStoreRecyclerView(response: HomeTagRes, number: Int){
         when(number){
             0 -> {
                 // 이미지는 glide로, 가게 이름은 text로 데이터 구조 수정되면 변경하기!
-                binding.tvFirstHomeTag.text = response.tagName
+                binding.tvFirstHomeTag.text = "# " + response.tagName
                 homeStoreFirstRecyclerView(response)
             }
             1 -> {
-                binding.tvSecondHomeTagSecond.text = response.tagName
+                binding.tvSecondHomeTag.text = "# " + response.tagName
                 homeStoreSecondRecyclerView(response)
             }
             2 -> {
-                binding.tvThirdHomeTagSecond.text = response.tagName
+                binding.tvThirdHomeTag.text = "# " + response.tagName
                 homeStoreThirdRecyclerView(response)
             }
         }
@@ -139,7 +141,7 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
         binding.ivFirstHomeChevronRight.setOnClickListener {
             val intent = Intent(context, ConsumerSearchActivity::class.java)
             // tag 넘기기
-            intent.putExtra("searchTag", binding.tvFirstHomeTag.text)
+            intent.putExtra("searchTag", binding.tvFirstHomeTag.text.replace("# ".toRegex(), ""))
             startActivity(intent)
         }
     }
@@ -149,7 +151,16 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
         binding.ivSecondHomeChevronRight.setOnClickListener {
             val intent = Intent(context, ConsumerSearchActivity::class.java)
             // tag 넘기기
-            intent.putExtra("tag", binding.tvSecondHomeTagSecond.text)
+            intent.putExtra("tag", binding.tvSecondHomeTag.text.replace("# ".toRegex(), ""))
+            startActivity(intent)
+        }
+    }
+
+    // 세번째 태그 서치 화면으로 이동
+    private fun navigateToSearchThirdTag(){
+        binding.ivThirdHomeChevronRight.setOnClickListener {
+            val intent = Intent(context, ConsumerSearchActivity::class.java)
+            intent.putExtra("tag", binding.tvThirdHomeTag.text.replace("# ".toRegex(), ""))
             startActivity(intent)
         }
     }
