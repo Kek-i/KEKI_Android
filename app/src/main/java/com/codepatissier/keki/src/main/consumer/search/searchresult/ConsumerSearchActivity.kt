@@ -29,6 +29,7 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
         super.onCreate(savedInstanceState)
 
         val searchTag = intent.getStringExtra("searchTag")
+        Log.d("서치", "$searchTag")
         if (searchTag == null){
             setListenerToEditText()
         }
@@ -140,8 +141,6 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
             override fun onItemSelected(parent: AdapterView<*>?,view: View,position: Int,id: Long) {
                 sortType = "${binding.spinnerSearch.getItemAtPosition(position)}"
                 Log.d("정렬", sortType)
-                //카테고리 바꾸면 다시 불러오기
-                setListenerToEditText()
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
