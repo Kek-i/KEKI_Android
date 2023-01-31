@@ -1,9 +1,8 @@
-package com.codepatissier.keki.src.main.login
+package com.codepatissier.keki.src.main.auth
 
 import com.codepatissier.keki.config.ApplicationClass
-import com.codepatissier.keki.src.main.login.model.PostLoginRequest
-import com.codepatissier.keki.src.main.login.model.PostSignupRequest
-import com.codepatissier.keki.src.main.login.model.SocialTokenResponse
+import com.codepatissier.keki.src.main.auth.model.PostLoginRequest
+import com.codepatissier.keki.src.main.auth.model.SocialTokenResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

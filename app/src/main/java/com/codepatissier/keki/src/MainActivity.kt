@@ -59,7 +59,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 true
             }
             //selectedItemId = R.id.menu_consumer_main_btm_nav_home
-
         }
     }
 

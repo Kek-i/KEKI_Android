@@ -67,7 +67,11 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
                     "케키와 함께 준비해요!"
         }else{
             // token 있는 경우
-            binding.tvHomeComment.text = response.nickname + "님!\n" + response.calendarTitle + "이 " + response.calendarDate.toString() + "일 남았어요\n 특별한 하루를 준비해요!"
+            if(response.calendarTitle.isNullOrBlank()){
+                binding.tvHomeComment.text = response.nickname + "님!\n" + "당신의 특별한 기념일을\n" + "케키와 함께 준비해요!"
+            }else{
+                binding.tvHomeComment.text = response.nickname + "님!\n" + response.calendarTitle + "이 " + response.calendarDate.toString() + "일 남았어요\n 특별한 하루를 준비해요!"
+            }
         }
 
     }
@@ -85,7 +89,6 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
     private fun homeStoreRecyclerView(response: HomeTagRes, number: Int){
         when(number){
             0 -> {
-                // 이미지는 glide로, 가게 이름은 text로 데이터 구조 수정되면 변경하기!
                 binding.tvFirstHomeTag.text = "# " + response.tagName
                 homeStoreFirstRecyclerView(response)
             }
@@ -105,7 +108,9 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
         binding.recyclerFirstHome.adapter = homeStoreFirstAdapter
 
         for(i in response.homePostRes.indices){
-            homeStoreFirstDatas.apply { add(HomeStoreData(name = response.homePostRes[i].postImgUrl, tagIdx = response.tagIdx, tagName = response.tagName)) }
+            homeStoreFirstDatas.apply { add(HomeStoreData(img = response.homePostRes[i].postImgUrl,
+                postIdx = response.homePostRes[i].postIdx,
+                name = response.homePostRes[i].storeTitle)) }
         }
 
         homeStoreFirstAdapter.homeStoreDatas = homeStoreFirstDatas
@@ -117,7 +122,9 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
         binding.recyclerSecondHome.adapter = homeStoreSecondAdapter
 
         for(i in response.homePostRes.indices){
-            homeStoreSecondDatas.apply { add(HomeStoreData(name = response.homePostRes[i].postImgUrl, tagIdx = response.tagIdx, tagName = response.tagName)) }
+            homeStoreSecondDatas.apply { add(HomeStoreData(img = response.homePostRes[i].postImgUrl,
+                postIdx = response.homePostRes[i].postIdx,
+                name = response.homePostRes[i].storeTitle)) }
         }
 
         homeStoreSecondAdapter.homeStoreDatas = homeStoreSecondDatas
@@ -129,7 +136,9 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
         binding.recyclerThirdHome.adapter = homeStoreThirdAdapter
 
         for(i in response.homePostRes.indices){
-            homeStoreThirdDatas.apply { add(HomeStoreData(name = response.homePostRes[i].postImgUrl, tagIdx = response.tagIdx, tagName = response.tagName)) }
+            homeStoreThirdDatas.apply { add(HomeStoreData(img = response.homePostRes[i].postImgUrl,
+                postIdx = response.homePostRes[i].postIdx,
+                name = response.homePostRes[i].storeTitle)) }
         }
 
         homeStoreThirdAdapter.homeStoreDatas = homeStoreThirdDatas
@@ -151,7 +160,7 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
         binding.ivSecondHomeChevronRight.setOnClickListener {
             val intent = Intent(context, ConsumerSearchActivity::class.java)
             // tag 넘기기
-            intent.putExtra("tag", binding.tvSecondHomeTag.text.replace("# ".toRegex(), ""))
+            intent.putExtra("searchTag", binding.tvSecondHomeTag.text.replace("# ".toRegex(), ""))
             startActivity(intent)
         }
     }
@@ -160,7 +169,7 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
     private fun navigateToSearchThirdTag(){
         binding.ivThirdHomeChevronRight.setOnClickListener {
             val intent = Intent(context, ConsumerSearchActivity::class.java)
-            intent.putExtra("tag", binding.tvThirdHomeTag.text.replace("# ".toRegex(), ""))
+            intent.putExtra("searchTag", binding.tvThirdHomeTag.text.replace("# ".toRegex(), ""))
             startActivity(intent)
         }
     }

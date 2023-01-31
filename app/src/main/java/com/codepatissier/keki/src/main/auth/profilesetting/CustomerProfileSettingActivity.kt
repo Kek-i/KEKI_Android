@@ -1,4 +1,4 @@
-package com.codepatissier.keki.src.main.login.profilesetting
+package com.codepatissier.keki.src.main.auth.profilesetting
 
 import android.annotation.SuppressLint
 import android.content.ContentValues
@@ -9,6 +9,10 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import com.bumptech.glide.Glide
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.ApplicationClass
 import com.codepatissier.keki.config.ApplicationClass.Companion.UserEmail
@@ -16,23 +20,31 @@ import com.codepatissier.keki.config.ApplicationClass.Companion.userInfo
 import com.codepatissier.keki.databinding.ActivityConsumerProfileSettingBinding
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.src.MainActivity
-import com.codepatissier.keki.src.main.login.IntroActivity
-import com.codepatissier.keki.src.main.login.model.PostSignupRequest
-import com.codepatissier.keki.src.main.login.model.SocialTokenResponse
-import com.codepatissier.keki.src.main.login.profilesetting.model.PostNickRequest
-import com.codepatissier.keki.src.main.login.profilesetting.model.PostNickname
+import com.codepatissier.keki.src.main.auth.IntroActivity
+import com.codepatissier.keki.src.main.auth.model.PostSignupRequest
+import com.codepatissier.keki.src.main.auth.model.SocialTokenResponse
+import com.codepatissier.keki.src.main.auth.profilesetting.model.PostNickRequest
+import com.codepatissier.keki.src.main.auth.profilesetting.model.PostNickname
+import com.google.firebase.storage.FirebaseStorage
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
+import java.text.SimpleDateFormat
+import java.util.*
 
 class CustomerProfileSettingActivity : BaseActivity<ActivityConsumerProfileSettingBinding>(
     ActivityConsumerProfileSettingBinding::inflate), SignupView {
     private var nickname: String? = null
     private var profileImg: String? = null
+    private lateinit var launcher : ActivityResultLauncher<Intent>
+    var ProfileUri : Uri ?= null
+    var fbStorage : FirebaseStorage?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        fbStorage = FirebaseStorage.getInstance()
 
         clickConfirm()
         clickBack()
@@ -48,6 +60,7 @@ class CustomerProfileSettingActivity : BaseActivity<ActivityConsumerProfileSetti
             //null값이 아니고, 중복 확인한 값일 경우(중복확인 누르고 값 바꾸는것 방지), 닉네임 조건에 맞을 경우
             if (nickname != null && nickname == binding.etNickname.text.toString()
             ) {
+                firebaseUpload()
                 val postSignupRequest =
                     PostSignupRequest(nickname = nickname!!, profileImg = profileImg)
                 SignupService(this).tryPostUserSignup(postSignupRequest)
@@ -117,12 +130,44 @@ class CustomerProfileSettingActivity : BaseActivity<ActivityConsumerProfileSetti
 
     //프로필 사진 설정하기
     private fun getProfileImg(){
-        binding.ivCameraBackground.setOnClickListener {
-            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
-            startActivityForResult(gallery, 100)
+        binding.cvPhoto.setOnClickListener {
+            var intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.setType("image/*")
+            launcher.launch(intent)
+        }
+
+        // 갤러리에서 가져온 프로필 이미지 부분에 삽입
+        launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result ->
+            if(result.resultCode == RESULT_OK){
+                ProfileUri = result.data?.data
+
+                val defaultImg = R.drawable.ic_customer
+                val imageView = binding.cvPhoto
+
+                Glide.with(this)
+                    .load(ProfileUri)
+                    .placeholder(defaultImg)
+                    .error(defaultImg)
+                    .fallback(defaultImg)
+                    .circleCrop()
+                    .into(imageView)
+            }
         }
     }
 
+    private fun firebaseUpload(){
+        if(ProfileUri != null){
+
+            // 파이어베이스에 사진 업로드
+            var timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+            var profileImgName = "PROFILE_IMAGE_"+timeStamp+"_.png"
+            var storageRef = fbStorage?.reference?.child("profiles/$profileImgName")
+
+            profileImg = "profiles/$profileImgName"
+
+            storageRef?.putFile(ProfileUri!!)
+        }
+    }
 
 
     //사진 저장하기 전에 보여주는 함수

@@ -1,4 +1,4 @@
-package com.codepatissier.keki.src.main.login.profilesetting.model
+package com.codepatissier.keki.src.main.auth.profilesetting.model
 
 data class PostNickname (
     val isSuccess: Boolean,

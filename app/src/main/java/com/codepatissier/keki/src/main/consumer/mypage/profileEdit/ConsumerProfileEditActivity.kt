@@ -3,15 +3,19 @@ package com.codepatissier.keki.src.main.consumer.mypage.profileEdit
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.provider.ContactsContract.CommonDataKinds.Nickname
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.bumptech.glide.Glide
 import com.codepatissier.keki.R
+import com.codepatissier.keki.config.ApplicationClass
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityConsumerProfileEditBinding
+import com.codepatissier.keki.src.main.auth.model.SocialTokenResponse
+import com.codepatissier.keki.src.main.auth.profilesetting.SignupService
+import com.codepatissier.keki.src.main.auth.profilesetting.SignupView
+import com.codepatissier.keki.src.main.auth.profilesetting.model.PostNickRequest
+import com.codepatissier.keki.src.main.auth.profilesetting.model.PostNickname
 import com.codepatissier.keki.src.main.consumer.mypage.ConsumerMyPageService
 import com.codepatissier.keki.src.main.consumer.mypage.ConsumerMyPageView
 import com.codepatissier.keki.src.main.consumer.mypage.model.ConsumerMyPageResponse
@@ -22,24 +26,30 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class ConsumerProfileEditActivity :BaseActivity<ActivityConsumerProfileEditBinding>(ActivityConsumerProfileEditBinding::inflate), ConsumerProfileEditView,
-    ConsumerMyPageView {
+    ConsumerMyPageView, SignupView {
     private lateinit var launcher : ActivityResultLauncher<Intent>
     var ProfileUri : Uri ?= null
     var fbStorage : FirebaseStorage ?= null
-    private lateinit var editImg : String
+    private lateinit var editImg:String
     private lateinit var editNickname : String
+    private var nickname: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         fbStorage = FirebaseStorage.getInstance()
 
+        editNickname = null.toString()
+        editImg = null.toString()
+
         showLoadingDialog(this)
         // 이전 프로필 가져오기
         ConsumerMyPageService(this).tryGetMyPage()
 
+        setTextUserEmail()
         backClicked()
         profileClicked()
-        profileEditClick()
+        clickConfirm()
+        clickDoubleCheck()
 
     }
 
@@ -47,6 +57,11 @@ class ConsumerProfileEditActivity :BaseActivity<ActivityConsumerProfileEditBindi
         binding.ivBack.setOnClickListener{
             finish()
         }
+    }
+
+    //유저 이메일 표시하기
+    private fun setTextUserEmail(){
+        binding.tvUserEmail.text = ApplicationClass.sSharedPreferences.getString(ApplicationClass.UserEmail, null)
     }
 
     private fun profileClicked(){
@@ -79,9 +94,10 @@ class ConsumerProfileEditActivity :BaseActivity<ActivityConsumerProfileEditBindi
     private fun firebaseUpload(){
         if(ProfileUri != null){
 
-            // 파이어베이스 이전 사진 삭제
-            fbStorage?.reference?.child(editImg)?.delete()
-
+            if(!editImg.equals(null)){
+                // 파이어베이스 이전 사진 삭제
+                fbStorage?.reference?.child(editImg)?.delete()
+            }
             // 파이어베이스에 사진 업로드
             var timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
             var profileImgName = "PROFILE_IMAGE_"+timeStamp+"_.png"
@@ -105,19 +121,29 @@ class ConsumerProfileEditActivity :BaseActivity<ActivityConsumerProfileEditBindi
     }
 
     // 완료 버튼 클릭시 서버에 patch
-    private fun profileEditClick(){
+    private fun clickConfirm(){
         binding.tvEdit.setOnClickListener{
-            firebaseUpload()
-
-
-            editNickname = binding.etNickname.text.toString()
-
-
-            // 서버에 편집한 닉네임, 사진 보내기.
-            var consumerProfileEditBody = ConsumerProfileEditBody(editNickname, editImg)
-            showLoadingDialog(this)
-            ConsumerProfileEditService(this).tryPatchProfile(consumerProfileEditBody)
+            //null값이 아니고, 중복 확인한 값일 경우(중복확인 누르고 값 바꾸는것 방지), 닉네임 조건에 맞을 경우
+            if (nickname != null && nickname == binding.etNickname.text.toString() ) {
+                profileEdit()
+            }else if(nickname == null && editNickname == binding.etNickname.text.toString()){
+                profileEdit()
+            } else if (nickname == null) {
+                binding.tvNamingResult.setText(R.string.edit_rule_null)
+                binding.tvNamingResult.setTextColor(resources.getColor(R.color.darkish_pink))
+            }
         }
+    }
+
+    // 수정된 프로필 서버에 보내기
+    private fun profileEdit(){
+        firebaseUpload()
+
+        editNickname = binding.etNickname.text.toString()
+
+        var consumerProfileEditBody = ConsumerProfileEditBody(editNickname, editImg)
+        showLoadingDialog(this)
+        ConsumerProfileEditService(this).tryPatchProfile(consumerProfileEditBody)
     }
 
     // 프로필 편집 서버 patch 성공
@@ -139,7 +165,13 @@ class ConsumerProfileEditActivity :BaseActivity<ActivityConsumerProfileEditBindi
         dismissLoadingDialog()
 
         // 프로필 이미지 또는 닉네임 중 한가지만 수정 시 null 값 뜨지 않도록 변수로 이전 프로필 또는 닉네임 가져오기
-        editImg = response.result.profileImg
+        if(response.result.profileImg != null){
+            editImg = response.result.profileImg
+        }
+
+        if(response.result.nickname != null){
+            editNickname = response.result.nickname
+        }
 
         // 이전 닉네임 삽입
         binding.etNickname.setText(response.result.nickname)
@@ -168,5 +200,44 @@ class ConsumerProfileEditActivity :BaseActivity<ActivityConsumerProfileEditBindi
     override fun onGetMyPageFailure(message: String) {
         dismissLoadingDialog()
         showCustomToast("오류 : $message")
+    }
+
+    //중복확인 버튼 클릭
+    private fun clickDoubleCheck() {
+        binding.btnOverlap.setOnClickListener {
+            nickname = null     //새로 중복 확인 누르면 기존 시도 닉네임 초기화
+            val tryNick = binding.etNickname.text.toString()
+            if(isValidNickname(tryNick)){
+                val postNickRequest = PostNickRequest(nickname = tryNick)  //새로운 닉네임
+                SignupService(this).tryPostCheckNick(postNickRequest)
+            }
+            else{
+                binding.tvNamingResult.setText(R.string.edit_rule_wrong)
+                binding.tvNamingResult.setTextColor(resources.getColor(R.color.darkish_pink))
+            }
+        }
+    }
+
+    //닉네임 조건
+    fun isValidNickname(nickname: String?): Boolean {
+        val trimmedNickname = nickname?.trim().toString()
+        val exp = Regex("^[가-힣ㄱ-ㅎa-zA-Z0-9]{2,10}\$")
+        return !trimmedNickname.isNullOrEmpty() && exp.matches(trimmedNickname)
+    }
+
+    // 닉네임 중복확인
+    override fun onPostNickSuccess(response: PostNickname) {
+        if (response.isSuccess || editNickname == binding.etNickname.text.toString()) {
+            binding.tvNamingResult.setText(R.string.edit_rule_pass)
+            nickname = binding.etNickname.text.toString()   //중복이 아닐 경우 닉네임 변수에 넣기
+        } else {
+            binding.tvNamingResult.setTextColor(resources.getColor(R.color.darkish_pink))
+            binding.tvNamingResult.setText(R.string.edit_rule_false)
+        }
+    }
+
+    // 로그인 성공시라 사용 x
+    override fun onPostSignupSuccess(response: SocialTokenResponse) {
+        TODO("Not yet implemented")
     }
 }

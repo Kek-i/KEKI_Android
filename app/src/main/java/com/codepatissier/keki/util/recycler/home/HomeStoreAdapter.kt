@@ -9,6 +9,7 @@ import androidx.cardview.widget.CardView
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.bumptech.glide.Glide
 import com.codepatissier.keki.databinding.ItemHomeStoreRecyclerBinding
 import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedActivity
 
@@ -38,13 +39,11 @@ class HomeStoreAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
         fun bind(item: HomeStoreData){
             name.text = item.name
 
-            /*
             Glide.with(context!!)
                 .load(item.img)
                 .centerCrop()
                 .into(img)
 
-             */
 
             cardView.bringToFront()
 
