@@ -1,6 +1,6 @@
-package com.codepatissier.keki.src.main.login
+package com.codepatissier.keki.src.main.auth
 
-import com.codepatissier.keki.src.main.login.model.SocialTokenResponse
+import com.codepatissier.keki.src.main.auth.model.SocialTokenResponse
 
 interface LoginView {
     fun onGetUserInfoSuccess(response: SocialTokenResponse)

@@ -4,12 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.codepatissier.keki.R
-import com.codepatissier.keki.config.ApplicationClass
 import com.codepatissier.keki.config.BaseFragment
-import com.codepatissier.keki.databinding.FragmentConsumerMyPageBinding
 import com.codepatissier.keki.databinding.FragmentNonConsumerMyPageBinding
 import com.codepatissier.keki.src.main.consumer.mypage.notice.NoticeActivity
-import com.codepatissier.keki.src.main.login.LoginActivity
+import com.codepatissier.keki.src.main.auth.LoginActivity
 
 class NonConsumerMyPageFragment : BaseFragment<FragmentNonConsumerMyPageBinding>
     (FragmentNonConsumerMyPageBinding::bind, R.layout.fragment_non_consumer_my_page) {

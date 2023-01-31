@@ -39,19 +39,19 @@
 
         </activity>
         <activity
-            android:name="com.codepatissier.keki.src.main.login.profilesetting.CustomerProfileSettingActivity"
+            android:name="com.codepatissier.keki.src.main.auth.profilesetting.CustomerProfileSettingActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name="com.codepatissier.keki.src.main.login.IntroActivity"
+            android:name="com.codepatissier.keki.src.main.auth.IntroActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name="com.codepatissier.keki.src.main.login.LoginActivity"
+            android:name="com.codepatissier.keki.src.main.auth.LoginActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
