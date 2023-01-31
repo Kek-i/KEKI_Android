@@ -3,8 +3,6 @@ package com.codepatissier.keki.src.main.consumer.mypage.profileEdit
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.provider.ContactsContract.CommonDataKinds.Nickname
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -12,17 +10,16 @@ import com.bumptech.glide.Glide
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityConsumerProfileEditBinding
+import com.codepatissier.keki.src.main.auth.model.SocialTokenResponse
+import com.codepatissier.keki.src.main.auth.profilesetting.SignupService
+import com.codepatissier.keki.src.main.auth.profilesetting.SignupView
+import com.codepatissier.keki.src.main.auth.profilesetting.model.PostNickRequest
+import com.codepatissier.keki.src.main.auth.profilesetting.model.PostNickname
 import com.codepatissier.keki.src.main.consumer.mypage.ConsumerMyPageService
 import com.codepatissier.keki.src.main.consumer.mypage.ConsumerMyPageView
 import com.codepatissier.keki.src.main.consumer.mypage.model.ConsumerMyPageResponse
 import com.codepatissier.keki.src.main.consumer.mypage.profileEdit.model.ConsumerProfileEditBody
 import com.codepatissier.keki.src.main.consumer.mypage.profileEdit.model.ConsumerProfileEditResponse
-import com.codepatissier.keki.src.main.login.model.PostSignupRequest
-import com.codepatissier.keki.src.main.login.model.SocialTokenResponse
-import com.codepatissier.keki.src.main.login.profilesetting.SignupService
-import com.codepatissier.keki.src.main.login.profilesetting.SignupView
-import com.codepatissier.keki.src.main.login.profilesetting.model.PostNickRequest
-import com.codepatissier.keki.src.main.login.profilesetting.model.PostNickname
 import com.google.firebase.storage.FirebaseStorage
 import java.text.SimpleDateFormat
 import java.util.*
@@ -41,7 +38,7 @@ class ConsumerProfileEditActivity :BaseActivity<ActivityConsumerProfileEditBindi
         fbStorage = FirebaseStorage.getInstance()
 
         editNickname = null.toString()
-        editNickname = null.toString()
+        editImg = null.toString()
 
         showLoadingDialog(this)
         // 이전 프로필 가져오기
