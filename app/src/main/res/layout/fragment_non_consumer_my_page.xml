@@ -11,7 +11,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:overScrollMode="never">
 
         <TextView
             android:id="@+id/tv_main_text"
@@ -126,7 +127,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/my_page_box_inner_left"
-                    android:layout_marginTop="@dimen/my_page_box_first_inner_top"
+                    android:layout_marginTop="@dimen/my_page_box_first_text_inner_top"
                     android:fontFamily="@font/notosanskr_regular"
                     android:includeFontPadding="false"
                     android:text="@string/my_page_notice"
@@ -138,7 +139,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/my_page_box_first_inner_top"
+                    android:layout_marginTop="@dimen/my_page_box_first_chevron_inner_top"
                     android:layout_marginRight="@dimen/my_page_box_inner_right"
                     android:src="@drawable/ic_chevron_right"
                     app:layout_constraintEnd_toEndOf="parent"

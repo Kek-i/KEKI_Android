@@ -13,7 +13,8 @@
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_main_text">
+        app:layout_constraintTop_toBottomOf="@id/tv_main_text"
+        android:overScrollMode="never">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -144,7 +145,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/my_page_box_inner_left"
-                        android:layout_marginTop="@dimen/my_page_box_first_inner_top"
+                        android:layout_marginTop="@dimen/my_page_box_first_text_inner_top"
                         android:fontFamily="@font/notosanskr_regular"
                         android:includeFontPadding="false"
                         android:text="@string/my_page_profile_edit"
@@ -156,9 +157,11 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/my_page_box_first_inner_top"
+                        android:layout_marginTop="@dimen/my_page_box_first_chevron_inner_top"
                         android:layout_marginRight="@dimen/my_page_box_inner_right"
                         android:src="@drawable/ic_chevron_right"
+                        android:background="@android:color/transparent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -175,49 +178,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/csl_profile_edit" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/csl_signup"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/v_line">
-                    <TextView
-                        android:id="@+id/tv_signup"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/my_page_box_inner_left"
-                        android:layout_marginTop="@dimen/my_page_box_inner_top"
-                        android:fontFamily="@font/notosanskr_regular"
-                        android:includeFontPadding="false"
-                        android:text="@string/my_page_signup"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/my_page_text_size"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"                        />
-
-                    <ImageView
-                        android:id="@+id/imageView13"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/my_page_box_first_inner_top"
-                        android:layout_marginRight="@dimen/my_page_box_inner_right"
-                        android:src="@drawable/ic_chevron_right"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <View
-                    android:id="@+id/v_line2"
-                    android:layout_width="@dimen/my_page_line_width"
-                    android:layout_height="@dimen/my_page_line_height"
-                    android:layout_marginLeft="@dimen/my_page_line_left_right"
-                    android:layout_marginTop="@dimen/my_page_line_top"
-                    android:layout_marginRight="@dimen/my_page_line_left_right"
-                    android:background="@color/my_page_line"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/csl_signup" />
-
                 <TextView
                     android:id="@+id/tv_logout"
                     android:layout_width="@dimen/my_page_box_width"
@@ -231,10 +191,10 @@
                     android:textSize="@dimen/my_page_text_size"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/v_line2" />
+                    app:layout_constraintTop_toBottomOf="@id/v_line" />
 
                 <View
-                    android:id="@+id/v_line3"
+                    android:id="@+id/v_line2"
                     android:layout_width="@dimen/my_page_line_width"
                     android:layout_height="@dimen/my_page_line_height"
                     android:layout_marginLeft="@dimen/my_page_line_left_right"
@@ -249,16 +209,18 @@
                     android:id="@+id/tv_withdrawal"
                     android:layout_width="@dimen/my_page_box_width"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/my_page_box_inner_top"
                     android:layout_marginLeft="@dimen/my_page_box_inner_left"
+                    android:layout_marginTop="@dimen/my_page_box_inner_top"
+                    android:layout_marginBottom="18dp"
                     android:fontFamily="@font/notosanskr_regular"
                     android:includeFontPadding="false"
                     android:text="@string/my_page_widthdrawal"
                     android:textColor="@color/black"
                     android:textSize="@dimen/my_page_text_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/v_line3" />
+                    app:layout_constraintTop_toBottomOf="@id/v_line2" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
@@ -353,7 +315,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/my_page_box_inner_left"
-                        android:layout_marginTop="@dimen/my_page_box_first_inner_top"
+                        android:layout_marginTop="@dimen/my_page_box_first_text_inner_top"
                         android:fontFamily="@font/notosanskr_regular"
                         android:includeFontPadding="false"
                         android:text="@string/my_page_notice"
@@ -365,9 +327,10 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/my_page_box_first_inner_top"
+                        android:layout_marginTop="@dimen/my_page_box_first_chevron_inner_top"
                         android:layout_marginRight="@dimen/my_page_box_inner_right"
                         android:src="@drawable/ic_chevron_right"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
