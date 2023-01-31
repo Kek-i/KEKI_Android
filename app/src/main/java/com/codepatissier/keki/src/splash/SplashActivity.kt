@@ -51,15 +51,15 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
 //
 //        }
 
+        // 구매자 토큰 임의 저장
+        editor.putString(Authorization, "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWR4IjoyLCJzdWIiOiIyIiwiZXhwIjoxNjc1NjkzODU4fQ.UHvkEhWXzpyVt7FfyLT5fYiifEm42yJmhKi1ru4zqk0")
 
-        //문제 생기면 위에꺼 다 주석처리 하고 밑에 부분 주석 풀어서 사용해주세요!!
+        //editor.putString(Authorization,null)
 
+        editor.commit()
 
-////        구매자 토큰 임의 저장
-//        userInfo.putString(Authorization, "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWR4IjoyLCJzdWIiOiIyIiwiZXhwIjoxNjc1MDg2NTAwfQ.oKxrAAGw6bv0xxwo-Dq6Dms057iZgrctIi3NQkJYVi0")
-//        userInfo.commit()
-//
-//
+     
+
 ///*
 //        자동 로그인 X : 스플래시 -> 비로그인 홈화면 (고정멘트 + 랜덤 해시태그)
 //        자동 로그인 O : 스플래시 -> 로그인 홈화면

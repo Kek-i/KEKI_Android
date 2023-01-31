@@ -12,7 +12,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.codepatissier.keki.R
 import com.codepatissier.keki.databinding.ItemStoreMainRecyclerBinding
-import com.codepatissier.keki.src.main.consumer.store.productfeed.ConsumerStoreProductDetailFeedActivity
+import com.codepatissier.keki.src.main.consumer.store.productfeed.productdetail.ConsumerStoreProductDetailFeedActivity
 
 class StoreMainProductAdapter(val context: FragmentActivity?): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -46,7 +46,7 @@ class StoreMainProductAdapter(val context: FragmentActivity?): RecyclerView.Adap
             itemView.setOnClickListener {
                 var intent = Intent(itemView.context,  ConsumerStoreProductDetailFeedActivity::class.java)
                 // 디저트번호, 스토어 번호 StoreMainProductData 객체로 detailFeed에 넘기기
-                intent.putExtra("StoreMainProductData", item)
+                intent.putExtra("StoreMainProductData", item.dessertIdx)
                 itemView.context.startActivity(intent)
             }
         }

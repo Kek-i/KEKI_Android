@@ -128,18 +128,25 @@
         </HorizontalScrollView>
 
         <!--최근 본 케이크-->
-        <TextView
-            android:id="@+id/tv_recent_seen"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ll_empty_seen"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/main_search_margin_side"
-            android:layout_marginTop="@dimen/tv_recent_seen_marginTop"
-            android:text="@string/tv_recent_view"
-            android:textColor="@color/black"
-            android:textSize="@dimen/search_title_textSize"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sv_popular_search" />
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/sv_popular_search"
+            android:layout_marginTop="@dimen/tv_recent_seen_marginTop">
+
+            <TextView
+                android:id="@+id/tv_recent_seen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/main_search_margin_side"
+                android:text="@string/tv_recent_view"
+                android:textColor="@color/black"
+                android:textSize="@dimen/search_title_textSize"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         <HorizontalScrollView
             android:id="@+id/sv_recent_seen"
@@ -163,6 +170,7 @@
                 tools:listitem="@layout/item_recent_seen_cake_recycler" />
 
         </HorizontalScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

@@ -1,7 +1,6 @@
 package com.codepatissier.keki.src.main.consumer.mypage.notice
 
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityNoticeBinding
 import com.codepatissier.keki.src.main.consumer.mypage.notice.model.ConsumerNoticeResponse

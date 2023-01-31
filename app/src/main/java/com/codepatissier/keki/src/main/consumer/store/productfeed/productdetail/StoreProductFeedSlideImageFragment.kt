@@ -1,4 +1,4 @@
-package com.codepatissier.keki.src.main.consumer.store.productfeed
+package com.codepatissier.keki.src.main.consumer.store.productfeed.productdetail
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle

@@ -98,6 +98,7 @@ class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>
             .fallback(defaultImg)
             .circleCrop()
             .into(imageView)
+
         setViewMore(binding.tvStoreDetail, binding.tvViewMore)
 
         // 버튼 클릭시 주문링크로 이동

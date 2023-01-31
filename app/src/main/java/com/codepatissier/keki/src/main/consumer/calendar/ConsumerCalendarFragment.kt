@@ -3,11 +3,14 @@ package com.codepatissier.keki.src.main.consumer.calendar
 import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
+import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.*
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseFragment
+import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.databinding.FragmentConsumerCalendarBinding
 import com.codepatissier.keki.src.main.consumer.calendar.calendaradd.ConsumerCalendarAddActivity
 import com.codepatissier.keki.src.main.consumer.calendar.model.ConsumerCalendarListResponse
@@ -60,6 +63,22 @@ class ConsumerCalendarFragment : BaseFragment<FragmentConsumerCalendarBinding>
         showCustomToast("오류: $message")
     }
 
+    override fun onDeleteCalendarSuccess(response: BaseResponse) {
+        dismissLoadingDialog()
+
+        calendarAnniversaryAdapter.isSwipedItemList.removeLast()
+        calendarAnniversaryAdapter.removeShownLayouts(calendarAnniversaryAdapter.itemBinding.swipeLayout)
+        calendarAnniversaryAdapter.closeItem(calendarAnniversaryAdapter.deletedPosition)
+        binding.fabCalendarAdd.visibility = View.VISIBLE
+        calendarAnniversaryAdapter.dataList.removeAt(calendarAnniversaryAdapter.deletedPosition)
+        calendarAnniversaryAdapter.notifyDataSetChanged()
+    }
+
+    override fun onDeleteCalendarFailure(message: String) {
+        dismissLoadingDialog()
+        showCustomToast("오류: $message")
+    }
+
     private fun setCalendarAnniversaryRecyclerView(response: ConsumerCalendarListResponse) {
         calendarAnniversaryDataList.clear()
         for(i in response.result.indices) {
@@ -73,7 +92,7 @@ class ConsumerCalendarFragment : BaseFragment<FragmentConsumerCalendarBinding>
             }
         }
         calendarAnniversaryAdapter =
-            CalendarAnniversaryAdapter(calendarAnniversaryDataList, binding)
+            CalendarAnniversaryAdapter(calendarAnniversaryDataList, binding, this)
         calendarAnniversaryAdapter.mode = Attributes.Mode.Single
         binding.rvCalendarAnniversary.adapter = calendarAnniversaryAdapter
     }
