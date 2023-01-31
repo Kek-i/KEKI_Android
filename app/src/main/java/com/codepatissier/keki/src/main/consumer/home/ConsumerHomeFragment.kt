@@ -110,7 +110,7 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
         for(i in response.homePostRes.indices){
             homeStoreFirstDatas.apply { add(HomeStoreData(img = response.homePostRes[i].postImgUrl,
                 postIdx = response.homePostRes[i].postIdx,
-                name = response.homePostRes[i].storeTitle)) }
+                name = response.homePostRes[i].storeTitle, tagIdx = response.tagIdx, tagName = response.tagName)) }
         }
 
         homeStoreFirstAdapter.homeStoreDatas = homeStoreFirstDatas
@@ -124,7 +124,7 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
         for(i in response.homePostRes.indices){
             homeStoreSecondDatas.apply { add(HomeStoreData(img = response.homePostRes[i].postImgUrl,
                 postIdx = response.homePostRes[i].postIdx,
-                name = response.homePostRes[i].storeTitle)) }
+                name = response.homePostRes[i].storeTitle, tagIdx = response.tagIdx, tagName = response.tagName)) }
         }
 
         homeStoreSecondAdapter.homeStoreDatas = homeStoreSecondDatas
@@ -138,7 +138,7 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
         for(i in response.homePostRes.indices){
             homeStoreThirdDatas.apply { add(HomeStoreData(img = response.homePostRes[i].postImgUrl,
                 postIdx = response.homePostRes[i].postIdx,
-                name = response.homePostRes[i].storeTitle)) }
+                name = response.homePostRes[i].storeTitle, tagIdx = response.tagIdx, tagName = response.tagName)) }
         }
 
         homeStoreThirdAdapter.homeStoreDatas = homeStoreThirdDatas
