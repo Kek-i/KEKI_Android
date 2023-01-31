@@ -28,6 +28,7 @@
         app:layout_constraintStart_toEndOf="@id/iv_back"
         app:layout_constraintTop_toTopOf="parent"/>
     <TextView
+        android:id="@+id/tv_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:includeFontPadding="false"
@@ -45,7 +46,7 @@
         android:id="@+id/iv_profile"
         android:layout_width="@dimen/my_page_profile_edit_iv_profile_size"
         android:layout_height="@dimen/my_page_profile_edit_iv_profile_size"
-        android:src="@drawable/bg_oval_off_white"
+        android:background="@drawable/bg_oval_off_white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_main_text"
