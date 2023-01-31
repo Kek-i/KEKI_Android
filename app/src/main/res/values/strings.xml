@@ -30,7 +30,7 @@
     <string name="login_customer">구매자</string>
     <string name="login_seller">판매자</string>
     <string name="tv_edit_Profile_title">프로필 설정</string>
-    <string name="tv_edit_Profile_rule">한글,영어,숫자만 사용할 수 있어요.(최대 10자)</string>
+    <string name="tv_edit_Profile_rule">한글, 영어, 숫자만 사용할 수 있어요. (최대 10자)</string>
     <string name="edit_rule_pass">사용 가능한 닉네임입니다</string>
     <string name="edit_rule_false">이미 사용 중인 닉네임입니다.</string>
     <string name="edit_rule_null">사용 가능한 닉네임을 입력해주세요.</string>
@@ -137,7 +137,7 @@
     <!-- my page profile edit -->
     <string name="my_page_profile_edit_main">프로필 편집</string>
     <string name="my_page_profile_edit_complete">완료</string>
-    <string name="my_page_profile_nick_name_condition">한글,영어,숫자만 사용할 수 있어요.(최대10자)</string>
+    <string name="my_page_profile_nick_name_condition">한글, 영어, 숫자만 사용할 수 있어요. (최대 10자)</string>
     <string name="my_page_profile_nick_name_hint">닉네임을 입력해주세요.</string>
     <string name="my_page_profile_nick_name_overlap">중복확인</string>
 

@@ -509,8 +509,9 @@
     <dimen name="my_page_profile_edit_tv_nickname_condition_right">10dp</dimen>
     <dimen name="my_page_profile_edit_tv_nickname_size">16sp</dimen>
     <dimen name="my_page_profile_edit_tv_nickname_width">0dp</dimen>
-    <dimen name="my_page_profile_edit_tv_nickname_height">45dp</dimen>
-    <dimen name="my_page_profile_edit_tv_nickname_padding_left">20dp</dimen>
+    <dimen name="my_page_profile_edit_tv_nickname_height">24dp</dimen>
+    <dimen name="my_page_profile_edit_bg_nickname_height">45dp</dimen>
+    <dimen name="my_page_profile_edit_et_nickname_margin_horizontal">20dp</dimen>
     <dimen name="my_page_profile_edit_tv_nickname_top">10dp</dimen>
     <dimen name="my_page_profile_edit_tv_overlap_width">84dp</dimen>
     <dimen name="my_page_profile_edit_tv_overlap_right">16dp</dimen>
