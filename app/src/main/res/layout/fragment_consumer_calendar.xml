@@ -112,6 +112,7 @@
             app:fabCustomSize="@dimen/calendar_add_fab_size"
             app:borderWidth="@dimen/calendar_add_fab_border_width"
             android:src="@drawable/ic_calendar_add"
+            app:tint="@null"
             android:backgroundTint="@color/pinkish"
             />
 

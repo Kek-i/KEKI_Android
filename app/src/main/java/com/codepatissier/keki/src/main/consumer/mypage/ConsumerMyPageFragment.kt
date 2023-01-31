@@ -1,6 +1,7 @@
 package com.codepatissier.keki.src.main.consumer.mypage
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -12,6 +13,9 @@ import com.codepatissier.keki.src.main.consumer.mypage.model.ConsumerMyPageRespo
 import com.codepatissier.keki.src.main.consumer.mypage.notice.NoticeActivity
 import com.codepatissier.keki.src.main.consumer.mypage.profileEdit.ConsumerProfileEditActivity
 import com.google.firebase.storage.FirebaseStorage
+import com.codepatissier.keki.util.dialog.LogoutDialog
+import com.codepatissier.keki.util.dialog.WithdrawalDialog
+import com.codepatissier.keki.util.viewpager.storemain.StoreMainDialog
 
 class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
     (FragmentConsumerMyPageBinding::bind, R.layout.fragment_consumer_my_page),ConsumerMyPageView {
@@ -22,11 +26,14 @@ class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
         fbStorage = FirebaseStorage.getInstance()
 
         profileEditClicked()
-        conditionClicked()
         noticeClicked()
 
         showLoadingDialog(requireContext())
         ConsumerMyPageService(this).tryGetMyPage()
+        logoutClicked()
+        withdrawalClicked()
+        conditionClicked()
+        personalInfoClicked()
     }
 
     private fun profileEditClicked(){
@@ -35,15 +42,24 @@ class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
             startActivity(intent)
         }
     }
+
+    private fun noticeClicked(){
+        binding.cslNotice.setOnClickListener{
+            val intent = Intent(context, NoticeActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
     private fun conditionClicked(){
         binding.tvCondition.setOnClickListener{
             val intent = Intent(context, ConsumerConditionActivity::class.java)
             startActivity(intent)
         }
     }
-    private fun noticeClicked(){
-        binding.cslNotice.setOnClickListener{
-            val intent = Intent(context, NoticeActivity::class.java)
+
+    private fun personalInfoClicked(){
+        binding.tvPersonalInfo.setOnClickListener{
+            val intent = Intent(context, ConsumerPersonalInfoActivity::class.java)
             startActivity(intent)
         }
     }
@@ -82,6 +98,17 @@ class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
     override fun onResume() {
         super.onResume()
         ConsumerMyPageService(this).tryGetMyPage()
+
+private fun logoutClicked() {
+        binding.tvLogout.setOnClickListener {
+            LogoutDialog(requireContext()).show()
+        }
+    }
+
+    private fun withdrawalClicked() {
+        binding.tvWithdrawal.setOnClickListener {
+            WithdrawalDialog(requireContext()).show()
+        }
     }
 
 }

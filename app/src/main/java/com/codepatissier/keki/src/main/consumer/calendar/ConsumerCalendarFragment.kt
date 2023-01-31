@@ -3,17 +3,21 @@ package com.codepatissier.keki.src.main.consumer.calendar
 import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
+import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ItemDecoration
-import androidx.recyclerview.widget.RecyclerView.OnScrollListener
+import androidx.recyclerview.widget.RecyclerView.*
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseFragment
+import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.databinding.FragmentConsumerCalendarBinding
+import com.codepatissier.keki.src.main.consumer.calendar.calendaradd.ConsumerCalendarAddActivity
 import com.codepatissier.keki.src.main.consumer.calendar.model.ConsumerCalendarListResponse
 import com.codepatissier.keki.util.recycler.calendar.CalendarAnniversaryAdapter
 import com.codepatissier.keki.util.recycler.calendar.CalendarAnniversaryData
 import com.daimajia.swipe.util.Attributes
+import kotlin.math.roundToInt
 
 
 class ConsumerCalendarFragment : BaseFragment<FragmentConsumerCalendarBinding>
@@ -25,6 +29,26 @@ class ConsumerCalendarFragment : BaseFragment<FragmentConsumerCalendarBinding>
         super.onViewCreated(view, savedInstanceState)
 
         setClickListenerToFab()
+        initRecyclerviewSetting()
+    }
+
+    // recyclerview 초기 설정
+    private fun initRecyclerviewSetting() {
+        binding.rvCalendarAnniversary.addItemDecoration(RecyclerViewDecoration(changeDP(11)))
+        binding.rvCalendarAnniversary.addOnScrollListener(object : OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (newState == SCROLL_STATE_DRAGGING)
+                    calendarAnniversaryAdapter.closeAllItems()
+            }
+        })
+        binding.rvCalendarAnniversary.setEmptyView(binding.layoutEmptyCalendar)
+        binding.rvCalendarAnniversary.setFullView(binding.ivCalendarCherry)
+    }
+
+    override fun onResume() {
+        super.onResume()
+
         showLoadingDialog(requireContext())
         ConsumerCalendarService(this).tryGetCalendarList()
     }
@@ -39,7 +63,24 @@ class ConsumerCalendarFragment : BaseFragment<FragmentConsumerCalendarBinding>
         showCustomToast("오류: $message")
     }
 
+    override fun onDeleteCalendarSuccess(response: BaseResponse) {
+        dismissLoadingDialog()
+
+        calendarAnniversaryAdapter.isSwipedItemList.removeLast()
+        calendarAnniversaryAdapter.removeShownLayouts(calendarAnniversaryAdapter.itemBinding.swipeLayout)
+        calendarAnniversaryAdapter.closeItem(calendarAnniversaryAdapter.deletedPosition)
+        binding.fabCalendarAdd.visibility = View.VISIBLE
+        calendarAnniversaryAdapter.dataList.removeAt(calendarAnniversaryAdapter.deletedPosition)
+        calendarAnniversaryAdapter.notifyDataSetChanged()
+    }
+
+    override fun onDeleteCalendarFailure(message: String) {
+        dismissLoadingDialog()
+        showCustomToast("오류: $message")
+    }
+
     private fun setCalendarAnniversaryRecyclerView(response: ConsumerCalendarListResponse) {
+        calendarAnniversaryDataList.clear()
         for(i in response.result.indices) {
             calendarAnniversaryDataList.apply {
                 add(CalendarAnniversaryData(
@@ -50,21 +91,10 @@ class ConsumerCalendarFragment : BaseFragment<FragmentConsumerCalendarBinding>
                 ))
             }
         }
-
-        binding.rvCalendarAnniversary.addItemDecoration(RecyclerViewDecoration(20))
-        binding.rvCalendarAnniversary.setEmptyView(binding.layoutEmptyCalendar)
-        binding.rvCalendarAnniversary.setFullView(binding.ivCalendarCherry)
-        calendarAnniversaryAdapter = CalendarAnniversaryAdapter(calendarAnniversaryDataList, binding)
-        binding.rvCalendarAnniversary.addOnScrollListener(object : OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
-                if(newState == RecyclerView.SCROLL_STATE_DRAGGING)
-                    calendarAnniversaryAdapter.closeAllItems()
-            }
-        })
+        calendarAnniversaryAdapter =
+            CalendarAnniversaryAdapter(calendarAnniversaryDataList, binding, this)
         calendarAnniversaryAdapter.mode = Attributes.Mode.Single
         binding.rvCalendarAnniversary.adapter = calendarAnniversaryAdapter
-        calendarAnniversaryAdapter.notifyDataSetChanged()
     }
 
     class RecyclerViewDecoration(private val divHeight: Int) : ItemDecoration() {
@@ -72,11 +102,16 @@ class ConsumerCalendarFragment : BaseFragment<FragmentConsumerCalendarBinding>
             outRect: Rect,
             view: View,
             parent: RecyclerView,
-            state: RecyclerView.State
+            state: State
         ) {
             super.getItemOffsets(outRect, view, parent, state)
             outRect.bottom = divHeight
         }
+    }
+
+    private fun changeDP(value: Int): Int {
+        val displayMetrics = resources.displayMetrics
+        return (value * displayMetrics.density).roundToInt()
     }
 
     private fun setClickListenerToFab() {

@@ -1,12 +1,15 @@
 package com.codepatissier.keki.util.recycler.calendar
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.codepatissier.keki.databinding.FragmentConsumerCalendarBinding
 import com.codepatissier.keki.databinding.ItemCalendarAnniversaryRecyclerBinding
+import com.codepatissier.keki.src.main.consumer.calendar.ConsumerCalendarService
+import com.codepatissier.keki.src.main.consumer.calendar.ConsumerCalendarView
 import com.codepatissier.keki.src.main.consumer.calendar.calendardetail.ConsumerCalendarDetailActivity
 import com.daimajia.swipe.SimpleSwipeListener
 import com.daimajia.swipe.SwipeLayout
@@ -14,18 +17,19 @@ import com.daimajia.swipe.adapters.RecyclerSwipeAdapter
 
 
 class CalendarAnniversaryAdapter(
-    private val dataList: MutableList<CalendarAnniversaryData>,
-    fragmentBinding: FragmentConsumerCalendarBinding
+    val dataList: MutableList<CalendarAnniversaryData>,
+    private val fragmentBinding: FragmentConsumerCalendarBinding,
+    private val consumerCalendarView: ConsumerCalendarView
 ):
     RecyclerSwipeAdapter<CalendarAnniversaryAdapter.CalendarAnniversaryViewHolder>() {
-    private lateinit var itemBinding: ItemCalendarAnniversaryRecyclerBinding
-    private val fragmentBinding = fragmentBinding
+    lateinit var itemBinding: ItemCalendarAnniversaryRecyclerBinding
     // 아이템이 스와이프됐는지 여부 List
-    private var isSwipedItemList: MutableList<Boolean> = MutableList(dataList.size) { false }
+    var isSwipedItemList: MutableList<Boolean> = MutableList(dataList.size) { false }
     // SwipeListener에서 스와이프 시 플로팅 버튼 안 보이게 하기 위한 변수
     private var swipedLayout: SwipeLayout? = null // 스와이프된 가장 최근 레이아웃
     private var isOpenLayout: Boolean = false // var swipedLayout이 open인지 여부
-
+    // 삭제된 datalist position
+    var deletedPosition = -1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarAnniversaryViewHolder {
         val itemBinding = ItemCalendarAnniversaryRecyclerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -38,8 +42,8 @@ class CalendarAnniversaryAdapter(
         mItemManger.bindView(holder.swipeLayout, position)
 
         holder.bind(dataList[position])
-        holder.setClickListenerToDeleteItem(dataList, isSwipedItemList, position, this)
-        holder.setClickListenerToViewDetail(dataList[position], isSwipedItemList, this)
+        holder.setClickListenerToDeleteItem(position)
+        holder.setClickListenerToViewDetail(dataList[position], this)
         holder.swipeLayout.addSwipeListener(object : SimpleSwipeListener() {
             override fun onOpen(layout: SwipeLayout?) {
                 fragmentBinding.fabCalendarAdd.visibility = View.GONE
@@ -82,7 +86,7 @@ class CalendarAnniversaryAdapter(
         fragmentBinding.fabCalendarAdd.visibility = View.VISIBLE
     }
 
-    class CalendarAnniversaryViewHolder(private val itemBinding: ItemCalendarAnniversaryRecyclerBinding): RecyclerView.ViewHolder(itemBinding.root) {
+    inner class CalendarAnniversaryViewHolder(private val itemBinding: ItemCalendarAnniversaryRecyclerBinding): RecyclerView.ViewHolder(itemBinding.root) {
         var swipeLayout = itemBinding.swipeLayout
 
         fun bind(item: CalendarAnniversaryData) {
@@ -91,28 +95,15 @@ class CalendarAnniversaryAdapter(
             itemBinding.tvAnniversaryDday.text = item.dday
         }
 
-        fun setClickListenerToDeleteItem(
-            dataList: MutableList<CalendarAnniversaryData>,
-            isSwipedItemList: MutableList<Boolean>,
-            position: Int,
-            adapter: CalendarAnniversaryAdapter
-        ) {
+        fun setClickListenerToDeleteItem(position: Int) {
             itemBinding.layoutDelFrame.setOnClickListener {
-                isSwipedItemList.removeLast()
-                adapter.removeShownLayouts(itemBinding.swipeLayout)
-                adapter.closeAllItems()
-                adapter.fragmentBinding.fabCalendarAdd.visibility = View.VISIBLE
-                dataList.removeAt(position)
-                adapter.notifyDataSetChanged()
-                // 아래의 removed가 붙은 함수를 사용하면 empty view가 뜨지 않음
-//                adapter.notifyItemRemoved(position)
-//                adapter.notifyItemRangeRemoved(position, dataList.size)
+                deletedPosition = position
+                ConsumerCalendarService(consumerCalendarView).tryDeleteCalendar(dataList[position].calendarIdx)
             }
         }
 
         fun setClickListenerToViewDetail(
             data: CalendarAnniversaryData,
-            isSwipedItemList: MutableList<Boolean>,
             adapter: CalendarAnniversaryAdapter
         ) {
             itemBinding.layoutItemFrame.setOnClickListener {

@@ -76,10 +76,10 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name="com.codepatissier.keki.src.main.consumer.calendar.ConsumerCalendarAddActivity"
+            android:name="com.codepatissier.keki.src.main.consumer.calendar.calendaradd.ConsumerCalendarAddActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme2">
         </activity>
         <activity
             android:name="com.codepatissier.keki.src.main.consumer.search.searchresult.ConsumerSearchActivity"
