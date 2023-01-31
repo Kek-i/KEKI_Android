@@ -67,7 +67,11 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
                     "케키와 함께 준비해요!"
         }else{
             // token 있는 경우
-            binding.tvHomeComment.text = response.nickname + "님!\n" + response.calendarTitle + "이 " + response.calendarDate.toString() + "일 남았어요\n 특별한 하루를 준비해요!"
+            if(response.calendarTitle.isNullOrBlank()){
+                binding.tvHomeComment.text = response.nickname + "님!\n" + "당신의 특별한 기념일을\n" + "케키와 함께 준비해요!"
+            }else{
+                binding.tvHomeComment.text = response.nickname + "님!\n" + response.calendarTitle + "이 " + response.calendarDate.toString() + "일 남았어요\n 특별한 하루를 준비해요!"
+            }
         }
 
     }
