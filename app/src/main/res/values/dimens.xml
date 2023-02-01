@@ -146,13 +146,13 @@
     <dimen name="intro_btn_text_size">16sp</dimen>
 
     <!--edit profile -> profile_setting -->
-    <dimen name="edit_back_logo_width">9dp</dimen>
-    <dimen name="edit_back_logo_height">18dp</dimen>
-    <dimen name="edit_back_logo_marginStart">16dp</dimen>
-    <dimen name="edit_back_logo_marginTop">17dp</dimen>
-    <dimen name="edit_title_marginTop">9dp</dimen>
-    <dimen name="edit_title_marginLeft">47dp</dimen>
-    <dimen name="edit_check_btn_marginTop">12dp</dimen>
+    <dimen name="top_bar_margin_top">9dp</dimen>
+    <dimen name="edit_back_logo_height">0dp</dimen>
+    <dimen name="edit_back_logo_paddingStart">16dp</dimen>
+    <dimen name="edit_back_logo_paddingEnd">22dp</dimen>
+    <dimen name="edit_back_logo_paddingTop">3dp</dimen>
+    <dimen name="edit_back_logo_paddingBottom">1dp</dimen>
+    <dimen name="edit_check_btn_height">0dp</dimen>
     <dimen name="edit_check_btn_marginRight">18dp</dimen>
     <dimen name="edit_layout_marginTop">38dp</dimen>
     <dimen name="edit_profile_photo_size">104dp</dimen>
@@ -181,11 +181,13 @@
     <dimen name="edit_fab_border_width">0dp</dimen>
     <dimen name="edit_fab_padding">0dp</dimen>
     <dimen name="edit_layout_title_size">20sp</dimen>
+    <dimen name="edit_layout_title_height">29dp</dimen>
     <dimen name="edit_check_btn_font_size">16sp</dimen>
     <dimen name="edit_et_font_size">16sp</dimen>
     <dimen name="edit_dbl_check_font_size">16sp</dimen>
     <dimen name="edit_result_font_size">11sp</dimen>
     <dimen name="edit_rule_font_size">11sp</dimen>
+    <dimen name="edit_rule_margin_top">20dp</dimen>
 
     <!--BACKGROUND SHADOW-->
     <dimen name="bg_shadow_true">2dp</dimen>
