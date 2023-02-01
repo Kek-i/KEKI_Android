@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.view.KeyEvent
+import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -87,6 +88,9 @@ class CustomerProfileSettingActivity : BaseActivity<ActivityConsumerProfileSetti
     //중복확인 버튼 클릭
     private fun clickDoubleCheck() {
         binding.btnDoubleCheck.setOnClickListener {
+            // 키패드 내리기
+            keyboardDown()
+
             nickname = null     //새로 중복 확인 누르면 기존 시도 닉네임 초기화
             val tryNick = binding.etNickname.text.toString()
             if(isValidNickname(tryNick)){
@@ -97,8 +101,6 @@ class CustomerProfileSettingActivity : BaseActivity<ActivityConsumerProfileSetti
                 binding.tvNamingResult.setText(R.string.edit_rule_wrong)
                 binding.tvNamingResult.setTextColor(resources.getColor(R.color.darkish_pink))
             }
-            // 키패드 내리기
-            keyboardDown()
         }
     }
 
@@ -204,12 +206,12 @@ class CustomerProfileSettingActivity : BaseActivity<ActivityConsumerProfileSetti
 
     // 엔터 클릭 시 키패드 내리기
     private fun keyboardEnterClicked(){
-        binding.etNickname.setOnKeyListener{view, keyCode, event ->
-            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+        binding.etNickname.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
                 keyboardDown()
-                return@setOnKeyListener true
+                return@setOnEditorActionListener true
             }
-            return@setOnKeyListener false
+            return@setOnEditorActionListener false
         }
     }
 
@@ -217,6 +219,7 @@ class CustomerProfileSettingActivity : BaseActivity<ActivityConsumerProfileSetti
     private fun keyboardDown(){
         val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(binding.etNickname.windowToken, 0)
+        binding.etNickname.clearFocus()
     }
 
 }
