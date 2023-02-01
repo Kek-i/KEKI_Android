@@ -14,11 +14,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_main_text"
-        android:overScrollMode="never">
+        android:overScrollMode="never"
+        android:scrollbars="none">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/my_page_scroll_child_padding_bottom"
+            android:clipToPadding="false"
+            >
 
             <TextView
                 android:id="@+id/tv_main_text"
@@ -211,7 +215,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/my_page_box_inner_left"
                     android:layout_marginTop="@dimen/my_page_box_inner_top"
-                    android:layout_marginBottom="18dp"
+                    android:layout_marginBottom="@dimen/my_page_box_inner_bottom"
                     android:fontFamily="@font/notosanskr_regular"
                     android:includeFontPadding="false"
                     android:text="@string/my_page_widthdrawal"
