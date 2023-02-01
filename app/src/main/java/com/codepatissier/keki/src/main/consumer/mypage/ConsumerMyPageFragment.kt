@@ -65,8 +65,6 @@ class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
     }
 
     override fun onGetMyPageSuccess(response: ConsumerMyPageResponse) {
-        dismissLoadingDialog()
-
         val defaultImg = R.drawable.bg_oval_off_white
         val imageView = binding.ivProfile
 
@@ -88,7 +86,7 @@ class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
                 }
             }
         }
-
+        dismissLoadingDialog()
     }
 
     override fun onGetMyPageFailure(message: String) {
