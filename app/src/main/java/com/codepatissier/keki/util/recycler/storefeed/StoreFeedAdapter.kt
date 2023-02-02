@@ -51,9 +51,23 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
 
     override fun getItemCount(): Int = storeFeedDatas.size
 
-    fun setList(storeFeed: MutableList<StoreFeedData>){
+
+    class LoadingViewHolder(private val binding: ItemProgressbarLoadingBinding): RecyclerView.ViewHolder(binding.root){
+
+    }
+
+    // 뷰 타입 정하기
+    override fun getItemViewType(position: Int): Int {
+        return if (storeFeedDatas[position] != null){
+            VIEW_TYPE_ITEM
+        }else{
+            VIEW_TYPE_LOADING
+        }
+    }
+
+    fun setList(storeFeed: MutableList<StoreFeedData>, hasNext: Boolean){
         storeFeedDatas.addAll(storeFeed)
-        storeFeedDatas.add(StoreFeedData(0, " ", " ", List(1) { "" }, List(1){""}, " ", " ", false, 0, false))
+
     }
 
     fun deleteLoading(){
@@ -171,15 +185,4 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
 
     }
 
-    class LoadingViewHolder(private val binding: ItemProgressbarLoadingBinding): RecyclerView.ViewHolder(binding.root){
-
-    }
-
-    // 뷰 타입 정하기
-    override fun getItemViewType(position: Int): Int {
-        return when (storeFeedDatas[position].dessertName){
-            " " -> VIEW_TYPE_LOADING
-            else -> VIEW_TYPE_ITEM
-        }
-    }
 }
