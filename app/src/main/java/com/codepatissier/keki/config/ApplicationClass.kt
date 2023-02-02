@@ -2,29 +2,48 @@ package com.codepatissier.keki.config
 
 import android.app.Application
 import android.content.SharedPreferences
+import com.codepatissier.keki.R
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.firebase.auth.FirebaseAuth
+import com.kakao.sdk.common.KakaoSdk
+import com.kakao.sdk.common.util.Utility
+import com.navercorp.nid.NaverIdLoginSDK
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
+
 class ApplicationClass : Application() {
-    val API_URL = "https://edu-api-test.softsquared.com/" // 변경
+    val API_URL = "https://keki-dev.store/"
 
     companion object {
         lateinit var sSharedPreferences: SharedPreferences
-        lateinit var editor: SharedPreferences.Editor
-
-        val X_ACCESS_TOKEN = "X-ACCESS-TOKEN"
-
+        lateinit var userInfo: SharedPreferences.Editor
+        val Authorization = "Authorization"
+        val UserRole = "UserRole"
+        val UserEmail = "UserEmail"
         lateinit var sRetrofit: Retrofit
     }
-
     override fun onCreate() {
         super.onCreate()
         sSharedPreferences =
-            applicationContext.getSharedPreferences("KEKI_APP", MODE_PRIVATE) // 변경
+            applicationContext.getSharedPreferences("USER_INFO", MODE_PRIVATE) // 변경
+        userInfo = sSharedPreferences.edit()
         initRetrofitInstance()
+
+        //카카오 초기화
+        KakaoSdk.init(this, getString(R.string.kakao_native_key))
+        //네이버 초기화
+        val naverClientId = getString(R.string.social_login_info_naver_client_id)
+        val naverClientSecret = getString(R.string.social_login_info_naver_client_secret)
+        val naverClientName = getString(R.string.social_login_info_naver_client_name)
+        NaverIdLoginSDK.initialize(this, naverClientId, naverClientSecret , naverClientName)
+
+
     }
 
     private fun initRetrofitInstance() {
@@ -32,7 +51,8 @@ class ApplicationClass : Application() {
             .readTimeout(5000, TimeUnit.MILLISECONDS)
             .connectTimeout(5000, TimeUnit.MILLISECONDS)
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-            .addNetworkInterceptor(XAccessTokenInterceptor()) // X_ACCESS_TOKEN 이름 변경되면 XAccessTokenInterceptor()에서 바꾸기
+            .addNetworkInterceptor(XAccessTokenInterceptor())
+            .retryOnConnectionFailure(false)
             .build()
 
         sRetrofit = Retrofit.Builder()

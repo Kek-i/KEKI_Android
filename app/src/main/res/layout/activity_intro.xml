@@ -29,45 +29,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_intro_logo" />
 
-    <ImageView
-        android:id="@+id/ib_customer_select"
-        android:layout_width="@dimen/intro_select_shadow_width"
-        android:layout_height="@dimen/intro_select_shadow_width"
-        android:layout_marginTop="@dimen/intro_select_shadow_marginTop"
-        android:background="@drawable/bg_circle_radius_50_shadow"
-        android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="@+id/ib_customer_logo"
-        app:layout_constraintTop_toBottomOf="@+id/tv_intro_comment"/>
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/ib_customer_logo"
         android:layout_width="@dimen/intro_img_width"
         android:layout_height="@dimen/intro_img_width"
         android:layout_marginTop="@dimen/intro_img_marginTop"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_customer"
+        app:civ_border_overlay="false"
+        app:civ_border_width="@dimen/intro_img_border_width"
+        app:civ_border_color="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/ib_seller_logo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_intro_comment"/>
 
 
-    <ImageButton
-        android:id="@+id/ib_seller_select"
-        android:layout_width="@dimen/intro_select_shadow_width"
-        android:layout_height="@dimen/intro_select_shadow_width"
-        android:layout_marginTop="@dimen/intro_select_shadow_marginTop"
-        android:background="@drawable/bg_circle_radius_50_shadow"
-        android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="@+id/ib_seller_logo"
-        app:layout_constraintTop_toBottomOf="@+id/tv_intro_comment"/>
-
-    <ImageButton
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/ib_seller_logo"
         android:layout_width="@dimen/intro_img_width"
         android:layout_height="@dimen/intro_img_width"
         android:layout_marginTop="@dimen/intro_img_marginTop"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_seller"
+        app:civ_border_overlay="false"
+        app:civ_border_width="@dimen/intro_img_border_width"
+        app:civ_border_color="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ib_customer_logo"
         app:layout_constraintTop_toBottomOf="@+id/tv_intro_comment"/>

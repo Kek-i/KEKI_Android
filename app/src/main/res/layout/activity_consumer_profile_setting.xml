@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/top_bar_margin_top"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/edit_back_logo_height"
+            android:paddingTop="@dimen/edit_back_logo_paddingTop"
+            android:paddingBottom="@dimen/edit_back_logo_paddingBottom"
+            android:paddingStart="@dimen/edit_back_logo_paddingStart"
+            android:paddingEnd="@dimen/edit_back_logo_paddingEnd"
+            android:src="@drawable/ic_chevron_left"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_layoutName"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/edit_layout_title_height"
+            android:fontFamily="@font/notosanskr_bold"
+            android:includeFontPadding="false"
+            android:text="@string/tv_edit_Profile_title"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edit_layout_title_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_back"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_check"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/edit_check_btn_height"
+            android:layout_marginRight="@dimen/edit_check_btn_marginRight"
+            android:gravity="center"
+            android:text="@string/btn_check"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edit_check_btn_font_size"
+            android:fontFamily="@font/notosanskr_regular"
+            android:includeFontPadding="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/edit_layout_marginTop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topBar">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/cv_photo"
+            android:layout_width="@dimen/edit_profile_photo_size"
+            android:layout_height="@dimen/edit_profile_photo_size"
+            android:layout_marginTop="@dimen/edit_profile_photo_marginTop"
+            android:src="@drawable/ic_customer"
+            app:civ_border_color="@color/white"
+            app:civ_border_overlay="true"
+            app:civ_border_width="@dimen/edit_profile_border_width"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_camera_background"
+            android:layout_width="@dimen/my_page_profile_edit_iv_camera_background_size"
+            android:layout_height="@dimen/my_page_profile_edit_iv_camera_background_size"
+            android:layout_marginLeft="@dimen/my_page_profile_edit_iv_camera_background_left"
+            android:layout_marginTop="@dimen/my_page_profile_edit_iv_camera_background_top"
+            android:src="@drawable/bg_oval_pale_salmon"
+            app:layout_constraintStart_toStartOf="@id/cv_photo"
+            app:layout_constraintTop_toTopOf="@id/cv_photo" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_camera"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_camera_background"
+            app:layout_constraintEnd_toEndOf="@+id/iv_camera_background"
+            app:layout_constraintStart_toStartOf="@+id/iv_camera_background"
+            app:layout_constraintTop_toTopOf="@+id/iv_camera_background" />
+
+        <TextView
+            android:id="@+id/tv_user_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/edit_rule_margin_top"
+            android:fontFamily="@font/notosanskr_regular"
+            android:includeFontPadding="false"
+            android:text="keki@gmail.com"
+            android:textColor="@color/brown_grey"
+            android:textSize="@dimen/edit_rule_font_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cv_photo" />
+
+        <TextView
+            android:id="@+id/tv_edit_rule"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/edit_rule_marginLeft"
+            android:layout_marginTop="@dimen/edit_rule_marginTop"
+            android:fontFamily="@font/notosanskr_regular"
+            android:includeFontPadding="false"
+            android:text="@string/tv_edit_Profile_rule"
+            android:textColor="@color/brown_grey"
+            android:textSize="@dimen/edit_rule_font_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_user_email" />
+
+        <View
+            android:id="@+id/bg_input_nickname"
+            android:layout_width="@dimen/edit_bg_width"
+            android:layout_height="@dimen/edit_bg_height"
+            android:layout_marginLeft="@dimen/edit_bg_marginLeft"
+            android:layout_marginTop="@dimen/edit_bg_marginTop"
+            android:layout_marginRight="@dimen/edit_bg_marginRight"
+            app:layout_constraintEnd_toStartOf="@+id/btn_double_check"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_edit_rule"
+            android:background="@drawable/bg_rectangle_radius_10_white_padding"
+            android:elevation="@dimen/calendar_add_component_elevation" />
+
+        <EditText
+            android:id="@+id/et_nickname"
+            android:layout_width="@dimen/edit_et_width"
+            android:layout_height="@dimen/edit_et_height"
+            android:layout_marginHorizontal="@dimen/edit_et_margin_horizontal"
+            android:background="@null"
+            android:elevation="@dimen/profile_setting_shadow"
+            android:fontFamily="@font/notosanskr_regular"
+            android:includeFontPadding="false"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edit_et_font_size"
+            android:maxLines="1"
+            android:maxLength="10"
+            android:imeOptions="actionDone"
+            android:inputType="textNoSuggestions"
+            app:layout_constraintTop_toTopOf="@id/bg_input_nickname"
+            app:layout_constraintStart_toStartOf="@id/bg_input_nickname"
+            app:layout_constraintEnd_toEndOf="@id/bg_input_nickname"
+            app:layout_constraintBottom_toBottomOf="@id/bg_input_nickname" />
+
+        <Button
+            android:id="@+id/btn_double_check"
+            android:layout_width="@dimen/edit_dbl_check_width"
+            android:layout_height="@dimen/edit_dbl_check_height"
+            android:layout_marginTop="@dimen/edit_dbl_check_marginTop"
+            android:layout_marginRight="@dimen/edit_dbl_check_marginRight"
+            android:background="@drawable/bg_rectangle_radius_10_white_no_padding"
+            android:elevation="@dimen/profile_setting_shadow"
+            android:fontFamily="@font/notosanskr_regular"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="@string/btn_double_check"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edit_dbl_check_font_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/bg_input_nickname"
+            app:layout_constraintTop_toBottomOf="@+id/tv_edit_rule" />
+
+        <TextView
+            android:id="@+id/tv_naming_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/edit_naming_result_marginLeft"
+            android:layout_marginTop="@dimen/edit_naming_result_marginTop"
+            android:fontFamily="@font/notosanskr_regular"
+            android:includeFontPadding="false"
+            android:textColor="@color/brown_grey"
+            android:textSize="@dimen/edit_result_font_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bg_input_nickname" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

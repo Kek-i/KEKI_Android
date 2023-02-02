@@ -10,7 +10,7 @@ import com.codepatissier.keki.config.BaseFragment
 import com.codepatissier.keki.databinding.FragmentStoreFeedSlideImageBinding
 
 
-class StoreFeedSlideImageFragment(val image:Drawable) : BaseFragment<FragmentStoreFeedSlideImageBinding>(FragmentStoreFeedSlideImageBinding::bind, R.layout.fragment_store_feed_slide_image) {
+class StoreFeedSlideImageFragment(val image:String) : BaseFragment<FragmentStoreFeedSlideImageBinding>(FragmentStoreFeedSlideImageBinding::bind, R.layout.fragment_store_feed_slide_image) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
