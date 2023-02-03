@@ -32,7 +32,6 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
         showLoadingDialog(this)
         ConsumerStoreFeedDetailService(this).tryGetConsumerStoreFeedDetailRetrofitInterface(feedTag!!, cursorIdx, feedSize)
         checkScrollEvent()
-
     }
 
     private fun initRecyclerView(){
@@ -77,6 +76,7 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
         storeFeedAdapter.setList(storeFeedDatas, hasNext!!)
         storeFeedAdapter.notifyItemRangeInserted(positionStart, response.result.feeds.size)
 
+        //LinearLayoutManager(this).scrollToPositionWithOffset(positionStart,0)
     }
 
     private fun checkScrollEvent(){
@@ -90,8 +90,6 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
                 
                 if(!binding.recyclerStoreFeed.canScrollVertically(1) && lastVisibleItemPosition == itemTotalCount){
                     if(hasNext!!){
-                        storeFeedAdapter.deleteLoading()
-
                         positionStart = storeFeedDatas.size
                         ConsumerStoreFeedDetailService(this@ConsumerStoreDetailFeedActivity)
                             .tryGetConsumerStoreFeedDetailRetrofitInterface(feedTag!!, cursorIdx, feedSize)

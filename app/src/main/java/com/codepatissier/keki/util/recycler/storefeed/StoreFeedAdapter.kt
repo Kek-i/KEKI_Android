@@ -70,10 +70,6 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
 
     }
 
-    fun deleteLoading(){
-        storeFeedDatas.removeAt(storeFeedDatas.lastIndex)
-    }
-
     class StoreFeedViewHolder(val context: FragmentActivity?, val binding: ItemStoreFeedRecyclerBinding): ViewHolder(binding.root){
         private val sellerImg: ImageView = binding.ivStoreFeedSeller
         private val nickname: TextView = binding.tvStoreFeedSellerNickname
