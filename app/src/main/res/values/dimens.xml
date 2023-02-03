@@ -550,6 +550,7 @@
     <dimen name="store_main_store_order_padding_left_right">30dp</dimen>
     <dimen name="store_main_store_order_top">11dp</dimen>
     <dimen name="store_main_store_tab_width">0dp</dimen>
+    <dimen name="store_main_store_tab_max_width">0dp</dimen>
     <dimen name="store_main_store_tab_top">27dp</dimen>
     <dimen name="store_main_store_viewPager_width_height">0dp</dimen>
     <dimen name="store_main_store_view_width">0dp</dimen>

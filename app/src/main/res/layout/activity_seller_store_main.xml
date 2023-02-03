@@ -115,7 +115,10 @@
             app:layout_constraintTop_toBottomOf="@+id/csl_store"
             app:tabIndicator="@drawable/tab_select_underline"
             app:tabIndicatorColor="@color/tab_select"
-            tools:ignore="SpeakableTextPresentCheck">
+            tools:ignore="SpeakableTextPresentCheck"
+            app:tabMaxWidth="@dimen/store_main_store_tab_max_width"
+            app:tabGravity="fill"
+            app:tabMode="fixed">
         </com.google.android.material.tabs.TabLayout>
 
         <androidx.viewpager2.widget.ViewPager2
