@@ -159,7 +159,6 @@
     <dimen name="edit_profile_border_width">1dp</dimen>
     <dimen name="edit_profile_photo_marginTop">128dp</dimen>
     <dimen name="edit_rule_marginLeft">22dp</dimen>
-    <dimen name="edit_rule_marginTop">35dp</dimen>
     <dimen name="edit_bg_width">0dp</dimen>
     <dimen name="edit_bg_height">45dp</dimen>
     <dimen name="edit_et_width">0dp</dimen>
@@ -179,7 +178,7 @@
     <dimen name="edit_fab_marginLeft">70dp</dimen>
     <dimen name="edit_fab_custom_size">30dp</dimen>
     <dimen name="edit_fab_border_width">0dp</dimen>
-    <dimen name="edit_fab_padding">0dp</dimen>
+
     <dimen name="edit_layout_title_size">20sp</dimen>
     <dimen name="edit_layout_title_height">29dp</dimen>
     <dimen name="edit_check_btn_font_size">16sp</dimen>
@@ -187,7 +186,29 @@
     <dimen name="edit_dbl_check_font_size">16sp</dimen>
     <dimen name="edit_result_font_size">11sp</dimen>
     <dimen name="edit_rule_font_size">11sp</dimen>
+
+    <dimen name="seller_setting_cv_marginTop">40dp</dimen>
+    <dimen name="seller_edit_cv_marginTop">64dp</dimen>
+    <dimen name="seller_setting_bg_camera_size">29dp</dimen>
+    <dimen name="seller_setting_bg_camera_marginLeft">71dp</dimen>
+    <dimen name="seller_setting_bg_camera_marginTop">69dp</dimen>
+    <dimen name="seller_setting_et_marginLeft">16dp</dimen>
+    <dimen name="seller_setting_et_marginRight">6dp</dimen>
+    <dimen name="seller_setting_et_width">0dp</dimen>
+    <dimen name="seller_setting_et_height">55dp</dimen>
+    <dimen name="seller_edit_et_height">55dp</dimen>
+    <dimen name="seller_edit_et3_height">156dp</dimen>
+    <dimen name="seller_edit_et3_paddingTop">17dp</dimen>
+    <dimen name="seller_setting_et7_height">95dp</dimen>
+    <dimen name="seller_setting_et1_marginTop">40dp</dimen>
+    <dimen name="seller_setting_et2_marginTop">10dp</dimen>
+    <dimen name="seller_setting_et5_marginTop">20dp</dimen>
+    <dimen name="seller_setting_et8_marginTop">5dp</dimen>
+    <dimen name="seller_profile_setting_tv1_marginLeft">24dp</dimen>
+    <dimen name="seller_profile_setting_tv1_marginTop">6dp</dimen>
+    <dimen name="seller_profile_setting_tv1_fontSize">16sp</dimen>
     <dimen name="edit_rule_margin_top">20dp</dimen>
+
 
     <!--BACKGROUND SHADOW-->
     <dimen name="bg_shadow_true">2dp</dimen>
