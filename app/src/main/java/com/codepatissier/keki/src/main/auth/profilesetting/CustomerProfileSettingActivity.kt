@@ -120,6 +120,7 @@ class CustomerProfileSettingActivity : BaseActivity<ActivityConsumerProfileSetti
     @SuppressLint("SetTextI18n")
     override fun onPostNickSuccess(response: PostNickname) {
         if (response.isSuccess) {
+            binding.tvNamingResult.setTextColor(resources.getColor(R.color.brown_grey))
             binding.tvNamingResult.setText(R.string.edit_rule_pass)
             nickname = binding.etNickname.text.toString()   //중복이 아닐 경우 닉네임 변수에 넣기
         } else {
