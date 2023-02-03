@@ -581,7 +581,7 @@
     <dimen name="store_main_feed_top">6dp</dimen>
     <dimen name="store_main_feed_rv_width">0dp</dimen>
     <dimen name="store_main_feed_float_right">12dp</dimen>
-    <dimen name="store_main_feed_float_bottom">14dp</dimen>
+    <dimen name="store_main_feed_float_bottom">14.5dp</dimen>
     <dimen name="store_main_feed_float_border">0dp</dimen>
 
     <!-- store main recyclerView -->
