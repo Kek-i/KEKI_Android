@@ -7,7 +7,6 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Window
 import com.codepatissier.keki.databinding.DialogSellerProductDetailFeedDeleteBinding
-import com.codepatissier.keki.src.main.login.IntroActivity
 
 
 class SellerProductDetailFeedDeleteDialog(context: Context): Dialog(context) {
