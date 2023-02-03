@@ -135,6 +135,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
 
+        <activity android:name=".src.main.seller.store.productfeed.SellerProductDetailFeedActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
         <activity android:name=".src.main.consumer.mypage.ConsumerPersonalInfoActivity"
             android:exported="false"
             android:screenOrientation="portrait"
