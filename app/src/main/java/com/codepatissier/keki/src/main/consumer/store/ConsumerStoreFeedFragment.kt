@@ -3,6 +3,7 @@ package com.codepatissier.keki.src.main.consumer.store
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.AbsListView
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,6 +28,7 @@ class ConsumerStoreFeedFragment(storeIdx : Long) : BaseFragment<FragmentConsumer
     val size = 21
     var positionStart = 0
     var itemSize = 0
+    var lastItemVisible = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -61,8 +63,22 @@ class ConsumerStoreFeedFragment(storeIdx : Long) : BaseFragment<FragmentConsumer
         // 스크롤이 바닥에 닿았을 때
         binding.recyclerSellerFeed.addOnScrollListener(object : RecyclerView.OnScrollListener(){
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                if (!binding.recyclerSellerFeed.canScrollVertically(1) && hasNext) {
-                    showLoadingDialog(requireContext())
+                super.onScrolled(recyclerView, dx, dy)
+                // 현재 보이는 마지막 아이템의 position
+                var lastVisibleItemPosition = (recyclerView.layoutManager as GridLayoutManager).findLastVisibleItemPosition()
+                // 전제 아이템 갯수
+                val itemTotalCount = recyclerView.adapter?.itemCount?.minus(1)
+                // 마지막 아이템이면 true로 변경
+               if( lastVisibleItemPosition != itemTotalCount) {
+                   lastItemVisible = true
+               }
+            }
+
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                // 스크롤이 멈춰있고, 다음 아이템이 있으며 마지막 아이템일 때 api 호출
+                if(newState == RecyclerView.SCROLL_STATE_IDLE && hasNext && lastItemVisible){
+                    binding.progress.visibility = View.VISIBLE
                     positionStart = storeMainStoreDatas.size
                     ConsumerStoreFeedService(this@ConsumerStoreFeedFragment).tryGetConsumerStoreNextFeed(storeIdx = storeIdx, cursorIdx=cursorIdx,size =size)
                 }
@@ -72,7 +88,7 @@ class ConsumerStoreFeedFragment(storeIdx : Long) : BaseFragment<FragmentConsumer
 
     // 스크롤이 바닥에 닿았을 때 api 호출 성공했을 시
     override fun onGetStoreNextFeedSuccess(response: SearchResultResponse) {
-        dismissLoadingDialog()
+        binding.progress.visibility = View.GONE
         cursorIdx = response.result.cursorIdx
         hasNext = response.result.hasNext
 
@@ -88,7 +104,7 @@ class ConsumerStoreFeedFragment(storeIdx : Long) : BaseFragment<FragmentConsumer
     }
 
     override fun onGetStoreNextFeedFailure(message: String) {
-        dismissLoadingDialog()
+        binding.progress.visibility = View.GONE
         showCustomToast("오류 : $message")
     }
 

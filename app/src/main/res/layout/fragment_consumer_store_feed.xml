@@ -17,7 +17,7 @@
            android:id="@+id/recycler_seller_feed"
            android:layout_width="@dimen/store_main_feed_rv_width"
            android:layout_height="match_parent"
-           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintBottom_toTopOf="@id/progress"
            app:layout_constraintEnd_toEndOf="parent"
            app:layout_constraintStart_toStartOf="parent"
            app:layout_constraintTop_toTopOf="parent"
@@ -25,6 +25,14 @@
            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
            app:spanCount="3"
            tools:listitem="@layout/item_store_main_recycler"/>
+
+       <ProgressBar
+           android:id="@+id/progress"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           app:layout_constraintBottom_toBottomOf="parent"
+           android:visibility="gone"/>
+
    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
