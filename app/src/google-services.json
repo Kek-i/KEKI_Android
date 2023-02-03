@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "282823038399",
+    "project_id": "keki-b25b7",
+    "storage_bucket": "keki-b25b7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:282823038399:android:5fa39fb7e54e3403443d0a",
+        "android_client_info": {
+          "package_name": "com.codepatissier.keki"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "282823038399-3bnvshm1e271768rtkk78tq4db73h3rg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOIjq-Fk5Jg_P19wqurOFpiwYUYAmPhsY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "282823038399-3bnvshm1e271768rtkk78tq4db73h3rg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

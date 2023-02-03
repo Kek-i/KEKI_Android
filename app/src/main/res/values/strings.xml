@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">Keki</string>
+
+    <!-- Auth -->
+    <string name="kakao_native_key">e2abb1dfec5ae90f3ac6233769bfafec</string>
+    <string name="kakao_key">kakaoe2abb1dfec5ae90f3ac6233769bfafec</string>
+    <string name="social_login_info_naver_client_id">XZHzyRgQditsj_BuDAHZ</string>
+    <string name="social_login_info_naver_client_secret">XEK5Tv83wP</string>
+    <string name="social_login_info_naver_client_name">네이버아이디 로그인</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="nickname">닉네임</string>
@@ -21,9 +29,11 @@
     <string name="login_customer">구매자</string>
     <string name="login_seller">판매자</string>
     <string name="tv_edit_Profile_title">프로필 설정</string>
-    <string name="tv_edit_Profile_rule">한글,영어,숫자만 사용할 수 있어요.(최대 10자)</string>
+    <string name="tv_edit_Profile_rule">한글, 영어, 숫자만 사용할 수 있어요. (최대 10자)</string>
     <string name="edit_rule_pass">사용 가능한 닉네임입니다</string>
-    <string name="edit_rule_false">한글,영어,숫자만 사용할 수 있어요.(최대 10자)</string>
+    <string name="edit_rule_false">이미 사용 중인 닉네임입니다.</string>
+    <string name="edit_rule_null">사용 가능한 닉네임을 입력해주세요.</string>
+    <string name="edit_rule_wrong">닉네임 조건을 확인해주세요.</string>
     <string name="login_dialog_main">앱 접근권한 안내</string>
     <string name="login_dialog_sub">케키에서는 다음 권한들을 사용합니다.</string>
     <string name="login_dialog_text1">사진 및 저장공간(필수)</string>
@@ -50,9 +60,19 @@
     <string name="more_see">••• 더보기</string>
     <string name="report">사용자 신고</string>
 
+    <!-- report -->
+    <string name="dialog_report_title">신고하기</string>
+    <string name="dialog_report_content">타당한 신고 사유를 선택해주세요.\n신고 사유에 맞지않은 신고를 했을경우,\n해당 신고는 처리되지 않습니다.</string>
+    <string name="dialog_report_first">스팸홍보/도배</string>
+    <string name="dialog_report_second">욕설/혐오/차별</string>
+    <string name="dialog_report_third">음란물/유해한 정보</string>
+    <string name="dialog_report_fourth">사기/불법정보</string>
+    <string name="dialog_report_fifth">게시글 성격에 부적절함</string>
+
     <!-- store main -->
     <string name ="store_main_store_name">가게이름</string>
     <string name ="store_main_store_detail">가게설명입니다.</string>
+    <string name ="store_main_store_view_more">더보기.</string>
     <string name ="store_main_store_order">주문하기</string>
 
     <!-- store main dialog-->
@@ -74,12 +94,8 @@
     <string name="calendar_anniversary_dday">D-XXXX</string>
     <string name="calendar_empty_list">추가된 기념일이 없습니다.</string>
     <string name="calendar_item_delete">삭제</string>
-    <string name="calendar_detail_first_title">투리 생일</string>
     <string name="calendar_detail_first_dday">D-DAY</string>
-    <string name="calendar_detail_first_hashtag"># 친구</string>
-    <string name="calendar_detail_second_hashtag"># 가족</string>
-    <string name="calendar_detail_third_hashtag"># 기념일</string>
-    <string name="calendar_detail_type">매년 반복</string>
+    <string name="calendar_detail_type">기념일 종류</string>
     <string name="calendar_detail_go_to_find_cake">딱 맞는 케이크 찾으러 가기</string>
     <string name="calendar_anniversary_add_main_text">기념일 추가</string>
     <string name="calendar_anniversary_add_dday">D-DAY</string>
@@ -87,26 +103,22 @@
     <string name="calendar_anniversary_type_dday">디데이</string>
     <string name="calendar_anniversary_type_number_of_days">날짜수</string>
     <string name="calendar_anniversary_type_repeat_every_year">매년 반복</string>
-    <string name="calendar_add_anniversary_title">기념일 제목을 입력해주세요.</string>
+    <string name="calendar_add_anniversary_title">기념일 제목을 입력해주세요. (30자)</string>
     <string name="calendar_add_anniversary_date">날짜를 선택해주세요.</string>
     <string name="calendar_add_anniversary_hashtag">아래 #해시태그를 선택해주세요.</string>
     <string name="calendar_add_max_hashtag">해시태그는 최대 3개까지 등록할 수 있습니다.</string>
     <string name="calendar_add_completion">완료</string>
-
-    <!-- hashtag -->
-    <!-- 아직 확정되지 않음 -->
-    <string name="hashtag_friend"># 친구</string>
-    <string name="hashtag_family"># 가족</string>
-    <string name="hashtag_lover"># 연인</string>
-    <string name="hashtag_anniversary"># 기념일</string>
-    <string name="hashtag_birthday"># 생일</string>
-    <string name="hashtag_employment"># 취업</string>
-    <string name="hashtag_graduation_exhibition"># 졸업전시</string>
-    <string name="hashtag_party"># 파티</string>
+    <string name="calendar_add_error_no_select">필수 선택 항목입니다.</string>
+    <string name="calendar_add_error_no_input">필수 입력 항목입니다.</string>
+    <string name="calendar_non_consumer_like_comment">로그인 시 사용 가능한 기능입니다!</string>
 
     <!-- my page -->
     <string name="my_page_main_text">내 정보</string>
-    <string name="my_page_main_comment">유닝이님.\n오늘도 특별한 하루 보내세요!</string>
+
+    <string name="my_page_non_main_comment">로그인이 필요합니다.</string>
+    <string name="my_page_tv_nickname">님.</string>
+    <string name="my_page_main_comment">오늘도 특별한 하루 보내세요!</string>
+
     <string name="my_page_account">계정 설정</string>
     <string name="my_page_profile_edit">프로필 편집</string>
     <string name="my_page_signup">회원가입</string>
@@ -125,7 +137,7 @@
     <!-- my page profile edit -->
     <string name="my_page_profile_edit_main">프로필 편집</string>
     <string name="my_page_profile_edit_complete">완료</string>
-    <string name="my_page_profile_nick_name_condition">한글,영어,숫자만 사용할 수 있어요.(최대10자)</string>
+    <string name="my_page_profile_nick_name_condition">한글, 영어, 숫자만 사용할 수 있어요. (최대 10자)</string>
     <string name="my_page_profile_nick_name_hint">닉네임을 입력해주세요.</string>
     <string name="my_page_profile_nick_name_overlap">중복확인</string>
 
@@ -147,6 +159,36 @@
     <string name="search_spinner_price">가격낮은순</string>
     <string name="search_empty_list">검색결과가 없습니다.</string>
 
+    <!-- like -->
+    <string name="like_comment">준비 중인 기능입니다.</string>
+
+    <!-- logout -->
+    <string name="dialog_logout_title">로그아웃</string>
+    <string name="logout_tv_content">로그아웃 하시겠습니까?</string>
+    <string name="logout_tv_cancel">취소</string>
+    <string name="logout_tv_logout">로그아웃</string>
+
+
+    <!-- 판매자 -->
+
+    <!-- edit_profile -->
+    <string name="tv_seller_profile_setting_title">판매자 프로필 설정</string>
+    <string name="tv_seller_profile_edit_title">프로필 편집</string>
+    <string name="seller_profile_setting_tv1">사업자정보</string>
+    <string name="seller_profile_setting_et1">가게이름을 입력해주세요.</string>
+    <string name="seller_profile_setting_et2">가게주소를 입력해주세요.</string>
+    <string name="seller_profile_setting_et3">간단히 가게를 소개해주세요. (최대 100자)</string>
+    <string name="seller_profile_setting_et4">주문 링크를 입력해주세요.</string>
+    <string name="seller_profile_setting_et6">대표자명을 입력해주세요.</string>
+    <string name="seller_profile_setting_et7">사업자등록증에 표기된 사업자주소\n입력해주세요.</string>
+    <string name="seller_profile_setting_et8">사업자등록번호를 입력해주세요.</string>
+
+
+    <!-- withdrawal -->
+    <string name="dialog_withdrawal_title">회원탈퇴</string>
+    <string name="withdrawal_tv_content">정말 케키와 헤어지실 건가요?\n정말요? 진짜요?\n(해당 이메일로 재가입은 불가합니다.)</string>
+    <string name="withdrawal_tv_cancel">취소</string>
+    <string name="withdrawal_tv_withdrawal">탈퇴하기</string>
 
     <!-- seller -->
     <string name="seller_product_detail_feed_menu1">수정</string>

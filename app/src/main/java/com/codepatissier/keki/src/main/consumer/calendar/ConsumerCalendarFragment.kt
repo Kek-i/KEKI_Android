@@ -3,42 +3,97 @@ package com.codepatissier.keki.src.main.consumer.calendar
 import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
+import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ItemDecoration
+import androidx.recyclerview.widget.RecyclerView.*
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseFragment
+import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.databinding.FragmentConsumerCalendarBinding
+import com.codepatissier.keki.src.main.consumer.calendar.calendaradd.ConsumerCalendarAddActivity
+import com.codepatissier.keki.src.main.consumer.calendar.model.ConsumerCalendarListResponse
 import com.codepatissier.keki.util.recycler.calendar.CalendarAnniversaryAdapter
 import com.codepatissier.keki.util.recycler.calendar.CalendarAnniversaryData
+import com.daimajia.swipe.util.Attributes
+import kotlin.math.roundToInt
+
 
 class ConsumerCalendarFragment : BaseFragment<FragmentConsumerCalendarBinding>
-    (FragmentConsumerCalendarBinding::bind, R.layout.fragment_consumer_calendar) {
+    (FragmentConsumerCalendarBinding::bind, R.layout.fragment_consumer_calendar), ConsumerCalendarView {
     private lateinit var calendarAnniversaryAdapter: CalendarAnniversaryAdapter
     private val calendarAnniversaryDataList = mutableListOf<CalendarAnniversaryData>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setCalendarAnniversaryRecyclerView()
+
         setClickListenerToFab()
+        initRecyclerviewSetting()
     }
 
-    private fun setCalendarAnniversaryRecyclerView() {
-        // 임시 데이터
-        for(i in 0 until 5) {
-            calendarAnniversaryDataList.apply {
-                add(CalendarAnniversaryData("투리 생일", "2023.09.04", "D-270", "매년 반복", "친구", "생일", null))
-                add(CalendarAnniversaryData("케키 데모데이", "2023.02.16", "D-31", "디데이", "기념일", null, null))
-                add(CalendarAnniversaryData("나랑 안드로이드랑 만난 날♥", "2022.09.01", "D+1234", "날짜수", null, null, null))
-//                add(CalendarAnniversaryData("누가 술을 마셔 박소정이 술을 마셔 박소정 원샷", "2023.02.10", "D+99999",
-//                                            "날짜수", "친구", "생일", "파티"))
+    // recyclerview 초기 설정
+    private fun initRecyclerviewSetting() {
+        binding.rvCalendarAnniversary.addItemDecoration(RecyclerViewDecoration(changeDP(11)))
+        binding.rvCalendarAnniversary.addOnScrollListener(object : OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (newState == SCROLL_STATE_DRAGGING)
+                    calendarAnniversaryAdapter.closeAllItems()
             }
-        }
-
-        binding.rvCalendarAnniversary.addItemDecoration(RecyclerViewDecoration(18))
+        })
         binding.rvCalendarAnniversary.setEmptyView(binding.layoutEmptyCalendar)
         binding.rvCalendarAnniversary.setFullView(binding.ivCalendarCherry)
-        calendarAnniversaryAdapter = CalendarAnniversaryAdapter(calendarAnniversaryDataList)
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        showLoadingDialog(requireContext())
+        ConsumerCalendarService(this).tryGetCalendarList()
+    }
+
+    override fun onGetCalendarListSuccess(response: ConsumerCalendarListResponse) {
+        dismissLoadingDialog()
+        setCalendarAnniversaryRecyclerView(response)
+    }
+
+    override fun onGetCalendarListFailure(message: String) {
+        dismissLoadingDialog()
+        showCustomToast("오류: $message")
+    }
+
+    override fun onDeleteCalendarSuccess(response: BaseResponse) {
+        dismissLoadingDialog()
+
+        calendarAnniversaryAdapter.isSwipedItemList.removeLast()
+        calendarAnniversaryAdapter.removeShownLayouts(calendarAnniversaryAdapter.itemBinding.swipeLayout)
+        calendarAnniversaryAdapter.closeItem(calendarAnniversaryAdapter.deletedPosition)
+        binding.fabCalendarAdd.visibility = View.VISIBLE
+        calendarAnniversaryAdapter.dataList.removeAt(calendarAnniversaryAdapter.deletedPosition)
+        calendarAnniversaryAdapter.notifyDataSetChanged()
+    }
+
+    override fun onDeleteCalendarFailure(message: String) {
+        dismissLoadingDialog()
+        showCustomToast("오류: $message")
+    }
+
+    private fun setCalendarAnniversaryRecyclerView(response: ConsumerCalendarListResponse) {
+        calendarAnniversaryDataList.clear()
+        for(i in response.result.indices) {
+            calendarAnniversaryDataList.apply {
+                add(CalendarAnniversaryData(
+                    calendarIdx = response.result[i].calendarIdx,
+                    title = response.result[i].title,
+                    date = response.result[i].date,
+                    dday = response.result[i].calDate
+                ))
+            }
+        }
+        calendarAnniversaryAdapter =
+            CalendarAnniversaryAdapter(calendarAnniversaryDataList, binding, this)
+        calendarAnniversaryAdapter.mode = Attributes.Mode.Single
         binding.rvCalendarAnniversary.adapter = calendarAnniversaryAdapter
     }
 
@@ -47,11 +102,16 @@ class ConsumerCalendarFragment : BaseFragment<FragmentConsumerCalendarBinding>
             outRect: Rect,
             view: View,
             parent: RecyclerView,
-            state: RecyclerView.State
+            state: State
         ) {
             super.getItemOffsets(outRect, view, parent, state)
             outRect.bottom = divHeight
         }
+    }
+
+    private fun changeDP(value: Int): Int {
+        val displayMetrics = resources.displayMetrics
+        return (value * displayMetrics.density).roundToInt()
     }
 
     private fun setClickListenerToFab() {

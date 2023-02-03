@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".src.storeMain.ConsumerStoreFeedFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
    <androidx.constraintlayout.widget.ConstraintLayout
        android:layout_width="match_parent"
        android:layout_height="match_parent"
+       android:background="@color/white"
        android:layout_marginLeft="@dimen/store_main_feed_left_right"
        android:layout_marginRight="@dimen/store_main_feed_left_right"
        android:layout_marginTop="@dimen/store_main_feed_top">

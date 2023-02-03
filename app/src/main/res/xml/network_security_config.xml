@@ -2,4 +2,7 @@
 <network-security-config>
     <base-config cleartextTrafficPermitted="true" />
     <!--<base-config cleartextTrafficPermitted="false" />-->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">api.xxx.com</domain>
+    </domain-config>
 </network-security-config>

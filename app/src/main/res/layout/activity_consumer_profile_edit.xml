@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <ImageView
         android:id="@+id/iv_back"
@@ -27,6 +28,7 @@
         app:layout_constraintStart_toEndOf="@id/iv_back"
         app:layout_constraintTop_toTopOf="parent"/>
     <TextView
+        android:id="@+id/tv_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:includeFontPadding="false"
@@ -44,12 +46,11 @@
         android:id="@+id/iv_profile"
         android:layout_width="@dimen/my_page_profile_edit_iv_profile_size"
         android:layout_height="@dimen/my_page_profile_edit_iv_profile_size"
-        android:src="@drawable/bg_oval_off_white"
+        android:background="@drawable/bg_oval_off_white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_main_text"
         android:layout_marginTop="@dimen/my_page_profile_edit_iv_profile_top"/>
-
 
     <ImageView
         android:id="@+id/iv_camera_background"
@@ -71,6 +72,20 @@
         app:layout_constraintTop_toTopOf="@+id/iv_camera_background" />
 
     <TextView
+        android:id="@+id/tv_user_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
+        android:text="keki@gmail.com"
+        android:textColor="@color/brown_grey"
+        android:textSize="@dimen/edit_rule_font_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_profile" />
+
+    <TextView
         android:id="@+id/tv_nick_name_condition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -82,30 +97,46 @@
         android:textSize="@dimen/my_page_profile_edit_tv_nickname_condition_size"
         android:fontFamily="@font/notosanskr_regular"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_profile" />
+        app:layout_constraintTop_toBottomOf="@id/tv_user_email" />
+
+    <View
+        android:id="@+id/bg_input_nickname"
+        android:layout_width="@dimen/my_page_profile_edit_tv_nickname_width"
+        android:layout_height="@dimen/my_page_profile_edit_bg_nickname_height"
+        android:layout_marginLeft="@dimen/my_page_profile_edit_tv_nickname_condition_left"
+        android:layout_marginTop="@dimen/my_page_profile_edit_tv_nickname_top"
+        android:layout_marginRight="@dimen/my_page_profile_edit_tv_nickname_condition_right"
+        app:layout_constraintEnd_toStartOf="@+id/btn_overlap"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_nick_name_condition"
+        android:background="@drawable/bg_rectangle_radius_10_white_padding"
+        android:elevation="@dimen/my_page_profile_edit_shadow" />
 
     <EditText
         android:id="@+id/et_nickname"
         android:layout_width="@dimen/my_page_profile_edit_tv_nickname_width"
         android:layout_height="@dimen/my_page_profile_edit_tv_nickname_height"
-        android:layout_marginLeft="@dimen/my_page_profile_edit_tv_nickname_condition_left"
-        android:layout_marginTop="@dimen/my_page_profile_edit_tv_nickname_top"
-        android:layout_marginRight="@dimen/my_page_profile_edit_tv_nickname_condition_right"
-        android:background="@drawable/bg_rectangle_radius_10_white_no_padding"
+        android:layout_marginHorizontal="@dimen/my_page_profile_edit_et_nickname_margin_horizontal"
+        android:background="@null"
         android:elevation="@dimen/my_page_profile_edit_shadow"
         android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
         android:hint="@string/my_page_profile_nick_name_hint"
-        android:paddingLeft="@dimen/my_page_profile_edit_tv_nickname_padding_left"
         android:textColorHint="@color/brown_grey"
         android:textSize="@dimen/my_page_profile_edit_tv_nickname_size"
-        app:layout_constraintEnd_toStartOf="@+id/btn_overlap"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_nick_name_condition" />
+        android:maxLines="1"
+        android:maxLength="10"
+        android:imeOptions="actionDone"
+        android:inputType="textNoSuggestions"
+        app:layout_constraintTop_toTopOf="@id/bg_input_nickname"
+        app:layout_constraintStart_toStartOf="@id/bg_input_nickname"
+        app:layout_constraintEnd_toEndOf="@id/bg_input_nickname"
+        app:layout_constraintBottom_toBottomOf="@id/bg_input_nickname" />
 
     <Button
         android:id="@+id/btn_overlap"
         android:layout_width="@dimen/my_page_profile_edit_tv_overlap_width"
-        android:layout_height="@dimen/my_page_profile_edit_tv_nickname_height"
+        android:layout_height="@dimen/my_page_profile_edit_bg_nickname_height"
         android:layout_marginTop="@dimen/my_page_profile_edit_tv_nickname_top"
         android:layout_marginRight="@dimen/my_page_profile_edit_tv_overlap_right"
         android:background="@drawable/bg_rectangle_radius_10_white_no_padding"
@@ -116,4 +147,17 @@
         android:textSize="@dimen/my_page_profile_edit_tv_nickname_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_nick_name_condition" />
+
+    <TextView
+        android:id="@+id/tv_naming_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/edit_naming_result_marginLeft"
+        android:layout_marginTop="@dimen/edit_naming_result_marginTop"
+        android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
+        android:textColor="@color/brown_grey"
+        android:textSize="@dimen/edit_result_font_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bg_input_nickname" />
 </androidx.constraintlayout.widget.ConstraintLayout>

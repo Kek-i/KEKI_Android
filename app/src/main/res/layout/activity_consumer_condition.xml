@@ -4,6 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <ImageView
         android:id="@+id/iv_back"
@@ -28,27 +29,29 @@
         app:layout_constraintStart_toEndOf="@id/iv_back"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <TextView
-        android:id="@+id/tv_comment_main_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/my_page_condition_comment_main_text_top"
-        android:layout_marginLeft="@dimen/my_page_condition_comment_main_text_left"
-        android:fontFamily="@font/notosanskr_bold"
-        android:includeFontPadding="false"
-        android:text="@string/my_page_condition_comment_main"
-        android:textColor="@color/black"
-        android:textSize="@dimen/my_page_condition_comment_main_text_size"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_main_text" />
+<!--    <TextView-->
+<!--        android:id="@+id/tv_comment_main_text"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="@dimen/my_page_condition_comment_main_text_top"-->
+<!--        android:layout_marginLeft="@dimen/my_page_condition_comment_main_text_left"-->
+<!--        android:fontFamily="@font/notosanskr_bold"-->
+<!--        android:includeFontPadding="false"-->
+<!--        android:text="@string/my_page_condition_comment_main"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="@dimen/my_page_condition_comment_main_text_size"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tv_main_text" />-->
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <WebView
+        android:id="@+id/wv_comment"
+        android:layout_width="@dimen/my_page_condition_comment_webview_width_heigh"
+        android:layout_height="@dimen/my_page_condition_comment_webview_width_heigh"
+        android:layout_marginTop="@dimen/my_page_condition_comment_webview_top"
         android:src="@drawable/img_my_page_terms_condition"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_comment_main_text"
-        android:layout_marginTop="@dimen/my_page_condition_comment_iv_top"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_main_text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
