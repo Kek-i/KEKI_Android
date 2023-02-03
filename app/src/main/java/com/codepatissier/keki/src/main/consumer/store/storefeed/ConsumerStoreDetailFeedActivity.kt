@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.codepatissier.keki.config.BaseActivity
+import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.databinding.ActivityConsumerStoreDetailFeedBinding
 import com.codepatissier.keki.src.main.consumer.store.storefeed.model.ConsumerStoreDetailFeedResponse
 import com.codepatissier.keki.util.recycler.storefeed.StoreFeedAdapter
@@ -47,6 +48,15 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
 
     override fun onGetConsumerStoreFeedDetailFailure(message: String) {
         dismissLoadingDialog()
+        showCustomToast("오류 : $message")
+    }
+
+    // 피드 좋아요
+    override fun onPostConsumerStoreFeedDetailLikeSuccess(response: BaseResponse) {
+    }
+
+    // 피드 좋아요 취소
+    override fun onPostConsumerStoreFeedDetailLikeFailure(message: String) {
         showCustomToast("오류 : $message")
     }
 
@@ -99,6 +109,10 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
                 }
             }
         })
+    }
+
+    fun postLike(postIdx: Int){
+        ConsumerStoreFeedDetailService(this).tryPostConsumerStoreFeedDetailLikeRetrofitInterface(postIdx)
     }
 
     private fun navigateToStoreMain(){
