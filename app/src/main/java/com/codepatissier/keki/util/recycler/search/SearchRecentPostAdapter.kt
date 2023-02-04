@@ -34,7 +34,7 @@ class SearchRecentPostAdapter(private var searchMainData: Result, val context: C
 
         fun bind(item:RecentPostSearch) {
             Glide.with(context!!)
-                .load(item.postImgUrl)
+                .load(item.postImgUrl[0])
                 .centerCrop()
                 .into(seenCakeImg)
         }
