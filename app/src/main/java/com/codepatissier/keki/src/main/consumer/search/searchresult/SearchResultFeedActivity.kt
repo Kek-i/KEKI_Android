@@ -10,36 +10,35 @@ import com.codepatissier.keki.util.recycler.search.SearchResultFeedAdapter
 class SearchResultFeedActivity : BaseActivity<ActivityConsumerStoreDetailFeedBinding>(ActivityConsumerStoreDetailFeedBinding::inflate)
     , SearchResultView {
 
-    lateinit var searchResultFeedAdapter : SearchResultFeedAdapter
+    private lateinit var searchResultFeedAdapter : SearchResultFeedAdapter
 
     private var position : Int = 1
     private var sortType : String = "인기순"
     private var keyword : String = ""
     private var keytag : String = ""
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        position = intent.getIntExtra("position", 0)!!
+        sortType = intent.getStringExtra("sortType")!!
+        keyword = intent.getStringExtra("keyword")!!
+        keytag = intent.getStringExtra("keytag")!!
+        init()
 
-        initRecyclerView()
         navigateToStoreMain()
         showLoadingDialog(this)
 
     }
-
-    private fun initRecyclerView(){
-        position = intent.getIntExtra("position", 0)!!
-        sortType = intent.getStringExtra("sortType")!!
-        keyword = intent.getStringExtra("keyword")!!
-        keytag  = intent.getStringExtra("keytag")!!
-
-        if (keytag == ""){
+    private fun init(){
+        if (keyword != ""){
             SearchResultService(this).tryGetSearchResults(keyword = keyword,sortType = sortType)
         }
         else{
             SearchResultService(this).tryGetTagResults(tag = keytag, sortType = sortType)
         }
-
     }
+
 
     override fun onGetSearchResultsSuccess(response: SearchResultResponse) {
         dismissLoadingDialog()

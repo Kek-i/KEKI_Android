@@ -66,7 +66,7 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
                 intent.putExtra("position", position)
                 intent.putExtra("sortType", sortType)
                 intent.putExtra("keyword", keyword)
-                intent.putExtra("keyword", keyTag)
+                intent.putExtra("keytag", keyTag)
                 startActivity(intent)
                }
         })
@@ -115,6 +115,7 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
                 imm.hideSoftInputFromWindow(binding.etSearch.windowToken, 0)
                 //엑티비티 내에서 검색할 경우
                 keyword = "${binding.etSearch.text}"
+                keyTag = ""
                 SearchResultService(this).tryGetSearchResults(keyword = "${binding.etSearch.text}",sortType = sortType)
             }
             false
@@ -137,6 +138,8 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
                 val imm = this@ConsumerSearchActivity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(binding.etSearch.windowToken, 0)
                 //엑티비티 내에서 검색할 경우
+                keyword = "${binding.etSearch.text}"
+                keyTag = ""
                 SearchResultService(this).tryGetSearchResults(keyword = "${binding.etSearch.text}", sortType = sortType)
             }
             false
@@ -157,7 +160,12 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
             override fun onItemSelected(parent: AdapterView<*>?,view: View,position: Int,id: Long) {
                 if (binding.spinnerSearch.getItemAtPosition(position) != sortType){
                     sortType = "${binding.spinnerSearch.getItemAtPosition(position)}"
-                    setListenerToEditText()
+                    if (keyTag == ""){
+                        SearchResultService(this@ConsumerSearchActivity).tryGetSearchResults(keyword = "${binding.etSearch.text}",sortType = sortType)
+                    }
+                    else{
+                        SearchResultService(this@ConsumerSearchActivity).tryGetTagResults(tag = keyTag, sortType = sortType)
+                    }
                 }
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
