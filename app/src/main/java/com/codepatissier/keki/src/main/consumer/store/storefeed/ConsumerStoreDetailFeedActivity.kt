@@ -16,8 +16,8 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
 
     lateinit var storeFeedAdapter : StoreFeedAdapter
     val storeFeedDatas = mutableListOf<StoreFeedData>()
-    var feedTag : String = "친구"
-    var feedSize = 12
+    var feedTag : String ?= null
+    var feedSize = 3
     var cursorIdx : Int? = null
     var hasNext : Boolean? = null
     var positionStart = 0
@@ -30,12 +30,12 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
         initRecyclerView()
         navigateToStoreMain()
         showLoadingDialog(this)
-        ConsumerStoreFeedDetailService(this).tryGetConsumerStoreFeedDetailRetrofitInterface(feedTag, cursorIdx, feedSize)
+        ConsumerStoreFeedDetailService(this).tryGetConsumerStoreFeedDetailRetrofitInterface(feedTag!!, cursorIdx, feedSize)
         checkScrollEvent()
     }
 
     private fun initRecyclerView(){
-        //feedTag = intent.getStringExtra("tag")!!
+        feedTag = intent.getStringExtra("tag")!!
         storeFeedAdapter = StoreFeedAdapter(this)
         binding.recyclerStoreFeed.adapter = storeFeedAdapter
     }
@@ -73,9 +73,10 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
         cursorIdx = response.result.cursorIdx
         hasNext = response.result.hasNext
 
-
-        storeFeedAdapter.setList(storeFeedDatas)
+        storeFeedAdapter.setList(storeFeedDatas, hasNext!!)
         storeFeedAdapter.notifyItemRangeInserted(positionStart, response.result.feeds.size)
+
+        //LinearLayoutManager(this).scrollToPositionWithOffset(positionStart,0)
     }
 
     private fun checkScrollEvent(){
@@ -89,11 +90,9 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
                 
                 if(!binding.recyclerStoreFeed.canScrollVertically(1) && lastVisibleItemPosition == itemTotalCount){
                     if(hasNext!!){
-                        storeFeedAdapter.deleteLoading()
-
                         positionStart = storeFeedDatas.size
                         ConsumerStoreFeedDetailService(this@ConsumerStoreDetailFeedActivity)
-                            .tryGetConsumerStoreFeedDetailRetrofitInterface(feedTag, cursorIdx, feedSize)
+                            .tryGetConsumerStoreFeedDetailRetrofitInterface(feedTag!!, cursorIdx, feedSize)
 
                     }
 
