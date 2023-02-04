@@ -2,6 +2,7 @@ package com.codepatissier.keki.src.main.consumer.search.searchresult
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
@@ -18,17 +19,21 @@ import android.view.View.OnTouchListener
 import android.view.inputmethod.InputMethodManager
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.src.main.consumer.search.searchresult.model.SearchResultResponse
+import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedActivity
 
 
 class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(ActivityConsumerSearchBinding::inflate),
     SearchResultView {
     private lateinit var searchListAdapter : SearchListAdapter
-    var sortType : String = "인기순"
+    private var sortType : String = "인기순"
+    private var keyword : String = ""
+    private var keyTag : String = ""
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val searchTag = intent.getStringExtra("searchTag")
+        Log.d("서치", "$searchTag")
         if (searchTag == null){
             setListenerToEditText()
         }
@@ -57,8 +62,15 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
         // 개별 아이템 클릭 시 이벤트
         searchListAdapter.setItemClickListener(object: SearchListAdapter.OnItemClickListener{
             override fun onClick(v: View, position: Int) {
+                val intent = Intent(this@ConsumerSearchActivity, SearchResultFeedActivity::class.java)
+                intent.putExtra("position", position)
+                intent.putExtra("sortType", sortType)
+                intent.putExtra("keyword", keyword)
+                intent.putExtra("keyword", keyTag)
+                startActivity(intent)
                }
         })
+
 
         //EmptyView 설정
         if (response.result.feeds.isEmpty()) {
@@ -71,6 +83,9 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
         }
 
     }
+
+
+
 
 
     //검색창 x 누르면 삭제
@@ -99,11 +114,13 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
                 val imm = this@ConsumerSearchActivity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(binding.etSearch.windowToken, 0)
                 //엑티비티 내에서 검색할 경우
+                keyword = "${binding.etSearch.text}"
                 SearchResultService(this).tryGetSearchResults(keyword = "${binding.etSearch.text}",sortType = sortType)
             }
             false
         }
         //처음 검색하기
+        keyword = "$searchKey"
         SearchResultService(this).tryGetSearchResults(keyword = "$searchKey", sortType = sortType)
     }
 
@@ -124,7 +141,7 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
             }
             false
         }
-
+        keyTag = "$searchTag"
         SearchResultService(this).tryGetTagResults(tag = "$searchTag", sortType)
     }
 
@@ -146,5 +163,6 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
     }
+
 
 }

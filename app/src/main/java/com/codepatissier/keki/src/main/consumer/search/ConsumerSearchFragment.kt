@@ -29,6 +29,7 @@ class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(Fragm
         showLoadingDialog(requireContext())
         clickDeleteSearchHistory()
         callMainSearches()
+
     }
 
     override fun onResume() {

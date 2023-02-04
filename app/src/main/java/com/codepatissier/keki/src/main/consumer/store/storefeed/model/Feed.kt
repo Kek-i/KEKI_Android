@@ -5,7 +5,7 @@ data class Feed(
     val description: String,
     val dessertName: String,
     val like: Boolean,
-    val postIdx: Int,
+    val postIdx: Long,
     val postImgUrls: List<String>,
     val storeProfileImg: String,
     val tags: List<String>

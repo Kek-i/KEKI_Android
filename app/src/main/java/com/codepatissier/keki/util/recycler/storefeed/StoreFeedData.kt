@@ -1,7 +1,7 @@
 package com.codepatissier.keki.util.recycler.storefeed
 
 data class StoreFeedData(
-    val postIdx: Int,
+    val postIdx: Long,
     val dessertName: String,
     val description: String,
     val postImgUrls: List<String>,

@@ -1,4 +1,4 @@
-package com.codepatissier.keki.util.recycler.storefeed
+package com.codepatissier.keki.util.recycler.search
 
 import android.content.Intent
 import android.graphics.drawable.Drawable
@@ -16,13 +16,16 @@ import com.bumptech.glide.Glide
 import com.codepatissier.keki.R
 import com.codepatissier.keki.databinding.ItemProgressbarLoadingBinding
 import com.codepatissier.keki.databinding.ItemStoreFeedRecyclerBinding
+import com.codepatissier.keki.src.main.consumer.search.model.Result
+import com.codepatissier.keki.src.main.consumer.search.searchresult.model.Feeds
+import com.codepatissier.keki.src.main.consumer.search.searchresult.model.SearchResult
 import com.codepatissier.keki.src.main.consumer.store.ConsumerStoreMainActivity
 import com.codepatissier.keki.src.main.consumer.store.storefeed.report.ConsumerStoreDetailFeedDialog
 import com.codepatissier.keki.src.main.consumer.store.storefeed.DetailImageAdapter
+import com.codepatissier.keki.util.recycler.storefeed.StoreFeedData
 
-class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<ViewHolder>() {
+class SearchResultFeedAdapter(private var searchResult: SearchResult, val context: FragmentActivity?): RecyclerView.Adapter<ViewHolder>() {
 
-    var storeFeedDatas = mutableListOf<StoreFeedData>()
     private val VIEW_TYPE_ITEM = 0
     private val VIEW_TYPE_LOADING = 1
 
@@ -43,22 +46,15 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if(holder is StoreFeedViewHolder){
-            (holder as StoreFeedViewHolder).bind(storeFeedDatas[position])
+            (holder).bind(searchResult.feeds[position])
         }else{
 
         }
     }
 
-    override fun getItemCount(): Int = storeFeedDatas.size
+    override fun getItemCount(): Int = searchResult.feeds.size
 
-    fun setList(storeFeed: MutableList<StoreFeedData>){
-        storeFeedDatas.addAll(storeFeed)
-        storeFeedDatas.add(StoreFeedData(0, " ", " ", List(1) { "" }, List(1){""}, " ", " ", false, 0, false))
-    }
 
-    fun deleteLoading(){
-        storeFeedDatas.removeAt(storeFeedDatas.lastIndex)
-    }
 
     class StoreFeedViewHolder(val context: FragmentActivity?, val binding: ItemStoreFeedRecyclerBinding): ViewHolder(binding.root){
         private val sellerImg: ImageView = binding.ivStoreFeedSeller
@@ -72,9 +68,10 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
         private var heart = false
         private var postIdx : Long? = null
 
-        fun bind(item: StoreFeedData){
+        fun bind(item: Feeds){
             nickname.text = item.brandName
             cakeName.text = item.dessertName
+            postIdx = item.postIdx
 
             for(i in item.tags.indices){
                 tagArray[i].isVisible = true
@@ -146,10 +143,9 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
                 popupMenu.setOnMenuItemClickListener {
                     when(it.itemId){
                         R.id.popup_report -> {
-                            Log.d("click", "report")
-                            // 이후에 해당 게시물 신고되는거 맞는지 확인하기
-                            ConsumerStoreDetailFeedDialog(context!!).show()
-
+                            val reportDialog = ConsumerStoreDetailFeedDialog(context!!)
+                            reportDialog.postIdx = postIdx // postIdx 값 전달
+                            reportDialog.show()
                             return@setOnMenuItemClickListener true
                         }else -> {
                             return@setOnMenuItemClickListener false
@@ -177,7 +173,7 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
 
     // 뷰 타입 정하기
     override fun getItemViewType(position: Int): Int {
-        return when (storeFeedDatas[position].dessertName){
+        return when (searchResult.feeds[position].dessertName){
             " " -> VIEW_TYPE_LOADING
             else -> VIEW_TYPE_ITEM
         }

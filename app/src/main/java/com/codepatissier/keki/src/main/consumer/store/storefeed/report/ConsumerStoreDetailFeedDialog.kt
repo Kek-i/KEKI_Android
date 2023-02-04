@@ -4,16 +4,14 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.Window
 import com.codepatissier.keki.R
 import com.codepatissier.keki.databinding.DialogReportConsumerStoreDetailFeedBinding
-
 class ConsumerStoreDetailFeedDialog(context: Context): Dialog(context){
 
     private lateinit var binding: DialogReportConsumerStoreDetailFeedBinding
     var reportList = Array(5){i -> false}
-
+    var postIdx : Long? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
