@@ -112,7 +112,7 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
     }
 
     fun postLike(postIdx: Int){
-        ConsumerStoreFeedDetailService(this).tryPostConsumerStoreFeedDetailLikeRetrofitInterface(postIdx)
+        ConsumerStoreFeedDetailService(this).tryPostConsumerStoreFeedDetailLike(postIdx)
     }
 
     private fun navigateToStoreMain(){
