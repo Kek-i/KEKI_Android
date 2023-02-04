@@ -454,19 +454,19 @@
     <dimen name="calendar_add_tv_max_hashtag_margin_start">25dp</dimen>
     <dimen name="calendar_add_tv_max_hashtag_size">11sp</dimen>
 
-    <dimen name="calendar_chip_group_width">0dp</dimen>
-    <dimen name="calendar_chip_group_margin_top">18dp</dimen>
-    <dimen name="calendar_chip_group_padding_top">2dp</dimen>
-    <dimen name="calendar_chip_group_padding_bottom">60dp</dimen>
-    <dimen name="calendar_chip_group_padding_horizontal">24dp</dimen>
-    <dimen name="calendar_chip_hashtag_height">26dp</dimen>
-    <dimen name="calendar_chip_hashtag_radius">13dp</dimen>
-    <dimen name="calendar_chip_hashtag_padding_top">4dp</dimen>
-    <dimen name="calendar_chip_hashtag_padding_bottom">6dp</dimen>
-    <dimen name="calendar_chip_spacing_horizontal">10dp</dimen>
-    <dimen name="calendar_chip_spacing_vertical">14dp</dimen>
-    <dimen name="calendar_chip_text_padding_horizontal">0dp</dimen>
-    <dimen name="calendar_chip_padding_horizontal">14dp</dimen>
+    <dimen name="chip_group_width">0dp</dimen>
+    <dimen name="chip_group_margin_top">18dp</dimen>
+    <dimen name="chip_group_padding_top">2dp</dimen>
+    <dimen name="chip_group_padding_bottom">60dp</dimen>
+    <dimen name="chip_group_padding_horizontal">24dp</dimen>
+    <dimen name="chip_spacing_horizontal">10dp</dimen>
+    <dimen name="chip_spacing_vertical">14dp</dimen>
+    <dimen name="chip_hashtag_height">26dp</dimen>
+    <dimen name="chip_hashtag_radius">13dp</dimen>
+    <dimen name="chip_hashtag_padding_top">4dp</dimen>
+    <dimen name="chip_hashtag_padding_bottom">6dp</dimen>
+    <dimen name="chip_text_padding_horizontal">0dp</dimen>
+    <dimen name="chip_padding_horizontal">14dp</dimen>
 
     <dimen name="calendar_add_component_elevation">3dp</dimen>
     <dimen name="calendar_add_hashtag_elevation">2dp</dimen>
@@ -683,7 +683,6 @@
     <dimen name="seller_product_detail_feed_delete_dialog_text_marginTop">20dp</dimen>
     <dimen name="seller_product_detail_feed_delete_dialog_text_marginSide">17dp</dimen>
 
-
     <!-- logout dialog -->
     <dimen name="my_page_logout_dialog_width">277dp</dimen>
     <dimen name="my_page_logout_dialog_height">164dp</dimen>
@@ -714,5 +713,26 @@
     <dimen name="my_page_withdrawal_btn_margin_bottom">35dp</dimen>
     <dimen name="my_page_withdrawal_btn_chain_margin">15dp</dimen>
     <dimen name="my_page_withdrawal_btn_text_size">16sp</dimen>
+
+    <!-- seller store feed add -->
+    <dimen name="seller_feed_add_top_bar_layout_margin_top">11dp</dimen>
+    <dimen name="seller_feed_add_ib_back_padding_horizontal">14dp</dimen>
+    <dimen name="seller_feed_add_ib_back_padding_top">8dp</dimen>
+    <dimen name="seller_feed_add_ib_back_padding_bottom">7dp</dimen>
+    <dimen name="seller_feed_add_tv_completion_height">0dp</dimen>
+    <dimen name="seller_feed_add_tv_completion_margin_end">9dp</dimen>
+    <dimen name="seller_feed_add_tv_completion_padding_horizontal">10dp</dimen>
+    <dimen name="seller_feed_add_tv_completion_size">16sp</dimen>
+    <dimen name="seller_feed_add_scroll_view_content_height">0dp</dimen>
+
+    <dimen name="seller_feed_add_tv_select_hashtag_height">24dp</dimen>
+    <dimen name="seller_feed_add_tv_select_hashtag_margin_top">20dp</dimen>
+    <dimen name="seller_feed_add_tv_select_hashtag_margin_start">24dp</dimen>
+    <dimen name="seller_feed_add_tv_select_hashtag_size">16sp</dimen>
+    <dimen name="seller_feed_add_tv_max_hashtag_height">16dp</dimen>
+    <dimen name="seller_feed_add_tv_max_hashtag_margin_top">5dp</dimen>
+    <dimen name="seller_feed_add_tv_max_hashtag_margin_start">25dp</dimen>
+    <dimen name="seller_feed_add_tv_max_hashtag_size">11sp</dimen>
+
 
 </resources>

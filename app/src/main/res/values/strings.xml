@@ -105,8 +105,8 @@
     <string name="calendar_anniversary_type_repeat_every_year">매년 반복</string>
     <string name="calendar_add_anniversary_title">기념일 제목을 입력해주세요. (30자)</string>
     <string name="calendar_add_anniversary_date">날짜를 선택해주세요.</string>
-    <string name="calendar_add_anniversary_hashtag">아래 #해시태그를 선택해주세요.</string>
-    <string name="calendar_add_max_hashtag">해시태그는 최대 3개까지 등록할 수 있습니다.</string>
+    <string name="calendar_feed_add_anniversary_hashtag">아래 #해시태그를 선택해주세요.</string>
+    <string name="calendar_feed_add_max_hashtag">해시태그는 최대 3개까지 등록할 수 있습니다.</string>
     <string name="calendar_add_completion">완료</string>
     <string name="calendar_add_error_no_select">필수 선택 항목입니다.</string>
     <string name="calendar_add_error_no_input">필수 입력 항목입니다.</string>
@@ -168,6 +168,12 @@
     <string name="logout_tv_cancel">취소</string>
     <string name="logout_tv_logout">로그아웃</string>
 
+    <!-- withdrawal -->
+    <string name="dialog_withdrawal_title">회원탈퇴</string>
+    <string name="withdrawal_tv_content">정말 케키와 헤어지실 건가요?\n정말요? 진짜요?\n(해당 이메일로 재가입은 불가합니다.)</string>
+    <string name="withdrawal_tv_cancel">취소</string>
+    <string name="withdrawal_tv_withdrawal">탈퇴하기</string>
+
 
     <!-- 판매자 -->
 
@@ -183,13 +189,6 @@
     <string name="seller_profile_setting_et7">사업자등록증에 표기된 사업자주소\n입력해주세요.</string>
     <string name="seller_profile_setting_et8">사업자등록번호를 입력해주세요.</string>
 
-
-    <!-- withdrawal -->
-    <string name="dialog_withdrawal_title">회원탈퇴</string>
-    <string name="withdrawal_tv_content">정말 케키와 헤어지실 건가요?\n정말요? 진짜요?\n(해당 이메일로 재가입은 불가합니다.)</string>
-    <string name="withdrawal_tv_cancel">취소</string>
-    <string name="withdrawal_tv_withdrawal">탈퇴하기</string>
-
     <!-- seller -->
     <string name="seller_product_detail_feed_menu1">수정</string>
     <string name="seller_product_detail_feed_menu2">삭제</string>
@@ -197,5 +196,8 @@
     <string name="seller_product_detail_feed_delete_dialog_text">해당 상품을 삭제하시겠습니까?\n(상품 삭제시 관련된 게시글도 함께 사라집니다.)</string>
     <string name="seller_product_detail_feed_delete_dialog_btn_delete">삭제하기</string>
     <string name="seller_product_detail_feed_delete_dialog_btn_cancel">취소</string>
+
+    <!-- store feed add -->
+    <string name="seller_feed_add_completion">완료</string>
 
 </resources>
