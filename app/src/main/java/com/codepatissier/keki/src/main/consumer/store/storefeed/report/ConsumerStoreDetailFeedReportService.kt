@@ -7,7 +7,9 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class ConsumerStoreDetailFeedReportService(val consumerStoreDetailFeedReportView: ConsumerStoreDetailFeedReportView) {
+
     fun tryPostConsumerStoreDetailFeedReportRetrofitInterface(postIdx: Long, reportName: String){
+
         val consumerStoreFeedDetailReportInterface =
             ApplicationClass.sRetrofit.create(ConsumerStoreDetailFeedReportRetrofitInterface::class.java)
 

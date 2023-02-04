@@ -32,7 +32,7 @@ class ConsumerStoreFeedFragment(storeIdx : Long) : BaseFragment<FragmentConsumer
         super.onViewCreated(view, savedInstanceState)
 
         showLoadingDialog(requireContext())
-        ConsumerStoreFeedService(this).tryGetConsumerStoreFeed(storeIdx, size)
+        ConsumerStoreFeedService(this).tryGetConsumerStoreFeed(storeIdx=storeIdx, size=size)
     }
 
     override fun onGetStoreFeedSuccess(response: SearchResultResponse) {
@@ -64,7 +64,7 @@ class ConsumerStoreFeedFragment(storeIdx : Long) : BaseFragment<FragmentConsumer
                 if (!binding.recyclerSellerFeed.canScrollVertically(1) && hasNext) {
                     showLoadingDialog(requireContext())
                     positionStart = storeMainStoreDatas.size
-                    ConsumerStoreFeedService(this@ConsumerStoreFeedFragment).tryGetConsumerStoreNextFeed(storeIdx, cursorIdx,size)
+                    ConsumerStoreFeedService(this@ConsumerStoreFeedFragment).tryGetConsumerStoreNextFeed(storeIdx = storeIdx, cursorIdx=cursorIdx,size =size)
                 }
             }
         })

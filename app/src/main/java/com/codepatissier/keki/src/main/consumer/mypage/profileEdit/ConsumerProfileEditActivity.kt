@@ -3,6 +3,9 @@ package com.codepatissier.keki.src.main.consumer.mypage.profileEdit
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.KeyEvent
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -50,7 +53,7 @@ class ConsumerProfileEditActivity :BaseActivity<ActivityConsumerProfileEditBindi
         profileClicked()
         clickConfirm()
         clickDoubleCheck()
-
+        keyboardEnterClicked()
     }
 
     private fun backClicked(){
@@ -67,6 +70,9 @@ class ConsumerProfileEditActivity :BaseActivity<ActivityConsumerProfileEditBindi
     private fun profileClicked(){
         // 갤러리에서 이미지 가져오기
         binding.ivProfile.setOnClickListener{
+            // 키패드 내리기
+            keyboardDown()
+
             var intent = Intent(Intent.ACTION_GET_CONTENT)
             intent.setType("image/*")
             launcher.launch(intent)
@@ -123,6 +129,8 @@ class ConsumerProfileEditActivity :BaseActivity<ActivityConsumerProfileEditBindi
     // 완료 버튼 클릭시 서버에 patch
     private fun clickConfirm(){
         binding.tvEdit.setOnClickListener{
+            // 키패드 내리기
+            keyboardDown()
             //null값이 아니고, 중복 확인한 값일 경우(중복확인 누르고 값 바꾸는것 방지), 닉네임 조건에 맞을 경우
             if (nickname != null && nickname == binding.etNickname.text.toString() ) {
                 profileEdit()
@@ -205,6 +213,9 @@ class ConsumerProfileEditActivity :BaseActivity<ActivityConsumerProfileEditBindi
     //중복확인 버튼 클릭
     private fun clickDoubleCheck() {
         binding.btnOverlap.setOnClickListener {
+            // 키패드 내리기
+            keyboardDown()
+
             nickname = null     //새로 중복 확인 누르면 기존 시도 닉네임 초기화
             val tryNick = binding.etNickname.text.toString()
             if(isValidNickname(tryNick)){
@@ -239,5 +250,23 @@ class ConsumerProfileEditActivity :BaseActivity<ActivityConsumerProfileEditBindi
     // 로그인 성공시라 사용 x
     override fun onPostSignupSuccess(response: SocialTokenResponse) {
         TODO("Not yet implemented")
+    }
+
+    // 엔터 클릭 시 키패드 내리기
+    private fun keyboardEnterClicked(){
+        binding.etNickname.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                keyboardDown()
+                return@setOnEditorActionListener true
+            }
+            return@setOnEditorActionListener false
+        }
+    }
+
+    // 키패드 내리는 함수
+    private fun keyboardDown(){
+        val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.etNickname.windowToken, 0)
+        binding.etNickname.clearFocus()
     }
 }

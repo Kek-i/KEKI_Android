@@ -89,7 +89,6 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
     private fun homeStoreRecyclerView(response: HomeTagRes, number: Int){
         when(number){
             0 -> {
-                // 이미지는 glide로, 가게 이름은 text로 데이터 구조 수정되면 변경하기!
                 binding.tvFirstHomeTag.text = "# " + response.tagName
                 homeStoreFirstRecyclerView(response)
             }
@@ -111,7 +110,7 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
         for(i in response.homePostRes.indices){
             homeStoreFirstDatas.apply { add(HomeStoreData(img = response.homePostRes[i].postImgUrl,
                 postIdx = response.homePostRes[i].postIdx,
-                name = response.homePostRes[i].storeTitle)) }
+                name = response.homePostRes[i].storeTitle, tagIdx = response.tagIdx, tagName = response.tagName)) }
         }
 
         homeStoreFirstAdapter.homeStoreDatas = homeStoreFirstDatas
@@ -125,7 +124,7 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
         for(i in response.homePostRes.indices){
             homeStoreSecondDatas.apply { add(HomeStoreData(img = response.homePostRes[i].postImgUrl,
                 postIdx = response.homePostRes[i].postIdx,
-                name = response.homePostRes[i].storeTitle)) }
+                name = response.homePostRes[i].storeTitle, tagIdx = response.tagIdx, tagName = response.tagName)) }
         }
 
         homeStoreSecondAdapter.homeStoreDatas = homeStoreSecondDatas
@@ -139,7 +138,7 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
         for(i in response.homePostRes.indices){
             homeStoreThirdDatas.apply { add(HomeStoreData(img = response.homePostRes[i].postImgUrl,
                 postIdx = response.homePostRes[i].postIdx,
-                name = response.homePostRes[i].storeTitle)) }
+                name = response.homePostRes[i].storeTitle, tagIdx = response.tagIdx, tagName = response.tagName)) }
         }
 
         homeStoreThirdAdapter.homeStoreDatas = homeStoreThirdDatas

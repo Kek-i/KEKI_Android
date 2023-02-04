@@ -43,8 +43,9 @@ class StoreMainStoreAdapter(val context: FragmentActivity?): RecyclerView.Adapte
                 .placeholder(defaultImg)
                 .error(defaultImg)
                 .fallback(defaultImg)
-                .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
+                .centerCrop()
                 .into(FeedImg)
+
 
             itemView.setOnClickListener {
                 var intent = Intent(itemView.context, ConsumerStoreDetailFeedActivity::class.java)

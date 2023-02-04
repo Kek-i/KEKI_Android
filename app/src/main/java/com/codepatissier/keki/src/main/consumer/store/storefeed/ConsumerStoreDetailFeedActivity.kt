@@ -17,7 +17,7 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
     lateinit var storeFeedAdapter : StoreFeedAdapter
     val storeFeedDatas = mutableListOf<StoreFeedData>()
     var feedTag : String = "친구"
-    var feedSize = 3
+    var feedSize = 12
     var cursorIdx : Int? = null
     var hasNext : Boolean? = null
     var positionStart = 0
@@ -35,6 +35,7 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
     }
 
     private fun initRecyclerView(){
+        //feedTag = intent.getStringExtra("tag")!!
         storeFeedAdapter = StoreFeedAdapter(this)
         binding.recyclerStoreFeed.adapter = storeFeedAdapter
     }

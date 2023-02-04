@@ -6,16 +6,28 @@
     android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
-        android:id="@+id/iv_store_main"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv"
         android:layout_width="@dimen/store_main_rv_width_height"
         android:layout_height="@dimen/store_main_rv_width_height"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cardCornerRadius="@dimen/store_main_img_radius"
+        app:cardElevation="@dimen/store_main_iv_elevation"
+        android:background="@color/white"
         android:layout_marginRight="@dimen/store_main_rv_margin"
         android:layout_marginLeft="@dimen/store_main_rv_margin"
         android:layout_marginTop="@dimen/store_main_rv_margin"
-        android:background="@drawable/bg_rectangle_radius_10_off_white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        >
+
+        <ImageView
+            android:id="@+id/iv_store_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:background="@drawable/bg_rectangle_radius_10_off_white"
+           />
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

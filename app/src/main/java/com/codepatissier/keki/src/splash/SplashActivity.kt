@@ -21,6 +21,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
         //userInfo.putString(Authorization, "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWR4IjoyLCJzdWIiOiIyIiwiZXhwIjoxNjc1NjkzODU4fQ.UHvkEhWXzpyVt7FfyLT5fYiifEm42yJmhKi1ru4zqk0")
         // 토큰 삭제
         //userInfo.clear()
+        
         //userInfo.commit()
 
 
