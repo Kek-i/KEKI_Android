@@ -1,8 +1,6 @@
 package com.codepatissier.keki.util.recycler.search
 
 import android.content.Intent
-import android.graphics.drawable.Drawable
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -16,15 +14,14 @@ import com.bumptech.glide.Glide
 import com.codepatissier.keki.R
 import com.codepatissier.keki.databinding.ItemProgressbarLoadingBinding
 import com.codepatissier.keki.databinding.ItemStoreFeedRecyclerBinding
-import com.codepatissier.keki.src.main.consumer.search.model.Result
 import com.codepatissier.keki.src.main.consumer.search.searchresult.model.Feeds
 import com.codepatissier.keki.src.main.consumer.search.searchresult.model.SearchResult
 import com.codepatissier.keki.src.main.consumer.store.ConsumerStoreMainActivity
 import com.codepatissier.keki.src.main.consumer.store.storefeed.report.ConsumerStoreDetailFeedDialog
 import com.codepatissier.keki.src.main.consumer.store.storefeed.DetailImageAdapter
-import com.codepatissier.keki.util.recycler.storefeed.StoreFeedData
 
-class SearchResultFeedAdapter(private var searchResult: SearchResult, val context: FragmentActivity?): RecyclerView.Adapter<ViewHolder>() {
+
+class SearchResultFeedAdapter(var searchResult: SearchResult, val context: FragmentActivity?): RecyclerView.Adapter<ViewHolder>() {
 
     private val VIEW_TYPE_ITEM = 0
     private val VIEW_TYPE_LOADING = 1
@@ -41,14 +38,12 @@ class SearchResultFeedAdapter(private var searchResult: SearchResult, val contex
                 val itemBinding = ItemProgressbarLoadingBinding.inflate(layoutInflater, parent, false)
                 LoadingViewHolder(itemBinding)
             }
-        }
+        };
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if(holder is StoreFeedViewHolder){
             (holder).bind(searchResult.feeds[position])
-        }else{
-
         }
     }
 
@@ -69,7 +64,7 @@ class SearchResultFeedAdapter(private var searchResult: SearchResult, val contex
         private var postIdx : Long? = null
 
         fun bind(item: Feeds){
-            nickname.text = item.brandName
+            nickname.text = item.storeName
             cakeName.text = item.dessertName
             postIdx = item.postIdx
 
