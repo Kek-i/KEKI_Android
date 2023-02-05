@@ -1,6 +1,7 @@
 package com.codepatissier.keki.src.main.consumer.store.storefeed
 
 import com.codepatissier.keki.config.ApplicationClass
+import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.src.main.consumer.store.storefeed.model.ConsumerStoreDetailFeedResponse
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,6 +26,21 @@ class ConsumerStoreFeedDetailService(val consumerStoreFeedDetailView: ConsumerSt
                 }
 
             })
+    }
+
+    fun tryPostConsumerStoreFeedDetailLike(postIdx: Int){
+        val consumerStoreFeedDetailLikeInterface = ApplicationClass.sRetrofit.create(ConsumerStoreFeedDetailRetrofitInterface::class.java)
+
+        consumerStoreFeedDetailLikeInterface.postConsumerStoreFeedDetailLike(postIdx).enqueue(object : Callback<BaseResponse>{
+            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
+                consumerStoreFeedDetailView.onPostConsumerStoreFeedDetailLikeSuccess(response.body() as BaseResponse)
+            }
+
+            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
+                consumerStoreFeedDetailView.onPostConsumerStoreFeedDetailLikeFailure(t.message ?: "통신 오류")
+            }
+
+        })
     }
 
 

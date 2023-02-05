@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.codepatissier.keki.config.BaseActivity
+import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.databinding.ActivityConsumerStoreDetailFeedBinding
 import com.codepatissier.keki.src.main.consumer.store.storefeed.model.ConsumerStoreDetailFeedResponse
 import com.codepatissier.keki.util.recycler.storefeed.StoreFeedAdapter
@@ -16,8 +17,8 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
 
     lateinit var storeFeedAdapter : StoreFeedAdapter
     val storeFeedDatas = mutableListOf<StoreFeedData>()
-    var feedTag : String = "친구"
-    var feedSize = 12
+    var feedTag : String ?= null
+    var feedSize = 3
     var cursorIdx : Int? = null
     var hasNext : Boolean? = null
     var positionStart = 0
@@ -30,12 +31,12 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
         initRecyclerView()
         navigateToStoreMain()
         showLoadingDialog(this)
-        ConsumerStoreFeedDetailService(this).tryGetConsumerStoreFeedDetailRetrofitInterface(feedTag, cursorIdx, feedSize)
+        ConsumerStoreFeedDetailService(this).tryGetConsumerStoreFeedDetailRetrofitInterface(feedTag!!, cursorIdx, feedSize)
         checkScrollEvent()
     }
 
     private fun initRecyclerView(){
-        //feedTag = intent.getStringExtra("tag")!!
+        feedTag = intent.getStringExtra("tag")!!
         storeFeedAdapter = StoreFeedAdapter(this)
         binding.recyclerStoreFeed.adapter = storeFeedAdapter
     }
@@ -47,6 +48,15 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
 
     override fun onGetConsumerStoreFeedDetailFailure(message: String) {
         dismissLoadingDialog()
+        showCustomToast("오류 : $message")
+    }
+
+    // 피드 좋아요
+    override fun onPostConsumerStoreFeedDetailLikeSuccess(response: BaseResponse) {
+    }
+
+    // 피드 좋아요 취소
+    override fun onPostConsumerStoreFeedDetailLikeFailure(message: String) {
         showCustomToast("오류 : $message")
     }
 
@@ -73,9 +83,10 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
         cursorIdx = response.result.cursorIdx
         hasNext = response.result.hasNext
 
-
-        storeFeedAdapter.setList(storeFeedDatas)
+        storeFeedAdapter.setList(storeFeedDatas, hasNext!!)
         storeFeedAdapter.notifyItemRangeInserted(positionStart, response.result.feeds.size)
+
+        //LinearLayoutManager(this).scrollToPositionWithOffset(positionStart,0)
     }
 
     private fun checkScrollEvent(){
@@ -89,17 +100,19 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
                 
                 if(!binding.recyclerStoreFeed.canScrollVertically(1) && lastVisibleItemPosition == itemTotalCount){
                     if(hasNext!!){
-                        storeFeedAdapter.deleteLoading()
-
                         positionStart = storeFeedDatas.size
                         ConsumerStoreFeedDetailService(this@ConsumerStoreDetailFeedActivity)
-                            .tryGetConsumerStoreFeedDetailRetrofitInterface(feedTag, cursorIdx, feedSize)
+                            .tryGetConsumerStoreFeedDetailRetrofitInterface(feedTag!!, cursorIdx, feedSize)
 
                     }
 
                 }
             }
         })
+    }
+
+    fun postLike(postIdx: Int){
+        ConsumerStoreFeedDetailService(this).tryPostConsumerStoreFeedDetailLike(postIdx)
     }
 
     private fun navigateToStoreMain(){

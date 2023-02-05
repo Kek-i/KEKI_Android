@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/csl_dialog"
+        android:layout_width="@dimen/seller_product_detail_feed_delete_dialog_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/seller_product_detail_feed_delete_dialog_marginTop"
+        android:layout_marginBottom="@dimen/seller_product_detail_feed_delete_dialog_marginBottom"
+        android:background="@drawable/bg_rectangle_radius_10_white_no_padding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+        <TextView
+            android:id="@+id/tv_mainName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/seller_product_detail_feed_delete_dialog_title_marginTop"
+            android:fontFamily="@font/notosanskr_bold"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="@string/seller_product_detail_feed_delete_dialog_title"
+            android:textColor="@color/black"
+            android:textSize="@dimen/seller_product_detail_feed_delete_dialog_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_text_1"
+            android:layout_width="@dimen/seller_product_detail_feed_delete_dialog_text_width"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/seller_product_detail_feed_delete_dialog_text_marginSide"
+            android:layout_marginTop="@dimen/seller_product_detail_feed_delete_dialog_text_marginTop"
+            android:fontFamily="@font/notosanskr_regular"
+            android:includeFontPadding="false"
+            android:gravity="center"
+            android:text="@string/seller_product_detail_feed_delete_dialog_text"
+            android:textColor="@color/black"
+            android:textSize="@dimen/seller_product_detail_feed_delete_dialog_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_mainName" />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="@dimen/seller_product_detail_feed_delete_dialog_btn_width"
+            android:layout_height="@dimen/seller_product_detail_feed_delete_dialog_btn_height"
+            android:layout_marginTop="@dimen/seller_product_detail_feed_delete_dialog_btn_marginTop"
+            android:layout_marginBottom="@dimen/seller_product_detail_feed_delete_dialog_btn_marginBottom"
+            android:background="@drawable/bg_rectangle_radius_10_very_light_gray"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
+            android:text="@string/seller_product_detail_feed_delete_dialog_btn_cancel"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dialog_btn_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_delete"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_text_1" />
+
+        <Button
+            android:id="@+id/btn_delete"
+            android:layout_width="@dimen/seller_product_detail_feed_delete_dialog_btn_width"
+            android:layout_height="@dimen/seller_product_detail_feed_delete_dialog_btn_height"
+            android:layout_marginTop="@dimen/seller_product_detail_feed_delete_dialog_btn_marginTop"
+            android:layout_marginBottom="@dimen/seller_product_detail_feed_delete_dialog_btn_marginBottom"
+            android:background="@drawable/bg_rectangle_radius_10_light_pink_no_padding"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
+            android:text="@string/seller_product_detail_feed_delete_dialog_btn_delete"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dialog_btn_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btn_cancel"
+            app:layout_constraintTop_toBottomOf="@+id/tv_text_1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
-    
+
     <dimen name="store_feed_title_top">12dp</dimen>
     <dimen name="store_feed_chevron_top">21dp</dimen>
     <dimen name="store_feed_chevron_start">14dp</dimen>
@@ -52,7 +52,7 @@
     <dimen name="splash_logo_height">63dp</dimen>
     <dimen name="splash_logo_marginBottom">50dp</dimen>
     <dimen name="splash_comment_top_margin">28.5dp</dimen>
-    
+
     <!-- store feed -->
     <dimen name="store_feed_title_size">20sp</dimen>
     <dimen name="store_feed_nick_name_and_cake_name_size">16sp</dimen>
@@ -146,6 +146,22 @@
     <dimen name="intro_btn_text_size">16sp</dimen>
 
     <!--edit profile -> profile_setting -->
+    <dimen name="edit_back_logo_marginStart">16dp</dimen>
+    <dimen name="edit_back_logo_marginTop">17dp</dimen>
+    <dimen name="edit_title_marginTop">9dp</dimen>
+    <dimen name="edit_title_marginLeft">47dp</dimen>
+    <dimen name="edit_check_btn_marginTop">12dp</dimen>
+    <dimen name="edit_check_btn_marginRight">18dp</dimen>
+    <dimen name="edit_layout_marginTop">38dp</dimen>
+    <dimen name="edit_profile_photo_size">104dp</dimen>
+    <dimen name="edit_profile_border_width">1dp</dimen>
+    <dimen name="edit_profile_photo_marginTop">128dp</dimen>
+    <dimen name="edit_rule_marginTop">35dp</dimen>
+    <dimen name="edit_et_height">55dp</dimen>
+    <dimen name="edit_et_marginTop">10dp</dimen>
+    <dimen name="edit_et_marginLeft">27dp</dimen>
+    <dimen name="edit_et_paddingStart">20dp</dimen>
+
     <dimen name="top_bar_margin_top">9dp</dimen>
     <dimen name="edit_back_logo_height">0dp</dimen>
     <dimen name="edit_back_logo_paddingStart">16dp</dimen>
@@ -153,17 +169,10 @@
     <dimen name="edit_back_logo_paddingTop">3dp</dimen>
     <dimen name="edit_back_logo_paddingBottom">1dp</dimen>
     <dimen name="edit_check_btn_height">0dp</dimen>
-    <dimen name="edit_check_btn_marginRight">18dp</dimen>
-    <dimen name="edit_layout_marginTop">38dp</dimen>
-    <dimen name="edit_profile_photo_size">104dp</dimen>
-    <dimen name="edit_profile_border_width">1dp</dimen>
-    <dimen name="edit_profile_photo_marginTop">128dp</dimen>
     <dimen name="edit_rule_marginLeft">22dp</dimen>
-    <dimen name="edit_rule_marginTop">35dp</dimen>
     <dimen name="edit_bg_width">0dp</dimen>
     <dimen name="edit_bg_height">45dp</dimen>
     <dimen name="edit_et_width">0dp</dimen>
-    <dimen name="edit_et_height">24dp</dimen>
     <dimen name="edit_bg_marginTop">10dp</dimen>
     <dimen name="edit_bg_marginRight">10dp</dimen>
     <dimen name="edit_bg_marginLeft">22dp</dimen>
@@ -179,7 +188,7 @@
     <dimen name="edit_fab_marginLeft">70dp</dimen>
     <dimen name="edit_fab_custom_size">30dp</dimen>
     <dimen name="edit_fab_border_width">0dp</dimen>
-    <dimen name="edit_fab_padding">0dp</dimen>
+
     <dimen name="edit_layout_title_size">20sp</dimen>
     <dimen name="edit_layout_title_height">29dp</dimen>
     <dimen name="edit_check_btn_font_size">16sp</dimen>
@@ -187,7 +196,29 @@
     <dimen name="edit_dbl_check_font_size">16sp</dimen>
     <dimen name="edit_result_font_size">11sp</dimen>
     <dimen name="edit_rule_font_size">11sp</dimen>
+
+    <dimen name="seller_setting_cv_marginTop">40dp</dimen>
+    <dimen name="seller_edit_cv_marginTop">64dp</dimen>
+    <dimen name="seller_setting_bg_camera_size">29dp</dimen>
+    <dimen name="seller_setting_bg_camera_marginLeft">71dp</dimen>
+    <dimen name="seller_setting_bg_camera_marginTop">69dp</dimen>
+    <dimen name="seller_setting_et_marginLeft">16dp</dimen>
+    <dimen name="seller_setting_et_marginRight">6dp</dimen>
+    <dimen name="seller_setting_et_width">0dp</dimen>
+    <dimen name="seller_setting_et_height">55dp</dimen>
+    <dimen name="seller_edit_et_height">55dp</dimen>
+    <dimen name="seller_edit_et3_height">156dp</dimen>
+    <dimen name="seller_edit_et3_paddingTop">17dp</dimen>
+    <dimen name="seller_setting_et7_height">95dp</dimen>
+    <dimen name="seller_setting_et1_marginTop">40dp</dimen>
+    <dimen name="seller_setting_et2_marginTop">10dp</dimen>
+    <dimen name="seller_setting_et5_marginTop">20dp</dimen>
+    <dimen name="seller_setting_et8_marginTop">5dp</dimen>
+    <dimen name="seller_profile_setting_tv1_marginLeft">24dp</dimen>
+    <dimen name="seller_profile_setting_tv1_marginTop">6dp</dimen>
+    <dimen name="seller_profile_setting_tv1_fontSize">16sp</dimen>
     <dimen name="edit_rule_margin_top">20dp</dimen>
+
 
     <!--BACKGROUND SHADOW-->
     <dimen name="bg_shadow_true">2dp</dimen>
@@ -310,7 +341,7 @@
     <dimen name="calendar_empty_iv_margin_end">46dp</dimen>
     <dimen name="calendar_empty_tv_size">16sp</dimen>
     <dimen name="calendar_empty_tv_height">24dp</dimen>
-    
+
     <dimen name="calendar_tv_item_delete_width">60dp</dimen>
     <dimen name="calendar_tv_item_delete_height">0dp</dimen>
     <dimen name="calendar_tv_item_delete_size">16sp</dimen>
@@ -497,9 +528,9 @@
     <dimen name="my_page_condition_main_text_size">20sp</dimen>
     <dimen name="my_page_condition_main_text_top">15dp</dimen>
     <dimen name="my_page_condition_main_text_left">25dp</dimen>
-<!--    <dimen name="my_page_condition_comment_main_text_size">18sp</dimen>-->
-<!--    <dimen name="my_page_condition_comment_main_text_top">25dp</dimen>-->
-<!--    <dimen name="my_page_condition_comment_main_text_left">26dp</dimen>-->
+    <!--    <dimen name="my_page_condition_comment_main_text_size">18sp</dimen>-->
+    <!--    <dimen name="my_page_condition_comment_main_text_top">25dp</dimen>-->
+    <!--    <dimen name="my_page_condition_comment_main_text_left">26dp</dimen>-->
     <dimen name="my_page_condition_comment_webview_top">25dp</dimen>
     <dimen name="my_page_condition_comment_webview_left_right">24dp</dimen>
     <dimen name="my_page_condition_comment_webview_width_heigh">0dp</dimen>
@@ -638,6 +669,21 @@
     <dimen name="store_product_detail_cake_name_font">16sp</dimen>
     <dimen name="store_product_detail_cake_price_font">16sp</dimen>
     <dimen name="store_product_detail_cake_detail_font">11sp</dimen>
+
+    <dimen name="seller_product_detail_feed_delete_dialog_btn_width">109dp</dimen>
+    <dimen name="seller_product_detail_feed_delete_dialog_btn_height">36dp</dimen>
+    <dimen name="seller_product_detail_feed_delete_dialog_btn_marginTop">15dp</dimen>
+    <dimen name="seller_product_detail_feed_delete_dialog_btn_marginBottom">30dp</dimen>
+    <dimen name="seller_product_detail_feed_delete_dialog_title">18sp</dimen>
+    <dimen name="seller_product_detail_feed_delete_dialog_text">14sp</dimen>
+    <dimen name="seller_product_detail_feed_delete_dialog_width">310dp</dimen>
+    <dimen name="seller_product_detail_feed_delete_dialog_marginTop">257dp</dimen>
+    <dimen name="seller_product_detail_feed_delete_dialog_marginBottom">216dp</dimen>
+    <dimen name="seller_product_detail_feed_delete_dialog_title_marginTop">20dp</dimen>
+    <dimen name="seller_product_detail_feed_delete_dialog_text_width">0dp</dimen>
+    <dimen name="seller_product_detail_feed_delete_dialog_text_marginTop">20dp</dimen>
+    <dimen name="seller_product_detail_feed_delete_dialog_text_marginSide">17dp</dimen>
+
 
     <!-- logout dialog -->
     <dimen name="my_page_logout_dialog_width">277dp</dimen>

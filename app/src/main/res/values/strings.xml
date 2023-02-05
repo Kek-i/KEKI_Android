@@ -168,6 +168,22 @@
     <string name="logout_tv_cancel">취소</string>
     <string name="logout_tv_logout">로그아웃</string>
 
+
+    <!-- 판매자 -->
+
+    <!-- edit_profile -->
+    <string name="tv_seller_profile_setting_title">판매자 프로필 설정</string>
+    <string name="tv_seller_profile_edit_title">프로필 편집</string>
+    <string name="seller_profile_setting_tv1">사업자정보</string>
+    <string name="seller_profile_setting_et1">가게이름을 입력해주세요.</string>
+    <string name="seller_profile_setting_et2">가게주소를 입력해주세요.</string>
+    <string name="seller_profile_setting_et3">간단히 가게를 소개해주세요. (최대 100자)</string>
+    <string name="seller_profile_setting_et4">주문 링크를 입력해주세요.</string>
+    <string name="seller_profile_setting_et6">대표자명을 입력해주세요.</string>
+    <string name="seller_profile_setting_et7">사업자등록증에 표기된 사업자주소\n입력해주세요.</string>
+    <string name="seller_profile_setting_et8">사업자등록번호를 입력해주세요.</string>
+
+
     <!-- withdrawal -->
     <string name="dialog_withdrawal_title">회원탈퇴</string>
     <string name="withdrawal_tv_content">정말 케키와 헤어지실 건가요?\n정말요? 진짜요?\n(해당 이메일로 재가입은 불가합니다.)</string>
@@ -179,5 +195,12 @@
     <string name="seller_product_add_and_edit_et_product_price">상품 가격을 입력해주세요.</string>
     <string name="seller_product_add_and_edit_et_product_intro">제품을 소개해주세요. (최대 150자)</string>
 
+    <!-- seller -->
+    <string name="seller_product_detail_feed_menu1">수정</string>
+    <string name="seller_product_detail_feed_menu2">삭제</string>
+    <string name="seller_product_detail_feed_delete_dialog_title">상품 삭제</string>
+    <string name="seller_product_detail_feed_delete_dialog_text">해당 상품을 삭제하시겠습니까?\n(상품 삭제시 관련된 게시글도 함께 사라집니다.)</string>
+    <string name="seller_product_detail_feed_delete_dialog_btn_delete">삭제하기</string>
+    <string name="seller_product_detail_feed_delete_dialog_btn_cancel">취소</string>
 
 </resources>
