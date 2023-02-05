@@ -1,7 +1,7 @@
 package com.codepatissier.keki.src.main.consumer.store.storefeed.model
 
 data class Feed(
-    val brandName: String,
+    val storeName: String,
     val description: String,
     val dessertName: String,
     val like: Boolean,

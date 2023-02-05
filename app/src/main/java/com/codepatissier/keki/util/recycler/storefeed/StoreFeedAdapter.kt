@@ -73,7 +73,7 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
         private var postIdx : Long? = null
 
         fun bind(item: StoreFeedData){
-            nickname.text = item.brandName
+            nickname.text = item.storeName
             cakeName.text = item.dessertName
             postIdx = item.postIdx
 

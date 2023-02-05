@@ -1,6 +1,7 @@
 package com.codepatissier.keki.src.main.consumer.search.searchresult
 
 import com.codepatissier.keki.config.ApplicationClass
+import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.src.main.consumer.search.searchresult.model.SearchResultResponse
 import retrofit2.Call
 import retrofit2.Callback
@@ -33,6 +34,20 @@ class SearchResultService(val searchResultView: SearchResultView) {
             }
         })
     }
+
+    fun tryPostHistory(postIdx:Long){
+        val searchResultRetrofitInterface = ApplicationClass.sRetrofit.create(SearchResultRetrofitInterface::class.java)
+        searchResultRetrofitInterface.postHistory(postIdx = postIdx).enqueue(object: Callback<BaseResponse>{
+            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>)
+            {
+               // searchResultView.onPostHistorySuccess(response.body() as BaseResponse)
+            }
+            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
+                //searchResultView.onPostHistoryFailure(t.message ?: "통신 오류")
+            }
+        })
+    }
+
 
 
 }

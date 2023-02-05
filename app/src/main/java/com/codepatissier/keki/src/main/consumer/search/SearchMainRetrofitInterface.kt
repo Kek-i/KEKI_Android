@@ -15,7 +15,7 @@ interface SearchMainRetrofitInterface {
     @PATCH("/histories")
     fun deleteRecentSearch(): Call<PatchSearchResponse>
 
-    @GET("/post/{postIdx}")
+    @GET("/posts/{postIdx}")
     fun getRecentSeenFeed(
         @Path("postIdx") postIdx:Long
     ): Call<RecentSeenFeedResponse>

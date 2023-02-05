@@ -18,6 +18,7 @@ import android.view.MotionEvent
 import android.view.View.OnTouchListener
 import android.view.inputmethod.InputMethodManager
 import com.codepatissier.keki.config.BaseActivity
+import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.src.main.consumer.search.searchresult.model.SearchResultResponse
 import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedActivity
 
@@ -50,6 +51,7 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
     override fun onGetSearchResultsFailure(message: String) {
         showCustomToast("오류 : $message")    }
 
+
     //검색 결과 목록 보여주기
     @SuppressLint("NotifyDataSetChanged")
     private fun searchListRecycler(response: SearchResultResponse) {
@@ -62,6 +64,7 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
         // 개별 아이템 클릭 시 이벤트
         searchListAdapter.setItemClickListener(object: SearchListAdapter.OnItemClickListener{
             override fun onClick(v: View, position: Int) {
+                SearchResultService(this@ConsumerSearchActivity).tryPostHistory(postIdx = response.result.feeds[position].postIdx)
                 val intent = Intent(this@ConsumerSearchActivity, SearchResultFeedActivity::class.java)
                 intent.putExtra("position", position)
                 intent.putExtra("sortType", sortType)
