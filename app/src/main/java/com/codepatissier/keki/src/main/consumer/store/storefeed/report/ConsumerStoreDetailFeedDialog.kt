@@ -4,7 +4,6 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.Window
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -17,7 +16,7 @@ class ConsumerStoreDetailFeedDialog(context: Context): Dialog(context), Consumer
 
     private lateinit var binding: DialogReportConsumerStoreDetailFeedBinding
     var reportList = Array(5){ _ -> false}
-    var postIdx : Int? = null
+    var postIdx : Long? = null
     var reportName: String? = null
     var linearLayouts = arrayOfNulls<LinearLayout>(5)
     var reportNames = arrayOfNulls<String>(5)

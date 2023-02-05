@@ -38,7 +38,7 @@ class SearchListAdapter(var searchListData: SearchResult, val context: ConsumerS
 
         fun bind(item: Feeds) {
             Glide.with(context!!)
-                .load(item.postImgUrls)
+                .load(item.postImgUrls[0])
                 .centerCrop()
                 .into(cakeImg)
             cakeName.text = item.dessertName
