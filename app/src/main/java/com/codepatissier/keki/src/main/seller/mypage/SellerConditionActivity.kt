@@ -1,10 +1,10 @@
-package com.codepatissier.keki.src.main.consumer.mypage
+package com.codepatissier.keki.src.main.seller.mypage
 
 import android.os.Bundle
 import com.codepatissier.keki.config.BaseActivity
-import com.codepatissier.keki.databinding.ActivityPersonalInfoBinding
+import com.codepatissier.keki.databinding.ActivityConditionBinding
 
-class ConsumerPersonalInfoActivity : BaseActivity<ActivityPersonalInfoBinding>(ActivityPersonalInfoBinding::inflate) {
+class SellerConditionActivity : BaseActivity<ActivityConditionBinding>(ActivityConditionBinding::inflate) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         backClicked()
@@ -21,6 +21,6 @@ class ConsumerPersonalInfoActivity : BaseActivity<ActivityPersonalInfoBinding>(A
         binding.wvComment.settings.apply{
             javaScriptEnabled= true
         }
-        binding.wvComment.loadUrl("https://sites.google.com/view/keki-privacy-policy/%ED%99%88")
+        binding.wvComment.loadUrl("https://sites.google.com/view/keki-tos/홈")
     }
 }
