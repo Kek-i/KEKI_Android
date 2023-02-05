@@ -194,6 +194,7 @@
     <string name="seller_product_add_and_edit_et_product_name">상품 이름을 입력해주세요.</string>
     <string name="seller_product_add_and_edit_et_product_price">상품 가격을 입력해주세요.</string>
     <string name="seller_product_add_and_edit_et_product_intro">제품을 소개해주세요. (최대 150자)</string>
+    <string name="seller_product_add_and_edit_et_product_picture">상품 대표 사진을 추가해주세요.</string>
 
     <!-- seller -->
     <string name="seller_product_detail_feed_menu1">수정</string>

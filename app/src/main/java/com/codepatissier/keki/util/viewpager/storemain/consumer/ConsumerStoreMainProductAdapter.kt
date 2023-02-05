@@ -1,4 +1,4 @@
-package com.codepatissier.keki.util.viewpager.storemain
+package com.codepatissier.keki.util.viewpager.storemain.consumer
 
 
 import android.view.LayoutInflater
@@ -10,8 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.codepatissier.keki.R
 import com.codepatissier.keki.databinding.ItemStoreMainRecyclerBinding
+import com.codepatissier.keki.util.viewpager.storemain.StoreMainProductData
 
-class StoreMainProductAdapter(val context: FragmentActivity?): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ConsumerStoreMainProductAdapter(val context: FragmentActivity?): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var storeMainProductDatas = mutableListOf<StoreMainProductData>()
 
@@ -36,7 +37,7 @@ class StoreMainProductAdapter(val context: FragmentActivity?): RecyclerView.Adap
 
         val width = getItemWidth()/3
 
-        fun bind(item:StoreMainProductData){
+        fun bind(item: StoreMainProductData){
             Glide.with(context!!)
                 .load(item.dessertImgUrl)
                 .placeholder(defaultImg)

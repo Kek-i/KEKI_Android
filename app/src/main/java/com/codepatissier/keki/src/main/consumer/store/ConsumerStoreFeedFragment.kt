@@ -1,26 +1,22 @@
 package com.codepatissier.keki.src.main.consumer.store
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.AbsListView
-import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseFragment
 import com.codepatissier.keki.databinding.FragmentConsumerStoreFeedBinding
 import com.codepatissier.keki.src.main.consumer.search.searchresult.model.SearchResultResponse
 import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreFeedService
 import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreFeedView
-import com.codepatissier.keki.util.viewpager.storemain.StoreMainStoreAdapter
+import com.codepatissier.keki.util.viewpager.storemain.consumer.ConsumerStoreMainStoreAdapter
 import com.codepatissier.keki.util.viewpager.storemain.StoreMainStoreData
 
 class ConsumerStoreFeedFragment(storeIdx : Long) : BaseFragment<FragmentConsumerStoreFeedBinding>
     (FragmentConsumerStoreFeedBinding::bind, R.layout.fragment_consumer_store_feed), ConsumerStoreFeedView{
 
-    lateinit var storeMainStoreAdapter : StoreMainStoreAdapter
+    lateinit var consumerStoreMainStoreAdapter : ConsumerStoreMainStoreAdapter
     var cursorIdx : Long = 0
     val storeMainStoreDatas = mutableListOf<StoreMainStoreData>()
     val storeIdx = storeIdx
@@ -48,17 +44,17 @@ class ConsumerStoreFeedFragment(storeIdx : Long) : BaseFragment<FragmentConsumer
     }
 
     private fun storeFeedRecyclerView(response: SearchResultResponse){
-        storeMainStoreAdapter = StoreMainStoreAdapter(requireActivity())
+        consumerStoreMainStoreAdapter = ConsumerStoreMainStoreAdapter(requireActivity())
         cursorIdx = response.result.cursorIdx
         hasNext = response.result.hasNext
-        binding.recyclerSellerFeed.adapter = storeMainStoreAdapter
+        binding.recyclerSellerFeed.adapter = consumerStoreMainStoreAdapter
 
         for(i in response.result.feeds.indices) {
             storeMainStoreDatas.apply {
                 add(StoreMainStoreData(postImgUrl = response.result.feeds[i].postImgUrls[0], storeIdx = storeIdx, postIdx = response.result.feeds[i].postIdx))
             }
         }
-        storeMainStoreAdapter.storeMainStoreDatas = storeMainStoreDatas
+        consumerStoreMainStoreAdapter.storeMainStoreDatas = storeMainStoreDatas
 
         // 스크롤이 바닥에 닿았을 때
         binding.recyclerSellerFeed.addOnScrollListener(object : RecyclerView.OnScrollListener(){
@@ -99,7 +95,7 @@ class ConsumerStoreFeedFragment(storeIdx : Long) : BaseFragment<FragmentConsumer
         }
 
         itemSize = storeMainStoreDatas.size - positionStart
-        storeMainStoreAdapter.notifyItemRangeChanged(positionStart, itemSize)
+        consumerStoreMainStoreAdapter.notifyItemRangeChanged(positionStart, itemSize)
 
     }
 

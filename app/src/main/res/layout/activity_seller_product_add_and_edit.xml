@@ -60,6 +60,7 @@
         android:id="@+id/et_product_name"
         android:layout_width="@dimen/seller_product_add_and_edit_et_width"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/notosanskr_regular"
         android:hint="@string/seller_product_add_and_edit_et_product_name"
         app:layout_constraintTop_toBottomOf="@id/csl_cakes"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,6 +82,7 @@
         android:layout_width="@dimen/seller_product_add_and_edit_et_width"
         android:layout_height="wrap_content"
         android:hint="@string/seller_product_add_and_edit_et_product_price"
+        android:fontFamily="@font/notosanskr_regular"
         app:layout_constraintTop_toBottomOf="@id/et_product_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -101,6 +103,7 @@
         android:layout_width="@dimen/seller_product_add_and_edit_et_width"
         android:layout_height="@dimen/seller_product_add_and_edit_et_intro_height"
         android:hint="@string/seller_product_add_and_edit_et_product_intro"
+        android:fontFamily="@font/notosanskr_regular"
         app:layout_constraintTop_toBottomOf="@id/et_product_price"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -116,15 +119,28 @@
         android:paddingBottom="@dimen/seller_product_add_and_edit_et_padding_top_bottom"
         android:gravity="top"
         android:maxLength="150"/>
+
+    <TextView
+        android:id="@+id/et_product_picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/seller_product_add_and_edit_et_product_picture"
+        android:textColor="@color/brown_grey"
+        android:fontFamily="@font/notosanskr_regular"
+        app:layout_constraintTop_toBottomOf="@id/et_product_intro"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="@dimen/seller_product_add_and_edit_et_left_right"
+        android:layout_marginTop="@dimen/seller_product_add_and_edit_et_top"/>
+
     
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="@dimen/seller_product_add_and_edit_csl_add_width_height"
         android:layout_height="@dimen/seller_product_add_and_edit_csl_add_width_height"
         android:background="@drawable/bg_rectangle_radius_10_white_no_padding"
         android:elevation="@dimen/seller_product_add_and_edit_shadow"
-        app:layout_constraintTop_toBottomOf="@id/et_product_intro"
+        app:layout_constraintTop_toBottomOf="@id/et_product_picture"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="@dimen/seller_product_add_and_edit_et_top"
+        android:layout_marginTop="@dimen/seller_product_add_and_edit_csl_add_top"
         android:layout_marginLeft="@dimen/seller_product_add_and_edit_csl_add_left">
         <ImageView
             android:layout_width="wrap_content"
