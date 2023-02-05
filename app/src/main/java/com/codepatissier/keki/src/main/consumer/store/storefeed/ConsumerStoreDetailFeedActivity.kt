@@ -111,7 +111,7 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
         })
     }
 
-    fun postLike(postIdx: Int){
+    fun postLike(postIdx: Long){
         ConsumerStoreFeedDetailService(this).tryPostConsumerStoreFeedDetailLike(postIdx)
     }
 
