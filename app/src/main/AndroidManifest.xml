@@ -151,6 +151,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        
+        <activity android:name=".src.main.consumer.search.searchresult.SearchResultFeedActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
 
         <activity android:name=".src.main.seller.mypage.SellerConditionActivity"
             android:exported="false"
@@ -171,6 +177,12 @@
         </activity>
 
         <activity android:name=".src.main.seller.store.productfeed.SellerProductAdd"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity android:name=".src.main.consumer.search.RecentSeenFeedActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">

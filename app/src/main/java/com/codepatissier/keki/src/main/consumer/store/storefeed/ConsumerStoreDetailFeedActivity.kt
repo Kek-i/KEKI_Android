@@ -71,7 +71,7 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
             description = result[i].description,
             postImgUrls = result[i].postImgUrls,
             tags = result[i].tags,
-            brandName = result[i].brandName,
+            storeName = result[i].storeName,
             storeProfileImg = result[i].storeProfileImg,
             like = result[i].like,
             cursorIdx = response.result.cursorIdx,
@@ -111,7 +111,7 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
         })
     }
 
-    fun postLike(postIdx: Int){
+    fun postLike(postIdx: Long){
         ConsumerStoreFeedDetailService(this).tryPostConsumerStoreFeedDetailLike(postIdx)
     }
 
