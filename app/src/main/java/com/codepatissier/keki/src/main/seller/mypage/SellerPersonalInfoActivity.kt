@@ -1,10 +1,10 @@
-package com.codepatissier.keki.src.main.consumer.mypage
+package com.codepatissier.keki.src.main.seller.mypage
 
 import android.os.Bundle
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityPersonalInfoBinding
 
-class ConsumerPersonalInfoActivity : BaseActivity<ActivityPersonalInfoBinding>(ActivityPersonalInfoBinding::inflate) {
+class SellerPersonalInfoActivity : BaseActivity<ActivityPersonalInfoBinding>(ActivityPersonalInfoBinding::inflate) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         backClicked()

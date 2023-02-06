@@ -17,7 +17,7 @@
            android:id="@+id/recycler_seller_feed"
            android:layout_width="@dimen/store_main_feed_rv_width"
            android:layout_height="match_parent"
-           app:layout_constraintBottom_toTopOf="@id/progress"
+           app:layout_constraintBottom_toBottomOf="parent"
            app:layout_constraintEnd_toEndOf="parent"
            app:layout_constraintStart_toStartOf="parent"
            app:layout_constraintTop_toTopOf="parent"
@@ -32,8 +32,17 @@
            android:layout_height="wrap_content"
            app:layout_constraintBottom_toBottomOf="parent"
            android:visibility="gone"/>
-
    </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/float_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:src="@drawable/ic_store_main_plus"
+        android:backgroundTint="@color/pinkish"
+        android:layout_marginRight="@dimen/store_main_feed_float_right"
+        android:layout_marginBottom="@dimen/store_main_feed_float_bottom"
+        app:borderWidth="@dimen/store_main_feed_float_border"/>
 
 </FrameLayout>

@@ -1,11 +1,10 @@
 package com.codepatissier.keki.src.main.consumer.mypage
 
 import android.os.Bundle
-import android.webkit.WebSettings
 import com.codepatissier.keki.config.BaseActivity
-import com.codepatissier.keki.databinding.ActivityConsumerConditionBinding
+import com.codepatissier.keki.databinding.ActivityConditionBinding
 
-class ConsumerConditionActivity : BaseActivity<ActivityConsumerConditionBinding>(ActivityConsumerConditionBinding::inflate) {
+class ConsumerConditionActivity : BaseActivity<ActivityConditionBinding>(ActivityConditionBinding::inflate) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         backClicked()
