@@ -48,7 +48,7 @@
         android:id="@+id/tv_store_feed_seller_nickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/tv_store_feed"
+        app:layout_constraintTop_toTopOf="@+id/iv_store_feed_seller"
         app:layout_constraintStart_toEndOf="@+id/iv_store_feed_seller"
         app:layout_constraintBottom_toBottomOf="@id/iv_store_feed_seller"
         android:layout_marginStart="@dimen/store_feed_seller_nickname_margin_start"
@@ -62,7 +62,7 @@
         android:id="@+id/iv_store_feed_report"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/tv_store_feed"
+        app:layout_constraintTop_toTopOf="@+id/iv_store_feed_seller"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/iv_store_feed_seller"
         android:paddingStart="@dimen/report_padding_start"
@@ -102,12 +102,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/vp_store_feed_img"
+        app:layout_constraintTop_toBottomOf="@+id/worm_dots_indicator"
         app:layout_constraintStart_toStartOf="parent"
         android:text="제품 이름"
         android:fontFamily="@font/notosanskr_bold"
         android:textSize="@dimen/store_feed_seller_nickname_tv_size"
         android:layout_marginStart="@dimen/store_feed_margin_start_end"
+        />
+
+    <TextView
+        android:id="@+id/tv_store_feed_cake_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/worm_dots_indicator"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/notosanskr_bold"
+        android:textSize="@dimen/store_feed_seller_nickname_tv_size"
+        android:layout_marginEnd="@dimen/store_feed_margin_start_end"
         />
 
     <TextView
