@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -62,11 +63,12 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_add_image"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="26dp"
-                android:paddingBottom="5dp"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 android:clipToPadding="false"
                 >
 
@@ -75,6 +77,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_marginStart="16dp"
+                    android:layout_marginBottom="5dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:src="@drawable/ic_add"
@@ -85,17 +88,19 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_feed_image"
                     android:layout_width="0dp"
-                    android:layout_height="110dp"
-                    android:layout_marginStart="10dp"
-                    android:orientation="horizontal"
+                    android:layout_height="115dp"
+                    android:layout_marginStart="7dp"
+                    android:paddingEnd="30dp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toEndOf="@id/ib_add_image"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    android:elevation="3dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_feed_image_recycler"
+                    android:clipToPadding="false"
                     />
 
-<!--       사진삭제 x버튼 24dp는 전체. 2dp씩 패딩주면됨, 실제 크기는 20dp야            -->
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -164,7 +169,7 @@
                     android:paddingEnd="30dp"
                     android:paddingBottom="9dp"
                     app:layout_constraintTop_toBottomOf="@id/layout_close_product"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     >
 
                     <androidx.recyclerview.widget.RecyclerView
@@ -174,9 +179,9 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/item_product_name_recycler"
                         />
-                    <!-- rv item에서 아래 간격 4dp만 주면 됨 -->
-                    <!-- textview 양옆으로 길이 늘리기 -->
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
