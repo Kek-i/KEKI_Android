@@ -7,7 +7,7 @@
     android:background="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_seller_add_top_bar"
+        android:id="@+id/layout_seller_feed_add_top_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/seller_feed_add_top_bar_layout_margin_top"
@@ -17,7 +17,7 @@
         >
 
         <ImageButton
-            android:id="@+id/ib_feed_add_back"
+            android:id="@+id/ib_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingHorizontal="@dimen/seller_feed_add_ib_back_padding_horizontal"
@@ -31,7 +31,7 @@
             />
 
         <TextView
-            android:id="@+id/btn_feed_add_completion"
+            android:id="@+id/tv_completion"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/seller_feed_add_tv_completion_height"
             android:gravity="center"
@@ -50,9 +50,10 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
+        android:id="@+id/scroll_view_content"
         android:layout_width="match_parent"
         android:layout_height="@dimen/seller_feed_add_scroll_view_content_height"
-        app:layout_constraintTop_toBottomOf="@id/layout_seller_add_top_bar"
+        app:layout_constraintTop_toBottomOf="@id/layout_seller_feed_add_top_bar"
         app:layout_constraintBottom_toBottomOf="parent"
         android:overScrollMode="never">
 
@@ -63,9 +64,9 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_add_image"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/seller_feed_add_layout_image_width"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="26dp"
+                android:layout_marginTop="@dimen/seller_feed_add_layout_image_margin_top"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -74,23 +75,23 @@
 
                 <ImageButton
                     android:id="@+id/ib_add_image"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginBottom="5dp"
+                    android:layout_width="@dimen/seller_feed_add_ib_add_image_width_height"
+                    android:layout_height="@dimen/seller_feed_add_ib_add_image_width_height"
+                    android:layout_marginStart="@dimen/seller_feed_add_ib_add_image_margin_start"
+                    android:layout_marginBottom="@dimen/seller_feed_add_ib_add_image_margin_bottom"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:src="@drawable/ic_add"
                     android:background="@drawable/bg_rectangle_radius_10_white_no_padding"
-                    android:elevation="3dp"
+                    android:elevation="@dimen/seller_feed_add_component_elevation"
                     />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_feed_image"
-                    android:layout_width="0dp"
-                    android:layout_height="115dp"
-                    android:layout_marginStart="7dp"
-                    android:paddingEnd="30dp"
+                    android:layout_width="@dimen/seller_feed_add_rv_feed_image_width"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/seller_feed_add_rv_feed_image_margin_start"
+                    android:paddingEnd="@dimen/seller_feed_add_rv_feed_image_padding_end"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toEndOf="@id/ib_add_image"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -105,15 +106,15 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_select_product"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/seller_feed_add_layout_select_product_width"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="@dimen/seller_feed_add_layout_select_product_margin_top"
+                android:layout_marginHorizontal="@dimen/seller_feed_add_layout_select_product_margin_horizontal"
                 app:layout_constraintTop_toBottomOf="@id/layout_add_image"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:background="@drawable/bg_rectangle_radius_10_white_no_padding"
-                android:elevation="3dp"
+                android:elevation="@dimen/seller_feed_add_component_elevation"
                 >
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -124,7 +125,7 @@
                     <View
                         android:id="@+id/bg_close_product"
                         android:layout_width="match_parent"
-                        android:layout_height="46dp"
+                        android:layout_height="@dimen/seller_feed_add_bg_close_product_height"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -135,7 +136,7 @@
                         android:id="@+id/ib_open"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
+                        android:layout_marginStart="@dimen/seller_feed_add_ib_open_margin_start"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -147,13 +148,13 @@
                         android:id="@+id/tv_select_product"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/seller_feed_add_tv_select_product_margin_start"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toEndOf="@id/ib_open"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        android:text="제품 선택"
+                        android:text="@string/seller_feed_add_tv_select_product"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/seller_feed_add_tv_select_product_size"
                         android:fontFamily="@font/notosanskr_bold"
                         android:includeFontPadding="false"
                         />
@@ -164,17 +165,17 @@
                     android:id="@+id/layout_open_product"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="-8dp"
-                    android:paddingStart="44dp"
-                    android:paddingEnd="30dp"
-                    android:paddingBottom="9dp"
+                    android:layout_marginTop="@dimen/seller_feed_add_layout_open_product_margin_top"
+                    android:paddingStart="@dimen/seller_feed_add_layout_open_product_padding_start"
+                    android:paddingEnd="@dimen/seller_feed_add_layout_open_product_padding_end"
+                    android:paddingBottom="@dimen/seller_feed_add_layout_open_product_padding_bottom"
                     app:layout_constraintTop_toBottomOf="@id/layout_close_product"
                     android:visibility="visible"
                     >
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_product"
-                        android:layout_width="0dp"
+                        android:layout_width="@dimen/seller_feed_add_rv_product_width"
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -188,32 +189,32 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_product_description"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/seller_feed_add_layout_product_description_width"
                 android:layout_height="wrap_content"
-                android:minHeight="206dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginHorizontal="16dp"
-                android:paddingTop="16dp"
-                android:paddingHorizontal="20dp"
-                android:paddingBottom="15dp"
+                android:minHeight="@dimen/seller_feed_add_layout_product_description_min_height"
+                android:layout_marginTop="@dimen/seller_feed_add_layout_product_description_margin_top"
+                android:layout_marginHorizontal="@dimen/seller_feed_add_layout_product_description_margin_horizontal"
+                android:paddingTop="@dimen/seller_feed_add_layout_product_description_padding_top"
+                android:paddingHorizontal="@dimen/seller_feed_add_layout_product_description_padding_horizontal"
+                android:paddingBottom="@dimen/seller_feed_add_layout_product_description_padding_bottom"
                 app:layout_constraintTop_toBottomOf="@id/layout_select_product"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:background="@drawable/bg_rectangle_radius_10_white_no_padding"
-                android:elevation="3dp"
+                android:elevation="@dimen/seller_feed_add_component_elevation"
                 >
 
                 <EditText
                     android:id="@+id/et_product_description"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/seller_feed_add_et_product_description_width"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="@id/layout_product_description"
                     app:layout_constraintStart_toStartOf="@id/layout_product_description"
                     app:layout_constraintEnd_toEndOf="@id/layout_product_description"
-                    android:hint="제품을 소개해주세요. (최대 150자)"
+                    android:hint="@string/seller_feed_add_et_product_description"
                     android:textColorHint="@color/brown_grey"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/seller_feed_add_et_product_description_size"
                     android:fontFamily="@font/notosanskr_regular"
                     android:includeFontPadding="false"
                     android:background="@null"

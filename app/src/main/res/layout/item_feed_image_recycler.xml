@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="110dp"
-    android:layout_height="115dp"
+    android:layout_width="@dimen/rv_item_feed_image_layout_width"
+    android:layout_height="@dimen/rv_item_feed_image_layout_height"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:paddingStart="3dp"
-    android:paddingBottom="5dp"
+    android:paddingStart="@dimen/rv_item_feed_image_layout_padding_start"
+    android:paddingBottom="@dimen/rv_item_feed_image_layout_padding_bottom"
     android:clipToPadding="false"
     >
 
     <ImageView
         android:id="@+id/iv_feed_img"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="@dimen/rv_item_feed_image_iv_feed_img_width_height"
+        android:layout_height="@dimen/rv_item_feed_image_iv_feed_img_width_height"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@drawable/bg_rectangle_radius_10_white_no_padding"
         android:clipToOutline="true"
-        android:elevation="3dp"
+        android:elevation="@dimen/seller_feed_add_component_elevation"
         />
 
     <ImageView
-        android:id="@+id/ib_delete"
+        android:id="@+id/iv_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:src="@drawable/ic_img_delete"
-        android:elevation="3dp"
+        android:elevation="@dimen/seller_feed_add_component_elevation"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

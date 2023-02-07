@@ -199,5 +199,6 @@
 
     <!-- store feed add -->
     <string name="seller_feed_add_completion">완료</string>
-
+    <string name="seller_feed_add_tv_select_product">제품 선택</string>
+    <string name="seller_feed_add_et_product_description">제품을 소개해주세요. (최대 150자)</string>
 </resources>
