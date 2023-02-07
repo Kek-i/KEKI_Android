@@ -11,6 +11,7 @@ import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityConsumerOneFeedDetailBinding
 import com.codepatissier.keki.src.main.consumer.home.onefeed.model.ConsumerOneFeedDetailResponse
+import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedActivity
 import com.codepatissier.keki.src.main.consumer.store.storefeed.report.ConsumerStoreDetailFeedDialog
 
 class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetailBinding>(ActivityConsumerOneFeedDetailBinding::inflate)
@@ -26,6 +27,7 @@ class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetail
         backToHome()
         showLoadingDialog(this)
         ConsumerOneFeedDetailService(this).tryGetConsumerOneFeedDetail(postIdx!!)
+        likeProduct()
         report()
     }
 
@@ -81,6 +83,21 @@ class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetail
     private fun seeMoreDescription(description: String){
         binding.tvStoreFeedCakeDescription.setOnClickListener {
             binding.tvStoreFeedCakeDescription.text = description
+        }
+    }
+
+    // 찜하기
+    private fun likeProduct(){
+        binding.ivStoreFeedHeartOff.setOnClickListener {
+            if(!heart){ // 찜
+                binding.ivStoreFeedHeartOff.setImageResource(R.drawable.ic_bottom_heart_on)
+                heart = true
+            }else{ // 해제
+                binding.ivStoreFeedHeartOff.setImageResource(R.drawable.ic_bottom_heart_off)
+                heart = false
+            }
+
+            ConsumerStoreDetailFeedActivity().postLike(postIdx!!)
         }
     }
 
