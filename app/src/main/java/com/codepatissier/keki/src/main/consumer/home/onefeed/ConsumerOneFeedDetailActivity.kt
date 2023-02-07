@@ -4,12 +4,14 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.PopupMenu
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityConsumerOneFeedDetailBinding
 import com.codepatissier.keki.src.main.consumer.home.onefeed.model.ConsumerOneFeedDetailResponse
+import com.codepatissier.keki.src.main.consumer.store.storefeed.report.ConsumerStoreDetailFeedDialog
 
 class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetailBinding>(ActivityConsumerOneFeedDetailBinding::inflate)
     , ConsumerOneFeedDetailView{
@@ -24,6 +26,7 @@ class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetail
         backToHome()
         showLoadingDialog(this)
         ConsumerOneFeedDetailService(this).tryGetConsumerOneFeedDetail(postIdx!!)
+        report()
     }
 
     private fun initPostIdx(){
@@ -78,6 +81,29 @@ class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetail
     private fun seeMoreDescription(description: String){
         binding.tvStoreFeedCakeDescription.setOnClickListener {
             binding.tvStoreFeedCakeDescription.text = description
+        }
+    }
+
+    // 신고하기
+    private fun report(){
+        binding.ivStoreFeedReport.setOnClickListener {
+            var popupMenu = PopupMenu(this, it)
+            popupMenu.menuInflater?.inflate(R.menu.popup_menu_report_consumer_store_detail_feed, popupMenu.menu)
+            popupMenu.show()
+            popupMenu.setOnMenuItemClickListener {
+                when(it.itemId){
+                    R.id.popup_report -> {
+                        val reportDialog = ConsumerStoreDetailFeedDialog(this)
+                        reportDialog.postIdx = postIdx // postIdx 값 전달
+                        reportDialog.show()
+                        return@setOnMenuItemClickListener true
+                    }else -> {
+                    return@setOnMenuItemClickListener false
+                }
+                }
+            }
+
+
         }
     }
 
