@@ -23,6 +23,7 @@ class NonConsumerMyPageFragment : BaseFragment<FragmentNonConsumerMyPageBinding>
         binding.constraintLayoutUser.setOnClickListener {
             val intent = Intent(context, LoginActivity::class.java)
             startActivity(intent)
+            this@NonConsumerMyPageFragment.activity?.finish()
         }
     }
 
