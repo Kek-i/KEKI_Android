@@ -2,33 +2,27 @@ package com.codepatissier.keki.src.main.seller.store
 
 
 import android.os.Bundle
+import android.view.View
 import androidx.core.content.res.ResourcesCompat
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.codepatissier.keki.R
-import com.codepatissier.keki.config.BaseActivity
-import com.codepatissier.keki.databinding.ActivitySellerStoreMainBinding
+import com.codepatissier.keki.config.BaseFragment
+import com.codepatissier.keki.databinding.FragmentSellerStoreMainBinding
 import com.codepatissier.keki.util.viewpager.storemain.StoreMainDialog
 import com.codepatissier.keki.util.viewpager.storemain.seller.SellerStoreMainTabAdapter
 
-class SellerStoreMainActivity : BaseActivity<ActivitySellerStoreMainBinding>(ActivitySellerStoreMainBinding::inflate){
+class SellerStoreMainFragment : BaseFragment<FragmentSellerStoreMainBinding>(FragmentSellerStoreMainBinding::bind, R.layout.fragment_seller_store_main){
     var storeIdx: Long = 1
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        getStoreIdx()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         tabSetting()
-        back()
         infoClick()
     }
 
-    private fun getStoreIdx(){
-        storeIdx = intent.getLongExtra("storeIdx", 1)
-    }
-
     private fun tabSetting(){
-        val sellerStoreMainTabAdapter = SellerStoreMainTabAdapter(this, storeIdx)
+        val sellerStoreMainTabAdapter = SellerStoreMainTabAdapter(requireActivity(), storeIdx)
         binding.vpStore.adapter = sellerStoreMainTabAdapter
 
         val tabIconArray = arrayOf(R.drawable.ic_store_main_grid, R.drawable.ic_store_main_cake)
@@ -58,16 +52,10 @@ class SellerStoreMainActivity : BaseActivity<ActivitySellerStoreMainBinding>(Act
         })
     }
 
-    private fun back(){
-        binding.ivBack.setOnClickListener{
-            finish()
-        }
-    }
-
     private fun infoClick(){
         binding.ivInfo.setOnClickListener{
-            StoreMainDialog(this).setStoreIdx(storeIdx)
-            StoreMainDialog(this).show()
+            StoreMainDialog(requireContext()).setStoreIdx(storeIdx)
+            StoreMainDialog(requireContext()).show()
         }
     }
 

@@ -133,7 +133,7 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
     private fun setTagResult() {
         //검색어 그대로 가져와서 보여주기
         val searchTag = intent.getStringExtra("searchTag")
-        binding.etSearch.setText("#$searchTag")
+        binding.etSearch.setText("$searchTag")
 
         binding.etSearch.setOnKeyListener { view, keyCode, event ->
             if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER)

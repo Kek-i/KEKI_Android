@@ -782,7 +782,7 @@
     <dimen name="seller_product_add_and_edit_iv_back_left">14dp</dimen>
     <dimen name="seller_product_add_and_edit_iv_back_top">21dp</dimen>
     <dimen name="seller_product_add_and_edit_tv_complete_top_right">19dp</dimen>
-    <dimen name="seller_product_add_and_edit_tv_complete_text_size">16sp</dimen>
+    <dimen name="seller_product_add_and_edit_text_size">16sp</dimen>
     <dimen name="seller_product_add_and_edit_csl_cakes_top">96dp</dimen>
     <dimen name="seller_product_add_and_edit_iv_cake_left">10dp</dimen>
     <dimen name="seller_product_add_and_edit_et_width">0dp</dimen>
