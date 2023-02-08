@@ -72,8 +72,10 @@ class WithdrawalDialog(context: Context): Dialog(context), SignoutView, Consumer
         fbAuth?.currentUser?.delete() //firebase에서도 회원 탈퇴
 
         val intent = Intent(context, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         context.startActivity(intent)
         Toast.makeText(context, "회원탈퇴 완료", Toast.LENGTH_SHORT).show()
+
     }
 
     override fun onPatchSignoutFailure(message: String) {

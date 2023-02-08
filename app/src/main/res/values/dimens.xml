@@ -210,7 +210,7 @@
     <dimen name="seller_edit_et3_height">156dp</dimen>
     <dimen name="seller_edit_et3_paddingTop">17dp</dimen>
     <dimen name="seller_setting_et7_height">95dp</dimen>
-    <dimen name="seller_setting_et1_marginTop">40dp</dimen>
+    <dimen name="seller_setting_et1_marginTop">30dp</dimen>
     <dimen name="seller_setting_et2_marginTop">10dp</dimen>
     <dimen name="seller_setting_et5_marginTop">20dp</dimen>
     <dimen name="seller_setting_et8_marginTop">5dp</dimen>
