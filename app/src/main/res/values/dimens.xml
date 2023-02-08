@@ -80,6 +80,13 @@
     <dimen name="report_margin_end">4dp</dimen>
     <dimen name="splash_comment_size">14sp</dimen>
     <dimen name="consumer_store_detail_recycler_height">0dp</dimen>
+    <dimen name="consumer_feed_title_margin_start">15dp</dimen>
+    <dimen name="consumer_feed_between_indicator_dessert_name">10dp</dimen>
+    <dimen name="consumer_feed_between_dessert_name_description">10dp</dimen>
+    <dimen name="consumer_feed_between_description_tag">15dp</dimen>
+    <dimen name="consumer_feed_tag_padding_start_end">14dp</dimen>
+    <dimen name="consumer_feed_tag_padding_top">4dp</dimen>
+    <dimen name="consumer_feed_tag_padding_bottom">6dp</dimen>
 
     <!-- report -->
     <dimen name="dialog_report_title_size">18sp</dimen>
