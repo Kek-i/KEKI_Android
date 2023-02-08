@@ -83,10 +83,12 @@ class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
                         .fallback(defaultImg)
                         .circleCrop()
                         .into(imageView)
+                    dismissLoadingDialog()
                 }
             }
+        }else{
+            dismissLoadingDialog()
         }
-        dismissLoadingDialog()
     }
 
     override fun onGetMyPageFailure(message: String) {
