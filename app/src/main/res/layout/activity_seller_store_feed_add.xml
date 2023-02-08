@@ -170,7 +170,7 @@
                     android:paddingEnd="@dimen/seller_feed_add_layout_open_product_padding_end"
                     android:paddingBottom="@dimen/seller_feed_add_layout_open_product_padding_bottom"
                     app:layout_constraintTop_toBottomOf="@id/layout_close_product"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     >
 
                     <androidx.recyclerview.widget.RecyclerView
