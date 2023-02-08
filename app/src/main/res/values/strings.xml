@@ -189,6 +189,12 @@
     <string name="seller_profile_setting_et7">사업자등록증에 표기된 사업자주소\n입력해주세요.</string>
     <string name="seller_profile_setting_et8">사업자등록번호를 입력해주세요.</string>
 
+    <!-- seller product add and edit -->
+    <string name="seller_product_add_and_edit_et_product_name">상품 이름을 입력해주세요.</string>
+    <string name="seller_product_add_and_edit_et_product_price">상품 가격을 입력해주세요.</string>
+    <string name="seller_product_add_and_edit_et_product_intro">제품을 소개해주세요. (최대 150자)</string>
+    <string name="seller_product_add_and_edit_et_product_picture">상품 대표 사진을 추가해주세요.</string>
+
     <!-- seller -->
     <string name="seller_product_detail_feed_menu1">수정</string>
     <string name="seller_product_detail_feed_menu2">삭제</string>

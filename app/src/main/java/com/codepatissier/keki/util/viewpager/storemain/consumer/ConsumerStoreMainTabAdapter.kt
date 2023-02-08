@@ -1,4 +1,4 @@
-package com.codepatissier.keki.util.viewpager.storemain
+package com.codepatissier.keki.util.viewpager.storemain.consumer
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -7,7 +7,7 @@ import com.codepatissier.keki.src.main.consumer.store.ConsumerProductFeedFragmen
 import com.codepatissier.keki.src.main.consumer.store.ConsumerStoreFeedFragment
 
 
-class StoreMainTabAdapter(fragmentActivity: FragmentActivity, storeIdx:Long):FragmentStateAdapter(fragmentActivity) {
+class ConsumerStoreMainTabAdapter(fragmentActivity: FragmentActivity, storeIdx:Long):FragmentStateAdapter(fragmentActivity) {
     val storeIdx = storeIdx
 
     override fun getItemCount(): Int = 2

@@ -3,7 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
-    
+
     <dimen name="store_feed_title_top">12dp</dimen>
     <dimen name="store_feed_chevron_top">21dp</dimen>
     <dimen name="store_feed_chevron_start">14dp</dimen>
@@ -52,7 +52,7 @@
     <dimen name="splash_logo_height">63dp</dimen>
     <dimen name="splash_logo_marginBottom">50dp</dimen>
     <dimen name="splash_comment_top_margin">28.5dp</dimen>
-    
+
     <!-- store feed -->
     <dimen name="store_feed_title_size">20sp</dimen>
     <dimen name="store_feed_nick_name_and_cake_name_size">16sp</dimen>
@@ -341,7 +341,7 @@
     <dimen name="calendar_empty_iv_margin_end">46dp</dimen>
     <dimen name="calendar_empty_tv_size">16sp</dimen>
     <dimen name="calendar_empty_tv_height">24dp</dimen>
-    
+
     <dimen name="calendar_tv_item_delete_width">60dp</dimen>
     <dimen name="calendar_tv_item_delete_height">0dp</dimen>
     <dimen name="calendar_tv_item_delete_size">16sp</dimen>
@@ -528,9 +528,9 @@
     <dimen name="my_page_condition_main_text_size">20sp</dimen>
     <dimen name="my_page_condition_main_text_top">15dp</dimen>
     <dimen name="my_page_condition_main_text_left">25dp</dimen>
-<!--    <dimen name="my_page_condition_comment_main_text_size">18sp</dimen>-->
-<!--    <dimen name="my_page_condition_comment_main_text_top">25dp</dimen>-->
-<!--    <dimen name="my_page_condition_comment_main_text_left">26dp</dimen>-->
+    <!--    <dimen name="my_page_condition_comment_main_text_size">18sp</dimen>-->
+    <!--    <dimen name="my_page_condition_comment_main_text_top">25dp</dimen>-->
+    <!--    <dimen name="my_page_condition_comment_main_text_left">26dp</dimen>-->
     <dimen name="my_page_condition_comment_webview_top">25dp</dimen>
     <dimen name="my_page_condition_comment_webview_left_right">24dp</dimen>
     <dimen name="my_page_condition_comment_webview_width_heigh">0dp</dimen>
@@ -581,6 +581,7 @@
     <dimen name="store_main_store_order_padding_left_right">30dp</dimen>
     <dimen name="store_main_store_order_top">11dp</dimen>
     <dimen name="store_main_store_tab_width">0dp</dimen>
+    <dimen name="store_main_store_tab_max_width">0dp</dimen>
     <dimen name="store_main_store_tab_top">27dp</dimen>
     <dimen name="store_main_store_viewPager_width_height">0dp</dimen>
     <dimen name="store_main_store_view_width">0dp</dimen>
@@ -612,7 +613,7 @@
     <dimen name="store_main_feed_top">6dp</dimen>
     <dimen name="store_main_feed_rv_width">0dp</dimen>
     <dimen name="store_main_feed_float_right">12dp</dimen>
-    <dimen name="store_main_feed_float_bottom">14dp</dimen>
+    <dimen name="store_main_feed_float_bottom">14.5dp</dimen>
     <dimen name="store_main_feed_float_border">0dp</dimen>
 
     <!-- store main recyclerView -->
@@ -777,5 +778,23 @@
 
     <dimen name="seller_feed_add_component_elevation">3dp</dimen>
 
+    <!-- seller product add and edit -->
+    <dimen name="seller_product_add_and_edit_iv_back_left">14dp</dimen>
+    <dimen name="seller_product_add_and_edit_iv_back_top">21dp</dimen>
+    <dimen name="seller_product_add_and_edit_tv_complete_top_right">19dp</dimen>
+    <dimen name="seller_product_add_and_edit_tv_complete_text_size">16sp</dimen>
+    <dimen name="seller_product_add_and_edit_csl_cakes_top">96dp</dimen>
+    <dimen name="seller_product_add_and_edit_iv_cake_left">10dp</dimen>
+    <dimen name="seller_product_add_and_edit_et_width">0dp</dimen>
+    <dimen name="seller_product_add_and_edit_et_left_right">16dp</dimen>
+    <dimen name="seller_product_add_and_edit_et_product_name_top">40dp</dimen>
+    <dimen name="seller_product_add_and_edit_shadow">3dp</dimen>
+    <dimen name="seller_product_add_and_edit_et_padding_left_right">20dp</dimen>
+    <dimen name="seller_product_add_and_edit_et_padding_top_bottom">13dp</dimen>
+    <dimen name="seller_product_add_and_edit_et_top">20dp</dimen>
+    <dimen name="seller_product_add_and_edit_et_intro_height">206dp</dimen>
+    <dimen name="seller_product_add_and_edit_csl_add_top">10dp</dimen>
+    <dimen name="seller_product_add_and_edit_csl_add_left">22dp</dimen>
+    <dimen name="seller_product_add_and_edit_csl_add_width_height">100dp</dimen>
 
 </resources>

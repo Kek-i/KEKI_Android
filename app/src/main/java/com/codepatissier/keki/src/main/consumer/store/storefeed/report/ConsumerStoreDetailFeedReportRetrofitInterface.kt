@@ -9,7 +9,7 @@ import retrofit2.http.Path
 interface ConsumerStoreDetailFeedReportRetrofitInterface {
     @POST("/posts/{postIdx}/report")
     fun postConsumerStoreDetailFeedReport(
-        @Path("postIdx") postIdx: Int,
+        @Path("postIdx") postIdx: Long,
         @Body reportName: String
     ): Call<BaseResponse>
 }
