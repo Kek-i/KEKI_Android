@@ -17,6 +17,7 @@ import com.codepatissier.keki.R
 import com.codepatissier.keki.databinding.ItemProgressbarLoadingBinding
 import com.codepatissier.keki.databinding.ItemStoreFeedRecyclerBinding
 import com.codepatissier.keki.src.main.consumer.store.ConsumerStoreMainActivity
+import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedActivity
 import com.codepatissier.keki.src.main.consumer.store.storefeed.report.ConsumerStoreDetailFeedDialog
 import com.codepatissier.keki.src.main.consumer.store.storefeed.DetailImageAdapter
 
@@ -51,13 +52,23 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
 
     override fun getItemCount(): Int = storeFeedDatas.size
 
-    fun setList(storeFeed: MutableList<StoreFeedData>){
-        storeFeedDatas.addAll(storeFeed)
-        storeFeedDatas.add(StoreFeedData(0, " ", " ", List(1) { "" }, List(1){""}, " ", " ", false, 0, false))
+
+    class LoadingViewHolder(private val binding: ItemProgressbarLoadingBinding): RecyclerView.ViewHolder(binding.root){
+
     }
 
-    fun deleteLoading(){
-        storeFeedDatas.removeAt(storeFeedDatas.lastIndex)
+    // 뷰 타입 정하기
+    override fun getItemViewType(position: Int): Int {
+        return if (storeFeedDatas[position] != null){
+            VIEW_TYPE_ITEM
+        }else{
+            VIEW_TYPE_LOADING
+        }
+    }
+
+    fun setList(storeFeed: MutableList<StoreFeedData>, hasNext: Boolean){
+        storeFeedDatas.addAll(storeFeed)
+
     }
 
     class StoreFeedViewHolder(val context: FragmentActivity?, val binding: ItemStoreFeedRecyclerBinding): ViewHolder(binding.root){
@@ -70,10 +81,10 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
         private val thirdTag: TextView = binding.tvStoreFeedThirdTag
         private val tagArray = arrayOf(firstTag, secondTag, thirdTag)
         private var heart = false
-        private var postIdx : Int? = null
+        private var postIdx : Long? = null
 
         fun bind(item: StoreFeedData){
-            nickname.text = item.brandName
+            nickname.text = item.storeName
             cakeName.text = item.dessertName
             postIdx = item.postIdx
 
@@ -135,6 +146,8 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
                     binding.ivStoreFeedHeartOff.setImageResource(R.drawable.ic_bottom_heart_off)
                     heart = false
                 }
+
+                ConsumerStoreDetailFeedActivity().postLike(postIdx!!)
             }
         }
 
@@ -171,15 +184,4 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
 
     }
 
-    class LoadingViewHolder(private val binding: ItemProgressbarLoadingBinding): RecyclerView.ViewHolder(binding.root){
-
-    }
-
-    // 뷰 타입 정하기
-    override fun getItemViewType(position: Int): Int {
-        return when (storeFeedDatas[position].dessertName){
-            " " -> VIEW_TYPE_LOADING
-            else -> VIEW_TYPE_ITEM
-        }
-    }
 }

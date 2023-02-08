@@ -5,8 +5,7 @@ import android.widget.PopupMenu
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivitySellerProductDetailFeedBinding
-import com.codepatissier.keki.databinding.DialogSellerProductDetailFeedDeleteBinding
-import com.codepatissier.keki.util.viewpager.storemain.SellerProductDetailFeedDeleteDialog
+import com.codepatissier.keki.util.viewpager.storemain.seller.SellerProductDetailFeedDeleteDialog
 
 class SellerProductDetailFeedActivity : BaseActivity<ActivitySellerProductDetailFeedBinding> (ActivitySellerProductDetailFeedBinding::inflate) {
 

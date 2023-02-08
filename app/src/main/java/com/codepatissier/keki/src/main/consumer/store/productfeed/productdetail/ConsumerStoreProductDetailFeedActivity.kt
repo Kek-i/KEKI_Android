@@ -60,15 +60,6 @@ class ConsumerStoreProductDetailFeedActivity : BaseActivity<ActivityConsumerStor
         binding.wormDotsIndicator.setViewPager2(binding.vpProductFeedImg)
     }
 
-    //이미지 url을 drawable로 바꿔주는 함수
-    private fun drawableFromUrl(url: String): Drawable? {
-        val x: Bitmap
-        val connection: HttpURLConnection = URL(url).openConnection() as HttpURLConnection
-        connection.connect()
-        val input: InputStream = connection.inputStream
-        x = BitmapFactory.decodeStream(input)
-        return BitmapDrawable(x)
-    }
 
     private fun navigateToStoreMain(){
         binding.ivProductFeedLeftChevron.setOnClickListener {

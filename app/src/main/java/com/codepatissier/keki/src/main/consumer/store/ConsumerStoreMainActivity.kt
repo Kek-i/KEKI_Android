@@ -15,7 +15,7 @@ import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityConsumerStoreMainBinding
 import com.codepatissier.keki.src.main.consumer.store.model.ConsumerStoreMainResponse
 import com.codepatissier.keki.util.viewpager.storemain.StoreMainDialog
-import com.codepatissier.keki.util.viewpager.storemain.StoreMainTabAdapter
+import com.codepatissier.keki.util.viewpager.storemain.consumer.ConsumerStoreMainTabAdapter
 
 class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>(ActivityConsumerStoreMainBinding::inflate),
     ConsumerStoreMainView{
@@ -37,8 +37,8 @@ class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>
     }
 
     private fun tabSetting(){
-        val storeMainTabAdapter = StoreMainTabAdapter(this, storeIdx)
-        binding.vpStore.adapter = storeMainTabAdapter
+        val consumerStoreMainTabAdapter = ConsumerStoreMainTabAdapter(this, storeIdx)
+        binding.vpStore.adapter = consumerStoreMainTabAdapter
 
         val tabIconArray = arrayOf(R.drawable.ic_store_main_grid, R.drawable.ic_store_main_cake)
 
