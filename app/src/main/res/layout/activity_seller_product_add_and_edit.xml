@@ -22,7 +22,7 @@
         android:includeFontPadding="false"
         android:text="완료"
         android:textColor="@color/black"
-        android:textSize="@dimen/seller_product_add_and_edit_tv_complete_text_size"
+        android:textSize="@dimen/seller_product_add_and_edit_text_size"
         android:fontFamily="@font/notosanskr_regular"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -68,6 +68,7 @@
         android:layout_marginLeft="@dimen/seller_product_add_and_edit_et_left_right"
         android:layout_marginRight="@dimen/seller_product_add_and_edit_et_left_right"
         android:layout_marginTop="@dimen/seller_product_add_and_edit_et_product_name_top"
+        android:textSize="@dimen/seller_product_add_and_edit_text_size"
         android:background="@drawable/bg_rectangle_radius_10_white_no_padding"
         android:elevation="@dimen/seller_product_add_and_edit_shadow"
         android:paddingLeft="@dimen/seller_product_add_and_edit_et_padding_left_right"
@@ -89,6 +90,7 @@
         android:layout_marginLeft="@dimen/seller_product_add_and_edit_et_left_right"
         android:layout_marginRight="@dimen/seller_product_add_and_edit_et_left_right"
         android:layout_marginTop="@dimen/seller_product_add_and_edit_et_top"
+        android:textSize="@dimen/seller_product_add_and_edit_text_size"
         android:background="@drawable/bg_rectangle_radius_10_white_no_padding"
         android:elevation="@dimen/seller_product_add_and_edit_shadow"
         android:paddingLeft="@dimen/seller_product_add_and_edit_et_padding_left_right"
@@ -111,6 +113,7 @@
         android:layout_marginRight="@dimen/seller_product_add_and_edit_et_left_right"
         android:layout_marginTop="@dimen/seller_product_add_and_edit_et_top"
         android:includeFontPadding="false"
+        android:textSize="@dimen/seller_product_add_and_edit_text_size"
         android:background="@drawable/bg_rectangle_radius_10_white_no_padding"
         android:elevation="@dimen/seller_product_add_and_edit_shadow"
         android:paddingLeft="@dimen/seller_product_add_and_edit_et_padding_left_right"
@@ -126,9 +129,11 @@
         android:layout_height="wrap_content"
         android:text="@string/seller_product_add_and_edit_et_product_picture"
         android:textColor="@color/brown_grey"
+        android:textSize="@dimen/seller_product_add_and_edit_text_size"
         android:fontFamily="@font/notosanskr_regular"
         app:layout_constraintTop_toBottomOf="@id/et_product_intro"
         app:layout_constraintStart_toStartOf="parent"
+        android:includeFontPadding="false"
         android:layout_marginLeft="@dimen/seller_product_add_and_edit_et_left_right"
         android:layout_marginTop="@dimen/seller_product_add_and_edit_et_top"/>
 
