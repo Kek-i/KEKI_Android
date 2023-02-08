@@ -27,10 +27,10 @@
     <dimen name="home_recycler_margin_top">15dp</dimen>
     <dimen name="home_tag_start">14dp</dimen>
     <dimen name="home_tag_size">16sp</dimen>
-    <dimen name="home_tag_padding_top">5dp</dimen>
-    <dimen name="home_tag_padding_bottom">5dp</dimen>
-    <dimen name="home_tag_padding_start">10dp</dimen>
-    <dimen name="home_tag_padding_end">10dp</dimen>
+    <dimen name="home_tag_padding_top">4dp</dimen>
+    <dimen name="home_tag_padding_bottom">4dp</dimen>
+    <dimen name="home_tag_padding_start">17dp</dimen>
+    <dimen name="home_tag_padding_end">17dp</dimen>
     <dimen name="home_ic_chevron_right_end">14dp</dimen>
     <dimen name="chevron_padding_start">20dp</dimen>
     <dimen name="chevron_padding_top_bottom">10dp</dimen>
