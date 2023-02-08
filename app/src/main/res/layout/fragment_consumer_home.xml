@@ -41,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_message"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/iv_notifications"
                     android:layout_marginRight="@dimen/home_ic_message_right"
                     android:layout_marginTop="@dimen/home_keki_logo_top"/>
 

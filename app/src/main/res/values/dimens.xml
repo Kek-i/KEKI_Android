@@ -14,7 +14,7 @@
     <dimen name="home_keki_logo_left">12dp</dimen>
     <dimen name="home_ic_top">16dp</dimen>
     <dimen name="home_ic_notifications_right">20dp</dimen>
-    <dimen name="home_ic_message_right">64dp</dimen>
+    <dimen name="home_ic_message_right">25dp</dimen>
     <dimen name="home_logo_top_height">77dp</dimen>
 
     <dimen name="home_comment_top">9dp</dimen>
