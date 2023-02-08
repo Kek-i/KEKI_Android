@@ -1,6 +1,7 @@
 package com.codepatissier.keki.src.main.auth.profilesetting
 
-import com.codepatissier.keki.src.main.auth.model.PostSignupRequest
+import com.codepatissier.keki.src.main.auth.model.PostStoreSignupRequest
+import com.codepatissier.keki.src.main.auth.model.PostUserSignupRequest
 import com.codepatissier.keki.src.main.auth.profilesetting.model.PostNickname
 import com.codepatissier.keki.src.main.auth.model.SocialTokenResponse
 import com.codepatissier.keki.src.main.auth.profilesetting.model.PostNickRequest
@@ -16,7 +17,12 @@ interface SignupRetrofitInterface {
 
     @POST("/users/signup")
     fun postUserSignup(
-        @Body params: PostSignupRequest
+        @Body params: PostUserSignupRequest
+    ): Call<SocialTokenResponse>
+
+    @POST("/stores/signup")
+    fun postStoreSignup(
+        @Body params: PostStoreSignupRequest
     ): Call<SocialTokenResponse>
 
 }

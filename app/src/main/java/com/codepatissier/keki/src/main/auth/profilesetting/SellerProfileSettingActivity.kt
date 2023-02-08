@@ -1,6 +1,5 @@
 package com.codepatissier.keki.src.main.auth.profilesetting
 
-import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
@@ -16,16 +15,14 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.bumptech.glide.Glide
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.ApplicationClass
-import com.codepatissier.keki.config.ApplicationClass.Companion.UserEmail
-import com.codepatissier.keki.config.ApplicationClass.Companion.userInfo
-import com.codepatissier.keki.databinding.ActivityConsumerProfileSettingBinding
 import com.codepatissier.keki.config.BaseActivity
+import com.codepatissier.keki.databinding.ActivitySellerProfileSettingBinding
 import com.codepatissier.keki.src.MainActivity
+import com.codepatissier.keki.src.SellerMainActivity
 import com.codepatissier.keki.src.main.auth.IntroActivity
+import com.codepatissier.keki.src.main.auth.model.PostStoreSignupRequest
 import com.codepatissier.keki.src.main.auth.model.PostUserSignupRequest
 import com.codepatissier.keki.src.main.auth.model.SocialTokenResponse
-import com.codepatissier.keki.src.main.auth.profilesetting.model.PostNickRequest
-import com.codepatissier.keki.src.main.auth.profilesetting.model.PostNickname
 import com.google.firebase.storage.FirebaseStorage
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -34,9 +31,9 @@ import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CustomerProfileSettingActivity : BaseActivity<ActivityConsumerProfileSettingBinding>(
-    ActivityConsumerProfileSettingBinding::inflate), SignupView {
-    private var nickname: String? = null
+class SellerProfileSettingActivity : BaseActivity<ActivitySellerProfileSettingBinding>(
+    ActivitySellerProfileSettingBinding::inflate), StoreSignupView {
+
     private var profileImg: String? = null
     private lateinit var launcher : ActivityResultLauncher<Intent>
     var ProfileUri : Uri ?= null
@@ -49,8 +46,6 @@ class CustomerProfileSettingActivity : BaseActivity<ActivityConsumerProfileSetti
 
         clickConfirm()
         clickBack()
-        clickDoubleCheck()
-        setTextUserEmail()
         getProfileImg()
         keyboardEnterClicked()
 
@@ -60,18 +55,25 @@ class CustomerProfileSettingActivity : BaseActivity<ActivityConsumerProfileSetti
     private fun clickConfirm() {
         binding.tvCheck.setOnClickListener {
             // 키패드 내리기
-            keyboardDown()
+
+            val nickname = binding.et1ProfileSetting.text.toString()
+            val address = binding.et2ProfileSetting.text.toString()
+            val introduction = binding.et3ProfileSetting.text.toString()
+            val orderUrl = binding.et4ProfileSetting.text.toString()
+            val businessName = binding.et5ProfileSetting.text.toString()
+            val brandName = binding.et6ProfileSetting.text.toString()
+            val businessAddress = binding.et7ProfileSetting.text.toString()
+            val businessNumber = binding.et8ProfileSetting.text.toString()
+
 
             //null값이 아니고, 중복 확인한 값일 경우(중복확인 누르고 값 바꾸는것 방지), 닉네임 조건에 맞을 경우
-            if (nickname != null && nickname == binding.etNickname.text.toString()
-            ) {
+            if (nickname != null) {
                 firebaseUpload()
-                val postUserSignupRequest =
-                    PostUserSignupRequest(nickname = nickname!!, profileImg = profileImg)
-                SignupService(this).tryPostUserSignup(postUserSignupRequest)
-            } else if (nickname == null) {
-                binding.tvNamingResult.setText(R.string.edit_rule_null)
-                binding.tvNamingResult.setTextColor(resources.getColor(R.color.darkish_pink))
+                val postStoreSignupRequest =
+                    PostStoreSignupRequest(profileImg,  nickname, address,introduction , orderUrl, businessName, brandName, businessAddress,businessNumber)
+                StoreSignupService(this).tryPostStoreSignup(postStoreSignupRequest)
+            } else {
+
             }
         }
     }
@@ -84,57 +86,6 @@ class CustomerProfileSettingActivity : BaseActivity<ActivityConsumerProfileSetti
         }
     }
 
-    //중복확인 버튼 클릭
-    private fun clickDoubleCheck() {
-        binding.btnDoubleCheck.setOnClickListener {
-            // 키패드 내리기
-            keyboardDown()
-
-            nickname = null     //새로 중복 확인 누르면 기존 시도 닉네임 초기화
-            val tryNick = binding.etNickname.text.toString()
-            if(isValidNickname(tryNick)){
-                val postNickRequest = PostNickRequest(nickname = tryNick)  //새로운 닉네임
-                SignupService(this).tryPostCheckNick(postNickRequest)
-            }
-            else{
-                binding.tvNamingResult.setText(R.string.edit_rule_wrong)
-                binding.tvNamingResult.setTextColor(resources.getColor(R.color.darkish_pink))
-            }
-        }
-    }
-
-    //유저 이메일 표시하기
-    private fun setTextUserEmail(){
-        binding.tvUserEmail.text = ApplicationClass.sSharedPreferences.getString(UserEmail, null)
-    }
-
-    //닉네임 조건
-    fun isValidNickname(nickname: String?): Boolean {
-        val trimmedNickname = nickname?.trim().toString()
-        val exp = Regex("^[가-힣ㄱ-ㅎa-zA-Z0-9]{2,10}\$")
-        return !trimmedNickname.isNullOrEmpty() && exp.matches(trimmedNickname)
-    }
-
-    //중복확인 결과에 따라 문구 넣어주기
-    @SuppressLint("SetTextI18n")
-    override fun onPostNickSuccess(response: PostNickname) {
-        if (response.isSuccess) {
-            binding.tvNamingResult.setTextColor(resources.getColor(R.color.brown_grey))
-            binding.tvNamingResult.setText(R.string.edit_rule_pass)
-            nickname = binding.etNickname.text.toString()   //중복이 아닐 경우 닉네임 변수에 넣기
-        } else {
-            binding.tvNamingResult.setTextColor(resources.getColor(R.color.darkish_pink))
-            binding.tvNamingResult.setText(R.string.edit_rule_false)
-        }
-    }
-
-    //회원가입 성공하면 role 값 다시 설정,  메인 엑티비티로 이동
-    override fun onPostSignupSuccess(response: SocialTokenResponse) {
-        userInfo.putString(ApplicationClass.UserRole, "구매자")
-        userInfo.commit()
-        startActivity(Intent(this, MainActivity::class.java))
-        finish()
-    }
 
 
     //프로필 사진 설정하기
@@ -206,20 +157,78 @@ class CustomerProfileSettingActivity : BaseActivity<ActivityConsumerProfileSetti
 
     // 엔터 클릭 시 키패드 내리기
     private fun keyboardEnterClicked(){
-        binding.etNickname.setOnEditorActionListener { _, actionId, _ ->
+        val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        binding.et1ProfileSetting.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                keyboardDown()
+                imm.hideSoftInputFromWindow(binding.et1ProfileSetting.windowToken, 0)
+                binding.et1ProfileSetting.clearFocus()
+                return@setOnEditorActionListener true
+            }
+            return@setOnEditorActionListener false
+        }
+        binding.et2ProfileSetting.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                imm.hideSoftInputFromWindow(binding.et2ProfileSetting.windowToken, 0)
+                binding.et2ProfileSetting.clearFocus()
+                return@setOnEditorActionListener true
+            }
+            return@setOnEditorActionListener false
+        }
+        binding.et3ProfileSetting.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                imm.hideSoftInputFromWindow(binding.et3ProfileSetting.windowToken, 0)
+                binding.et3ProfileSetting.clearFocus()
+                return@setOnEditorActionListener true
+            }
+            return@setOnEditorActionListener false
+        }
+        binding.et4ProfileSetting.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                imm.hideSoftInputFromWindow(binding.et4ProfileSetting.windowToken, 0)
+                binding.et4ProfileSetting.clearFocus()
+                return@setOnEditorActionListener true
+            }
+            return@setOnEditorActionListener false
+        }
+        binding.et5ProfileSetting.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                imm.hideSoftInputFromWindow(binding.et5ProfileSetting.windowToken, 0)
+                binding.et5ProfileSetting.clearFocus()
+                return@setOnEditorActionListener true
+            }
+            return@setOnEditorActionListener false
+        }
+        binding.et6ProfileSetting.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                imm.hideSoftInputFromWindow(binding.et6ProfileSetting.windowToken, 0)
+                binding.et6ProfileSetting.clearFocus()
+                return@setOnEditorActionListener true
+            }
+            return@setOnEditorActionListener false
+        }
+        binding.et7ProfileSetting.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                imm.hideSoftInputFromWindow(binding.et7ProfileSetting.windowToken, 0)
+                binding.et7ProfileSetting.clearFocus()
+                return@setOnEditorActionListener true
+            }
+            return@setOnEditorActionListener false
+        }
+        binding.et8ProfileSetting.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                imm.hideSoftInputFromWindow(binding.et8ProfileSetting.windowToken, 0)
+                binding.et8ProfileSetting.clearFocus()
                 return@setOnEditorActionListener true
             }
             return@setOnEditorActionListener false
         }
     }
 
-    // 키패드 내리는 함수
-    private fun keyboardDown(){
-        val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(binding.etNickname.windowToken, 0)
-        binding.etNickname.clearFocus()
+    override fun onPostStoreSignupSuccess(response: SocialTokenResponse) {
+        ApplicationClass.userInfo.putString(ApplicationClass.UserRole, "판매자")
+        ApplicationClass.userInfo.commit()
+        startActivity(Intent(this, SellerMainActivity::class.java))
+        finish()
     }
 
 }

@@ -7,6 +7,7 @@ import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityIntroBinding
 import com.codepatissier.keki.src.main.auth.profilesetting.CustomerProfileSettingActivity
+import com.codepatissier.keki.src.main.auth.profilesetting.SellerProfileSettingActivity
 
 class IntroActivity: BaseActivity<ActivityIntroBinding>(ActivityIntroBinding::inflate) {
     private var isCustomer = false
@@ -36,6 +37,10 @@ class IntroActivity: BaseActivity<ActivityIntroBinding>(ActivityIntroBinding::in
         binding.btnCheck.setOnClickListener{
             if(isCustomer) {
                 startActivity(Intent(this, CustomerProfileSettingActivity::class.java))
+                finish()
+            }
+            else{
+                startActivity(Intent(this, SellerProfileSettingActivity::class.java))
                 finish()
             }
         }
