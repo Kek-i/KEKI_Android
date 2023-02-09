@@ -1,4 +1,4 @@
-package com.codepatissier.keki.util.viewpager.storemain
+package com.codepatissier.keki.util.viewpager.storemain.consumer
 
 
 import android.app.Dialog
@@ -12,7 +12,7 @@ import com.codepatissier.keki.src.main.consumer.store.info.ConsumerStoreInfoServ
 import com.codepatissier.keki.src.main.consumer.store.info.ConsumerStoreInfoView
 import com.codepatissier.keki.src.main.consumer.store.info.model.ConsumerStoreInfoResponse
 
-class StoreMainDialog(context: Context):Dialog(context), ConsumerStoreInfoView {
+class ConsumerStoreMainDialog(context: Context):Dialog(context), ConsumerStoreInfoView {
     private lateinit var  binding : DialogStoreMainBinding
     var storeIdx : Long = 1
 

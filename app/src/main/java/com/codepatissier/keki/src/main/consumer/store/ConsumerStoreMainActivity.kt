@@ -14,15 +14,19 @@ import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityConsumerStoreMainBinding
 import com.codepatissier.keki.src.main.consumer.store.model.ConsumerStoreMainResponse
-import com.codepatissier.keki.util.viewpager.storemain.StoreMainDialog
+import com.codepatissier.keki.util.viewpager.storemain.consumer.ConsumerStoreMainDialog
 import com.codepatissier.keki.util.viewpager.storemain.consumer.ConsumerStoreMainTabAdapter
+import com.google.firebase.storage.FirebaseStorage
 
 class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>(ActivityConsumerStoreMainBinding::inflate),
     ConsumerStoreMainView{
     var storeIdx: Long = 1
+    var fbStorage : FirebaseStorage?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        fbStorage = FirebaseStorage.getInstance()
 
         getStoreIdx()
         tabSetting()
@@ -75,14 +79,12 @@ class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>
 
     private fun infoClick(){
         binding.ivInfo.setOnClickListener{
-            StoreMainDialog(this).setStoreIdx(storeIdx)
-            StoreMainDialog(this).show()
+            ConsumerStoreMainDialog(this).setStoreIdx(storeIdx)
+            ConsumerStoreMainDialog(this).show()
         }
     }
 
     override fun onGetStoreMainSuccess(response: ConsumerStoreMainResponse) {
-        dismissLoadingDialog()
-
         binding.tvStoreName.text = response.result.nickname
         binding.tvStoreDetail.text = response.result.introduction
 
@@ -90,15 +92,26 @@ class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>
         val imageView = binding.ivProfile
         val uri = "http://"+response.result.orderUrl
 
-        // 프로필 이미지 띄우기기
-        Glide.with(this)
-            .load(response.result.storeImgUrl)
-            .placeholder(defaultImg)
-            .error(defaultImg)
-            .fallback(defaultImg)
-            .circleCrop()
-            .into(imageView)
-
+        if(response.result.storeImgUrl != null) {
+            // 프로필 이미지 띄우기
+            var storageRef = fbStorage?.reference?.child(response.result.storeImgUrl)
+            storageRef?.downloadUrl?.addOnCompleteListener {
+                if (it.isSuccessful) {
+                    Glide.with(this)
+                        .load(it.result)
+                        .placeholder(defaultImg)
+                        .error(defaultImg)
+                        .fallback(defaultImg)
+                        .circleCrop()
+                        .into(imageView)
+                    dismissLoadingDialog()
+                }else{
+                    dismissLoadingDialog()
+                }
+            }
+        }else{
+            dismissLoadingDialog()
+        }
         setViewMore(binding.tvStoreDetail, binding.tvViewMore)
 
         // 버튼 클릭시 주문링크로 이동

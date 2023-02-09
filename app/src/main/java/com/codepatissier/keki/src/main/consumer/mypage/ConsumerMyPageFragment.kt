@@ -1,9 +1,7 @@
 package com.codepatissier.keki.src.main.consumer.mypage
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import com.bumptech.glide.Glide
 import com.codepatissier.keki.R
@@ -15,7 +13,6 @@ import com.codepatissier.keki.src.main.consumer.mypage.profileEdit.ConsumerProfi
 import com.google.firebase.storage.FirebaseStorage
 import com.codepatissier.keki.util.dialog.LogoutDialog
 import com.codepatissier.keki.util.dialog.WithdrawalDialog
-import com.codepatissier.keki.util.viewpager.storemain.StoreMainDialog
 
 class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
     (FragmentConsumerMyPageBinding::bind, R.layout.fragment_consumer_my_page),ConsumerMyPageView {
@@ -83,6 +80,8 @@ class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
                         .fallback(defaultImg)
                         .circleCrop()
                         .into(imageView)
+                    dismissLoadingDialog()
+                }else{
                     dismissLoadingDialog()
                 }
             }

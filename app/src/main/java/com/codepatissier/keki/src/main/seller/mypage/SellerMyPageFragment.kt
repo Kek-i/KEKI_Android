@@ -100,6 +100,8 @@ class SellerMyPageFragment : BaseFragment<FragmentSellerMyPageBinding>
                         .circleCrop()
                         .into(imageView)
                     dismissLoadingDialog()
+                }else{
+                    dismissLoadingDialog()
                 }
             }
         }else {
