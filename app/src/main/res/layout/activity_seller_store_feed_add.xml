@@ -60,7 +60,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_seller_feed_add_content"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_add_image"
@@ -70,15 +70,16 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:clipToPadding="false"
                 >
 
                 <ImageButton
                     android:id="@+id/ib_add_image"
                     android:layout_width="@dimen/seller_feed_add_ib_add_image_width_height"
                     android:layout_height="@dimen/seller_feed_add_ib_add_image_width_height"
+                    android:layout_marginTop="@dimen/seller_feed_add_ib_add_image_margin_top"
                     android:layout_marginStart="@dimen/seller_feed_add_ib_add_image_margin_start"
                     android:layout_marginBottom="@dimen/seller_feed_add_ib_add_image_margin_bottom"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:src="@drawable/ic_add"

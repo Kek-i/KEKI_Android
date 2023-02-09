@@ -740,6 +740,7 @@
     <dimen name="seller_feed_add_layout_image_width">0dp</dimen>
     <dimen name="seller_feed_add_layout_image_margin_top">26dp</dimen>
     <dimen name="seller_feed_add_ib_add_image_width_height">100dp</dimen>
+    <dimen name="seller_feed_add_ib_add_image_margin_top">10dp</dimen>
     <dimen name="seller_feed_add_ib_add_image_margin_start">16dp</dimen>
     <dimen name="seller_feed_add_ib_add_image_margin_bottom">5dp</dimen>
     <dimen name="seller_feed_add_rv_feed_image_width">0dp</dimen>
@@ -753,7 +754,7 @@
     <dimen name="seller_feed_add_ib_open_margin_start">20dp</dimen>
     <dimen name="seller_feed_add_tv_select_product_margin_start">10dp</dimen>
     <dimen name="seller_feed_add_tv_select_product_size">16sp</dimen>
-    <dimen name="seller_feed_add_layout_open_product_margin_top">-8dp</dimen>
+    <dimen name="seller_feed_add_layout_open_product_margin_top">-6dp</dimen>
     <dimen name="seller_feed_add_layout_open_product_padding_start">44dp</dimen>
     <dimen name="seller_feed_add_layout_open_product_padding_end">30dp</dimen>
     <dimen name="seller_feed_add_layout_open_product_padding_bottom">9dp</dimen>
