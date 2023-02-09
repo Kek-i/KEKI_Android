@@ -99,6 +99,9 @@ class SellerMyPageFragment : BaseFragment<FragmentSellerMyPageBinding>
                         .fallback(defaultImg)
                         .circleCrop()
                         .into(imageView)
+                    dismissLoadingDialog()
+                }else {
+                    dismissLoadingDialog()
                 }
             }
         }
