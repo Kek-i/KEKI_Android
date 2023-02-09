@@ -145,7 +145,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tab_store"/>
+            app:layout_constraintTop_toBottomOf="@+id/tab_store"
+            android:layout_marginLeft="@dimen/store_main_store_viewPager_left_right"/>
 
         <View
             android:layout_width="@dimen/store_main_store_view_width"
