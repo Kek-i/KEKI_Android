@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="spinner_array">
-        <item>@string/search_spinner_popular</item>
         <item>@string/search_spinner_recent</item>
+        <item>@string/search_spinner_popular</item>
         <item>@string/search_spinner_price</item>
     </string-array>
 </resources>
