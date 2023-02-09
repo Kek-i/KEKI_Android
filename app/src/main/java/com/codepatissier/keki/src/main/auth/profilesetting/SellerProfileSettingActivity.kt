@@ -45,6 +45,7 @@ class SellerProfileSettingActivity : BaseActivity<ActivitySellerProfileSettingBi
         fbStorage = FirebaseStorage.getInstance()
 
         clickConfirm()
+        setTextUserEmail()
         clickBack()
         getProfileImg()
         keyboardEnterClicked()
@@ -67,7 +68,7 @@ class SellerProfileSettingActivity : BaseActivity<ActivitySellerProfileSettingBi
 
 
             //null값이 아니고, 중복 확인한 값일 경우(중복확인 누르고 값 바꾸는것 방지), 닉네임 조건에 맞을 경우
-            if (nickname != null) {
+            if (nickname != null && address != null) {
                 firebaseUpload()
                 val postStoreSignupRequest =
                     PostStoreSignupRequest(profileImg,  nickname, address,introduction , orderUrl, businessName, brandName, businessAddress,businessNumber)
@@ -86,6 +87,10 @@ class SellerProfileSettingActivity : BaseActivity<ActivitySellerProfileSettingBi
         }
     }
 
+    //유저 이메일 표시하기
+    private fun setTextUserEmail(){
+        binding.tvUserEmail.text = ApplicationClass.sSharedPreferences.getString(ApplicationClass.UserEmail, null)
+    }
 
 
     //프로필 사진 설정하기

@@ -26,7 +26,7 @@ import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreDet
 class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(ActivityConsumerSearchBinding::inflate),
     SearchResultView {
     private lateinit var searchListAdapter : SearchListAdapter
-    private var sortType : String = "인기순"
+    private var sortType : String = "최신순"
     private var keyword : String = ""
     private var keyTag : String = ""
     @SuppressLint("ClickableViewAccessibility")
