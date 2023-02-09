@@ -33,14 +33,14 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
 //        자동 로그인 O : 스플래시 -> 로그인 홈화면
 //
 //*/
-        if (userRole == "구매자") {
-            Handler(Looper.getMainLooper()).postDelayed({
-                startActivity(Intent(this, MainActivity::class.java))
-                finish()
-            }, 1500)
-        } else if (userRole == "판매자") {
+        if (userRole == "판매자") {
             Handler(Looper.getMainLooper()).postDelayed({
                 startActivity(Intent(this, SellerMainActivity::class.java))
+                finish()
+            }, 1500)
+        } else {
+            Handler(Looper.getMainLooper()).postDelayed({
+                startActivity(Intent(this, MainActivity::class.java))
                 finish()
             }, 1500)
         }
