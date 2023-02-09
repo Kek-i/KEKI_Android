@@ -176,6 +176,12 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
+        <activity android:name=".src.main.seller.store.storefeed.SellerStoreFeedAddActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme2">
+        </activity>
+
         <activity android:name=".src.main.consumer.search.RecentSeenFeedActivity"
             android:exported="false"
             android:screenOrientation="portrait"
