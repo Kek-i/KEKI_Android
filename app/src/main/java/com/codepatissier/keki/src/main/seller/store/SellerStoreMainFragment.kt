@@ -1,6 +1,5 @@
 package com.codepatissier.keki.src.main.seller.store
 
-
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
