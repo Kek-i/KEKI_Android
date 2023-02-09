@@ -266,6 +266,7 @@
     <dimen name="search_spinner_list_height">30dp</dimen>
     <dimen name="search_spinner_list_padding">7dp</dimen>
     <dimen name="search_sv_search_list_marginTop">118dp</dimen>
+    <dimen name="search_sv_search_list_marginSide">12dp</dimen>
     <dimen name="search_tv_empty_marginTop">10dp</dimen>
     <dimen name="search_grid_item_padding_side">5dp</dimen>
     <dimen name="search_grid_item_paddingBottom">15dp</dimen>

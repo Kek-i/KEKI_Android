@@ -59,6 +59,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginHorizontal="@dimen/search_sv_search_list_marginSide"
             tools:listitem="@layout/item_search_list_recycler" />
     </androidx.core.widget.NestedScrollView>
 
