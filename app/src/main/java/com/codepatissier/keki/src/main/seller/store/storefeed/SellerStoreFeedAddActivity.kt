@@ -22,30 +22,34 @@ class SellerStoreFeedAddActivity : BaseActivity<ActivitySellerStoreFeedAddBindin
     private var isOpenProductSelectionLayout: Boolean = false
     // recyclerview adapter & datalist
     private lateinit var feedImageAdapter: FeedImageAdapter
-    private val feedImageUriList = mutableListOf<Uri>()
+    private var feedImageUriList = mutableListOf<Uri>()
     private lateinit var productNameAdapter: ProductNameAdapter
     private val productNameDataList = mutableListOf<ProductNameData>()
     // 서버 연동한 후에는 mutableList 말고 그냥 list 쓰기 (수정불가능하게)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        
         setListenerToBackBtn()
-        setFeedImages()
+        initFeedImage()
         setProductNameRecyclerView()
         setListenerToProductSelectionLayout()
     }
 
-    private fun setFeedImages() {
+    private fun initFeedImage() {
+        // recyclerview item 삭제 시 깜빡임 현상 방지
+        binding.rvFeedImage.itemAnimator = null
+
         binding.ibAddImage.setOnClickListener {
             if(maxImage <= feedImageUriList.size) {
-                showCustomToast("사진은 5개까지 첨부할 수 있습니다.")
+                showCustomToast(getString(R.string.seller_feed_add_max_image))
             } else {
                 val max = maxImage - feedImageUriList.size
+
                 TedImagePicker.with(this)
                     .mediaType(MediaType.IMAGE)
                     .showCameraTile(false)
-                    .title("Photos")
+                    .title(getString(R.string.seller_feed_add_image_picker_title))
                     .buttonTextColor(R.color.black)
                     .buttonBackground(R.color.white)
                     .max(max, "최대 ${max}개 선택할 수 있습니다.")
@@ -55,6 +59,15 @@ class SellerStoreFeedAddActivity : BaseActivity<ActivitySellerStoreFeedAddBindin
                                 feedImageUriList.add(uri)
                             }
                             feedImageAdapter = FeedImageAdapter(feedImageUriList, this)
+                            feedImageAdapter.setItemClickListener(object : FeedImageAdapter.ImgDeleteBtnClickListener {
+                                // 사진 삭제 버튼 클릭
+                                override fun onClickDeleteBtn(position: Int) {
+                                    feedImageAdapter.dataList.removeAt(position)
+                                    feedImageAdapter.notifyItemRemoved(position)
+                                    feedImageAdapter.notifyItemRangeRemoved(position, feedImageUriList.size)
+                                    feedImageUriList = feedImageAdapter.dataList
+                                }
+                            })
                             binding.rvFeedImage.adapter = feedImageAdapter
                             val mLinearLayoutManager = LinearLayoutManager(this)
                             mLinearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL

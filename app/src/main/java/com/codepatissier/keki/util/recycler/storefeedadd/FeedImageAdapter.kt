@@ -8,8 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.codepatissier.keki.databinding.ItemFeedImageRecyclerBinding
 
-class FeedImageAdapter(private val dataList: MutableList<Uri>, private val context: Context)
+class FeedImageAdapter(val dataList: MutableList<Uri>, private val context: Context)
     : RecyclerView.Adapter<FeedImageAdapter.FeedImageViewHolder>() {
+    private lateinit var imgDeleteBtnClickListener: ImgDeleteBtnClickListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedImageViewHolder {
         val itemBinding = ItemFeedImageRecyclerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -18,9 +19,14 @@ class FeedImageAdapter(private val dataList: MutableList<Uri>, private val conte
 
     override fun onBindViewHolder(holder: FeedImageViewHolder, position: Int) {
         holder.bind(dataList[position], context)
+        holder.setListenerToDeleteImage(position, imgDeleteBtnClickListener)
     }
 
     override fun getItemCount(): Int = dataList.size
+
+    fun setItemClickListener(imgDeleteBtnClickListener: ImgDeleteBtnClickListener) {
+        this.imgDeleteBtnClickListener = imgDeleteBtnClickListener
+    }
 
     class FeedImageViewHolder(private val itemBinding: ItemFeedImageRecyclerBinding) : RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(uri: Uri, context: Context) {
@@ -29,5 +35,16 @@ class FeedImageAdapter(private val dataList: MutableList<Uri>, private val conte
                 .centerCrop()
                 .into(itemBinding.ivFeedImg)
         }
+
+        fun setListenerToDeleteImage(position: Int, imgDeleteBtnClickListener: ImgDeleteBtnClickListener
+        ) {
+            itemBinding.ivDelete.setOnClickListener {
+                imgDeleteBtnClickListener.onClickDeleteBtn(position)
+            }
+        }
+    }
+
+    interface ImgDeleteBtnClickListener {
+        fun onClickDeleteBtn(position: Int)
     }
 }
