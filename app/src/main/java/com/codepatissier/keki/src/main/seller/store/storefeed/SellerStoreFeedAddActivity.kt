@@ -4,8 +4,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.PickVisualMediaRequest
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
@@ -13,15 +11,15 @@ import com.codepatissier.keki.databinding.ActivitySellerStoreFeedAddBinding
 import com.codepatissier.keki.util.recycler.storefeedadd.FeedImageAdapter
 import com.codepatissier.keki.util.recycler.storefeedadd.ProductNameAdapter
 import com.codepatissier.keki.util.recycler.storefeedadd.ProductNameData
-import com.nguyenhoanglam.imagepicker.model.GridCount
-import com.nguyenhoanglam.imagepicker.model.ImagePickerConfig
-import com.nguyenhoanglam.imagepicker.ui.imagepicker.registerImagePicker
+import gun0912.tedimagepicker.builder.TedImagePicker
+import gun0912.tedimagepicker.builder.type.MediaType
 
 class SellerStoreFeedAddActivity : BaseActivity<ActivitySellerStoreFeedAddBinding>(
     ActivitySellerStoreFeedAddBinding::inflate) {
-    private lateinit var pickMultiplePhotos: ActivityResultLauncher<PickVisualMediaRequest>
+    // 첨부 가능한 피드 이미지 최대 개수
+    private val maxImage = 5
     // 상품 선택 메뉴 open/close 여부
-    var isOpenProductSelectionLayout: Boolean = false
+    private var isOpenProductSelectionLayout: Boolean = false
     // recyclerview adapter & datalist
     private lateinit var feedImageAdapter: FeedImageAdapter
     private val feedImageUriList = mutableListOf<Uri>()
@@ -39,51 +37,33 @@ class SellerStoreFeedAddActivity : BaseActivity<ActivitySellerStoreFeedAddBindin
     }
 
     private fun setFeedImages() {
-        val maxItems = 5
-        val launcher = registerImagePicker { images ->
-            // Selected images are ready to use
-            if(images.isNotEmpty()){
-                for(image in images) {
-                    feedImageUriList.add(image.uri)
-                }
-                feedImageAdapter = FeedImageAdapter(feedImageUriList, this)
-                binding.rvFeedImage.adapter = feedImageAdapter
-                val mLinearLayoutManager = LinearLayoutManager(this)
-                mLinearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
-                // 가장 최근에 추가한 이미지가 맨왼쪽에 위치
-                mLinearLayoutManager.reverseLayout = true
-                mLinearLayoutManager.stackFromEnd = true
-                binding.rvFeedImage.layoutManager = mLinearLayoutManager
-            }
-        }
-        
-        // string.xml 추가
-        val config = ImagePickerConfig(
-            statusBarColor = "#FFFFFF",
-            isLightStatusBar = true,
-            toolbarColor = "#FFFFFF",
-            toolbarTextColor = "#000000",
-            toolbarIconColor = "#000000",
-            backgroundColor = "#FFFFFF",
-            doneTitle = "완료",
-            folderTitle = "앨범",
-            isShowNumberIndicator = true,
-            isAlwaysShowDoneButton = true,
-            isFolderMode = true,
-            isMultipleMode = true,
-            subDirectory = "Photos",
-            folderGridCount = GridCount(2, 4),
-            imageGridCount = GridCount(3, 5),
-        )
-
         binding.ibAddImage.setOnClickListener {
-            if(maxItems == feedImageUriList.size) {
-                showCustomToast("첨부 가능한 이미지 최대 개수는 5개입니다.")
+            if(maxImage <= feedImageUriList.size) {
+                showCustomToast("사진은 5개까지 첨부할 수 있습니다.")
             } else {
-                config.maxSize = maxItems-feedImageUriList.size
-                config.limitMessage = ""
-
-                launcher.launch(config)
+                val max = maxImage - feedImageUriList.size
+                TedImagePicker.with(this)
+                    .mediaType(MediaType.IMAGE)
+                    .showCameraTile(false)
+                    .title("Photos")
+                    .buttonTextColor(R.color.black)
+                    .buttonBackground(R.color.white)
+                    .max(max, "최대 ${max}개 선택할 수 있습니다.")
+                    .startMultiImage { uriList ->
+                        if(uriList.isNotEmpty()) {
+                            for (uri in uriList) {
+                                feedImageUriList.add(uri)
+                            }
+                            feedImageAdapter = FeedImageAdapter(feedImageUriList, this)
+                            binding.rvFeedImage.adapter = feedImageAdapter
+                            val mLinearLayoutManager = LinearLayoutManager(this)
+                            mLinearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
+                            // 가장 최근에 추가한 이미지가 맨왼쪽에 위치
+                            mLinearLayoutManager.reverseLayout = true
+                            mLinearLayoutManager.stackFromEnd = true
+                            binding.rvFeedImage.layoutManager = mLinearLayoutManager
+                        }
+                    }
             }
         }
     }

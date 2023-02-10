@@ -101,6 +101,7 @@
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/item_feed_image_recycler"
                     android:clipToPadding="false"
+                    android:overScrollMode="never"
                     />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

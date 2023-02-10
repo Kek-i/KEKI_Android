@@ -13,7 +13,7 @@ class FeedImageAdapter(private val dataList: MutableList<Uri>, private val conte
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedImageViewHolder {
         val itemBinding = ItemFeedImageRecyclerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return FeedImageAdapter.FeedImageViewHolder(itemBinding)
+        return FeedImageViewHolder(itemBinding)
     }
 
     override fun onBindViewHolder(holder: FeedImageViewHolder, position: Int) {
