@@ -6,13 +6,16 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.PickVisualMediaRequest
-import androidx.activity.result.contract.ActivityResultContracts.*
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivitySellerStoreFeedAddBinding
 import com.codepatissier.keki.util.recycler.storefeedadd.FeedImageAdapter
 import com.codepatissier.keki.util.recycler.storefeedadd.ProductNameAdapter
 import com.codepatissier.keki.util.recycler.storefeedadd.ProductNameData
+import com.nguyenhoanglam.imagepicker.model.GridCount
+import com.nguyenhoanglam.imagepicker.model.ImagePickerConfig
+import com.nguyenhoanglam.imagepicker.ui.imagepicker.registerImagePicker
 
 class SellerStoreFeedAddActivity : BaseActivity<ActivitySellerStoreFeedAddBinding>(
     ActivitySellerStoreFeedAddBinding::inflate) {
@@ -36,23 +39,12 @@ class SellerStoreFeedAddActivity : BaseActivity<ActivitySellerStoreFeedAddBindin
     }
 
     private fun setFeedImages() {
-        val maxItems: Int = 5
-        binding.ibAddImage.setOnClickListener {
-            if(maxItems == feedImageUriList.size) {
-                showCustomToast("등록 가능한 이미지 최대 개수는 5개입니다.")
-            } else {
-                pickMultiplePhotos.launch(PickVisualMediaRequest(PickVisualMedia.ImageOnly))
-            }
-        }
-
-        pickMultiplePhotos = registerForActivityResult(
-            PickMultipleVisualMedia(maxItems - feedImageUriList.size)
-        ) { uris ->
-            if (uris.isNotEmpty()) {
-                // 기존 이미지들에 또 추가되는 경우 그때마다 adapter 새로 생성하기
-                // item(imageview)에 사진 업로드. 이미 있는 리스트에 추가로 더해짐.
-                for(uri in uris) {
-                    feedImageUriList.add(uri)
+        val maxItems = 5
+        val launcher = registerImagePicker { images ->
+            // Selected images are ready to use
+            if(images.isNotEmpty()){
+                for(image in images) {
+                    feedImageUriList.add(image.uri)
                 }
                 feedImageAdapter = FeedImageAdapter(feedImageUriList, this)
                 binding.rvFeedImage.adapter = feedImageAdapter
@@ -62,6 +54,36 @@ class SellerStoreFeedAddActivity : BaseActivity<ActivitySellerStoreFeedAddBindin
                 mLinearLayoutManager.reverseLayout = true
                 mLinearLayoutManager.stackFromEnd = true
                 binding.rvFeedImage.layoutManager = mLinearLayoutManager
+            }
+        }
+        
+        // string.xml 추가
+        val config = ImagePickerConfig(
+            statusBarColor = "#FFFFFF",
+            isLightStatusBar = true,
+            toolbarColor = "#FFFFFF",
+            toolbarTextColor = "#000000",
+            toolbarIconColor = "#000000",
+            backgroundColor = "#FFFFFF",
+            doneTitle = "완료",
+            folderTitle = "앨범",
+            isShowNumberIndicator = true,
+            isAlwaysShowDoneButton = true,
+            isFolderMode = true,
+            isMultipleMode = true,
+            subDirectory = "Photos",
+            folderGridCount = GridCount(2, 4),
+            imageGridCount = GridCount(3, 5),
+        )
+
+        binding.ibAddImage.setOnClickListener {
+            if(maxItems == feedImageUriList.size) {
+                showCustomToast("첨부 가능한 이미지 최대 개수는 5개입니다.")
+            } else {
+                config.maxSize = maxItems-feedImageUriList.size
+                config.limitMessage = ""
+
+                launcher.launch(config)
             }
         }
     }
