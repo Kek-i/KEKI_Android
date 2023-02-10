@@ -1,18 +1,27 @@
 package com.codepatissier.keki.src.main.seller.store.storefeed
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts.*
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivitySellerStoreFeedAddBinding
+import com.codepatissier.keki.util.recycler.storefeedadd.FeedImageAdapter
 import com.codepatissier.keki.util.recycler.storefeedadd.ProductNameAdapter
 import com.codepatissier.keki.util.recycler.storefeedadd.ProductNameData
 
 class SellerStoreFeedAddActivity : BaseActivity<ActivitySellerStoreFeedAddBinding>(
     ActivitySellerStoreFeedAddBinding::inflate) {
+    private lateinit var pickMultiplePhotos: ActivityResultLauncher<PickVisualMediaRequest>
     // 상품 선택 메뉴 open/close 여부
     var isOpenProductSelectionLayout: Boolean = false
     // recyclerview adapter & datalist
+    private lateinit var feedImageAdapter: FeedImageAdapter
+    private val feedImageUriList = mutableListOf<Uri>()
     private lateinit var productNameAdapter: ProductNameAdapter
     private val productNameDataList = mutableListOf<ProductNameData>()
     // 서버 연동한 후에는 mutableList 말고 그냥 list 쓰기 (수정불가능하게)
@@ -20,25 +29,39 @@ class SellerStoreFeedAddActivity : BaseActivity<ActivitySellerStoreFeedAddBindin
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        setListenerToBackBtn()
+        setFeedImages()
         setProductNameRecyclerView()
         setListenerToProductSelectionLayout()
     }
 
-    private fun setListenerToProductSelectionLayout() {
-        binding.layoutCloseProduct.setOnClickListener {
-            // 등록된 상품이 없을 경우(리스트가 비어있으면) 안 열리고 밑에 에러문구 띄우기(상품 등록 먼저)
-            if (productNameDataList.size == 0) {
+    private fun setFeedImages() {
+        val maxItems: Int = 5
+        binding.ibAddImage.setOnClickListener {
+            if(maxItems == feedImageUriList.size) {
+                showCustomToast("등록 가능한 이미지 최대 개수는 5개입니다.")
+            } else {
+                pickMultiplePhotos.launch(PickVisualMediaRequest(PickVisualMedia.ImageOnly))
+            }
+        }
 
-            }
-            // 선택 메뉴 open 되어 있을 때
-            else if (isOpenProductSelectionLayout) {
-                binding.layoutOpenProduct.visibility = GONE
-                isOpenProductSelectionLayout = false
-            }
-            // close 되어 있을 때
-            else {
-                binding.layoutOpenProduct.visibility = VISIBLE
-                isOpenProductSelectionLayout = true
+        pickMultiplePhotos = registerForActivityResult(
+            PickMultipleVisualMedia(maxItems - feedImageUriList.size)
+        ) { uris ->
+            if (uris.isNotEmpty()) {
+                // 기존 이미지들에 또 추가되는 경우 그때마다 adapter 새로 생성하기
+                // item(imageview)에 사진 업로드. 이미 있는 리스트에 추가로 더해짐.
+                for(uri in uris) {
+                    feedImageUriList.add(uri)
+                }
+                feedImageAdapter = FeedImageAdapter(feedImageUriList, this)
+                binding.rvFeedImage.adapter = feedImageAdapter
+                val mLinearLayoutManager = LinearLayoutManager(this)
+                mLinearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
+                // 가장 최근에 추가한 이미지가 맨왼쪽에 위치
+                mLinearLayoutManager.reverseLayout = true
+                mLinearLayoutManager.stackFromEnd = true
+                binding.rvFeedImage.layoutManager = mLinearLayoutManager
             }
         }
     }
@@ -60,5 +83,46 @@ class SellerStoreFeedAddActivity : BaseActivity<ActivitySellerStoreFeedAddBindin
             }
         })
         binding.rvProduct.adapter = productNameAdapter
+    }
+
+    private fun setListenerToProductSelectionLayout() {
+        binding.layoutCloseProduct.setOnClickListener {
+            // 등록된 상품이 없을 경우(리스트가 비어있으면) 안 열리고 밑에 에러문구 띄우기(상품 등록 먼저)
+            if (productNameDataList.size == 0) {
+
+            }
+            // 선택 메뉴 open 되어 있을 때
+            else if (isOpenProductSelectionLayout) {
+                binding.layoutOpenProduct.visibility = GONE
+                isOpenProductSelectionLayout = false
+            }
+            // close 되어 있을 때
+            else {
+                binding.layoutOpenProduct.visibility = VISIBLE
+                isOpenProductSelectionLayout = true
+            }
+        }
+        binding.ibOpen.setOnClickListener {
+            // 등록된 상품이 없을 경우(리스트가 비어있으면) 안 열리고 밑에 에러문구 띄우기(상품 등록 먼저)
+            if (productNameDataList.size == 0) {
+
+            }
+            // 선택 메뉴 open 되어 있을 때
+            else if (isOpenProductSelectionLayout) {
+                binding.layoutOpenProduct.visibility = GONE
+                isOpenProductSelectionLayout = false
+            }
+            // close 되어 있을 때
+            else {
+                binding.layoutOpenProduct.visibility = VISIBLE
+                isOpenProductSelectionLayout = true
+            }
+        }
+    }
+
+    private fun setListenerToBackBtn() {
+        binding.ibBack.setOnClickListener {
+            finish()
+        }
     }
 }
