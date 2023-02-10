@@ -88,6 +88,12 @@
     <dimen name="consumer_feed_tag_padding_top">4dp</dimen>
     <dimen name="consumer_feed_tag_padding_bottom">6dp</dimen>
 
+    <dimen name="feed_indicator_margin_bottom">30dp</dimen>
+    <dimen name="feed_indicator_dots_radius">8dp</dimen>
+    <dimen name="feed_indicator_dots_size">8dp</dimen>
+    <dimen name="feed_indicator_dots_spacing">4dp</dimen>
+    <dimen name="feed_indicator_dots_stroke_width">4dp</dimen>
+
     <!-- report -->
     <dimen name="dialog_report_title_size">18sp</dimen>
     <dimen name="dialog_report_title_margin_top">25dp</dimen>
