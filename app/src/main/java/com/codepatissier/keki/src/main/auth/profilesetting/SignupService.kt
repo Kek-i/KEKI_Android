@@ -2,7 +2,8 @@ package com.codepatissier.keki.src.main.auth.profilesetting
 
 import android.util.Log
 import com.codepatissier.keki.config.ApplicationClass
-import com.codepatissier.keki.src.main.auth.model.PostSignupRequest
+import com.codepatissier.keki.src.main.auth.model.PostStoreSignupRequest
+import com.codepatissier.keki.src.main.auth.model.PostUserSignupRequest
 import com.codepatissier.keki.src.main.auth.model.SocialTokenResponse
 import com.codepatissier.keki.src.main.auth.profilesetting.model.PostNickRequest
 import com.codepatissier.keki.src.main.auth.profilesetting.model.PostNickname
@@ -26,10 +27,10 @@ class SignupService(val signupView: SignupView) {
         })
     }
 
-    fun tryPostUserSignup(postSignupRequest: PostSignupRequest){
+    fun tryPostUserSignup(postUserSignupRequest: PostUserSignupRequest){
         val postSignupRetrofitInterface = ApplicationClass.sRetrofit.create(SignupRetrofitInterface::class.java)
 
-        postSignupRetrofitInterface.postUserSignup(postSignupRequest).enqueue(object: Callback<SocialTokenResponse>{
+        postSignupRetrofitInterface.postUserSignup(postUserSignupRequest).enqueue(object: Callback<SocialTokenResponse>{
             override fun onResponse(call: Call<SocialTokenResponse>, response: Response<SocialTokenResponse>) {
                 signupView.onPostSignupSuccess(response.body() as SocialTokenResponse)
             }
@@ -38,4 +39,6 @@ class SignupService(val signupView: SignupView) {
             }
         })
     }
+
+
 }

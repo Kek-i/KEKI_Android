@@ -18,6 +18,6 @@ interface ConsumerStoreFeedDetailRetrofitInterface {
 
     @POST("/posts/{postIdx}/like")
     fun postConsumerStoreFeedDetailLike(
-        @Path("postIdx") postIdx: Int
+        @Path("postIdx") postIdx: Long
     ): Call<BaseResponse>
 }

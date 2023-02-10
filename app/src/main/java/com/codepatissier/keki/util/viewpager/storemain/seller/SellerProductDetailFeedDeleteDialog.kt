@@ -1,4 +1,4 @@
-package com.codepatissier.keki.util.viewpager.storemain
+package com.codepatissier.keki.util.viewpager.storemain.seller
 
 import android.app.Dialog
 import android.content.Context

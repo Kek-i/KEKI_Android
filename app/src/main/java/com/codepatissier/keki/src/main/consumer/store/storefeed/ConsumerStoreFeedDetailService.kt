@@ -28,7 +28,7 @@ class ConsumerStoreFeedDetailService(val consumerStoreFeedDetailView: ConsumerSt
             })
     }
 
-    fun tryPostConsumerStoreFeedDetailLike(postIdx: Int){
+    fun tryPostConsumerStoreFeedDetailLike(postIdx: Long){
         val consumerStoreFeedDetailLikeInterface = ApplicationClass.sRetrofit.create(ConsumerStoreFeedDetailRetrofitInterface::class.java)
 
         consumerStoreFeedDetailLikeInterface.postConsumerStoreFeedDetailLike(postIdx).enqueue(object : Callback<BaseResponse>{

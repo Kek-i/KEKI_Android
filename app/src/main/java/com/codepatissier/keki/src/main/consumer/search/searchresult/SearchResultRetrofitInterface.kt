@@ -1,11 +1,15 @@
 package com.codepatissier.keki.src.main.consumer.search.searchresult
 
+import com.codepatissier.keki.config.BaseActivity
+import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.src.main.consumer.search.model.MainSearchesResponse
 import com.codepatissier.keki.src.main.consumer.search.model.PatchSearchResponse
 import com.codepatissier.keki.src.main.consumer.search.searchresult.model.SearchResultResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.PATCH
+import retrofit2.http.POST
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface SearchResultRetrofitInterface {
@@ -18,4 +22,9 @@ interface SearchResultRetrofitInterface {
         @Query("cursorIdx") cursorIdx: Long? = null,
         @Query("size") size: Int? = null
     ): Call<SearchResultResponse>
+
+    @POST("/posts/{postIdx}/history")
+    fun postHistory(
+        @Path("postIdx") postIdx:Long
+    ): Call<BaseResponse>
 }   

@@ -81,10 +81,10 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
         private val thirdTag: TextView = binding.tvStoreFeedThirdTag
         private val tagArray = arrayOf(firstTag, secondTag, thirdTag)
         private var heart = false
-        private var postIdx : Int? = null
+        private var postIdx : Long? = null
 
         fun bind(item: StoreFeedData){
-            nickname.text = item.brandName
+            nickname.text = item.storeName
             cakeName.text = item.dessertName
             postIdx = item.postIdx
 

@@ -9,7 +9,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.result.ActivityResultLauncher
@@ -23,7 +22,7 @@ import com.codepatissier.keki.databinding.ActivityConsumerProfileSettingBinding
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.src.MainActivity
 import com.codepatissier.keki.src.main.auth.IntroActivity
-import com.codepatissier.keki.src.main.auth.model.PostSignupRequest
+import com.codepatissier.keki.src.main.auth.model.PostUserSignupRequest
 import com.codepatissier.keki.src.main.auth.model.SocialTokenResponse
 import com.codepatissier.keki.src.main.auth.profilesetting.model.PostNickRequest
 import com.codepatissier.keki.src.main.auth.profilesetting.model.PostNickname
@@ -67,9 +66,9 @@ class CustomerProfileSettingActivity : BaseActivity<ActivityConsumerProfileSetti
             if (nickname != null && nickname == binding.etNickname.text.toString()
             ) {
                 firebaseUpload()
-                val postSignupRequest =
-                    PostSignupRequest(nickname = nickname!!, profileImg = profileImg)
-                SignupService(this).tryPostUserSignup(postSignupRequest)
+                val postUserSignupRequest =
+                    PostUserSignupRequest(nickname = nickname!!, profileImg = profileImg)
+                SignupService(this).tryPostUserSignup(postUserSignupRequest)
             } else if (nickname == null) {
                 binding.tvNamingResult.setText(R.string.edit_rule_null)
                 binding.tvNamingResult.setTextColor(resources.getColor(R.color.darkish_pink))

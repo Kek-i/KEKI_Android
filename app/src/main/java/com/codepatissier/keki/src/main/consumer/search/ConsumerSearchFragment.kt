@@ -29,6 +29,7 @@ class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(Fragm
         showLoadingDialog(requireContext())
         clickDeleteSearchHistory()
         callMainSearches()
+
     }
 
     override fun onResume() {
@@ -95,10 +96,10 @@ class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(Fragm
         binding.rvRecentSeen.adapter = searchRecentPostAdapter
         searchRecentPostAdapter.notifyDataSetChanged()
 
-        //최근 본 케이크 클릭 시 이벤트 -> 상품 전체 조회로 넘어가기기(수정 필요)
+        //최근 본 케이크 클릭 시 이벤트 -> 개별 피드 조회로 이동
        searchRecentPostAdapter.setItemClickListener(object:SearchRecentPostAdapter.OnItemClickListener {
             override fun onClick(v: View, position: Int) {
-                val intent = Intent(context, ConsumerStoreDetailFeedActivity::class.java)
+                val intent = Intent(context, RecentSeenFeedActivity::class.java)
                 intent.putExtra("postIdx", response.result.recentPostSearches[position].postIdx)
                 startActivity(intent)
             }
