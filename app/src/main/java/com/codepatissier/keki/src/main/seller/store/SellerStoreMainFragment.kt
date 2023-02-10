@@ -1,6 +1,7 @@
 package com.codepatissier.keki.src.main.seller.store
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
@@ -29,7 +30,6 @@ class SellerStoreMainFragment : BaseFragment<FragmentSellerStoreMainBinding>(Fra
         showLoadingDialog(requireContext())
         SellerMyPageService(this).tryGetSellerMyPage()
 
-        tabSetting()
         infoClick()
     }
 
@@ -71,12 +71,13 @@ class SellerStoreMainFragment : BaseFragment<FragmentSellerStoreMainBinding>(Fra
     }
 
     override fun onGetMyPageSuccess(response: SellerMyPageResponse) {
+        storeIdx = response.result.storeIdx
+        tabSetting()
         binding.tvStoreName.text = response.result.nickname
         binding.tvStoreDetail.text = response.result.introduction
 
         val defaultImg = R.drawable.bg_oval_light_yellow
         val imageView = binding.ivProfile
-
         if(response.result.storeImgUrl != null) {
             // 프로필 이미지 띄우기
             var storageRef = fbStorage?.reference?.child(response.result.storeImgUrl)
