@@ -112,6 +112,7 @@
         android:layout_marginStart="@dimen/store_feed_margin_start_end"
         />
 
+    <!--
     <TextView
         android:id="@+id/tv_store_feed_cake_price"
         android:layout_width="wrap_content"
@@ -123,6 +124,7 @@
         android:textSize="@dimen/store_feed_seller_nickname_tv_size"
         android:layout_marginEnd="@dimen/store_feed_margin_start_end"
         />
+    -->
 
     <TextView
         android:id="@+id/tv_store_feed_cake_description"

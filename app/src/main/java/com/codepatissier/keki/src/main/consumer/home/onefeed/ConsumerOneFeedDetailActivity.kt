@@ -56,7 +56,7 @@ class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetail
         binding.tvStoreFeedCakeName.text = response.result.dessertName
         var priceString = response.result.dessertPrice.toString()
         var priceSize = priceString.length
-        binding.tvStoreFeedCakePrice.text = priceString.substring(0 until priceSize - 3) + "," + priceString.substring(priceSize - 3) + " 원"
+        //binding.tvStoreFeedCakePrice.text = priceString.substring(0 until priceSize - 3) + "," + priceString.substring(priceSize - 3) + " 원" // 가격
         checkCakeDescription(response.result.description)
         seeMoreDescription(response.result.description)
 
