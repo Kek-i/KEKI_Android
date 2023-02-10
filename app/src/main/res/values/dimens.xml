@@ -799,5 +799,7 @@
     <dimen name="seller_product_add_and_edit_csl_add_top">10dp</dimen>
     <dimen name="seller_product_add_and_edit_csl_add_left">22dp</dimen>
     <dimen name="seller_product_add_and_edit_csl_add_width_height">100dp</dimen>
+    <dimen name="seller_product_add_and_edit_cv_add_radius">10dp</dimen>
+    <dimen name="seller_product_add_and_edit_cv_add_elevation">0dp</dimen>
 
 </resources>

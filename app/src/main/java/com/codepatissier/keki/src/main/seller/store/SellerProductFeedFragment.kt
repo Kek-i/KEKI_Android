@@ -6,7 +6,7 @@ import android.view.View
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseFragment
 import com.codepatissier.keki.databinding.FragmentSellerProductFeedBinding
-import com.codepatissier.keki.src.main.seller.store.productfeed.SellerProductAdd
+import com.codepatissier.keki.src.main.seller.store.product.SellerProductAddActivity
 import com.codepatissier.keki.util.viewpager.storemain.StoreMainProductData
 import com.codepatissier.keki.util.viewpager.storemain.seller.SellerStoreMainProductAdapter
 
@@ -45,7 +45,7 @@ class SellerProductFeedFragment(storeIdx : Long) : BaseFragment<FragmentSellerPr
 
     private fun floatAddClicked(){
         binding.floatBtn.setOnClickListener{
-            val intent = Intent(context, SellerProductAdd::class.java)
+            val intent = Intent(context, SellerProductAddActivity::class.java)
             startActivity(intent)
         }
     }

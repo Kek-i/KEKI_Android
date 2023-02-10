@@ -108,7 +108,7 @@ class ConsumerProfileEditActivity :BaseActivity<ActivityConsumerProfileEditBindi
             var timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
             var profileImgName = "PROFILE_IMAGE_"+timeStamp+"_.png"
             var storageRef = fbStorage?.reference?.child("profiles/$profileImgName")
-            editImg = "profiles/$profileImgName";
+            editImg = "profiles/$profileImgName"
 
             storageRef
                 ?.putFile(ProfileUri!!)?.addOnProgressListener {
