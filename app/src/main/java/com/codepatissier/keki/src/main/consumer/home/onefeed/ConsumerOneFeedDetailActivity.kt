@@ -39,9 +39,14 @@ class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetail
     override fun onGetConsumerOneFeedDetailSuccess(response: ConsumerOneFeedDetailResponse) {
         dismissLoadingDialog()
 
+        val defaultImg = R.drawable.bg_oval_light_yellow
         Glide.with(this)
             .load(response.result.storeProfileImg)
+            .placeholder(defaultImg)
+            .error(defaultImg)
+            .fallback(defaultImg)
             .centerCrop()
+            .circleCrop()
             .into(binding.ivStoreFeedSeller)
 
         binding.tvStoreFeedSellerNickname.text = response.result.storeName
