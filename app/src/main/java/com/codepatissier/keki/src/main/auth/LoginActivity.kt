@@ -11,6 +11,7 @@ import com.codepatissier.keki.config.ApplicationClass.Companion.userInfo
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityLoginBinding
 import com.codepatissier.keki.src.MainActivity
+import com.codepatissier.keki.src.SellerMainActivity
 import com.codepatissier.keki.src.main.auth.model.PostLoginRequest
 import com.codepatissier.keki.src.main.auth.model.SocialTokenResponse
 import com.codepatissier.keki.util.viewpager.login.AccessRightDialog
@@ -81,6 +82,12 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
             userInfo.putString(UserRole, "구매자")
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            finish()
+        }else if(response.result.role =="판매자"){
+            userInfo.putString(UserRole, "판매자")
+            val intent = Intent(this, SellerMainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
         userInfo.commit()
     }

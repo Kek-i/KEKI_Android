@@ -223,7 +223,8 @@
     <dimen name="seller_edit_et3_height">156dp</dimen>
     <dimen name="seller_edit_et3_paddingTop">17dp</dimen>
     <dimen name="seller_setting_et7_height">95dp</dimen>
-    <dimen name="seller_setting_et1_marginTop">40dp</dimen>
+    <dimen name="seller_setting_tv_email_marginTop">20dp</dimen>
+    <dimen name="seller_setting_et1_marginTop">30dp</dimen>
     <dimen name="seller_setting_et2_marginTop">10dp</dimen>
     <dimen name="seller_setting_et5_marginTop">20dp</dimen>
     <dimen name="seller_setting_et8_marginTop">5dp</dimen>
@@ -278,6 +279,7 @@
     <dimen name="search_spinner_list_height">30dp</dimen>
     <dimen name="search_spinner_list_padding">7dp</dimen>
     <dimen name="search_sv_search_list_marginTop">118dp</dimen>
+    <dimen name="search_sv_search_list_marginSide">12dp</dimen>
     <dimen name="search_tv_empty_marginTop">10dp</dimen>
     <dimen name="search_grid_item_padding_side">5dp</dimen>
     <dimen name="search_grid_item_paddingBottom">15dp</dimen>
@@ -467,19 +469,19 @@
     <dimen name="calendar_add_tv_max_hashtag_margin_start">25dp</dimen>
     <dimen name="calendar_add_tv_max_hashtag_size">11sp</dimen>
 
-    <dimen name="calendar_chip_group_width">0dp</dimen>
-    <dimen name="calendar_chip_group_margin_top">18dp</dimen>
-    <dimen name="calendar_chip_group_padding_top">2dp</dimen>
-    <dimen name="calendar_chip_group_padding_bottom">60dp</dimen>
-    <dimen name="calendar_chip_group_padding_horizontal">24dp</dimen>
-    <dimen name="calendar_chip_hashtag_height">26dp</dimen>
-    <dimen name="calendar_chip_hashtag_radius">13dp</dimen>
-    <dimen name="calendar_chip_hashtag_padding_top">4dp</dimen>
-    <dimen name="calendar_chip_hashtag_padding_bottom">6dp</dimen>
-    <dimen name="calendar_chip_spacing_horizontal">10dp</dimen>
-    <dimen name="calendar_chip_spacing_vertical">14dp</dimen>
-    <dimen name="calendar_chip_text_padding_horizontal">0dp</dimen>
-    <dimen name="calendar_chip_padding_horizontal">14dp</dimen>
+    <dimen name="chip_group_width">0dp</dimen>
+    <dimen name="chip_group_margin_top">18dp</dimen>
+    <dimen name="chip_group_padding_top">2dp</dimen>
+    <dimen name="chip_group_padding_bottom">60dp</dimen>
+    <dimen name="chip_group_padding_horizontal">24dp</dimen>
+    <dimen name="chip_spacing_horizontal">10dp</dimen>
+    <dimen name="chip_spacing_vertical">14dp</dimen>
+    <dimen name="chip_hashtag_height">26dp</dimen>
+    <dimen name="chip_hashtag_radius">13dp</dimen>
+    <dimen name="chip_hashtag_padding_top">4dp</dimen>
+    <dimen name="chip_hashtag_padding_bottom">6dp</dimen>
+    <dimen name="chip_text_padding_horizontal">0dp</dimen>
+    <dimen name="chip_padding_horizontal">14dp</dimen>
 
     <dimen name="calendar_add_component_elevation">3dp</dimen>
     <dimen name="calendar_add_hashtag_elevation">2dp</dimen>
@@ -594,6 +596,7 @@
     <dimen name="store_main_store_order_padding_left_right">30dp</dimen>
     <dimen name="store_main_store_order_top">11dp</dimen>
     <dimen name="store_main_store_tab_width">0dp</dimen>
+    <dimen name="store_main_store_tab_max_width">0dp</dimen>
     <dimen name="store_main_store_tab_top">27dp</dimen>
     <dimen name="store_main_store_viewPager_width_height">0dp</dimen>
     <dimen name="store_main_store_view_width">0dp</dimen>
@@ -625,7 +628,7 @@
     <dimen name="store_main_feed_top">6dp</dimen>
     <dimen name="store_main_feed_rv_width">0dp</dimen>
     <dimen name="store_main_feed_float_right">12dp</dimen>
-    <dimen name="store_main_feed_float_bottom">14dp</dimen>
+    <dimen name="store_main_feed_float_bottom">14.5dp</dimen>
     <dimen name="store_main_feed_float_border">0dp</dimen>
 
     <!-- store main recyclerView -->
@@ -696,7 +699,6 @@
     <dimen name="seller_product_detail_feed_delete_dialog_text_marginTop">20dp</dimen>
     <dimen name="seller_product_detail_feed_delete_dialog_text_marginSide">17dp</dimen>
 
-
     <!-- logout dialog -->
     <dimen name="my_page_logout_dialog_width">277dp</dimen>
     <dimen name="my_page_logout_dialog_height">164dp</dimen>
@@ -727,5 +729,87 @@
     <dimen name="my_page_withdrawal_btn_margin_bottom">35dp</dimen>
     <dimen name="my_page_withdrawal_btn_chain_margin">15dp</dimen>
     <dimen name="my_page_withdrawal_btn_text_size">16sp</dimen>
+
+    <!-- seller store feed add -->
+    <dimen name="seller_feed_add_top_bar_layout_margin_top">11dp</dimen>
+    <dimen name="seller_feed_add_ib_back_padding_horizontal">14dp</dimen>
+    <dimen name="seller_feed_add_ib_back_padding_top">8dp</dimen>
+    <dimen name="seller_feed_add_ib_back_padding_bottom">7dp</dimen>
+    <dimen name="seller_feed_add_tv_completion_height">0dp</dimen>
+    <dimen name="seller_feed_add_tv_completion_margin_end">9dp</dimen>
+    <dimen name="seller_feed_add_tv_completion_padding_horizontal">10dp</dimen>
+    <dimen name="seller_feed_add_tv_completion_size">16sp</dimen>
+    <dimen name="seller_feed_add_scroll_view_content_height">0dp</dimen>
+
+    <dimen name="seller_feed_add_tv_select_hashtag_height">24dp</dimen>
+    <dimen name="seller_feed_add_tv_select_hashtag_margin_top">20dp</dimen>
+    <dimen name="seller_feed_add_tv_select_hashtag_margin_start">24dp</dimen>
+    <dimen name="seller_feed_add_tv_select_hashtag_size">16sp</dimen>
+    <dimen name="seller_feed_add_tv_max_hashtag_height">16dp</dimen>
+    <dimen name="seller_feed_add_tv_max_hashtag_margin_top">5dp</dimen>
+    <dimen name="seller_feed_add_tv_max_hashtag_margin_start">25dp</dimen>
+    <dimen name="seller_feed_add_tv_max_hashtag_size">11sp</dimen>
+
+    <dimen name="seller_feed_add_layout_image_width">0dp</dimen>
+    <dimen name="seller_feed_add_layout_image_margin_top">26dp</dimen>
+    <dimen name="seller_feed_add_ib_add_image_width_height">100dp</dimen>
+    <dimen name="seller_feed_add_ib_add_image_margin_start">16dp</dimen>
+    <dimen name="seller_feed_add_ib_add_image_margin_bottom">5dp</dimen>
+    <dimen name="seller_feed_add_rv_feed_image_width">0dp</dimen>
+    <dimen name="seller_feed_add_rv_feed_image_margin_start">7dp</dimen>
+    <dimen name="seller_feed_add_rv_feed_image_padding_end">30dp</dimen>
+
+    <dimen name="seller_feed_add_layout_select_product_width">0dp</dimen>
+    <dimen name="seller_feed_add_layout_select_product_margin_top">15dp</dimen>
+    <dimen name="seller_feed_add_layout_select_product_margin_horizontal">16dp</dimen>
+    <dimen name="seller_feed_add_bg_close_product_height">46dp</dimen>
+    <dimen name="seller_feed_add_ib_open_margin_start">20dp</dimen>
+    <dimen name="seller_feed_add_tv_select_product_margin_start">10dp</dimen>
+    <dimen name="seller_feed_add_tv_select_product_size">16sp</dimen>
+    <dimen name="seller_feed_add_layout_open_product_margin_top">-8dp</dimen>
+    <dimen name="seller_feed_add_layout_open_product_padding_start">44dp</dimen>
+    <dimen name="seller_feed_add_layout_open_product_padding_end">30dp</dimen>
+    <dimen name="seller_feed_add_layout_open_product_padding_bottom">9dp</dimen>
+    <dimen name="seller_feed_add_rv_product_width">0dp</dimen>
+
+    <dimen name="seller_feed_add_layout_product_description_width">0dp</dimen>
+    <dimen name="seller_feed_add_layout_product_description_min_height">206dp</dimen>
+    <dimen name="seller_feed_add_layout_product_description_margin_top">20dp</dimen>
+    <dimen name="seller_feed_add_layout_product_description_margin_horizontal">16dp</dimen>
+    <dimen name="seller_feed_add_layout_product_description_padding_top">16dp</dimen>
+    <dimen name="seller_feed_add_layout_product_description_padding_horizontal">20dp</dimen>
+    <dimen name="seller_feed_add_layout_product_description_padding_bottom">15dp</dimen>
+    <dimen name="seller_feed_add_et_product_description_width">0dp</dimen>
+    <dimen name="seller_feed_add_et_product_description_size">16sp</dimen>
+
+    <dimen name="rv_item_product_name_layout_padding_bottom">4dp</dimen>
+    <dimen name="rv_item_product_name_tv_height">24dp</dimen>
+    <dimen name="rv_item_product_name_tv_size">16sp</dimen>
+    <dimen name="rv_item_feed_image_layout_width">110dp</dimen>
+    <dimen name="rv_item_feed_image_layout_height">115dp</dimen>
+    <dimen name="rv_item_feed_image_layout_padding_start">3dp</dimen>
+    <dimen name="rv_item_feed_image_layout_padding_bottom">5dp</dimen>
+    <dimen name="rv_item_feed_image_iv_feed_img_width_height">100dp</dimen>
+
+    <dimen name="seller_feed_add_component_elevation">3dp</dimen>
+
+    <!-- seller product add and edit -->
+    <dimen name="seller_product_add_and_edit_iv_back_left">14dp</dimen>
+    <dimen name="seller_product_add_and_edit_iv_back_top">21dp</dimen>
+    <dimen name="seller_product_add_and_edit_tv_complete_top_right">19dp</dimen>
+    <dimen name="seller_product_add_and_edit_text_size">16sp</dimen>
+    <dimen name="seller_product_add_and_edit_csl_cakes_top">96dp</dimen>
+    <dimen name="seller_product_add_and_edit_iv_cake_left">10dp</dimen>
+    <dimen name="seller_product_add_and_edit_et_width">0dp</dimen>
+    <dimen name="seller_product_add_and_edit_et_left_right">16dp</dimen>
+    <dimen name="seller_product_add_and_edit_et_product_name_top">40dp</dimen>
+    <dimen name="seller_product_add_and_edit_shadow">3dp</dimen>
+    <dimen name="seller_product_add_and_edit_et_padding_left_right">20dp</dimen>
+    <dimen name="seller_product_add_and_edit_et_padding_top_bottom">13dp</dimen>
+    <dimen name="seller_product_add_and_edit_et_top">20dp</dimen>
+    <dimen name="seller_product_add_and_edit_et_intro_height">206dp</dimen>
+    <dimen name="seller_product_add_and_edit_csl_add_top">10dp</dimen>
+    <dimen name="seller_product_add_and_edit_csl_add_left">22dp</dimen>
+    <dimen name="seller_product_add_and_edit_csl_add_width_height">100dp</dimen>
 
 </resources>
