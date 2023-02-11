@@ -20,7 +20,9 @@ interface SearchResultRetrofitInterface {
         @Query("searchTag") searchTag: String? = null,
         @Query("sortType") sortType: String= "인기순",
         @Query("cursorIdx") cursorIdx: Long? = null,
-        @Query("size") size: Int? = null
+        @Query("cursorPrice") cursorPrice:Int?=null,
+        @Query("cursorPopularNum")cursorPopularNum:Int?=null,
+        @Query("size") size: Int = 12
     ): Call<SearchResultResponse>
 
     @POST("/posts/{postIdx}/history")

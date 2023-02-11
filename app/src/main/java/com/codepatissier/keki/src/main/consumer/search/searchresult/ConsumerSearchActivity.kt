@@ -29,6 +29,10 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
     private var sortType : String = "최신순"
     private var keyword : String = ""
     private var keyTag : String = ""
+    private var size : Int = 12
+    private var cursorIdx: Long = 0
+    private var cursorPopularNum: Int = 0
+    private var cursorPrice: Int = 0
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +51,9 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
 
     override fun onGetSearchResultsSuccess(response: SearchResultResponse) {
         searchListRecycler(response)
+        cursorIdx = response.result.cursorIdx
+        cursorPopularNum = response.result.cursorPopulaNum
+        cursorPrice = response.result.cursorPrice
     }
     override fun onGetSearchResultsFailure(message: String) {
         showCustomToast("오류 : $message")    }
@@ -174,6 +181,33 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
     }
+
+    private fun callLaterSearches(){
+        if(keyTag == ""){
+            if(sortType == "최신순"){
+                SearchResultService(this).tryGetSearchResultsLatest(keyword = keyword, sortType = sortType, cursorIdx= cursorIdx, size= size)
+            }
+            if(sortType == "인기순"){
+                SearchResultService(this).tryGetSearchResultsPopular(keyword = keyword, sortType = sortType, cursorIdx= cursorIdx, cursorPopularNum = cursorPopularNum,size= size)
+            }
+            if(sortType == "가격낮은순"){
+                SearchResultService(this).tryGetSearchResultsPrice(keyword = keyword, sortType = sortType, cursorIdx= cursorIdx, cursorPrice = cursorPrice, size= size)
+            }
+        }
+        else{
+            if(sortType == "최신순"){
+                SearchResultService(this).tryGetTagResultsLatest(tag = keyTag, sortType = sortType, cursorIdx= cursorIdx, size= size)
+            }
+            if(sortType == "인기순"){
+                SearchResultService(this).tryGetTagResultsPopular(tag = keyTag, sortType = sortType, cursorIdx= cursorIdx, cursorPopularNum = cursorPopularNum,size= size)
+            }
+            if(sortType == "가격낮은순"){
+                SearchResultService(this).tryGetTagResultsPrice(tag = keyTag, sortType = sortType, cursorIdx= cursorIdx, cursorPrice = cursorPrice, size= size)
+            }
+        }
+    }
+
+
 
 
 }
