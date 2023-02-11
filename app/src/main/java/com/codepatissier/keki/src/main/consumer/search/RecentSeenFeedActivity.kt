@@ -10,7 +10,6 @@ import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.databinding.ActivityRecentSeenFeedBinding
 import com.codepatissier.keki.src.main.consumer.search.model.RecentSeenFeedResponse
-import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedActivity
 import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreFeedDetailService
 import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreFeedDetailView
 import com.codepatissier.keki.src.main.consumer.store.storefeed.DetailImageAdapter

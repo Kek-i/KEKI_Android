@@ -41,9 +41,6 @@ class SearchPopularAdapter(private var searchMainData: Result, val context: Cons
             3 -> ColorStateList.valueOf(getColor(holder.popularTagName.context, R.color.light_peach_1))
             else -> {ColorStateList.valueOf(getColor(holder.popularTagName.context, R.color.pale_lavender))}
         }
-
-        //holder.popularTagName.setBackgroundResource(holder.itemView.resources.getColorStateList(getRandomColor(), null))
-        //holder.popularTagName.backgroundTintList = ColorStateList.valueOf(getRandomColor())
     }
 
     class SearchPopularViewHolder(val context: ConsumerSearchFragment, binding: ItemSearchPopularRecyclerBinding) : RecyclerView.ViewHolder(binding.root) {

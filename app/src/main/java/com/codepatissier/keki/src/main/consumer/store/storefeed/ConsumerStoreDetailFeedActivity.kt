@@ -1,8 +1,6 @@
 package com.codepatissier.keki.src.main.consumer.store.storefeed
 
 import android.os.Bundle
-import android.os.Handler
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.codepatissier.keki.config.BaseActivity
