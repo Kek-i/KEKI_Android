@@ -38,7 +38,7 @@ class ConsumerStoreMainDialog(context: Context):Dialog(context), ConsumerStoreIn
 
     override fun onGetStoreInfoSuccess(response: ConsumerStoreInfoResponse) {
         binding.tvRepresentativeNameData.text = response.result.businessName
-        binding.tvStoreNameData.text = response.result.businessName
+        binding.tvStoreNameData.text = response.result.brandName
         binding.tvStoreAddressData.text = response.result.businessAddress
         binding.tvStoreNumData.text = response.result.businessNumber
     }

@@ -31,7 +31,7 @@ class SellerStoreMainDialog(context: Context):Dialog(context), SellerMyPageView 
 
     override fun onGetMyPageSuccess(response: SellerMyPageResponse) {
         binding.tvRepresentativeNameData.text = response.result.businessName
-        binding.tvStoreNameData.text = response.result.businessName
+        binding.tvStoreNameData.text = response.result.brandName
         binding.tvStoreAddressData.text = response.result.businessAddress
         binding.tvStoreNumData.text = response.result.businessNumber
     }
