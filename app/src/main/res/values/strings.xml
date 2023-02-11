@@ -207,4 +207,6 @@
     <string name="seller_feed_add_completion">완료</string>
     <string name="seller_feed_add_tv_select_product">제품 선택</string>
     <string name="seller_feed_add_et_product_description">제품을 소개해주세요. (최대 150자)</string>
+    <string name="seller_feed_add_max_image">사진은 5개까지 첨부할 수 있습니다.</string>
+    <string name="seller_feed_add_image_picker_title">Photos</string>
 </resources>
