@@ -41,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_message"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/iv_notifications"
                     android:layout_marginRight="@dimen/home_ic_message_right"
                     android:layout_marginTop="@dimen/home_keki_logo_top"/>
 
@@ -133,6 +133,10 @@
                     android:textSize="@dimen/home_tag_size"
                     android:gravity="center"
                     android:background="@drawable/bg_rectangle_radius_16_light_yellow"
+                    android:paddingStart="@dimen/home_tag_padding_start"
+                    android:paddingEnd="@dimen/home_tag_padding_end"
+                    android:paddingTop="@dimen/home_tag_padding_top"
+                    android:paddingBottom="@dimen/home_tag_padding_bottom"
                     />
 
                 <ImageView
@@ -189,6 +193,10 @@
                     android:textSize="@dimen/home_tag_size"
                     android:gravity="center"
                     android:background="@drawable/bg_rectangle_radius_16_very_light_pink"
+                    android:paddingStart="@dimen/home_tag_padding_start"
+                    android:paddingEnd="@dimen/home_tag_padding_end"
+                    android:paddingTop="@dimen/home_tag_padding_top"
+                    android:paddingBottom="@dimen/home_tag_padding_bottom"
                     />
 
                 <ImageView
@@ -243,6 +251,10 @@
                     android:textSize="@dimen/home_tag_size"
                     android:gravity="center"
                     android:background="@drawable/bg_rectangle_radius_16_pale_lavender"
+                    android:paddingStart="@dimen/home_tag_padding_start"
+                    android:paddingEnd="@dimen/home_tag_padding_end"
+                    android:paddingTop="@dimen/home_tag_padding_top"
+                    android:paddingBottom="@dimen/home_tag_padding_bottom"
                     />
 
                 <ImageView
