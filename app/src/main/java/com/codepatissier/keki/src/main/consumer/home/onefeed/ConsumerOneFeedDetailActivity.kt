@@ -13,26 +13,30 @@ import com.codepatissier.keki.databinding.ActivityConsumerOneFeedDetailBinding
 import com.codepatissier.keki.src.main.consumer.home.onefeed.model.ConsumerOneFeedDetailResponse
 import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedActivity
 import com.codepatissier.keki.src.main.consumer.store.storefeed.report.ConsumerStoreDetailFeedDialog
+import com.google.firebase.storage.FirebaseStorage
 
 class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetailBinding>(ActivityConsumerOneFeedDetailBinding::inflate)
     , ConsumerOneFeedDetailView{
 
-    var postIdx: Int? = null
+    var postIdx: Long? = null
     private var heart = false
+    var fbStorage : FirebaseStorage?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        fbStorage = FirebaseStorage.getInstance()
         initPostIdx()
         backToHome()
         showLoadingDialog(this)
+        //Log.d("postIdx", postIdx.toString())
         ConsumerOneFeedDetailService(this).tryGetConsumerOneFeedDetail(postIdx!!)
         likeProduct()
         report()
     }
 
     private fun initPostIdx(){
-        postIdx = intent.getIntExtra("postIdx", -1)
+        postIdx = intent.getLongExtra("postIdx", -1)
     }
 
     @SuppressLint("SetTextI18n")
@@ -40,14 +44,21 @@ class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetail
         dismissLoadingDialog()
 
         val defaultImg = R.drawable.bg_oval_light_yellow
-        Glide.with(this)
-            .load(response.result.storeProfileImg)
-            .placeholder(defaultImg)
-            .error(defaultImg)
-            .fallback(defaultImg)
-            .centerCrop()
-            .circleCrop()
-            .into(binding.ivStoreFeedSeller)
+        if(response.result.storeProfileImg != null){
+            var storeageRef = fbStorage?.reference?.child(response.result.storeProfileImg)
+            storeageRef?.downloadUrl?.addOnCompleteListener {
+                if(it.isSuccessful){
+                    Glide.with(this)
+                        .load(response.result.storeProfileImg)
+                        .placeholder(defaultImg)
+                        .error(defaultImg)
+                        .fallback(defaultImg)
+                        .centerCrop()
+                        .circleCrop()
+                        .into(binding.ivStoreFeedSeller)
+                }
+            }
+        }
 
         binding.tvStoreFeedSellerNickname.text = response.result.storeName
 

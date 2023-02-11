@@ -5,10 +5,9 @@ import com.codepatissier.keki.src.main.consumer.home.onefeed.model.ConsumerOneFe
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.create
 
 class ConsumerOneFeedDetailService(val consumerOneFeedDetailView: ConsumerOneFeedDetailView) {
-    fun tryGetConsumerOneFeedDetail(postIdx: Int){
+    fun tryGetConsumerOneFeedDetail(postIdx: Long){
         val consumerOneFeedDetailRetrofitInterface = ApplicationClass.sRetrofit.create(ConsumerOneFeedDetailRetrofitInterface::class.java)
         consumerOneFeedDetailRetrofitInterface.getConsumerOneFeedDetail(postIdx).enqueue(object: Callback<ConsumerOneFeedDetailResponse>{
             override fun onResponse(

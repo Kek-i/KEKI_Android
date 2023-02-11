@@ -8,6 +8,6 @@ import retrofit2.http.Path
 interface ConsumerOneFeedDetailRetrofitInterface {
     @GET("/posts/{postIdx}")
     fun getConsumerOneFeedDetail(
-        @Path("postIdx") postIdx: Int
+        @Path("postIdx") postIdx: Long
     ): Call<ConsumerOneFeedDetailResponse>
 }
