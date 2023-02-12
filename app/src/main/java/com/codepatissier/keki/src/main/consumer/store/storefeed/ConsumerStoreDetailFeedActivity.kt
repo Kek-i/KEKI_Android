@@ -17,8 +17,9 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
 
     lateinit var storeFeedAdapter : StoreFeedAdapter
     val storeFeedDatas = mutableListOf<StoreFeedData>()
-    var feedTag : String ?= null
-    var feedSize = 3
+    var feedTag : String ?= null //
+    var storeIdx: Long? = null
+    var feedSize = 12
     var cursorIdx : Int? = null
     var hasNext : Boolean? = null
     var positionStart = 0
@@ -31,12 +32,13 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
         initRecyclerView()
         navigateToStoreMain()
         showLoadingDialog(this)
-        ConsumerStoreFeedDetailService(this).tryGetConsumerStoreFeedDetailRetrofitInterface(feedTag!!, cursorIdx, feedSize)
+        ConsumerStoreFeedDetailService(this).tryGetConsumerStoreFeedDetailRetrofitInterface(storeIdx!!, cursorIdx, feedSize)
         checkScrollEvent()
     }
 
     private fun initRecyclerView(){
-        feedTag = intent.getStringExtra("tag")!!
+        //feedTag = intent.getStringExtra("tag")!!
+        storeIdx = intent.getLongExtra("storeIdx", -1)
         storeFeedAdapter = StoreFeedAdapter(this)
         binding.recyclerStoreFeed.adapter = storeFeedAdapter
     }
@@ -102,7 +104,7 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
                     if(hasNext!!){
                         positionStart = storeFeedDatas.size
                         ConsumerStoreFeedDetailService(this@ConsumerStoreDetailFeedActivity)
-                            .tryGetConsumerStoreFeedDetailRetrofitInterface(feedTag!!, cursorIdx, feedSize)
+                            .tryGetConsumerStoreFeedDetailRetrofitInterface(storeIdx!!, cursorIdx, feedSize)
 
                     }
 

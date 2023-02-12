@@ -11,7 +11,7 @@ import retrofit2.http.Query
 interface ConsumerStoreFeedDetailRetrofitInterface {
     @GET("/posts")
     fun getConsumerStoreFeedDetail(
-        @Query("searchTag") searchTag: String,
+        @Query("storeIdx") storeIdx: Long,
         @Query("cursorIdx") cursorIdx: Int?,
         @Query("size") size: Int?
     ): Call<ConsumerStoreDetailFeedResponse>
