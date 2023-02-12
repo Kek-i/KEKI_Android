@@ -3,6 +3,7 @@ package com.codepatissier.keki.util.viewpager.storemain.consumer
 
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.FragmentActivity
@@ -26,6 +27,9 @@ class ConsumerStoreMainStoreAdapter(val context: FragmentActivity?): RecyclerVie
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as ViewHolder).bind(storeMainStoreDatas[position])
+        holder.itemView.setOnClickListener {
+            itemClickListener.onClick(it, position)
+        }
     }
 
     override fun getItemCount(): Int = storeMainStoreDatas.size
@@ -72,5 +76,15 @@ class ConsumerStoreMainStoreAdapter(val context: FragmentActivity?): RecyclerVie
             return width!!
         }
     }
+
+    interface OnItemClickListener{
+        fun onClick(v: View, position: Int)
+    }
+
+    fun setItemClickListener(onItemClickListener: OnItemClickListener){
+        this.itemClickListener = onItemClickListener
+    }
+
+    private lateinit var itemClickListener : OnItemClickListener
 
 }

@@ -9,10 +9,10 @@ import retrofit2.Response
 
 class ConsumerStoreFeedDetailService(val consumerStoreFeedDetailView: ConsumerStoreFeedDetailView) {
 
-    fun tryGetConsumerStoreFeedDetailRetrofitInterface(searchTag: String, cursorIdx: Int?, size: Int?){
+    fun tryGetConsumerStoreFeedDetailRetrofitInterface(storeIdx: Long, cursorIdx: Int?, size: Int?){
         val consumerStoreFeedDetailInterface = ApplicationClass.sRetrofit.create(ConsumerStoreFeedDetailRetrofitInterface::class.java)
 
-        consumerStoreFeedDetailInterface.getConsumerStoreFeedDetail(searchTag, cursorIdx, size)
+        consumerStoreFeedDetailInterface.getConsumerStoreFeedDetail(storeIdx, cursorIdx, size)
             .enqueue(object: Callback<ConsumerStoreDetailFeedResponse>{
                 override fun onResponse(
                     call: Call<ConsumerStoreDetailFeedResponse>,

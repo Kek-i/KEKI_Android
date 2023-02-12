@@ -1,5 +1,6 @@
 package com.codepatissier.keki.src.main.seller.store
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -11,6 +12,8 @@ import com.codepatissier.keki.databinding.FragmentSellerStoreFeedBinding
 import com.codepatissier.keki.src.main.consumer.search.searchresult.model.SearchResultResponse
 import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreFeedService
 import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreFeedView
+import com.codepatissier.keki.src.main.seller.store.productfeed.SellerProductAdd
+import com.codepatissier.keki.src.main.seller.store.storefeed.SellerStoreFeedAddActivity
 import com.codepatissier.keki.util.viewpager.storemain.StoreMainStoreData
 import com.codepatissier.keki.util.viewpager.storemain.seller.SellerStoreMainStoreAdapter
 
@@ -36,6 +39,15 @@ class SellerStoreFeedFragment(storeIdx : Long) : BaseFragment<FragmentSellerStor
 
 
     private fun productFeedRecyclerView(response: SearchResultResponse){
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        productFeedRecyclerView()
+        floatAddClicked()
+    }
+
+    private fun productFeedRecyclerView(){
         sellerStoreMainStoreAdapter = SellerStoreMainStoreAdapter(requireActivity())
         cursorIdx = response.result.cursorIdx
         hasNext = response.result.hasNext
@@ -46,6 +58,7 @@ class SellerStoreFeedFragment(storeIdx : Long) : BaseFragment<FragmentSellerStor
                add(StoreMainStoreData(postImgUrl = response.result.feeds[i].postImgUrls[0], storeIdx = storeIdx, postIdx = response.result.feeds[i].postIdx))
            }
        }
+
 
         sellerStoreMainStoreAdapter.storeMainStoreDatas = storeMainStoreDatas
 
@@ -112,4 +125,10 @@ class SellerStoreFeedFragment(storeIdx : Long) : BaseFragment<FragmentSellerStor
         showCustomToast("오류 : $message")
     }
 
+    private fun floatAddClicked(){
+        binding.floatBtn.setOnClickListener{
+            val intent = Intent(context, SellerStoreFeedAddActivity::class.java)
+            startActivity(intent)
+        }
+    }
 }
