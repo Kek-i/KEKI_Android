@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.TextView
+import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +21,7 @@ import com.codepatissier.keki.src.main.consumer.store.ConsumerStoreMainActivity
 import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedActivity
 import com.codepatissier.keki.src.main.consumer.store.storefeed.report.ConsumerStoreDetailFeedDialog
 import com.codepatissier.keki.src.main.consumer.store.storefeed.DetailImageAdapter
+import com.codepatissier.keki.src.main.seller.store.productfeed.SellerStoreFeedDetailActivity
 import com.google.firebase.storage.FirebaseStorage
 
 class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<ViewHolder>() {
@@ -86,6 +88,9 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
         var fbStorage : FirebaseStorage?= null
 
         fun bind(item: StoreFeedData){
+            if(SellerStoreFeedDetailActivity().seller)
+                binding.ivStoreFeedHeartOff.isGone = true
+
             nickname.text = item.storeName
             cakeName.text = item.dessertName
             postIdx = item.postIdx
