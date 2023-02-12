@@ -17,10 +17,14 @@ import android.view.MotionEvent
 
 import android.view.View.OnTouchListener
 import android.view.inputmethod.InputMethodManager
+import androidx.recyclerview.widget.RecyclerView
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.src.main.consumer.search.searchresult.model.SearchResultResponse
+import com.codepatissier.keki.src.main.consumer.store.productfeed.ConsumerStoreProductFeedService
+import com.codepatissier.keki.src.main.consumer.store.productfeed.model.ConsumerStoreProductFeedResponse
 import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedActivity
+import com.codepatissier.keki.util.viewpager.storemain.StoreMainProductData
 
 
 class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(ActivityConsumerSearchBinding::inflate),
@@ -33,6 +37,10 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
     private var cursorIdx: Long = 0
     private var cursorPopularNum: Int = 0
     private var cursorPrice: Int = 0
+    private var hasNext = false
+    private var lastItemVisible = false
+    var positionStart = 0
+    var itemSize = 0
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +62,7 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
         cursorIdx = response.result.cursorIdx
         cursorPopularNum = response.result.cursorPopulaNum
         cursorPrice = response.result.cursorPrice
+        hasNext = response.result.hasNext
     }
     override fun onGetSearchResultsFailure(message: String) {
         showCustomToast("오류 : $message")    }
@@ -92,9 +101,44 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
             binding.layoutEmpty.visibility = View.GONE
         }
 
+        // 스크롤이 바닥에 닿았을 때
+        binding.rvSearchGrid.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                // 현재 보이는 마지막 아이템의 position
+                var lastVisibleItemPosition = (recyclerView.layoutManager as GridLayoutManager).findLastVisibleItemPosition()
+                // 전제 아이템 갯수
+                val itemTotalCount = recyclerView.adapter?.itemCount?.minus(1)
+
+                // 마지막 아이템이면 true로 변경
+                if( lastVisibleItemPosition != itemTotalCount) {
+                    lastItemVisible = true
+                }
+            }
+
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                // 스크롤이 멈춰있고, 다음 아이템이 있으며 마지막 아이템일 때 api 호출
+                if(newState == RecyclerView.SCROLL_STATE_IDLE && hasNext && lastItemVisible){
+                    positionStart = response.result.numOfRows
+                    callLaterSearches()
+                }
+            }
+        })
     }
 
+    // 스크롤이 바닥에 닿았을 때 api 호출 성공했을 시
+    override fun onGetNextResultSuccess(response: SearchResultResponse) {
 
+        cursorIdx = response.result.cursorIdx
+        hasNext = response.result.hasNext
+        itemSize = response.result.numOfRows
+        searchListAdapter.notifyItemRangeChanged(positionStart, itemSize)
+
+    }
+
+    override fun onGetNextResultFailure(message: String) {
+        showCustomToast("오류 : $message")
+    }
 
 
 
@@ -159,7 +203,6 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
     }
 
 
-
     //최신순,인기순,가격순 스피너 설정, 정렬
     private fun setCategory() {
         val spinnerAdapter: ArrayAdapter<*> =
@@ -170,8 +213,9 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
             override fun onItemSelected(parent: AdapterView<*>?,view: View,position: Int,id: Long) {
                 if (binding.spinnerSearch.getItemAtPosition(position) != sortType){
                     sortType = "${binding.spinnerSearch.getItemAtPosition(position)}"
+                    keyword = binding.etSearch.text.toString()
                     if (keyTag == ""){
-                        SearchResultService(this@ConsumerSearchActivity).tryGetSearchResults(keyword = "${binding.etSearch.text}",sortType = sortType)
+                        SearchResultService(this@ConsumerSearchActivity).tryGetSearchResults(keyword = keyword,sortType = sortType)
                     }
                     else{
                         SearchResultService(this@ConsumerSearchActivity).tryGetTagResults(tag = keyTag, sortType = sortType)
@@ -181,6 +225,8 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
     }
+
+
 
     private fun callLaterSearches(){
         if(keyTag == ""){

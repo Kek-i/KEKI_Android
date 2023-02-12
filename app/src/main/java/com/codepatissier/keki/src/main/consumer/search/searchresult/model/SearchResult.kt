@@ -6,5 +6,5 @@ data class SearchResult(
     val cursorPrice: Int,
     val cursorPopulaNum: Int,
     val hasNext: Boolean,
-    val numOfNums: Int
+    val numOfRows: Int
 )
