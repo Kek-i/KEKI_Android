@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:paddingHorizontal="@dimen/like_item_layout_padding_horizontal"
+    android:paddingBottom="@dimen/like_item_layout_padding_bottom">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv"
+        android:layout_width="@dimen/like_item_cv_width_height"
+        android:layout_height="@dimen/like_item_cv_width_height"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cardCornerRadius="@dimen/like_item_cv_radius"
+        app:cardBackgroundColor="@color/off_white"
+        app:cardElevation="@dimen/like_item_cv_elevation"
+        >
+
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_product_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/like_item_tv_product_name_min_height"
+        android:layout_marginTop="@dimen/like_item_tv_product_name_margin_top"
+        app:layout_constraintTop_toBottomOf="@id/cv"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/like_tv_product_name"
+        android:textColor="@color/black"
+        android:textSize="@dimen/like_item_tv_product_name_size"
+        android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
+        />
+
+    <TextView
+        android:id="@+id/tv_product_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/like_item_tv_product_price_min_height"
+        android:layout_marginTop="@dimen/like_item_tv_product_price_margin_top"
+        app:layout_constraintTop_toBottomOf="@id/tv_product_name"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/like_tv_product_price"
+        android:textColor="@color/black"
+        android:textSize="@dimen/like_item_tv_product_price_size"
+        android:fontFamily="@font/roboto_medium"
+        android:includeFontPadding="false"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
