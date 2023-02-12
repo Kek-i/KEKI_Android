@@ -1,6 +1,7 @@
 package com.codepatissier.keki.util.recycler.home
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -10,7 +11,9 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
+import com.codepatissier.keki.databinding.ActivityConsumerOneFeedDetailBinding
 import com.codepatissier.keki.databinding.ItemHomeStoreRecyclerBinding
+import com.codepatissier.keki.src.main.consumer.home.onefeed.ConsumerOneFeedDetailActivity
 import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedActivity
 import com.google.firebase.storage.FirebaseStorage
 
@@ -56,8 +59,8 @@ class HomeStoreAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
             img.clipToOutline = true
 
             itemView.setOnClickListener{
-                val intent = Intent(itemView.context, ConsumerStoreDetailFeedActivity::class.java)
-                intent.putExtra("tag", item.tagName)
+                val intent = Intent(itemView.context, ConsumerOneFeedDetailActivity::class.java)
+                intent.putExtra("postIdx", item.postIdx)
                 intent.run { itemView.context?.startActivity(intent) }
             }
         }

@@ -4,6 +4,7 @@ package com.codepatissier.keki.src.main.consumer.store
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
@@ -38,6 +39,7 @@ class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>
 
     private fun getStoreIdx(){
         storeIdx = intent.getLongExtra("storeIdx", 1)
+        Log.d("storeIdx", storeIdx.toString())
     }
 
     private fun tabSetting(){

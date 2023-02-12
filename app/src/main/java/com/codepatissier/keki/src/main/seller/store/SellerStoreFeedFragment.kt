@@ -1,7 +1,7 @@
 package com.codepatissier.keki.src.main.seller.store
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -11,6 +11,7 @@ import com.codepatissier.keki.databinding.FragmentSellerStoreFeedBinding
 import com.codepatissier.keki.src.main.consumer.search.searchresult.model.SearchResultResponse
 import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreFeedService
 import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreFeedView
+import com.codepatissier.keki.src.main.seller.store.storefeed.SellerStoreFeedAddActivity
 import com.codepatissier.keki.util.viewpager.storemain.StoreMainStoreData
 import com.codepatissier.keki.util.viewpager.storemain.seller.SellerStoreMainStoreAdapter
 
@@ -32,8 +33,8 @@ class SellerStoreFeedFragment(storeIdx : Long) : BaseFragment<FragmentSellerStor
         super.onViewCreated(view, savedInstanceState)
         showLoadingDialog(requireContext())
         ConsumerStoreFeedService(this).tryGetConsumerStoreFeed(storeIdx=storeIdx, size=size)
+        floatAddClicked()
     }
-
 
     private fun productFeedRecyclerView(response: SearchResultResponse){
         sellerStoreMainStoreAdapter = SellerStoreMainStoreAdapter(requireActivity())
@@ -112,4 +113,10 @@ class SellerStoreFeedFragment(storeIdx : Long) : BaseFragment<FragmentSellerStor
         showCustomToast("오류 : $message")
     }
 
+    private fun floatAddClicked(){
+        binding.floatBtn.setOnClickListener{
+            val intent = Intent(context, SellerStoreFeedAddActivity::class.java)
+            startActivity(intent)
+        }
+    }
 }
