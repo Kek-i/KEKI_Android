@@ -34,15 +34,15 @@ class SearchRecentPostAdapter(private var searchMainData: Result, val context: C
         private val seenCakeImg: ImageView = binding.ivCake
 
         fun bind(item:RecentPostSearch) {
-            fbStorage = FirebaseStorage.getInstance()
-            var storageRef = fbStorage?.reference?.child(item.postImgUrl)
-
-            storageRef?.downloadUrl?.addOnCompleteListener {
+//            fbStorage = FirebaseStorage.getInstance()
+//            var storageRef = fbStorage?.reference?.child(item.postImgUrl)
+//
+//            storageRef?.downloadUrl?.addOnCompleteListener {
                 Glide.with(context!!)
-                    .load(it.result)
+                    .load(item.postImgUrl)
                     .centerCrop()
                     .into(seenCakeImg)
-            }
+//            }
         }
 
     }

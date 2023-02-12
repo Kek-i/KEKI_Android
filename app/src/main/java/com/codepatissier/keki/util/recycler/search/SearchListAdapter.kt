@@ -38,15 +38,15 @@ class SearchListAdapter(var searchListData: SearchResult, val context: ConsumerS
         private val cakePrice: TextView = binding.tvGridPrice
 
         fun bind(item: Feeds) {
-            fbStorage = FirebaseStorage.getInstance()
-            var storageRef = fbStorage?.reference?.child(item.postImgUrls[0])
-
-            storageRef?.downloadUrl?.addOnCompleteListener {
+//            fbStorage = FirebaseStorage.getInstance()
+//            var storageRef = fbStorage?.reference?.child(item.postImgUrls[0])
+//
+//            storageRef?.downloadUrl?.addOnCompleteListener {
                 Glide.with(context!!)
-                    .load(it.result)
+                    .load(item.postImgUrls[0])
                     .centerCrop()
                     .into(cakeImg)
-            }
+//            }
             cakeName.text = item.dessertName
             cakePrice.text = DecimalFormat("###,###").format(item.dessertPrice.toLong())
         }

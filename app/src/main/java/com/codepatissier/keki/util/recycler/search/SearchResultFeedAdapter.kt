@@ -66,9 +66,6 @@ class SearchResultFeedAdapter(var searchResult: SearchResult, val context: Fragm
         private var postIdx : Long? = null
 
         fun bind(item: Feeds){
-            fbStorage = FirebaseStorage.getInstance()
-            var storageRef = fbStorage?.reference?.child(item.storeProfileImg)
-
             nickname.text = item.storeName
             cakeName.text = item.dessertName
             postIdx = item.postIdx
@@ -77,12 +74,12 @@ class SearchResultFeedAdapter(var searchResult: SearchResult, val context: Fragm
                 tagArray[i].isVisible = true
                 tagArray[i].text = "# " + item.tags[i]
             }
-            storageRef?.downloadUrl?.addOnCompleteListener {
-                Glide.with(context!!)
-                    .load(it.result)
-                    .centerCrop()
-                    .into(sellerImg)
-            }
+
+            Glide.with(context!!)
+                .load(item.storeProfileImg)
+                .centerCrop()
+                .into(sellerImg)
+
             
             var img = arrayOfNulls<String>(item.postImgUrls.size)
 

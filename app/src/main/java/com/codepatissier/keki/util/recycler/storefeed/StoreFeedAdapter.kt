@@ -95,15 +95,15 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
                 tagArray[i].text = "# " + item.tags[i]
             }
 
-            fbStorage = FirebaseStorage.getInstance()
-            var storageRef = fbStorage?.reference?.child(item.storeProfileImg)
-
-            storageRef?.downloadUrl?.addOnCompleteListener {
+//            fbStorage = FirebaseStorage.getInstance()
+//            var storageRef = fbStorage?.reference?.child(item.storeProfileImg)
+//
+//            storageRef?.downloadUrl?.addOnCompleteListener {
                 Glide.with(context!!)
-                    .load(it.result)
+                    .load(item.storeProfileImg)
                     .centerCrop()
                     .into(sellerImg)
-            }
+//            }
             
             var img = arrayOfNulls<String>(item.postImgUrls.size)
 
