@@ -813,4 +813,26 @@
     <dimen name="seller_product_add_and_edit_csl_add_left">22dp</dimen>
     <dimen name="seller_product_add_and_edit_csl_add_width_height">100dp</dimen>
 
+    <!-- like -->
+    <dimen name="like_top_bar_padding_bottom">10dp</dimen>
+    <dimen name="like_main_tv_like_height">29dp</dimen>
+    <dimen name="like_main_tv_like_margin_top">12dp</dimen>
+    <dimen name="like_main_tv_like_margin_start">24dp</dimen>
+    <dimen name="like_main_tv_like_size">20sp</dimen>
+    <dimen name="like_scroll_view_height">0dp</dimen>
+    <dimen name="like_scroll_view_padding_top">5dp</dimen>
+    <dimen name="like_rv_margin_horizontal">7dp</dimen>
+    <dimen name="like_item_layout_padding_horizontal">5dp</dimen>
+    <dimen name="like_item_layout_padding_bottom">15dp</dimen>
+    <dimen name="like_item_cv_width_height">105dp</dimen>
+    <dimen name="like_item_cv_radius">10dp</dimen>
+    <dimen name="like_item_cv_elevation">0dp</dimen>
+    <dimen name="like_item_tv_product_name_min_height">20dp</dimen>
+    <dimen name="like_item_tv_product_name_margin_top">10dp</dimen>
+    <dimen name="like_item_tv_product_name_size">14sp</dimen>
+    <dimen name="like_item_tv_product_price_min_height">14dp</dimen>
+    <dimen name="like_item_tv_product_price_margin_top">3dp</dimen>
+    <dimen name="like_item_tv_product_price_size">12sp</dimen>
+
+
 </resources>
