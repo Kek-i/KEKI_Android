@@ -23,6 +23,7 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
     var cursorIdx : Int? = null
     var hasNext : Boolean? = null
     var positionStart = 0
+    var position : Int? = null
     var itemSize = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +40,7 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
     private fun initRecyclerView(){
         //feedTag = intent.getStringExtra("tag")!!
         storeIdx = intent.getLongExtra("storeIdx", -1)
+        position = intent.getIntExtra("position", 0)
         storeFeedAdapter = StoreFeedAdapter(this)
         binding.recyclerStoreFeed.adapter = storeFeedAdapter
     }
@@ -88,7 +90,7 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
         storeFeedAdapter.setList(storeFeedDatas, hasNext!!)
         storeFeedAdapter.notifyItemRangeInserted(positionStart, response.result.feeds.size)
 
-        //LinearLayoutManager(this).scrollToPositionWithOffset(positionStart,0)
+        binding.recyclerStoreFeed.scrollToPosition(position!!)
     }
 
     private fun checkScrollEvent(){

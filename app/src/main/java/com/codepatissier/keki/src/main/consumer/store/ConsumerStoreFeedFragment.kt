@@ -64,6 +64,7 @@ class ConsumerStoreFeedFragment(storeIdx : Long) : BaseFragment<FragmentConsumer
             override fun onClick(v: View, position: Int) {
                 val intent = Intent(context, ConsumerStoreDetailFeedActivity::class.java)
                 intent.putExtra("storeIdx", response.result.feeds[position].storeIdx)
+                intent.putExtra("position", position)
                 startActivity(intent)
             }
 
