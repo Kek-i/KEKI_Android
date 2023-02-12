@@ -1,6 +1,7 @@
 package com.codepatissier.keki.src.main.consumer.home.onefeed
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +12,7 @@ import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityConsumerOneFeedDetailBinding
 import com.codepatissier.keki.src.main.consumer.home.onefeed.model.ConsumerOneFeedDetailResponse
+import com.codepatissier.keki.src.main.consumer.store.ConsumerStoreMainActivity
 import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedActivity
 import com.codepatissier.keki.src.main.consumer.store.storefeed.report.ConsumerStoreDetailFeedDialog
 import com.google.firebase.storage.FirebaseStorage
@@ -19,6 +21,7 @@ class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetail
     , ConsumerOneFeedDetailView{
 
     var postIdx: Long? = null
+    var storeIdx: Long? = null
     private var heart = false
     var fbStorage : FirebaseStorage?= null
 
@@ -29,10 +32,10 @@ class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetail
         initPostIdx()
         backToHome()
         showLoadingDialog(this)
-        //Log.d("postIdx", postIdx.toString())
         ConsumerOneFeedDetailService(this).tryGetConsumerOneFeedDetail(postIdx!!)
         likeProduct()
         report()
+        navigateToStoreMain()
     }
 
     private fun initPostIdx(){
@@ -86,6 +89,8 @@ class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetail
             binding.ivStoreFeedHeartOff.setImageResource(R.drawable.ic_bottom_heart_on)
             heart = true
         }
+
+        storeIdx = response.result.storeIdx
     }
 
     private fun checkCakeDescription(description: String){
@@ -148,6 +153,14 @@ class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetail
     private fun backToHome(){
         binding.ivStoreFeedLeftChevron.setOnClickListener {
             finish()
+        }
+    }
+
+    private fun navigateToStoreMain(){
+        binding.tvStoreFeedSellerNickname.setOnClickListener {
+            val intent = Intent(this, ConsumerStoreMainActivity::class.java)
+            intent.putExtra("storeIdx", storeIdx)
+            startActivity(intent)
         }
     }
 }

@@ -7,6 +7,7 @@ data class Result(
     val like: Boolean,
     val postIdx: Int,
     val postImgUrls: List<String>,
+    val storeIdx: Long,
     val storeName: String,
     val storeProfileImg: String,
     val tags: List<String>
