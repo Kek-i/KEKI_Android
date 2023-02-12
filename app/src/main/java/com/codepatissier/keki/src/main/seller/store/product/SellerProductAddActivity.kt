@@ -12,8 +12,6 @@ import com.bumptech.glide.Glide
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivitySellerProductAddAndEditBinding
-import com.codepatissier.keki.src.main.consumer.mypage.profileEdit.ConsumerProfileEditService
-import com.codepatissier.keki.src.main.consumer.mypage.profileEdit.model.ConsumerProfileEditBody
 import com.codepatissier.keki.src.main.seller.store.product.model.SellerProductAddBody
 import com.codepatissier.keki.src.main.seller.store.product.model.SellerProductAddResponse
 import com.google.firebase.storage.FirebaseStorage
@@ -103,7 +101,6 @@ class SellerProductAddActivity:BaseActivity<ActivitySellerProductAddAndEditBindi
                 val productPrice = Integer.parseInt(binding.etProductPrice.text.toString())
                 val productIntro = binding.etProductIntro.text.toString()
 
-                Log.e("merong",productName+productPrice+productIntro+uploadImg)
                 var sellerProductAddBody = SellerProductAddBody(dessertName = productName, dessertPrice = productPrice, dessertDescription = productIntro, dessertImg = uploadImg)
 
                 showLoadingDialog(this)

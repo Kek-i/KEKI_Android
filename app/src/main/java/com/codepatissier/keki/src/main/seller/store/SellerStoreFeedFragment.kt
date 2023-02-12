@@ -76,6 +76,12 @@ class SellerStoreFeedFragment(storeIdx : Long) : BaseFragment<FragmentSellerStor
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        storeMainStoreDatas.clear()
+        ConsumerStoreFeedService(this).tryGetConsumerStoreFeed(storeIdx=storeIdx, size=size)
+    }
+
     override fun onGetStoreFeedSuccess(response: SearchResultResponse) {
         dismissLoadingDialog()
         productFeedRecyclerView(response)

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseFragment
 import com.codepatissier.keki.databinding.FragmentSellerProductFeedBinding
+import com.codepatissier.keki.src.main.consumer.mypage.ConsumerMyPageService
 import com.codepatissier.keki.src.main.consumer.store.productfeed.ConsumerStoreProductFeedService
 import com.codepatissier.keki.src.main.consumer.store.productfeed.ConsumerStoreProductFeedView
 import com.codepatissier.keki.src.main.consumer.store.productfeed.model.ConsumerStoreProductFeedResponse
@@ -81,6 +82,11 @@ class SellerProductFeedFragment(storeIdx : Long) : BaseFragment<FragmentSellerPr
         })
     }
 
+    override fun onResume() {
+        super.onResume()
+        storeMainProductDatas.clear()
+        ConsumerStoreProductFeedService(this).tryGetProductFeed(storeIdx, size)
+    }
 
     private fun floatAddClicked(){
         binding.floatBtn.setOnClickListener{
@@ -91,6 +97,7 @@ class SellerProductFeedFragment(storeIdx : Long) : BaseFragment<FragmentSellerPr
 
     override fun onGetProductFeedSuccess(response: ConsumerStoreProductFeedResponse) {
         dismissLoadingDialog()
+
         productFeedRecyclerView(response)
     }
 
