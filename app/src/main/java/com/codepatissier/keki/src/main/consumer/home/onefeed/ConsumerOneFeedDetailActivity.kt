@@ -12,13 +12,16 @@ import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityConsumerOneFeedDetailBinding
 import com.codepatissier.keki.src.main.consumer.home.onefeed.model.ConsumerOneFeedDetailResponse
+import com.codepatissier.keki.src.main.consumer.search.searchresult.SearchResultService
+import com.codepatissier.keki.src.main.consumer.search.searchresult.SearchResultView
+import com.codepatissier.keki.src.main.consumer.search.searchresult.model.SearchResultResponse
 import com.codepatissier.keki.src.main.consumer.store.ConsumerStoreMainActivity
 import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedActivity
 import com.codepatissier.keki.src.main.consumer.store.storefeed.report.ConsumerStoreDetailFeedDialog
 import com.google.firebase.storage.FirebaseStorage
 
 class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetailBinding>(ActivityConsumerOneFeedDetailBinding::inflate)
-    , ConsumerOneFeedDetailView{
+    , ConsumerOneFeedDetailView, SearchResultView{
 
     var postIdx: Long? = null
     var storeIdx: Long? = null
@@ -32,10 +35,15 @@ class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetail
         initPostIdx()
         backToHome()
         showLoadingDialog(this)
+        postHistory()
         ConsumerOneFeedDetailService(this).tryGetConsumerOneFeedDetail(postIdx!!)
         likeProduct()
         report()
         navigateToStoreMain()
+    }
+
+    private fun postHistory(){
+        SearchResultService(this).tryPostHistory(postIdx!!)
     }
 
     private fun initPostIdx(){
@@ -162,5 +170,13 @@ class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetail
             intent.putExtra("storeIdx", storeIdx)
             startActivity(intent)
         }
+    }
+
+    override fun onGetSearchResultsSuccess(response: SearchResultResponse) {
+
+    }
+
+    override fun onGetSearchResultsFailure(message: String) {
+
     }
 }
