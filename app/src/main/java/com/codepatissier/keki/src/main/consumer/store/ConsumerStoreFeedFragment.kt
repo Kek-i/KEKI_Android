@@ -1,6 +1,8 @@
 package com.codepatissier.keki.src.main.consumer.store
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -8,6 +10,7 @@ import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseFragment
 import com.codepatissier.keki.databinding.FragmentConsumerStoreFeedBinding
 import com.codepatissier.keki.src.main.consumer.search.searchresult.model.SearchResultResponse
+import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedActivity
 import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreFeedService
 import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreFeedView
 import com.codepatissier.keki.util.viewpager.storemain.consumer.ConsumerStoreMainStoreAdapter
@@ -55,6 +58,16 @@ class ConsumerStoreFeedFragment(storeIdx : Long) : BaseFragment<FragmentConsumer
             }
         }
         consumerStoreMainStoreAdapter.storeMainStoreDatas = storeMainStoreDatas
+
+        consumerStoreMainStoreAdapter.setItemClickListener(object:
+            ConsumerStoreMainStoreAdapter.OnItemClickListener{
+            override fun onClick(v: View, position: Int) {
+                val intent = Intent(context, ConsumerStoreDetailFeedActivity::class.java)
+                intent.putExtra("storeIdx", response.result.feeds[position].storeIdx)
+                startActivity(intent)
+            }
+
+        })
 
         // 스크롤이 바닥에 닿았을 때
         binding.recyclerSellerFeed.addOnScrollListener(object : RecyclerView.OnScrollListener(){
