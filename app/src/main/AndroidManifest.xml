@@ -176,7 +176,7 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
-        <activity android:name=".src.main.seller.store.productfeed.SellerProductAdd"
+        <activity android:name=".src.main.seller.store.product.SellerProductAddActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">

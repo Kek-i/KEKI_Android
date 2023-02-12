@@ -15,6 +15,7 @@ import com.codepatissier.keki.databinding.ActivityConsumerOneFeedDetailBinding
 import com.codepatissier.keki.databinding.ItemHomeStoreRecyclerBinding
 import com.codepatissier.keki.src.main.consumer.home.onefeed.ConsumerOneFeedDetailActivity
 import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedActivity
+import com.google.firebase.storage.FirebaseStorage
 
 
 class HomeStoreAdapter(val context: FragmentActivity?): RecyclerView.Adapter<ViewHolder>(){
@@ -34,7 +35,7 @@ class HomeStoreAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
     override fun getItemCount(): Int = homeStoreDatas.size
 
     class HomeStoreViewHolder(val context: FragmentActivity?, val binding: ItemHomeStoreRecyclerBinding): RecyclerView.ViewHolder(binding.root){
-
+        var fbStorage : FirebaseStorage?= null
         private val img: ImageView = binding.ivHomeStore
         private val name: TextView = binding.tvHomeStore
         private val cardView: CardView = binding.cv
@@ -42,10 +43,15 @@ class HomeStoreAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
         fun bind(item: HomeStoreData){
             name.text = item.name
 
-            Glide.with(context!!)
-                .load(item.img)
-                .centerCrop()
-                .into(img)
+            fbStorage = FirebaseStorage.getInstance()
+            var storageRef = fbStorage?.reference?.child(item.img)
+
+            storageRef?.downloadUrl?.addOnCompleteListener {
+                Glide.with(context!!)
+                    .load(it.result)
+                    .centerCrop()
+                    .into(img)
+            }
 
 
             cardView.bringToFront()

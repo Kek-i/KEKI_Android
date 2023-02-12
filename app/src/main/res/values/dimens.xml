@@ -585,7 +585,7 @@
     <dimen name="store_main_info_right">12dp</dimen>
     <dimen name="store_main_profile_width_height">80dp</dimen>
     <dimen name="store_main_store_name_left">15dp</dimen>
-    <dimen name="store_main_store_name_top">10dp</dimen>
+    <dimen name="store_main_store_name_top">8dp</dimen>
     <dimen name="store_main_store_name_text_size">18dp</dimen>
     <dimen name="store_main_store_detail_width_height">0dp</dimen>
     <dimen name="store_main_store_detail_top">10dp</dimen>
@@ -599,6 +599,7 @@
     <dimen name="store_main_store_tab_max_width">0dp</dimen>
     <dimen name="store_main_store_tab_top">27dp</dimen>
     <dimen name="store_main_store_viewPager_width_height">0dp</dimen>
+    <dimen name="store_main_store_viewPager_left_right">8dp</dimen>
     <dimen name="store_main_store_view_width">0dp</dimen>
     <dimen name="store_main_store_view_height">2dp</dimen>
 
@@ -812,5 +813,7 @@
     <dimen name="seller_product_add_and_edit_csl_add_top">10dp</dimen>
     <dimen name="seller_product_add_and_edit_csl_add_left">22dp</dimen>
     <dimen name="seller_product_add_and_edit_csl_add_width_height">100dp</dimen>
+    <dimen name="seller_product_add_and_edit_cv_add_radius">10dp</dimen>
+    <dimen name="seller_product_add_and_edit_cv_add_elevation">0dp</dimen>
 
 </resources>

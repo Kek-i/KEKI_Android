@@ -68,6 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/notosanskr_bold"
+                android:layout_marginTop="@dimen/store_main_store_name_top"
                 android:layout_marginLeft="@dimen/store_main_store_name_left"
                 android:text="@string/store_main_store_name"
                 android:textSize="@dimen/store_main_store_name_text_size"
@@ -97,6 +98,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:includeFontPadding="false"
+                android:fontFamily="@font/notosanskr_regular"
                 android:text="@string/store_main_store_view_more"
                 app:layout_constraintStart_toStartOf="@+id/tv_store_detail"
                 app:layout_constraintTop_toBottomOf="@id/tv_store_detail"
@@ -145,7 +147,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tab_store"/>
+            app:layout_constraintTop_toBottomOf="@+id/tab_store"
+            android:layout_marginLeft="@dimen/store_main_store_viewPager_left_right"/>
 
         <View
             android:layout_width="@dimen/store_main_store_view_width"

@@ -166,8 +166,6 @@ class SellerProfileEditActivity :BaseActivity<ActivitySellerProfileEditBinding>(
 
     // 이전 프로필 서버에서 가져오기 성공
     override fun onGetMyPageSuccess(response: SellerMyPageResponse) {
-        dismissLoadingDialog()
-
         //유저 이메일 표시하기
         binding.tvUserEmail.text = response.result.email
 
@@ -211,8 +209,13 @@ class SellerProfileEditActivity :BaseActivity<ActivitySellerProfileEditBinding>(
                         .fallback(defaultImg)
                         .circleCrop()
                         .into(imageView)
+                    dismissLoadingDialog()
+                }else{
+                    dismissLoadingDialog()
                 }
             }
+        }else{
+            dismissLoadingDialog()
         }
     }
 
