@@ -57,6 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/like_rv_margin_horizontal"
                 tools:listitem="@layout/item_like_recycler"
+                android:overScrollMode="never"
                 />
 
         </androidx.core.widget.NestedScrollView>
