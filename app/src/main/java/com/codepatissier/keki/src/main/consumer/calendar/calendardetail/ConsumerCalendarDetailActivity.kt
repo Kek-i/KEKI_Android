@@ -1,20 +1,25 @@
 package com.codepatissier.keki.src.main.consumer.calendar.calendardetail
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View.GONE
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityConsumerCalendarDetailBinding
 import com.codepatissier.keki.src.main.consumer.calendar.calendardetail.model.ConsumerCalendarDetailResponse
+import com.codepatissier.keki.src.main.consumer.calendar.calendardetail.model.ResultCalendarDetail
+import com.codepatissier.keki.src.main.consumer.calendar.calendarmodify.ConsumerCalendarModifyActivity
 
 class ConsumerCalendarDetailActivity : BaseActivity<ActivityConsumerCalendarDetailBinding>
     (ActivityConsumerCalendarDetailBinding::inflate), ConsumerCalendarDetailView {
     private var calendarIdx: Long = 0
+    private lateinit var calendarDetail: ResultCalendarDetail
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         initCalendarIdx()
         setClickListenerToBackBtn()
+        setClickListenerToModifyBtn()
         showLoadingDialog(this)
         ConsumerCalendarDetailService(this).tryGetCalendarDetail(calendarIdx)
     }
@@ -61,6 +66,7 @@ class ConsumerCalendarDetailActivity : BaseActivity<ActivityConsumerCalendarDeta
 
     override fun onGetCalendarDetailSuccess(response: ConsumerCalendarDetailResponse) {
         dismissLoadingDialog()
+        calendarDetail = response.result
         setLayoutFromResponse(response)
     }
 
@@ -72,6 +78,15 @@ class ConsumerCalendarDetailActivity : BaseActivity<ActivityConsumerCalendarDeta
     private fun setClickListenerToBackBtn() {
         binding.ibCalendarDetailBack.setOnClickListener {
             finish()
+        }
+    }
+
+    private fun setClickListenerToModifyBtn() {
+        binding.ibCalendarDetailModify.setOnClickListener {
+            val intent = Intent(this, ConsumerCalendarModifyActivity::class.java)
+            intent.putExtra("calendarIdx", calendarIdx)
+            intent.putExtra("calendarDetail", calendarDetail)
+            startActivity(intent)
         }
     }
 }
