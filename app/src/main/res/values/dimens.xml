@@ -14,7 +14,7 @@
     <dimen name="home_keki_logo_left">12dp</dimen>
     <dimen name="home_ic_top">16dp</dimen>
     <dimen name="home_ic_notifications_right">20dp</dimen>
-    <dimen name="home_ic_message_right">64dp</dimen>
+    <dimen name="home_ic_message_right">25dp</dimen>
     <dimen name="home_logo_top_height">77dp</dimen>
 
     <dimen name="home_comment_top">9dp</dimen>
@@ -27,10 +27,10 @@
     <dimen name="home_recycler_margin_top">15dp</dimen>
     <dimen name="home_tag_start">14dp</dimen>
     <dimen name="home_tag_size">16sp</dimen>
-    <dimen name="home_tag_padding_top">5dp</dimen>
-    <dimen name="home_tag_padding_bottom">5dp</dimen>
-    <dimen name="home_tag_padding_start">10dp</dimen>
-    <dimen name="home_tag_padding_end">10dp</dimen>
+    <dimen name="home_tag_padding_top">4dp</dimen>
+    <dimen name="home_tag_padding_bottom">4dp</dimen>
+    <dimen name="home_tag_padding_start">17dp</dimen>
+    <dimen name="home_tag_padding_end">17dp</dimen>
     <dimen name="home_ic_chevron_right_end">14dp</dimen>
     <dimen name="chevron_padding_start">20dp</dimen>
     <dimen name="chevron_padding_top_bottom">10dp</dimen>
@@ -80,6 +80,19 @@
     <dimen name="report_margin_end">4dp</dimen>
     <dimen name="splash_comment_size">14sp</dimen>
     <dimen name="consumer_store_detail_recycler_height">0dp</dimen>
+    <dimen name="consumer_feed_title_margin_start">15dp</dimen>
+    <dimen name="consumer_feed_between_indicator_dessert_name">10dp</dimen>
+    <dimen name="consumer_feed_between_dessert_name_description">10dp</dimen>
+    <dimen name="consumer_feed_between_description_tag">15dp</dimen>
+    <dimen name="consumer_feed_tag_padding_start_end">14dp</dimen>
+    <dimen name="consumer_feed_tag_padding_top">4dp</dimen>
+    <dimen name="consumer_feed_tag_padding_bottom">6dp</dimen>
+
+    <dimen name="feed_indicator_margin_bottom">30dp</dimen>
+    <dimen name="feed_indicator_dots_radius">8dp</dimen>
+    <dimen name="feed_indicator_dots_size">8dp</dimen>
+    <dimen name="feed_indicator_dots_spacing">4dp</dimen>
+    <dimen name="feed_indicator_dots_stroke_width">4dp</dimen>
 
     <!-- report -->
     <dimen name="dialog_report_title_size">18sp</dimen>
@@ -572,7 +585,7 @@
     <dimen name="store_main_info_right">12dp</dimen>
     <dimen name="store_main_profile_width_height">80dp</dimen>
     <dimen name="store_main_store_name_left">15dp</dimen>
-    <dimen name="store_main_store_name_top">10dp</dimen>
+    <dimen name="store_main_store_name_top">8dp</dimen>
     <dimen name="store_main_store_name_text_size">18dp</dimen>
     <dimen name="store_main_store_detail_width_height">0dp</dimen>
     <dimen name="store_main_store_detail_top">10dp</dimen>
@@ -586,6 +599,7 @@
     <dimen name="store_main_store_tab_max_width">0dp</dimen>
     <dimen name="store_main_store_tab_top">27dp</dimen>
     <dimen name="store_main_store_viewPager_width_height">0dp</dimen>
+    <dimen name="store_main_store_viewPager_left_right">8dp</dimen>
     <dimen name="store_main_store_view_width">0dp</dimen>
     <dimen name="store_main_store_view_height">2dp</dimen>
 
@@ -740,6 +754,7 @@
     <dimen name="seller_feed_add_layout_image_width">0dp</dimen>
     <dimen name="seller_feed_add_layout_image_margin_top">26dp</dimen>
     <dimen name="seller_feed_add_ib_add_image_width_height">100dp</dimen>
+    <dimen name="seller_feed_add_ib_add_image_margin_top">10dp</dimen>
     <dimen name="seller_feed_add_ib_add_image_margin_start">16dp</dimen>
     <dimen name="seller_feed_add_ib_add_image_margin_bottom">5dp</dimen>
     <dimen name="seller_feed_add_rv_feed_image_width">0dp</dimen>
@@ -753,7 +768,7 @@
     <dimen name="seller_feed_add_ib_open_margin_start">20dp</dimen>
     <dimen name="seller_feed_add_tv_select_product_margin_start">10dp</dimen>
     <dimen name="seller_feed_add_tv_select_product_size">16sp</dimen>
-    <dimen name="seller_feed_add_layout_open_product_margin_top">-8dp</dimen>
+    <dimen name="seller_feed_add_layout_open_product_margin_top">-6dp</dimen>
     <dimen name="seller_feed_add_layout_open_product_padding_start">44dp</dimen>
     <dimen name="seller_feed_add_layout_open_product_padding_end">30dp</dimen>
     <dimen name="seller_feed_add_layout_open_product_padding_bottom">9dp</dimen>
@@ -798,5 +813,29 @@
     <dimen name="seller_product_add_and_edit_csl_add_top">10dp</dimen>
     <dimen name="seller_product_add_and_edit_csl_add_left">22dp</dimen>
     <dimen name="seller_product_add_and_edit_csl_add_width_height">100dp</dimen>
+    <dimen name="seller_product_add_and_edit_cv_add_radius">10dp</dimen>
+    <dimen name="seller_product_add_and_edit_cv_add_elevation">0dp</dimen>
+
+    <!-- like -->
+    <dimen name="like_top_bar_padding_bottom">10dp</dimen>
+    <dimen name="like_main_tv_like_height">29dp</dimen>
+    <dimen name="like_main_tv_like_margin_top">12dp</dimen>
+    <dimen name="like_main_tv_like_margin_start">24dp</dimen>
+    <dimen name="like_main_tv_like_size">20sp</dimen>
+    <dimen name="like_scroll_view_height">0dp</dimen>
+    <dimen name="like_scroll_view_padding_top">5dp</dimen>
+    <dimen name="like_rv_margin_horizontal">7dp</dimen>
+    <dimen name="like_item_layout_padding_horizontal">5dp</dimen>
+    <dimen name="like_item_layout_padding_bottom">15dp</dimen>
+    <dimen name="like_item_cv_width_height">105dp</dimen>
+    <dimen name="like_item_cv_radius">10dp</dimen>
+    <dimen name="like_item_cv_elevation">0dp</dimen>
+    <dimen name="like_item_tv_product_name_min_height">20dp</dimen>
+    <dimen name="like_item_tv_product_name_margin_top">10dp</dimen>
+    <dimen name="like_item_tv_product_name_size">14sp</dimen>
+    <dimen name="like_item_tv_product_price_min_height">14dp</dimen>
+    <dimen name="like_item_tv_product_price_margin_top">3dp</dimen>
+    <dimen name="like_item_tv_product_price_size">12sp</dimen>
+
 
 </resources>

@@ -19,6 +19,7 @@ import com.codepatissier.keki.src.main.consumer.search.searchresult.model.Search
 import com.codepatissier.keki.src.main.consumer.store.ConsumerStoreMainActivity
 import com.codepatissier.keki.src.main.consumer.store.storefeed.report.ConsumerStoreDetailFeedDialog
 import com.codepatissier.keki.src.main.consumer.store.storefeed.DetailImageAdapter
+import com.google.firebase.storage.FirebaseStorage
 
 
 class SearchResultFeedAdapter(var searchResult: SearchResult, val context: FragmentActivity?): RecyclerView.Adapter<ViewHolder>() {
@@ -52,6 +53,7 @@ class SearchResultFeedAdapter(var searchResult: SearchResult, val context: Fragm
 
 
     class StoreFeedViewHolder(val context: FragmentActivity?, val binding: ItemStoreFeedRecyclerBinding): ViewHolder(binding.root){
+        var fbStorage : FirebaseStorage?= null
         private val sellerImg: ImageView = binding.ivStoreFeedSeller
         private val nickname: TextView = binding.tvStoreFeedSellerNickname
         private val cakeName: TextView = binding.tvStoreFeedCakeName
@@ -77,6 +79,7 @@ class SearchResultFeedAdapter(var searchResult: SearchResult, val context: Fragm
                 .load(item.storeProfileImg)
                 .centerCrop()
                 .into(sellerImg)
+
             
             var img = arrayOfNulls<String>(item.postImgUrls.size)
 

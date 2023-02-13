@@ -1,4 +1,4 @@
-package com.codepatissier.keki.util.viewpager.storemain
+package com.codepatissier.keki.util.viewpager.storemain.consumer
 
 
 import android.app.Dialog
@@ -12,7 +12,7 @@ import com.codepatissier.keki.src.main.consumer.store.info.ConsumerStoreInfoServ
 import com.codepatissier.keki.src.main.consumer.store.info.ConsumerStoreInfoView
 import com.codepatissier.keki.src.main.consumer.store.info.model.ConsumerStoreInfoResponse
 
-class StoreMainDialog(context: Context):Dialog(context), ConsumerStoreInfoView {
+class ConsumerStoreMainDialog(context: Context):Dialog(context), ConsumerStoreInfoView {
     private lateinit var  binding : DialogStoreMainBinding
     var storeIdx : Long = 1
 
@@ -38,7 +38,7 @@ class StoreMainDialog(context: Context):Dialog(context), ConsumerStoreInfoView {
 
     override fun onGetStoreInfoSuccess(response: ConsumerStoreInfoResponse) {
         binding.tvRepresentativeNameData.text = response.result.businessName
-        binding.tvStoreNameData.text = response.result.businessName
+        binding.tvStoreNameData.text = response.result.brandName
         binding.tvStoreAddressData.text = response.result.businessAddress
         binding.tvStoreNumData.text = response.result.businessNumber
     }

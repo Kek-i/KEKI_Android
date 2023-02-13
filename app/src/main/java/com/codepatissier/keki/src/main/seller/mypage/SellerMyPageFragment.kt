@@ -100,12 +100,13 @@ class SellerMyPageFragment : BaseFragment<FragmentSellerMyPageBinding>
                         .circleCrop()
                         .into(imageView)
                     dismissLoadingDialog()
-                }else {
+                }else{
                     dismissLoadingDialog()
                 }
             }
+        }else {
+            dismissLoadingDialog()
         }
-        dismissLoadingDialog()
     }
 
     override fun onGetMyPageFailure(message: String) {

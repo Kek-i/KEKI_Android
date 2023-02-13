@@ -108,7 +108,7 @@ class ConsumerProfileEditActivity :BaseActivity<ActivityConsumerProfileEditBindi
             var timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
             var profileImgName = "PROFILE_IMAGE_"+timeStamp+"_.png"
             var storageRef = fbStorage?.reference?.child("profiles/$profileImgName")
-            editImg = "profiles/$profileImgName";
+            editImg = "profiles/$profileImgName"
 
             storageRef
                 ?.putFile(ProfileUri!!)?.addOnProgressListener {
@@ -170,8 +170,6 @@ class ConsumerProfileEditActivity :BaseActivity<ActivityConsumerProfileEditBindi
 
     // 이전 프로필 서버에서 가져오기 성공
     override fun onGetMyPageSuccess(response: ConsumerMyPageResponse) {
-        dismissLoadingDialog()
-
         // 프로필 이미지 또는 닉네임 중 한가지만 수정 시 null 값 뜨지 않도록 변수로 이전 프로필 또는 닉네임 가져오기
         if(response.result.profileImg != null){
             editImg = response.result.profileImg
@@ -199,8 +197,13 @@ class ConsumerProfileEditActivity :BaseActivity<ActivityConsumerProfileEditBindi
                         .fallback(defaultImg)
                         .circleCrop()
                         .into(imageView)
+                    dismissLoadingDialog()
+                }else{
+                    dismissLoadingDialog()
                 }
             }
+        }else{
+            dismissLoadingDialog()
         }
     }
 

@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
+        android:id="@+id/tv_product_name"
         android:layout_width="match_parent"
         android:layout_height="@dimen/rv_item_product_name_tv_height"
         app:layout_constraintTop_toTopOf="parent"

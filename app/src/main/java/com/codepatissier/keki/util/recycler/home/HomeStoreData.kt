@@ -1,7 +1,7 @@
 package com.codepatissier.keki.util.recycler.home
 
 data class HomeStoreData(
-    val postIdx: Int,
+    val postIdx: Long,
     val img: String,
     val name: String,
     val tagIdx: Int,

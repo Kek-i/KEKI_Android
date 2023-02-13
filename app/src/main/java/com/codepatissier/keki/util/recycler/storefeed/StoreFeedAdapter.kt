@@ -20,6 +20,7 @@ import com.codepatissier.keki.src.main.consumer.store.ConsumerStoreMainActivity
 import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedActivity
 import com.codepatissier.keki.src.main.consumer.store.storefeed.report.ConsumerStoreDetailFeedDialog
 import com.codepatissier.keki.src.main.consumer.store.storefeed.DetailImageAdapter
+import com.google.firebase.storage.FirebaseStorage
 
 class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<ViewHolder>() {
 
@@ -82,6 +83,7 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
         private val tagArray = arrayOf(firstTag, secondTag, thirdTag)
         private var heart = false
         private var postIdx : Long? = null
+        var fbStorage : FirebaseStorage?= null
 
         fun bind(item: StoreFeedData){
             nickname.text = item.storeName
@@ -93,10 +95,15 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
                 tagArray[i].text = "# " + item.tags[i]
             }
 
-            Glide.with(context!!)
-                .load(item.storeProfileImg)
-                .centerCrop()
-                .into(sellerImg)
+//            fbStorage = FirebaseStorage.getInstance()
+//            var storageRef = fbStorage?.reference?.child(item.storeProfileImg)
+//
+//            storageRef?.downloadUrl?.addOnCompleteListener {
+                Glide.with(context!!)
+                    .load(item.storeProfileImg)
+                    .centerCrop()
+                    .into(sellerImg)
+//            }
             
             var img = arrayOfNulls<String>(item.postImgUrls.size)
 

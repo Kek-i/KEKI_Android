@@ -3,6 +3,7 @@ package com.codepatissier.keki.util.viewpager.storemain.consumer
 
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.FragmentActivity
@@ -12,6 +13,7 @@ import com.codepatissier.keki.R
 import com.codepatissier.keki.databinding.ItemStoreMainRecyclerBinding
 import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedActivity
 import com.codepatissier.keki.util.viewpager.storemain.StoreMainStoreData
+import com.google.firebase.storage.FirebaseStorage
 
 class ConsumerStoreMainStoreAdapter(val context: FragmentActivity?): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -25,27 +27,34 @@ class ConsumerStoreMainStoreAdapter(val context: FragmentActivity?): RecyclerVie
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as ViewHolder).bind(storeMainStoreDatas[position])
+        holder.itemView.setOnClickListener {
+            itemClickListener.onClick(it, position)
+        }
     }
 
     override fun getItemCount(): Int = storeMainStoreDatas.size
 
     class ViewHolder(val context: FragmentActivity?, val binding: ItemStoreMainRecyclerBinding): RecyclerView.ViewHolder(binding.root){
+        var fbStorage : FirebaseStorage?= null
         private val FeedImg : ImageView = binding.ivStoreMain
         val defaultImg = R.drawable.bg_rectangle_radius_10_off_white
-
 
         val width = getItemWidth()/3
 
         fun bind(item: StoreMainStoreData){
-            Glide.with(context!!)
-                .load(item.postImgUrl)
-                .placeholder(defaultImg)
-                .override(width,width)
-                .error(defaultImg)
-                .fallback(defaultImg)
-                .centerCrop()
-                .into(FeedImg)
-
+//            fbStorage = FirebaseStorage.getInstance()
+//            var storageRef = fbStorage?.reference?.child(item.postImgUrl)
+//
+//            storageRef?.downloadUrl?.addOnCompleteListener {
+                Glide.with(context!!)
+                    .load(item.postImgUrl)
+                    .placeholder(defaultImg)
+                    .override(width, width)
+                    .error(defaultImg)
+                    .fallback(defaultImg)
+                    .centerCrop()
+                    .into(FeedImg)
+//            }
 
             itemView.setOnClickListener {
                 var intent = Intent(itemView.context, ConsumerStoreDetailFeedActivity::class.java)
@@ -67,5 +76,15 @@ class ConsumerStoreMainStoreAdapter(val context: FragmentActivity?): RecyclerVie
             return width!!
         }
     }
+
+    interface OnItemClickListener{
+        fun onClick(v: View, position: Int)
+    }
+
+    fun setItemClickListener(onItemClickListener: OnItemClickListener){
+        this.itemClickListener = onItemClickListener
+    }
+
+    private lateinit var itemClickListener : OnItemClickListener
 
 }
