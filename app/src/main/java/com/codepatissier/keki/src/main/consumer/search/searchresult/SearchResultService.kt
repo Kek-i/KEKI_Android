@@ -21,10 +21,84 @@ class SearchResultService(val searchResultView: SearchResultView) {
             }
         })
     }
+    fun tryGetSearchResultsLatest(keyword : String, sortType : String, cursorIdx:Long, size:Int){
+        val searchResultRetrofitInterface = ApplicationClass.sRetrofit.create(SearchResultRetrofitInterface::class.java)
+        searchResultRetrofitInterface.getSearchResult(searchWord = keyword, sortType = sortType, cursorIdx = cursorIdx, size = size).enqueue(object: Callback<SearchResultResponse>{
+            override fun onResponse(call: Call<SearchResultResponse>, response: Response<SearchResultResponse>)
+            {
+                searchResultView.onGetSearchResultsSuccess(response.body() as SearchResultResponse)
+            }
+            override fun onFailure(call: Call<SearchResultResponse>, t: Throwable) {
+                searchResultView.onGetSearchResultsFailure(t.message ?: "통신 오류")
+            }
+        })
+    }
+    fun tryGetSearchResultsPopular(keyword : String, sortType : String, cursorIdx:Long, cursorPopularNum: Int, size:Int){
+        val searchResultRetrofitInterface = ApplicationClass.sRetrofit.create(SearchResultRetrofitInterface::class.java)
+        searchResultRetrofitInterface.getSearchResult(searchWord = keyword, sortType = sortType, cursorIdx = cursorIdx, cursorPopularNum = cursorPopularNum,size = size).enqueue(object: Callback<SearchResultResponse>{
+            override fun onResponse(call: Call<SearchResultResponse>, response: Response<SearchResultResponse>)
+            {
+                searchResultView.onGetSearchResultsSuccess(response.body() as SearchResultResponse)
+            }
+            override fun onFailure(call: Call<SearchResultResponse>, t: Throwable) {
+                searchResultView.onGetSearchResultsFailure(t.message ?: "통신 오류")
+            }
+        })
+    }
+    fun tryGetSearchResultsPrice(keyword : String, sortType : String, cursorIdx:Long, cursorPrice : Int, size:Int){
+        val searchResultRetrofitInterface = ApplicationClass.sRetrofit.create(SearchResultRetrofitInterface::class.java)
+        searchResultRetrofitInterface.getSearchResult(searchWord = keyword, sortType = sortType, cursorIdx = cursorIdx, cursorPrice  = cursorPrice ,size = size).enqueue(object: Callback<SearchResultResponse>{
+            override fun onResponse(call: Call<SearchResultResponse>, response: Response<SearchResultResponse>)
+            {
+                searchResultView.onGetSearchResultsSuccess(response.body() as SearchResultResponse)
+            }
+            override fun onFailure(call: Call<SearchResultResponse>, t: Throwable) {
+                searchResultView.onGetSearchResultsFailure(t.message ?: "통신 오류")
+            }
+        })
+    }
+
 
     fun tryGetTagResults(tag : String, sortType: String){
         val searchResultRetrofitInterface = ApplicationClass.sRetrofit.create(SearchResultRetrofitInterface::class.java)
         searchResultRetrofitInterface.getSearchResult(searchTag = tag, sortType = sortType).enqueue(object: Callback<SearchResultResponse>{
+            override fun onResponse(call: Call<SearchResultResponse>, response: Response<SearchResultResponse>)
+            {
+                searchResultView.onGetSearchResultsSuccess(response.body() as SearchResultResponse)
+            }
+            override fun onFailure(call: Call<SearchResultResponse>, t: Throwable) {
+                searchResultView.onGetSearchResultsFailure(t.message ?: "통신 오류")
+            }
+        })
+    }
+
+    fun tryGetTagResultsLatest(tag : String, sortType : String, cursorIdx:Long, size:Int){
+        val searchResultRetrofitInterface = ApplicationClass.sRetrofit.create(SearchResultRetrofitInterface::class.java)
+        searchResultRetrofitInterface.getSearchResult(searchTag = tag, sortType = sortType, cursorIdx = cursorIdx, size = size).enqueue(object: Callback<SearchResultResponse>{
+            override fun onResponse(call: Call<SearchResultResponse>, response: Response<SearchResultResponse>)
+            {
+                searchResultView.onGetSearchResultsSuccess(response.body() as SearchResultResponse)
+            }
+            override fun onFailure(call: Call<SearchResultResponse>, t: Throwable) {
+                searchResultView.onGetSearchResultsFailure(t.message ?: "통신 오류")
+            }
+        })
+    }
+    fun tryGetTagResultsPopular(tag : String, sortType : String, cursorIdx:Long, cursorPopularNum: Int, size:Int){
+        val searchResultRetrofitInterface = ApplicationClass.sRetrofit.create(SearchResultRetrofitInterface::class.java)
+        searchResultRetrofitInterface.getSearchResult(searchTag = tag, sortType = sortType, cursorIdx = cursorIdx, cursorPopularNum = cursorPopularNum,size = size).enqueue(object: Callback<SearchResultResponse>{
+            override fun onResponse(call: Call<SearchResultResponse>, response: Response<SearchResultResponse>)
+            {
+                searchResultView.onGetSearchResultsSuccess(response.body() as SearchResultResponse)
+            }
+            override fun onFailure(call: Call<SearchResultResponse>, t: Throwable) {
+                searchResultView.onGetSearchResultsFailure(t.message ?: "통신 오류")
+            }
+        })
+    }
+    fun tryGetTagResultsPrice(tag : String, sortType : String, cursorIdx:Long, cursorPrice : Int, size:Int){
+        val searchResultRetrofitInterface = ApplicationClass.sRetrofit.create(SearchResultRetrofitInterface::class.java)
+        searchResultRetrofitInterface.getSearchResult(searchTag = tag, sortType = sortType, cursorIdx = cursorIdx, cursorPrice  = cursorPrice ,size = size).enqueue(object: Callback<SearchResultResponse>{
             override fun onResponse(call: Call<SearchResultResponse>, response: Response<SearchResultResponse>)
             {
                 searchResultView.onGetSearchResultsSuccess(response.body() as SearchResultResponse)
