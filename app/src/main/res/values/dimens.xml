@@ -64,7 +64,6 @@
     <dimen name="store_feed_margin_start_end">12dp</dimen>
     <dimen name="store_feed_seller_nickname_margin_start">15dp</dimen>
     <dimen name="store_feed_seller_nickname_tv_size">16sp</dimen>
-    <dimen name="store_feed_img_height">360dp</dimen>
     <dimen name="store_feed_description_margin_end">21dp</dimen>
     <dimen name="store_feed_between_tag">10dp</dimen>
     <dimen name="store_feed_line">23.5dp</dimen>
