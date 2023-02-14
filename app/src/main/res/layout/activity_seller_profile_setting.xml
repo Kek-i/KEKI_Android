@@ -301,7 +301,8 @@
                 android:imeOptions="actionDone"
                 android:maxLines="1"
                 android:inputType="numberSigned"
-                android:digits="0123456789-"                app:layout_constraintEnd_toEndOf="parent"
+                android:digits="0123456789-"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/et7_profile_setting" />
 
