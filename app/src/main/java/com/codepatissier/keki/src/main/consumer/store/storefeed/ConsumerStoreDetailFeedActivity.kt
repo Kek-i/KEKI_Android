@@ -18,7 +18,7 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
     val storeFeedDatas = mutableListOf<StoreFeedData>()
     var feedTag : String ?= null //
     var storeIdx: Long? = null
-    var feedSize = 12
+    var feedSize = 21
     var cursorIdx : Int? = null
     var hasNext : Boolean? = null
     var positionStart = 0
