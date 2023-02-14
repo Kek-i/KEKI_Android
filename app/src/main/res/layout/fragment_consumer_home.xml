@@ -155,7 +155,7 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_first_home"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/home_recycler_width"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/home_recycler_margin_top"
                     android:paddingEnd="@dimen/home_tag_margin"
@@ -216,7 +216,7 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_second_home"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/home_recycler_width"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@+id/tv_second_home_tag"
                     app:layout_constraintStart_toStartOf="parent"
@@ -275,7 +275,7 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_third_home"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/home_recycler_width"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@+id/tv_third_home_tag"
                     app:layout_constraintStart_toStartOf="parent"
