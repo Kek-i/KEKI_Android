@@ -13,7 +13,7 @@
         android:layout_height="@dimen/store_feed_seller_img_size"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/oval_light_yellow"
+        android:background="@drawable/ic_seller"
         android:layout_marginStart="@dimen/store_feed_margin_start_end"
         android:layout_marginTop="@dimen/store_feed_seller_img_margin_top"
         />

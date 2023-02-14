@@ -81,7 +81,7 @@ class SellerMyPageFragment : BaseFragment<FragmentSellerMyPageBinding>
     }
 
     override fun onGetMyPageSuccess(response: SellerMyPageResponse) {
-        val defaultImg = R.drawable.bg_oval_off_white
+        val defaultImg = R.drawable.ic_seller
         val imageView = binding.ivProfile
 
         val nim = getString(R.string.my_page_tv_nickname)
