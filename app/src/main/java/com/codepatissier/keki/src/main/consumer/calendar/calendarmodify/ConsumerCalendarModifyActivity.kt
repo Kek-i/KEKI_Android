@@ -37,6 +37,7 @@ class ConsumerCalendarModifyActivity : BaseActivity<ActivityConsumerCalendarAddB
         super.onCreate(savedInstanceState)
 
         // 레이아웃 뷰, 버튼 Click Listener 설정
+        binding.tvCalendarAddMainText.text = getString(R.string.calendar_modify_main_text)
         setListenerToLayoutOfType()
         setListenerToDatePicker()
         setListenerToBackBtn()
