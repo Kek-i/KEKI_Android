@@ -6,7 +6,7 @@ import android.view.View
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseFragment
 import com.codepatissier.keki.databinding.FragmentSellerStoreFeedBinding
-import com.codepatissier.keki.src.main.seller.store.storefeed.SellerStoreFeedAddActivity
+import com.codepatissier.keki.src.main.seller.store.storefeed.storeadd.SellerStoreFeedAddActivity
 import com.codepatissier.keki.util.viewpager.storemain.StoreMainStoreData
 import com.codepatissier.keki.util.viewpager.storemain.seller.SellerStoreMainStoreAdapter
 
