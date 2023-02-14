@@ -25,7 +25,7 @@
     <dimen name="home_img_cake">10.5dp</dimen>
     <dimen name="home_first_tag_top">5dp</dimen>
     <dimen name="home_recycler_margin_top">15dp</dimen>
-    <dimen name="home_tag_start">14dp</dimen>
+    <dimen name="home_tag_margin">14dp</dimen>
     <dimen name="home_tag_size">16sp</dimen>
     <dimen name="home_tag_padding_top">4dp</dimen>
     <dimen name="home_tag_padding_bottom">4dp</dimen>
