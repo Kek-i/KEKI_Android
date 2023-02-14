@@ -1,6 +1,7 @@
 package com.codepatissier.keki.src.main.consumer.store.storefeed
 
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.codepatissier.keki.config.BaseActivity
@@ -23,6 +24,7 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
     var positionStart = 0
     var position : Int? = null
     var itemSize = 0
+    var first = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,7 +90,10 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
         storeFeedAdapter.setList(storeFeedDatas, hasNext!!)
         storeFeedAdapter.notifyItemRangeInserted(positionStart, response.result.feeds.size)
 
-        binding.recyclerStoreFeed.scrollToPosition(position!!)
+        if(first){
+            binding.recyclerStoreFeed.scrollToPosition(position!!)
+            first = false
+        }
     }
 
     private fun checkScrollEvent(){
