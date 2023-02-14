@@ -8,7 +8,7 @@ interface SearchResultView {
     fun onGetSearchResultsSuccess(response: SearchResultResponse)
     fun onGetSearchResultsFailure(message: String)
 
-//    //조회 기록
-//    fun onPostHistorySuccess(response: BaseResponse)
-//    fun onPostHistoryFailure(message: String)
+    //검색 결과 더 불러오기
+    fun onGetNextResultSuccess(response: SearchResultResponse)
+    fun onGetNextResultFailure(message: String)
 }

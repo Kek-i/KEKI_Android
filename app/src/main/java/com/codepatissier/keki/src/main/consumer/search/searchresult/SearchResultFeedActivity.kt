@@ -50,6 +50,14 @@ class SearchResultFeedActivity : BaseActivity<ActivityConsumerStoreDetailFeedBin
         showCustomToast("오류 : $message")
     }
 
+    override fun onGetNextResultSuccess(response: SearchResultResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetNextResultFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
     private fun searchResultFeedRecycler(response: SearchResultResponse){
 
         searchResultFeedAdapter = SearchResultFeedAdapter(response.result,this)

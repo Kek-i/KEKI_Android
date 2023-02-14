@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Keki</string>
+    <string name="app_name">케키</string>
 
     <!-- Auth -->
     <string name="kakao_native_key">e2abb1dfec5ae90f3ac6233769bfafec</string>
