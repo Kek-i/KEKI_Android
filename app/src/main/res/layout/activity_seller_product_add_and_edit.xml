@@ -77,6 +77,9 @@
         android:paddingTop="@dimen/seller_product_add_and_edit_et_padding_top_bottom"
         android:paddingBottom="@dimen/seller_product_add_and_edit_et_padding_top_bottom"
         android:includeFontPadding="false"
+        android:imeOptions="actionDone"
+        android:maxLines="1"
+        android:inputType="textNoSuggestions"
         />
 
     <EditText
@@ -99,8 +102,9 @@
         android:paddingTop="@dimen/seller_product_add_and_edit_et_padding_top_bottom"
         android:paddingBottom="@dimen/seller_product_add_and_edit_et_padding_top_bottom"
         android:includeFontPadding="false"
-        android:inputType="number"
-        />
+        android:imeOptions="actionDone"
+        android:maxLines="1"
+        android:inputType="number" />
 
     <EditText
         android:id="@+id/et_product_intro"
@@ -123,7 +127,10 @@
         android:paddingTop="@dimen/seller_product_add_and_edit_et_padding_top_bottom"
         android:paddingBottom="@dimen/seller_product_add_and_edit_et_padding_top_bottom"
         android:gravity="top"
-        android:maxLength="150"/>
+        android:maxLength="150"
+        android:imeOptions="actionDone"
+        android:maxLines="10"
+        android:inputType="textNoSuggestions"/>
 
     <TextView
         android:id="@+id/et_product_picture"

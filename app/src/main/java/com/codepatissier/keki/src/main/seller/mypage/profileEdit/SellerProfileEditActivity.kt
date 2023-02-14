@@ -225,8 +225,6 @@ class SellerProfileEditActivity :BaseActivity<ActivitySellerProfileEditBinding>(
         showCustomToast("오류 : $message")
     }
 
-
-
     // 엔터 클릭 시 키패드 내리기
     private fun keyboardEnterClicked(){
         val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
@@ -263,6 +261,5 @@ class SellerProfileEditActivity :BaseActivity<ActivitySellerProfileEditBinding>(
             return@setOnEditorActionListener false
         }
     }
-
 
 }
