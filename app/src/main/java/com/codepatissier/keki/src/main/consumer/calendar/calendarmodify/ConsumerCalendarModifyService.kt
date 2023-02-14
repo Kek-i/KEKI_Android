@@ -2,7 +2,7 @@ package com.codepatissier.keki.src.main.consumer.calendar.calendarmodify
 
 import com.codepatissier.keki.config.ApplicationClass
 import com.codepatissier.keki.config.BaseResponse
-import com.codepatissier.keki.src.main.consumer.calendar.calendaradd.model.ConsumerCalendarTagListResponse
+import com.codepatissier.keki.src.main.consumer.calendar.calendarmodify.model.ConsumerCalendarModifyViewResponse
 import com.codepatissier.keki.src.main.consumer.calendar.calendarmodify.model.UpdateCalendarRequest
 import retrofit2.Call
 import retrofit2.Callback
@@ -35,17 +35,20 @@ class ConsumerCalendarModifyService(val consumerCalendarModifyView: ConsumerCale
         })
     }
 
-    fun tryGetCalendarTag() {
+    fun tryGetCalendarModifyView(calendarIdx: Long) {
         val consumerCalendarModifyRetrofitInterface = ApplicationClass.sRetrofit.create(
             ConsumerCalendarModifyRetrofitInterface::class.java)
-        consumerCalendarModifyRetrofitInterface.getCalendarTag().enqueue(object:
-            Callback<ConsumerCalendarTagListResponse> {
-            override fun onResponse(call: Call<ConsumerCalendarTagListResponse>, response: Response<ConsumerCalendarTagListResponse>) {
-                consumerCalendarModifyView.onGetCalendarTagSuccess(response.body() as ConsumerCalendarTagListResponse)
+        consumerCalendarModifyRetrofitInterface.getCalendarModifyView(calendarIdx).enqueue(object:
+            Callback<ConsumerCalendarModifyViewResponse> {
+            override fun onResponse(
+                call: Call<ConsumerCalendarModifyViewResponse>,
+                response: Response<ConsumerCalendarModifyViewResponse>
+            ) {
+                consumerCalendarModifyView.onGetCalendarModifyViewSuccess(response.body() as ConsumerCalendarModifyViewResponse)
             }
 
-            override fun onFailure(call: Call<ConsumerCalendarTagListResponse>, t: Throwable) {
-                consumerCalendarModifyView.onGetCalendarTagFailure(t.message ?: "통신 오류")
+            override fun onFailure(call: Call<ConsumerCalendarModifyViewResponse>, t: Throwable) {
+                consumerCalendarModifyView.onGetCalendarModifyViewFailure(t.message ?: "통신 오류")
             }
         })
     }

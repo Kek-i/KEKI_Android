@@ -1,7 +1,7 @@
 package com.codepatissier.keki.src.main.consumer.calendar.calendarmodify
 
 import com.codepatissier.keki.config.BaseResponse
-import com.codepatissier.keki.src.main.consumer.calendar.calendaradd.model.ConsumerCalendarTagListResponse
+import com.codepatissier.keki.src.main.consumer.calendar.calendarmodify.model.ConsumerCalendarModifyViewResponse
 import com.codepatissier.keki.src.main.consumer.calendar.calendarmodify.model.UpdateCalendarRequest
 import retrofit2.Call
 import retrofit2.http.Body
@@ -16,6 +16,8 @@ interface ConsumerCalendarModifyRetrofitInterface {
         @Body params: UpdateCalendarRequest
     ): Call<BaseResponse>
 
-    @GET("/calendars/categories")
-    fun getCalendarTag(): Call<ConsumerCalendarTagListResponse>
+    @GET("/calendars/{calendarIdx}/edit")
+    fun getCalendarModifyView(
+        @Path("calendarIdx") calendarIdx: Long
+    ): Call<ConsumerCalendarModifyViewResponse>
 }

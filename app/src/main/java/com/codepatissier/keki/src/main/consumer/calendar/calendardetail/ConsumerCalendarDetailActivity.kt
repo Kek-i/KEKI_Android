@@ -12,7 +12,6 @@ import com.codepatissier.keki.src.main.consumer.calendar.calendarmodify.Consumer
 class ConsumerCalendarDetailActivity : BaseActivity<ActivityConsumerCalendarDetailBinding>
     (ActivityConsumerCalendarDetailBinding::inflate), ConsumerCalendarDetailView {
     private var calendarIdx: Long = 0
-    private lateinit var calendarDetail: ResultCalendarDetail
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,7 +65,6 @@ class ConsumerCalendarDetailActivity : BaseActivity<ActivityConsumerCalendarDeta
 
     override fun onGetCalendarDetailSuccess(response: ConsumerCalendarDetailResponse) {
         dismissLoadingDialog()
-        calendarDetail = response.result
         setLayoutFromResponse(response)
     }
 
@@ -85,7 +83,6 @@ class ConsumerCalendarDetailActivity : BaseActivity<ActivityConsumerCalendarDeta
         binding.ibCalendarDetailModify.setOnClickListener {
             val intent = Intent(this, ConsumerCalendarModifyActivity::class.java)
             intent.putExtra("calendarIdx", calendarIdx)
-            intent.putExtra("calendarDetail", calendarDetail)
             startActivity(intent)
         }
     }

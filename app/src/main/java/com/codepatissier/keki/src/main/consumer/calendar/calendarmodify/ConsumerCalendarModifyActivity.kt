@@ -5,7 +5,6 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
@@ -14,8 +13,8 @@ import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.databinding.ActivityConsumerCalendarAddBinding
-import com.codepatissier.keki.src.main.consumer.calendar.calendaradd.model.ConsumerCalendarTagListResponse
-import com.codepatissier.keki.src.main.consumer.calendar.calendardetail.model.ResultCalendarDetail
+import com.codepatissier.keki.src.main.consumer.calendar.calendarmodify.model.ConsumerCalendarModifyViewResponse
+import com.codepatissier.keki.src.main.consumer.calendar.calendarmodify.model.ResultCalendarModifyView
 import com.codepatissier.keki.src.main.consumer.calendar.calendarmodify.model.UpdateCalendarRequest
 import com.google.android.material.chip.Chip
 import java.io.Serializable
@@ -26,8 +25,6 @@ import java.util.*
 class ConsumerCalendarModifyActivity : BaseActivity<ActivityConsumerCalendarAddBinding>
     (ActivityConsumerCalendarAddBinding::inflate), ConsumerCalendarModifyView {
     private var calendarIdx: Long = 0
-    // 기념일 종류 메뉴 열고 닫기 여부
-    private var openForLayoutOfType: Boolean = false
     // 무슨색 태그가 사용 중인지
     private var bOffWhiteIsUsed: Boolean = false
     private var bVeryLightPinkIsUsed: Boolean = false
@@ -36,6 +33,7 @@ class ConsumerCalendarModifyActivity : BaseActivity<ActivityConsumerCalendarAddB
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        initCalendarIdx()
         // 레이아웃 뷰, 버튼 Click Listener 설정
         binding.tvCalendarAddMainText.text = getString(R.string.calendar_modify_main_text)
         setListenerToLayoutOfType()
@@ -48,27 +46,65 @@ class ConsumerCalendarModifyActivity : BaseActivity<ActivityConsumerCalendarAddB
         setListenerToSortedTag(binding.chipSecondSortedTag, 2)
         setListenerToSortedTag(binding.chipThirdSortedTag, 3)
 
-        // 해시태그 목록 서버에서 가져오기
+        // 수정할 기념일 상세, 해시태그 목록 서버에서 가져오기
         showLoadingDialog(this)
-        ConsumerCalendarModifyService(this).tryGetCalendarTag()
+        ConsumerCalendarModifyService(this).tryGetCalendarModifyView(calendarIdx)
     }
 
-    private fun initCalendar() {
+    private fun initCalendarIdx() {
         calendarIdx = intent.getLongExtra("calendarIdx", 0)
-        val calendarDetail = intent.serializable<ResultCalendarDetail>("calendarDetail")!!
+    }
 
-        binding.tvSelectType.text = calendarDetail.kindOfCalendar
-        binding.etTitle.setText(calendarDetail.title)
-        binding.etSelectDate.setText(calendarDetail.date)
+    override fun onUpdateCalendarSuccess(response: BaseResponse) {
+        dismissLoadingDialog()
+
+        binding.chipGroupHashtag.clearCheck()
+//        // chipgroup 자식 chip들 모두 삭제
+//        for (chip in binding.chipGroupHashtag.children) {
+//            val chip: Chip = binding.chipGroupHashtag.findViewById(chip.id)
+//            binding.root.removeView(chip)
+//        }
+
+        finish()
+    }
+
+    override fun onUpdateCalendarFailure(message: String) {
+        dismissLoadingDialog()
+        showCustomToast(message)
+    }
+
+    override fun onGetCalendarModifyViewSuccess(response: ConsumerCalendarModifyViewResponse) {
+        dismissLoadingDialog()
+
+        val hashTagList = mutableListOf<String>()
+        for(i in response.result.hashTags.indices) {
+            hashTagList.add(response.result.hashTags[i]["calendarHashTag"]!!)
+        }
+        // 해시태그 리스트 받아와서 chip 생성 및 Click Listener 설정
+        createChip(hashTagList)
+        // 기존 기념일 정보 init
+        initCalendar(response.result, hashTagList)
+    }
+
+    override fun onGetCalendarModifyViewFailure(message: String) {
+        dismissLoadingDialog()
+        showCustomToast(message)
+    }
+
+    private fun initCalendar(result: ResultCalendarModifyView, hashTagList: List<String>) {
+        // 기본 정보
+        binding.tvSelectType.text = result.kindOfCalendar
+        binding.etTitle.setText(result.title)
         binding.etSelectDate.setTextColor(getColor(R.color.black))
+        binding.etSelectDate.setText(result.date)
         // 해시태그
-        if(calendarDetail.hashTags.isNotEmpty()) {
+        if(hashTagList.isNotEmpty()) {
             val firstTag = binding.chipFirstSortedTag
             val secondTag = binding.chipSecondSortedTag
             val thirdTag = binding.chipThirdSortedTag
 
-            for(i in 0 until calendarDetail.hashTags.size) {
-                var tagName = "# " + calendarDetail.hashTags[i]["calendarHashTag"]
+            for(i in hashTagList.indices) {
+                var tagName = "# " + hashTagList[i]
 
                 // 첫번째 태그 자리가 비어있다면 == 아무것도 선택하지 않은 상태
                 if(firstTag.visibility == View.GONE) {
@@ -107,7 +143,6 @@ class ConsumerCalendarModifyActivity : BaseActivity<ActivityConsumerCalendarAddB
             if (chip.text.equals(tagName)) {
                 chip.visibility = View.GONE
                 chip.isChecked = true
-                Log.d("check", "${chip}")
             }
         }
     }
@@ -116,44 +151,6 @@ class ConsumerCalendarModifyActivity : BaseActivity<ActivityConsumerCalendarAddB
     private inline fun <reified T : Serializable> Intent.serializable(key: String): T? = when {
         Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU -> getSerializableExtra(key, T::class.java)
         else -> @Suppress("DEPRECATION") getSerializableExtra(key) as? T
-    }
-
-    override fun onUpdateCalendarSuccess(response: BaseResponse) {
-        dismissLoadingDialog()
-
-        binding.chipGroupHashtag.clearCheck()
-        // chipgroup 자식 chip들 모두 삭제
-        for (chip in binding.chipGroupHashtag.children) {
-            val chip: Chip = binding.chipGroupHashtag.findViewById(chip.id)
-            binding.root.removeView(chip)
-        }
-
-        Log.d("chipgroup", "${binding.chipGroupHashtag}")
-        finish()
-    }
-
-    override fun onUpdateCalendarFailure(message: String) {
-        dismissLoadingDialog()
-        showCustomToast(message)
-    }
-
-    override fun onGetCalendarTagSuccess(response: ConsumerCalendarTagListResponse) {
-        dismissLoadingDialog()
-
-        val hashTagList = mutableListOf<String>()
-        for(i in response.result.indices) {
-            hashTagList.add(response.result[i].tagName)
-        }
-        // 해시태그 리스트 받아와서 chip 생성 및 Click Listener 설정
-        createChip(hashTagList)
-
-        // 기존 기념일 내용 붙여넣기
-        initCalendar()
-    }
-
-    override fun onGetCalendarTagFailure(message: String) {
-        dismissLoadingDialog()
-        showCustomToast(message)
     }
 
     private fun setListenerToCompletionBtn() {
@@ -171,8 +168,6 @@ class ConsumerCalendarModifyActivity : BaseActivity<ActivityConsumerCalendarAddB
                     tagText = tagText.replace("#", "")
                     hashTags.add(mapOf("calendarHashTag" to tagText))
                 }
-                Log.d("체크된 칩", "${binding.chipGroupHashtag.checkedChipIds.size}")
-                Log.d("사이즈", "${hashTags.size}")
 
                 val updateCalendarRequest = UpdateCalendarRequest(
                     kindOfCalendar = type, title = title, date = date, hashTags = hashTags
@@ -207,25 +202,21 @@ class ConsumerCalendarModifyActivity : BaseActivity<ActivityConsumerCalendarAddB
         binding.layoutCloseCalendarAddType.setOnClickListener {
             outOfFocusOnTitle()
             // 선택 메뉴 펼쳐져 있을 때
-            if(openForLayoutOfType) {
+            if(binding.layoutOpenCalendarAddType.visibility == View.VISIBLE) {
                 binding.layoutOpenCalendarAddType.visibility = View.GONE
-                openForLayoutOfType = false
             }
             // 선택 메뉴 펼쳐져 있지 않을 때
-            else {
+            else if(binding.layoutOpenCalendarAddType.visibility == View.GONE) {
                 binding.layoutOpenCalendarAddType.visibility = View.VISIBLE
-                openForLayoutOfType = true
             }
         }
         binding.ibOpenType.setOnClickListener {
             outOfFocusOnTitle()
-            if(openForLayoutOfType) {
+            if(binding.layoutOpenCalendarAddType.visibility == View.VISIBLE) {
                 binding.layoutOpenCalendarAddType.visibility = View.GONE
-                openForLayoutOfType = false
             }
-            else {
+            else if(binding.layoutOpenCalendarAddType.visibility == View.GONE) {
                 binding.layoutOpenCalendarAddType.visibility = View.VISIBLE
-                openForLayoutOfType = true
             }
         }
 
@@ -234,7 +225,6 @@ class ConsumerCalendarModifyActivity : BaseActivity<ActivityConsumerCalendarAddB
             binding.tvTypeErrorNoInput.visibility = View.GONE
             outOfFocusOnTitle()
             binding.layoutOpenCalendarAddType.visibility = View.GONE
-            openForLayoutOfType = false
             binding.tvSelectType.text = binding.tvTypeDday.text
         }
         // 날짜수 클릭
@@ -242,7 +232,6 @@ class ConsumerCalendarModifyActivity : BaseActivity<ActivityConsumerCalendarAddB
             binding.tvTypeErrorNoInput.visibility = View.GONE
             outOfFocusOnTitle()
             binding.layoutOpenCalendarAddType.visibility = View.GONE
-            openForLayoutOfType = false
             binding.tvSelectType.text = binding.tvTypeNumberOfDays.text
         }
         // 매년 반복 클릭
@@ -250,7 +239,6 @@ class ConsumerCalendarModifyActivity : BaseActivity<ActivityConsumerCalendarAddB
             binding.tvTypeErrorNoInput.visibility = View.GONE
             outOfFocusOnTitle()
             binding.layoutOpenCalendarAddType.visibility = View.GONE
-            openForLayoutOfType = false
             binding.tvSelectType.text = binding.tvTypeRepeatEveryYear.text
         }
     }
@@ -299,7 +287,6 @@ class ConsumerCalendarModifyActivity : BaseActivity<ActivityConsumerCalendarAddB
                 false
             ) as Chip
             chip.id = View.generateViewId()
-            Log.d("생성된 아이디", "${chip.id}")
             chip.text = "# ${hashTagList[i]}"
             binding.chipGroupHashtag.addView(chip)
 
@@ -342,7 +329,6 @@ class ConsumerCalendarModifyActivity : BaseActivity<ActivityConsumerCalendarAddB
     private fun setListenerToSortedTag(sortedTag: Chip, tagNumber: Int) {
         // 이미 선택된 상태에서 클릭했다면
         sortedTag.setOnClickListener {
-            Log.d("정렬용 태그 check", "${sortedTag.isChecked}")
             // 원래 태그 보여주기
             for (id in binding.chipGroupHashtag.checkedChipIds) {
                 val chip: Chip = binding.chipGroupHashtag.findViewById(id)
