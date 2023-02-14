@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:text="@string/home_store_name"
         app:layout_constraintTop_toBottomOf="@+id/cv"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/cv"
         app:layout_constraintEnd_toEndOf="@+id/cv"
         android:layout_marginTop="@dimen/home_store_tv_margin_top"
         android:includeFontPadding="false"
