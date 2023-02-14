@@ -46,6 +46,7 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
         //feedTag = intent.getStringExtra("tag")!!
         storeIdx = intent.getLongExtra("storeIdx", -1)
         position = intent.getIntExtra("position", 0)
+        feedSize = position!! + 5
         storeFeedAdapter = StoreFeedAdapter(this)
         binding.recyclerStoreFeed.adapter = storeFeedAdapter
     }
