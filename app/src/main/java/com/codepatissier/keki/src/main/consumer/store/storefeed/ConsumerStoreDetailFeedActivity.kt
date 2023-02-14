@@ -24,7 +24,7 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
     var positionStart = 0
     var position : Int? = null
     var itemSize = 0
-    var first = true
+    var firstLoading : Boolean? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +35,11 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
         showLoadingDialog(this)
         ConsumerStoreFeedDetailService(this).tryGetConsumerStoreFeedDetailRetrofitInterface(storeIdx!!, cursorIdx, feedSize)
         checkScrollEvent()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        firstLoading = true
     }
 
     private fun initRecyclerView(){
@@ -90,9 +95,9 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
         storeFeedAdapter.setList(storeFeedDatas, hasNext!!)
         storeFeedAdapter.notifyItemRangeInserted(positionStart, response.result.feeds.size)
 
-        if(first){
+        if(firstLoading!!){
             binding.recyclerStoreFeed.scrollToPosition(position!!)
-            first = false
+            firstLoading = false
         }
     }
 
