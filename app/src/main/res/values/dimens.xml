@@ -94,6 +94,9 @@
     <dimen name="feed_indicator_dots_size">8dp</dimen>
     <dimen name="feed_indicator_dots_spacing">4dp</dimen>
     <dimen name="feed_indicator_dots_stroke_width">4dp</dimen>
+    <dimen name="feed_tag_padding_start_end">14dp</dimen>
+    <dimen name="feed_tag_padding_top">4dp</dimen>
+    <dimen name="feed_tag_padding_bottom">6dp</dimen>
 
     <!-- report -->
     <dimen name="dialog_report_title_size">18sp</dimen>
