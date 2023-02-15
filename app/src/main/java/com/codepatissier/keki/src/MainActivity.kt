@@ -50,9 +50,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                                 .commitAllowingStateLoss()
                         }
                         R.id.menu_consumer_main_btm_nav_like -> {
-                            supportFragmentManager.beginTransaction()
-                                .replace(R.id.main_frm, ConsumerLikeFragment())
-                                .commitAllowingStateLoss()
+                             if(accessToken != null && userRole == "구매자") {
+                                supportFragmentManager.beginTransaction()
+                                    .replace(R.id.main_frm, ConsumerLikeFragment())
+                                    .commitAllowingStateLoss()
+                            } else {
+                                supportFragmentManager.beginTransaction()
+                                    .replace(R.id.main_frm, NonConsumerFragment())
+                                    .commitAllowingStateLoss()
+                            }
                         }
                         R.id.menu_consumer_main_btm_nav_my_page -> {
                             if (accessToken != null && userRole == "구매자") {
