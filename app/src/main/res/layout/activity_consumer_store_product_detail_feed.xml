@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    tools:context=".src.main.consumer.store.productfeed.productdetail.ConsumerStoreProductDetailFeedActivity">
+
+    <ImageView
+        android:id="@+id/iv_product_feed_left_chevron"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/store_product_detail_chevron_marginTop"
+        android:layout_marginStart="@dimen/store_product_detail_chevron_marginStart"
+        android:src="@drawable/ic_chevron_left"/>
+
+    <TextView
+        android:id="@+id/tv_product_feed_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/store_product_detail_store_name_marginStart"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_product_feed_left_chevron"
+        android:layout_marginTop="@dimen/store_product_detail_store_name_marginTop"
+        android:textColor="@color/black"
+        android:textSize="@dimen/store_feed_title_size"
+        android:text="가게 ID"
+        android:includeFontPadding="false"
+        android:fontFamily="@font/notosanskr_bold"/>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp_product_feed_img"
+        android:layout_width="@dimen/store_product_detail_img_size"
+        android:layout_height="@dimen/store_product_detail_img_size"
+        android:layout_marginTop="@dimen/store_product_detail_vp_marginTop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_product_feed_id"/>
+
+    <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+        android:id="@+id/worm_dots_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:dotsColor="@color/darkish_pink"
+        app:dotsCornerRadius="8dp"
+        app:dotsSize="8dp"
+        app:dotsSpacing="4dp"
+        app:dotsStrokeColor="@color/very_light_pink"
+        app:dotsStrokeWidth="4dp"
+        app:layout_constraintTop_toBottomOf="@+id/vp_product_feed_img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/store_feed_between_tag" />
+
+    <TextView
+        android:id="@+id/tv_product_feed_cake_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/worm_dots_indicator"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="제품 이름"
+        android:includeFontPadding="false"
+        android:fontFamily="@font/notosanskr_bold"
+        android:textSize="@dimen/store_product_detail_cake_name_font"
+        android:layout_marginStart="@dimen/store_product_detail_cake_name_marginStart"
+        android:layout_marginTop="@dimen/store_product_detail_cake_name_marginTop"
+        />
+
+    <TextView
+        android:id="@+id/tv_product_feed_cake_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/store_product_detail_cake_price_marginTop"
+        android:layout_marginEnd="@dimen/store_product_detail_cake_price_marginStart"
+        android:fontFamily="@font/notosanskr_bold"
+        android:includeFontPadding="false"
+        android:text="25,000원"
+        android:textColor="@color/black"
+        android:textSize="@dimen/store_product_detail_cake_price_font"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/worm_dots_indicator" />
+
+    <TextView
+        android:id="@+id/tv_product_feed_cake_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/store_product_detail_cake_detail_marginTop"
+        android:layout_marginStart="@dimen/store_product_detail_cake_detail_marginStart"
+        android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
+        android:text="상품 설명\n어쩌구\n레터링 추가 +3000원\n선물포장 +2000원\n어쩌구저쩌구정보들"
+        android:textColor="@color/black"
+        android:textSize="@dimen/store_product_detail_cake_detail_font"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_product_feed_cake_name" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

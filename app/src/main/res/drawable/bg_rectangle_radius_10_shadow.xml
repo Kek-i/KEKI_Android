@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item>
+        <shape>
+            <padding
+                android:bottom="@dimen/bg_shadow_true"
+                android:left="@dimen/bg_shadow_false"
+                android:right="@dimen/bg_shadow_true"
+                android:top="@dimen/bg_shadow_false" />
+            <corners android:radius="@dimen/bg_shadow_rec6_radius" />
+            <solid android:color="#01987171" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <padding
+                android:bottom="@dimen/bg_shadow_true"
+                android:left="@dimen/bg_shadow_false"
+                android:right="@dimen/bg_shadow_true"
+                android:top="@dimen/bg_shadow_false" />
+            <corners android:radius="@dimen/bg_shadow_rec5_radius" />
+            <solid android:color="#03987171" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <padding
+                android:bottom="@dimen/bg_shadow_true"
+                android:left="@dimen/bg_shadow_false"
+                android:right="@dimen/bg_shadow_true"
+                android:top="@dimen/bg_shadow_false" />
+            <corners android:radius="@dimen/bg_shadow_rec4_radius" />
+            <solid android:color="#07987171" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <padding
+                android:bottom="@dimen/bg_shadow_true"
+                android:left="@dimen/bg_shadow_true"
+                android:right="@dimen/bg_shadow_true"
+                android:top="@dimen/bg_shadow_true" />
+            <corners android:radius="@dimen/bg_shadow_rec3_radius" />
+            <solid android:color="#0D987171" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <padding
+                android:bottom="@dimen/bg_shadow_true"
+                android:left="@dimen/bg_shadow_false"
+                android:right="@dimen/bg_shadow_true"
+                android:top="@dimen/bg_shadow_false" />
+            <corners android:radius="@dimen/bg_shadow_rec2_radius" />
+            <solid android:color="#0F987171" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+
+        <solid
+            android:color="@color/white"/>
+        <corners
+            android:radius="@dimen/bg_shadow_rec1_radius"/>
+
+        </shape>
+    </item>
+</layer-list>
+

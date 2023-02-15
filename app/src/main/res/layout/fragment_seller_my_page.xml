@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".src.main.consumer.mypage.ConsumerMyPageFragment">
+
+    <ScrollView
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_main_text"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/my_page_scroll_child_padding_bottom"
+            android:clipToPadding="false"
+            >
+
+            <TextView
+                android:id="@+id/tv_main_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/my_page_tv_main_text_top"
+                android:layout_marginLeft="@dimen/my_page_tv_main_text_left"
+                android:fontFamily="@font/notosanskr_bold"
+                android:includeFontPadding="false"
+                android:text="@string/my_page_main_text"
+                android:textColor="@color/black"
+                android:textSize="@dimen/my_page_tv_main_text_size"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/my_page_ic_top"
+                android:layout_marginRight="@dimen/my_page_ic_message_right"
+                app:tint="@color/black"
+                android:src="@drawable/ic_message"
+                app:layout_constraintEnd_toStartOf="@+id/iv_notifications"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_notifications"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/my_page_ic_top"
+                android:layout_marginRight="@dimen/my_page_ic_notification_right"
+                android:src="@drawable/ic_notifications"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/black" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/my_page_profile_width_height"
+                android:layout_marginHorizontal="@dimen/my_page_profile_margin_horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/my_page_profile_top"
+                app:layout_constraintTop_toBottomOf="@+id/tv_main_text">
+
+                <ImageView
+                    android:id="@+id/iv_profile"
+                    android:layout_width="@dimen/my_page_profile_width_height"
+                    android:layout_height="@dimen/my_page_profile_width_height"
+                    android:src="@drawable/ic_seller"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_nick_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/my_page_comment_text_left"
+                    android:layout_marginTop="@dimen/my_page_comment_text_top"
+                    android:fontFamily="@font/notosanskr_bold"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/my_page_comment_text_size"
+                    app:layout_constraintStart_toEndOf="@id/iv_profile"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/my_page_comment_text_left"
+                    android:fontFamily="@font/notosanskr_bold"
+                    android:includeFontPadding="false"
+                    android:text="@string/my_page_main_comment"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/my_page_comment_text_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/iv_profile"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_nick_name"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/my_page_large_text_left"
+                android:layout_marginTop="@dimen/my_page_large_text_top"
+                android:fontFamily="@font/notosanskr_bold"
+                android:includeFontPadding="false"
+                android:text="@string/my_page_account"
+                android:textColor="@color/black"
+                android:textSize="@dimen/my_page_text_size"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout2"
+                android:layout_width="@dimen/my_page_box_width"
+                android:layout_height="@dimen/my_page_account_height"
+                android:layout_marginLeft="@dimen/my_page_box_left_right"
+                android:layout_marginTop="@dimen/my_page_box_top"
+                android:layout_marginRight="@dimen/my_page_box_left_right"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_account"
+                app:layout_constraintCircleRadius="@dimen/my_page_box_radius"
+                android:background="@drawable/bg_rectangle_radius_10_white_no_padding"
+                android:elevation="@dimen/my_page_box_shadow">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/csl_profile_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toTopOf="@+id/v_line"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/tv_profile_edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/my_page_box_inner_left"
+                        android:layout_marginTop="@dimen/my_page_box_first_text_inner_top"
+                        android:fontFamily="@font/notosanskr_regular"
+                        android:includeFontPadding="false"
+                        android:text="@string/my_page_profile_edit"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/my_page_text_size"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/my_page_box_first_chevron_inner_top"
+                        android:layout_marginRight="@dimen/my_page_box_inner_right"
+                        android:src="@drawable/ic_chevron_right"
+                        android:background="@android:color/transparent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:id="@+id/v_line"
+                    android:layout_width="@dimen/my_page_line_width"
+                    android:layout_height="@dimen/my_page_line_height"
+                    android:layout_marginLeft="@dimen/my_page_line_left_right"
+                    android:layout_marginTop="@dimen/my_page_line_top"
+                    android:layout_marginRight="@dimen/my_page_line_left_right"
+                    android:background="@color/my_page_line"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/csl_profile_edit" />
+
+                <TextView
+                    android:id="@+id/tv_logout"
+                    android:layout_width="@dimen/my_page_box_width"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/my_page_box_inner_left"
+                    android:layout_marginTop="@dimen/my_page_box_inner_top"
+                    android:fontFamily="@font/notosanskr_regular"
+                    android:includeFontPadding="false"
+                    android:text="@string/my_page_logout"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/my_page_text_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/v_line" />
+
+                <View
+                    android:id="@+id/v_line2"
+                    android:layout_width="@dimen/my_page_line_width"
+                    android:layout_height="@dimen/my_page_line_height"
+                    android:layout_marginLeft="@dimen/my_page_line_left_right"
+                    android:layout_marginTop="@dimen/my_page_line_top"
+                    android:layout_marginRight="@dimen/my_page_line_left_right"
+                    android:background="@color/my_page_line"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_logout" />
+
+                <TextView
+                    android:id="@+id/tv_withdrawal"
+                    android:layout_width="@dimen/my_page_box_width"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/my_page_box_inner_left"
+                    android:layout_marginTop="@dimen/my_page_box_inner_top"
+                    android:layout_marginBottom="@dimen/my_page_box_inner_bottom"
+                    android:fontFamily="@font/notosanskr_regular"
+                    android:includeFontPadding="false"
+                    android:text="@string/my_page_widthdrawal"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/my_page_text_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/v_line2" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_notification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/my_page_large_text_left"
+                android:layout_marginTop="@dimen/my_page_large_text_top"
+                android:fontFamily="@font/notosanskr_bold"
+                android:includeFontPadding="false"
+                android:text="@string/my_page_notification"
+                android:textColor="@color/black"
+                android:textSize="@dimen/my_page_text_size"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout3"
+                android:layout_width="@dimen/my_page_box_width"
+                android:layout_height="@dimen/my_page_notification_height"
+                android:layout_marginLeft="@dimen/my_page_box_left_right"
+                android:layout_marginTop="@dimen/my_page_box_top"
+                android:layout_marginRight="@dimen/my_page_box_left_right"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_notification"
+                app:layout_constraintCircleRadius="@dimen/my_page_box_radius"
+                android:background="@drawable/bg_rectangle_radius_10_white_no_padding"
+                android:elevation="@dimen/my_page_box_shadow">
+
+                <Switch
+                    android:id="@+id/switch_push_notification"
+                    android:layout_width="@dimen/my_page_box_width"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/my_page_box_inner_left"
+                    android:layout_marginRight="@dimen/my_page_box_inner_right"
+                    android:fontFamily="@font/notosanskr_regular"
+                    android:includeFontPadding="false"
+                    android:text="@string/my_page_push_notification"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/my_page_text_size"
+                    android:thumb="@drawable/switch_thumb_push_notification"
+                    android:track="@drawable/switch_track_push_notification"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_app_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/my_page_large_text_left"
+                android:layout_marginTop="@dimen/my_page_large_text_top"
+                android:fontFamily="@font/notosanskr_bold"
+                android:includeFontPadding="false"
+                android:text="@string/my_page_app_info"
+                android:textColor="@color/black"
+                android:textSize="@dimen/my_page_text_size"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout4"
+                android:layout_width="@dimen/my_page_box_width"
+                android:layout_height="@dimen/my_page_app_info_height"
+                android:layout_marginLeft="@dimen/my_page_box_left_right"
+                android:layout_marginTop="@dimen/my_page_box_top"
+                android:layout_marginRight="@dimen/my_page_box_left_right"
+                android:background="@drawable/bg_rectangle_radius_10_white_no_padding"
+                android:elevation="@dimen/my_page_box_shadow"
+                android:layout_marginBottom="@dimen/my_page_large_text_top"
+                app:layout_constraintCircleRadius="@dimen/my_page_box_radius"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_app_info">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/csl_notice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/tv_notice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/my_page_box_inner_left"
+                        android:layout_marginTop="@dimen/my_page_box_first_text_inner_top"
+                        android:fontFamily="@font/notosanskr_regular"
+                        android:includeFontPadding="false"
+                        android:text="@string/my_page_notice"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/my_page_text_size"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/my_page_box_first_chevron_inner_top"
+                        android:layout_marginRight="@dimen/my_page_box_inner_right"
+                        android:src="@drawable/ic_chevron_right"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <View
+                    android:id="@+id/v_line4"
+                    android:layout_width="@dimen/my_page_line_width"
+                    android:layout_height="@dimen/my_page_line_height"
+                    android:layout_marginLeft="@dimen/my_page_line_left_right"
+                    android:layout_marginTop="@dimen/my_page_line_top"
+                    android:layout_marginRight="@dimen/my_page_line_left_right"
+                    android:background="@color/my_page_line"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/csl_notice"/>
+
+                <TextView
+                    android:id="@+id/tv_condition"
+                    android:layout_width="@dimen/my_page_box_width"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/my_page_box_inner_left"
+                    android:layout_marginTop="@dimen/my_page_box_inner_top"
+                    android:fontFamily="@font/notosanskr_regular"
+                    android:includeFontPadding="false"
+                    android:text="@string/my_page_app_condition"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/my_page_text_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/v_line4" />
+
+                <View
+                    android:id="@+id/v_line5"
+                    android:layout_width="@dimen/my_page_line_width"
+                    android:layout_height="@dimen/my_page_line_height"
+                    android:layout_marginLeft="@dimen/my_page_line_left_right"
+                    android:layout_marginTop="@dimen/my_page_line_top"
+                    android:layout_marginRight="@dimen/my_page_line_left_right"
+                    android:background="@color/my_page_line"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_condition" />
+
+                <TextView
+                    android:id="@+id/tv_personal_info"
+                    android:layout_width="@dimen/my_page_box_width"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/my_page_box_inner_left"
+                    android:layout_marginTop="@dimen/my_page_box_inner_top"
+                    android:fontFamily="@font/notosanskr_regular"
+                    android:includeFontPadding="false"
+                    android:text="@string/my_page_personal_info"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/my_page_text_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/v_line5" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</FrameLayout>

@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/edit_back_logo_marginStart"
+            android:layout_marginTop="@dimen/edit_back_logo_marginTop"
+            android:src="@drawable/ic_chevron_left"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_layoutName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/edit_title_marginLeft"
+            android:layout_marginTop="@dimen/edit_title_marginTop"
+            android:fontFamily="@font/notosanskr_bold"
+            android:includeFontPadding="false"
+            android:text="@string/tv_seller_profile_setting_title"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edit_layout_title_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/edit_check_btn_marginTop"
+            android:layout_marginRight="@dimen/edit_check_btn_marginRight"
+            android:fontFamily="@font/notosanskr_regular"
+            android:includeFontPadding="false"
+            android:text="@string/btn_check"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edit_check_btn_font_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topBar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/cv_photo"
+                android:layout_width="@dimen/edit_profile_photo_size"
+                android:layout_height="@dimen/edit_profile_photo_size"
+                android:layout_marginTop="@dimen/seller_setting_cv_marginTop"
+                android:src="@drawable/ic_seller"
+                app:civ_border_color="@color/white"
+                app:civ_border_overlay="true"
+                app:civ_border_width="@dimen/edit_profile_border_width"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_camera_background"
+                android:layout_width="@dimen/seller_setting_bg_camera_size"
+                android:layout_height="@dimen/seller_setting_bg_camera_size"
+                android:layout_marginLeft="@dimen/seller_setting_bg_camera_marginLeft"
+                android:layout_marginTop="@dimen/seller_setting_bg_camera_marginTop"
+                android:src="@drawable/bg_oval_pale_salmon"
+                app:layout_constraintStart_toStartOf="@id/cv_photo"
+                app:layout_constraintTop_toTopOf="@id/cv_photo" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_camera"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_camera_background"
+                app:layout_constraintEnd_toEndOf="@+id/iv_camera_background"
+                app:layout_constraintStart_toStartOf="@+id/iv_camera_background"
+                app:layout_constraintTop_toTopOf="@+id/iv_camera_background" />
+
+
+            <TextView
+                android:id="@+id/tv_user_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/notosanskr_regular"
+                android:includeFontPadding="false"
+                android:text="keki@gmail.com"
+                android:textColor="@color/brown_grey"
+                android:textSize="@dimen/edit_rule_font_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cv_photo" />
+
+            <EditText
+                android:id="@+id/et1_profile_setting"
+                android:layout_width="@dimen/seller_setting_et_width"
+                android:layout_height="@dimen/seller_setting_et_height"
+                android:layout_marginLeft="@dimen/seller_setting_et_marginLeft"
+                android:layout_marginRight="@dimen/seller_setting_et_marginRight"
+                android:layout_marginTop="@dimen/seller_setting_et1_marginTop"
+                android:background="@drawable/bg_rectangle_radius_10_shadow"
+                android:fontFamily="@font/notosanskr_regular"
+                android:gravity="center_vertical"
+                android:hint="@string/seller_profile_setting_et1"
+                android:includeFontPadding="false"
+                android:paddingStart="@dimen/edit_et_paddingStart"
+                android:imeOptions="actionDone"
+                android:maxLines="1"
+                android:inputType="textNoSuggestions"
+                android:textColor="@color/black"
+                android:textSize="@dimen/edit_et_font_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_user_email" />
+
+            <EditText
+                android:id="@+id/et2_profile_setting"
+                android:layout_width="@dimen/seller_setting_et_width"
+                android:layout_height="@dimen/seller_setting_et_height"
+                android:layout_marginLeft="@dimen/seller_setting_et_marginLeft"
+                android:layout_marginRight="@dimen/seller_setting_et_marginRight"
+                android:layout_marginTop="@dimen/seller_setting_et2_marginTop"
+                android:background="@drawable/bg_rectangle_radius_10_shadow"
+                android:fontFamily="@font/notosanskr_regular"
+                android:gravity="center_vertical"
+                android:hint="@string/seller_profile_setting_et2"
+                android:includeFontPadding="false"
+                android:paddingStart="@dimen/edit_et_paddingStart"
+                android:textColor="@color/black"
+                android:imeOptions="actionDone"
+                android:maxLines="1"
+                android:inputType="textNoSuggestions"
+                android:textSize="@dimen/edit_et_font_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et1_profile_setting" />
+
+            <EditText
+                android:id="@+id/et3_profile_setting"
+                android:layout_width="@dimen/seller_setting_et_width"
+                android:layout_height="@dimen/seller_setting_et_height"
+                android:layout_marginLeft="@dimen/seller_setting_et_marginLeft"
+                android:layout_marginRight="@dimen/seller_setting_et_marginRight"
+                android:layout_marginTop="@dimen/seller_setting_et2_marginTop"
+                android:background="@drawable/bg_rectangle_radius_10_shadow"
+                android:fontFamily="@font/notosanskr_regular"
+                android:gravity="center_vertical"
+                android:hint="@string/seller_profile_setting_et3"
+                android:imeOptions="actionDone"
+                android:maxLines="1"
+                android:inputType="textNoSuggestions"
+                android:maxLength="100"
+                android:includeFontPadding="false"
+                android:paddingStart="@dimen/edit_et_paddingStart"
+                android:textColor="@color/black"
+                android:textSize="@dimen/edit_et_font_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et2_profile_setting" />
+
+            <EditText
+                android:id="@+id/et4_profile_setting"
+                android:layout_width="@dimen/seller_setting_et_width"
+                android:layout_height="@dimen/seller_setting_et_height"
+                android:layout_marginLeft="@dimen/seller_setting_et_marginLeft"
+                android:layout_marginRight="@dimen/seller_setting_et_marginRight"
+                android:layout_marginTop="@dimen/seller_setting_et2_marginTop"
+                android:background="@drawable/bg_rectangle_radius_10_shadow"
+                android:fontFamily="@font/notosanskr_regular"
+                android:gravity="center_vertical"
+                android:hint="@string/seller_profile_setting_et4"
+                android:includeFontPadding="false"
+                android:paddingStart="@dimen/edit_et_paddingStart"
+                android:textColor="@color/black"
+                android:textSize="@dimen/edit_et_font_size"
+                android:imeOptions="actionDone"
+                android:maxLines="1"
+                android:inputType="textNoSuggestions"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et3_profile_setting" />
+
+            <TextView
+                android:id="@+id/tv_seller_profile_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/seller_profile_setting_tv1_marginLeft"
+                android:layout_marginTop="@dimen/seller_profile_setting_tv1_marginTop"
+                android:fontFamily="@font/notosanskr_bold"
+                android:includeFontPadding="false"
+                android:text="@string/seller_profile_setting_tv1"
+                android:textColor="@color/black"
+                android:textSize="@dimen/seller_profile_setting_tv1_fontSize"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et4_profile_setting" />
+
+            <EditText
+                android:id="@+id/et5_profile_setting"
+                android:layout_width="@dimen/seller_setting_et_width"
+                android:layout_height="@dimen/seller_setting_et_height"
+                android:layout_marginLeft="@dimen/seller_setting_et_marginLeft"
+                android:layout_marginRight="@dimen/seller_setting_et_marginRight"
+                android:layout_marginTop="@dimen/seller_setting_et5_marginTop"
+                android:background="@drawable/bg_rectangle_radius_10_shadow"
+                android:fontFamily="@font/notosanskr_regular"
+                android:gravity="center_vertical"
+                android:hint="@string/seller_profile_setting_et1"
+                android:includeFontPadding="false"
+                android:paddingStart="@dimen/edit_et_paddingStart"
+                android:imeOptions="actionDone"
+                android:maxLines="1"
+                android:inputType="textNoSuggestions"
+                android:textColor="@color/black"
+                android:textSize="@dimen/edit_et_font_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_seller_profile_setting" />
+
+            <EditText
+                android:id="@+id/et6_profile_setting"
+                android:layout_width="@dimen/seller_setting_et_width"
+                android:layout_height="@dimen/seller_setting_et_height"
+                android:layout_marginLeft="@dimen/seller_setting_et_marginLeft"
+                android:layout_marginRight="@dimen/seller_setting_et_marginRight"
+                android:layout_marginTop="@dimen/seller_setting_et2_marginTop"
+                android:background="@drawable/bg_rectangle_radius_10_shadow"
+                android:fontFamily="@font/notosanskr_regular"
+                android:gravity="center_vertical"
+                android:hint="@string/seller_profile_setting_et6"
+                android:includeFontPadding="false"
+                android:paddingStart="@dimen/edit_et_paddingStart"
+                android:textColor="@color/black"
+                android:textSize="@dimen/edit_et_font_size"
+                android:imeOptions="actionDone"
+                android:maxLines="1"
+                android:inputType="textNoSuggestions"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et5_profile_setting" />
+
+            <EditText
+                android:id="@+id/et7_profile_setting"
+                android:layout_width="@dimen/seller_setting_et_width"
+                android:layout_height="@dimen/seller_setting_et7_height"
+                android:layout_marginLeft="@dimen/seller_setting_et_marginLeft"
+                android:layout_marginRight="@dimen/seller_setting_et_marginRight"
+                android:layout_marginTop="@dimen/seller_setting_et2_marginTop"
+                android:background="@drawable/bg_rectangle_radius_10_shadow"
+                android:fontFamily="@font/notosanskr_regular"
+                android:gravity="center_vertical"
+                android:hint="@string/seller_profile_setting_et7"
+                android:includeFontPadding="false"
+                android:paddingStart="@dimen/edit_et_paddingStart"
+                android:textColor="@color/black"
+                android:textSize="@dimen/edit_et_font_size"
+                android:imeOptions="actionDone"
+                android:maxLines="2"
+                android:inputType="textNoSuggestions"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et6_profile_setting" />
+
+            <EditText
+                android:id="@+id/et8_profile_setting"
+                android:layout_width="@dimen/seller_setting_et_width"
+                android:layout_height="@dimen/seller_setting_et_height"
+                android:layout_marginLeft="@dimen/seller_setting_et_marginLeft"
+                android:layout_marginRight="@dimen/seller_setting_et_marginRight"
+                android:layout_marginTop="@dimen/seller_setting_et8_marginTop"
+                android:background="@drawable/bg_rectangle_radius_10_shadow"
+                android:fontFamily="@font/notosanskr_regular"
+                android:gravity="center_vertical"
+                android:hint="@string/seller_profile_setting_et8"
+                android:includeFontPadding="false"
+                android:paddingStart="@dimen/edit_et_paddingStart"
+                android:textColor="@color/black"
+                android:textSize="@dimen/edit_et_font_size"
+                android:imeOptions="actionDone"
+                android:maxLines="1"
+                android:inputType="numberSigned"
+                android:digits="0123456789-"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et7_profile_setting" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

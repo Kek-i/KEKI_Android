@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".src.main.consumer.like.ConsumerLikeFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_like_main_top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/like_top_bar_padding_bottom"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            >
+
+            <TextView
+                android:id="@+id/tv_like"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/like_main_tv_like_height"
+                android:layout_marginTop="@dimen/like_main_tv_like_margin_top"
+                android:layout_marginStart="@dimen/like_main_tv_like_margin_start"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/like_main_text"
+                android:textColor="@color/black"
+                android:textSize="@dimen/like_main_tv_like_size"
+                android:fontFamily="@font/notosanskr_bold"
+                android:includeFontPadding="false"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/sv_like_content"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/like_scroll_view_height"
+            android:paddingTop="@dimen/like_scroll_view_padding_top"
+            app:layout_constraintTop_toBottomOf="@id/layout_like_main_top_bar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:scrollbars="none"
+            android:overScrollMode="never"
+            >
+
+            <com.codepatissier.keki.util.recycler.RecyclerViewEmptySupport
+                android:id="@+id/rv_like_grid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/like_rv_margin_horizontal"
+                tools:listitem="@layout/item_like_recycler"
+                android:overScrollMode="never"
+                />
+        </androidx.core.widget.NestedScrollView>
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="gone"/>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_empty_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="@dimen/like_empty_layout_margin_top"
+            android:layout_marginBottom="@dimen/like_empty_layout_margin_bottom"
+            android:visibility="invisible"
+            >
+
+            <ImageView
+                android:id="@+id/iv_empty_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tv_empty_like"
+                android:layout_marginStart="@dimen/like_empty_iv_margin_start"
+                android:layout_marginEnd="@dimen/like_empty_iv_margin_end"
+                android:layout_marginBottom="@dimen/like_empty_iv_margin_bottom"
+                android:src="@drawable/img_cake_with_fallen_cherry"
+                />
+
+            <TextView
+                android:id="@+id/tv_empty_like"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/like_empty_tv_height"
+                app:layout_constraintTop_toBottomOf="@id/iv_empty_like"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="@string/like_empty_list"
+                android:textSize="@dimen/like_empty_tv_size"
+                android:textColor="@color/black"
+                android:fontFamily="@font/notosanskr_regular"
+                android:includeFontPadding="false"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

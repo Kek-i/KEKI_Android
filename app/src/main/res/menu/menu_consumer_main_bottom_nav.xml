@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_consumer_main_btm_nav_home"
+        android:icon="@drawable/ic_home"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:checkable="true"
+        android:title="@string/home" />
+
+    <item
+        android:id="@+id/menu_consumer_main_btm_nav_calendar"
+        android:icon="@drawable/ic_calendar"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:title="@string/calendar" />
+
+    <item
+        android:id="@+id/menu_consumer_main_btm_nav_search"
+        android:icon="@drawable/ic_search"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:title="@string/search" />
+
+    <item
+        android:id="@+id/menu_consumer_main_btm_nav_like"
+        android:icon="@drawable/ic_like"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:title="@string/like" />
+
+    <item
+        android:id="@+id/menu_consumer_main_btm_nav_my_page"
+        android:icon="@drawable/ic_mypage"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:title="@string/mypage" />
+
+</menu>

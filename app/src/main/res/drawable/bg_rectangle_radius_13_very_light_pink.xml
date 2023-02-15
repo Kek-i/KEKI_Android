@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <solid
+        android:color="@color/very_light_pink"/>
+
+    <corners
+        android:radius="13dp"/>
+
+    <padding
+        android:top="@dimen/search_popular_tag_padding_up"
+        android:bottom="@dimen/search_popular_tag_padding_down"
+        android:left="@dimen/search_popular_tag_padding_side"
+        android:right="@dimen/search_popular_tag_padding_side"
+        />
+
+</shape>
