@@ -160,7 +160,10 @@
     <string name="search_empty_list">검색결과가 없습니다.</string>
 
     <!-- like -->
-    <string name="like_comment">준비 중인 기능입니다.</string>
+    <string name="like_main_text">좋아요</string>
+    <string name="like_tv_product_name">상품명</string>
+    <string name="like_tv_product_price">00,000</string>
+    <string name="like_empty_list">좋아요한 케이크가 없습니다.</string>
 
     <!-- logout -->
     <string name="dialog_logout_title">로그아웃</string>
@@ -209,10 +212,5 @@
     <string name="seller_feed_add_et_product_description">제품을 소개해주세요. (최대 150자)</string>
     <string name="seller_feed_add_max_image">사진은 5개까지 첨부할 수 있습니다.</string>
     <string name="seller_feed_add_image_picker_title">Photos</string>
-
-    <!-- like -->
-    <string name="like_main_text">좋아요</string>
-    <string name="like_tv_product_name">상품명</string>
-    <string name="like_tv_product_price">00,000</string>
 
 </resources>
