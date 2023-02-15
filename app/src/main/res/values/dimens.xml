@@ -261,7 +261,7 @@
     <dimen name="ll_recent_search_marginTop">20dp</dimen>
     <dimen name="tv_recent_search_delete_marginTop">5dp</dimen>
     <dimen name="tv_recent_search_delete_marginEnd">10dp</dimen>
-    <dimen name="search_tag_marginStart">12dp</dimen>
+    <dimen name="search_tag_marginStart">24dp</dimen>
     <dimen name="search_recent_tag_padding_side">13dp</dimen>
     <dimen name="search_recent_tag_padding_updown">5dp</dimen>
     <dimen name="search_popular_tag_padding_side">14dp</dimen>
