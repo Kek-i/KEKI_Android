@@ -13,7 +13,7 @@
         android:layout_height="@dimen/store_feed_seller_img_size"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/oval_light_yellow"
+        android:background="@drawable/ic_seller"
         android:layout_marginStart="@dimen/store_feed_margin_start_end"
         android:layout_marginTop="@dimen/store_feed_seller_img_margin_top"
         />
@@ -22,7 +22,7 @@
         android:id="@+id/tv_store_feed_seller_nickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_store_feed_seller"
         app:layout_constraintStart_toEndOf="@+id/iv_store_feed_seller"
         app:layout_constraintBottom_toBottomOf="@id/iv_store_feed_seller"
         android:layout_marginStart="@dimen/store_feed_seller_nickname_margin_start"
@@ -36,7 +36,7 @@
         android:id="@+id/iv_store_feed_report"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_store_feed_seller"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/iv_store_feed_seller"
         android:paddingStart="@dimen/report_padding_start"
@@ -49,7 +49,7 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vp_store_feed_img"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/store_feed_img_height"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/iv_store_feed_seller"
         android:layout_marginTop="@dimen/store_feed_recycler_margin_top"/>
 
@@ -78,8 +78,8 @@
         android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@+id/vp_store_feed_img"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="제품 이름"
         android:fontFamily="@font/notosanskr_bold"
+        android:text="@string/store_feed_detail_product_name"
         android:textSize="@dimen/store_feed_seller_nickname_tv_size"
         android:layout_marginStart="@dimen/store_feed_margin_start_end"
         />
@@ -105,12 +105,17 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="@dimen/store_feed_margin_start_end"
         android:text="@string/home_tag_one"
-        android:fontFamily="@font/roboto_regular"
+        android:fontFamily="@font/notosanskr_regular"
         android:textColor="@color/black"
         android:textSize="@dimen/store_feed_tag_size"
         android:gravity="center"
         android:visibility="invisible"
         android:background="@drawable/bg_rectangle_radius_16_light_yellow"
+        android:paddingStart="@dimen/feed_tag_padding_start_end"
+        android:paddingEnd="@dimen/feed_tag_padding_start_end"
+        android:paddingTop="@dimen/feed_tag_padding_top"
+        android:paddingBottom="@dimen/feed_tag_padding_bottom"
+        android:includeFontPadding="false"
         />
 
     <TextView
@@ -121,12 +126,17 @@
         app:layout_constraintStart_toEndOf="@+id/tv_store_feed_first_tag"
         android:layout_marginStart="@dimen/store_feed_between_tag"
         android:text="@string/home_tag_two"
-        android:fontFamily="@font/roboto_regular"
+        android:fontFamily="@font/notosanskr_regular"
         android:textColor="@color/black"
         android:textSize="@dimen/store_feed_tag_size"
         android:gravity="center"
         android:visibility="invisible"
         android:background="@drawable/bg_rectangle_radius_16_very_light_pink"
+        android:paddingStart="@dimen/feed_tag_padding_start_end"
+        android:paddingEnd="@dimen/feed_tag_padding_start_end"
+        android:paddingTop="@dimen/feed_tag_padding_top"
+        android:paddingBottom="@dimen/feed_tag_padding_bottom"
+        android:includeFontPadding="false"
         />
 
     <TextView
@@ -137,12 +147,18 @@
         app:layout_constraintStart_toEndOf="@+id/tv_store_feed_second_tag"
         android:layout_marginStart="@dimen/store_feed_between_tag"
         android:text="@string/anniversary"
-        android:fontFamily="@font/roboto_regular"
+        android:fontFamily="@font/notosanskr_regular"
         android:textColor="@color/black"
         android:textSize="@dimen/store_feed_tag_size"
         android:visibility="invisible"
         android:gravity="center"
-        android:background="@drawable/bg_rectangle_radius_16_light_peach"/>
+        android:background="@drawable/bg_rectangle_radius_16_light_peach"
+        android:paddingStart="@dimen/feed_tag_padding_start_end"
+        android:paddingEnd="@dimen/feed_tag_padding_start_end"
+        android:paddingTop="@dimen/feed_tag_padding_top"
+        android:paddingBottom="@dimen/feed_tag_padding_bottom"
+        android:includeFontPadding="false"
+        />
 
     <ImageView
         android:id="@+id/iv_store_feed_heart_off"

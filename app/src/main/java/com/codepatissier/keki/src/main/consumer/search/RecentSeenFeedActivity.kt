@@ -39,6 +39,13 @@ class RecentSeenFeedActivity: BaseActivity<ActivityRecentSeenFeedBinding> (Activ
         }
     }
 
+    // display 별 화면에 맞는 그리드 크기 구하기
+    private fun getItemWidth():Int{
+        val display = this.baseContext.resources?.displayMetrics
+        val displaywidth = display?.widthPixels
+
+        return displaywidth!!
+    }
 
     private fun getRecentFeedView(response: RecentSeenFeedResponse){
         binding.tvStoreFeedSellerNickname.text = response.result.storeName
@@ -50,6 +57,7 @@ class RecentSeenFeedActivity: BaseActivity<ActivityRecentSeenFeedBinding> (Activ
         val thirdTag: TextView = binding.tvStoreFeedThirdTag
         val tagArray = arrayOf(firstTag, secondTag, thirdTag)
         val like = response.result.like
+        val width = getItemWidth()
 
         for(i in response.result.tags.indices){
             tagArray[i].isVisible = true
@@ -60,6 +68,7 @@ class RecentSeenFeedActivity: BaseActivity<ActivityRecentSeenFeedBinding> (Activ
         Glide.with(this!!)
             .load(response.result.storeProfileImg)
             .centerCrop()
+            .override(width,width)
             .into(binding.ivStoreFeedSeller)
 
 

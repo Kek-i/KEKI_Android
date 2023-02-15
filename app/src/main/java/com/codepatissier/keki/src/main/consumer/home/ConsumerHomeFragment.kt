@@ -16,9 +16,11 @@ import com.codepatissier.keki.src.main.consumer.home.model.HomeTagRes
 import com.codepatissier.keki.src.main.consumer.search.searchresult.ConsumerSearchActivity
 import com.codepatissier.keki.util.recycler.home.HomeStoreAdapter
 import com.codepatissier.keki.util.recycler.home.HomeStoreData
+import com.google.firebase.auth.UserInfo
 
 class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
     (FragmentConsumerHomeBinding::bind, R.layout.fragment_consumer_home), ConsumerHomeView{
+    private val userRole = ApplicationClass.sSharedPreferences.getString(ApplicationClass.UserRole, "비회원")
 
     lateinit var homeStoreFirstAdapter : HomeStoreAdapter
     val homeStoreFirstDatas = mutableListOf<HomeStoreData>()
@@ -61,17 +63,18 @@ class ConsumerHomeFragment : BaseFragment<FragmentConsumerHomeBinding>
 
         // token 없는 경우
         val jwtToken: String? = ApplicationClass.sSharedPreferences.getString(ApplicationClass.Authorization, null)
-        if (jwtToken == null) {
-            binding.tvHomeComment.text = "어서오세요!\n" +
-                    "당신의 특별한 기념일을\n" +
-                    "케키와 함께 준비해요!"
-        }else{
-            // token 있는 경우
+        if (jwtToken != null && userRole == "구매자") {
+            // token 있는 경우 + 구매자일 경우
             if(response.calendarTitle.isNullOrBlank()){
                 binding.tvHomeComment.text = response.nickname + "님!\n" + "당신의 특별한 기념일을\n" + "케키와 함께 준비해요!"
             }else{
-                binding.tvHomeComment.text = response.nickname + "님!\n" + response.calendarTitle + "이 " + response.calendarDate.toString() + "일 남았어요\n특별한 하루를 준비해요!"
+                binding.tvHomeComment.text = response.nickname + "님!\n" + response.calendarTitle + "이(가) " + response.calendarDate.toString() + "일 남았어요\n특별한 하루를 준비해요!"
             }
+        }else{
+            //회원가입이 안됐을 경우
+            binding.tvHomeComment.text = "어서오세요!\n" +
+                    "당신의 특별한 기념일을\n" +
+                    "케키와 함께 준비해요!"
         }
 
     }

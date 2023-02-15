@@ -50,7 +50,8 @@
                 android:text="@string/tv_recent_search"
                 android:textColor="@color/black"
                 android:textSize="@dimen/search_title_textSize"
-                android:textStyle="bold"
+                android:fontFamily="@font/notosanskr_bold"
+                android:includeFontPadding="false"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -99,7 +100,8 @@
             android:text="@string/tv_popular_search"
             android:textColor="@color/black"
             android:textSize="@dimen/search_title_textSize"
-            android:textStyle="bold"
+            android:fontFamily="@font/notosanskr_bold"
+            android:includeFontPadding="false"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -134,7 +136,8 @@
                 android:text="@string/tv_recent_view"
                 android:textColor="@color/black"
                 android:textSize="@dimen/search_title_textSize"
-                android:textStyle="bold"
+                android:fontFamily="@font/notosanskr_bold"
+                android:includeFontPadding="false"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

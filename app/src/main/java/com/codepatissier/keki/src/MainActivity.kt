@@ -8,7 +8,7 @@ import com.codepatissier.keki.config.ApplicationClass.Companion.sSharedPreferenc
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityMainBinding
 import com.codepatissier.keki.src.main.consumer.calendar.ConsumerCalendarFragment
-import com.codepatissier.keki.src.main.consumer.calendar.NonConsumerCalendarFragment
+import com.codepatissier.keki.util.NonConsumerFragment
 import com.codepatissier.keki.src.main.consumer.home.ConsumerHomeFragment
 import com.codepatissier.keki.src.main.consumer.like.ConsumerLikeFragment
 import com.codepatissier.keki.src.main.consumer.mypage.ConsumerMyPageFragment
