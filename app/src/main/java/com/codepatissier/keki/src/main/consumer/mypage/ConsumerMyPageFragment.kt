@@ -62,7 +62,7 @@ class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
     }
 
     override fun onGetMyPageSuccess(response: ConsumerMyPageResponse) {
-        val defaultImg = R.drawable.bg_oval_off_white
+        val defaultImg = R.drawable.ic_customer
         val imageView = binding.ivProfile
 
         val nim = getString(R.string.my_page_tv_nickname)

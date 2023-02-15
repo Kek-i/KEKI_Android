@@ -18,7 +18,7 @@ interface SearchResultRetrofitInterface {
         @Query("cursorIdx") cursorIdx: Long? = null,
         @Query("cursorPrice") cursorPrice:Int?=null,
         @Query("cursorPopularNum")cursorPopularNum:Int?=null,
-        @Query("size") size: Int = 12
+        @Query("size") size: Int = 21
     ): Call<SearchResultResponse>
 
     @POST("/posts/{postIdx}/history")

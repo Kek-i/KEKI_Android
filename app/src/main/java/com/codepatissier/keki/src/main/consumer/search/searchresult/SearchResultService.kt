@@ -11,7 +11,7 @@ class SearchResultService(val searchResultView: SearchResultView) {
 
     fun tryGetSearchResults(keyword : String, sortType : String){
         val searchResultRetrofitInterface = ApplicationClass.sRetrofit.create(SearchResultRetrofitInterface::class.java)
-        searchResultRetrofitInterface.getSearchResult(searchWord = keyword, sortType = sortType).enqueue(object: Callback<SearchResultResponse>{
+        searchResultRetrofitInterface.getSearchResult(searchWord = keyword, sortType = sortType, size=21).enqueue(object: Callback<SearchResultResponse>{
             override fun onResponse(call: Call<SearchResultResponse>, response: Response<SearchResultResponse>)
             {
                 searchResultView.onGetSearchResultsSuccess(response.body() as SearchResultResponse)
@@ -61,7 +61,7 @@ class SearchResultService(val searchResultView: SearchResultView) {
 
     fun tryGetTagResults(tag : String, sortType: String){
         val searchResultRetrofitInterface = ApplicationClass.sRetrofit.create(SearchResultRetrofitInterface::class.java)
-        searchResultRetrofitInterface.getSearchResult(searchTag = tag, sortType = sortType).enqueue(object: Callback<SearchResultResponse>{
+        searchResultRetrofitInterface.getSearchResult(searchTag = tag, sortType = sortType, size=21).enqueue(object: Callback<SearchResultResponse>{
             override fun onResponse(call: Call<SearchResultResponse>, response: Response<SearchResultResponse>)
             {
                 searchResultView.onGetSearchResultsSuccess(response.body() as SearchResultResponse)

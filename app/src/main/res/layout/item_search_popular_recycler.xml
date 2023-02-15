@@ -15,6 +15,8 @@
         android:text="#popular"
         android:textColor="@color/black"
         android:textSize="@dimen/search_tag_textSize"
+        android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

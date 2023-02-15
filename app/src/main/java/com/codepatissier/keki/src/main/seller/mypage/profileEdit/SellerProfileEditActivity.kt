@@ -78,7 +78,7 @@ class SellerProfileEditActivity :BaseActivity<ActivitySellerProfileEditBinding>(
             if(result.resultCode == RESULT_OK){
                 ProfileUri = result.data?.data
 
-                val defaultImg = R.drawable.bg_oval_off_white
+                val defaultImg = R.drawable.ic_seller
                 val imageView = binding.cvPhoto
 
                 Glide.with(this)

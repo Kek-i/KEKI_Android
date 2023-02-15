@@ -75,7 +75,7 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vp_store_feed_img"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/store_feed_img_height"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/iv_store_feed_seller"
         android:layout_marginTop="@dimen/store_feed_recycler_margin_top"/>
 

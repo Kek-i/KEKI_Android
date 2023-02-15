@@ -54,11 +54,11 @@ class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetail
     override fun onGetConsumerOneFeedDetailSuccess(response: ConsumerOneFeedDetailResponse) {
         dismissLoadingDialog()
 
-        val defaultImg = R.drawable.bg_oval_light_yellow
-        if(response.result.storeProfileImg != null){
-            var storeageRef = fbStorage?.reference?.child(response.result.storeProfileImg)
-            storeageRef?.downloadUrl?.addOnCompleteListener {
-                if(it.isSuccessful){
+        val defaultImg = R.drawable.ic_seller
+//        if(response.result.storeProfileImg != null){
+//            var storeageRef = fbStorage?.reference?.child(response.result.storeProfileImg)
+//            storeageRef?.downloadUrl?.addOnCompleteListener {
+//                if(it.isSuccessful){
                     Glide.with(this)
                         .load(response.result.storeProfileImg)
                         .placeholder(defaultImg)
@@ -67,9 +67,9 @@ class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetail
                         .centerCrop()
                         .circleCrop()
                         .into(binding.ivStoreFeedSeller)
-                }
-            }
-        }
+//                }
+//            }
+//        }
 
         binding.tvStoreFeedSellerNickname.text = response.result.storeName
 
