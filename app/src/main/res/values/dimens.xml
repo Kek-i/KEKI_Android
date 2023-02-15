@@ -840,5 +840,13 @@
     <dimen name="like_item_tv_product_price_margin_top">3dp</dimen>
     <dimen name="like_item_tv_product_price_size">12sp</dimen>
 
+    <dimen name="like_empty_tv_height">24dp</dimen>
+    <dimen name="like_empty_tv_size">16sp</dimen>
+    <dimen name="like_empty_iv_margin_bottom">10dp</dimen>
+    <dimen name="like_empty_iv_margin_start">46.1dp</dimen>
+    <dimen name="like_empty_iv_margin_end">60.4dp</dimen>
+    <dimen name="like_empty_layout_margin_top">244.7dp</dimen>
+    <dimen name="like_empty_layout_margin_bottom">289dp</dimen>
+
 
 </resources>

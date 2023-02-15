@@ -8,7 +8,7 @@ import com.codepatissier.keki.config.ApplicationClass.Companion.sSharedPreferenc
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityMainBinding
 import com.codepatissier.keki.src.main.consumer.calendar.ConsumerCalendarFragment
-import com.codepatissier.keki.src.main.consumer.calendar.NonConsumerCalendarFragment
+import com.codepatissier.keki.util.NonConsumerFragment
 import com.codepatissier.keki.src.main.consumer.home.ConsumerHomeFragment
 import com.codepatissier.keki.src.main.consumer.like.ConsumerLikeFragment
 import com.codepatissier.keki.src.main.consumer.mypage.ConsumerMyPageFragment
@@ -38,7 +38,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                                 .commitAllowingStateLoss()
                         } else {
                             supportFragmentManager.beginTransaction()
-                                .replace(R.id.main_frm, NonConsumerCalendarFragment())
+                                .replace(R.id.main_frm, NonConsumerFragment())
                                 .commitAllowingStateLoss()
                         }
                     }
@@ -48,9 +48,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                             .commitAllowingStateLoss()
                     }
                     R.id.menu_consumer_main_btm_nav_like -> {
-                        supportFragmentManager.beginTransaction()
-                            .replace(R.id.main_frm, ConsumerLikeFragment())
-                            .commitAllowingStateLoss()
+                        if(accessToken != null && userRole == "구매자") {
+                            supportFragmentManager.beginTransaction()
+                                .replace(R.id.main_frm, ConsumerLikeFragment())
+                                .commitAllowingStateLoss()
+                        } else {
+                            supportFragmentManager.beginTransaction()
+                                .replace(R.id.main_frm, NonConsumerFragment())
+                                .commitAllowingStateLoss()
+                        }
                     }
                     R.id.menu_consumer_main_btm_nav_my_page -> {
                         if (accessToken != null && userRole == "구매자") {
