@@ -4,6 +4,6 @@ data class ResultCalendarModifyView (
     val kindOfCalendar: String,
     val title: String,
     val date: String,
-    val calDate: String,
-    val hashTags: List<Map<String, String>>
+    val hashTags: List<Map<String, String>>,
+    val addHashTags: List<Map<String, String>>
 )
