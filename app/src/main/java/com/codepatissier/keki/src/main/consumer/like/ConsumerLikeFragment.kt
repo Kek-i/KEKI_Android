@@ -84,6 +84,7 @@ class ConsumerLikeFragment : BaseFragment<FragmentConsumerLikeBinding>
             }
         }
 
+        binding.rvLikeGrid.setEmptyView(binding.layoutEmptyLike)
         val mLayoutManager = GridLayoutManager(requireContext(), 3)
         binding.rvLikeGrid.layoutManager = mLayoutManager
         likeFeedAdapter = LikeFeedAdapter(likeDataList, requireContext())

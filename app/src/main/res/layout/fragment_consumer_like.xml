@@ -51,7 +51,7 @@
             android:overScrollMode="never"
             >
 
-            <androidx.recyclerview.widget.RecyclerView
+            <com.codepatissier.keki.util.recycler.RecyclerViewEmptySupport
                 android:id="@+id/rv_like_grid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

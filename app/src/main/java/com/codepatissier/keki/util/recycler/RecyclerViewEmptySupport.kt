@@ -19,14 +19,24 @@ class RecyclerViewEmptySupport : RecyclerView {
         override fun onChanged() {
             val adapter = adapter
             if (adapter != null && emptyView != null) {
-                if (adapter.itemCount == 0) {
-                    emptyView!!.visibility = VISIBLE
-                    fullView!!.visibility = GONE
-                    this@RecyclerViewEmptySupport.visibility = GONE
+                if(fullView == null) {
+                    if (adapter.itemCount == 0) {
+                        emptyView!!.visibility = VISIBLE
+                        this@RecyclerViewEmptySupport.visibility = GONE
+                    } else {
+                        emptyView!!.visibility = GONE
+                        this@RecyclerViewEmptySupport.visibility = VISIBLE
+                    }
                 } else {
-                    emptyView!!.visibility = GONE
-                    fullView!!.visibility = VISIBLE
-                    this@RecyclerViewEmptySupport.visibility = VISIBLE
+                    if (adapter.itemCount == 0) {
+                        emptyView!!.visibility = VISIBLE
+                        fullView!!.visibility = GONE
+                        this@RecyclerViewEmptySupport.visibility = GONE
+                    } else {
+                        emptyView!!.visibility = GONE
+                        fullView!!.visibility = VISIBLE
+                        this@RecyclerViewEmptySupport.visibility = VISIBLE
+                    }
                 }
             }
         }
