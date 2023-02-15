@@ -16,6 +16,7 @@
     <dimen name="home_ic_notifications_right">20dp</dimen>
     <dimen name="home_ic_message_right">25dp</dimen>
     <dimen name="home_logo_top_height">77dp</dimen>
+    <dimen name="home_recycler_width">0dp</dimen>
 
     <dimen name="home_comment_top">9dp</dimen>
     <dimen name="home_comment_start">36dp</dimen>
@@ -25,7 +26,7 @@
     <dimen name="home_img_cake">10.5dp</dimen>
     <dimen name="home_first_tag_top">5dp</dimen>
     <dimen name="home_recycler_margin_top">15dp</dimen>
-    <dimen name="home_tag_start">14dp</dimen>
+    <dimen name="home_tag_margin">14dp</dimen>
     <dimen name="home_tag_size">16sp</dimen>
     <dimen name="home_tag_padding_top">4dp</dimen>
     <dimen name="home_tag_padding_bottom">4dp</dimen>
@@ -92,6 +93,9 @@
     <dimen name="feed_indicator_dots_size">8dp</dimen>
     <dimen name="feed_indicator_dots_spacing">4dp</dimen>
     <dimen name="feed_indicator_dots_stroke_width">4dp</dimen>
+    <dimen name="feed_tag_padding_start_end">14dp</dimen>
+    <dimen name="feed_tag_padding_top">4dp</dimen>
+    <dimen name="feed_tag_padding_bottom">6dp</dimen>
 
     <!-- report -->
     <dimen name="dialog_report_title_size">18sp</dimen>

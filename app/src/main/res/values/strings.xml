@@ -60,6 +60,10 @@
     <string name="more_see">••• 더보기</string>
     <string name="report">사용자 신고</string>
 
+    <!-- store feed detail-->
+    <string name="store_feed_detail_product_name">제품 이름</string>
+
+
     <!-- report -->
     <string name="dialog_report_title">신고하기</string>
     <string name="dialog_report_content">타당한 신고 사유를 선택해주세요.\n신고 사유에 맞지않은 신고를 했을경우,\n해당 신고는 처리되지 않습니다.</string>

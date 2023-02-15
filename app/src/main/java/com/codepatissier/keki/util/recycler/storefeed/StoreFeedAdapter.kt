@@ -115,6 +115,7 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
                     .centerCrop()
                     .into(sellerImg)
 //            }
+            sellerImg.clipToOutline = true
             
             var img = arrayOfNulls<String>(item.postImgUrls.size)
 
