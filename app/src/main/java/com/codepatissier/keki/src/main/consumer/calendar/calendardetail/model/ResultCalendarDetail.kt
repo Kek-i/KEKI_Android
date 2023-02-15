@@ -6,4 +6,4 @@ data class ResultCalendarDetail (
     val date: String,
     val calDate: String,
     val hashTags: List<Map<String, String>>
-) : java.io.Serializable
+)
