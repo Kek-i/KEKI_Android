@@ -617,7 +617,7 @@
     <dimen name="store_main_dialog_title_text_size">18sp</dimen>
     <dimen name="store_main_dialog_text_size">14sp</dimen>
     <dimen name="store_main_dialog_first_text_top">20dp</dimen>
-    <dimen name="store_main_dialog_first_text_middle">48dp</dimen>
+    <dimen name="store_main_dialog_first_text_middle">57dp</dimen>
     <dimen name="store_main_dialog_left_right">15dp</dimen>
     <dimen name="store_main_dialog_top">18dp</dimen>
     <dimen name="store_main_dialog_bottom">25dp</dimen>
