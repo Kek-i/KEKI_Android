@@ -295,7 +295,6 @@
     <dimen name="search_cv_shadow_padding">2.5dp</dimen>
     <dimen name="search_ic_cake_off_width">72dp</dimen>
     <dimen name="search_ic_cake_off_height">79dp</dimen>
-    <dimen name="search_grid_item_img_size">105dp</dimen>
     <dimen name="search_ic_chevron_down_width">8dp</dimen>
     <dimen name="search_ic_chevron_down_height">4dp</dimen>
 
