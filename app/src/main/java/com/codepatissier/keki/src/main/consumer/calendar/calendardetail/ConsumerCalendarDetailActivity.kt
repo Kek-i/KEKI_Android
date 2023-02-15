@@ -2,7 +2,9 @@ package com.codepatissier.keki.src.main.consumer.calendar.calendardetail
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View.GONE
+import android.view.View.VISIBLE
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityConsumerCalendarDetailBinding
 import com.codepatissier.keki.src.main.consumer.calendar.calendardetail.model.ConsumerCalendarDetailResponse
@@ -23,6 +25,13 @@ class ConsumerCalendarDetailActivity : BaseActivity<ActivityConsumerCalendarDeta
         ConsumerCalendarDetailService(this).tryGetCalendarDetail(calendarIdx)
     }
 
+    override fun onRestart() {
+        super.onRestart()
+
+        showLoadingDialog(this)
+        ConsumerCalendarDetailService(this).tryGetCalendarDetail(calendarIdx)
+    }
+
     private fun initCalendarIdx() {
         calendarIdx = intent.getLongExtra("calendarIdx", 0)
     }
@@ -36,21 +45,25 @@ class ConsumerCalendarDetailActivity : BaseActivity<ActivityConsumerCalendarDeta
 
         // 해시태그
         var tag: String?
-        var i = response.result.hashTags.size
-        when(i) {
+        when(val i = response.result.hashTags.size) {
             0 -> binding.layoutCalendarDetailHashtag.visibility = GONE
             1 -> {
                 tag = response.result.hashTags[i-1]["calendarHashTag"]
                 binding.tvCalendarDetailFirstHashtag.text = "# $tag"
+                binding.tvCalendarDetailFirstHashtag.visibility = VISIBLE
                 binding.tvCalendarDetailSecondHashtag.visibility = GONE
                 binding.tvCalendarDetailThirdHashtag.visibility = GONE
+                binding.layoutCalendarDetailHashtag.visibility = VISIBLE
             }
             2 -> {
                 tag = response.result.hashTags[i-2]["calendarHashTag"]
                 binding.tvCalendarDetailFirstHashtag.text = "# $tag"
                 tag = response.result.hashTags[i-1]["calendarHashTag"]
                 binding.tvCalendarDetailSecondHashtag.text = "# $tag"
+                binding.tvCalendarDetailFirstHashtag.visibility = VISIBLE
+                binding.tvCalendarDetailSecondHashtag.visibility = VISIBLE
                 binding.tvCalendarDetailThirdHashtag.visibility = GONE
+                binding.layoutCalendarDetailHashtag.visibility = VISIBLE
             }
             3 -> {
                 tag = response.result.hashTags[i-3]["calendarHashTag"]
@@ -59,6 +72,10 @@ class ConsumerCalendarDetailActivity : BaseActivity<ActivityConsumerCalendarDeta
                 binding.tvCalendarDetailSecondHashtag.text = "# $tag"
                 tag = response.result.hashTags[i-1]["calendarHashTag"]
                 binding.tvCalendarDetailThirdHashtag.text = "# $tag"
+                binding.tvCalendarDetailFirstHashtag.visibility = VISIBLE
+                binding.tvCalendarDetailSecondHashtag.visibility = VISIBLE
+                binding.tvCalendarDetailThirdHashtag.visibility = VISIBLE
+                binding.layoutCalendarDetailHashtag.visibility = VISIBLE
             }
         }
     }
