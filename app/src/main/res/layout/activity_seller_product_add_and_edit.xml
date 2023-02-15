@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
     <ImageView
         android:id="@+id/iv_back"
         android:layout_width="wrap_content"
@@ -49,13 +50,15 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_cake1"
             android:layout_marginLeft="@dimen/seller_product_add_and_edit_iv_cake_left"/>
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/seller_product_add_and_edit_iv_cake_left"
             android:src="@drawable/seller__product_add_cake3"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_cake2"
-            android:layout_marginLeft="@dimen/seller_product_add_and_edit_iv_cake_left"/>
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     <EditText
         android:id="@+id/et_product_name"

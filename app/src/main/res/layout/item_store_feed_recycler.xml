@@ -13,7 +13,7 @@
         android:layout_height="@dimen/store_feed_seller_img_size"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/oval_light_yellow"
+        android:background="@drawable/ic_seller"
         android:layout_marginStart="@dimen/store_feed_margin_start_end"
         android:layout_marginTop="@dimen/store_feed_seller_img_margin_top"
         />
@@ -49,7 +49,7 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vp_store_feed_img"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/store_feed_img_height"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/iv_store_feed_seller"
         android:layout_marginTop="@dimen/store_feed_recycler_margin_top"/>
 

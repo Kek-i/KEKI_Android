@@ -14,10 +14,20 @@ class ConsumerOneFeedSlideImageFragment(val image: String) : BaseFragment<Fragme
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val width = getItemWidth()
+
         Glide.with(this)
             .load(image)
-            .apply { RequestOptions().override(360,360) }
+            .override(width,width)
             .into(binding.ivStoreFeedImgViewer)
+    }
+
+    // display 별 화면에 맞는 그리드 크기 구하기
+    private fun getItemWidth():Int{
+        val display = this.context?.resources?.displayMetrics
+        val displaywidth = display?.widthPixels
+
+        return displaywidth!!
     }
 
 }

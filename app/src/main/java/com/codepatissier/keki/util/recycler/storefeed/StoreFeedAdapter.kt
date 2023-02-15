@@ -85,10 +85,20 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
         private var postIdx : Long? = null
         var fbStorage : FirebaseStorage?= null
 
+        // display 별 화면에 맞는 그리드 크기 구하기
+        private fun getItemWidth():Int{
+            val display = this.context?.resources?.displayMetrics
+            val displaywidth = display?.widthPixels
+
+            return displaywidth!!
+        }
+
         fun bind(item: StoreFeedData){
             nickname.text = item.storeName
             cakeName.text = item.dessertName
             postIdx = item.postIdx
+
+            val width = getItemWidth();
 
             for(i in item.tags.indices){
                 tagArray[i].isVisible = true
@@ -101,6 +111,7 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
 //            storageRef?.downloadUrl?.addOnCompleteListener {
                 Glide.with(context!!)
                     .load(item.storeProfileImg)
+                    .override(width,width)
                     .centerCrop()
                     .into(sellerImg)
 //            }
