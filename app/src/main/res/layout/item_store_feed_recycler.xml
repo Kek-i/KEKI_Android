@@ -7,7 +7,7 @@
     android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_store_feed_seller"
         android:layout_width="@dimen/store_feed_seller_img_size"
         android:layout_height="@dimen/store_feed_seller_img_size"

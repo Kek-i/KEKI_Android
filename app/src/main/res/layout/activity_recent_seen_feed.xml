@@ -33,7 +33,7 @@
         android:paddingEnd="@dimen/chevron_padding_start"
         android:src="@drawable/ic_chevron_left"/>
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_store_feed_seller"
         android:layout_width="@dimen/store_feed_seller_img_size"
         android:layout_height="@dimen/store_feed_seller_img_size"
