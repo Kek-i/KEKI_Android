@@ -40,7 +40,7 @@
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/sv_like_content"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/like_scroll_view_height"
             android:paddingTop="@dimen/like_scroll_view_padding_top"
             app:layout_constraintTop_toBottomOf="@id/layout_like_main_top_bar"
@@ -53,14 +53,20 @@
 
             <com.codepatissier.keki.util.recycler.RecyclerViewEmptySupport
                 android:id="@+id/rv_like_grid"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/like_rv_margin_horizontal"
                 tools:listitem="@layout/item_like_recycler"
                 android:overScrollMode="never"
                 />
-
         </androidx.core.widget.NestedScrollView>
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="gone"/>
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_empty_like"
