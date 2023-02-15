@@ -111,6 +111,8 @@
     <string name="calendar_add_error_no_select">필수 선택 항목입니다.</string>
     <string name="calendar_add_error_no_input">필수 입력 항목입니다.</string>
     <string name="calendar_non_consumer_like_comment">로그인 시 사용 가능한 기능입니다!</string>
+    <string name="calendar_modify_main_text">기념일 수정</string>
+
 
     <!-- my page -->
     <string name="my_page_main_text">내 정보</string>
