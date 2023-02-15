@@ -3,83 +3,43 @@ package com.codepatissier.keki.src.main.consumer.like
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseFragment
 import com.codepatissier.keki.databinding.FragmentConsumerLikeBinding
+import com.codepatissier.keki.src.main.consumer.like.model.ConsumerLikeResponse
+import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreFeedService
 import com.codepatissier.keki.util.recycler.like.LikeFeedAdapter
 import com.codepatissier.keki.util.recycler.like.LikeFeedData
 
 
 class ConsumerLikeFragment : BaseFragment<FragmentConsumerLikeBinding>
-    (FragmentConsumerLikeBinding::bind, R.layout.fragment_consumer_like) {
+    (FragmentConsumerLikeBinding::bind, R.layout.fragment_consumer_like), ConsumerLikeView {
     private lateinit var likeFeedAdapter: LikeFeedAdapter
     private val likeDataList = mutableListOf<LikeFeedData>()
+    var lastItemVisible = false
+    var hasNext = false
+    var cursorDate: String? = null
+    var positionStart = 0
+    var itemSize = 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setLikeRecyclerView()
+        showLoadingDialog(requireContext())
+        ConsumerLikeService(this).tryGetLike(15)
     }
 
-    private fun setLikeRecyclerView() {
-        // 테스트용 임시 데이터
-        likeDataList.apply {
-            for (i in 0 until 3) {
+    private fun setLikeRecyclerView(response: ConsumerLikeResponse) {
+        hasNext = response.result.hasNext
+        cursorDate = response.result.cursorDate
+        for (i in response.result.feeds.indices) {
+            likeDataList.apply {
                 add(
-                    LikeFeedData(
-                        1,
-                        "https://i.pinimg.com/originals/b5/01/02/b501027800aa25a77441e4398f31262b.jpg",
-                        "케이크 1호",
-                        51200
-                    )
-                )
-                add(
-                    LikeFeedData(
-                        2,
-                        "https://i.pinimg.com/originals/b9/43/90/b943904a9243aa3d485a65c55a07acde.jpg",
-                        "케이크 2호",
-                        31000
-                    )
-                )
-                add(
-                    LikeFeedData(
-                        3,
-                        "https://i.pinimg.com/originals/c9/fd/04/c9fd04c6a219910cc47c3eca876ed999.jpg",
-                        "케이크 3호",
-                        31000
-                    )
-                )
-                add(
-                    LikeFeedData(
-                        4,
-                        "https://i.pinimg.com/originals/1f/54/cd/1f54cd979085b41485487e6ac8e93a5b.jpg",
-                        "미니 케이크",
-                        31000
-                    )
-                )
-                add(
-                    LikeFeedData(
-                        5,
-                        "https://i.pinimg.com/originals/b5/5c/30/b55c30da99174a8ed1ed6ef18f8b1fe2.jpg",
-                        "도시락 케이크",
-                        31000
-                    )
-                )
-                add(
-                    LikeFeedData(
-                        6,
-                        "https://i.pinimg.com/originals/a2/10/99/a2109966af2471edb8828b282be848ac.jpg",
-                        "Cake is a cake. I like a cake!",
-                        31000
-                    )
-                )
-                add(
-                    LikeFeedData(
-                        7,
-                        "https://i.pinimg.com/originals/6a/78/d0/6a78d04b7e2c89d12a4c11598d567696.jpg",
-                        "천방지축 빙글빙글 돌아가는 케이크의 하루",
-                        1231000
-                    )
+                    LikeFeedData(response.result.feeds[i].postIdx,
+                                response.result.feeds[i].postImgUrl,
+                                response.result.feeds[i].dessertName,
+                                response.result.feeds[i].dessertPrice)
                 )
             }
         }
@@ -88,6 +48,65 @@ class ConsumerLikeFragment : BaseFragment<FragmentConsumerLikeBinding>
         binding.rvLikeGrid.layoutManager = mLayoutManager
         likeFeedAdapter = LikeFeedAdapter(likeDataList, requireContext())
         binding.rvLikeGrid.adapter = likeFeedAdapter
+
+        binding.rvLikeGrid.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                // 스크롤이 멈춰있고, 다음 아이템이 있으며 마지막 아이템일 때 api 호출
+                if(newState == RecyclerView.SCROLL_STATE_IDLE && hasNext && lastItemVisible){
+                    binding.progress.visibility = View.VISIBLE
+                    positionStart = likeDataList.size
+                    ConsumerLikeService(this@ConsumerLikeFragment).tryGetLikeNext(cursorDate!!, 15)
+                }
+            }
+
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                // 현재 보이는 마지막 아이템의 position
+                var lastVisibleItemPosition = (recyclerView.layoutManager as GridLayoutManager).findLastVisibleItemPosition()
+                // 전제 아이템 갯수
+                val itemTotalCount = recyclerView.adapter?.itemCount?.minus(1)
+                // 마지막 아이템이면 true로 변경
+                if( lastVisibleItemPosition != itemTotalCount) {
+                    lastItemVisible = true
+                }
+            }
+        })
+    }
+
+    override fun onGetLikeSuccess(response: ConsumerLikeResponse) {
+        dismissLoadingDialog()
+        setLikeRecyclerView(response)
+    }
+
+    override fun onGetLikeFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetNextLikeSuccess(response: ConsumerLikeResponse) {
+        binding.progress.visibility = View.GONE
+        cursorDate = response.result.cursorDate
+        hasNext = response.result.hasNext
+
+        for (i in response.result.feeds.indices) {
+            likeDataList.apply {
+                add(
+                    LikeFeedData(
+                        response.result.feeds[i].postIdx,
+                        response.result.feeds[i].postImgUrl,
+                        response.result.feeds[i].dessertName,
+                        response.result.feeds[i].dessertPrice
+                    )
+                )
+            }
+
+            itemSize = likeDataList.size - positionStart
+            likeFeedAdapter.notifyItemRangeChanged(positionStart, itemSize)
+        }
+    }
+
+    override fun onGetNextLikeFailure(message: String) {
+        TODO("Not yet implemented")
     }
 
 }
