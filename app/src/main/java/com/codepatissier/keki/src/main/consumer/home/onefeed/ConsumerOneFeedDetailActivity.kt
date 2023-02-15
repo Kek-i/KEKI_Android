@@ -181,10 +181,10 @@ class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetail
     }
 
     override fun onGetNextResultSuccess(response: SearchResultResponse) {
-        TODO("Not yet implemented")
+
     }
 
     override fun onGetNextResultFailure(message: String) {
-        TODO("Not yet implemented")
+
     }
 }

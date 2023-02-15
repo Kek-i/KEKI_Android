@@ -111,6 +111,7 @@
     <dimen name="dialog_report_padding_bottom">26dp</dimen>
     <dimen name="dialog_report_btn_padding_top_bottom">9dp</dimen>
     <dimen name="dialog_report_btn_padding_start_end">27dp</dimen>
+    <dimen name="dialog_report_margin_top">20dp</dimen>
 
 
     <!--login-->
