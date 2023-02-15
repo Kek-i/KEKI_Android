@@ -40,7 +40,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                                     .commitAllowingStateLoss()
                             } else {
                                 supportFragmentManager.beginTransaction()
-                                    .replace(R.id.main_frm, NonConsumerCalendarFragment())
+                                    .replace(R.id.main_frm, NonConsumerFragment())
                                     .commitAllowingStateLoss()
                             }
                         }
