@@ -2,6 +2,7 @@ package com.codepatissier.keki.config
 
 import android.app.Application
 import android.content.SharedPreferences
+import androidx.appcompat.app.AppCompatDelegate
 import com.codepatissier.keki.R
 import com.kakao.sdk.common.KakaoSdk
 import com.navercorp.nid.NaverIdLoginSDK
@@ -38,6 +39,8 @@ class ApplicationClass : Application() {
         val naverClientName = getString(R.string.social_login_info_naver_client_name)
         NaverIdLoginSDK.initialize(this, naverClientId, naverClientSecret , naverClientName)
 
+        //앱 내 다크모드 비활성화
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
     }
 
