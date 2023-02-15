@@ -11,4 +11,10 @@ interface SearchResultView {
     //검색 결과 더 불러오기
     fun onGetNextResultSuccess(response: SearchResultResponse)
     fun onGetNextResultFailure(message: String)
+
+    // 피드 좋아요
+    fun onPostConsumerStoreFeedDetailLikeSuccess(response: BaseResponse)
+    // 피드 좋아요 취소
+    fun onPostConsumerStoreFeedDetailLikeFailure(message: String)
+
 }

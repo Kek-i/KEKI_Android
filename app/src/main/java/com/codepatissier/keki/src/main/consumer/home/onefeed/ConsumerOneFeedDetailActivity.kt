@@ -10,6 +10,7 @@ import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
+import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.databinding.ActivityConsumerOneFeedDetailBinding
 import com.codepatissier.keki.src.main.consumer.home.onefeed.model.ConsumerOneFeedDetailResponse
 import com.codepatissier.keki.src.main.consumer.search.searchresult.SearchResultService
@@ -186,5 +187,11 @@ class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetail
 
     override fun onGetNextResultFailure(message: String) {
 
+    }
+
+    override fun onPostConsumerStoreFeedDetailLikeSuccess(response: BaseResponse) {
+    }
+
+    override fun onPostConsumerStoreFeedDetailLikeFailure(message: String) {
     }
 }

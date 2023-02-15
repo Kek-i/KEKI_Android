@@ -2,8 +2,12 @@ package com.codepatissier.keki.src.main.consumer.search.searchresult
 
 import android.os.Bundle
 import com.codepatissier.keki.config.BaseActivity
+import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.databinding.ActivityConsumerStoreDetailFeedBinding
 import com.codepatissier.keki.src.main.consumer.search.searchresult.model.SearchResultResponse
+import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreFeedDetailService
+import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreFeedDetailView
+import com.codepatissier.keki.src.main.consumer.store.storefeed.model.ConsumerStoreDetailFeedResponse
 import com.codepatissier.keki.util.recycler.search.SearchResultFeedAdapter
 
 
@@ -58,6 +62,13 @@ class SearchResultFeedActivity : BaseActivity<ActivityConsumerStoreDetailFeedBin
         TODO("Not yet implemented")
     }
 
+    override fun onPostConsumerStoreFeedDetailLikeSuccess(response: BaseResponse) {
+    }
+
+    override fun onPostConsumerStoreFeedDetailLikeFailure(message: String) {
+        showCustomToast("오류 : $message")
+    }
+
     private fun searchResultFeedRecycler(response: SearchResultResponse){
 
         searchResultFeedAdapter = SearchResultFeedAdapter(response.result,this)
@@ -65,6 +76,11 @@ class SearchResultFeedActivity : BaseActivity<ActivityConsumerStoreDetailFeedBin
         searchResultFeedAdapter.notifyDataSetChanged()
 
         binding.recyclerStoreFeed.scrollToPosition(position)
+
+    }
+
+    fun postLike(postIdx: Long){
+        SearchResultService(this).tryPostConsumerStoreFeedDetailLike(postIdx)
     }
 
     private fun navigateToStoreMain(){
@@ -72,6 +88,7 @@ class SearchResultFeedActivity : BaseActivity<ActivityConsumerStoreDetailFeedBin
             finish()
         }
     }
+
 
 }
 
