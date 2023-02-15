@@ -20,7 +20,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/csl_dialog"
         android:layout_width="@dimen/store_main_dialog_width"
-        android:layout_height="@dimen/store_main_dialog_height"
+        android:layout_height="wrap_content"
         android:background="@drawable/bg_rectangle_radius_10_white_padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
