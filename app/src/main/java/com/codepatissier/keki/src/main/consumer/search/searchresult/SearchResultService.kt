@@ -3,6 +3,7 @@ package com.codepatissier.keki.src.main.consumer.search.searchresult
 import com.codepatissier.keki.config.ApplicationClass
 import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.src.main.consumer.search.searchresult.model.SearchResultResponse
+import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreFeedDetailRetrofitInterface
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -119,6 +120,22 @@ class SearchResultService(val searchResultView: SearchResultView) {
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
                 //searchResultView.onPostHistoryFailure(t.message ?: "통신 오류")
             }
+        })
+    }
+
+    fun tryPostConsumerStoreFeedDetailLike(postIdx: Long){
+        val consumerStoreFeedDetailLikeInterface = ApplicationClass.sRetrofit.create(
+            ConsumerStoreFeedDetailRetrofitInterface::class.java)
+
+        consumerStoreFeedDetailLikeInterface.postConsumerStoreFeedDetailLike(postIdx).enqueue(object : Callback<BaseResponse>{
+            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
+                searchResultView.onPostConsumerStoreFeedDetailLikeSuccess(response.body() as BaseResponse)
+            }
+
+            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
+                searchResultView.onPostConsumerStoreFeedDetailLikeFailure(t.message ?: "통신 오류")
+            }
+
         })
     }
 

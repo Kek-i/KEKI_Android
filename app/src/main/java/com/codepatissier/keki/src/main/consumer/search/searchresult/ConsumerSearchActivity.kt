@@ -140,6 +140,13 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
         showCustomToast("오류 : $message")
     }
 
+    override fun onPostConsumerStoreFeedDetailLikeSuccess(response: BaseResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPostConsumerStoreFeedDetailLikeFailure(message: String) {
+        TODO("Not yet implemented")
+    }
 
 
     //검색창 x 누르면 삭제
