@@ -18,6 +18,7 @@ import com.codepatissier.keki.src.main.consumer.search.ConsumerSearchFragment
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
     private val accessToken = sSharedPreferences.getString(Authorization, null)
     private val userRole = sSharedPreferences.getString(ApplicationClass.UserRole, "비회원")
+    var mypageItemId : Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,17 +54,23 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                             .commitAllowingStateLoss()
                     }
                     R.id.menu_consumer_main_btm_nav_my_page -> {
-                        if (accessToken != null && userRole == "구매자") {
-                            supportFragmentManager.beginTransaction()
-                                .replace(R.id.main_frm, ConsumerMyPageFragment())
-                                .commitAllowingStateLoss()
-                        } else {
-                            supportFragmentManager.beginTransaction()
-                                .replace(R.id.main_frm, NonConsumerMyPageFragment())
-                                .commitAllowingStateLoss()
+                        if(mypageItemId != item.itemId){
+                            if (accessToken != null && userRole == "구매자") {
+                                supportFragmentManager.beginTransaction()
+                                    .replace(R.id.main_frm, ConsumerMyPageFragment())
+                                    .commitAllowingStateLoss()
+                            } else {
+                                supportFragmentManager.beginTransaction()
+                                    .replace(R.id.main_frm, NonConsumerMyPageFragment())
+                                    .commitAllowingStateLoss()
+                            }
+                            mypageItemId = item.itemId
                         }
                     }
                 }
+
+                if(mypageItemId != item.itemId)
+                    mypageItemId = null
                 true
             }
             //selectedItemId = R.id.menu_consumer_main_btm_nav_home
