@@ -44,7 +44,7 @@
     <!-- 검색 결과 scrollview -->
     <androidx.core.widget.NestedScrollView
         android:id="@+id/sv_search_list"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/search_sv_search_list_marginTop"
         android:scrollbars="none"
@@ -55,7 +55,7 @@
         <!-- 그리드뷰 리사이클러-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_search_grid"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
