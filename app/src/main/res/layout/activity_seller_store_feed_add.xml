@@ -189,6 +189,22 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <TextView
+                android:id="@+id/tv_error_no_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/seller_feed_add_tv_error_no_product_margin_top"
+                android:layout_marginStart="@dimen/seller_feed_add_tv_error_no_product_margin_start"
+                app:layout_constraintTop_toBottomOf="@id/layout_select_product"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/seller_feed_add_tv_error_no_product"
+                android:textColor="@color/darkish_pink"
+                android:textSize="@dimen/seller_feed_add_tv_error_no_product_size"
+                android:fontFamily="@font/notosanskr_regular"
+                android:includeFontPadding="false"
+                android:visibility="visible"
+                />
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_product_description"
                 android:layout_width="@dimen/seller_feed_add_layout_product_description_width"
@@ -199,7 +215,7 @@
                 android:paddingTop="@dimen/seller_feed_add_layout_product_description_padding_top"
                 android:paddingHorizontal="@dimen/seller_feed_add_layout_product_description_padding_horizontal"
                 android:paddingBottom="@dimen/seller_feed_add_layout_product_description_padding_bottom"
-                app:layout_constraintTop_toBottomOf="@id/layout_select_product"
+                app:layout_constraintTop_toBottomOf="@id/tv_error_no_product"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:background="@drawable/bg_rectangle_radius_10_white_no_padding"

@@ -218,5 +218,6 @@
     <string name="seller_feed_add_et_product_description">피드 내용을 입력해주세요. (최대 150자)</string>
     <string name="seller_feed_add_max_image">사진은 5개까지 첨부할 수 있습니다.</string>
     <string name="seller_feed_add_image_picker_title">Photos</string>
+    <string name="seller_feed_add_tv_error_no_product">등록된 제품이 없습니다. 제품을 먼저 추가해주세요.</string>
 
 </resources>
