@@ -78,7 +78,7 @@ class SellerProfileEditActivity :BaseActivity<ActivitySellerProfileEditBinding>(
             if(result.resultCode == RESULT_OK){
                 ProfileUri = result.data?.data
 
-                val defaultImg = R.drawable.bg_oval_off_white
+                val defaultImg = R.drawable.ic_seller
                 val imageView = binding.cvPhoto
 
                 Glide.with(this)
@@ -166,8 +166,6 @@ class SellerProfileEditActivity :BaseActivity<ActivitySellerProfileEditBinding>(
 
     // 이전 프로필 서버에서 가져오기 성공
     override fun onGetMyPageSuccess(response: SellerMyPageResponse) {
-        dismissLoadingDialog()
-
         //유저 이메일 표시하기
         binding.tvUserEmail.text = response.result.email
 
@@ -211,8 +209,13 @@ class SellerProfileEditActivity :BaseActivity<ActivitySellerProfileEditBinding>(
                         .fallback(defaultImg)
                         .circleCrop()
                         .into(imageView)
+                    dismissLoadingDialog()
+                }else{
+                    dismissLoadingDialog()
                 }
             }
+        }else{
+            dismissLoadingDialog()
         }
     }
 
@@ -221,8 +224,6 @@ class SellerProfileEditActivity :BaseActivity<ActivitySellerProfileEditBinding>(
         dismissLoadingDialog()
         showCustomToast("오류 : $message")
     }
-
-
 
     // 엔터 클릭 시 키패드 내리기
     private fun keyboardEnterClicked(){
@@ -260,6 +261,5 @@ class SellerProfileEditActivity :BaseActivity<ActivitySellerProfileEditBinding>(
             return@setOnEditorActionListener false
         }
     }
-
 
 }

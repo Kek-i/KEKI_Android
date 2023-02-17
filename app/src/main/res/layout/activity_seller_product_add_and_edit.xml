@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
     <ImageView
         android:id="@+id/iv_back"
         android:layout_width="wrap_content"
@@ -13,6 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
     <TextView
+        android:id="@+id/tv_completion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -48,13 +50,15 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_cake1"
             android:layout_marginLeft="@dimen/seller_product_add_and_edit_iv_cake_left"/>
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/seller_product_add_and_edit_iv_cake_left"
             android:src="@drawable/seller__product_add_cake3"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_cake2"
-            android:layout_marginLeft="@dimen/seller_product_add_and_edit_iv_cake_left"/>
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     <EditText
         android:id="@+id/et_product_name"
@@ -76,6 +80,9 @@
         android:paddingTop="@dimen/seller_product_add_and_edit_et_padding_top_bottom"
         android:paddingBottom="@dimen/seller_product_add_and_edit_et_padding_top_bottom"
         android:includeFontPadding="false"
+        android:imeOptions="actionDone"
+        android:maxLines="1"
+        android:inputType="textNoSuggestions"
         />
 
     <EditText
@@ -98,7 +105,9 @@
         android:paddingTop="@dimen/seller_product_add_and_edit_et_padding_top_bottom"
         android:paddingBottom="@dimen/seller_product_add_and_edit_et_padding_top_bottom"
         android:includeFontPadding="false"
-        />
+        android:imeOptions="actionDone"
+        android:maxLines="1"
+        android:inputType="number" />
 
     <EditText
         android:id="@+id/et_product_intro"
@@ -121,7 +130,10 @@
         android:paddingTop="@dimen/seller_product_add_and_edit_et_padding_top_bottom"
         android:paddingBottom="@dimen/seller_product_add_and_edit_et_padding_top_bottom"
         android:gravity="top"
-        android:maxLength="150"/>
+        android:maxLength="150"
+        android:imeOptions="actionDone"
+        android:maxLines="10"
+        android:inputType="textNoSuggestions"/>
 
     <TextView
         android:id="@+id/et_product_picture"
@@ -147,7 +159,27 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="@dimen/seller_product_add_and_edit_csl_add_top"
         android:layout_marginLeft="@dimen/seller_product_add_and_edit_csl_add_left">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:cardCornerRadius="@dimen/seller_product_add_and_edit_cv_add_radius"
+            app:cardElevation="@dimen/seller_product_add_and_edit_cv_add_elevation"
+            android:background="@color/white"
+            >
+            <ImageView
+                android:id="@+id/iv_product"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"/>
+        </androidx.cardview.widget.CardView>
         <ImageView
+            android:id="@+id/iv_plus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_seller_product_add"

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Keki</string>
+    <string name="app_name">케키</string>
 
     <!-- Auth -->
     <string name="kakao_native_key">e2abb1dfec5ae90f3ac6233769bfafec</string>
@@ -60,6 +60,10 @@
     <string name="more_see">••• 더보기</string>
     <string name="report">사용자 신고</string>
 
+    <!-- store feed detail-->
+    <string name="store_feed_detail_product_name">제품 이름</string>
+
+
     <!-- report -->
     <string name="dialog_report_title">신고하기</string>
     <string name="dialog_report_content">타당한 신고 사유를 선택해주세요.\n신고 사유에 맞지않은 신고를 했을경우,\n해당 신고는 처리되지 않습니다.</string>
@@ -111,6 +115,8 @@
     <string name="calendar_add_error_no_select">필수 선택 항목입니다.</string>
     <string name="calendar_add_error_no_input">필수 입력 항목입니다.</string>
     <string name="calendar_non_consumer_like_comment">로그인 시 사용 가능한 기능입니다!</string>
+    <string name="calendar_modify_main_text">기념일 수정</string>
+
 
     <!-- my page -->
     <string name="my_page_main_text">내 정보</string>
@@ -160,7 +166,10 @@
     <string name="search_empty_list">검색결과가 없습니다.</string>
 
     <!-- like -->
-    <string name="like_comment">준비 중인 기능입니다.</string>
+    <string name="like_main_text">좋아요</string>
+    <string name="like_tv_product_name">상품명</string>
+    <string name="like_tv_product_price">00,000</string>
+    <string name="like_empty_list">좋아요한 케이크가 없습니다.</string>
 
     <!-- logout -->
     <string name="dialog_logout_title">로그아웃</string>
@@ -209,4 +218,5 @@
     <string name="seller_feed_add_et_product_description">제품을 소개해주세요. (최대 150자)</string>
     <string name="seller_feed_add_max_image">사진은 5개까지 첨부할 수 있습니다.</string>
     <string name="seller_feed_add_image_picker_title">Photos</string>
+
 </resources>

@@ -1,6 +1,7 @@
 package com.codepatissier.keki.src.main.consumer.home.onefeed
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,16 +10,22 @@ import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
+import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.databinding.ActivityConsumerOneFeedDetailBinding
 import com.codepatissier.keki.src.main.consumer.home.onefeed.model.ConsumerOneFeedDetailResponse
+import com.codepatissier.keki.src.main.consumer.search.searchresult.SearchResultService
+import com.codepatissier.keki.src.main.consumer.search.searchresult.SearchResultView
+import com.codepatissier.keki.src.main.consumer.search.searchresult.model.SearchResultResponse
+import com.codepatissier.keki.src.main.consumer.store.ConsumerStoreMainActivity
 import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedActivity
 import com.codepatissier.keki.src.main.consumer.store.storefeed.report.ConsumerStoreDetailFeedDialog
 import com.google.firebase.storage.FirebaseStorage
 
 class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetailBinding>(ActivityConsumerOneFeedDetailBinding::inflate)
-    , ConsumerOneFeedDetailView{
+    , ConsumerOneFeedDetailView, SearchResultView{
 
     var postIdx: Long? = null
+    var storeIdx: Long? = null
     private var heart = false
     var fbStorage : FirebaseStorage?= null
 
@@ -29,10 +36,15 @@ class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetail
         initPostIdx()
         backToHome()
         showLoadingDialog(this)
-        //Log.d("postIdx", postIdx.toString())
+        postHistory()
         ConsumerOneFeedDetailService(this).tryGetConsumerOneFeedDetail(postIdx!!)
         likeProduct()
         report()
+        navigateToStoreMain()
+    }
+
+    private fun postHistory(){
+        SearchResultService(this).tryPostHistory(postIdx!!)
     }
 
     private fun initPostIdx(){
@@ -43,11 +55,11 @@ class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetail
     override fun onGetConsumerOneFeedDetailSuccess(response: ConsumerOneFeedDetailResponse) {
         dismissLoadingDialog()
 
-        val defaultImg = R.drawable.bg_oval_light_yellow
-        if(response.result.storeProfileImg != null){
-            var storeageRef = fbStorage?.reference?.child(response.result.storeProfileImg)
-            storeageRef?.downloadUrl?.addOnCompleteListener {
-                if(it.isSuccessful){
+        val defaultImg = R.drawable.ic_seller
+//        if(response.result.storeProfileImg != null){
+//            var storeageRef = fbStorage?.reference?.child(response.result.storeProfileImg)
+//            storeageRef?.downloadUrl?.addOnCompleteListener {
+//                if(it.isSuccessful){
                     Glide.with(this)
                         .load(response.result.storeProfileImg)
                         .placeholder(defaultImg)
@@ -56,9 +68,9 @@ class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetail
                         .centerCrop()
                         .circleCrop()
                         .into(binding.ivStoreFeedSeller)
-                }
-            }
-        }
+//                }
+//            }
+//        }
 
         binding.tvStoreFeedSellerNickname.text = response.result.storeName
 
@@ -86,6 +98,8 @@ class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetail
             binding.ivStoreFeedHeartOff.setImageResource(R.drawable.ic_bottom_heart_on)
             heart = true
         }
+
+        storeIdx = response.result.storeIdx
     }
 
     private fun checkCakeDescription(description: String){
@@ -149,5 +163,35 @@ class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetail
         binding.ivStoreFeedLeftChevron.setOnClickListener {
             finish()
         }
+    }
+
+    private fun navigateToStoreMain(){
+        binding.tvStoreFeedSellerNickname.setOnClickListener {
+            val intent = Intent(this, ConsumerStoreMainActivity::class.java)
+            intent.putExtra("storeIdx", storeIdx)
+            startActivity(intent)
+        }
+    }
+
+    override fun onGetSearchResultsSuccess(response: SearchResultResponse) {
+
+    }
+
+    override fun onGetSearchResultsFailure(message: String) {
+
+    }
+
+    override fun onGetNextResultSuccess(response: SearchResultResponse) {
+
+    }
+
+    override fun onGetNextResultFailure(message: String) {
+
+    }
+
+    override fun onPostConsumerStoreFeedDetailLikeSuccess(response: BaseResponse) {
+    }
+
+    override fun onPostConsumerStoreFeedDetailLikeFailure(message: String) {
     }
 }

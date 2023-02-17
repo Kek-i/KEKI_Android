@@ -14,11 +14,15 @@ import com.bumptech.glide.Glide
 import com.codepatissier.keki.R
 import com.codepatissier.keki.databinding.ItemProgressbarLoadingBinding
 import com.codepatissier.keki.databinding.ItemStoreFeedRecyclerBinding
+import com.codepatissier.keki.src.main.consumer.search.searchresult.SearchResultFeedActivity
+import com.codepatissier.keki.src.main.consumer.search.searchresult.SearchResultService
 import com.codepatissier.keki.src.main.consumer.search.searchresult.model.Feeds
 import com.codepatissier.keki.src.main.consumer.search.searchresult.model.SearchResult
 import com.codepatissier.keki.src.main.consumer.store.ConsumerStoreMainActivity
+import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedActivity
 import com.codepatissier.keki.src.main.consumer.store.storefeed.report.ConsumerStoreDetailFeedDialog
 import com.codepatissier.keki.src.main.consumer.store.storefeed.DetailImageAdapter
+import com.google.firebase.storage.FirebaseStorage
 
 
 class SearchResultFeedAdapter(var searchResult: SearchResult, val context: FragmentActivity?): RecyclerView.Adapter<ViewHolder>() {
@@ -52,6 +56,7 @@ class SearchResultFeedAdapter(var searchResult: SearchResult, val context: Fragm
 
 
     class StoreFeedViewHolder(val context: FragmentActivity?, val binding: ItemStoreFeedRecyclerBinding): ViewHolder(binding.root){
+        var fbStorage : FirebaseStorage?= null
         private val sellerImg: ImageView = binding.ivStoreFeedSeller
         private val nickname: TextView = binding.tvStoreFeedSellerNickname
         private val cakeName: TextView = binding.tvStoreFeedCakeName
@@ -77,6 +82,7 @@ class SearchResultFeedAdapter(var searchResult: SearchResult, val context: Fragm
                 .load(item.storeProfileImg)
                 .centerCrop()
                 .into(sellerImg)
+
             
             var img = arrayOfNulls<String>(item.postImgUrls.size)
 
@@ -126,8 +132,11 @@ class SearchResultFeedAdapter(var searchResult: SearchResult, val context: Fragm
                     binding.ivStoreFeedHeartOff.setImageResource(R.drawable.ic_bottom_heart_off)
                     heart = false
                 }
+                SearchResultFeedActivity().postLike(postIdx!!)
             }
+
         }
+
 
         // 신고하기
         private fun report(){

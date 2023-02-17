@@ -376,7 +376,7 @@
                 android:layout_marginStart="@dimen/calendar_add_tv_max_hashtag_margin_start"
                 app:layout_constraintTop_toBottomOf="@id/tv_select_hashtag"
                 app:layout_constraintStart_toStartOf="parent"
-                android:text="@string/calendar_feed_add_anniversary_hashtag"
+                android:text="@string/calendar_feed_add_max_hashtag"
                 android:textColor="@color/brown_grey"
                 android:textSize="@dimen/calendar_add_tv_max_hashtag_size"
                 android:fontFamily="@font/notosanskr_regular"

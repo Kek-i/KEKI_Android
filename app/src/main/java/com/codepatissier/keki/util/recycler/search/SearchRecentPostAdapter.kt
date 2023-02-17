@@ -10,6 +10,7 @@ import com.codepatissier.keki.databinding.ItemRecentSeenCakeRecyclerBinding
 import com.codepatissier.keki.src.main.consumer.search.ConsumerSearchFragment
 import com.codepatissier.keki.src.main.consumer.search.model.RecentPostSearch
 import com.codepatissier.keki.src.main.consumer.search.model.Result
+import com.google.firebase.storage.FirebaseStorage
 
 class SearchRecentPostAdapter(private var searchMainData: Result, val context: ConsumerSearchFragment) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -29,14 +30,19 @@ class SearchRecentPostAdapter(private var searchMainData: Result, val context: C
     }
 
     class SearchCakeImgHolder(val context: ConsumerSearchFragment, binding: ItemRecentSeenCakeRecyclerBinding) : RecyclerView.ViewHolder(binding.root) {
-
+        var fbStorage : FirebaseStorage?= null
         private val seenCakeImg: ImageView = binding.ivCake
 
         fun bind(item:RecentPostSearch) {
-            Glide.with(context!!)
-                .load(item.postImgUrl)
-                .centerCrop()
-                .into(seenCakeImg)
+//            fbStorage = FirebaseStorage.getInstance()
+//            var storageRef = fbStorage?.reference?.child(item.postImgUrl)
+//
+//            storageRef?.downloadUrl?.addOnCompleteListener {
+                Glide.with(context!!)
+                    .load(item.postImgUrl)
+                    .centerCrop()
+                    .into(seenCakeImg)
+//            }
         }
 
     }

@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:paddingEnd="@dimen/home_cake_store_img_margin_end"
     android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -16,6 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:cardCornerRadius="@dimen/home_cake_store_img_radius"
         app:cardElevation="@dimen/home_store_iv_elevation"
+        android:layout_marginStart="@dimen/home_tag_margin"
         android:background="@color/white"
         >
 
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:text="@string/home_store_name"
         app:layout_constraintTop_toBottomOf="@+id/cv"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/cv"
         app:layout_constraintEnd_toEndOf="@+id/cv"
         android:layout_marginTop="@dimen/home_store_tv_margin_top"
         android:includeFontPadding="false"

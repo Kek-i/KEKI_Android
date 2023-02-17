@@ -125,7 +125,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="@dimen/home_tag_start"
+                    android:layout_marginStart="@dimen/home_tag_margin"
                     android:text="@string/home_tag_one"
                     android:fontFamily="@font/notosanskr_bold"
                     android:includeFontPadding="false"
@@ -155,15 +155,16 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_first_home"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/home_recycler_width"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/home_tag_start"
                     android:layout_marginTop="@dimen/home_recycler_margin_top"
+                    android:paddingEnd="@dimen/home_tag_margin"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_first_home_tag"
-                    tools:listitem="@layout/item_home_store_recycler" />
+                    tools:listitem="@layout/item_home_store_recycler"
+                    android:clipToPadding="false"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -185,7 +186,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="@dimen/home_tag_start"
+                    android:layout_marginStart="@dimen/home_tag_margin"
                     android:text="@string/home_tag_two"
                     android:fontFamily="@font/notosanskr_bold"
                     android:includeFontPadding="false"
@@ -215,15 +216,16 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_second_home"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/home_recycler_width"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@+id/tv_second_home_tag"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="@dimen/home_tag_start"
                     android:layout_marginTop="@dimen/home_recycler_margin_top"
+                    android:paddingEnd="@dimen/home_tag_margin"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/item_home_store_recycler"
                     android:orientation="horizontal"
+                    android:clipToPadding="false"
                     />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -244,7 +246,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="@dimen/home_tag_start"
+                    android:layout_marginStart="@dimen/home_tag_margin"
                     android:fontFamily="@font/notosanskr_bold"
                     android:includeFontPadding="false"
                     android:textColor="@color/black"
@@ -273,15 +275,16 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_third_home"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/home_recycler_width"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@+id/tv_third_home_tag"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="@dimen/home_tag_start"
                     android:layout_marginTop="@dimen/home_recycler_margin_top"
+                    android:paddingEnd="@dimen/home_tag_margin"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/item_home_store_recycler"
                     android:orientation="horizontal"
+                    android:clipToPadding="false"
                     />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

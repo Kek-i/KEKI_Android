@@ -16,7 +16,7 @@
     <color name="white_2">#ebebeb</color>
 
     <color name="whiteForBackground">#FFFFFF</color>
-    <color name="blackForText">#4a4a4a</color>
+    <color name="blackForText">#000000</color>
     <color name="redForText">#d9534f</color>
 
     <color name="very_light_pink">#faecec</color>
