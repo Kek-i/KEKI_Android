@@ -798,9 +798,9 @@
 
     <dimen name="seller_feed_add_component_elevation">3dp</dimen>
 
-    <dimen name="seller_feed_add_tv_error_no_product_margin_top">5dp</dimen>
-    <dimen name="seller_feed_add_tv_error_no_product_margin_start">28dp</dimen>
-    <dimen name="seller_feed_add_tv_error_no_product_size">11sp</dimen>
+    <dimen name="seller_feed_add_tv_error_margin_top">5dp</dimen>
+    <dimen name="seller_feed_add_tv_error_margin_start">28dp</dimen>
+    <dimen name="seller_feed_add_tv_error_size">11sp</dimen>
 
     <!-- seller product add and edit -->
     <dimen name="seller_product_add_and_edit_iv_back_left">14dp</dimen>
