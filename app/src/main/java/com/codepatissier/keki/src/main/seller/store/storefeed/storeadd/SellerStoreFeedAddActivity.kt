@@ -107,7 +107,6 @@ class SellerStoreFeedAddActivity : BaseActivity<ActivitySellerStoreFeedAddBindin
     }
 
     private fun setProductNameRecyclerView(productList: List<DessertName>) {
-        Log.d("상품목록", "${productList}")
         productNameDataList = productList
         productNameAdapter = ProductNameAdapter(productNameDataList)
         productNameAdapter.setItemClickListener(object : ProductNameAdapter.ItemClickListener {
@@ -117,35 +116,37 @@ class SellerStoreFeedAddActivity : BaseActivity<ActivitySellerStoreFeedAddBindin
             }
         })
         binding.rvProduct.adapter = productNameAdapter
+
+        // 등록된 상품이 없을 경우(리스트가 비어있으면) 안 열리고 밑에 에러문구 띄우기(상품 등록 먼저)
+        if (productNameDataList.isEmpty()) {
+            binding.tvProductError.text = getString(R.string.seller_feed_add_tv_error_no_product)
+            binding.tvProductError.visibility = VISIBLE
+        }
     }
 
     private fun setListenerToProductSelectionLayout() {
         binding.layoutCloseProduct.setOnClickListener {
-            // 등록된 상품이 없을 경우(리스트가 비어있으면) 안 열리고 밑에 에러문구 띄우기(상품 등록 먼저)
-            if (productNameDataList.size == 0) {
-
-            }
-            // 선택 메뉴 open 되어 있을 때
-            else if (binding.layoutOpenProduct.visibility == VISIBLE) {
-                binding.layoutOpenProduct.visibility = GONE
-            }
-            // close 되어 있을 때
-            else if (binding.layoutOpenProduct.visibility == GONE) {
-                binding.layoutOpenProduct.visibility = VISIBLE
+            if (productNameDataList.isNotEmpty()) {
+                // 선택 메뉴 open 되어 있을 때
+                if (binding.layoutOpenProduct.visibility == VISIBLE) {
+                    binding.layoutOpenProduct.visibility = GONE
+                }
+                // close 되어 있을 때
+                else if (binding.layoutOpenProduct.visibility == GONE) {
+                    binding.layoutOpenProduct.visibility = VISIBLE
+                }
             }
         }
         binding.ibOpen.setOnClickListener {
-            // 등록된 상품이 없을 경우(리스트가 비어있으면) 안 열리고 밑에 에러문구 띄우기(상품 등록 먼저)
-            if (productNameDataList.size == 0) {
-
-            }
-            // 선택 메뉴 open 되어 있을 때
-            else if (binding.layoutOpenProduct.visibility == VISIBLE) {
-                binding.layoutOpenProduct.visibility = GONE
-            }
-            // close 되어 있을 때
-            else if (binding.layoutOpenProduct.visibility == GONE) {
-                binding.layoutOpenProduct.visibility = VISIBLE
+            if (productNameDataList.isNotEmpty()) {
+                // 선택 메뉴 open 되어 있을 때
+                if (binding.layoutOpenProduct.visibility == VISIBLE) {
+                    binding.layoutOpenProduct.visibility = GONE
+                }
+                // close 되어 있을 때
+                else if (binding.layoutOpenProduct.visibility == GONE) {
+                    binding.layoutOpenProduct.visibility = VISIBLE
+                }
             }
         }
     }
