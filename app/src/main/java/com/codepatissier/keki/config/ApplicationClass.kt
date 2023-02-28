@@ -26,6 +26,7 @@ class ApplicationClass : Application() {
         val Authorization = "Authorization"
         val UserRole = "UserRole"
         val UserEmail = "UserEmail"
+        val DessertIdx = "DessertIdx"
         lateinit var sRetrofit: Retrofit
     }
     override fun onCreate() {
