@@ -83,7 +83,7 @@ class ConsumerProfileEditActivity :BaseActivity<ActivityConsumerProfileEditBindi
             if(result.resultCode == RESULT_OK){
                 ProfileUri = result.data?.data
 
-                val defaultImg = R.drawable.bg_oval_off_white
+                val defaultImg = R.drawable.ic_customer
                 val imageView = binding.ivProfile
 
                 Glide.with(this)

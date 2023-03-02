@@ -75,7 +75,7 @@
                     android:id="@+id/iv_profile"
                     android:layout_width="@dimen/my_page_profile_width_height"
                     android:layout_height="@dimen/my_page_profile_width_height"
-                    android:src="@drawable/bg_oval_off_white"
+                    android:src="@drawable/ic_seller"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

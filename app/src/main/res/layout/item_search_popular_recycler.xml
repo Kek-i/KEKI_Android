@@ -10,7 +10,8 @@
         android:id="@+id/tv_popular_search_tag"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/search_tag_height"
-        android:background="@drawable/bg_rectangle_radius_13_light_peach_1"
+        android:background="@drawable/bg_rectangle_radius_13"
+        android:backgroundTint="@color/pale_lavender"
         android:text="#popular"
         android:textColor="@color/black"
         android:textSize="@dimen/search_tag_textSize"
@@ -20,5 +21,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

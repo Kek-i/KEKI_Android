@@ -9,8 +9,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv"
-        android:layout_width="@dimen/like_item_cv_width_height"
-        android:layout_height="@dimen/like_item_cv_width_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,8 +21,8 @@
 
         <ImageView
             android:id="@+id/iv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:scaleType="centerCrop"
             />
 
@@ -41,11 +41,13 @@
         android:textSize="@dimen/like_item_tv_product_name_size"
         android:fontFamily="@font/notosanskr_regular"
         android:includeFontPadding="false"
+        android:maxLines="2"
+        android:ellipsize="end"
         />
 
     <TextView
         android:id="@+id/tv_product_price"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="@dimen/like_item_tv_product_price_min_height"
         android:layout_marginTop="@dimen/like_item_tv_product_price_margin_top"

@@ -54,7 +54,8 @@
                 android:fontFamily="@font/notosanskr_regular"
                 android:textColor="@color/black"
                 android:textSize="@dimen/search_title_textSize"
-                android:textStyle="bold"
+                android:fontFamily="@font/notosanskr_bold"
+                android:includeFontPadding="false"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -107,7 +108,8 @@
             android:fontFamily="@font/notosanskr_regular"
             android:textColor="@color/black"
             android:textSize="@dimen/search_title_textSize"
-            android:textStyle="bold"
+            android:fontFamily="@font/notosanskr_bold"
+            android:includeFontPadding="false"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -144,7 +146,8 @@
                 android:fontFamily="@font/notosanskr_regular"
                 android:textColor="@color/black"
                 android:textSize="@dimen/search_title_textSize"
-                android:textStyle="bold"
+                android:fontFamily="@font/notosanskr_bold"
+                android:includeFontPadding="false"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

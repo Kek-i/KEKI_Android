@@ -2,13 +2,9 @@ package com.codepatissier.keki.config
 
 import android.app.Application
 import android.content.SharedPreferences
+import androidx.appcompat.app.AppCompatDelegate
 import com.codepatissier.keki.R
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.firebase.auth.FirebaseAuth
 import com.kakao.sdk.common.KakaoSdk
-import com.kakao.sdk.common.util.Utility
 import com.navercorp.nid.NaverIdLoginSDK
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -44,13 +40,15 @@ class ApplicationClass : Application() {
         val naverClientName = getString(R.string.social_login_info_naver_client_name)
         NaverIdLoginSDK.initialize(this, naverClientId, naverClientSecret , naverClientName)
 
+        //앱 내 다크모드 비활성화
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
     }
 
     private fun initRetrofitInstance() {
         val client: OkHttpClient = OkHttpClient.Builder()
-            .readTimeout(5000, TimeUnit.MILLISECONDS)
-            .connectTimeout(5000, TimeUnit.MILLISECONDS)
+            .readTimeout(8000, TimeUnit.MILLISECONDS)
+            .connectTimeout(8000, TimeUnit.MILLISECONDS)
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
             .addNetworkInterceptor(XAccessTokenInterceptor())
             .retryOnConnectionFailure(false)

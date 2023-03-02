@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.Window
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -64,7 +65,7 @@ class ConsumerStoreDetailFeedDialog(context: Context): Dialog(context), Consumer
             // 다른 한 카테고리가 선택되어있으면
             if(!checkIfCategoryClicked()){
                 // non-check 상태
-                images[num]?.setImageResource(R.drawable.ic_check)
+                images[num]?.setImageResource(R.drawable.ic_report_check)
                 reportList[num] = true
                 reportName = reportNames[num]
             }

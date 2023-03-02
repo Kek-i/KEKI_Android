@@ -1,7 +1,6 @@
 package com.codepatissier.keki.src.main.consumer.store.storefeed
 
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,12 +18,13 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
     val storeFeedDatas = mutableListOf<StoreFeedData>()
     var feedTag : String ?= null //
     var storeIdx: Long? = null
-    var feedSize = 12
+    var feedSize = 21
     var cursorIdx : Int? = null
     var hasNext : Boolean? = null
     var positionStart = 0
     var position : Int? = null
     var itemSize = 0
+    var firstLoading : Boolean? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,10 +37,16 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
         checkScrollEvent()
     }
 
+    override fun onStart() {
+        super.onStart()
+        firstLoading = true
+    }
+
     private fun initRecyclerView(){
         //feedTag = intent.getStringExtra("tag")!!
         storeIdx = intent.getLongExtra("storeIdx", -1)
         position = intent.getIntExtra("position", 0)
+        feedSize = position!! + 5
         storeFeedAdapter = StoreFeedAdapter(this)
         binding.recyclerStoreFeed.adapter = storeFeedAdapter
     }
@@ -90,7 +96,10 @@ class ConsumerStoreDetailFeedActivity : BaseActivity<ActivityConsumerStoreDetail
         storeFeedAdapter.setList(storeFeedDatas, hasNext!!)
         storeFeedAdapter.notifyItemRangeInserted(positionStart, response.result.feeds.size)
 
-        binding.recyclerStoreFeed.scrollToPosition(position!!)
+        if(firstLoading!!){
+            binding.recyclerStoreFeed.scrollToPosition(position!!)
+            firstLoading = false
+        }
     }
 
     private fun checkScrollEvent(){

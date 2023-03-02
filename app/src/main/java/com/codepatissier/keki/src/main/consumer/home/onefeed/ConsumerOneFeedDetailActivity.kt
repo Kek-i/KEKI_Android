@@ -10,6 +10,7 @@ import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
+import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.databinding.ActivityConsumerOneFeedDetailBinding
 import com.codepatissier.keki.src.main.consumer.home.onefeed.model.ConsumerOneFeedDetailResponse
 import com.codepatissier.keki.src.main.consumer.search.searchresult.SearchResultService
@@ -54,11 +55,11 @@ class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetail
     override fun onGetConsumerOneFeedDetailSuccess(response: ConsumerOneFeedDetailResponse) {
         dismissLoadingDialog()
 
-        val defaultImg = R.drawable.bg_oval_light_yellow
-        if(response.result.storeProfileImg != null){
-            var storeageRef = fbStorage?.reference?.child(response.result.storeProfileImg)
-            storeageRef?.downloadUrl?.addOnCompleteListener {
-                if(it.isSuccessful){
+        val defaultImg = R.drawable.ic_seller
+//        if(response.result.storeProfileImg != null){
+//            var storeageRef = fbStorage?.reference?.child(response.result.storeProfileImg)
+//            storeageRef?.downloadUrl?.addOnCompleteListener {
+//                if(it.isSuccessful){
                     Glide.with(this)
                         .load(response.result.storeProfileImg)
                         .placeholder(defaultImg)
@@ -67,9 +68,9 @@ class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetail
                         .centerCrop()
                         .circleCrop()
                         .into(binding.ivStoreFeedSeller)
-                }
-            }
-        }
+//                }
+//            }
+//        }
 
         binding.tvStoreFeedSellerNickname.text = response.result.storeName
 
@@ -178,5 +179,19 @@ class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetail
 
     override fun onGetSearchResultsFailure(message: String) {
 
+    }
+
+    override fun onGetNextResultSuccess(response: SearchResultResponse) {
+
+    }
+
+    override fun onGetNextResultFailure(message: String) {
+
+    }
+
+    override fun onPostConsumerStoreFeedDetailLikeSuccess(response: BaseResponse) {
+    }
+
+    override fun onPostConsumerStoreFeedDetailLikeFailure(message: String) {
     }
 }

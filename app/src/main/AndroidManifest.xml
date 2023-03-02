@@ -96,6 +96,12 @@
             android:theme="@style/AppTheme2">
         </activity>
         <activity
+            android:name="com.codepatissier.keki.src.main.consumer.calendar.calendarmodify.ConsumerCalendarModifyActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme2">
+        </activity>
+        <activity
             android:name="com.codepatissier.keki.src.main.consumer.search.searchresult.ConsumerSearchActivity"
             android:exported="false"
             android:screenOrientation="portrait"
