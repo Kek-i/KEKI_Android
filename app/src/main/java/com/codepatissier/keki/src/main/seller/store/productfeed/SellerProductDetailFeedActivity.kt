@@ -62,6 +62,7 @@ class SellerProductDetailFeedActivity : BaseActivity<ActivitySellerProductDetail
                     val intent = Intent(this, SellerProductEditActivity::class.java)
                     intent.putExtra("dessertIdx", dessertIdx)
                     startActivity(intent)
+                    finish()
                     return@setOnMenuItemClickListener true
                 }
                 R.id.seller_product_detail_feed_menu2 -> {

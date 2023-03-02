@@ -1,5 +1,6 @@
 package com.codepatissier.keki.src.main.seller.store.productfeed
 
+import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.src.main.seller.store.productfeed.model.SellerProductFeedDetailResponse
 
 interface SellerProductFeedDetailView {
@@ -7,4 +8,9 @@ interface SellerProductFeedDetailView {
     fun onGetProductFeedSuccess(response: SellerProductFeedDetailResponse)
     fun onGetProductFeedFailure(message:String)
 
+    fun onPatchProductFeedSuccess(response: BaseResponse)
+    fun onPatchProductFeedFailure(message:String)
+
+    fun onDelProductFeedSuccess(response: BaseResponse)
+    fun onDelProductFeedFailure(message:String)
 }
