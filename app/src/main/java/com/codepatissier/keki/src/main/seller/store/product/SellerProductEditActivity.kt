@@ -55,7 +55,7 @@ class SellerProductEditActivity:BaseActivity<ActivitySellerProductAddAndEditBind
     }
 
     private fun plusClicked(){
-        binding.ivPlus.setOnClickListener{
+        binding.ivProduct.setOnClickListener{
             var intent = Intent(Intent.ACTION_GET_CONTENT)
             intent.setType("image/*")
             launcher.launch(intent)
@@ -96,14 +96,14 @@ class SellerProductEditActivity:BaseActivity<ActivitySellerProductAddAndEditBind
 
             storageRef
                 ?.putFile(ProfileUri!!)?.addOnProgressListener {
-                    showLoadingDialog(this)
+                    //showLoadingDialog(this)
                 }
                 ?.addOnSuccessListener {
-                    dismissLoadingDialog()
+                    //dismissLoadingDialog()
                     finish()
                 }
                 ?.addOnFailureListener{
-                    dismissLoadingDialog()
+                    //dismissLoadingDialog()
                     Toast.makeText(this, "상품 사진 업로드에 실패했습니다.", Toast.LENGTH_SHORT).show()
                 }
         }
