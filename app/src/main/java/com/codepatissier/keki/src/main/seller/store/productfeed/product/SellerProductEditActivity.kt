@@ -1,4 +1,4 @@
-package com.codepatissier.keki.src.main.seller.store.product
+package com.codepatissier.keki.src.main.seller.store.productfeed.product
 
 import android.content.Intent
 import android.net.Uri
@@ -15,7 +15,7 @@ import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.databinding.ActivitySellerProductAddAndEditBinding
 import com.codepatissier.keki.src.main.seller.store.SellerProductFeedFragment
-import com.codepatissier.keki.src.main.seller.store.product.model.SellerProductAddBody
+import com.codepatissier.keki.src.main.seller.store.productfeed.product.model.SellerProductAddBody
 import com.codepatissier.keki.src.main.seller.store.productfeed.SellerProductDetailFeedActivity
 import com.codepatissier.keki.src.main.seller.store.productfeed.SellerProductFeedDetailService
 import com.codepatissier.keki.src.main.seller.store.productfeed.SellerProductFeedDetailView

@@ -11,8 +11,8 @@ import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.databinding.ActivitySellerProductDetailFeedBinding
 import com.codepatissier.keki.src.main.auth.profilesetting.SellerProfileSettingActivity
-import com.codepatissier.keki.src.main.seller.store.product.SellerProductAddActivity
-import com.codepatissier.keki.src.main.seller.store.product.SellerProductEditActivity
+import com.codepatissier.keki.src.main.seller.store.productfeed.product.SellerProductAddActivity
+import com.codepatissier.keki.src.main.seller.store.productfeed.product.SellerProductEditActivity
 import com.codepatissier.keki.src.main.seller.store.productfeed.model.SellerProductFeedDetailResponse
 import com.codepatissier.keki.util.viewpager.storemain.seller.SellerProductDetailFeedDeleteDialog
 import com.google.firebase.storage.FirebaseStorage
