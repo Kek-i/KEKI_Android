@@ -310,53 +310,52 @@ class SellerStoreFeedAddActivity : BaseActivity<ActivitySellerStoreFeedAddBindin
         binding.tvCompletion.setOnClickListener {
             // 필수 입력 항목 다 채웠는지 확인
             if (checkAllRequiredInputIsEntered()) {
-                // Firebase에 사진 업로드
-                uploadImgToFirebase()
-                // Firebase에 업로드 성공 시 POST api 호출
-                var dessertIdx = 0L
-                val description = binding.etFeedContent.text.toString()
-                val tags = mutableListOf<String>()
-
-                for(product in productNameDataList) {
-                    if(binding.tvSelectProduct.text.equals(product.dessertName))
-                        dessertIdx = product.dessertIdx
-                }
-                for(id in binding.chipGroupHashtag.checkedChipIds) {
-                    val tag: Chip = binding.chipGroupHashtag.findViewById(id)
-                    var tagText = tag.text.toString().replace(" ", "")
-                    tagText = tagText.replace("#", "")
-                    tags.add(tagText)
-                }
-
-                val postStoreFeedRequest = PostStoreFeedRequest(
-                    dessertIdx = dessertIdx, description = description, postImgUrls = uploadedImgList, tags = tags
-                )
                 showLoadingDialog(this)
-                SellerStoreFeedAddService(this).tryPostStoreFeed(postStoreFeedRequest)
-            }
-        }
-    }
 
-    private fun uploadImgToFirebase() {
-        for(feedImgUri in feedImageUriList) {
-            val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
-            // 시간만 같으면 ImgName이 중복될 수 있으므로 더 추가할 게 있으면 좋을 듯
-            val feedImgName = "FEED_IMAGE_$timeStamp.png"
-            val uploadImgName = "feed/$feedImgName"
-            val storageRef = firebaseStorage.reference.child(uploadImgName)
-            storageRef
-                .putFile(feedImgUri).addOnProgressListener {
-                    showLoadingDialog(this)
+                // Firebase에 사진 업로드
+                for(feedImgUri in feedImageUriList) {
+                    val timeStamp = System.currentTimeMillis()
+                    val feedImgName = "FEED_IMAGE_$timeStamp.png"
+                    val uploadImgName = "feed/$feedImgName"
+                    val storageRef = firebaseStorage.reference.child(uploadImgName)
+                    storageRef
+                        .putFile(feedImgUri)
+                        .addOnSuccessListener {
+                            uploadedImgList.add(uploadImgName)
+                        }
+                        .addOnFailureListener {
+                            dismissLoadingDialog()
+                            Toast.makeText(this, getString(R.string.firebase_upload_failure_error), Toast.LENGTH_SHORT).show()
+                        }
+                        .addOnCompleteListener {
+                            // Firebase에 모든 이미지 업로드 성공 시 POST api 호출
+                            if(uploadedImgList.size == feedImageUriList.size) {
+                                dismissLoadingDialog()
+
+                                var dessertIdx = 0L
+                                val description = binding.etFeedContent.text.toString()
+                                val tags = mutableListOf<String>()
+
+                                for(product in productNameDataList) {
+                                    if(binding.tvSelectProduct.text.equals(product.dessertName))
+                                        dessertIdx = product.dessertIdx
+                                }
+                                for(id in binding.chipGroupHashtag.checkedChipIds) {
+                                    val tag: Chip = binding.chipGroupHashtag.findViewById(id)
+                                    var tagText = tag.text.toString().replace(" ", "")
+                                    tagText = tagText.replace("#", "")
+                                    tags.add(tagText)
+                                }
+
+                                val postStoreFeedRequest = PostStoreFeedRequest(
+                                    dessertIdx = dessertIdx, description = description, postImgUrls = uploadedImgList, tags = tags
+                                )
+                                showLoadingDialog(this)
+                                SellerStoreFeedAddService(this).tryPostStoreFeed(postStoreFeedRequest)
+                            }
+                        }
                 }
-                .addOnSuccessListener {
-                    dismissLoadingDialog()
-                    uploadedImgList.add(uploadImgName)
-                    finish()
-                }
-                .addOnFailureListener {
-                    dismissLoadingDialog()
-                    Toast.makeText(this, "이미지 업로드 실패", Toast.LENGTH_SHORT).show()
-                }
+            }
         }
     }
 

@@ -31,11 +31,11 @@ class SellerStoreFeedFragment(storeIdx : Long) : BaseFragment<FragmentSellerStor
         sellerStoreMainStoreAdapter = SellerStoreMainStoreAdapter(requireActivity())
         binding.recyclerSellerFeed.adapter = sellerStoreMainStoreAdapter
 
-        for(i in 1..30){
-            storeMainStoreDatas.apply {
-                add(StoreMainStoreData(postImgUrl = "케키", storeIdx = storeIdx, postIdx = 1))
-            }
-        }
+//        for(i in 1..30){
+//            storeMainStoreDatas.apply {
+//                add(StoreMainStoreData(postImgUrl = "케키", storeIdx = storeIdx, postIdx = 1))
+//            }
+//        }
 
         sellerStoreMainStoreAdapter.storeMainStoreDatas = storeMainStoreDatas
 
