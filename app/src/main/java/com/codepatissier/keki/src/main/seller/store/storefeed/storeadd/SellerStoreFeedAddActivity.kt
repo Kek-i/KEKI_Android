@@ -6,20 +6,28 @@ import android.util.Log
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
+import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.databinding.ActivitySellerStoreFeedAddBinding
 import com.codepatissier.keki.src.main.seller.store.storefeed.storeadd.model.DessertName
+import com.codepatissier.keki.src.main.seller.store.storefeed.storeadd.model.PostStoreFeedRequest
 import com.codepatissier.keki.src.main.seller.store.storefeed.storeadd.model.SellerFeedAddViewResponse
 import com.codepatissier.keki.util.recycler.storefeedadd.FeedImageAdapter
 import com.codepatissier.keki.util.recycler.storefeedadd.ProductNameAdapter
 import com.google.android.material.chip.Chip
+import com.google.firebase.storage.FirebaseStorage
 import gun0912.tedimagepicker.builder.TedImagePicker
 import gun0912.tedimagepicker.builder.type.MediaType
+import java.text.SimpleDateFormat
+import java.util.*
 
 class SellerStoreFeedAddActivity : BaseActivity<ActivitySellerStoreFeedAddBinding>(
     ActivitySellerStoreFeedAddBinding::inflate), SellerStoreFeedAddView {
+    private val firebaseStorage: FirebaseStorage = FirebaseStorage.getInstance()
+    private val uploadedImgList = mutableListOf<String>()
     // 첨부 가능한 피드 이미지 최대 개수
     private val maxImage = 5
     // recyclerview adapter & datalist
@@ -34,8 +42,9 @@ class SellerStoreFeedAddActivity : BaseActivity<ActivitySellerStoreFeedAddBindin
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        
+
         setListenerToBackBtn()
+        setListenerToCompletionBtn()
         initFeedImage()
         // 상품 및 해시태그 목록 서버에서 가져오기
         showLoadingDialog(this)
@@ -57,6 +66,16 @@ class SellerStoreFeedAddActivity : BaseActivity<ActivitySellerStoreFeedAddBindin
     }
 
     override fun onGetFeedAddViewFailure(message: String) {
+        dismissLoadingDialog()
+        showCustomToast(message)
+    }
+
+    override fun onPostStoreFeedSuccess(response: BaseResponse) {
+        dismissLoadingDialog()
+        finish()
+    }
+
+    override fun onPostStoreFeedFailure(message: String) {
         dismissLoadingDialog()
         showCustomToast(message)
     }
@@ -285,6 +304,94 @@ class SellerStoreFeedAddActivity : BaseActivity<ActivitySellerStoreFeedAddBindin
             chipSortedTag.setChipBackgroundColorResource(R.color.light_peach_2)
             bLightPeach2IsUsed = true
         }
+    }
+
+    private fun setListenerToCompletionBtn() {
+        binding.tvCompletion.setOnClickListener {
+            // 필수 입력 항목 다 채웠는지 확인
+            if (checkAllRequiredInputIsEntered()) {
+                // Firebase에 사진 업로드
+                uploadImgToFirebase()
+                // Firebase에 업로드 성공 시 POST api 호출
+                var dessertIdx = 0L
+                val description = binding.etFeedContent.text.toString()
+                val tags = mutableListOf<String>()
+
+                for(product in productNameDataList) {
+                    if(binding.tvSelectProduct.text.equals(product.dessertName))
+                        dessertIdx = product.dessertIdx
+                }
+                for(id in binding.chipGroupHashtag.checkedChipIds) {
+                    val tag: Chip = binding.chipGroupHashtag.findViewById(id)
+                    var tagText = tag.text.toString().replace(" ", "")
+                    tagText = tagText.replace("#", "")
+                    tags.add(tagText)
+                }
+
+                val postStoreFeedRequest = PostStoreFeedRequest(
+                    dessertIdx = dessertIdx, description = description, postImgUrls = uploadedImgList, tags = tags
+                )
+                showLoadingDialog(this)
+                SellerStoreFeedAddService(this).tryPostStoreFeed(postStoreFeedRequest)
+            }
+        }
+    }
+
+    private fun uploadImgToFirebase() {
+        for(feedImgUri in feedImageUriList) {
+            val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+            // 시간만 같으면 ImgName이 중복될 수 있으므로 더 추가할 게 있으면 좋을 듯
+            val feedImgName = "FEED_IMAGE_$timeStamp.png"
+            val uploadImgName = "feed/$feedImgName"
+            val storageRef = firebaseStorage.reference.child(uploadImgName)
+            storageRef
+                .putFile(feedImgUri).addOnProgressListener {
+                    showLoadingDialog(this)
+                }
+                .addOnSuccessListener {
+                    dismissLoadingDialog()
+                    uploadedImgList.add(uploadImgName)
+                    finish()
+                }
+                .addOnFailureListener {
+                    dismissLoadingDialog()
+                    Toast.makeText(this, "이미지 업로드 실패", Toast.LENGTH_SHORT).show()
+                }
+        }
+    }
+
+    private fun checkAllRequiredInputIsEntered(): Boolean {
+        var check = true
+
+        // 이미지 선택 확인
+        if(feedImageUriList.isEmpty()) {
+            binding.tvErrorNoImg.visibility = VISIBLE
+            check = false
+        } else binding.tvErrorNoImg.visibility = GONE
+        // 제품 선택 확인
+        if(productNameDataList.isEmpty()) {
+            binding.tvProductError.text = getString(R.string.seller_feed_add_tv_error_no_product)
+            binding.tvProductError.visibility = VISIBLE
+            check = false
+        } else {
+            if(binding.tvSelectProduct.text.equals(getString(R.string.seller_feed_add_tv_select_product))) {
+                binding.tvProductError.text = getString(R.string.calendar_add_error_no_select)
+                binding.tvProductError.visibility = VISIBLE
+                check = false
+            } else binding.tvProductError.visibility = GONE
+        }
+        // 피드 내용 입력 확인
+        if(binding.etFeedContent.text.isNullOrBlank()) {
+            binding.tvFeedContentErrorNoInput.visibility = VISIBLE
+            check = false
+        } else binding.tvFeedContentErrorNoInput.visibility = GONE
+        // 태그 선택 확인
+        if(binding.chipGroupHashtag.checkedChipIds.isEmpty()) {
+            binding.tvErrorNoTag.visibility = VISIBLE
+            check = false
+        } else binding.tvErrorNoTag.visibility = GONE
+
+        return check
     }
 
     private fun setListenerToBackBtn() {
