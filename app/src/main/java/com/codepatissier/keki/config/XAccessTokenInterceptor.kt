@@ -17,6 +17,7 @@ class XAccessTokenInterceptor : Interceptor {
         if (jwtToken != null) {
             builder.addHeader("Authorization", jwtToken)
         }
-        return chain.proceed(builder.build())
+        return  chain.proceed(builder.build())
     }
+
 }
