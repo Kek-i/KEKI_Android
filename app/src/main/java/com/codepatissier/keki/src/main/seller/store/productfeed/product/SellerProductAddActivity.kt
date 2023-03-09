@@ -43,7 +43,7 @@ class SellerProductAddActivity:BaseActivity<ActivitySellerProductAddAndEditBindi
     }
 
     private fun plusClicked(){
-        binding.ivPlus.setOnClickListener{
+        binding.ivProduct.setOnClickListener{
             var intent = Intent(Intent.ACTION_GET_CONTENT)
             intent.setType("image/*")
             launcher.launch(intent)
