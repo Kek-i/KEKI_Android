@@ -109,16 +109,13 @@ class SellerProductDetailFeedActivity : BaseActivity<ActivitySellerProductDetail
         Log.d("item체크", "아이템 값:${response.result}")
 
         //이미지개수 크기의 리스트 생성
-//        var img = arrayOfNulls<String>(response.result.images.size)
-//
-//        for(i in response.result.images.indices) {
-//            img[i] = response.result.images[i].postImgUrl
-//
-//        }
-//
-//        val pagerAdapter = DetailImageAdapter(this@SellerProductDetailFeedActivity!!, img)
-//        binding.vpProductFeedImg.adapter = pagerAdapter
-//        binding.wormDotsIndicator.setViewPager2(binding.vpProductFeedImg)
+        var img = arrayOfNulls<String>(1)
+        img[0] = response.result.dessertImg
+
+
+        val pagerAdapter = DetailImageAdapter(this@SellerProductDetailFeedActivity!!, img)
+        binding.vpProductFeedImg.adapter = pagerAdapter
+        binding.wormDotsIndicator.setViewPager2(binding.vpProductFeedImg)
 
 
     }
