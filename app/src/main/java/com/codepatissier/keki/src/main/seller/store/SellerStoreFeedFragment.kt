@@ -33,7 +33,6 @@ class SellerStoreFeedFragment(storeIdx : Long) : BaseFragment<FragmentSellerStor
         super.onViewCreated(view, savedInstanceState)
 
         showLoadingDialog(requireContext())
-        ConsumerStoreFeedService(this).tryGetConsumerStoreFeed(storeIdx=storeIdx, size=size)
 
         floatAddClicked()
     }
@@ -49,7 +48,6 @@ class SellerStoreFeedFragment(storeIdx : Long) : BaseFragment<FragmentSellerStor
                add(StoreMainStoreData(postImgUrl = response.result.feeds[i].postImgUrls[0], storeIdx = storeIdx, postIdx = response.result.feeds[i].postIdx))
            }
        }
-
         sellerStoreMainStoreAdapter.storeMainStoreDatas = storeMainStoreDatas
 
         // 스크롤이 바닥에 닿았을 때
