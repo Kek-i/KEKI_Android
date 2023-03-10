@@ -4,8 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.codepatissier.keki.databinding.ItemProductNameRecyclerBinding
+import com.codepatissier.keki.src.main.seller.store.storefeed.storeadd.model.DessertName
 
-class ProductNameAdapter(private val dataList: MutableList<ProductNameData>) : RecyclerView.Adapter<ProductNameAdapter.ProductNameViewHolder>() {
+class ProductNameAdapter(private val dataList: List<DessertName>) : RecyclerView.Adapter<ProductNameAdapter.ProductNameViewHolder>() {
     private lateinit var itemClickListener: ItemClickListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductNameViewHolder {
@@ -27,8 +28,8 @@ class ProductNameAdapter(private val dataList: MutableList<ProductNameData>) : R
     }
 
     class ProductNameViewHolder(private val itemBinding: ItemProductNameRecyclerBinding) : RecyclerView.ViewHolder(itemBinding.root) {
-        fun bind(item: ProductNameData) {
-            itemBinding.tvProductName.text = item.productName
+        fun bind(item: DessertName) {
+            itemBinding.tvProductName.text = item.dessertName
         }
     }
 

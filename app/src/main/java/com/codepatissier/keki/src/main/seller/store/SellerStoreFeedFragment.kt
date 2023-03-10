@@ -6,7 +6,7 @@ import android.view.View
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseFragment
 import com.codepatissier.keki.databinding.FragmentSellerStoreFeedBinding
-import com.codepatissier.keki.src.main.seller.store.storefeed.SellerStoreFeedAddActivity
+import com.codepatissier.keki.src.main.seller.store.storefeed.storeadd.SellerStoreFeedAddActivity
 import com.codepatissier.keki.util.viewpager.storemain.StoreMainStoreData
 import com.codepatissier.keki.util.viewpager.storemain.seller.SellerStoreMainStoreAdapter
 
@@ -31,11 +31,11 @@ class SellerStoreFeedFragment(storeIdx : Long) : BaseFragment<FragmentSellerStor
         sellerStoreMainStoreAdapter = SellerStoreMainStoreAdapter(requireActivity())
         binding.recyclerSellerFeed.adapter = sellerStoreMainStoreAdapter
 
-        for(i in 1..30){
-            storeMainStoreDatas.apply {
-                add(StoreMainStoreData(postImgUrl = "케키", storeIdx = storeIdx, postIdx = 1))
-            }
-        }
+//        for(i in 1..30){
+//            storeMainStoreDatas.apply {
+//                add(StoreMainStoreData(postImgUrl = "케키", storeIdx = storeIdx, postIdx = 1))
+//            }
+//        }
 
         sellerStoreMainStoreAdapter.storeMainStoreDatas = storeMainStoreDatas
 
