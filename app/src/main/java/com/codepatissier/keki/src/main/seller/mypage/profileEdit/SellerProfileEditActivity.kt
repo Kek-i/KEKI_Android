@@ -78,7 +78,7 @@ class SellerProfileEditActivity :BaseActivity<ActivitySellerProfileEditBinding>(
             if(result.resultCode == RESULT_OK){
                 ProfileUri = result.data?.data
 
-                val defaultImg = R.drawable.bg_oval_off_white
+                val defaultImg = R.drawable.ic_seller
                 val imageView = binding.cvPhoto
 
                 Glide.with(this)
@@ -225,8 +225,6 @@ class SellerProfileEditActivity :BaseActivity<ActivitySellerProfileEditBinding>(
         showCustomToast("오류 : $message")
     }
 
-
-
     // 엔터 클릭 시 키패드 내리기
     private fun keyboardEnterClicked(){
         val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
@@ -263,6 +261,5 @@ class SellerProfileEditActivity :BaseActivity<ActivitySellerProfileEditBinding>(
             return@setOnEditorActionListener false
         }
     }
-
 
 }

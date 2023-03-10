@@ -8,9 +8,9 @@
     <application
         android:name="com.codepatissier.keki.config.ApplicationClass"
         android:allowBackup="false"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/app_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/app_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
@@ -91,6 +91,12 @@
         </activity>
         <activity
             android:name="com.codepatissier.keki.src.main.consumer.calendar.calendaradd.ConsumerCalendarAddActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme2">
+        </activity>
+        <activity
+            android:name="com.codepatissier.keki.src.main.consumer.calendar.calendarmodify.ConsumerCalendarModifyActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2">

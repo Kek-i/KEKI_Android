@@ -8,7 +8,7 @@ import com.codepatissier.keki.config.ApplicationClass.Companion.sSharedPreferenc
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityMainBinding
 import com.codepatissier.keki.src.main.consumer.calendar.ConsumerCalendarFragment
-import com.codepatissier.keki.src.main.consumer.calendar.NonConsumerCalendarFragment
+import com.codepatissier.keki.util.NonConsumerFragment
 import com.codepatissier.keki.src.main.consumer.home.ConsumerHomeFragment
 import com.codepatissier.keki.src.main.consumer.like.ConsumerLikeFragment
 import com.codepatissier.keki.src.main.consumer.mypage.ConsumerMyPageFragment
@@ -18,6 +18,7 @@ import com.codepatissier.keki.src.main.consumer.search.ConsumerSearchFragment
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
     private val accessToken = sSharedPreferences.getString(Authorization, null)
     private val userRole = sSharedPreferences.getString(ApplicationClass.UserRole, "비회원")
+    var itemId : Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,45 +26,54 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
         binding.mainBtmNav.run {
             setOnItemSelectedListener { item ->
-                when (item.itemId) {
-                    R.id.menu_consumer_main_btm_nav_home -> {
-                        supportFragmentManager.beginTransaction()
-                            .replace(R.id.main_frm, ConsumerHomeFragment())
-                            .commitAllowingStateLoss()
-                    }
-                    R.id.menu_consumer_main_btm_nav_calendar -> {
-                        if(accessToken != null && userRole == "구매자") {
+                if(itemId != item.itemId){
+                    when (item.itemId) {
+                        R.id.menu_consumer_main_btm_nav_home -> {
                             supportFragmentManager.beginTransaction()
-                                .replace(R.id.main_frm, ConsumerCalendarFragment())
-                                .commitAllowingStateLoss()
-                        } else {
-                            supportFragmentManager.beginTransaction()
-                                .replace(R.id.main_frm, NonConsumerCalendarFragment())
+                                .replace(R.id.main_frm, ConsumerHomeFragment())
                                 .commitAllowingStateLoss()
                         }
-                    }
-                    R.id.menu_consumer_main_btm_nav_search -> {
-                        supportFragmentManager.beginTransaction()
-                            .replace(R.id.main_frm, ConsumerSearchFragment())
-                            .commitAllowingStateLoss()
-                    }
-                    R.id.menu_consumer_main_btm_nav_like -> {
-                        supportFragmentManager.beginTransaction()
-                            .replace(R.id.main_frm, ConsumerLikeFragment())
-                            .commitAllowingStateLoss()
-                    }
-                    R.id.menu_consumer_main_btm_nav_my_page -> {
-                        if (accessToken != null && userRole == "구매자") {
+                        R.id.menu_consumer_main_btm_nav_calendar -> {
+                            if(accessToken != null && userRole == "구매자") {
+                                supportFragmentManager.beginTransaction()
+                                    .replace(R.id.main_frm, ConsumerCalendarFragment())
+                                    .commitAllowingStateLoss()
+                            } else {
+                                supportFragmentManager.beginTransaction()
+                                    .replace(R.id.main_frm, NonConsumerFragment())
+                                    .commitAllowingStateLoss()
+                            }
+                        }
+                        R.id.menu_consumer_main_btm_nav_search -> {
                             supportFragmentManager.beginTransaction()
-                                .replace(R.id.main_frm, ConsumerMyPageFragment())
+                                .replace(R.id.main_frm, ConsumerSearchFragment())
                                 .commitAllowingStateLoss()
-                        } else {
-                            supportFragmentManager.beginTransaction()
-                                .replace(R.id.main_frm, NonConsumerMyPageFragment())
-                                .commitAllowingStateLoss()
+                        }
+                        R.id.menu_consumer_main_btm_nav_like -> {
+                             if(accessToken != null && userRole == "구매자") {
+                                supportFragmentManager.beginTransaction()
+                                    .replace(R.id.main_frm, ConsumerLikeFragment())
+                                    .commitAllowingStateLoss()
+                            } else {
+                                supportFragmentManager.beginTransaction()
+                                    .replace(R.id.main_frm, NonConsumerFragment())
+                                    .commitAllowingStateLoss()
+                            }
+                        }
+                        R.id.menu_consumer_main_btm_nav_my_page -> {
+                            if (accessToken != null && userRole == "구매자") {
+                                supportFragmentManager.beginTransaction()
+                                    .replace(R.id.main_frm, ConsumerMyPageFragment())
+                                    .commitAllowingStateLoss()
+                            } else {
+                                supportFragmentManager.beginTransaction()
+                                    .replace(R.id.main_frm, NonConsumerMyPageFragment())
+                                    .commitAllowingStateLoss()
+                            }
                         }
                     }
                 }
+                itemId = item.itemId
                 true
             }
             //selectedItemId = R.id.menu_consumer_main_btm_nav_home

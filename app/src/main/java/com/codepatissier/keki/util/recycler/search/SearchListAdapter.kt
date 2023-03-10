@@ -38,17 +38,32 @@ class SearchListAdapter(var searchListData: SearchResult, val context: ConsumerS
         private val cakePrice: TextView = binding.tvGridPrice
 
         fun bind(item: Feeds) {
-            fbStorage = FirebaseStorage.getInstance()
-            var storageRef = fbStorage?.reference?.child(item.postImgUrls[0])
+            val width = getItemWidth()/3
 
-            storageRef?.downloadUrl?.addOnCompleteListener {
+//            fbStorage = FirebaseStorage.getInstance()
+//            var storageRef = fbStorage?.reference?.child(item.postImgUrls[0])
+//
+//            storageRef?.downloadUrl?.addOnCompleteListener {
                 Glide.with(context!!)
-                    .load(it.result)
+                    .load(item.postImgUrls[0])
                     .centerCrop()
+                    .override(width,width)
                     .into(cakeImg)
-            }
+//            }
             cakeName.text = item.dessertName
             cakePrice.text = DecimalFormat("###,###").format(item.dessertPrice.toLong())
+        }
+
+        // display 별 화면에 맞는 그리드 크기 구하기
+        fun getItemWidth():Int{
+            val display = this.context?.resources?.displayMetrics
+            val displaywidth = display?.widthPixels
+            // 마진 값 dp를 px로 변경하기
+            val density = display?.density
+            val margin = (10 * density!! +0.5)*4
+            // 마진값을 뺀 길이 구하기
+            val width = displaywidth?.minus(margin.toInt())
+            return width!!
         }
 
     }

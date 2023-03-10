@@ -16,6 +16,7 @@
     <dimen name="home_ic_notifications_right">20dp</dimen>
     <dimen name="home_ic_message_right">25dp</dimen>
     <dimen name="home_logo_top_height">77dp</dimen>
+    <dimen name="home_recycler_width">0dp</dimen>
 
     <dimen name="home_comment_top">9dp</dimen>
     <dimen name="home_comment_start">36dp</dimen>
@@ -25,7 +26,7 @@
     <dimen name="home_img_cake">10.5dp</dimen>
     <dimen name="home_first_tag_top">5dp</dimen>
     <dimen name="home_recycler_margin_top">15dp</dimen>
-    <dimen name="home_tag_start">14dp</dimen>
+    <dimen name="home_tag_margin">14dp</dimen>
     <dimen name="home_tag_size">16sp</dimen>
     <dimen name="home_tag_padding_top">4dp</dimen>
     <dimen name="home_tag_padding_bottom">4dp</dimen>
@@ -64,7 +65,6 @@
     <dimen name="store_feed_margin_start_end">12dp</dimen>
     <dimen name="store_feed_seller_nickname_margin_start">15dp</dimen>
     <dimen name="store_feed_seller_nickname_tv_size">16sp</dimen>
-    <dimen name="store_feed_img_height">360dp</dimen>
     <dimen name="store_feed_description_margin_end">21dp</dimen>
     <dimen name="store_feed_between_tag">10dp</dimen>
     <dimen name="store_feed_line">23.5dp</dimen>
@@ -93,6 +93,9 @@
     <dimen name="feed_indicator_dots_size">8dp</dimen>
     <dimen name="feed_indicator_dots_spacing">4dp</dimen>
     <dimen name="feed_indicator_dots_stroke_width">4dp</dimen>
+    <dimen name="feed_tag_padding_start_end">14dp</dimen>
+    <dimen name="feed_tag_padding_top">4dp</dimen>
+    <dimen name="feed_tag_padding_bottom">6dp</dimen>
 
     <!-- report -->
     <dimen name="dialog_report_title_size">18sp</dimen>
@@ -108,6 +111,7 @@
     <dimen name="dialog_report_padding_bottom">26dp</dimen>
     <dimen name="dialog_report_btn_padding_top_bottom">9dp</dimen>
     <dimen name="dialog_report_btn_padding_start_end">27dp</dimen>
+    <dimen name="dialog_report_margin_top">20dp</dimen>
 
 
     <!--login-->
@@ -258,7 +262,7 @@
     <dimen name="ll_recent_search_marginTop">20dp</dimen>
     <dimen name="tv_recent_search_delete_marginTop">5dp</dimen>
     <dimen name="tv_recent_search_delete_marginEnd">10dp</dimen>
-    <dimen name="search_tag_marginStart">12dp</dimen>
+    <dimen name="search_tag_marginStart">24dp</dimen>
     <dimen name="search_recent_tag_padding_side">13dp</dimen>
     <dimen name="search_recent_tag_padding_updown">5dp</dimen>
     <dimen name="search_popular_tag_padding_side">14dp</dimen>
@@ -295,7 +299,6 @@
     <dimen name="search_cv_shadow_padding">2.5dp</dimen>
     <dimen name="search_ic_cake_off_width">72dp</dimen>
     <dimen name="search_ic_cake_off_height">79dp</dimen>
-    <dimen name="search_grid_item_img_size">105dp</dimen>
     <dimen name="search_ic_chevron_down_width">8dp</dimen>
     <dimen name="search_ic_chevron_down_height">4dp</dimen>
 
@@ -614,7 +617,7 @@
     <dimen name="store_main_dialog_title_text_size">18sp</dimen>
     <dimen name="store_main_dialog_text_size">14sp</dimen>
     <dimen name="store_main_dialog_first_text_top">20dp</dimen>
-    <dimen name="store_main_dialog_first_text_middle">48dp</dimen>
+    <dimen name="store_main_dialog_first_text_middle">57dp</dimen>
     <dimen name="store_main_dialog_left_right">15dp</dimen>
     <dimen name="store_main_dialog_top">18dp</dimen>
     <dimen name="store_main_dialog_bottom">25dp</dimen>
@@ -815,5 +818,35 @@
     <dimen name="seller_product_add_and_edit_csl_add_width_height">100dp</dimen>
     <dimen name="seller_product_add_and_edit_cv_add_radius">10dp</dimen>
     <dimen name="seller_product_add_and_edit_cv_add_elevation">0dp</dimen>
+
+    <!-- like -->
+    <dimen name="like_top_bar_padding_bottom">10dp</dimen>
+    <dimen name="like_main_tv_like_height">29dp</dimen>
+    <dimen name="like_main_tv_like_margin_top">12dp</dimen>
+    <dimen name="like_main_tv_like_margin_start">24dp</dimen>
+    <dimen name="like_main_tv_like_size">20sp</dimen>
+    <dimen name="like_scroll_view_height">0dp</dimen>
+    <dimen name="like_scroll_view_padding_top">5dp</dimen>
+    <dimen name="like_rv_margin_horizontal">7dp</dimen>
+    <dimen name="like_item_layout_padding_horizontal">5dp</dimen>
+    <dimen name="like_item_layout_padding_bottom">15dp</dimen>
+    <dimen name="like_item_cv_width_height">105dp</dimen>
+    <dimen name="like_item_cv_radius">10dp</dimen>
+    <dimen name="like_item_cv_elevation">0dp</dimen>
+    <dimen name="like_item_tv_product_name_min_height">20dp</dimen>
+    <dimen name="like_item_tv_product_name_margin_top">10dp</dimen>
+    <dimen name="like_item_tv_product_name_size">14sp</dimen>
+    <dimen name="like_item_tv_product_price_min_height">14dp</dimen>
+    <dimen name="like_item_tv_product_price_margin_top">3dp</dimen>
+    <dimen name="like_item_tv_product_price_size">12sp</dimen>
+
+    <dimen name="like_empty_tv_height">24dp</dimen>
+    <dimen name="like_empty_tv_size">16sp</dimen>
+    <dimen name="like_empty_iv_margin_bottom">10dp</dimen>
+    <dimen name="like_empty_iv_margin_start">46.1dp</dimen>
+    <dimen name="like_empty_iv_margin_end">60.4dp</dimen>
+    <dimen name="like_empty_layout_margin_top">244.7dp</dimen>
+    <dimen name="like_empty_layout_margin_bottom">289dp</dimen>
+
 
 </resources>
