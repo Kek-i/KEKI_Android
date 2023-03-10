@@ -31,13 +31,14 @@ class SellerStoreFeedFragment(storeIdx : Long) : BaseFragment<FragmentSellerStor
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         showLoadingDialog(requireContext())
         ConsumerStoreFeedService(this).tryGetConsumerStoreFeed(storeIdx=storeIdx, size=size)
 
         floatAddClicked()
     }
 
-    private fun productFeedRecyclerView(){
+    private fun productFeedRecyclerView(response: SearchResultResponse){
         sellerStoreMainStoreAdapter = SellerStoreMainStoreAdapter(requireActivity())
         cursorIdx = response.result.cursorIdx
         hasNext = response.result.hasNext
@@ -48,7 +49,6 @@ class SellerStoreFeedFragment(storeIdx : Long) : BaseFragment<FragmentSellerStor
                add(StoreMainStoreData(postImgUrl = response.result.feeds[i].postImgUrls[0], storeIdx = storeIdx, postIdx = response.result.feeds[i].postIdx))
            }
        }
-
 
         sellerStoreMainStoreAdapter.storeMainStoreDatas = storeMainStoreDatas
 
