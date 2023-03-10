@@ -12,6 +12,7 @@ import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivitySplashBinding
 import com.codepatissier.keki.src.MainActivity
 import com.codepatissier.keki.src.SellerMainActivity
+import com.codepatissier.keki.src.main.auth.LoginActivity
 
 class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding::inflate) {
     private val userRole = ApplicationClass.sSharedPreferences.getString(ApplicationClass.UserRole, "비회원")

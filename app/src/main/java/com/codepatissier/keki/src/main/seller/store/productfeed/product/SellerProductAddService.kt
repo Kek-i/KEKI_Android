@@ -1,15 +1,16 @@
-package com.codepatissier.keki.src.main.seller.store.product
+package com.codepatissier.keki.src.main.seller.store.productfeed.product
 
 import com.codepatissier.keki.config.ApplicationClass
-import com.codepatissier.keki.src.main.seller.store.product.model.SellerProductAddBody
-import com.codepatissier.keki.src.main.seller.store.product.model.SellerProductAddResponse
+import com.codepatissier.keki.src.main.seller.store.productfeed.product.model.SellerProductAddBody
+import com.codepatissier.keki.src.main.seller.store.productfeed.product.model.SellerProductAddResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class SellerProductAddService(val sellerProductAddView: SellerProductAddView) {
-    fun tryPostProduct(body:SellerProductAddBody){
-        val sellerProductAddRetrofitInterface = ApplicationClass.sRetrofit.create(SellerProductAddRetrofitInterface::class.java)
+    fun tryPostProduct(body: SellerProductAddBody){
+        val sellerProductAddRetrofitInterface = ApplicationClass.sRetrofit.create(
+            SellerProductAddRetrofitInterface::class.java)
         sellerProductAddRetrofitInterface.postProduct(body).enqueue(object : Callback<SellerProductAddResponse>{
             override fun onResponse(
                 call: Call<SellerProductAddResponse>,
