@@ -60,6 +60,7 @@
     <dimen name="store_feed_cake_description_size">11sp</dimen>
     <dimen name="store_feed_tag_size">11sp</dimen>
     <dimen name="store_feed_recycler_margin_top">15dp</dimen>
+    <dimen name="store_feed_margin_start_title">25dp</dimen>
 
     <dimen name="store_feed_seller_img_size">50dp</dimen>
     <dimen name="store_feed_margin_start_end">12dp</dimen>

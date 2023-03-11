@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context="com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedActivity">
+    tools:context=".src.main.seller.store.storefeed.SellerStoreFeedDetailActivity">
 
     <TextView
         android:id="@+id/tv_store_feed"
@@ -42,7 +42,6 @@
         app:layout_constraintTop_toBottomOf="@id/tv_store_feed"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="0dp"
-        tools:listitem="@layout/item_store_feed_recycler" />
-
+        tools:listitem="@layout/item_seller_store_feed_recycler" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
