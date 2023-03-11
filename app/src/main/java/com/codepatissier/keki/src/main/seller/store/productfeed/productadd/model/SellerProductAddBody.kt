@@ -1,4 +1,4 @@
-package com.codepatissier.keki.src.main.seller.store.productfeed.product.model
+package com.codepatissier.keki.src.main.seller.store.productfeed.productadd.model
 
 data class SellerProductAddBody(
     val dessertName: String,

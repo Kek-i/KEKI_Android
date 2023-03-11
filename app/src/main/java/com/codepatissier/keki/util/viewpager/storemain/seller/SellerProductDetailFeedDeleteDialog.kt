@@ -10,15 +10,15 @@ import android.widget.Toast
 import com.codepatissier.keki.config.ApplicationClass
 import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.databinding.DialogSellerProductDetailFeedDeleteBinding
-import com.codepatissier.keki.src.MainActivity
 import com.codepatissier.keki.src.SellerMainActivity
-import com.codepatissier.keki.src.main.seller.store.productfeed.SellerProductDetailFeedActivity
-import com.codepatissier.keki.src.main.seller.store.productfeed.SellerProductFeedDetailService
-import com.codepatissier.keki.src.main.seller.store.productfeed.SellerProductFeedDetailView
-import com.codepatissier.keki.src.main.seller.store.productfeed.model.SellerProductFeedDetailResponse
+import com.codepatissier.keki.src.main.seller.store.productfeed.productdetail.SellerProductDetailFeedActivity
+import com.codepatissier.keki.src.main.seller.store.productfeed.productdetail.SellerProductFeedDetailService
+import com.codepatissier.keki.src.main.seller.store.productfeed.productdetail.SellerProductFeedDetailView
+import com.codepatissier.keki.src.main.seller.store.productfeed.productdetail.model.SellerProductFeedDetailResponse
 
 
-class SellerProductDetailFeedDeleteDialog(context: Context): Dialog(context), SellerProductFeedDetailView {
+class SellerProductDetailFeedDeleteDialog(context: Context): Dialog(context),
+    SellerProductFeedDetailView {
     private var dessertIdx = ApplicationClass.sSharedPreferences.getString(ApplicationClass.DessertIdx, "1")
     private lateinit var  binding : DialogSellerProductDetailFeedDeleteBinding
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,4 +1,4 @@
-package com.codepatissier.keki.src.main.seller.store.productfeed.model
+package com.codepatissier.keki.src.main.seller.store.productfeed.productdetail.model
 
 import com.codepatissier.keki.src.main.auth.profilesetting.model.PostNickname
 
