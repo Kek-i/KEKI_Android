@@ -27,7 +27,7 @@ class ConsumerLikeFragment : BaseFragment<FragmentConsumerLikeBinding>
         super.onViewCreated(view, savedInstanceState)
 
         showLoadingDialog(requireContext())
-        ConsumerLikeService(this).tryGetLike(15)
+        ConsumerLikeService(this).tryGetLike(18)
     }
 
     private fun setLikeRecyclerView(response: ConsumerLikeResponse) {
@@ -51,25 +51,26 @@ class ConsumerLikeFragment : BaseFragment<FragmentConsumerLikeBinding>
         binding.rvLikeGrid.adapter = likeFeedAdapter
 
         binding.rvLikeGrid.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                // 현재 보이는 마지막 아이템의 position
+                var lastVisibleItemPosition = (recyclerView.layoutManager as GridLayoutManager).findLastVisibleItemPosition()
+                // 전제 아이템 갯수
+                val itemTotalCount = recyclerView.adapter?.itemCount?.minus(1)
+
+                // 마지막 아이템이면 true로 변경
+                if( lastVisibleItemPosition != itemTotalCount) {
+                    lastItemVisible = true
+                }
+            }
+
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
+
                 // 스크롤이 멈춰있고, 다음 아이템이 있으며 마지막 아이템일 때 api 호출
                 if(newState == RecyclerView.SCROLL_STATE_IDLE && hasNext && lastItemVisible){
                     binding.progress.visibility = View.VISIBLE
                     positionStart = likeDataList.size
                     ConsumerLikeService(this@ConsumerLikeFragment).tryGetLikeNext(cursorDate!!, 15)
-                }
-            }
-
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                // 현재 보이는 마지막 아이템의 position
-                var lastVisibleItemPosition = (recyclerView.layoutManager as GridLayoutManager).findLastVisibleItemPosition()
-                // 전제 아이템 갯수
-                val itemTotalCount = recyclerView.adapter?.itemCount?.minus(1)
-                // 마지막 아이템이면 true로 변경
-                if( lastVisibleItemPosition != itemTotalCount) {
-                    lastItemVisible = true
                 }
             }
         })
@@ -86,6 +87,7 @@ class ConsumerLikeFragment : BaseFragment<FragmentConsumerLikeBinding>
 
     override fun onGetNextLikeSuccess(response: ConsumerLikeResponse) {
         binding.progress.visibility = View.GONE
+
         cursorDate = response.result.cursorDate
         hasNext = response.result.hasNext
 
@@ -107,7 +109,8 @@ class ConsumerLikeFragment : BaseFragment<FragmentConsumerLikeBinding>
     }
 
     override fun onGetNextLikeFailure(message: String) {
-        TODO("Not yet implemented")
+        binding.progress.visibility = View.GONE
+        showCustomToast("오류 : $message")
     }
 
 }

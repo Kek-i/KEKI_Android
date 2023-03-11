@@ -182,13 +182,19 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
-        <activity android:name=".src.main.seller.store.product.SellerProductAddActivity"
+        <activity android:name=".src.main.seller.store.productfeed.product.SellerProductAddActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
-        <activity android:name=".src.main.seller.store.storefeed.SellerStoreFeedAddActivity"
+        <activity android:name=".src.main.seller.store.storefeed.storeadd.SellerStoreFeedAddActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme2">
+        </activity>
+
+        <activity android:name=".src.main.seller.store.productfeed.product.SellerProductEditActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2">

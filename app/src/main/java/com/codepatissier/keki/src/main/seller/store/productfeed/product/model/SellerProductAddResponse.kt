@@ -1,4 +1,4 @@
-package com.codepatissier.keki.src.main.seller.store.product.model
+package com.codepatissier.keki.src.main.seller.store.productfeed.product.model
 
 data class SellerProductAddResponse(
     val code: Int,

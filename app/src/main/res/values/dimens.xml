@@ -777,15 +777,15 @@
     <dimen name="seller_feed_add_layout_open_product_padding_bottom">9dp</dimen>
     <dimen name="seller_feed_add_rv_product_width">0dp</dimen>
 
-    <dimen name="seller_feed_add_layout_product_description_width">0dp</dimen>
-    <dimen name="seller_feed_add_layout_product_description_min_height">206dp</dimen>
-    <dimen name="seller_feed_add_layout_product_description_margin_top">20dp</dimen>
-    <dimen name="seller_feed_add_layout_product_description_margin_horizontal">16dp</dimen>
-    <dimen name="seller_feed_add_layout_product_description_padding_top">16dp</dimen>
-    <dimen name="seller_feed_add_layout_product_description_padding_horizontal">20dp</dimen>
-    <dimen name="seller_feed_add_layout_product_description_padding_bottom">15dp</dimen>
-    <dimen name="seller_feed_add_et_product_description_width">0dp</dimen>
-    <dimen name="seller_feed_add_et_product_description_size">16sp</dimen>
+    <dimen name="seller_feed_add_layout_feed_content_width">0dp</dimen>
+    <dimen name="seller_feed_add_layout_feed_content_min_height">206dp</dimen>
+    <dimen name="seller_feed_add_layout_feed_content_margin_top">20dp</dimen>
+    <dimen name="seller_feed_add_layout_feed_content_margin_horizontal">16dp</dimen>
+    <dimen name="seller_feed_add_layout_feed_content_padding_top">16dp</dimen>
+    <dimen name="seller_feed_add_layout_feed_content_padding_horizontal">20dp</dimen>
+    <dimen name="seller_feed_add_layout_feed_content_padding_bottom">15dp</dimen>
+    <dimen name="seller_feed_add_et_feed_content_width">0dp</dimen>
+    <dimen name="seller_feed_add_et_feed_content_size">16sp</dimen>
 
     <dimen name="rv_item_product_name_layout_padding_bottom">4dp</dimen>
     <dimen name="rv_item_product_name_tv_height">24dp</dimen>
@@ -797,6 +797,10 @@
     <dimen name="rv_item_feed_image_iv_feed_img_width_height">100dp</dimen>
 
     <dimen name="seller_feed_add_component_elevation">3dp</dimen>
+
+    <dimen name="seller_feed_add_tv_error_margin_top">5dp</dimen>
+    <dimen name="seller_feed_add_tv_error_margin_start">28dp</dimen>
+    <dimen name="seller_feed_add_tv_error_size">11sp</dimen>
 
     <!-- seller product add and edit -->
     <dimen name="seller_product_add_and_edit_iv_back_left">14dp</dimen>

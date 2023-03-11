@@ -9,14 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseFragment
 import com.codepatissier.keki.databinding.FragmentSellerProductFeedBinding
-import com.codepatissier.keki.src.main.consumer.mypage.ConsumerMyPageService
 import com.codepatissier.keki.src.main.consumer.store.productfeed.ConsumerStoreProductFeedService
 import com.codepatissier.keki.src.main.consumer.store.productfeed.ConsumerStoreProductFeedView
 import com.codepatissier.keki.src.main.consumer.store.productfeed.model.ConsumerStoreProductFeedResponse
 import com.codepatissier.keki.src.main.consumer.store.productfeed.productdetail.ConsumerStoreProductDetailFeedActivity
-import com.codepatissier.keki.src.main.seller.store.product.SellerProductAddActivity
+import com.codepatissier.keki.src.main.seller.store.productfeed.product.SellerProductAddActivity
+import com.codepatissier.keki.src.main.seller.store.productfeed.SellerProductDetailFeedActivity
 import com.codepatissier.keki.util.viewpager.storemain.StoreMainProductData
-import com.codepatissier.keki.util.viewpager.storemain.consumer.ConsumerStoreMainProductAdapter
 import com.codepatissier.keki.util.viewpager.storemain.seller.SellerStoreMainProductAdapter
 
 class SellerProductFeedFragment(storeIdx : Long) : BaseFragment<FragmentSellerProductFeedBinding>
@@ -54,6 +53,15 @@ class SellerProductFeedFragment(storeIdx : Long) : BaseFragment<FragmentSellerPr
         }
 
         sellerStoreMainProductAdapter.storeMainProductDatas = storeMainProductDatas
+        sellerStoreMainProductAdapter.setItemClickListener(object:
+            SellerStoreMainProductAdapter.OnItemClickListener {
+            override fun onClick(v: View, position: Int) {
+                val intent = Intent(context, SellerProductDetailFeedActivity::class.java)
+                intent.putExtra("dessertIdx", "${response.result.desserts[position].dessertIdx}")
+                Log.d("디저트 id체크", "디저트idx: ${response.result.desserts[position].dessertIdx}")
+                startActivity(intent)
+            }
+        })
 
         // 스크롤이 바닥에 닿았을 때
         binding.recyclerProductFeed.addOnScrollListener(object : RecyclerView.OnScrollListener(){
