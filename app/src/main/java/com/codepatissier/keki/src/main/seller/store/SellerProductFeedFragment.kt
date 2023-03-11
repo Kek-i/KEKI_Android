@@ -38,7 +38,6 @@ class SellerProductFeedFragment(storeIdx : Long) : BaseFragment<FragmentSellerPr
 
         floatAddClicked()
         showLoadingDialog(requireContext())
-        ConsumerStoreProductFeedService(this).tryGetProductFeed(storeIdx, size)
     }
 
 

@@ -40,20 +40,19 @@ class SellerStoreMainStoreAdapter(val context: FragmentActivity?): RecyclerView.
 
         fun bind(item: StoreMainStoreData){
             if(item != null) {
-                Log.e("merong", item.toString())
-//                fbStorage = FirebaseStorage.getInstance()
-//                var storageRef = fbStorage?.reference?.child(item.postImgUrl)
-//
-//                storageRef?.downloadUrl?.addOnCompleteListener {
+                fbStorage = FirebaseStorage.getInstance()
+                var storageRef = fbStorage?.reference?.child(item.postImgUrl)
+
+                storageRef?.downloadUrl?.addOnCompleteListener {
                     Glide.with(context!!)
-                        .load(item.postImgUrl)
+                        .load(it.result)
                         .placeholder(defaultImg)
                         .override(width, width)
                         .error(defaultImg)
                         .fallback(defaultImg)
                         .centerCrop()
                         .into(FeedImg)
-//                }
+                }
             }
 
             itemView.setOnClickListener {
