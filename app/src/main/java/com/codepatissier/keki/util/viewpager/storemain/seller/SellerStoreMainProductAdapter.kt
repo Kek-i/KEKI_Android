@@ -1,6 +1,7 @@
 package com.codepatissier.keki.util.viewpager.storemain.seller
 
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
