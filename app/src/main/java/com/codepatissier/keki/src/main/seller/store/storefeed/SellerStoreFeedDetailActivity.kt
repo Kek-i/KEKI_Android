@@ -1,11 +1,9 @@
 package com.codepatissier.keki.src.main.seller.store.storefeed
 
 import android.os.Bundle
-import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivitySellerStoreFeedDetailBinding
 import com.codepatissier.keki.util.recycler.storefeed.SellerStoreFeedAdapter
-import com.codepatissier.keki.util.recycler.storefeed.StoreFeedAdapter
 import com.codepatissier.keki.util.recycler.storefeed.StoreFeedData
 
 

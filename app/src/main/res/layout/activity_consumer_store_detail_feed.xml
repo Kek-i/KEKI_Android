@@ -11,13 +11,14 @@
         android:id="@+id/tv_store_feed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_store_feed_left_chevron"
+        app:layout_constraintBottom_toBottomOf="@id/iv_store_feed_left_chevron"
         app:layout_constraintStart_toEndOf="@+id/iv_store_feed_left_chevron"
         android:layout_marginStart="@dimen/store_feed_margin_start_title"
-        android:layout_marginTop="@dimen/store_feed_title_top"
         android:text="@string/store_feed"
         android:textColor="@color/black"
         android:textSize="@dimen/store_feed_title_size"
+        android:includeFontPadding="false"
         android:fontFamily="@font/notosanskr_bold"/>
 
     <ImageView
@@ -30,7 +31,6 @@
         android:layout_marginStart="@dimen/store_feed_chevron_start"
         android:paddingTop="@dimen/chevron_padding_top_bottom"
         android:paddingBottom="@dimen/chevron_padding_top_bottom"
-        android:paddingEnd="@dimen/chevron_padding_start"
         android:src="@drawable/ic_chevron_left"/>
 
 
@@ -38,6 +38,7 @@
         android:id="@+id/recycler_store_feed"
         android:layout_width="match_parent"
         android:layout_height="@dimen/consumer_store_detail_recycler_height"
+        android:layout_marginTop="@dimen/store_feed_margin_top_recycler"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@id/tv_store_feed"
         app:layout_constraintBottom_toBottomOf="parent"
