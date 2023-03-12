@@ -31,7 +31,7 @@
         />
 
     <ImageView
-        android:id="@+id/iv_store_feed_report"
+        android:id="@+id/iv_store_feed_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@+id/iv_store_feed_seller"

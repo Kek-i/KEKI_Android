@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentActivity
@@ -14,6 +15,7 @@ import com.codepatissier.keki.databinding.ItemProgressbarLoadingBinding
 import com.codepatissier.keki.databinding.ItemSellerStoreFeedRecyclerBinding
 import com.codepatissier.keki.src.main.consumer.store.ConsumerStoreMainActivity
 import com.codepatissier.keki.src.main.seller.store.storefeed.detail.SellerStoreFeedDetailImageAdapter
+import com.codepatissier.keki.src.main.seller.store.storefeed.detail.delete.SellerStoreDetailFeedDeleteDialog
 import com.google.firebase.storage.FirebaseStorage
 
 class SellerStoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<ViewHolder>() {
@@ -96,14 +98,13 @@ class SellerStoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapt
                 tagArray[i].text = "# " + item.tags[i]
             }
 
-            if(item.storeProfileImg?.isNotEmpty() == true){
-                Glide.with(context!!)
-                    .load(item.storeProfileImg)
-                    .override(width,width)
-                    .centerCrop()
-                    .into(sellerImg)
-                sellerImg.clipToOutline = true
-            }
+
+            Glide.with(context!!)
+                .load(item.storeProfileImg)
+                .override(width,width)
+                .centerCrop()
+                .into(sellerImg)
+            sellerImg.clipToOutline = true
 
             var img = arrayOfNulls<String>(item.postImgUrls.size)
 
@@ -120,6 +121,7 @@ class SellerStoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapt
             checkCakeDescription(item.description)
             seeMoreDescription(item.description)
             navigateToStoreMain()
+            deleteFeed()
         }
 
         // 제품 내용 길이 확인
@@ -142,6 +144,15 @@ class SellerStoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapt
                 val intent = Intent(itemView.context, ConsumerStoreMainActivity::class.java)
                 intent.putExtra("nickname", binding.tvStoreFeedSellerNickname.text)
                 itemView.context.startActivity(intent)
+            }
+        }
+
+        // 피드 삭제
+        private fun deleteFeed(){
+            binding.ivStoreFeedDelete.setOnClickListener {
+                val deleteDialog = SellerStoreDetailFeedDeleteDialog(context!!)
+                deleteDialog.postIdx = postIdx
+                deleteDialog.show()
             }
         }
 
