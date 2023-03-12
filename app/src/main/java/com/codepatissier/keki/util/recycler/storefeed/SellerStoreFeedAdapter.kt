@@ -13,7 +13,6 @@ import com.bumptech.glide.Glide
 import com.codepatissier.keki.databinding.ItemProgressbarLoadingBinding
 import com.codepatissier.keki.databinding.ItemSellerStoreFeedRecyclerBinding
 import com.codepatissier.keki.src.main.consumer.store.ConsumerStoreMainActivity
-import com.codepatissier.keki.src.main.consumer.store.storefeed.DetailImageAdapter
 import com.codepatissier.keki.src.main.seller.store.storefeed.SellerStoreFeedDetailImageAdapter
 import com.google.firebase.storage.FirebaseStorage
 
@@ -97,17 +96,14 @@ class SellerStoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapt
                 tagArray[i].text = "# " + item.tags[i]
             }
 
-//            fbStorage = FirebaseStorage.getInstance()
-//            var storageRef = fbStorage?.reference?.child(item.storeProfileImg)
-//
-//            storageRef?.downloadUrl?.addOnCompleteListener {
-            Glide.with(context!!)
-                .load(item.storeProfileImg)
-                .override(width,width)
-                .centerCrop()
-                .into(sellerImg)
-//            }
-            sellerImg.clipToOutline = true
+            if(item.storeProfileImg?.isNotEmpty() == true){
+                Glide.with(context!!)
+                    .load(item.storeProfileImg)
+                    .override(width,width)
+                    .centerCrop()
+                    .into(sellerImg)
+                sellerImg.clipToOutline = true
+            }
 
             var img = arrayOfNulls<String>(item.postImgUrls.size)
 

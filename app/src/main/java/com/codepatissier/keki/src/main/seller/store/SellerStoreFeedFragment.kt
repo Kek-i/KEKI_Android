@@ -54,8 +54,8 @@ class SellerStoreFeedFragment(storeIdx : Long) : BaseFragment<FragmentSellerStor
             SellerStoreMainStoreAdapter.OnItemClickListener{
             override fun onClick(v: View, position: Int) {
                 val intent = Intent(context, SellerStoreFeedDetailActivity::class.java)
-                intent.putExtra("postIdx", response.result.feeds[position].postIdx)
                 intent.putExtra("storeIdx", response.result.feeds[position].storeIdx)
+                intent.putExtra("position", position)
                 startActivity(intent)
             }
         })
