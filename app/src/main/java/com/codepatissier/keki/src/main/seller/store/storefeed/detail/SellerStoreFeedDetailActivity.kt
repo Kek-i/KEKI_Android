@@ -1,4 +1,4 @@
-package com.codepatissier.keki.src.main.seller.store.storefeed
+package com.codepatissier.keki.src.main.seller.store.storefeed.detail
 
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,7 +11,7 @@ import com.codepatissier.keki.util.recycler.storefeed.StoreFeedData
 
 
 class SellerStoreFeedDetailActivity : BaseActivity<ActivitySellerStoreFeedDetailBinding>(com.codepatissier.keki.databinding.ActivitySellerStoreFeedDetailBinding::inflate)
-    , SellerStoreFeedDetailView{
+    , SellerStoreFeedDetailView {
 
     lateinit var sellerStoreFeedAdapter: SellerStoreFeedAdapter
     val storeFeedDatas = mutableListOf<StoreFeedData>()

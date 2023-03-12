@@ -1,4 +1,4 @@
-package com.codepatissier.keki.src.main.seller.store.storefeed
+package com.codepatissier.keki.src.main.seller.store.storefeed.detail
 
 import com.codepatissier.keki.config.ApplicationClass
 import com.codepatissier.keki.src.main.consumer.store.storefeed.model.ConsumerStoreDetailFeedResponse
@@ -8,7 +8,8 @@ import retrofit2.Response
 
 class SellerStoreFeedDetailService(val sellerStoreFeedDetailView: SellerStoreFeedDetailView) {
     fun tryGetSellerStoreFeedDetailInterface(storeIdx: Long, cursorIdx: Int?, size: Int?){
-        val sellerStoreFeedDetailInterface = ApplicationClass.sRetrofit.create(SellerStoreFeedDetailRetrofitInterface::class.java)
+        val sellerStoreFeedDetailInterface = ApplicationClass.sRetrofit.create(
+            SellerStoreFeedDetailRetrofitInterface::class.java)
         sellerStoreFeedDetailInterface.getSellerStoreFeedDetail(storeIdx, cursorIdx, size)
             .enqueue(object: Callback<ConsumerStoreDetailFeedResponse>{
                 override fun onResponse(

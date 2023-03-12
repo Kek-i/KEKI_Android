@@ -1,4 +1,4 @@
-package com.codepatissier.keki.src.main.seller.store.storefeed
+package com.codepatissier.keki.src.main.seller.store.storefeed.detail
 
 import com.codepatissier.keki.src.main.consumer.store.storefeed.model.ConsumerStoreDetailFeedResponse
 import retrofit2.Call

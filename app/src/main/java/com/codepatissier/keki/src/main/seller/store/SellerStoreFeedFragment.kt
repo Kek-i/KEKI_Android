@@ -11,7 +11,7 @@ import com.codepatissier.keki.databinding.FragmentSellerStoreFeedBinding
 import com.codepatissier.keki.src.main.consumer.search.searchresult.model.SearchResultResponse
 import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreFeedService
 import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreFeedView
-import com.codepatissier.keki.src.main.seller.store.storefeed.SellerStoreFeedDetailActivity
+import com.codepatissier.keki.src.main.seller.store.storefeed.detail.SellerStoreFeedDetailActivity
 import com.codepatissier.keki.src.main.seller.store.storefeed.storeadd.SellerStoreFeedAddActivity
 import com.codepatissier.keki.util.viewpager.storemain.StoreMainStoreData
 import com.codepatissier.keki.util.viewpager.storemain.seller.SellerStoreMainStoreAdapter

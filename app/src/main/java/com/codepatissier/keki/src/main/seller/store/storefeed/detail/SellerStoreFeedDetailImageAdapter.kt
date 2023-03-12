@@ -1,4 +1,4 @@
-package com.codepatissier.keki.src.main.seller.store.storefeed
+package com.codepatissier.keki.src.main.seller.store.storefeed.detail
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

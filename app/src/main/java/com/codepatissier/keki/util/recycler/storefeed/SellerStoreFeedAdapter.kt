@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide
 import com.codepatissier.keki.databinding.ItemProgressbarLoadingBinding
 import com.codepatissier.keki.databinding.ItemSellerStoreFeedRecyclerBinding
 import com.codepatissier.keki.src.main.consumer.store.ConsumerStoreMainActivity
-import com.codepatissier.keki.src.main.seller.store.storefeed.SellerStoreFeedDetailImageAdapter
+import com.codepatissier.keki.src.main.seller.store.storefeed.detail.SellerStoreFeedDetailImageAdapter
 import com.google.firebase.storage.FirebaseStorage
 
 class SellerStoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<ViewHolder>() {
