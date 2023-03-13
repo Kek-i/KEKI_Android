@@ -21,6 +21,7 @@
     <dimen name="home_comment_top">9dp</dimen>
     <dimen name="home_comment_start">36dp</dimen>
     <dimen name="home_comment_size">20sp</dimen>
+    <dimen name="home_comment_width">0dp</dimen>
     <dimen name="home_comment_line_space">4dp</dimen>
 
     <dimen name="home_img_cake">10.5dp</dimen>
