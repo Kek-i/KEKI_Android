@@ -8,15 +8,11 @@
 
     <color name="colorPrimary">#fcfcfc</color>
     <color name="colorPrimaryDark">#889dfe</color>
-    <color name="colorAccent">#889dfe</color>
 
     <!-- 기본 -->
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
-    <color name="white_2">#ebebeb</color>
 
-    <color name="whiteForBackground">#FFFFFF</color>
-    <color name="blackForText">#000000</color>
     <color name="redForText">#d9534f</color>
 
     <color name="very_light_pink">#faecec</color>
@@ -32,18 +28,15 @@
 
 
     <!-- tag -->
-    <color name="tag_light_yellow">#fcf4df</color>
     <color name="soft_pink">#edadc7</color>
     <color name="pale_salmon">#e0bbbb</color>
     <color name="light_peach_1">#f4dbcb</color>
-    <color name="light_peach_2">#f4cbcb</color>
     <color name="pale_lavender">#f3e0fa</color>
     <color name="brown_grey">#808080</color>
     <color name="border_grey">#e3e3e3</color>
 
     <!-- tab -->
     <color name="tab_select">#c9536b</color>
-    <color name="tab_unselect">#f8ecec</color>
 
     <!-- line -->
     <color name="my_page_line">#f8ecec</color>

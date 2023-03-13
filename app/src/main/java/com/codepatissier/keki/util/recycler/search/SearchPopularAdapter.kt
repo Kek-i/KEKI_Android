@@ -37,7 +37,7 @@ class SearchPopularAdapter(private var searchMainData: Result, val context: Cons
         holder.popularTagName.backgroundTintList = when (position) {
             0 -> ColorStateList.valueOf(getColor(holder.itemView.context,R.color.off_white))
             1 -> ColorStateList.valueOf(getColor(holder.itemView.context, R.color.very_light_pink))
-            2 -> ColorStateList.valueOf(getColor(holder.itemView.context, R.color.light_peach_2))
+            2 -> ColorStateList.valueOf(getColor(holder.itemView.context, R.color.light_peach))
             3 -> ColorStateList.valueOf(getColor(holder.popularTagName.context, R.color.light_peach_1))
             else -> {ColorStateList.valueOf(getColor(holder.popularTagName.context, R.color.pale_lavender))}
         }
@@ -56,7 +56,7 @@ class SearchPopularAdapter(private var searchMainData: Result, val context: Cons
         val colorList: ArrayList<Int> = ArrayList()
         colorList.add(R.color.off_white)
         colorList.add(R.color.pale_lavender)
-        colorList.add(R.color.light_peach_2)
+        colorList.add(R.color.light_peach)
         colorList.add(R.color.light_peach_1)
         colorList.add(R.color.very_light_pink)
 
