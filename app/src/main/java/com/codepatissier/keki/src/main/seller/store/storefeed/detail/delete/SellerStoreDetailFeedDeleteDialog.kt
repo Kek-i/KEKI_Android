@@ -5,9 +5,11 @@ import android.content.Context
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Window
+import android.widget.Toast
+import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.databinding.DialogDeleteSellerStoreFeedDetailBinding
 
-class SellerStoreDetailFeedDeleteDialog(context: Context): Dialog(context) {
+class SellerStoreDetailFeedDeleteDialog(context: Context): Dialog(context), SellerStoreFeedDetailDeleteView {
 
     private lateinit var binding: DialogDeleteSellerStoreFeedDetailBinding
     var postIdx : Long? = null
@@ -19,5 +21,32 @@ class SellerStoreDetailFeedDeleteDialog(context: Context): Dialog(context) {
         binding = DialogDeleteSellerStoreFeedDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
         window!!.setBackgroundDrawable(ColorDrawable())
+
+        btnFalse()
+        btnDelete()
+    }
+
+    private fun btnFalse(){
+        // 취소
+        binding.btnDeleteStoreNone.setOnClickListener {
+            dismiss()
+        }
+    }
+
+    private fun btnDelete(){
+        // 삭제하기
+        binding.btnDeleteStoreOk.setOnClickListener {
+            SellerStoreFeedDetailDeleteService(this).tryDeleteSellerStoreFeedDetailDeleteInterface(postIdx!!)
+        }
+    }
+
+    override fun onDeleteSellerStoreFeedDetailDeleteSuccess(response: BaseResponse) {
+        Toast.makeText(context, "삭제하기를 성공했습니다", Toast.LENGTH_SHORT).show()
+        dismiss()
+    }
+
+    override fun onDeleteSellerStoreFeedDetailDeleteFailure(message: String) {
+        Toast.makeText(context, "삭제하기를 실패했습니다", Toast.LENGTH_SHORT).show()
+        dismiss()
     }
 }

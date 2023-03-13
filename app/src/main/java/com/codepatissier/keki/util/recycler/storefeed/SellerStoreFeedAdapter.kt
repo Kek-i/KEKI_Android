@@ -157,6 +157,7 @@ class SellerStoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapt
                 popupMenu.setOnMenuItemClickListener {
                     when(it.itemId){
                         R.id.popup_modify -> {
+                            // 수정하기 activity로 이동
                             return@setOnMenuItemClickListener false
                         }R.id.popup_delete -> {
                             val deleteDialog = SellerStoreDetailFeedDeleteDialog(context!!)
