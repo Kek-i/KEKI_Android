@@ -133,7 +133,7 @@
         android:maxLength="150"
         android:imeOptions="actionDone"
         android:maxLines="10"
-        android:inputType="textNoSuggestions"/>
+        android:inputType="textMultiLine" />
 
     <TextView
         android:id="@+id/et_product_picture"
