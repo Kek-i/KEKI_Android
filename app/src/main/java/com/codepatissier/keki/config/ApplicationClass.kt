@@ -20,8 +20,10 @@ class ApplicationClass : Application() {
         lateinit var sSharedPreferences: SharedPreferences
         lateinit var userInfo: SharedPreferences.Editor
         val Authorization = "Authorization"
+        val RefreshToken = "RefreshToken"
         val UserRole = "UserRole"
         val UserEmail = "UserEmail"
+        val Provider = "Provider"
         val DessertIdx = "DessertIdx"
         lateinit var sRetrofit: Retrofit
     }
