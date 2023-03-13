@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
+import com.codepatissier.keki.R
 import com.codepatissier.keki.databinding.ItemProgressbarLoadingBinding
 import com.codepatissier.keki.databinding.ItemSellerStoreFeedRecyclerBinding
 import com.codepatissier.keki.src.main.consumer.store.ConsumerStoreMainActivity
@@ -150,9 +151,23 @@ class SellerStoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapt
         // 피드 삭제
         private fun deleteFeed(){
             binding.ivStoreFeedDelete.setOnClickListener {
-                val deleteDialog = SellerStoreDetailFeedDeleteDialog(context!!)
-                deleteDialog.postIdx = postIdx
-                deleteDialog.show()
+                var popupMenu = PopupMenu(context, it)
+                popupMenu.menuInflater?.inflate(R.menu.popup_menu_delete_seller_store_feed_detail, popupMenu.menu)
+                popupMenu.show()
+                popupMenu.setOnMenuItemClickListener {
+                    when(it.itemId){
+                        R.id.popup_modify -> {
+                            return@setOnMenuItemClickListener false
+                        }R.id.popup_delete -> {
+                            val deleteDialog = SellerStoreDetailFeedDeleteDialog(context!!)
+                            deleteDialog.postIdx = postIdx
+                            deleteDialog.show()
+                            return@setOnMenuItemClickListener true
+                        }else -> {
+                            return@setOnMenuItemClickListener false
+                        }
+                    }
+                }
             }
         }
 

@@ -79,6 +79,9 @@
     <string name="dialog_delete_store_btn">삭제하기</string>
     <string name="dialog_delete_store_btn_none">취소</string>
 
+    <!-- modify store -->
+    <string name="dialog_modify_store_feed">수정하기</string>
+
     <!-- store main -->
     <string name="store_main_store_name">가게이름</string>
     <string name="store_main_store_detail">가게설명입니다.</string>
