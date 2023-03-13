@@ -252,6 +252,7 @@
     <!-- search -->
     <dimen name="main_search_margin_side">24dp</dimen>
     <dimen name="search_tag_height">26dp</dimen>
+    <dimen name="search_tag_width">0dp</dimen>
     <dimen name="search_tag_margin">10dp</dimen>
     <dimen name="et_search_height">36dp</dimen>
     <dimen name="et_search_margin_top">15dp</dimen>
@@ -263,6 +264,7 @@
     <dimen name="tv_recent_search_delete_marginTop">5dp</dimen>
     <dimen name="tv_recent_search_delete_marginEnd">10dp</dimen>
     <dimen name="search_tag_marginStart">24dp</dimen>
+    <dimen name="search_tag_marginEnd">24dp</dimen>
     <dimen name="search_recent_tag_padding_side">13dp</dimen>
     <dimen name="search_recent_tag_padding_updown">5dp</dimen>
     <dimen name="search_popular_tag_padding_side">14dp</dimen>

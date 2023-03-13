@@ -134,6 +134,7 @@ class ConsumerProfileEditActivity :BaseActivity<ActivityConsumerProfileEditBindi
             //null값이 아니고, 중복 확인한 값일 경우(중복확인 누르고 값 바꾸는것 방지), 닉네임 조건에 맞을 경우
             if (nickname != null && nickname == binding.etNickname.text.toString() ) {
                 profileEdit()
+            // 이전 프로필과 아이디가 같을 경우
             }else if(nickname == null && editNickname == binding.etNickname.text.toString()){
                 profileEdit()
             } else if (nickname == null) {
