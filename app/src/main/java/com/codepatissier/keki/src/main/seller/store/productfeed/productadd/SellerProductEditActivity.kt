@@ -1,9 +1,8 @@
-package com.codepatissier.keki.src.main.seller.store.productfeed.product
+package com.codepatissier.keki.src.main.seller.store.productfeed.productadd
 
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.text.style.UpdateLayout
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -14,12 +13,11 @@ import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.databinding.ActivitySellerProductAddAndEditBinding
-import com.codepatissier.keki.src.main.seller.store.SellerProductFeedFragment
-import com.codepatissier.keki.src.main.seller.store.productfeed.product.model.SellerProductAddBody
-import com.codepatissier.keki.src.main.seller.store.productfeed.SellerProductDetailFeedActivity
-import com.codepatissier.keki.src.main.seller.store.productfeed.SellerProductFeedDetailService
-import com.codepatissier.keki.src.main.seller.store.productfeed.SellerProductFeedDetailView
-import com.codepatissier.keki.src.main.seller.store.productfeed.model.SellerProductFeedDetailResponse
+import com.codepatissier.keki.src.main.seller.store.productfeed.productadd.model.SellerProductAddBody
+import com.codepatissier.keki.src.main.seller.store.productfeed.productdetail.SellerProductDetailFeedActivity
+import com.codepatissier.keki.src.main.seller.store.productfeed.productdetail.SellerProductFeedDetailService
+import com.codepatissier.keki.src.main.seller.store.productfeed.productdetail.SellerProductFeedDetailView
+import com.codepatissier.keki.src.main.seller.store.productfeed.productdetail.model.SellerProductFeedDetailResponse
 import com.google.firebase.storage.FirebaseStorage
 import java.text.SimpleDateFormat
 import java.util.*

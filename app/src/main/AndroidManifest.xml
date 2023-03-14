@@ -124,9 +124,9 @@
             android:name="com.codepatissier.keki.src.main.consumer.store.productfeed.productdetail.ConsumerStoreProductDetailFeedActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".src.main.seller.store.productfeed.SellerProductDetailFeedActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".src.main.seller.store.productfeed.productdetail.SellerProductDetailFeedActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -159,9 +159,10 @@
             android:name=".src.main.seller.mypage.SellerPersonalInfoActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".src.main.seller.store.productfeed.product.SellerProductAddActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity android:name=".src.main.seller.store.productfeed.productadd.SellerProductAddActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
@@ -169,9 +170,10 @@
             android:name=".src.main.seller.store.storefeed.storeadd.SellerStoreFeedAddActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme2"></activity>
-        <activity
-            android:name=".src.main.seller.store.productfeed.product.SellerProductEditActivity"
+            android:theme="@style/AppTheme2">
+        </activity>
+
+        <activity android:name=".src.main.seller.store.productfeed.productadd.SellerProductEditActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2"></activity>
