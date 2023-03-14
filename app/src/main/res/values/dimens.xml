@@ -251,10 +251,11 @@
     <dimen name="bg_shadow_rec6_radius">20dp</dimen>
 
     <!-- search -->
-    <dimen name="main_search_margin_side">24dp</dimen>
+    <dimen name="main_search_margin_side">11dp</dimen>
     <dimen name="search_tag_height">26dp</dimen>
     <dimen name="search_tag_width">0dp</dimen>
     <dimen name="search_tag_margin">10dp</dimen>
+    <dimen name="et_search_weight">0dp</dimen>
     <dimen name="et_search_height">36dp</dimen>
     <dimen name="et_search_margin_top">15dp</dimen>
     <dimen name="et_search_padding_updown">8dp</dimen>
@@ -275,6 +276,8 @@
     <dimen name="tv_recent_seen_marginTop">36dp</dimen>
     <dimen name="rv_recent_seen_marginTop">10dp</dimen>
     <dimen name="rv_recent_seen_marginStart">12dp</dimen>
+    <dimen name="search_back_left">16dp</dimen>
+    <dimen name="search_back_top">24dp</dimen>
     <dimen name="search_spinner_width">90dp</dimen>
     <dimen name="search_spinner_height">31dp</dimen>
     <dimen name="search_spinner_marginTop">21dp</dimen>
