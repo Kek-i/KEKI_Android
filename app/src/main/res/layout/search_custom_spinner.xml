@@ -4,5 +4,7 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     android:textSize="@dimen/search_spinner_text"
-    android:textColor="@color/brown_grey">
+    android:textColor="@color/brown_grey"
+    android:fontFamily="@font/notosanskr_regular"
+    android:includeFontPadding="false">
 </TextView>

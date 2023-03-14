@@ -383,8 +383,8 @@ class ConsumerCalendarModifyActivity : BaseActivity<ActivityConsumerCalendarAddB
             resources.getColorStateList(R.color.very_light_pink, null) -> {
                 bVeryLightPinkIsUsed = false
             }
-            // light_peach_2를 사용했다면
-            resources.getColorStateList(R.color.light_peach_2, null) -> {
+            // light_peach를 사용했다면
+            resources.getColorStateList(R.color.light_peach, null) -> {
                 bLightPeach2IsUsed = false
             }
         }
@@ -401,9 +401,9 @@ class ConsumerCalendarModifyActivity : BaseActivity<ActivityConsumerCalendarAddB
             chipSortedTag.setChipBackgroundColorResource(R.color.very_light_pink)
             bVeryLightPinkIsUsed = true
         }
-        // light_peach_2를 쓸 수 있다면
+        // light_peach를 쓸 수 있다면
         else if (!bLightPeach2IsUsed) {
-            chipSortedTag.setChipBackgroundColorResource(R.color.light_peach_2)
+            chipSortedTag.setChipBackgroundColorResource(R.color.light_peach)
             bLightPeach2IsUsed = true
         }
     }

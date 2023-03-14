@@ -55,7 +55,7 @@ class SellerStoreMainFragment : BaseFragment<FragmentSellerStoreMainBinding>(Fra
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
-                tab?.icon?.setTint(ResourcesCompat.getColor(getResources(),R.color.tab_unselect,null))
+                tab?.icon?.setTint(ResourcesCompat.getColor(getResources(),R.color.my_page_line,null))
             }
 
             override fun onTabReselected(tab: TabLayout.Tab?) {

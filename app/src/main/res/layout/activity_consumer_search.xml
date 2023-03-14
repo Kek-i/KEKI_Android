@@ -6,10 +6,20 @@
     android:background="@color/white"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_chevron_left"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="@dimen/search_back_left"
+        android:layout_marginTop="@dimen/search_back_top"/>
+
     <!-- 검색창 -->
     <EditText
         android:id="@+id/et_search"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/et_search_weight"
         android:layout_height="@dimen/et_search_height"
         android:layout_marginStart="@dimen/main_search_margin_side"
         android:layout_marginTop="@dimen/et_search_margin_top"
@@ -26,9 +36,11 @@
         android:textColorHint="@color/pale_salmon"
         android:textCursorDrawable="@null"
         android:textSize="@dimen/et_search_textSize"
+        android:fontFamily="@font/notosanskr_medium"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/iv_back"
+        app:layout_constraintTop_toTopOf="parent"
+        android:includeFontPadding="false" />
 
     <!--드롭다운 -->
     <Spinner
