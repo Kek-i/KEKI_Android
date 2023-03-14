@@ -1,14 +1,12 @@
 package com.codepatissier.keki.util.recycler.storefeed
 
 import android.content.Intent
-import android.graphics.drawable.Drawable
-import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.TextView
-import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -16,16 +14,14 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.codepatissier.keki.R
 import com.codepatissier.keki.databinding.ItemProgressbarLoadingBinding
-import com.codepatissier.keki.databinding.ItemStoreFeedRecyclerBinding
+import com.codepatissier.keki.databinding.ItemSellerStoreFeedRecyclerBinding
 import com.codepatissier.keki.src.main.consumer.store.ConsumerStoreMainActivity
-import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedActivity
-import com.codepatissier.keki.src.main.consumer.store.storefeed.report.ConsumerStoreDetailFeedDialog
-import com.codepatissier.keki.src.main.consumer.store.storefeed.DetailImageAdapter
-import com.codepatissier.keki.src.main.seller.store.productfeed.SellerStoreFeedDetailActivity
+import com.codepatissier.keki.src.main.seller.store.storefeed.detail.SellerStoreFeedDetailImageAdapter
+import com.codepatissier.keki.src.main.seller.store.storefeed.detail.delete.SellerStoreDetailFeedDeleteDialog
+import com.codepatissier.keki.util.viewpager.storemain.consumer.ConsumerStoreMainStoreAdapter
 import com.google.firebase.storage.FirebaseStorage
 
-class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<ViewHolder>() {
-
+class SellerStoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<ViewHolder>() {
     var storeFeedDatas = mutableListOf<StoreFeedData>()
     private val VIEW_TYPE_ITEM = 0
     private val VIEW_TYPE_LOADING = 1
@@ -34,8 +30,8 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
         return when (viewType){
             VIEW_TYPE_ITEM -> {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val itemBinding = ItemStoreFeedRecyclerBinding.inflate(layoutInflater, parent, false)
-                StoreFeedViewHolder(context, itemBinding)
+                val itemBinding = ItemSellerStoreFeedRecyclerBinding.inflate(layoutInflater, parent, false)
+                SellerStoreFeedViewHolder(context, itemBinding)
             }
             else -> {
                 val layoutInflater = LayoutInflater.from(parent.context)
@@ -46,15 +42,14 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        if(holder is StoreFeedViewHolder){
-            (holder as StoreFeedViewHolder).bind(storeFeedDatas[position])
+        if(holder is SellerStoreFeedViewHolder){
+            (holder as SellerStoreFeedViewHolder).bind(storeFeedDatas[position])
         }else{
 
         }
     }
 
     override fun getItemCount(): Int = storeFeedDatas.size
-
 
     class LoadingViewHolder(private val binding: ItemProgressbarLoadingBinding): RecyclerView.ViewHolder(binding.root){
 
@@ -74,7 +69,7 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
 
     }
 
-    class StoreFeedViewHolder(val context: FragmentActivity?, val binding: ItemStoreFeedRecyclerBinding): ViewHolder(binding.root){
+    class SellerStoreFeedViewHolder(val context: FragmentActivity?, val binding: ItemSellerStoreFeedRecyclerBinding): ViewHolder(binding.root){
         private val sellerImg: ImageView = binding.ivStoreFeedSeller
         private val nickname: TextView = binding.tvStoreFeedSellerNickname
         private val cakeName: TextView = binding.tvStoreFeedCakeName
@@ -83,7 +78,6 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
         private val secondTag: TextView = binding.tvStoreFeedSecondTag
         private val thirdTag: TextView = binding.tvStoreFeedThirdTag
         private val tagArray = arrayOf(firstTag, secondTag, thirdTag)
-        private var heart = false
         private var postIdx : Long? = null
         var fbStorage : FirebaseStorage?= null
 
@@ -96,9 +90,6 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
         }
 
         fun bind(item: StoreFeedData){
-            if(SellerStoreFeedDetailActivity().seller)
-                binding.ivStoreFeedHeartOff.isGone = true
-
             nickname.text = item.storeName
             cakeName.text = item.dessertName
             postIdx = item.postIdx
@@ -110,18 +101,16 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
                 tagArray[i].text = "# " + item.tags[i]
             }
 
-//            fbStorage = FirebaseStorage.getInstance()
-//            var storageRef = fbStorage?.reference?.child(item.storeProfileImg)
-//
-//            storageRef?.downloadUrl?.addOnCompleteListener {
-                Glide.with(context!!)
-                    .load(item.storeProfileImg)
-                    .override(width,width)
-                    .centerCrop()
-                    .into(sellerImg)
-//            }
+
+            Glide.with(context!!)
+                .load(item.storeProfileImg)
+                .override(width,width)
+                .centerCrop()
+                .into(sellerImg)
             sellerImg.clipToOutline = true
-            
+
+
+
             var img = arrayOfNulls<String>(item.postImgUrls.size)
 
             for(i in item.postImgUrls.indices){
@@ -129,20 +118,15 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
             }
 
 
-            val pagerAdapter = DetailImageAdapter(context!!, img)
+            val pagerAdapter = SellerStoreFeedDetailImageAdapter(context!!, img)
             binding.vpStoreFeedImg.adapter = pagerAdapter
             binding.wormDotsIndicator.setViewPager2(binding.vpStoreFeedImg)
 
-            if(item.like){
-                binding.ivStoreFeedHeartOff.setImageResource(R.drawable.ic_bottom_heart_on)
-                heart = true
-            }
 
             checkCakeDescription(item.description)
             seeMoreDescription(item.description)
-            likeProduct()
-            report()
             navigateToStoreMain()
+            setting()
         }
 
         // 제품 내용 길이 확인
@@ -160,49 +144,35 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
             }
         }
 
-        // 찜하기
-        private fun likeProduct(){
-            binding.ivStoreFeedHeartOff.setOnClickListener {
-                if(!heart){ // 찜
-                    binding.ivStoreFeedHeartOff.setImageResource(R.drawable.ic_bottom_heart_on)
-                    heart = true
-                }else{ // 해제
-                    binding.ivStoreFeedHeartOff.setImageResource(R.drawable.ic_bottom_heart_off)
-                    heart = false
-                }
-
-                ConsumerStoreDetailFeedActivity().postLike(postIdx!!)
+        private fun navigateToStoreMain(){
+            binding.tvStoreFeedSellerNickname.setOnClickListener {
+                val intent = Intent(itemView.context, ConsumerStoreMainActivity::class.java)
+                intent.putExtra("nickname", binding.tvStoreFeedSellerNickname.text)
+                itemView.context.startActivity(intent)
             }
         }
 
-        // 신고하기
-        private fun report(){
-            binding.ivStoreFeedReport.setOnClickListener {
+        // 피드 수정, 삭제
+        private fun setting(){
+            binding.ivStoreFeedDelete.setOnClickListener {
                 var popupMenu = PopupMenu(context, it)
-                popupMenu.menuInflater?.inflate(R.menu.popup_menu_report_consumer_store_detail_feed, popupMenu.menu)
+                popupMenu.menuInflater?.inflate(R.menu.popup_menu_delete_seller_store_feed_detail, popupMenu.menu)
                 popupMenu.show()
                 popupMenu.setOnMenuItemClickListener {
                     when(it.itemId){
-                        R.id.popup_report -> {
-                            val reportDialog = ConsumerStoreDetailFeedDialog(context!!)
-                            reportDialog.postIdx = postIdx // postIdx 값 전달
-                            reportDialog.show()
+                        R.id.popup_modify -> {
+                            // 수정하기 activity로 이동
+                            return@setOnMenuItemClickListener false
+                        }R.id.popup_delete -> {
+                            val deleteDialog = SellerStoreDetailFeedDeleteDialog(context!!)
+                            deleteDialog.postIdx = postIdx
+                            deleteDialog.show()
                             return@setOnMenuItemClickListener true
                         }else -> {
                             return@setOnMenuItemClickListener false
                         }
                     }
                 }
-
-
-            }
-        }
-
-        private fun navigateToStoreMain(){
-            binding.tvStoreFeedSellerNickname.setOnClickListener {
-                val intent = Intent(itemView.context, ConsumerStoreMainActivity::class.java)
-                intent.putExtra("nickname", binding.tvStoreFeedSellerNickname.text)
-                itemView.context.startActivity(intent)
             }
         }
 

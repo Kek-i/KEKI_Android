@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="@dimen/dialog_delete_store_padding_bottom"
+    android:background="@drawable/bg_rectangle_radius_10_white_no_padding">
+
+    <TextView
+        android:id="@+id/tv_delete_store_dialog_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_delete_store_title"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/dialog_delete_store_title_margin_top"
+        android:textSize="@dimen/dialog_report_title_size"
+        android:layout_marginStart="@dimen/dialog_delete_store_title_margin_start"
+        android:layout_marginEnd="@dimen/dialog_delete_store_title_margin_end"
+        android:includeFontPadding="false"
+        android:fontFamily="@font/notosanskr_bold"/>
+
+    <TextView
+        android:id="@+id/tv_delete_store_dialog_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_delete_store_content"
+        android:textColor="@color/black"
+        android:includeFontPadding="false"
+        android:fontFamily="@font/notosanskr_regular"
+        app:layout_constraintTop_toBottomOf="@+id/tv_delete_store_dialog_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:textSize="@dimen/dialog_delete_store_content_size"
+        android:layout_marginTop="@dimen/dialog_delete_store_content_margin_top"/>
+
+    <TextView
+        android:id="@+id/btn_delete_store_none"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tv_delete_store_dialog_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_delete_store_ok"
+        android:includeFontPadding="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dialog_report_btn_size"
+        android:fontFamily="@font/notosanskr_medium"
+        android:text="@string/dialog_delete_store_btn_none"
+        android:background="@drawable/bg_rectangle_radius_10_very_light_gray_no_padding"
+        android:layout_marginTop="@dimen/dialog_report_btn_margin_top"
+        android:paddingStart="@dimen/dialog_delete_btn_none_padding_start"
+        android:paddingEnd="@dimen/dialog_delete_btn_none_padding_end"
+        android:paddingTop="@dimen/dialog_report_btn_padding_top_bottom"
+        android:paddingBottom="@dimen/dialog_report_btn_padding_top_bottom"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:id="@+id/btn_delete_store_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tv_delete_store_dialog_content"
+        app:layout_constraintStart_toEndOf="@+id/btn_delete_store_none"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:includeFontPadding="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dialog_report_btn_size"
+        android:fontFamily="@font/notosanskr_medium"
+        android:text="@string/dialog_delete_store_btn"
+        android:background="@drawable/bg_rectangle_radius_10_light_pink_no_padding"
+        android:layout_marginTop="@dimen/dialog_report_btn_margin_top"
+        android:paddingStart="@dimen/dialog_delete_btn_padding_start"
+        android:paddingEnd="@dimen/dialog_delete_btn_padding_start"
+        android:paddingTop="@dimen/dialog_report_btn_padding_top_bottom"
+        android:paddingBottom="@dimen/dialog_report_btn_padding_top_bottom"
+        android:gravity="center"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,7 @@ data class StoreFeedData(
     val postImgUrls: List<String>,
     val tags: List<String>,
     val storeName: String,
-    val storeProfileImg: String,
+    val storeProfileImg: String?,
     val like: Boolean,
     val cursorIdx: Int,
     val hasNext: Boolean
