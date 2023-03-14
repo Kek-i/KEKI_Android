@@ -28,16 +28,14 @@ class SellerStoreFeedDetailActivity : BaseActivity<ActivitySellerStoreFeedDetail
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+        firstLoading = true
+
         initRecyclerView()
         navigateToStoreMain()
         showLoadingDialog(this)
         SellerStoreFeedDetailService(this).tryGetSellerStoreFeedDetailInterface(storeIdx!!, cursorIdx, feedSize)
         checkScrollEvent()
-    }
-
-    override fun onStart() {
-        super.onStart()
-        firstLoading = true
     }
 
     private fun initRecyclerView(){
@@ -112,10 +110,10 @@ class SellerStoreFeedDetailActivity : BaseActivity<ActivitySellerStoreFeedDetail
         })
     }
 
-
     private fun navigateToStoreMain(){
         binding.ivStoreFeedLeftChevron.setOnClickListener {
             finish()
         }
     }
+
 }

@@ -5,5 +5,5 @@
         android:title="@string/dialog_modify_store_feed"/>
     <item
         android:id="@+id/popup_delete"
-        android:title="@string/dialog_delete_store_btn"/>
+        android:title="@string/dialog_delete_store_feed"/>
 </menu>

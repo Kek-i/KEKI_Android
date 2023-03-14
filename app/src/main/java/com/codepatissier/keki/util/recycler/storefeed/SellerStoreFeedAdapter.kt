@@ -2,6 +2,7 @@ package com.codepatissier.keki.util.recycler.storefeed
 
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.PopupMenu
@@ -17,6 +18,7 @@ import com.codepatissier.keki.databinding.ItemSellerStoreFeedRecyclerBinding
 import com.codepatissier.keki.src.main.consumer.store.ConsumerStoreMainActivity
 import com.codepatissier.keki.src.main.seller.store.storefeed.detail.SellerStoreFeedDetailImageAdapter
 import com.codepatissier.keki.src.main.seller.store.storefeed.detail.delete.SellerStoreDetailFeedDeleteDialog
+import com.codepatissier.keki.util.viewpager.storemain.consumer.ConsumerStoreMainStoreAdapter
 import com.google.firebase.storage.FirebaseStorage
 
 class SellerStoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<ViewHolder>() {
@@ -107,6 +109,8 @@ class SellerStoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapt
                 .into(sellerImg)
             sellerImg.clipToOutline = true
 
+
+
             var img = arrayOfNulls<String>(item.postImgUrls.size)
 
             for(i in item.postImgUrls.indices){
@@ -122,7 +126,7 @@ class SellerStoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapt
             checkCakeDescription(item.description)
             seeMoreDescription(item.description)
             navigateToStoreMain()
-            deleteFeed()
+            setting()
         }
 
         // 제품 내용 길이 확인
@@ -148,8 +152,8 @@ class SellerStoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapt
             }
         }
 
-        // 피드 삭제
-        private fun deleteFeed(){
+        // 피드 수정, 삭제
+        private fun setting(){
             binding.ivStoreFeedDelete.setOnClickListener {
                 var popupMenu = PopupMenu(context, it)
                 popupMenu.menuInflater?.inflate(R.menu.popup_menu_delete_seller_store_feed_detail, popupMenu.menu)
@@ -173,4 +177,5 @@ class SellerStoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapt
         }
 
     }
+
 }

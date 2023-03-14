@@ -4,10 +4,12 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.Window
 import android.widget.Toast
 import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.databinding.DialogDeleteSellerStoreFeedDetailBinding
+import com.codepatissier.keki.src.main.seller.store.storefeed.detail.SellerStoreFeedDetailActivity
 
 class SellerStoreDetailFeedDeleteDialog(context: Context): Dialog(context), SellerStoreFeedDetailDeleteView {
 
