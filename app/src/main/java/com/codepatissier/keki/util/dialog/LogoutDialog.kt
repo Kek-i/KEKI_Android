@@ -49,8 +49,10 @@ class LogoutDialog(context: Context): Dialog(context), LogoutView {
         this.dismiss()
         //확인 버튼 눌렀을 때 종료 flag
         userInfo.remove("Authorization")
+        userInfo.remove("RefreshToken")
         userInfo.remove("UserRole")
         userInfo.remove("UserEmail")
+        userInfo.remove("Provider")
         userInfo.commit()
 
         fbAuth?.signOut()  //firebase 로그아웃

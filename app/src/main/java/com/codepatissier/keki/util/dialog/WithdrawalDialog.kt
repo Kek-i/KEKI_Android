@@ -63,8 +63,10 @@ class WithdrawalDialog(context: Context): Dialog(context), SignoutView, Consumer
         this.dismiss()
 
         ApplicationClass.userInfo.remove("Authorization")
+        ApplicationClass.userInfo.remove("RefreshToken")
         ApplicationClass.userInfo.remove("UserRole")
         ApplicationClass.userInfo.remove("UserEmail")
+        ApplicationClass.userInfo.remove("Provider")
         ApplicationClass.userInfo.commit()
 
         if(Profileimg != null){
