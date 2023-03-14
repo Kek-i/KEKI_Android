@@ -1,7 +1,7 @@
-package com.codepatissier.keki.src.main.seller.store.productfeed
+package com.codepatissier.keki.src.main.seller.store.productfeed.productdetail
 
 import com.codepatissier.keki.config.BaseResponse
-import com.codepatissier.keki.src.main.seller.store.productfeed.model.SellerProductFeedDetailResponse
+import com.codepatissier.keki.src.main.seller.store.productfeed.productdetail.model.SellerProductFeedDetailResponse
 
 interface SellerProductFeedDetailView {
     // 상품 첫 피드 가져오기
@@ -14,3 +14,4 @@ interface SellerProductFeedDetailView {
     fun onDelProductFeedSuccess(response: BaseResponse)
     fun onDelProductFeedFailure(message:String)
 }
+

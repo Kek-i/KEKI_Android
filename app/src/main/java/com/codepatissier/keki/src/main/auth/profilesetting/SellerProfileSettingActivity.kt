@@ -61,8 +61,8 @@ class SellerProfileSettingActivity : BaseActivity<ActivitySellerProfileSettingBi
             val address = binding.et2ProfileSetting.text.toString()
             val introduction = binding.et3ProfileSetting.text.toString()
             val orderUrl = binding.et4ProfileSetting.text.toString()
-            val businessName = binding.et5ProfileSetting.text.toString()
-            val brandName = binding.et6ProfileSetting.text.toString()
+            val brandName = binding.et5ProfileSetting.text.toString()
+            val businessName = binding.et6ProfileSetting.text.toString()
             val businessAddress = binding.et7ProfileSetting.text.toString()
             val businessNumber = binding.et8ProfileSetting.text.toString()
 

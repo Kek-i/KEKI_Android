@@ -1,19 +1,16 @@
-package com.codepatissier.keki.src.main.seller.store.productfeed
+package com.codepatissier.keki.src.main.seller.store.productfeed.productdetail
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.PopupMenu
-import com.bumptech.glide.Glide
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.ApplicationClass
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.databinding.ActivitySellerProductDetailFeedBinding
-import com.codepatissier.keki.src.main.auth.profilesetting.SellerProfileSettingActivity
-import com.codepatissier.keki.src.main.seller.store.productfeed.product.SellerProductAddActivity
-import com.codepatissier.keki.src.main.seller.store.productfeed.product.SellerProductEditActivity
-import com.codepatissier.keki.src.main.seller.store.productfeed.model.SellerProductFeedDetailResponse
+import com.codepatissier.keki.src.main.seller.store.productfeed.productadd.SellerProductEditActivity
+import com.codepatissier.keki.src.main.seller.store.productfeed.productdetail.model.SellerProductFeedDetailResponse
 import com.codepatissier.keki.util.viewpager.storemain.seller.SellerProductDetailFeedDeleteDialog
 import com.google.firebase.storage.FirebaseStorage
 
@@ -109,16 +106,13 @@ class SellerProductDetailFeedActivity : BaseActivity<ActivitySellerProductDetail
         Log.d("item체크", "아이템 값:${response.result}")
 
         //이미지개수 크기의 리스트 생성
-//        var img = arrayOfNulls<String>(response.result.images.size)
-//
-//        for(i in response.result.images.indices) {
-//            img[i] = response.result.images[i].postImgUrl
-//
-//        }
-//
-//        val pagerAdapter = DetailImageAdapter(this@SellerProductDetailFeedActivity!!, img)
-//        binding.vpProductFeedImg.adapter = pagerAdapter
-//        binding.wormDotsIndicator.setViewPager2(binding.vpProductFeedImg)
+        var img = arrayOfNulls<String>(1)
+        img[0] = response.result.dessertImg
+
+
+        val pagerAdapter = DetailImageAdapter(this@SellerProductDetailFeedActivity!!, img)
+        binding.vpProductFeedImg.adapter = pagerAdapter
+        binding.wormDotsIndicator.setViewPager2(binding.vpProductFeedImg)
 
 
     }
