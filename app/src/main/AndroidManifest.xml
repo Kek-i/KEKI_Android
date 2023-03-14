@@ -218,6 +218,11 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
+        <activity android:name=".src.main.seller.store.storefeed.storeedit.SellerStoreFeedEditActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme2">
+        </activity>
 
     </application>
 

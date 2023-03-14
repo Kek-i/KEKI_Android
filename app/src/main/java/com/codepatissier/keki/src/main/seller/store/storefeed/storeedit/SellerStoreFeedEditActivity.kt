@@ -1,31 +1,29 @@
-package com.codepatissier.keki.src.main.seller.store.storefeed.storeadd
+package com.codepatissier.keki.src.main.seller.store.storefeed.storeedit
 
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.Toast
+import androidx.core.view.children
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
-import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.databinding.ActivitySellerStoreFeedAddBinding
 import com.codepatissier.keki.src.main.seller.store.storefeed.storeadd.model.DessertName
 import com.codepatissier.keki.src.main.seller.store.storefeed.storeadd.model.PostStoreFeedRequest
-import com.codepatissier.keki.src.main.seller.store.storefeed.storeadd.model.SellerFeedAddViewResponse
+import com.codepatissier.keki.src.main.seller.store.storefeed.storeedit.model.SellerFeedEditViewResponse
 import com.codepatissier.keki.util.recycler.storefeedadd.FeedImageAdapter
 import com.codepatissier.keki.util.recycler.storefeedadd.ProductNameAdapter
 import com.google.android.material.chip.Chip
 import com.google.firebase.storage.FirebaseStorage
 import gun0912.tedimagepicker.builder.TedImagePicker
 import gun0912.tedimagepicker.builder.type.MediaType
-import java.text.SimpleDateFormat
-import java.util.*
 
-class SellerStoreFeedAddActivity : BaseActivity<ActivitySellerStoreFeedAddBinding>(
-    ActivitySellerStoreFeedAddBinding::inflate), SellerStoreFeedAddView {
+class SellerStoreFeedEditActivity : BaseActivity<ActivitySellerStoreFeedAddBinding>(
+    ActivitySellerStoreFeedAddBinding::inflate), SellerStoreFeedEditView {
+    private var postIdx: Long = 0
     private var selectedProductIdx: Long = 0
     // Firebase
     private val firebaseStorage: FirebaseStorage = FirebaseStorage.getInstance()
@@ -50,34 +48,25 @@ class SellerStoreFeedAddActivity : BaseActivity<ActivitySellerStoreFeedAddBindin
         initFeedImage()
         // 상품 및 해시태그 목록 서버에서 가져오기
         showLoadingDialog(this)
-        SellerStoreFeedAddService(this).tryGetStoreFeedAddView()
+        SellerStoreFeedEditService(this).tryGetStoreFeedEditView(postIdx)
     }
 
-    override fun onGetFeedAddViewSuccess(response: SellerFeedAddViewResponse) {
+    override fun onGetFeedEditViewSuccess(response: SellerFeedEditViewResponse) {
         dismissLoadingDialog()
-        // 상품 목록 RecyclerView 생성
+        // 상품
+        binding.tvSelectProduct.text = response.result.currentDessertName
+        selectedProductIdx = response.result.currentDessertIdx
         setProductNameRecyclerView(response.result.desserts)
-        // 상품 선택 레이아웃
         setListenerToProductSelectionLayout()
-        // 해시태그 Chip 생성
-        createTagChip(response.result.tags)
-        // 정렬용 태그 Click Listener
+        // 해시태그
+        createTagChip(response.result.tagCategories)
+        initSelectedTags(response.result.currentTags)
         setListenerToSortedTag(binding.chipFirstSortedTag, 1)
         setListenerToSortedTag(binding.chipSecondSortedTag, 2)
         setListenerToSortedTag(binding.chipThirdSortedTag, 3)
     }
 
-    override fun onGetFeedAddViewFailure(message: String) {
-        dismissLoadingDialog()
-        showCustomToast(message)
-    }
-
-    override fun onPostStoreFeedSuccess(response: BaseResponse) {
-        dismissLoadingDialog()
-        finish()
-    }
-
-    override fun onPostStoreFeedFailure(message: String) {
+    override fun onGetFeedEditViewFailure(message: String) {
         dismissLoadingDialog()
         showCustomToast(message)
     }
@@ -123,6 +112,54 @@ class SellerStoreFeedAddActivity : BaseActivity<ActivitySellerStoreFeedAddBindin
                             binding.rvFeedImage.layoutManager = mLinearLayoutManager
                         }
                     }
+            }
+        }
+    }
+
+    private fun initSelectedTags(selectedTags: List<String>) {
+        val firstTag = binding.chipFirstSortedTag
+        val secondTag = binding.chipSecondSortedTag
+        val thirdTag = binding.chipThirdSortedTag
+
+        for(tag in selectedTags) {
+            val tagName = "# $tag"
+
+            // 첫번째 태그 자리가 비어있다면 == 아무것도 선택하지 않은 상태
+            if (firstTag.visibility == GONE) {
+                firstTag.setTextColor(getColor(R.color.black))
+                firstTag.text = tagName
+                setBackgroundColor(firstTag)
+                setChipToGONE(tagName)
+                firstTag.isChecked = false
+                firstTag.visibility = VISIBLE
+            }
+            // 두번째 태그 자리가 비어있다면 == 첫번째 태그 사용 중
+            else if (secondTag.visibility == GONE) {
+                secondTag.setTextColor(getColor(R.color.black))
+                secondTag.text = tagName
+                setBackgroundColor(secondTag)
+                setChipToGONE(tagName)
+                secondTag.isChecked = false
+                secondTag.visibility = VISIBLE
+            }
+            // 세번째 태그 자리가 비어있다면 == 두,세번째 태그 사용 중
+            else if (thirdTag.visibility == GONE) {
+                thirdTag.setTextColor(getColor(R.color.black))
+                thirdTag.text = tagName
+                setBackgroundColor(thirdTag)
+                setChipToGONE(tagName)
+                thirdTag.isChecked = false
+                thirdTag.visibility = VISIBLE
+            }
+        }
+    }
+
+    private fun setChipToGONE(tagName: String) {
+        for (child in binding.chipGroupHashtag.children) {
+            val chip: Chip = binding.chipGroupHashtag.findViewById(child.id)
+            if (chip.text.equals(tagName)) {
+                chip.visibility = GONE
+                chip.isChecked = true
             }
         }
     }
@@ -348,7 +385,7 @@ class SellerStoreFeedAddActivity : BaseActivity<ActivitySellerStoreFeedAddBindin
                                     dessertIdx = selectedProductIdx, description = description, postImgUrls = uploadedImgList, tags = tags
                                 )
                                 showLoadingDialog(this)
-                                SellerStoreFeedAddService(this).tryPostStoreFeed(postStoreFeedRequest)
+//                                SellerStoreFeedEditService(this).tryPostStoreFeed(postStoreFeedRequest)
                             }
                         }
                 }
