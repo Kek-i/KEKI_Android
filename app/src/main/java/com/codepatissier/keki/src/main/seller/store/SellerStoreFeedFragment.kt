@@ -11,6 +11,7 @@ import com.codepatissier.keki.databinding.FragmentSellerStoreFeedBinding
 import com.codepatissier.keki.src.main.consumer.search.searchresult.model.SearchResultResponse
 import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreFeedService
 import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreFeedView
+import com.codepatissier.keki.src.main.seller.store.storefeed.detail.SellerStoreFeedDetailActivity
 import com.codepatissier.keki.src.main.seller.store.storefeed.storeadd.SellerStoreFeedAddActivity
 import com.codepatissier.keki.util.viewpager.storemain.StoreMainStoreData
 import com.codepatissier.keki.util.viewpager.storemain.seller.SellerStoreMainStoreAdapter
@@ -49,6 +50,15 @@ class SellerStoreFeedFragment(storeIdx : Long) : BaseFragment<FragmentSellerStor
            }
        }
         sellerStoreMainStoreAdapter.storeMainStoreDatas = storeMainStoreDatas
+        sellerStoreMainStoreAdapter.setItemClickListener(object:
+            SellerStoreMainStoreAdapter.OnItemClickListener{
+            override fun onClick(v: View, position: Int) {
+                val intent = Intent(context, SellerStoreFeedDetailActivity::class.java)
+                intent.putExtra("storeIdx", response.result.feeds[position].storeIdx)
+                intent.putExtra("position", position)
+                startActivity(intent)
+            }
+        })
 
         // 스크롤이 바닥에 닿았을 때
         binding.recyclerSellerFeed.addOnScrollListener(object : RecyclerView.OnScrollListener(){
