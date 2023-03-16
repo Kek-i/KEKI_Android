@@ -88,10 +88,11 @@
 
             <TextView
                 android:id="@+id/tv_home_comment"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/home_comment_width"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/constraint_home_top"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/iv_img_home_cake"
                 android:layout_marginStart="@dimen/home_comment_start"
                 android:layout_marginTop="@dimen/home_comment_top"
                 android:textColor="@color/darkish_pink"

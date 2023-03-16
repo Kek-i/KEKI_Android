@@ -1,4 +1,4 @@
-package com.codepatissier.keki.src.main.seller.store.productfeed
+package com.codepatissier.keki.src.main.seller.store.productfeed.productdetail
 
 import android.annotation.SuppressLint
 import android.os.Bundle

@@ -1,9 +1,8 @@
-package com.codepatissier.keki.src.main.seller.store.productfeed.product
+package com.codepatissier.keki.src.main.seller.store.productfeed.productadd
 
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
@@ -12,8 +11,8 @@ import com.bumptech.glide.Glide
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivitySellerProductAddAndEditBinding
-import com.codepatissier.keki.src.main.seller.store.productfeed.product.model.SellerProductAddBody
-import com.codepatissier.keki.src.main.seller.store.productfeed.product.model.SellerProductAddResponse
+import com.codepatissier.keki.src.main.seller.store.productfeed.productadd.model.SellerProductAddBody
+import com.codepatissier.keki.src.main.seller.store.productfeed.productadd.model.SellerProductAddResponse
 import com.google.firebase.storage.FirebaseStorage
 import java.text.SimpleDateFormat
 import java.util.*

@@ -63,8 +63,7 @@ class CustomerProfileSettingActivity : BaseActivity<ActivityConsumerProfileSetti
             keyboardDown()
 
             //null값이 아니고, 중복 확인한 값일 경우(중복확인 누르고 값 바꾸는것 방지), 닉네임 조건에 맞을 경우
-            if (nickname != null && nickname == binding.etNickname.text.toString()
-            ) {
+            if (nickname != null && nickname == binding.etNickname.text.toString()) {
                 firebaseUpload()
                 val postUserSignupRequest =
                     PostUserSignupRequest(nickname = nickname!!, profileImg = profileImg)
