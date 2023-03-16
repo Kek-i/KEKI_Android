@@ -46,6 +46,8 @@ class SellerStoreFeedEditActivity : BaseActivity<ActivitySellerStoreFeedAddBindi
         setListenerToBackBtn()
         setListenerToCompletionBtn()
         initFeedImage()
+        // init postIdx
+        postIdx = intent.getLongExtra("postIdx", 0)
         // 상품 및 해시태그 목록 서버에서 가져오기
         showLoadingDialog(this)
         SellerStoreFeedEditService(this).tryGetStoreFeedEditView(postIdx)
