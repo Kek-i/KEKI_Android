@@ -322,7 +322,7 @@ class SellerStoreFeedEditActivity : BaseActivity<ActivitySellerStoreFeedAddBindi
                 bVeryLightPinkIsUsed = false
             }
             // light_peach_2를 사용했다면
-            resources.getColorStateList(R.color.light_peach_2, null) -> {
+            resources.getColorStateList(R.color.light_peach, null) -> {
                 bLightPeach2IsUsed = false
             }
         }
@@ -341,7 +341,7 @@ class SellerStoreFeedEditActivity : BaseActivity<ActivitySellerStoreFeedAddBindi
         }
         // light_peach_2를 쓸 수 있다면
         else if (!bLightPeach2IsUsed) {
-            chipSortedTag.setChipBackgroundColorResource(R.color.light_peach_2)
+            chipSortedTag.setChipBackgroundColorResource(R.color.light_peach)
             bLightPeach2IsUsed = true
         }
     }

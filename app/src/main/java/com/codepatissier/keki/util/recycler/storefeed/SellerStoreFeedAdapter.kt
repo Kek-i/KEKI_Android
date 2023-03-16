@@ -2,7 +2,6 @@ package com.codepatissier.keki.util.recycler.storefeed
 
 import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.PopupMenu
@@ -16,9 +15,8 @@ import com.codepatissier.keki.R
 import com.codepatissier.keki.databinding.ItemProgressbarLoadingBinding
 import com.codepatissier.keki.databinding.ItemSellerStoreFeedRecyclerBinding
 import com.codepatissier.keki.src.main.consumer.store.ConsumerStoreMainActivity
-import com.codepatissier.keki.src.main.seller.store.storefeed.detail.SellerStoreFeedDetailImageAdapter
-import com.codepatissier.keki.src.main.seller.store.storefeed.detail.delete.SellerStoreDetailFeedDeleteDialog
-import com.codepatissier.keki.util.viewpager.storemain.consumer.ConsumerStoreMainStoreAdapter
+import com.codepatissier.keki.src.main.seller.store.storefeed.storedetail.SellerStoreFeedDetailImageAdapter
+import com.codepatissier.keki.src.main.seller.store.storefeed.storedetail.delete.SellerStoreDetailFeedDeleteDialog
 import com.google.firebase.storage.FirebaseStorage
 
 class SellerStoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<ViewHolder>() {
