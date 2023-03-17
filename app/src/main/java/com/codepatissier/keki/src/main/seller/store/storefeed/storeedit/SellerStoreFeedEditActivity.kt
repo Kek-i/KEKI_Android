@@ -8,6 +8,7 @@ import android.view.View.VISIBLE
 import android.widget.Toast
 import androidx.core.view.children
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivitySellerStoreFeedAddBinding
@@ -27,7 +28,7 @@ class SellerStoreFeedEditActivity : BaseActivity<ActivitySellerStoreFeedAddBindi
     private var selectedProductIdx: Long = 0
     // Firebase
     private val firebaseStorage: FirebaseStorage = FirebaseStorage.getInstance()
-    private val uploadedImgList = mutableListOf<String>()
+    private var uploadedImgList = mutableListOf<String>()
     // 첨부 가능한 피드 이미지 최대 개수
     private val maxImage = 5
     // recyclerview adapter & datalist
@@ -38,7 +39,7 @@ class SellerStoreFeedEditActivity : BaseActivity<ActivitySellerStoreFeedAddBindi
     // 무슨색 태그가 사용 중인지
     private var bOffWhiteIsUsed: Boolean = false
     private var bVeryLightPinkIsUsed: Boolean = false
-    private var bLightPeach2IsUsed: Boolean = false
+    private var bLightPeachIsUsed: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,11 +56,50 @@ class SellerStoreFeedEditActivity : BaseActivity<ActivitySellerStoreFeedAddBindi
 
     override fun onGetFeedEditViewSuccess(response: SellerFeedEditViewResponse) {
         dismissLoadingDialog()
+
+        // 이미지
+        // feedImageAdapter도 만들고 feedImageUriList에도 넣어야 함
+        // 수정 완료 시에 기존에 파이어베이스 있던 이미지들(uploadedImgList) 모두 삭제, feedImageUriList에 있는 애들로 다 새로 저장
+        uploadedImgList = response.result.postImgUrls as MutableList<String>
+        for(imgUrl in uploadedImgList) {
+            val storageRef = firebaseStorage.reference.child(imgUrl)
+            storageRef
+                .downloadUrl
+                .addOnSuccessListener {
+                    feedImageUriList.add(it)
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, getString(R.string.firebase_download_failure_error), Toast.LENGTH_SHORT).show()
+                }
+                .addOnCompleteListener {
+                    if(feedImageUriList.size == uploadedImgList.size) {
+                        feedImageAdapter = FeedImageAdapter(feedImageUriList, this)
+                        feedImageAdapter.setItemClickListener(object : FeedImageAdapter.ImgDeleteBtnClickListener {
+                            // 사진 삭제 버튼 클릭
+                            override fun onClickDeleteBtn(position: Int) {
+                                feedImageAdapter.dataList.removeAt(position)
+                                feedImageAdapter.notifyItemRemoved(position)
+                                feedImageAdapter.notifyItemRangeRemoved(position, feedImageUriList.size)
+                                feedImageUriList = feedImageAdapter.dataList
+                            }
+                        })
+                        binding.rvFeedImage.adapter = feedImageAdapter
+                        val mLinearLayoutManager = LinearLayoutManager(this)
+                        mLinearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
+                        // 가장 최근에 추가한 이미지가 맨왼쪽에 위치
+                        mLinearLayoutManager.reverseLayout = true
+                        mLinearLayoutManager.stackFromEnd = true
+                        binding.rvFeedImage.layoutManager = mLinearLayoutManager
+                    }
+                }
+        }
         // 상품
         binding.tvSelectProduct.text = response.result.currentDessertName
         selectedProductIdx = response.result.currentDessertIdx
         setProductNameRecyclerView(response.result.desserts)
         setListenerToProductSelectionLayout()
+        // 피드 내용
+        binding.etFeedContent.setText(response.result.description)
         // 해시태그
         createTagChip(response.result.tagCategories)
         initSelectedTags(response.result.currentTags)
@@ -325,7 +365,7 @@ class SellerStoreFeedEditActivity : BaseActivity<ActivitySellerStoreFeedAddBindi
             }
             // light_peach_2를 사용했다면
             resources.getColorStateList(R.color.light_peach, null) -> {
-                bLightPeach2IsUsed = false
+                bLightPeachIsUsed = false
             }
         }
     }
@@ -342,9 +382,9 @@ class SellerStoreFeedEditActivity : BaseActivity<ActivitySellerStoreFeedAddBindi
             bVeryLightPinkIsUsed = true
         }
         // light_peach_2를 쓸 수 있다면
-        else if (!bLightPeach2IsUsed) {
+        else if (!bLightPeachIsUsed) {
             chipSortedTag.setChipBackgroundColorResource(R.color.light_peach)
-            bLightPeach2IsUsed = true
+            bLightPeachIsUsed = true
         }
     }
 
