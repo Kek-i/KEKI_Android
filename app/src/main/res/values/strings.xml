@@ -231,5 +231,6 @@
     <string name="seller_feed_add_tv_error_no_product">등록된 제품이 없습니다. 제품을 먼저 추가해주세요.</string>
     <string name="firebase_upload_failure_error">이미지 업로드 실패</string>
     <string name="firebase_download_failure_error">이미지 불러오기 실패</string>
+    <string name="firebase_upload_error_message">이미지 업로드에 실패하였습니다. 잠시 후 다시 시도해주세요.</string>
 
 </resources>

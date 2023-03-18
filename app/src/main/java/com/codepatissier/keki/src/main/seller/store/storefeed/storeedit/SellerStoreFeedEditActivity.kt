@@ -2,25 +2,34 @@ package com.codepatissier.keki.src.main.seller.store.storefeed.storeedit
 
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.Toast
 import androidx.core.view.children
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
+import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.databinding.ActivitySellerStoreFeedAddBinding
 import com.codepatissier.keki.src.main.seller.store.storefeed.storeadd.model.DessertName
-import com.codepatissier.keki.src.main.seller.store.storefeed.storeadd.model.PostStoreFeedRequest
 import com.codepatissier.keki.src.main.seller.store.storefeed.storeedit.model.SellerFeedEditViewResponse
+import com.codepatissier.keki.src.main.seller.store.storefeed.storeedit.model.UpdateStoreFeedRequest
 import com.codepatissier.keki.util.recycler.storefeedadd.FeedImageAdapter
 import com.codepatissier.keki.util.recycler.storefeedadd.ProductNameAdapter
 import com.google.android.material.chip.Chip
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import gun0912.tedimagepicker.builder.TedImagePicker
 import gun0912.tedimagepicker.builder.type.MediaType
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.tasks.await
+
 
 class SellerStoreFeedEditActivity : BaseActivity<ActivitySellerStoreFeedAddBinding>(
     ActivitySellerStoreFeedAddBinding::inflate), SellerStoreFeedEditView {
@@ -29,6 +38,7 @@ class SellerStoreFeedEditActivity : BaseActivity<ActivitySellerStoreFeedAddBindi
     // Firebase
     private val firebaseStorage: FirebaseStorage = FirebaseStorage.getInstance()
     private var uploadedImgList = mutableListOf<String>()
+    private var existingImgMap = mutableMapOf<Uri, String>()
     // 첨부 가능한 피드 이미지 최대 개수
     private val maxImage = 5
     // recyclerview adapter & datalist
@@ -58,21 +68,21 @@ class SellerStoreFeedEditActivity : BaseActivity<ActivitySellerStoreFeedAddBindi
         dismissLoadingDialog()
 
         // 이미지
-        // feedImageAdapter도 만들고 feedImageUriList에도 넣어야 함
-        // 수정 완료 시에 기존에 파이어베이스 있던 이미지들(uploadedImgList) 모두 삭제, feedImageUriList에 있는 애들로 다 새로 저장
-        uploadedImgList = response.result.postImgUrls as MutableList<String>
-        for(imgUrl in uploadedImgList) {
+        /* 파이어베이스에서 이미지 다운로드된 순서 != 서버에서 준 feed image url 순서
+        -> 피드 이미지 순서 맞춰서 recyclerview 띄우려면 여기도 코루틴 사용해서 await() 해야 할 듯 */
+        for(imgUrl in response.result.postImgUrls) {
             val storageRef = firebaseStorage.reference.child(imgUrl)
             storageRef
                 .downloadUrl
                 .addOnSuccessListener {
                     feedImageUriList.add(it)
+                    existingImgMap[it] = imgUrl
                 }
                 .addOnFailureListener {
                     Toast.makeText(this, getString(R.string.firebase_download_failure_error), Toast.LENGTH_SHORT).show()
                 }
                 .addOnCompleteListener {
-                    if(feedImageUriList.size == uploadedImgList.size) {
+                    if(feedImageUriList.size == existingImgMap.size) {
                         feedImageAdapter = FeedImageAdapter(feedImageUriList, this)
                         feedImageAdapter.setItemClickListener(object : FeedImageAdapter.ImgDeleteBtnClickListener {
                             // 사진 삭제 버튼 클릭
@@ -109,6 +119,21 @@ class SellerStoreFeedEditActivity : BaseActivity<ActivitySellerStoreFeedAddBindi
     }
 
     override fun onGetFeedEditViewFailure(message: String) {
+        dismissLoadingDialog()
+        showCustomToast(message)
+    }
+
+    override fun onUpdateStoreFeedSuccess(response: BaseResponse) {
+        dismissLoadingDialog()
+        // 이미 Firebase에 업로드된 사진 중 수정되면서 빠진 사진 삭제
+        for(imgUrl in existingImgMap) {
+            firebaseStorage.reference.child(imgUrl.value)
+                .delete()
+        }
+        finish()
+    }
+
+    override fun onUpdateStoreFeedFailure(message: String) {
         dismissLoadingDialog()
         showCustomToast(message)
     }
@@ -390,49 +415,78 @@ class SellerStoreFeedEditActivity : BaseActivity<ActivitySellerStoreFeedAddBindi
 
     private fun setListenerToCompletionBtn() {
         binding.tvCompletion.setOnClickListener {
-            // 필수 입력 항목 다 채웠는지 확인
-            if (checkAllRequiredInputIsEntered()) {
-                showLoadingDialog(this)
+            CoroutineScope(Dispatchers.IO).launch {
+                val mHandler = Handler(Looper.getMainLooper())
+                // 필수 입력 항목 다 채웠는지 확인
+                if (checkAllRequiredInputIsEntered()) {
+                    mHandler.postDelayed(Runnable {
+                        showLoadingDialog(this@SellerStoreFeedEditActivity)
+                    }, 0)
 
-                // Firebase에 사진 업로드
-                for(feedImgUri in feedImageUriList) {
-                    val timeStamp = System.currentTimeMillis()
-                    val feedImgName = "FEED_IMAGE_$timeStamp.png"
-                    val uploadImgName = "feed/$feedImgName"
-                    val storageRef = firebaseStorage.reference.child(uploadImgName)
-                    storageRef
-                        .putFile(feedImgUri)
-                        .addOnSuccessListener {
-                            uploadedImgList.add(uploadImgName)
+                    val storageRef = firebaseStorage.reference
+                    for(feedImgUri in feedImageUriList) {
+                        // 이미 Firebase에 업로드된 사진일 경우
+                        if(existingImgMap.containsKey(feedImgUri)) {
+                            uploadedImgList.add(existingImgMap[feedImgUri]!!)
+                            existingImgMap.remove(feedImgUri)
                         }
-                        .addOnFailureListener {
-                            dismissLoadingDialog()
-                            Toast.makeText(this, getString(R.string.firebase_upload_failure_error), Toast.LENGTH_SHORT).show()
-                        }
-                        .addOnCompleteListener {
-                            // Firebase에 모든 이미지 업로드 성공 시 POST api 호출
-                            if(uploadedImgList.size == feedImageUriList.size) {
-                                dismissLoadingDialog()
-
-                                val description = binding.etFeedContent.text.toString()
-                                val tags = mutableListOf<String>()
-                                for(id in binding.chipGroupHashtag.checkedChipIds) {
-                                    val tag: Chip = binding.chipGroupHashtag.findViewById(id)
-                                    var tagText = tag.text.toString().replace(" ", "")
-                                    tagText = tagText.replace("#", "")
-                                    tags.add(tagText)
-                                }
-
-                                val postStoreFeedRequest = PostStoreFeedRequest(
-                                    dessertIdx = selectedProductIdx, description = description, postImgUrls = uploadedImgList, tags = tags
-                                )
-                                showLoadingDialog(this)
-//                                SellerStoreFeedEditService(this).tryPostStoreFeed(postStoreFeedRequest)
+                        // 새로 선택한 사진일 경우
+                        else {
+                            runBlocking {
+                                uploadImgToFirebase(storageRef, feedImgUri)
                             }
                         }
+                    }
+                    // Firebase에 모든 이미지 업로드 성공 시 PATCH api 호출
+                    if(uploadedImgList.size == feedImageUriList.size) {
+                        dismissLoadingDialog()
+
+                        val description = binding.etFeedContent.text.toString()
+                        val tags = mutableListOf<String>()
+                        for(id in binding.chipGroupHashtag.checkedChipIds) {
+                            val tag: Chip = binding.chipGroupHashtag.findViewById(id)
+                            var tagText = tag.text.toString().replace(" ", "")
+                            tagText = tagText.replace("#", "")
+                            tags.add(tagText)
+                        }
+
+                        val updateStoreFeedRequest = UpdateStoreFeedRequest(
+                            dessertIdx = selectedProductIdx, description = description, postImgUrls = uploadedImgList, tags = tags
+                        )
+                        mHandler.postDelayed(Runnable {
+                            showLoadingDialog(this@SellerStoreFeedEditActivity)
+                        }, 0)
+                        SellerStoreFeedEditService(this@SellerStoreFeedEditActivity).tryUpdateStoreFeed(postIdx, updateStoreFeedRequest)
+                    }
+                    else {
+                        dismissLoadingDialog()
+                        mHandler.postDelayed(Runnable {
+                            showCustomToast(getString(R.string.firebase_upload_error_message))
+                        }, 0)
+                    }
                 }
             }
         }
+    }
+
+    private suspend fun uploadImgToFirebase(storageRef: StorageReference, feedImgUri: Uri) {
+        val timeStamp = System.currentTimeMillis()
+        val feedImgName = "FEED_IMAGE_$timeStamp.png"
+        val uploadImgName = "feed/$feedImgName"
+        storageRef.child(uploadImgName)
+            .putFile(feedImgUri)
+            .addOnSuccessListener {
+                uploadedImgList.add(uploadImgName)
+            }
+            .addOnFailureListener {
+                dismissLoadingDialog()
+                Toast.makeText(
+                    this@SellerStoreFeedEditActivity,
+                    getString(R.string.firebase_upload_failure_error),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            .await()
     }
 
     private fun checkAllRequiredInputIsEntered(): Boolean {
