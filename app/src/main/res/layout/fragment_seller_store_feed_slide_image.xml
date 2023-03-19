@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".src.main.seller.store.storefeed.detail.SellerStoreFeedSlideImageFragment">
+    tools:context=".src.main.seller.store.storefeed.storedetail.SellerStoreFeedSlideImageFragment">
 
     <ImageView
         android:id="@+id/iv_store_feed_img_viewer"

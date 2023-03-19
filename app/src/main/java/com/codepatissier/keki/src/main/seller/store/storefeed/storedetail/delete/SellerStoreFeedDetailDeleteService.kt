@@ -1,4 +1,4 @@
-package com.codepatissier.keki.src.main.seller.store.storefeed.detail.delete
+package com.codepatissier.keki.src.main.seller.store.storefeed.storedetail.delete
 
 import com.codepatissier.keki.config.ApplicationClass
 import com.codepatissier.keki.config.BaseResponse
