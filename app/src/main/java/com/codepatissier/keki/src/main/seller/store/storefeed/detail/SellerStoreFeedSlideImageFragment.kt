@@ -17,14 +17,14 @@ class SellerStoreFeedSlideImageFragment(val image: String) : BaseFragment<Fragme
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val width = getItemWidth();
+        val width = getItemWidth()
 
         fbStorage = FirebaseStorage.getInstance()
         var storageRef = fbStorage?.reference?.child(image)
 
         storageRef?.downloadUrl?.addOnCompleteListener{
             Glide.with(this)
-                .load(image)
+                .load(it.result)
                 .override(width,width)
                 .into(binding.ivStoreFeedImgViewer)
         }
