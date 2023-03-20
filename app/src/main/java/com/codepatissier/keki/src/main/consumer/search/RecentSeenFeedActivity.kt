@@ -1,5 +1,6 @@
 package com.codepatissier.keki.src.main.consumer.search
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.PopupMenu
 import android.widget.TextView
@@ -10,6 +11,7 @@ import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.databinding.ActivityRecentSeenFeedBinding
 import com.codepatissier.keki.src.main.consumer.search.model.RecentSeenFeedResponse
+import com.codepatissier.keki.src.main.consumer.store.ConsumerStoreMainActivity
 import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreFeedDetailService
 import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreFeedDetailView
 import com.codepatissier.keki.src.main.consumer.store.storefeed.DetailImageAdapter
@@ -21,6 +23,7 @@ class RecentSeenFeedActivity: BaseActivity<ActivityRecentSeenFeedBinding> (Activ
     ConsumerStoreFeedDetailView {
 
     private var heart = false
+    var storeIdx: Long? = null
     private var postIdx:Long = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,6 +88,8 @@ class RecentSeenFeedActivity: BaseActivity<ActivityRecentSeenFeedBinding> (Activ
             binding.ivStoreFeedHeartOff.setImageResource(R.drawable.ic_bottom_heart_on)
             heart = true
         }
+
+        storeIdx = response.result.storeIdx
     }
 
 
@@ -147,11 +152,18 @@ class RecentSeenFeedActivity: BaseActivity<ActivityRecentSeenFeedBinding> (Activ
             }
         }
     }
-    //뒤로가기 버튼
     private fun navigateToStoreMain(){
+        //뒤로가기 버튼
         binding.ivStoreFeedLeftChevron.setOnClickListener {
             finish()
         }
+
+        binding.tvStoreFeedSellerNickname.setOnClickListener {
+            val intent = Intent(this, ConsumerStoreMainActivity::class.java)
+            intent.putExtra("storeIdx", storeIdx)
+            startActivity(intent)
+        }
     }
+
 
 }

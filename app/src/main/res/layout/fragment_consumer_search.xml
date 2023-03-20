@@ -75,14 +75,16 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_recent_search"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/search_tag_width"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/search_tag_margin"
                 android:layout_marginStart="@dimen/search_tag_marginStart"
+                android:layout_marginEnd="@dimen/tv_recent_search_delete_marginEnd"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_recent_search"
+                app:layout_constraintEnd_toEndOf="parent"
                 tools:listitem="@layout/item_search_recent_recycler" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -112,12 +114,14 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_popular_search"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/search_tag_width"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/search_tag_margin"
             android:layout_marginStart="@dimen/search_tag_marginStart"
+            android:layout_marginEnd="@dimen/tv_recent_search_delete_marginEnd"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_popular_search"
+            app:layout_constraintEnd_toEndOf="parent"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_search_popular_recycler" />
@@ -147,14 +151,16 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_recent_seen"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/search_tag_width"
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/search_tag_marginStart"
+                android:layout_marginEnd="@dimen/tv_recent_search_delete_marginEnd"
                 android:layout_marginTop="@dimen/rv_recent_seen_marginTop"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_recent_seen"
+                app:layout_constraintEnd_toEndOf="parent"
                 tools:listitem="@layout/item_recent_seen_cake_recycler" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

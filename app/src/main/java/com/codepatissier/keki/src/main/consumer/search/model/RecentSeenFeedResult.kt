@@ -9,5 +9,6 @@ data class RecentSeenFeedResult (
     val tags: List<String>,
     val storeName: String,
     val storeProfileImg: String,
+    val storeIdx:Long,
     val like: Boolean
         )

@@ -1,35 +1,44 @@
-package com.codepatissier.keki.src.main.seller.store.storefeed.storeadd
+package com.codepatissier.keki.src.main.seller.store.storefeed.storeedit
 
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.Toast
+import androidx.core.view.children
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.config.BaseResponse
 import com.codepatissier.keki.databinding.ActivitySellerStoreFeedAddBinding
 import com.codepatissier.keki.src.main.seller.store.storefeed.storeadd.model.DessertName
-import com.codepatissier.keki.src.main.seller.store.storefeed.storeadd.model.PostStoreFeedRequest
-import com.codepatissier.keki.src.main.seller.store.storefeed.storeadd.model.SellerFeedAddViewResponse
+import com.codepatissier.keki.src.main.seller.store.storefeed.storeedit.model.SellerFeedEditViewResponse
+import com.codepatissier.keki.src.main.seller.store.storefeed.storeedit.model.UpdateStoreFeedRequest
 import com.codepatissier.keki.util.recycler.storefeedadd.FeedImageAdapter
 import com.codepatissier.keki.util.recycler.storefeedadd.ProductNameAdapter
 import com.google.android.material.chip.Chip
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import gun0912.tedimagepicker.builder.TedImagePicker
 import gun0912.tedimagepicker.builder.type.MediaType
-import java.text.SimpleDateFormat
-import java.util.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.tasks.await
 
-class SellerStoreFeedAddActivity : BaseActivity<ActivitySellerStoreFeedAddBinding>(
-    ActivitySellerStoreFeedAddBinding::inflate), SellerStoreFeedAddView {
+
+class SellerStoreFeedEditActivity : BaseActivity<ActivitySellerStoreFeedAddBinding>(
+    ActivitySellerStoreFeedAddBinding::inflate), SellerStoreFeedEditView {
+    private var postIdx: Long = 0
     private var selectedProductIdx: Long = 0
     // Firebase
     private val firebaseStorage: FirebaseStorage = FirebaseStorage.getInstance()
-    private val uploadedImgList = mutableListOf<String>()
+    private var uploadedImgList = mutableListOf<String>()
+    private var existingImgMap = mutableMapOf<Uri, String>()
     // 첨부 가능한 피드 이미지 최대 개수
     private val maxImage = 5
     // recyclerview adapter & datalist
@@ -40,7 +49,7 @@ class SellerStoreFeedAddActivity : BaseActivity<ActivitySellerStoreFeedAddBindin
     // 무슨색 태그가 사용 중인지
     private var bOffWhiteIsUsed: Boolean = false
     private var bVeryLightPinkIsUsed: Boolean = false
-    private var bLightPeach2IsUsed: Boolean = false
+    private var bLightPeachIsUsed: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,36 +57,83 @@ class SellerStoreFeedAddActivity : BaseActivity<ActivitySellerStoreFeedAddBindin
         setListenerToBackBtn()
         setListenerToCompletionBtn()
         initFeedImage()
+        // init postIdx
+        postIdx = intent.getLongExtra("postIdx", 0)
         // 상품 및 해시태그 목록 서버에서 가져오기
         showLoadingDialog(this)
-        SellerStoreFeedAddService(this).tryGetStoreFeedAddView()
+        SellerStoreFeedEditService(this).tryGetStoreFeedEditView(postIdx)
     }
 
-    override fun onGetFeedAddViewSuccess(response: SellerFeedAddViewResponse) {
+    override fun onGetFeedEditViewSuccess(response: SellerFeedEditViewResponse) {
         dismissLoadingDialog()
-        // 상품 목록 RecyclerView 생성
+
+        // 이미지
+        /* 파이어베이스에서 이미지 다운로드된 순서 != 서버에서 준 feed image url 순서
+        -> 피드 이미지 순서 맞춰서 recyclerview 띄우려면 여기도 코루틴 사용해서 await() 해야 할 듯 */
+        for(imgUrl in response.result.postImgUrls) {
+            val storageRef = firebaseStorage.reference.child(imgUrl)
+            storageRef
+                .downloadUrl
+                .addOnSuccessListener {
+                    feedImageUriList.add(it)
+                    existingImgMap[it] = imgUrl
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, getString(R.string.firebase_download_failure_error), Toast.LENGTH_SHORT).show()
+                }
+                .addOnCompleteListener {
+                    if(feedImageUriList.size == existingImgMap.size) {
+                        feedImageAdapter = FeedImageAdapter(feedImageUriList, this)
+                        feedImageAdapter.setItemClickListener(object : FeedImageAdapter.ImgDeleteBtnClickListener {
+                            // 사진 삭제 버튼 클릭
+                            override fun onClickDeleteBtn(position: Int) {
+                                feedImageAdapter.dataList.removeAt(position)
+                                feedImageAdapter.notifyItemRemoved(position)
+                                feedImageAdapter.notifyItemRangeRemoved(position, feedImageUriList.size)
+                                feedImageUriList = feedImageAdapter.dataList
+                            }
+                        })
+                        binding.rvFeedImage.adapter = feedImageAdapter
+                        val mLinearLayoutManager = LinearLayoutManager(this)
+                        mLinearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
+                        // 가장 최근에 추가한 이미지가 맨왼쪽에 위치
+                        mLinearLayoutManager.reverseLayout = true
+                        mLinearLayoutManager.stackFromEnd = true
+                        binding.rvFeedImage.layoutManager = mLinearLayoutManager
+                    }
+                }
+        }
+        // 상품
+        binding.tvSelectProduct.text = response.result.currentDessertName
+        selectedProductIdx = response.result.currentDessertIdx
         setProductNameRecyclerView(response.result.desserts)
-        // 상품 선택 레이아웃
         setListenerToProductSelectionLayout()
-        // 해시태그 Chip 생성
-        createTagChip(response.result.tags)
-        // 정렬용 태그 Click Listener
+        // 피드 내용
+        binding.etFeedContent.setText(response.result.description)
+        // 해시태그
+        createTagChip(response.result.tagCategories)
+        initSelectedTags(response.result.currentTags)
         setListenerToSortedTag(binding.chipFirstSortedTag, 1)
         setListenerToSortedTag(binding.chipSecondSortedTag, 2)
         setListenerToSortedTag(binding.chipThirdSortedTag, 3)
     }
 
-    override fun onGetFeedAddViewFailure(message: String) {
+    override fun onGetFeedEditViewFailure(message: String) {
         dismissLoadingDialog()
         showCustomToast(message)
     }
 
-    override fun onPostStoreFeedSuccess(response: BaseResponse) {
+    override fun onUpdateStoreFeedSuccess(response: BaseResponse) {
         dismissLoadingDialog()
+        // 이미 Firebase에 업로드된 사진 중 수정되면서 빠진 사진 삭제
+        for(imgUrl in existingImgMap) {
+            firebaseStorage.reference.child(imgUrl.value)
+                .delete()
+        }
         finish()
     }
 
-    override fun onPostStoreFeedFailure(message: String) {
+    override fun onUpdateStoreFeedFailure(message: String) {
         dismissLoadingDialog()
         showCustomToast(message)
     }
@@ -123,6 +179,54 @@ class SellerStoreFeedAddActivity : BaseActivity<ActivitySellerStoreFeedAddBindin
                             binding.rvFeedImage.layoutManager = mLinearLayoutManager
                         }
                     }
+            }
+        }
+    }
+
+    private fun initSelectedTags(selectedTags: List<String>) {
+        val firstTag = binding.chipFirstSortedTag
+        val secondTag = binding.chipSecondSortedTag
+        val thirdTag = binding.chipThirdSortedTag
+
+        for(tag in selectedTags) {
+            val tagName = "# $tag"
+
+            // 첫번째 태그 자리가 비어있다면 == 아무것도 선택하지 않은 상태
+            if (firstTag.visibility == GONE) {
+                firstTag.setTextColor(getColor(R.color.black))
+                firstTag.text = tagName
+                setBackgroundColor(firstTag)
+                setChipToGONE(tagName)
+                firstTag.isChecked = false
+                firstTag.visibility = VISIBLE
+            }
+            // 두번째 태그 자리가 비어있다면 == 첫번째 태그 사용 중
+            else if (secondTag.visibility == GONE) {
+                secondTag.setTextColor(getColor(R.color.black))
+                secondTag.text = tagName
+                setBackgroundColor(secondTag)
+                setChipToGONE(tagName)
+                secondTag.isChecked = false
+                secondTag.visibility = VISIBLE
+            }
+            // 세번째 태그 자리가 비어있다면 == 두,세번째 태그 사용 중
+            else if (thirdTag.visibility == GONE) {
+                thirdTag.setTextColor(getColor(R.color.black))
+                thirdTag.text = tagName
+                setBackgroundColor(thirdTag)
+                setChipToGONE(tagName)
+                thirdTag.isChecked = false
+                thirdTag.visibility = VISIBLE
+            }
+        }
+    }
+
+    private fun setChipToGONE(tagName: String) {
+        for (child in binding.chipGroupHashtag.children) {
+            val chip: Chip = binding.chipGroupHashtag.findViewById(child.id)
+            if (chip.text.equals(tagName)) {
+                chip.visibility = GONE
+                chip.isChecked = true
             }
         }
     }
@@ -284,9 +388,9 @@ class SellerStoreFeedAddActivity : BaseActivity<ActivitySellerStoreFeedAddBindin
             resources.getColorStateList(R.color.very_light_pink, null) -> {
                 bVeryLightPinkIsUsed = false
             }
-            // light_peach를 사용했다면
+            // light_peach_2를 사용했다면
             resources.getColorStateList(R.color.light_peach, null) -> {
-                bLightPeach2IsUsed = false
+                bLightPeachIsUsed = false
             }
         }
     }
@@ -302,58 +406,87 @@ class SellerStoreFeedAddActivity : BaseActivity<ActivitySellerStoreFeedAddBindin
             chipSortedTag.setChipBackgroundColorResource(R.color.very_light_pink)
             bVeryLightPinkIsUsed = true
         }
-        // light_peach를 쓸 수 있다면
-        else if (!bLightPeach2IsUsed) {
+        // light_peach_2를 쓸 수 있다면
+        else if (!bLightPeachIsUsed) {
             chipSortedTag.setChipBackgroundColorResource(R.color.light_peach)
-            bLightPeach2IsUsed = true
+            bLightPeachIsUsed = true
         }
     }
 
     private fun setListenerToCompletionBtn() {
         binding.tvCompletion.setOnClickListener {
-            // 필수 입력 항목 다 채웠는지 확인
-            if (checkAllRequiredInputIsEntered()) {
-                showLoadingDialog(this)
+            CoroutineScope(Dispatchers.IO).launch {
+                val mHandler = Handler(Looper.getMainLooper())
+                // 필수 입력 항목 다 채웠는지 확인
+                if (checkAllRequiredInputIsEntered()) {
+                    mHandler.postDelayed(Runnable {
+                        showLoadingDialog(this@SellerStoreFeedEditActivity)
+                    }, 0)
 
-                // Firebase에 사진 업로드
-                for(feedImgUri in feedImageUriList) {
-                    val timeStamp = System.currentTimeMillis()
-                    val feedImgName = "FEED_IMAGE_$timeStamp.png"
-                    val uploadImgName = "feed/$feedImgName"
-                    val storageRef = firebaseStorage.reference.child(uploadImgName)
-                    storageRef
-                        .putFile(feedImgUri)
-                        .addOnSuccessListener {
-                            uploadedImgList.add(uploadImgName)
+                    val storageRef = firebaseStorage.reference
+                    for(feedImgUri in feedImageUriList) {
+                        // 이미 Firebase에 업로드된 사진일 경우
+                        if(existingImgMap.containsKey(feedImgUri)) {
+                            uploadedImgList.add(existingImgMap[feedImgUri]!!)
+                            existingImgMap.remove(feedImgUri)
                         }
-                        .addOnFailureListener {
-                            dismissLoadingDialog()
-                            Toast.makeText(this, getString(R.string.firebase_upload_failure_error), Toast.LENGTH_SHORT).show()
-                        }
-                        .addOnCompleteListener {
-                            // Firebase에 모든 이미지 업로드 성공 시 POST api 호출
-                            if(uploadedImgList.size == feedImageUriList.size) {
-                                dismissLoadingDialog()
-
-                                val description = binding.etFeedContent.text.toString()
-                                val tags = mutableListOf<String>()
-                                for(id in binding.chipGroupHashtag.checkedChipIds) {
-                                    val tag: Chip = binding.chipGroupHashtag.findViewById(id)
-                                    var tagText = tag.text.toString().replace(" ", "")
-                                    tagText = tagText.replace("#", "")
-                                    tags.add(tagText)
-                                }
-
-                                val postStoreFeedRequest = PostStoreFeedRequest(
-                                    dessertIdx = selectedProductIdx, description = description, postImgUrls = uploadedImgList, tags = tags
-                                )
-                                showLoadingDialog(this)
-                                SellerStoreFeedAddService(this).tryPostStoreFeed(postStoreFeedRequest)
+                        // 새로 선택한 사진일 경우
+                        else {
+                            runBlocking {
+                                uploadImgToFirebase(storageRef, feedImgUri)
                             }
                         }
+                    }
+                    // Firebase에 모든 이미지 업로드 성공 시 PATCH api 호출
+                    if(uploadedImgList.size == feedImageUriList.size) {
+                        dismissLoadingDialog()
+
+                        val description = binding.etFeedContent.text.toString()
+                        val tags = mutableListOf<String>()
+                        for(id in binding.chipGroupHashtag.checkedChipIds) {
+                            val tag: Chip = binding.chipGroupHashtag.findViewById(id)
+                            var tagText = tag.text.toString().replace(" ", "")
+                            tagText = tagText.replace("#", "")
+                            tags.add(tagText)
+                        }
+
+                        val updateStoreFeedRequest = UpdateStoreFeedRequest(
+                            dessertIdx = selectedProductIdx, description = description, postImgUrls = uploadedImgList, tags = tags
+                        )
+                        mHandler.postDelayed(Runnable {
+                            showLoadingDialog(this@SellerStoreFeedEditActivity)
+                        }, 0)
+                        SellerStoreFeedEditService(this@SellerStoreFeedEditActivity).tryUpdateStoreFeed(postIdx, updateStoreFeedRequest)
+                    }
+                    else {
+                        dismissLoadingDialog()
+                        mHandler.postDelayed(Runnable {
+                            showCustomToast(getString(R.string.firebase_upload_error_message))
+                        }, 0)
+                    }
                 }
             }
         }
+    }
+
+    private suspend fun uploadImgToFirebase(storageRef: StorageReference, feedImgUri: Uri) {
+        val timeStamp = System.currentTimeMillis()
+        val feedImgName = "FEED_IMAGE_$timeStamp.png"
+        val uploadImgName = "feed/$feedImgName"
+        storageRef.child(uploadImgName)
+            .putFile(feedImgUri)
+            .addOnSuccessListener {
+                uploadedImgList.add(uploadImgName)
+            }
+            .addOnFailureListener {
+                dismissLoadingDialog()
+                Toast.makeText(
+                    this@SellerStoreFeedEditActivity,
+                    getString(R.string.firebase_upload_failure_error),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            .await()
     }
 
     private fun checkAllRequiredInputIsEntered(): Boolean {

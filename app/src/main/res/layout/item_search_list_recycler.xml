@@ -39,8 +39,10 @@
         android:textColor="@color/black"
         android:maxLines="2"
         android:ellipsize="end"
+        android:fontFamily="@font/notosanskr_regular"
         app:layout_constraintTop_toBottomOf="@+id/cv"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:includeFontPadding="false"/>
 
     <TextView
         android:id="@+id/tv_gridPrice"
@@ -51,6 +53,8 @@
         android:text="10,000"
         android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@+id/tv_gridName"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:fontFamily="@font/notosanskr_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        android:includeFontPadding="false"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

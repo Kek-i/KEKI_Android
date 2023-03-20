@@ -1,11 +1,10 @@
-package com.codepatissier.keki.src.main.seller.store.storefeed.detail.delete
+package com.codepatissier.keki.src.main.seller.store.storefeed.storedetail.delete
 
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.Window
 import android.widget.Toast
 import com.codepatissier.keki.config.BaseResponse

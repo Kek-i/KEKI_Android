@@ -1,10 +1,7 @@
-package com.codepatissier.keki.src.main.seller.store.storefeed.detail
+package com.codepatissier.keki.src.main.seller.store.storefeed.storedetail
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseFragment

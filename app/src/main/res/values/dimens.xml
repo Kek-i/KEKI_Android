@@ -21,6 +21,7 @@
     <dimen name="home_comment_top">9dp</dimen>
     <dimen name="home_comment_start">36dp</dimen>
     <dimen name="home_comment_size">20sp</dimen>
+    <dimen name="home_comment_width">0dp</dimen>
     <dimen name="home_comment_line_space">4dp</dimen>
 
     <dimen name="home_img_cake">10.5dp</dimen>
@@ -263,9 +264,11 @@
     <dimen name="bg_shadow_rec6_radius">20dp</dimen>
 
     <!-- search -->
-    <dimen name="main_search_margin_side">24dp</dimen>
+    <dimen name="main_search_margin_side">11dp</dimen>
     <dimen name="search_tag_height">26dp</dimen>
+    <dimen name="search_tag_width">0dp</dimen>
     <dimen name="search_tag_margin">10dp</dimen>
+    <dimen name="et_search_weight">0dp</dimen>
     <dimen name="et_search_height">36dp</dimen>
     <dimen name="et_search_margin_top">15dp</dimen>
     <dimen name="et_search_padding_updown">8dp</dimen>
@@ -276,6 +279,7 @@
     <dimen name="tv_recent_search_delete_marginTop">5dp</dimen>
     <dimen name="tv_recent_search_delete_marginEnd">10dp</dimen>
     <dimen name="search_tag_marginStart">24dp</dimen>
+    <dimen name="search_tag_marginEnd">24dp</dimen>
     <dimen name="search_recent_tag_padding_side">13dp</dimen>
     <dimen name="search_recent_tag_padding_updown">5dp</dimen>
     <dimen name="search_popular_tag_padding_side">14dp</dimen>
@@ -285,6 +289,8 @@
     <dimen name="tv_recent_seen_marginTop">36dp</dimen>
     <dimen name="rv_recent_seen_marginTop">10dp</dimen>
     <dimen name="rv_recent_seen_marginStart">12dp</dimen>
+    <dimen name="search_back_left">16dp</dimen>
+    <dimen name="search_back_top">24dp</dimen>
     <dimen name="search_spinner_width">90dp</dimen>
     <dimen name="search_spinner_height">31dp</dimen>
     <dimen name="search_spinner_marginTop">21dp</dimen>
