@@ -1,6 +1,7 @@
 package com.codepatissier.keki.util.recycler.storefeed
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -81,6 +82,7 @@ class SellerStoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapt
         private val tagArray = arrayOf(firstTag, secondTag, thirdTag)
         private var postIdx : Long? = null
         var fbStorage : FirebaseStorage?= null
+        val defaultImg = R.drawable.ic_seller
 
         // display 별 화면에 맞는 그리드 크기 구하기
         private fun getItemWidth():Int{
@@ -95,20 +97,29 @@ class SellerStoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapt
             cakeName.text = item.dessertName
             postIdx = item.postIdx
 
-            val width = getItemWidth();
+            val width = getItemWidth()/3
 
             for(i in item.tags.indices){
                 tagArray[i].isVisible = true
                 tagArray[i].text = "# " + item.tags[i]
             }
 
+            if(item.storeProfileImg != null){
+                fbStorage = FirebaseStorage.getInstance()
+                var storageRef = fbStorage?.reference?.child(item.storeProfileImg)
 
-            Glide.with(context!!)
-                .load(item.storeProfileImg)
-                .override(width,width)
-                .centerCrop()
-                .into(sellerImg)
-            sellerImg.clipToOutline = true
+                storageRef?.downloadUrl?.addOnCompleteListener {
+                    Glide.with(context!!)
+                        .load(it.result)
+                        .placeholder(defaultImg)
+                        .error(defaultImg)
+                        .fallback(defaultImg)
+                        .override(width,width)
+                        .centerCrop()
+                        .into(sellerImg)
+                }
+
+            }
 
 
 
