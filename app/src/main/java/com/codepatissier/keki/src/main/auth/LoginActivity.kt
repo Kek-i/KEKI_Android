@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.ApplicationClass.Companion.Authorization
+import com.codepatissier.keki.config.ApplicationClass.Companion.Provider
+import com.codepatissier.keki.config.ApplicationClass.Companion.RefreshToken
 import com.codepatissier.keki.config.ApplicationClass.Companion.UserEmail
 import com.codepatissier.keki.config.ApplicationClass.Companion.UserRole
 import com.codepatissier.keki.config.ApplicationClass.Companion.userInfo
@@ -66,6 +68,8 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
 
     //로그인 하면 토큰값, 회원 role 가져오기
     fun getRole(userEmail: String, provider:String){
+        userInfo.putString(Provider, provider)
+        userInfo.commit()
         val postLoginRequest = PostLoginRequest(email = userEmail, provider = provider)
         LoginService(this).tryPostUserLogin(postLoginRequest)
     }
@@ -73,6 +77,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
     private fun checkRole(response: SocialTokenResponse){
         //토큰 저장
         userInfo.putString(Authorization, response.result.accessToken)
+        userInfo.putString(RefreshToken, response.result.refreshToken)
         userInfo.putString(UserEmail, userEmail)
         Log.d("here", "$userEmail")
         if(response.result.role == "비회원"){

@@ -6,6 +6,7 @@
     android:paddingStart="@dimen/rv_item_feed_image_layout_padding_start"
     android:paddingBottom="@dimen/rv_item_feed_image_layout_padding_bottom"
     android:clipToPadding="false"
+    android:background="@color/white"
     >
 
     <ImageView

@@ -1,9 +1,8 @@
-package com.codepatissier.keki.src.main.seller.store.product
+package com.codepatissier.keki.src.main.seller.store.productfeed.productadd
 
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
@@ -12,13 +11,14 @@ import com.bumptech.glide.Glide
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivitySellerProductAddAndEditBinding
-import com.codepatissier.keki.src.main.seller.store.product.model.SellerProductAddBody
-import com.codepatissier.keki.src.main.seller.store.product.model.SellerProductAddResponse
+import com.codepatissier.keki.src.main.seller.store.productfeed.productadd.model.SellerProductAddBody
+import com.codepatissier.keki.src.main.seller.store.productfeed.productadd.model.SellerProductAddResponse
 import com.google.firebase.storage.FirebaseStorage
 import java.text.SimpleDateFormat
 import java.util.*
 
-class SellerProductAddActivity:BaseActivity<ActivitySellerProductAddAndEditBinding>(ActivitySellerProductAddAndEditBinding::inflate), SellerProductAddView {
+class SellerProductAddActivity:BaseActivity<ActivitySellerProductAddAndEditBinding>(ActivitySellerProductAddAndEditBinding::inflate),
+    SellerProductAddView {
     private lateinit var launcher : ActivityResultLauncher<Intent>
     var ProfileUri : Uri?= null
     var fbStorage : FirebaseStorage?= null
@@ -42,7 +42,7 @@ class SellerProductAddActivity:BaseActivity<ActivitySellerProductAddAndEditBindi
     }
 
     private fun plusClicked(){
-        binding.ivPlus.setOnClickListener{
+        binding.ivProduct.setOnClickListener{
             var intent = Intent(Intent.ACTION_GET_CONTENT)
             intent.setType("image/*")
             launcher.launch(intent)

@@ -73,6 +73,16 @@
     <string name="dialog_report_fourth">사기/불법정보</string>
     <string name="dialog_report_fifth">게시글 성격에 부적절함</string>
 
+    <!-- delete store -->
+    <string name="dialog_delete_store_title">피드 삭제</string>
+    <string name="dialog_delete_store_content">해당 피드를 삭제하시겠습니까?</string>
+    <string name="dialog_delete_store_btn">삭제하기</string>
+    <string name="dialog_delete_store_btn_none">취소</string>
+    <string name="dialog_delete_store_feed">삭제</string>
+
+    <!-- modify store -->
+    <string name="dialog_modify_store_feed">수정</string>
+
     <!-- store main -->
     <string name="store_main_store_name">가게이름</string>
     <string name="store_main_store_detail">가게설명입니다.</string>
@@ -215,8 +225,12 @@
     <!-- store feed add -->
     <string name="seller_feed_add_completion">완료</string>
     <string name="seller_feed_add_tv_select_product">제품 선택</string>
-    <string name="seller_feed_add_et_product_description">제품을 소개해주세요. (최대 150자)</string>
+    <string name="seller_feed_add_et_product_description">피드 내용을 입력해주세요. (최대 150자)</string>
     <string name="seller_feed_add_max_image">사진은 5개까지 첨부할 수 있습니다.</string>
     <string name="seller_feed_add_image_picker_title">Photos</string>
+    <string name="seller_feed_add_tv_error_no_product">등록된 제품이 없습니다. 제품을 먼저 추가해주세요.</string>
+    <string name="firebase_upload_failure_error">이미지 업로드 실패</string>
+    <string name="firebase_download_failure_error">이미지 불러오기 실패</string>
+    <string name="firebase_upload_error_message">이미지 업로드에 실패하였습니다. 잠시 후 다시 시도해주세요.</string>
 
 </resources>

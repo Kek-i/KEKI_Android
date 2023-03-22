@@ -55,6 +55,13 @@ class ConsumerSearchActivity : BaseActivity<ActivityConsumerSearchBinding>(Activ
         }
         clickDeleteSearch()
         setCategory()
+        backClicked()
+    }
+
+    private fun backClicked(){
+        binding.ivBack.setOnClickListener(){
+            finish()
+        }
     }
 
     override fun onGetSearchResultsSuccess(response: SearchResultResponse) {

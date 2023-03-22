@@ -14,14 +14,17 @@ import java.util.concurrent.TimeUnit
 
 
 class ApplicationClass : Application() {
-    val API_URL = "https://keki-dev.store/"
+    val API_URL = "https://keki.store/"
 
     companion object {
         lateinit var sSharedPreferences: SharedPreferences
         lateinit var userInfo: SharedPreferences.Editor
         val Authorization = "Authorization"
+        val RefreshToken = "RefreshToken"
         val UserRole = "UserRole"
         val UserEmail = "UserEmail"
+        val Provider = "Provider"
+        val DessertIdx = "DessertIdx"
         lateinit var sRetrofit: Retrofit
     }
     override fun onCreate() {

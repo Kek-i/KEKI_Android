@@ -1,6 +1,5 @@
 package com.codepatissier.keki.src.main.consumer.store.storefeed
 
-import android.graphics.drawable.Drawable
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
