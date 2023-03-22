@@ -19,7 +19,7 @@ android {
         applicationId "com.codepatissier.keki"
         minSdk 26
         targetSdk 33
-        versionCode 3
+        versionCode 4
         versionName "2.0.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
