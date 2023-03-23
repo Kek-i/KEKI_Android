@@ -56,21 +56,31 @@ class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetail
         dismissLoadingDialog()
 
         val defaultImg = R.drawable.ic_seller
-//        if(response.result.storeProfileImg != null){
-//            var storeageRef = fbStorage?.reference?.child(response.result.storeProfileImg)
-//            storeageRef?.downloadUrl?.addOnCompleteListener {
-//                if(it.isSuccessful){
-                    Glide.with(this)
-                        .load(response.result.storeProfileImg)
-                        .placeholder(defaultImg)
-                        .error(defaultImg)
-                        .fallback(defaultImg)
-                        .centerCrop()
-                        .circleCrop()
-                        .into(binding.ivStoreFeedSeller)
-//                }
-//            }
-//        }
+        if(response.result.storeProfileImg != null){
+            if (response.result.storeProfileImg.startsWith("http")){
+                Glide.with(this)
+                    .load(response.result.storeProfileImg)
+                    .placeholder(defaultImg)
+                    .error(defaultImg)
+                    .fallback(defaultImg)
+                    .centerCrop()
+                    .into(binding.ivStoreFeedSeller)
+            }else {
+                var storeageRef = fbStorage?.reference?.child(response.result.storeProfileImg)
+                storeageRef?.downloadUrl?.addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        Glide.with(this)
+                            .load(response.result.storeProfileImg)
+                            .placeholder(defaultImg)
+                            .error(defaultImg)
+                            .fallback(defaultImg)
+                            .centerCrop()
+                            .circleCrop()
+                            .into(binding.ivStoreFeedSeller)
+                    }
+                }
+            }
+        }
 
         binding.tvStoreFeedSellerNickname.text = response.result.storeName
 
