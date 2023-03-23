@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.codepatissier.keki.databinding.ItemLikeRecyclerBinding
+import com.google.firebase.storage.FirebaseStorage
 import java.text.DecimalFormat
 
 class LikeFeedAdapter(private val dataList: List<LikeFeedData>, private val context: Context) : RecyclerView.Adapter<LikeFeedAdapter.LikeFeedViewHolder>() {
@@ -21,14 +22,27 @@ class LikeFeedAdapter(private val dataList: List<LikeFeedData>, private val cont
     override fun getItemCount(): Int = dataList.size
 
     class LikeFeedViewHolder(private val itemBinding: ItemLikeRecyclerBinding) : RecyclerView.ViewHolder(itemBinding.root) {
+        var fbStorage : FirebaseStorage?= null
         fun bind(item: LikeFeedData, context: Context) {
             val width = getItemWidth(context)/3
+            if (item.postImgUrl.startsWith("http")){
+                Glide.with(context!!)
+                    .load(item.postImgUrl)
+                    .override(width, width)
+                    .centerCrop()
+                    .into(itemBinding.iv)
+            }else {
+                fbStorage = FirebaseStorage.getInstance()
+                var storageRef = fbStorage?.reference?.child(item.postImgUrl)
 
-            Glide.with(context)
-                .load(item.postImgUrl)
-                .override(width,width)
-                .centerCrop()
-                .into(itemBinding.iv)
+                storageRef?.downloadUrl?.addOnCompleteListener {
+                    Glide.with(context!!)
+                        .load(item.postImgUrl)
+                        .centerCrop()
+                        .override(width, width)
+                        .into(itemBinding.iv)
+                }
+            }
             itemBinding.tvProductName.text = item.productName.replace(" ", "\u00A0")
             itemBinding.tvProductPrice.text = DecimalFormat("###,###").format(item.productPrice.toLong())
         }

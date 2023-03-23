@@ -16,6 +16,13 @@ class SellerStoreFeedSlideImageFragment(val image: String) : BaseFragment<Fragme
 
         val width = getItemWidth()
 
+        if (image.startsWith("http")) {
+            Glide.with(this)
+                .load(image)
+                .centerCrop()
+                .into(binding.ivStoreFeedImgViewer)
+        } else {
+
         fbStorage = FirebaseStorage.getInstance()
         var storageRef = fbStorage?.reference?.child(image)
 
@@ -25,7 +32,7 @@ class SellerStoreFeedSlideImageFragment(val image: String) : BaseFragment<Fragme
                 .override(width,width)
                 .into(binding.ivStoreFeedImgViewer)
         }
-
+        }
     }
 
     // display 별 화면에 맞는 그리드 크기 구하기

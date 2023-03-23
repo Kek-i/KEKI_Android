@@ -78,11 +78,22 @@ class SearchResultFeedAdapter(var searchResult: SearchResult, val context: Fragm
                 tagArray[i].text = "# " + item.tags[i]
             }
 
-            Glide.with(context!!)
-                .load(item.storeProfileImg)
-                .centerCrop()
-                .into(sellerImg)
+            if (item.storeProfileImg.startsWith("http")){
+                Glide.with(context!!)
+                    .load(item.storeProfileImg)
+                    .centerCrop()
+                    .into(sellerImg)
+            }else {
+                fbStorage = FirebaseStorage.getInstance()
+                var storageRef = fbStorage?.reference?.child(item.storeProfileImg)
 
+                storageRef?.downloadUrl?.addOnCompleteListener {
+                    Glide.with(context!!)
+                        .load(item.storeProfileImg)
+                        .centerCrop()
+                        .into(sellerImg)
+                }
+            }
             
             var img = arrayOfNulls<String>(item.postImgUrls.size)
 

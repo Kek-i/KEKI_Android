@@ -40,19 +40,27 @@ class ConsumerStoreMainProductAdapter(val context: FragmentActivity?): RecyclerV
         val width = getItemWidth()/3
 
         fun bind(item: StoreMainProductData){
-//            fbStorage = FirebaseStorage.getInstance()
-//            var storageRef = fbStorage?.reference?.child(item.dessertImgUrl)
-//
-//            storageRef?.downloadUrl?.addOnCompleteListener {
+            if (item.dessertImgUrl.startsWith("http")) {
                 Glide.with(context!!)
                     .load(item.dessertImgUrl)
-                    .placeholder(defaultImg)
-                    .override(width, width)
-                    .error(defaultImg)
-                    .fallback(defaultImg)
                     .centerCrop()
                     .into(FeedImg)
-//            }
+            } else {
+
+                fbStorage = FirebaseStorage.getInstance()
+                var storageRef = fbStorage?.reference?.child(item.dessertImgUrl)
+
+                storageRef?.downloadUrl?.addOnCompleteListener {
+                    Glide.with(context!!)
+                        .load(item.dessertImgUrl)
+                        .placeholder(defaultImg)
+                        .override(width, width)
+                        .error(defaultImg)
+                        .fallback(defaultImg)
+                        .centerCrop()
+                        .into(FeedImg)
+                }
+            }
         }
 
         // display 별 화면에 맞는 그리드 크기 구하기

@@ -40,16 +40,24 @@ class SearchListAdapter(var searchListData: SearchResult, val context: ConsumerS
         fun bind(item: Feeds) {
             val width = getItemWidth()/3
 
-//            fbStorage = FirebaseStorage.getInstance()
-//            var storageRef = fbStorage?.reference?.child(item.postImgUrls[0])
-//
-//            storageRef?.downloadUrl?.addOnCompleteListener {
+            if (item.postImgUrls[0].startsWith("http")){
                 Glide.with(context!!)
                     .load(item.postImgUrls[0])
+                    .override(width, width)
                     .centerCrop()
-                    .override(width,width)
                     .into(cakeImg)
-//            }
+            }else {
+                fbStorage = FirebaseStorage.getInstance()
+                var storageRef = fbStorage?.reference?.child(item.postImgUrls[0])
+
+                storageRef?.downloadUrl?.addOnCompleteListener {
+                    Glide.with(context!!)
+                        .load(item.postImgUrls[0])
+                        .centerCrop()
+                        .override(width, width)
+                        .into(cakeImg)
+                }
+            }
             cakeName.text = item.dessertName
             cakePrice.text = DecimalFormat("###,###").format(item.dessertPrice.toLong())
         }

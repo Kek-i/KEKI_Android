@@ -105,18 +105,25 @@ class SellerStoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapt
             }
 
             if(item.storeProfileImg != null){
-                fbStorage = FirebaseStorage.getInstance()
-                var storageRef = fbStorage?.reference?.child(item.storeProfileImg)
-
-                storageRef?.downloadUrl?.addOnCompleteListener {
+                if (item.storeProfileImg.startsWith("http")){
                     Glide.with(context!!)
-                        .load(it.result)
-                        .placeholder(defaultImg)
-                        .error(defaultImg)
-                        .fallback(defaultImg)
-                        .override(width,width)
+                        .load(item.storeProfileImg)
                         .centerCrop()
                         .into(sellerImg)
+                }else {
+                    fbStorage = FirebaseStorage.getInstance()
+                    var storageRef = fbStorage?.reference?.child(item.storeProfileImg)
+
+                    storageRef?.downloadUrl?.addOnCompleteListener {
+                        Glide.with(context!!)
+                            .load(it.result)
+                            .placeholder(defaultImg)
+                            .error(defaultImg)
+                            .fallback(defaultImg)
+                            .override(width, width)
+                            .centerCrop()
+                            .into(sellerImg)
+                    }
                 }
 
             }

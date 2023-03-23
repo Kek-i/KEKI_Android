@@ -42,20 +42,28 @@ class ConsumerStoreMainStoreAdapter(val context: FragmentActivity?): RecyclerVie
         val width = getItemWidth()/3
 
         fun bind(item: StoreMainStoreData){
-//            fbStorage = FirebaseStorage.getInstance()
-//            var storageRef = fbStorage?.reference?.child(item.postImgUrl)
-//
-//            storageRef?.downloadUrl?.addOnCompleteListener {
+
+            if (item.postImgUrl.startsWith("http")) {
                 Glide.with(context!!)
                     .load(item.postImgUrl)
-                    .placeholder(defaultImg)
-                    .override(width, width)
-                    .error(defaultImg)
-                    .fallback(defaultImg)
                     .centerCrop()
                     .into(FeedImg)
-//            }
+            } else {
 
+                fbStorage = FirebaseStorage.getInstance()
+                var storageRef = fbStorage?.reference?.child(item.postImgUrl)
+
+                storageRef?.downloadUrl?.addOnCompleteListener {
+                    Glide.with(context!!)
+                        .load(item.postImgUrl)
+                        .placeholder(defaultImg)
+                        .override(width, width)
+                        .error(defaultImg)
+                        .fallback(defaultImg)
+                        .centerCrop()
+                        .into(FeedImg)
+                }
+            }
             itemView.setOnClickListener {
                 var intent = Intent(itemView.context, ConsumerStoreDetailFeedActivity::class.java)
                 // 스토어번호, 피드 번호 StoreMainStoreData 객체로 detailFeed에 넘기기
