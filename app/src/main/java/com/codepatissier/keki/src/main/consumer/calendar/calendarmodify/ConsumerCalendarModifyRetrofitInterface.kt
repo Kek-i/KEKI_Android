@@ -10,7 +10,7 @@ import retrofit2.http.PATCH
 import retrofit2.http.Path
 
 interface ConsumerCalendarModifyRetrofitInterface {
-    @PATCH("/calendars/{calendarIdx}/edit")
+    @PATCH("/calendars/{calendarIdx}")
     fun updateCalendar(
         @Path("calendarIdx") calendarIdx: Long,
         @Body params: UpdateCalendarRequest
