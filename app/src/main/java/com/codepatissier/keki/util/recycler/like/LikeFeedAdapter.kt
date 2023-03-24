@@ -36,11 +36,13 @@ class LikeFeedAdapter(private val dataList: List<LikeFeedData>, private val cont
                 var storageRef = fbStorage?.reference?.child(item.postImgUrl)
 
                 storageRef?.downloadUrl?.addOnCompleteListener {
-                    Glide.with(context!!)
-                        .load(item.postImgUrl)
-                        .centerCrop()
-                        .override(width, width)
-                        .into(itemBinding.iv)
+                    if (it.isSuccessful) {
+                        Glide.with(context!!)
+                            .load(it.result)
+                            .centerCrop()
+                            .override(width, width)
+                            .into(itemBinding.iv)
+                    }
                 }
             }
             itemBinding.tvProductName.text = item.productName.replace(" ", "\u00A0")

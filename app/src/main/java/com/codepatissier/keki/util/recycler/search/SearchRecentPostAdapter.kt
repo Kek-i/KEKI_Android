@@ -44,10 +44,12 @@ class SearchRecentPostAdapter(private var searchMainData: Result, val context: C
                 var storageRef = fbStorage?.reference?.child(item.postImgUrl)
 
                 storageRef?.downloadUrl?.addOnCompleteListener {
-                    Glide.with(context!!)
-                        .load(item.postImgUrl)
-                        .centerCrop()
-                        .into(seenCakeImg)
+                    if (it.isSuccessful) {
+                        Glide.with(context!!)
+                            .load(it.result)
+                            .centerCrop()
+                            .into(seenCakeImg)
+                    }
                 }
             }
         }

@@ -120,7 +120,7 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
 
                 storageRef?.downloadUrl?.addOnCompleteListener {
                     Glide.with(context!!)
-                        .load(item.storeProfileImg)
+                        .load(it.result)
                         .override(width, width)
                         .centerCrop()
                         .into(sellerImg)

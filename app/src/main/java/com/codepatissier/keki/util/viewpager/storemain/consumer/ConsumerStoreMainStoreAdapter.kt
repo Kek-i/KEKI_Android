@@ -58,14 +58,16 @@ class ConsumerStoreMainStoreAdapter(val context: FragmentActivity?): RecyclerVie
                 var storageRef = fbStorage?.reference?.child(item.postImgUrl)
 
                 storageRef?.downloadUrl?.addOnCompleteListener {
-                    Glide.with(context!!)
-                        .load(item.postImgUrl)
-                        .placeholder(defaultImg)
-                        .override(width, width)
-                        .error(defaultImg)
-                        .fallback(defaultImg)
-                        .centerCrop()
-                        .into(FeedImg)
+                    if (it.isSuccessful) {
+                        Glide.with(context!!)
+                            .load(it.result)
+                            .placeholder(defaultImg)
+                            .override(width, width)
+                            .error(defaultImg)
+                            .fallback(defaultImg)
+                            .centerCrop()
+                            .into(FeedImg)
+                    }
                 }
             }
             itemView.setOnClickListener {

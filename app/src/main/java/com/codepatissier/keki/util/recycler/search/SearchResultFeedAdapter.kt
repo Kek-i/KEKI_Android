@@ -88,10 +88,12 @@ class SearchResultFeedAdapter(var searchResult: SearchResult, val context: Fragm
                 var storageRef = fbStorage?.reference?.child(item.storeProfileImg)
 
                 storageRef?.downloadUrl?.addOnCompleteListener {
-                    Glide.with(context!!)
-                        .load(item.storeProfileImg)
-                        .centerCrop()
-                        .into(sellerImg)
+                    if (it.isSuccessful) {
+                        Glide.with(context!!)
+                            .load(it.result)
+                            .centerCrop()
+                            .into(sellerImg)
+                    }
                 }
             }
             

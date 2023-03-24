@@ -12,10 +12,13 @@ import com.google.firebase.storage.FirebaseStorage
 
 
 class ConsumerOneFeedSlideImageFragment(val image: String) : BaseFragment<FragmentConsumerOneFeedSlideImageBinding>(FragmentConsumerOneFeedSlideImageBinding::bind, R.layout.fragment_consumer_one_feed_slide_image) {
-
+    var fbStorage : FirebaseStorage?= null
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        fbStorage = FirebaseStorage.getInstance()
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var fbStorage : FirebaseStorage?= null
         val width = getItemWidth()
 
         if (image.startsWith("http")){
@@ -25,15 +28,15 @@ class ConsumerOneFeedSlideImageFragment(val image: String) : BaseFragment<Fragme
                 .centerCrop()
                 .into(binding.ivStoreFeedImgViewer)
         }else {
-            fbStorage = FirebaseStorage.getInstance()
             var storageRef = fbStorage?.reference?.child(image)
-
             storageRef?.downloadUrl?.addOnCompleteListener {
+                if(it.isSuccessful){
                 Glide.with(this)
-                    .load(image)
+                    .load(it.result)
                     .centerCrop()
                     .override(width, width)
                     .into(binding.ivStoreFeedImgViewer)
+                }
             }
         }
     }

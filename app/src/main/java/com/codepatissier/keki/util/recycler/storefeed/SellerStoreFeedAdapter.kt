@@ -108,6 +108,10 @@ class SellerStoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapt
                 if (item.storeProfileImg.startsWith("http")){
                     Glide.with(context!!)
                         .load(item.storeProfileImg)
+                        .placeholder(defaultImg)
+                        .error(defaultImg)
+                        .fallback(defaultImg)
+                        .override(width, width)
                         .centerCrop()
                         .into(sellerImg)
                 }else {
@@ -115,14 +119,16 @@ class SellerStoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapt
                     var storageRef = fbStorage?.reference?.child(item.storeProfileImg)
 
                     storageRef?.downloadUrl?.addOnCompleteListener {
-                        Glide.with(context!!)
-                            .load(it.result)
-                            .placeholder(defaultImg)
-                            .error(defaultImg)
-                            .fallback(defaultImg)
-                            .override(width, width)
-                            .centerCrop()
-                            .into(sellerImg)
+                        if (it.isSuccessful) {
+                            Glide.with(context!!)
+                                .load(it.result)
+                                .placeholder(defaultImg)
+                                .error(defaultImg)
+                                .fallback(defaultImg)
+                                .override(width, width)
+                                .centerCrop()
+                                .into(sellerImg)
+                        }
                     }
                 }
 

@@ -55,14 +55,16 @@ class ConsumerStoreMainProductAdapter(val context: FragmentActivity?): RecyclerV
                 var storageRef = fbStorage?.reference?.child(item.dessertImgUrl)
 
                 storageRef?.downloadUrl?.addOnCompleteListener {
-                    Glide.with(context!!)
-                        .load(item.dessertImgUrl)
-                        .placeholder(defaultImg)
-                        .override(width, width)
-                        .error(defaultImg)
-                        .fallback(defaultImg)
-                        .centerCrop()
-                        .into(FeedImg)
+                    if (it.isSuccessful) {
+                        Glide.with(context!!)
+                            .load(it.result)
+                            .placeholder(defaultImg)
+                            .override(width, width)
+                            .error(defaultImg)
+                            .fallback(defaultImg)
+                            .centerCrop()
+                            .into(FeedImg)
+                    }
                 }
             }
         }

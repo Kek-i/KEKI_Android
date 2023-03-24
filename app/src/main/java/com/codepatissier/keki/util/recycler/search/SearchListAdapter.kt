@@ -51,11 +51,13 @@ class SearchListAdapter(var searchListData: SearchResult, val context: ConsumerS
                 var storageRef = fbStorage?.reference?.child(item.postImgUrls[0])
 
                 storageRef?.downloadUrl?.addOnCompleteListener {
-                    Glide.with(context!!)
-                        .load(item.postImgUrls[0])
-                        .centerCrop()
-                        .override(width, width)
-                        .into(cakeImg)
+                    if (it.isSuccessful) {
+                        Glide.with(context!!)
+                            .load(it.result)
+                            .centerCrop()
+                            .override(width, width)
+                            .into(cakeImg)
+                    }
                 }
             }
             cakeName.text = item.dessertName
