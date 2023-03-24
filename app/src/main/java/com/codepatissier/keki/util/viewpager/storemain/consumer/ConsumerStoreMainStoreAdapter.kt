@@ -46,6 +46,10 @@ class ConsumerStoreMainStoreAdapter(val context: FragmentActivity?): RecyclerVie
             if (item.postImgUrl.startsWith("http")) {
                 Glide.with(context!!)
                     .load(item.postImgUrl)
+                    .placeholder(defaultImg)
+                    .override(width, width)
+                    .error(defaultImg)
+                    .fallback(defaultImg)
                     .centerCrop()
                     .into(FeedImg)
             } else {

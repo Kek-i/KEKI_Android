@@ -43,6 +43,10 @@ class ConsumerStoreMainProductAdapter(val context: FragmentActivity?): RecyclerV
             if (item.dessertImgUrl.startsWith("http")) {
                 Glide.with(context!!)
                     .load(item.dessertImgUrl)
+                    .placeholder(defaultImg)
+                    .override(width, width)
+                    .error(defaultImg)
+                    .fallback(defaultImg)
                     .centerCrop()
                     .into(FeedImg)
             } else {

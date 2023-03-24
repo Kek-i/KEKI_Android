@@ -64,6 +64,7 @@ class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetail
                     .error(defaultImg)
                     .fallback(defaultImg)
                     .centerCrop()
+                    .circleCrop()
                     .into(binding.ivStoreFeedSeller)
             }else {
                 var storeageRef = fbStorage?.reference?.child(response.result.storeProfileImg)
