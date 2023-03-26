@@ -111,11 +111,16 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
                 tagArray[i].isVisible = true
                 tagArray[i].text = "# " + item.tags[i]
             }
+
+            val defaultImg = R.drawable.ic_seller
             if(!item.storeProfileImg.isNullOrEmpty()) {
                 if (item.storeProfileImg!!.startsWith("http")){
                     Glide.with(context!!)
                         .load(item.storeProfileImg)
                         .centerCrop()
+                        .placeholder(defaultImg)
+                        .error(defaultImg)
+                        .fallback(defaultImg)
                         .into(sellerImg)
                 }else {
                     fbStorage = FirebaseStorage.getInstance()
@@ -126,6 +131,9 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
                             .load(it.result)
                             .override(width, width)
                             .centerCrop()
+                            .placeholder(defaultImg)
+                            .error(defaultImg)
+                            .fallback(defaultImg)
                             .into(sellerImg)
                     }
                 }
