@@ -71,7 +71,7 @@ class ConsumerOneFeedDetailActivity : BaseActivity<ActivityConsumerOneFeedDetail
                 storeageRef?.downloadUrl?.addOnCompleteListener {
                     if (it.isSuccessful) {
                         Glide.with(this)
-                            .load(response.result.storeProfileImg)
+                            .load(it.result)
                             .placeholder(defaultImg)
                             .error(defaultImg)
                             .fallback(defaultImg)
