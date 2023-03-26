@@ -62,7 +62,8 @@ class SellerStoreFeedDetailActivity : BaseActivity<ActivitySellerStoreFeedDetail
                 storeProfileImg = result[i].storeProfileImg,
                 like = result[i].like,
                 cursorIdx = response.result.cursorIdx,
-                hasNext = response.result.hasNext)) }
+                hasNext = response.result.hasNext,
+                storeIdx = response.result.feeds[i].storeIdx)) }
         }
 
         itemSize = storeFeedDatas.size - positionStart
