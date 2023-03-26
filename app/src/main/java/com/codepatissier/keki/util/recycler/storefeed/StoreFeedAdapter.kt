@@ -109,21 +109,23 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
                 tagArray[i].isVisible = true
                 tagArray[i].text = "# " + item.tags[i]
             }
-            if (item.storeProfileImg!!.startsWith("http")){
-                Glide.with(context!!)
-                    .load(item.storeProfileImg)
-                    .centerCrop()
-                    .into(sellerImg)
-            }else {
-                fbStorage = FirebaseStorage.getInstance()
-                var storageRef = fbStorage?.reference?.child(item.storeProfileImg!!)
-
-                storageRef?.downloadUrl?.addOnCompleteListener {
+            if(!item.storeProfileImg.isNullOrEmpty()) {
+                if (item.storeProfileImg!!.startsWith("http")){
                     Glide.with(context!!)
-                        .load(it.result)
-                        .override(width, width)
+                        .load(item.storeProfileImg)
                         .centerCrop()
                         .into(sellerImg)
+                }else {
+                    fbStorage = FirebaseStorage.getInstance()
+                    var storageRef = fbStorage?.reference?.child(item.storeProfileImg!!)
+
+                    storageRef?.downloadUrl?.addOnCompleteListener {
+                        Glide.with(context!!)
+                            .load(it.result)
+                            .override(width, width)
+                            .centerCrop()
+                            .into(sellerImg)
+                    }
                 }
             }
             sellerImg.clipToOutline = true
