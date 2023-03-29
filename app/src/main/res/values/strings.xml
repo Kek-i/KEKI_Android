@@ -233,4 +233,8 @@
     <string name="firebase_download_failure_error">이미지 불러오기 실패</string>
     <string name="firebase_upload_error_message">이미지 업로드에 실패하였습니다. 잠시 후 다시 시도해주세요.</string>
 
+    <!-- order history -->
+    <string name="seller_order_history_title">주문내역</string>
+    <string name="seller_order_history_status">주문현황</string>
+
 </resources>
