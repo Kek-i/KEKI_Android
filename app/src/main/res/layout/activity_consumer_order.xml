@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/order_height"
+    android:background="@color/white"
+    tools:context=".src.main.consumer.store.order.ConsumerOrderActivity">
+
+    <TextView
+        android:id="@+id/tv_order_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/iv_order_left_chevron"
+        app:layout_constraintTop_toTopOf="@+id/iv_order_left_chevron"
+        android:layout_marginStart="@dimen/consumer_feed_title_margin_start"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_order_left_chevron"
+        android:text="@string/order_ui"
+        android:textColor="@color/black"
+        android:textSize="@dimen/store_feed_title_size"
+        android:fontFamily="@font/notosanskr_bold"/>
+
+    <ImageView
+        android:id="@+id/iv_order_left_chevron"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/store_feed_chevron_top"
+        android:layout_marginStart="@dimen/store_feed_chevron_start"
+        android:paddingTop="@dimen/chevron_padding_top_bottom"
+        android:paddingBottom="@dimen/chevron_padding_top_bottom"
+        android:paddingEnd="@dimen/order_chevron_padding_start"
+        android:src="@drawable/ic_chevron_left"/>
+
+    <TextView
+        android:id="@+id/tv_order_finish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/order_finish"
+        android:textColor="@color/black"
+        android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_order_left_chevron"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_order_left_chevron"
+        android:textSize="@dimen/order_finish_text_size"
+        android:layout_marginEnd="@dimen/order_finish_margin_end"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/order_height"
+        app:layout_constraintTop_toBottomOf="@+id/tv_order_title"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_seller_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/order_seller_info"
+                android:textSize="@dimen/order_seller_info_txt_size"
+                android:textColor="@color/black"
+                android:fontFamily="@font/notosanskr_bold"
+                android:includeFontPadding="false"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/order_seller_info_margin_top"
+                android:layout_marginStart="@dimen/order_seller_info_margin_start"/>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_seller_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tv_seller_info"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/order_seller_info_cd_margin_top"
+                android:layout_marginStart="@dimen/order_seller_info_cd_margin_start_end"
+                android:layout_marginEnd="@dimen/order_seller_info_cd_margin_start_end"
+                app:cardCornerRadius="@dimen/order_seller_info_cv_radius"
+                android:elevation="@dimen/order_seller_info_cv_radius">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:id="@+id/iv_order_seller"
+                        android:layout_width="@dimen/order_seller_info_img_size"
+                        android:layout_height="@dimen/order_seller_info_img_size"
+                        android:background="@drawable/oval_light_yellow"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="@dimen/order_seller_info_img_margin_start"
+                        android:layout_marginTop="@dimen/order_seller_info_img_margin_top_bottom"
+                        android:layout_marginBottom="@dimen/order_seller_info_img_margin_top_bottom"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_order_seller_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="@id/iv_order_seller"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_order_account"
+                        app:layout_constraintStart_toEndOf="@+id/iv_order_seller"
+                        android:includeFontPadding="false"
+                        android:text="@string/order_seller_name"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:textSize="@dimen/order_seller_info_account_txt_size"
+                        android:layout_marginStart="@dimen/order_seller_info_account_margin_start"/>
+
+                    <TextView
+                        android:id="@+id/tv_order_account"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_order_seller_name"
+                        app:layout_constraintBottom_toBottomOf="@+id/iv_order_seller"
+                        app:layout_constraintStart_toEndOf="@+id/iv_order_seller"
+                        android:text="@string/order_account"
+                        android:includeFontPadding="false"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:textSize="@dimen/order_seller_info_account_txt_size"
+                        android:layout_marginStart="@dimen/order_seller_info_account_margin_start"/>
+
+                    <TextView
+                        android:id="@+id/tv_order_seller_account"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order_seller_account_info"
+                        android:layout_marginStart="@dimen/order_seller_account_margin_start"
+                        android:includeFontPadding="false"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:textSize="@dimen/order_seller_info_account_txt_size"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_order_seller_name"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_order_seller"
+                        app:layout_constraintStart_toEndOf="@+id/tv_order_account" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <TextView
+                android:id="@+id/tv_consumer_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/order_consumer_info"
+                android:textSize="@dimen/order_seller_info_txt_size"
+                android:textColor="@color/black"
+                android:fontFamily="@font/notosanskr_bold"
+                android:includeFontPadding="false"
+                app:layout_constraintTop_toBottomOf="@+id/cv_seller_info"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/order_seller_info_margin_top"
+                android:layout_marginStart="@dimen/order_seller_info_margin_start"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_consumer_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tv_consumer_info"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/order_seller_info_cd_margin_top"
+                android:layout_marginStart="@dimen/order_seller_info_cd_margin_start_end"
+                android:layout_marginEnd="@dimen/order_seller_info_cd_margin_start_end"
+                app:cardCornerRadius="@dimen/order_seller_info_cv_radius"
+                android:elevation="@dimen/order_seller_info_cv_radius">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_consumer_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_consumer_call"
+                        android:layout_marginStart="@dimen/order_seller_info_img_margin_start"
+                        android:layout_marginTop="@dimen/order_consumer_info_margin_top_bottom"
+                        android:text="@string/order_name"
+                        android:includeFontPadding="false"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:textSize="@dimen/order_seller_info_account_txt_size"/>
+
+                    <TextView
+                        android:id="@+id/tv_consumer_call"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_consumer_name"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="@dimen/order_seller_info_img_margin_start"
+                        android:layout_marginTop="@dimen/order_consumer_info_margin_top_bottom"
+                        android:layout_marginBottom="@dimen/order_consumer_info_margin_top_bottom"
+                        android:text="@string/order_call"
+                        android:includeFontPadding="false"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:textSize="@dimen/order_seller_info_account_txt_size"/>
+
+                    <TextView
+                        android:id="@+id/tv_consumer_detail_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_consumer_detail_call"
+                        android:layout_marginEnd="@dimen/order_consumer_info_margin_end"
+                        android:layout_marginTop="@dimen/order_consumer_info_margin_top_bottom"
+                        android:text="@string/order_consumer_name"
+                        android:includeFontPadding="false"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:textSize="@dimen/order_seller_info_account_txt_size"/>
+
+                    <TextView
+                        android:id="@+id/tv_consumer_detail_call"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_consumer_detail_name"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginEnd="@dimen/order_consumer_info_margin_end"
+                        android:layout_marginTop="@dimen/order_consumer_info_margin_top_bottom"
+                        android:layout_marginBottom="@dimen/order_consumer_info_margin_top_bottom"
+                        android:text="@string/order_consumer_call"
+                        android:includeFontPadding="false"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:textSize="@dimen/order_seller_info_account_txt_size"/>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tv_product_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/order_product_info"
+                app:layout_constraintTop_toBottomOf="@+id/cv_consumer_info"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textSize="@dimen/order_seller_info_txt_size"
+                android:textColor="@color/black"
+                android:fontFamily="@font/notosanskr_bold"
+                android:includeFontPadding="false"
+                android:layout_marginTop="@dimen/order_seller_info_margin_top"
+                android:layout_marginStart="@dimen/order_seller_info_margin_start"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cd_product_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tv_product_info"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/order_seller_info_cd_margin_top"
+                android:layout_marginStart="@dimen/order_seller_info_cd_margin_start_end"
+                android:layout_marginEnd="@dimen/order_seller_info_cd_margin_start_end"
+                app:cardCornerRadius="@dimen/order_seller_info_cv_radius"
+                android:elevation="@dimen/order_seller_info_cv_radius">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iv_order_down_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_down_arrow"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="@dimen/order_down_arrow_margin_top"
+                        android:layout_marginStart="@dimen/order_down_arrow_margin_start"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_select_product"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order_product_select"
+                        app:layout_constraintStart_toEndOf="@+id/iv_order_down_arrow"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginTop="@dimen/order_select_product_margin_start"
+                        android:textSize="@dimen/order_seller_info_txt_size"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/notosanskr_regular"
+                        android:includeFontPadding="false"
+                        android:layout_marginStart="@dimen/order_select_product_margin_start"
+                        android:paddingBottom="@dimen/order_down_arrow_margin_top"/>
+
+                    <!-- recycler view -->
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tv_add_design"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/order_add_design"
+                app:layout_constraintTop_toBottomOf="@+id/cd_product_info"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textSize="@dimen/order_seller_info_txt_size"
+                android:textColor="@color/black"
+                android:fontFamily="@font/notosanskr_bold"
+                android:includeFontPadding="false"
+                android:layout_marginTop="@dimen/order_seller_info_margin_top"
+                android:layout_marginStart="@dimen/order_seller_info_margin_start"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cd_add_design"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tv_add_design"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/order_seller_info_cd_margin_top"
+                android:layout_marginStart="@dimen/order_seller_info_cd_margin_start_end"
+                android:layout_marginEnd="@dimen/order_seller_info_cd_margin_start_end"
+                app:cardCornerRadius="@dimen/order_seller_info_cv_radius"
+                android:elevation="@dimen/order_seller_info_cv_radius">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <!-- recycler view -->
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tv_pick_up_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/order_pick_up_date"
+                app:layout_constraintTop_toBottomOf="@+id/cd_add_design"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textSize="@dimen/order_seller_info_txt_size"
+                android:textColor="@color/black"
+                android:fontFamily="@font/notosanskr_bold"
+                android:includeFontPadding="false"
+                android:layout_marginTop="@dimen/order_seller_info_margin_top"
+                android:layout_marginStart="@dimen/order_seller_info_margin_start"/>
+
+            <View
+                android:id="@+id/bg_order_add_input_date"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/calendar_add_bg_input_height"
+                android:layout_marginTop="@dimen/calendar_add_bg_input_date_margin_top"
+                android:layout_marginHorizontal="@dimen/calendar_add_bg_input_date_margin_horizontal"
+                app:layout_constraintTop_toBottomOf="@id/tv_pick_up_date"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@drawable/bg_rectangle_radius_10_white_padding"
+                android:elevation="@dimen/calendar_add_component_elevation"
+                />
+
+            <EditText
+                android:id="@+id/et_select_date"
+                android:layout_width="@dimen/calendar_add_et_width"
+                android:layout_height="@dimen/calendar_add_et_height"
+                android:layout_marginHorizontal="@dimen/order_select_date_txt_margin_start"
+                app:layout_constraintTop_toTopOf="@+id/bg_order_add_input_date"
+                app:layout_constraintBottom_toBottomOf="@+id/bg_order_add_input_date"
+                app:layout_constraintStart_toStartOf="@id/bg_order_add_input_date"
+                android:layout_marginTop="@dimen/order_select_date_txt_margin_top_bottom"
+                android:layout_marginBottom="@dimen/order_select_date_txt_margin_top_bottom"
+                android:inputType="date"
+                android:enabled="false"
+                android:hint="@string/calendar_add_anniversary_date"
+                android:textColorHint="@color/brown_grey"
+                android:textSize="@dimen/calendar_add_et_date_size"
+                android:fontFamily="@font/notosanskr_regular"
+                android:includeFontPadding="false"
+                android:background="@android:color/transparent"
+                android:elevation="@dimen/calendar_add_component_elevation"
+                />
+
+            <ImageButton
+                android:id="@+id/ib_order_select_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/order_select_date_ib_margin_end"
+                android:padding="@dimen/calendar_add_ib_calendar_padding"
+                app:layout_constraintTop_toTopOf="@+id/bg_order_add_input_date"
+                app:layout_constraintEnd_toEndOf="@+id/bg_order_add_input_date"
+                app:layout_constraintBottom_toBottomOf="@id/bg_order_add_input_date"
+                android:src="@drawable/ic_calendar_select_date"
+                android:background="@android:color/transparent"
+                android:elevation="@dimen/calendar_add_component_elevation"
+                />
+
+            <TextView
+                android:id="@+id/tv_date_error_no_input"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/calendar_add_tv_error_height"
+                android:layout_marginTop="@dimen/calendar_add_tv_error_margin_top"
+                android:layout_marginStart="@dimen/calendar_add_tv_error_margin_start"
+                app:layout_constraintTop_toBottomOf="@id/bg_order_add_input_date"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/calendar_add_error_no_select"
+                android:textColor="@color/darkish_pink"
+                android:textSize="@dimen/calendar_add_tv_error_size"
+                android:fontFamily="@font/notosanskr_regular"
+                android:includeFontPadding="false"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:id="@+id/tv_order_request"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/order_request"
+                app:layout_constraintTop_toBottomOf="@+id/bg_order_add_input_date"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textSize="@dimen/order_seller_info_txt_size"
+                android:textColor="@color/black"
+                android:fontFamily="@font/notosanskr_bold"
+                android:includeFontPadding="false"
+                android:layout_marginTop="@dimen/order_seller_info_margin_top"
+                android:layout_marginStart="@dimen/order_seller_info_margin_start"/>
+
+            <View
+                android:id="@+id/bg_order_request"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/order_request_height"
+                android:layout_marginTop="@dimen/calendar_add_bg_input_date_margin_top"
+                android:layout_marginHorizontal="@dimen/calendar_add_bg_input_date_margin_horizontal"
+                app:layout_constraintTop_toBottomOf="@id/tv_order_request"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@drawable/bg_rectangle_radius_10_white_padding"
+                android:elevation="@dimen/calendar_add_component_elevation"
+                />
+
+            <EditText
+                android:id="@+id/et_request"
+                android:layout_width="@dimen/calendar_add_et_width"
+                android:layout_height="@dimen/order_request_height"
+                android:layout_marginHorizontal="@dimen/order_select_date_txt_margin_start"
+                app:layout_constraintTop_toTopOf="@+id/bg_order_request"
+                app:layout_constraintStart_toStartOf="@id/bg_order_request"
+                android:layout_marginTop="@dimen/order_select_date_txt_margin_top_bottom"
+                android:layout_marginBottom="@dimen/order_select_date_txt_margin_top_bottom"
+                android:hint="@string/order_write_request"
+                android:textColorHint="@color/brown_grey"
+                android:textSize="@dimen/calendar_add_et_date_size"
+                android:gravity="top"
+                android:fontFamily="@font/notosanskr_regular"
+                android:includeFontPadding="false"
+                android:background="@android:color/transparent"
+                android:elevation="@dimen/calendar_add_component_elevation"
+                />
+
+            <TextView
+                android:id="@+id/tv_add_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/order_add_img"
+                app:layout_constraintTop_toBottomOf="@+id/bg_order_request"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textSize="@dimen/order_seller_info_txt_size"
+                android:textColor="@color/black"
+                android:fontFamily="@font/notosanskr_bold"
+                android:includeFontPadding="false"
+                android:layout_marginTop="@dimen/order_seller_info_margin_top"
+                android:layout_marginStart="@dimen/order_seller_info_margin_start"/>
+
+            <ImageButton
+                android:id="@+id/ib_add_image"
+                android:layout_width="@dimen/seller_feed_add_ib_add_image_width_height"
+                android:layout_height="@dimen/seller_feed_add_ib_add_image_width_height"
+                android:layout_marginTop="@dimen/seller_feed_add_ib_add_image_margin_top"
+                android:layout_marginStart="@dimen/order_add_img_margin_start"
+                android:layout_marginBottom="@dimen/seller_feed_add_ib_add_image_margin_bottom"
+                app:layout_constraintTop_toBottomOf="@+id/tv_add_img"
+                app:layout_constraintStart_toStartOf="parent"
+                android:src="@drawable/ic_add"
+                android:background="@drawable/bg_rectangle_radius_10_white_no_padding"
+                android:elevation="@dimen/seller_feed_add_component_elevation"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_feed_image"
+                android:layout_width="@dimen/seller_feed_add_rv_feed_image_width"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/seller_feed_add_rv_feed_image_margin_start"
+                android:paddingEnd="@dimen/seller_feed_add_rv_feed_image_padding_end"
+                app:layout_constraintTop_toBottomOf="@+id/tv_add_img"
+                app:layout_constraintStart_toEndOf="@id/ib_add_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_feed_image_recycler"
+                android:clipToPadding="false"
+                android:overScrollMode="never"
+                />
+
+            <TextView
+                android:id="@+id/tv_total_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/order_total_amount"
+                app:layout_constraintTop_toBottomOf="@+id/ib_add_image"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textSize="@dimen/order_seller_info_txt_size"
+                android:textColor="@color/black"
+                android:fontFamily="@font/notosanskr_bold"
+                android:includeFontPadding="false"
+                android:layout_marginTop="@dimen/order_seller_info_margin_top"
+                android:layout_marginStart="@dimen/order_seller_info_margin_start"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cd_total_amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tv_total_amount"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/order_seller_info_cd_margin_top"
+                android:layout_marginStart="@dimen/order_seller_info_cd_margin_start_end"
+                android:layout_marginEnd="@dimen/order_seller_info_cd_margin_start_end"
+                app:cardCornerRadius="@dimen/order_seller_info_cv_radius"
+                android:elevation="@dimen/order_seller_info_cv_radius">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_product_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order_product_amount"
+                        android:includeFontPadding="false"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:textSize="@dimen/order_seller_info_txt_size"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/notosanskr_regular"
+                        android:layout_marginTop="@dimen/order_total_amount_product_margin_top"
+                        android:layout_marginStart="@dimen/order_total_amount_product_margin_start"/>
+                    <TextView
+                        android:id="@+id/tv_product_total_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:text="@string/order_product_amount_ex"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/order_seller_info_txt_size"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/notosanskr_regular"
+                        android:layout_marginTop="@dimen/order_total_amount_product_margin_top"
+                        android:layout_marginEnd="@dimen/order_amount_margin_end"/>
+
+
+                    <TextView
+                        android:id="@+id/tv_add_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_product_amount"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:text="@string/order_add_amount"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/order_seller_info_txt_size"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/notosanskr_regular"
+                        android:layout_marginStart="@dimen/order_total_amount_product_margin_start"
+                        android:layout_marginTop="@dimen/order_add_amount_margin_top"/>
+                    <TextView
+                        android:id="@+id/tv_add_total_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order_add_amount_ex"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_product_amount"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/order_seller_info_txt_size"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/notosanskr_regular"
+                        android:layout_marginTop="@dimen/order_add_amount_margin_top"
+                        android:layout_marginEnd="@dimen/order_amount_margin_end"/>
+
+                    
+                    <View
+                        android:id="@+id/view_order_amount_line"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/order_line_height"
+                        android:background="@color/my_page_line"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_add_amount"
+                        android:layout_marginTop="@dimen/order_line_margin_top"
+                        android:layout_marginStart="@dimen/order_line_margin_start"
+                        android:layout_marginEnd="@dimen/order_line_margin_end"/>
+
+                    <TextView
+                        android:id="@+id/tv_order_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order_total_amount"
+                        android:layout_marginTop="@dimen/order_total_price_margin_top"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view_order_amount_line"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginStart="@dimen/order_total_amount_product_margin_start"
+                        android:layout_marginBottom="@dimen/order_total_price_margin_bottom"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/order_seller_info_txt_size"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/notosanskr_bold"/>
+                    <TextView
+                        android:id="@+id/tv_order_total_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order_total_amount_ex"
+                        app:layout_constraintTop_toBottomOf="@+id/view_order_amount_line"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/order_seller_info_txt_size"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/notosanskr_bold"
+                        android:layout_marginTop="@dimen/order_total_price_margin_top"
+                        android:layout_marginEnd="@dimen/order_amount_margin_end"/>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <ImageView
+                android:id="@+id/iv_order_bg_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/img_bg_order_comment"
+                app:layout_constraintTop_toBottomOf="@+id/cd_total_amount"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="@dimen/order_bg_comment_margin_top"
+                android:layout_marginHorizontal="@dimen/order_bg_comment_margin_start_end"
+                android:layout_marginBottom="@dimen/order_bg_comment_margin_bottom"
+                android:scaleType="fitXY"/>
+
+            <ImageView
+                android:id="@+id/iv_order_none_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_none_check"
+                app:layout_constraintTop_toTopOf="@id/iv_order_bg_comment"
+                app:layout_constraintStart_toStartOf="@+id/iv_order_bg_comment"
+                android:layout_marginStart="@dimen/order_comment_none_check_margin_start"
+                android:layout_marginTop="@dimen/order_comment_none_check_margin_top"/>
+            <TextView
+                android:id="@+id/tv_order_context"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/order_product_context"
+                app:layout_constraintTop_toTopOf="@+id/iv_order_bg_comment"
+                app:layout_constraintStart_toStartOf="@+id/iv_order_bg_comment"
+                app:layout_constraintEnd_toEndOf="@+id/iv_order_bg_comment"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_order_bg_comment"
+                android:includeFontPadding="false"
+                android:textSize="@dimen/order_seller_info_txt_size"
+                android:textColor="@color/black"
+                android:fontFamily="@font/notosanskr_bold"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
