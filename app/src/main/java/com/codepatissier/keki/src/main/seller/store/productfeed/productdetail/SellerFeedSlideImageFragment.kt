@@ -17,18 +17,25 @@ class SellerFeedSlideImageFragment(val image:String) : BaseFragment<FragmentStor
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        fbStorage = FirebaseStorage.getInstance()
-        var storageRef = fbStorage?.reference?.child(image)
-
-        storageRef?.downloadUrl?.addOnCompleteListener {
+        if (image.startsWith("http")) {
             Glide.with(this)
-                .load(it.result)
+                .load(image)
                 .centerCrop()
-                .apply { RequestOptions().override(360, 360)}
                 .into(binding.ivStoreFeedImgViewer)
+        } else {
+            fbStorage = FirebaseStorage.getInstance()
+            var storageRef = fbStorage?.reference?.child(image)
+
+            storageRef?.downloadUrl?.addOnCompleteListener {
+                Glide.with(this)
+                    .load(it.result)
+                    .centerCrop()
+                    .apply { RequestOptions().override(360, 360) }
+                    .into(binding.ivStoreFeedImgViewer)
+            }
+
+
         }
 
-
     }
-
 }

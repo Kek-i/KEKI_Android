@@ -85,6 +85,7 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
         private val tagArray = arrayOf(firstTag, secondTag, thirdTag)
         private var heart = false
         private var postIdx : Long? = null
+        private var storeIdx: Long? = null
         var fbStorage : FirebaseStorage?= null
 
         // display 별 화면에 맞는 그리드 크기 구하기
@@ -102,6 +103,7 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
             nickname.text = item.storeName
             cakeName.text = item.dessertName
             postIdx = item.postIdx
+            storeIdx = item.storeIdx
 
             val width = getItemWidth();
 
@@ -110,16 +112,32 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
                 tagArray[i].text = "# " + item.tags[i]
             }
 
-//            fbStorage = FirebaseStorage.getInstance()
-//            var storageRef = fbStorage?.reference?.child(item.storeProfileImg)
-//
-//            storageRef?.downloadUrl?.addOnCompleteListener {
-                Glide.with(context!!)
-                    .load(item.storeProfileImg)
-                    .override(width,width)
-                    .centerCrop()
-                    .into(sellerImg)
-//            }
+            val defaultImg = R.drawable.ic_seller
+            if(!item.storeProfileImg.isNullOrEmpty()) {
+                if (item.storeProfileImg!!.startsWith("http")){
+                    Glide.with(context!!)
+                        .load(item.storeProfileImg)
+                        .centerCrop()
+                        .placeholder(defaultImg)
+                        .error(defaultImg)
+                        .fallback(defaultImg)
+                        .into(sellerImg)
+                }else {
+                    fbStorage = FirebaseStorage.getInstance()
+                    var storageRef = fbStorage?.reference?.child(item.storeProfileImg!!)
+
+                    storageRef?.downloadUrl?.addOnCompleteListener {
+                        Glide.with(context!!)
+                            .load(it.result)
+                            .override(width, width)
+                            .centerCrop()
+                            .placeholder(defaultImg)
+                            .error(defaultImg)
+                            .fallback(defaultImg)
+                            .into(sellerImg)
+                    }
+                }
+            }
             sellerImg.clipToOutline = true
             
             var img = arrayOfNulls<String>(item.postImgUrls.size)
@@ -201,6 +219,7 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
         private fun navigateToStoreMain(){
             binding.tvStoreFeedSellerNickname.setOnClickListener {
                 val intent = Intent(itemView.context, ConsumerStoreMainActivity::class.java)
+                intent.putExtra("storeIdx", storeIdx)
                 intent.putExtra("nickname", binding.tvStoreFeedSellerNickname.text)
                 itemView.context.startActivity(intent)
             }
