@@ -3,8 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
+    android:layout_height="match_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topBar"
         android:layout_width="match_parent"
@@ -93,6 +92,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="주문 대기"
+                android:textSize="11sp"
+                android:includeFontPadding="false"
+                android:fontFamily="@font/notosanskr_regular"
+                android:textColor="@color/black"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/iv_wating_order"
+                app:layout_constraintStart_toStartOf="@id/iv_wating_order"
+                app:layout_constraintEnd_toEndOf="@id/iv_wating_order"/>
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -110,6 +122,19 @@
                 android:src="@drawable/making_no_color"
                 app:layout_constraintStart_toEndOf="@id/iv_wating_order"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="제작 중"
+                android:textSize="11sp"
+                android:includeFontPadding="false"
+                android:fontFamily="@font/notosanskr_regular"
+                android:textColor="@color/black"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/iv_making"
+                app:layout_constraintStart_toStartOf="@id/iv_making"
+                app:layout_constraintEnd_toEndOf="@id/iv_making"/>
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -129,6 +154,19 @@
                 app:layout_constraintStart_toEndOf="@id/iv_making"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="픽업 대기"
+                android:textSize="11sp"
+                android:includeFontPadding="false"
+                android:fontFamily="@font/notosanskr_regular"
+                android:textColor="@color/black"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/iv_wating_pickup"
+                app:layout_constraintStart_toStartOf="@id/iv_wating_pickup"
+                app:layout_constraintEnd_toEndOf="@id/iv_wating_pickup"/>
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -147,47 +185,69 @@
                 app:layout_constraintStart_toEndOf="@id/iv_wating_pickup"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="픽업 완료"
+                android:textSize="11sp"
+                android:includeFontPadding="false"
+                android:fontFamily="@font/notosanskr_regular"
+                android:textColor="@color/black"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/iv_complete_pickup"
+                app:layout_constraintStart_toStartOf="@id/iv_complete_pickup"
+                app:layout_constraintEnd_toEndOf="@id/iv_complete_pickup"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cls_order_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cls_order_status"
-            android:layout_marginTop="30dp"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp"
-            android:paddingTop="30dp"
-            android:paddingBottom="40dp"
-            android:background="@drawable/order_history_back"
-            android:elevation="15dp">
+            app:layout_constraintTop_toBottomOf="@+id/cls_order_status">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="571dp"
+                android:src="@drawable/order_history_back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:scaleType="fitXY"/>
 
             <TextView
-            android:id="@+id/tv_order_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/brown_grey"
-            android:text="2023.12.31"
-            android:textSize="11sp"
-            android:fontFamily="@font/notosanskr_regular"
-            android:includeFontPadding="false"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+                android:id="@+id/tv_order_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/brown_grey"
+                android:text="2023.12.31"
+                android:textSize="11sp"
+                android:fontFamily="@font/notosanskr_regular"
+                android:includeFontPadding="false"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="36dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
 
             <TextView
                 android:id="@+id/tv_product_name"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:layout_marginLeft="36dp"
+                android:layout_marginRight="36dp"
                 android:fontFamily="@font/notosanskr_bold"
                 android:includeFontPadding="false"
                 android:text="원 딸기 케이크"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_order_date" />
+                app:layout_constraintTop_toBottomOf="@id/tv_order_date"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
             <TextView
                 android:id="@+id/tv_design_add"
@@ -199,7 +259,7 @@
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:layout_marginTop="15dp"
-                android:layout_marginLeft="6dp"
+                android:layout_marginLeft="44dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_product_name" />
 
@@ -213,7 +273,7 @@
                 android:textColor="@color/brown_grey"
                 android:textSize="11sp"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="6dp"
+                android:layout_marginLeft="44dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_design_add"
                 android:singleLine="false"/>
@@ -228,7 +288,7 @@
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:layout_marginTop="15dp"
-                android:layout_marginLeft="6dp"
+                android:layout_marginLeft="44dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_design_add_content" />
 
@@ -242,7 +302,7 @@
                 android:textColor="@color/brown_grey"
                 android:textSize="11sp"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="6dp"
+                android:layout_marginLeft="44dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_order_price"
                 android:singleLine="false"/>
@@ -257,7 +317,7 @@
                 android:textColor="@color/brown_grey"
                 android:textSize="11sp"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="6dp"
+                android:layout_marginRight="36dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_order_price"
                 android:singleLine="false"/>
@@ -272,7 +332,7 @@
                 android:textColor="@color/brown_grey"
                 android:textSize="11sp"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="6dp"
+                android:layout_marginLeft="44dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_product_price"
                 android:singleLine="false"/>
@@ -287,7 +347,7 @@
                 android:textColor="@color/brown_grey"
                 android:textSize="11sp"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="6dp"
+                android:layout_marginRight="36dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_product_price"
                 android:singleLine="false"/>
@@ -298,6 +358,8 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/order_history_division_line"
                 android:layout_marginTop="10dp"
+                android:layout_marginLeft="36dp"
+                android:layout_marginRight="36dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:scaleType="fitXY"
@@ -308,6 +370,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:layout_marginLeft="36dp"
                 android:fontFamily="@font/notosanskr_bold"
                 android:includeFontPadding="false"
                 android:text="최종 금액"
@@ -321,9 +384,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="36dp"
                 android:fontFamily="@font/notosanskr_bold"
                 android:includeFontPadding="false"
-                android:text="30,000원"
+                android:text="30,000 원"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -335,6 +399,8 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/order_history_division_line"
                 android:layout_marginTop="10dp"
+                android:layout_marginLeft="36dp"
+                android:layout_marginRight="36dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:scaleType="fitXY"
@@ -345,7 +411,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="6dp"
+                android:layout_marginLeft="44dp"
                 android:fontFamily="@font/notosanskr_medium"
                 android:includeFontPadding="false"
                 android:text="픽업 요청일"
@@ -359,6 +425,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="36dp"
                 android:fontFamily="@font/notosanskr_medium"
                 android:includeFontPadding="false"
                 android:text="2023.12.31 | 16:30 PM"
@@ -372,7 +439,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="6dp"
+                android:layout_marginLeft="44dp"
                 android:fontFamily="@font/notosanskr_medium"
                 android:includeFontPadding="false"
                 android:text="요청 사항"
@@ -391,7 +458,8 @@
                 android:textColor="@color/brown_grey"
                 android:textSize="11sp"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="6dp"
+                android:layout_marginLeft="44dp"
+                android:layout_marginRight="36dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_request"
@@ -402,7 +470,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="6dp"
+                android:layout_marginLeft="44dp"
                 android:fontFamily="@font/notosanskr_medium"
                 android:includeFontPadding="false"
                 android:text="첨부 사진"
@@ -417,7 +485,7 @@
                 android:layout_height="61dp"
                 android:src="@drawable/bg_rectangle_radius_10_off_white"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="6dp"
+                android:layout_marginLeft="44dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_request_img"/>
 
@@ -439,12 +507,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cls_order_content"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp"
-            android:paddingTop="25dp"
-            android:paddingBottom="40dp"
-            android:background="@drawable/order_history_back"
             android:elevation="15dp">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="162dp"
+                android:src="@drawable/order_history_back_sm"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:scaleType="fitXY"/>
 
             <TextView
                 android:id="@+id/tv_consumer"
@@ -455,11 +528,15 @@
                 android:text="주문자 정보"
                 android:textColor="@color/black"
                 android:textSize="16sp"
+                android:layout_marginTop="36dp"
+                android:layout_marginLeft="36dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:layout_marginRight="36dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:src="@drawable/ic_message_grey" />
@@ -474,7 +551,7 @@
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:layout_marginTop="11dp"
-                android:layout_marginLeft="6dp"
+                android:layout_marginLeft="44dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_consumer"/>
 
@@ -488,7 +565,7 @@
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:layout_marginTop="11dp"
-                android:layout_marginLeft="6dp"
+                android:layout_marginRight="36dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_consumer"/>
 
@@ -502,7 +579,7 @@
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="6dp"
+                android:layout_marginLeft="44dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_consumer_name"/>
 
@@ -516,7 +593,7 @@
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="6dp"
+                android:layout_marginRight="36dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_consumer_name"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
