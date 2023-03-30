@@ -93,28 +93,39 @@ class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>
 
         val defaultImg = R.drawable.ic_seller
         val imageView = binding.ivProfile
-        val uri = "http://"+response.result.orderUrl
+//        val uri = "http://"+response.result.orderUrl
 
-//        if(response.result.storeImgUrl != null) {
-            // 프로필 이미지 띄우기
-//            var storageRef = fbStorage?.reference?.child(response.result.storeImgUrl)
-//            storageRef?.downloadUrl?.addOnCompleteListener {
-//                if (it.isSuccessful) {
-                    Glide.with(this)
-                        .load(response.result.storeImgUrl)
-                        .placeholder(defaultImg)
-                        .error(defaultImg)
-                        .fallback(defaultImg)
-                        .circleCrop()
-                        .into(imageView)
-                    dismissLoadingDialog()
-//                }else{
-//                    dismissLoadingDialog()
-//                }
-//            }
-//        }else{
-//            dismissLoadingDialog()
-//        }
+        if(!response.result.storeImgUrl.isNullOrEmpty()) {
+            if (response.result.storeImgUrl!!.startsWith("http")){
+                Glide.with(this)
+                    .load(response.result.storeImgUrl)
+                    .placeholder(defaultImg)
+                    .error(defaultImg)
+                    .fallback(defaultImg)
+                    .circleCrop()
+                    .into(imageView)
+                dismissLoadingDialog()
+            } else {
+                // 프로필 이미지 띄우기
+                var storageRef = fbStorage?.reference?.child(response.result.storeImgUrl)
+                storageRef?.downloadUrl?.addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        Glide.with(this)
+                            .load(it.result)
+                            .placeholder(defaultImg)
+                            .error(defaultImg)
+                            .fallback(defaultImg)
+                            .circleCrop()
+                            .into(imageView)
+                        dismissLoadingDialog()
+                    }else{
+                        dismissLoadingDialog()
+                    }
+                }
+            }
+        }else{
+            dismissLoadingDialog()
+        }
         setViewMore(binding.tvStoreDetail, binding.tvViewMore)
 
         // 버튼 클릭시 주문링크로 이동
@@ -124,6 +135,7 @@ class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>
             var intent = Intent(this, ConsumerOrderActivity::class.java)
             startActivity(intent)
         }
+
     }
 
     override fun onGetStoreMainFailure(message: String) {
