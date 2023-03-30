@@ -1,6 +1,7 @@
 package com.codepatissier.keki.src.main.consumer.store.order
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityConsumerOrderBinding
+import com.codepatissier.keki.src.main.consumer.store.order.finish.ConsumerOrderCompleteActivity
 import com.codepatissier.keki.util.recycler.storefeedadd.FeedImageAdapter
 import gun0912.tedimagepicker.builder.TedImagePicker
 import gun0912.tedimagepicker.builder.type.MediaType
@@ -28,6 +30,7 @@ class ConsumerOrderActivity : BaseActivity<ActivityConsumerOrderBinding>(Activit
         navigateToStoreMain()
         setListenerToDatePicker()
         initFeedImage()
+        completeOrder()
     }
 
     private fun setListenerToDatePicker(){
@@ -114,4 +117,10 @@ class ConsumerOrderActivity : BaseActivity<ActivityConsumerOrderBinding>(Activit
         }
     }
 
+    private fun completeOrder(){
+        binding.tvOrderComplete.setOnClickListener {
+            val intent = Intent(this, ConsumerOrderCompleteActivity::class.java)
+            startActivity(intent)
+        }
+    }
 }
