@@ -894,9 +894,13 @@
     <dimen name="order_history_iv_division_margin_top">10dp</dimen>
     <dimen name="order_history_iv_request_img_width_height">61dp</dimen>
     <dimen name="order_history_iv_request_img_margin_left">10dp</dimen>
-    <dimen name="order_history_img_order_consumer_content_height">162dp</dimen>
+    <dimen name="order_history_img_order_consumer_content_height">182dp</dimen>
     <dimen name="order_history_tv_consumer_margin_top">36dp</dimen>
     <dimen name="order_history_tv_consumer_md_margin_top">11dp</dimen>
+    <dimen name="order_history_iv_store_profile_width_heignt">60dp</dimen>
+    <dimen name="order_history_tv_store_name_margin_top">22dp</dimen>
+    <dimen name="order_history_tv_store_name_margin_left">15dp</dimen>
+    <dimen name="order_history_tv_store_account_content_margin_left">10dp</dimen>
 
 
 </resources>
