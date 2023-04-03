@@ -871,5 +871,32 @@
     <dimen name="like_empty_layout_margin_top">244.7dp</dimen>
     <dimen name="like_empty_layout_margin_bottom">289dp</dimen>
 
+    <!-- order history -->
+    <dimen name="order_history_tv_bold_size">16sp</dimen>
+    <dimen name="order_history_tv_order_status_margin_left">14dp</dimen>
+    <dimen name="order_history_cls_order_status_margin_top">19dp</dimen>
+    <dimen name="order_history_tv_sm_size">11sp</dimen>
+    <dimen name="order_history_tv_sm_order_status_margin_top">5dp</dimen>
+    <dimen name="order_history_img_order_status_margin_left">28dp</dimen>
+    <dimen name="order_history_cls_order_content_margin_top">10dp</dimen>
+    <dimen name="order_history_img_order_content_margin_width">0dp</dimen>
+    <dimen name="order_history_img_order_content_margin_height">571dp</dimen>
+    <dimen name="order_history_tv_order_date_margin_top">50dp</dimen>
+    <dimen name="order_history_tv_order_date_margin_left">36dp</dimen>
+    <dimen name="order_history_tv_width">0dp</dimen>
+    <dimen name="order_history_tv_product_name_margin_Top">20dp</dimen>
+    <dimen name="order_history_tv_margin_left_right">36dp</dimen>
+    <dimen name="order_history_tv_md_size">14sp</dimen>
+    <dimen name="order_history_tv_md_margin_top">15dp</dimen>
+    <dimen name="order_history_tv_md_margin_left_right">44dp</dimen>
+    <dimen name="order_history_tv_sm_margin_top">5dp</dimen>
+    <dimen name="order_history_iv_division_width">0dp</dimen>
+    <dimen name="order_history_iv_division_margin_top">10dp</dimen>
+    <dimen name="order_history_iv_request_img_width_height">61dp</dimen>
+    <dimen name="order_history_iv_request_img_margin_left">10dp</dimen>
+    <dimen name="order_history_img_order_consumer_content_height">162dp</dimen>
+    <dimen name="order_history_tv_consumer_margin_top">36dp</dimen>
+    <dimen name="order_history_tv_consumer_md_margin_top">11dp</dimen>
+
 
 </resources>
