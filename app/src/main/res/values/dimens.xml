@@ -110,6 +110,26 @@
     <dimen name="order_complete_ok_btn_padding_vertical">9dp</dimen>
     <dimen name="order_list_btn_padding_horizontal">47dp</dimen>
 
+    <!-- order list -->
+    <dimen name="order_list_bg_margin_horizontal">-75dp</dimen>
+    <dimen name="order_list_bg_margin_top">-12dp</dimen>
+    <dimen name="order_list_number_size">28sp</dimen>
+    <dimen name="order_list_title">11sp</dimen>
+    <dimen name="order_list_margin_between_number_size">1dp</dimen>
+    <dimen name="order_list_number_margin_top">35dp</dimen>
+    <dimen name="order_list_recycler_width">0dp</dimen>
+    <dimen name="order_list_recycler_margin_horizontal">24dp</dimen>
+    <dimen name="order_list_recycler_seller_img_size">40dp</dimen>
+    <dimen name="order_list_store_name_padding_top">19.3dp</dimen>
+    <dimen name="order_list_store_name_margin_start">12dp</dimen>
+    <dimen name="order_list_store_txt_size">14sp</dimen>
+    <dimen name="order_list_price_product_date_txt_margin_top">7dp</dimen>
+    <dimen name="order_list_price_product_date_txt_size">11sp</dimen>
+    <dimen name="order_list_chevron_right_margin_end">1.9dp</dimen>
+    <dimen name="order_list_view_height">1.5dp</dimen>
+    <dimen name="order_list_view_margin_top">14.3dp</dimen>
+    <dimen name="order_list_date_margin_top">12dp</dimen>
+
     <!-- store feed -->
     <dimen name="store_feed_title_size">20sp</dimen>
     <dimen name="store_feed_nick_name_and_cake_name_size">16sp</dimen>

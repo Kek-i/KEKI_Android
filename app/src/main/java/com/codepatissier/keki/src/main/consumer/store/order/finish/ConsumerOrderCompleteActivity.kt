@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityConsumerOrderCompleteBinding
 import com.codepatissier.keki.src.main.consumer.store.ConsumerStoreMainActivity
+import com.codepatissier.keki.src.main.consumer.store.order.list.ConsumerOrderListActivity
 
 class ConsumerOrderCompleteActivity : BaseActivity<ActivityConsumerOrderCompleteBinding>(ActivityConsumerOrderCompleteBinding::inflate) {
 
@@ -16,9 +17,9 @@ class ConsumerOrderCompleteActivity : BaseActivity<ActivityConsumerOrderComplete
     }
 
     private fun confirmOrder(){
+        // 주문 확인 화면 -> 주문 내역 화면
         binding.tvOrderCompleteOk.setOnClickListener {
-            var intent = Intent(this, ConsumerStoreMainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            var intent = Intent(this, ConsumerOrderListActivity::class.java)
             startActivity(intent)
         }
     }

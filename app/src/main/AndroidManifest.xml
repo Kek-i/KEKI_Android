@@ -17,16 +17,21 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".src.main.consumer.store.order.finish.ConsumerOrderCompleteActivity"
+            android:name=".src.main.consumer.store.order.list.ConsumerOrderListActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
+            android:name=".src.main.consumer.store.order.finish.ConsumerOrderCompleteActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".src.main.consumer.store.order.ConsumerOrderActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme2"></activity>
+            android:theme="@style/AppTheme2" />
         <activity
             android:name=".src.main.seller.store.productfeed.SellerStoreFeedDetailActivity"
             android:exported="false">
