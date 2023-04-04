@@ -16,9 +16,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
         <activity
-            android:name=".SellerStoreFeedDetailActivity"
+            android:name=".src.main.consumer.store.order.finish.ConsumerOrderCompleteActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".src.main.consumer.store.order.ConsumerOrderActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme2"></activity>
+        <activity
+            android:name=".src.main.seller.store.productfeed.SellerStoreFeedDetailActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -42,22 +52,22 @@
             android:name="com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.codepatissier.keki.src.main.auth.profilesetting.CustomerProfileSettingActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.codepatissier.keki.src.main.auth.IntroActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.codepatissier.keki.src.main.auth.LoginActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.codepatissier.keki.src.splash.SplashActivity"
             android:exported="true"
@@ -74,59 +84,59 @@
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustNothing"></activity>
+            android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name="com.codepatissier.keki.src.main.consumer.store.ConsumerStoreMainActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.codepatissier.keki.src.main.consumer.calendar.calendardetail.ConsumerCalendarDetailActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.codepatissier.keki.src.main.consumer.calendar.calendaradd.ConsumerCalendarAddActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme2"></activity>
+            android:theme="@style/AppTheme2" />
         <activity
             android:name="com.codepatissier.keki.src.main.consumer.calendar.calendarmodify.ConsumerCalendarModifyActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme2"></activity>
+            android:theme="@style/AppTheme2" />
         <activity
             android:name="com.codepatissier.keki.src.main.consumer.search.searchresult.ConsumerSearchActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.codepatissier.keki.src.main.consumer.mypage.ConsumerConditionActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.codepatissier.keki.src.main.consumer.mypage.profileEdit.ConsumerProfileEditActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.codepatissier.keki.src.main.consumer.mypage.notice.NoticeActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.codepatissier.keki.src.main.consumer.mypage.notice.noticedetail.NoticeDetailActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.codepatissier.keki.src.main.consumer.store.productfeed.productdetail.ConsumerStoreProductDetailFeedActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
-        <activity android:name=".src.main.seller.store.productfeed.productdetail.SellerProductDetailFeedActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".src.main.seller.store.productfeed.productdetail.SellerProductDetailFeedActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -134,7 +144,7 @@
             android:name=".src.main.consumer.mypage.ConsumerPersonalInfoActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".src.main.consumer.home.onefeed.ConsumerOneFeedDetailActivity"
             android:exported="false"
@@ -144,67 +154,62 @@
             android:name=".src.main.seller.mypage.profileEdit.SellerProfileEditActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".src.main.consumer.search.searchresult.SearchResultFeedActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".src.main.seller.mypage.SellerConditionActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".src.main.seller.mypage.SellerPersonalInfoActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
-        <activity android:name=".src.main.seller.store.productfeed.productadd.SellerProductAddActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".src.main.seller.store.productfeed.productadd.SellerProductAddActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".src.main.seller.store.storefeed.storeadd.SellerStoreFeedAddActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme2">
-        </activity>
-
-        <activity android:name=".src.main.seller.store.productfeed.productadd.SellerProductEditActivity"
+            android:theme="@style/AppTheme2" />
+        <activity
+            android:name=".src.main.seller.store.productfeed.productadd.SellerProductEditActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme2"></activity>
+            android:theme="@style/AppTheme2" />
         <activity
             android:name=".src.main.consumer.search.RecentSeenFeedActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".src.main.auth.profilesetting.SellerProfileSettingActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".src.SellerMainActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".src.main.seller.store.storefeed.storedetail.SellerStoreFeedDetailActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
-        <activity android:name=".src.main.seller.store.storefeed.storeedit.SellerStoreFeedEditActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".src.main.seller.store.storefeed.storeedit.SellerStoreFeedEditActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme2">
-        </activity>
-
+            android:theme="@style/AppTheme2" />
     </application>
 
 </manifest>

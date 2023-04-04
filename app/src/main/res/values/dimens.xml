@@ -55,6 +55,61 @@
     <dimen name="splash_logo_marginBottom">50dp</dimen>
     <dimen name="splash_comment_top_margin">28.5dp</dimen>
 
+    <!-- order -->
+    <dimen name="order_height">0dp</dimen>
+    <dimen name="order_chevron_padding_start">15dp</dimen>
+    <dimen name="order_finish_text_size">16sp</dimen>
+    <dimen name="order_finish_margin_end">19dp</dimen>
+    <dimen name="order_seller_info_txt_size">16sp</dimen>
+    <dimen name="order_seller_info_margin_top">20dp</dimen>
+    <dimen name="order_seller_info_margin_start">24dp</dimen>
+    <dimen name="order_seller_info_cv_radius">10dp</dimen>
+    <dimen name="order_seller_info_img_size">60dp</dimen>
+    <dimen name="order_seller_info_img_margin_start">12dp</dimen>
+    <dimen name="order_seller_info_img_margin_top_bottom">15dp</dimen>
+    <dimen name="order_seller_info_account_txt_size">14sp</dimen>
+    <dimen name="order_seller_info_account_margin_start">13dp</dimen>
+    <dimen name="order_seller_account_margin_start">10dp</dimen>
+    <dimen name="order_seller_account_margin_end">15dp</dimen>
+    <dimen name="order_seller_info_cd_margin_top">10dp</dimen>
+    <dimen name="order_seller_info_cd_margin_start_end">12dp</dimen>
+    <dimen name="order_consumer_info_margin_top_bottom">15dp</dimen>
+    <dimen name="order_consumer_info_margin_end">12dp</dimen>
+    <dimen name="order_down_arrow_margin_top">16dp</dimen>
+    <dimen name="order_down_arrow_margin_start">12dp</dimen>
+    <dimen name="order_select_product_margin_start">10dp</dimen>
+    <dimen name="order_select_date_txt_margin_start">12dp</dimen>
+    <dimen name="order_select_date_txt_margin_top_bottom">11dp</dimen>
+    <dimen name="order_select_date_ib_margin_end">20dp</dimen>
+    <dimen name="order_request_height">206dp</dimen>
+    <dimen name="order_add_img_margin_start">16dp</dimen>
+    <dimen name="order_total_amount_product_margin_top">10dp</dimen>
+    <dimen name="order_total_amount_product_margin_start">12dp</dimen>
+    <dimen name="order_add_amount_margin_top">4dp</dimen>
+    <dimen name="order_line_height">1.5dp</dimen>
+    <dimen name="order_line_margin_top">9.3dp</dimen>
+    <dimen name="order_line_margin_start">13dp</dimen>
+    <dimen name="order_line_margin_end">11dp</dimen>
+    <dimen name="order_total_price_margin_top">4.3dp</dimen>
+    <dimen name="order_total_price_margin_bottom">15dp</dimen>
+    <dimen name="order_amount_margin_end">12dp</dimen>
+    <dimen name="order_bg_comment_margin_top">20dp</dimen>
+    <dimen name="order_bg_comment_margin_start_end">12dp</dimen>
+    <dimen name="order_bg_comment_margin_bottom">50dp</dimen>
+    <dimen name="order_comment_none_check_margin_start">16dp</dimen>
+    <dimen name="order_comment_none_check_margin_top">22dp</dimen>
+
+    <dimen name="order_complete_img_margin_top">223dp</dimen>
+    <dimen name="order_complete_txt_margin_top">7dp</dimen>
+    <dimen name="order_complete_txt_size">20sp</dimen>
+    <dimen name="order_complete_thanks_txt_size">16sp</dimen>
+    <dimen name="order_complete_btn_margin_start_end">24dp</dimen>
+    <dimen name="order_complete_margin_between_btn">15dp</dimen>
+    <dimen name="order_complete_btn_margin_bottom">24.5dp</dimen>
+    <dimen name="order_complete_ok_btn_padding_horizontal">60dp</dimen>
+    <dimen name="order_complete_ok_btn_padding_vertical">9dp</dimen>
+    <dimen name="order_list_btn_padding_horizontal">47dp</dimen>
+
     <!-- store feed -->
     <dimen name="store_feed_title_size">20sp</dimen>
     <dimen name="store_feed_nick_name_and_cake_name_size">16sp</dimen>
