@@ -16,7 +16,7 @@ import com.codepatissier.keki.util.recycler.order.ConsumerOrderListData
 class ConsumerOrderListActivity : BaseActivity<ActivityConsumerOrderListBinding>(ActivityConsumerOrderListBinding::inflate) {
 
     lateinit var consumerOrderListAdapter: ConsumerOrderListAdapter
-    val consumerOrderListDatas = mutableListOf<ConsumerOrderListData>()
+    private val consumerOrderListDatas = mutableListOf<ConsumerOrderListData>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +42,7 @@ class ConsumerOrderListActivity : BaseActivity<ActivityConsumerOrderListBinding>
     }
 
     private fun changeOrderNumberTitleColor(){
+        // 해당 항목에 맞추어 글씨 색상 변경
         binding.tvOrderListAllHistory.setTextColor(ContextCompat.getColor(applicationContext!!, R.color.darkish_pink))
         binding.tvOrderListNumberAllHistory.setTextColor(ContextCompat.getColor(applicationContext!!, R.color.darkish_pink))
     }
