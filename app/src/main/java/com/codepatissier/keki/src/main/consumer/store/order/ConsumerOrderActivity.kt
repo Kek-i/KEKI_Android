@@ -5,11 +5,15 @@ import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View.GONE
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityConsumerOrderBinding
+import com.codepatissier.keki.src.main.consumer.store.order.confirm.ConsumerViewOrderService
+import com.codepatissier.keki.src.main.consumer.store.order.confirm.ConsumerViewOrderView
+import com.codepatissier.keki.src.main.consumer.store.order.confirm.model.ConsumerViewOrderResponse
 import com.codepatissier.keki.src.main.consumer.store.order.finish.ConsumerOrderCompleteActivity
 import com.codepatissier.keki.src.main.consumer.store.order.list.ConsumerOrderListActivity
 import com.codepatissier.keki.util.recycler.storefeedadd.FeedImageAdapter
@@ -19,19 +23,46 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 
-class ConsumerOrderActivity : BaseActivity<ActivityConsumerOrderBinding>(ActivityConsumerOrderBinding::inflate) {
+class ConsumerOrderActivity : BaseActivity<ActivityConsumerOrderBinding>
+    (ActivityConsumerOrderBinding::inflate), ConsumerViewOrderView {
 
     private val maxImage = 5
     private lateinit var feedImageAdapter: FeedImageAdapter
     private var feedImageUriList = mutableListOf<Uri>()
+    private var storeIdx : Long ?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        getStoreIdx()
         navigateToStoreMain()
+        showLoadingDialog(this)
+        ConsumerViewOrderService(this).tryGetConsumerViewOrder(storeIdx!!)
         setListenerToDatePicker()
         initFeedImage()
         completeOrder()
+    }
+
+    private fun getStoreIdx(){
+        storeIdx = intent.getLongExtra("storeIdx", 0)
+        Log.d("storeIdx2", storeIdx!!.toString())
+    }
+
+    override fun onGetConsumerViewOrderSuccess(response: ConsumerViewOrderResponse) {
+        dismissLoadingDialog()
+        initViewOrder(response)
+    }
+
+    override fun onGetConsumerViewOrderFailure(message: String) {
+        dismissLoadingDialog()
+        showCustomToast("오류 : $message")
+    }
+
+    private fun initViewOrder(response: ConsumerViewOrderResponse){
+        // 주문 화면 조회 정보 띄우기
+        binding.tvOrderSellerName.text = response.result.storeName
+        binding.tvOrderSellerAccount.text =
+            "${response.result.accountNumber}  ${response.result.accountHolder}"
     }
 
     private fun setListenerToDatePicker(){
@@ -126,4 +157,5 @@ class ConsumerOrderActivity : BaseActivity<ActivityConsumerOrderBinding>(Activit
             startActivity(intent)
         }
     }
+
 }

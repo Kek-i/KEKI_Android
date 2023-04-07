@@ -39,7 +39,7 @@ class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>
     }
 
     private fun getStoreIdx(){
-        storeIdx = intent.getLongExtra("storeIdx", 1)
+        storeIdx = intent.getLongExtra("storeIdx", 0)
         Log.d("storeIdx", storeIdx.toString())
     }
 
@@ -133,6 +133,7 @@ class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>
             //var intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
             // 주문하기
             var intent = Intent(this, ConsumerOrderActivity::class.java)
+            intent.putExtra("storeIdx", storeIdx)
             startActivity(intent)
         }
 
