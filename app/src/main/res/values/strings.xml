@@ -266,4 +266,14 @@
     <string name="order_history_tv_store_account">계좌</string>
     <string name="order_history_tv_store_account_content">100004264642 토스뱅크 김예림 </string>
 
+    <!-- order Cancel -->
+    <string name="dialog_order_cancel_title">주문 취소</string>
+    <string name="order_cancel_tv_content">주문을 취소하시겠습니까?\n환불 관련 내용은 별도 가게로 문의 바랍니다.</string>
+    <string name="order_cancel_tv_yes">예</string>
+    <string name="order_cancel_tv_no">아니오</string>
+
+    <!-- order Information -->
+    <string name="dialog_order_information_title">안내</string>
+    <string name="order_information_tv_content">주문 수정 및 취소는\n주문대기 상태에서만 가능합니다.\n별도 가게로 문의 바랍니다.</string>
+
 </resources>
