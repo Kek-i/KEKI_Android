@@ -427,7 +427,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/order_information_iv_division_margin_top"
                 android:layout_marginRight="@dimen/order_information_tv_order_date_margin_left"
-                android:fontFamily="@font/notosanskr_medium"
+                android:fontFamily="@font/notosanskr_regular"
                 android:includeFontPadding="false"
                 android:text="@string/order_information_pickup_date_content"
                 android:textColor="@color/black"

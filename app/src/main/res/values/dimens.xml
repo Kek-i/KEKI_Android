@@ -880,7 +880,7 @@
     <dimen name="order_information_img_order_status_margin_left">28dp</dimen>
     <dimen name="order_information_cls_order_content_margin_top">10dp</dimen>
     <dimen name="order_information_img_order_content_margin_width">0dp</dimen>
-    <dimen name="order_information_img_order_content_margin_height">571dp</dimen>
+    <dimen name="order_information_img_order_content_margin_height">601dp</dimen>
     <dimen name="order_information_tv_order_date_margin_top">50dp</dimen>
     <dimen name="order_information_tv_order_date_margin_left">36dp</dimen>
     <dimen name="order_information_tv_width">0dp</dimen>
@@ -901,6 +901,11 @@
     <dimen name="order_information_tv_store_name_margin_top">22dp</dimen>
     <dimen name="order_information_tv_store_name_margin_left">15dp</dimen>
     <dimen name="order_information_tv_store_account_content_margin_left">10dp</dimen>
+    <dimen name="order_information_tv_cancel_size">20sp</dimen>
+    <dimen name="order_information_tv_cancel_marginTop">30dp</dimen>
+    <dimen name="order_information_cls_cancel_content_margin_top">20dp</dimen>
+    <dimen name="order_information_cancel_tv_margin_top">12dp</dimen>
+    <dimen name="order_cancel_information_img_order_content_margin_height">530dp</dimen>
 
     <!-- order cancel dialog -->
     <dimen name="order_cancel_dialog_elevation">3dp</dimen>
