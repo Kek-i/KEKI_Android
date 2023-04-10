@@ -1,6 +1,5 @@
 package com.codepatissier.keki.src.main.seller.store.productfeed
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,7 +12,7 @@ import com.codepatissier.keki.src.main.consumer.store.storefeed.model.ConsumerSt
 import com.codepatissier.keki.util.recycler.storefeed.StoreFeedAdapter
 import com.codepatissier.keki.util.recycler.storefeed.StoreFeedData
 
-class SellerStoreFeedDetailActivity : BaseActivity<ActivitySellerStoreFeedDetailBinding>(ActivitySellerStoreFeedDetailBinding::inflate),
+class SellerProductFeedDetailActivity : BaseActivity<ActivitySellerStoreFeedDetailBinding>(ActivitySellerStoreFeedDetailBinding::inflate),
     ConsumerStoreFeedDetailView{
 
     lateinit var storeFeedAdapter: StoreFeedAdapter
@@ -89,7 +88,7 @@ class SellerStoreFeedDetailActivity : BaseActivity<ActivitySellerStoreFeedDetail
                 if(!binding.recyclerStoreFeed.canScrollVertically(1) && lastVisibleItemPosition == itemTotalCount){
                     if(hasNext!!){
                         positionStart = storeFeedDatas.size
-                        ConsumerStoreFeedDetailService(this@SellerStoreFeedDetailActivity)
+                        ConsumerStoreFeedDetailService(this@SellerProductFeedDetailActivity)
                             .tryGetConsumerStoreFeedDetailRetrofitInterface(storeIdx!!, cursorIdx, feedSize)
 
                     }
