@@ -2,6 +2,8 @@ package com.codepatissier.keki.config
 
 import android.app.Application
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
+import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
 import com.codepatissier.keki.R
 import com.kakao.sdk.common.KakaoSdk
@@ -10,6 +12,8 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.security.MessageDigest
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 
@@ -44,7 +48,6 @@ class ApplicationClass : Application() {
 
         //앱 내 다크모드 비활성화
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-
     }
 
     private fun initRetrofitInstance() {
