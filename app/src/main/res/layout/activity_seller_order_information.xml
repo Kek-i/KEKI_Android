@@ -417,7 +417,7 @@
                 android:includeFontPadding="false"
                 android:text="@string/order_information_pickup_date"
                 android:textColor="@color/black"
-                android:textSize="@dimen/order_information_tv_order_status_margin_left"
+                android:textSize="@dimen/order_information_tv_md_size"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/iv_division2" />
 

@@ -873,7 +873,7 @@
 
     <!-- order information -->
     <dimen name="order_information_tv_bold_size">16sp</dimen>
-    <dimen name="order_information_tv_order_status_margin_left">14dp</dimen>
+    <dimen name="order_information_tv_order_status_margin_left">26dp</dimen>
     <dimen name="order_information_cls_order_status_margin_top">19dp</dimen>
     <dimen name="order_information_tv_sm_size">11sp</dimen>
     <dimen name="order_information_tv_sm_order_status_margin_top">5dp</dimen>
