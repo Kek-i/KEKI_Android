@@ -11,6 +11,7 @@ import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityConsumerOrderBinding
 import com.codepatissier.keki.src.main.consumer.store.order.finish.ConsumerOrderCompleteActivity
+import com.codepatissier.keki.src.main.consumer.store.order.list.ConsumerOrderListActivity
 import com.codepatissier.keki.util.recycler.storefeedadd.FeedImageAdapter
 import gun0912.tedimagepicker.builder.TedImagePicker
 import gun0912.tedimagepicker.builder.type.MediaType
@@ -118,8 +119,10 @@ class ConsumerOrderActivity : BaseActivity<ActivityConsumerOrderBinding>(Activit
     }
 
     private fun completeOrder(){
+        // 주문 -> 주문 확인 화면
         binding.tvOrderComplete.setOnClickListener {
-            val intent = Intent(this, ConsumerOrderCompleteActivity::class.java)
+            val intent = Intent(this, ConsumerOrderCompleteActivity::class.java) // 임시
+            //val intent = Intent(this, ConsumerOrderListActivity::class.java)
             startActivity(intent)
         }
     }
