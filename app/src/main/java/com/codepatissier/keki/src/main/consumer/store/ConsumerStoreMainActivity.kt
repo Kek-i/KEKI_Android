@@ -133,8 +133,7 @@ class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>
         binding.tvOrder.setOnClickListener{
             //var intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
             // 주문하기
-            // var intent = Intent(this, ConsumerOrderActivity::class.java)
-            var intent = Intent(this, ConsumerOrderListActivity::class.java)
+            var intent = Intent(this, ConsumerOrderActivity::class.java)
             startActivity(intent)
         }
 
