@@ -2,8 +2,10 @@ package com.codepatissier.keki.util.recycler.order
 
 // 수정 필요
 data class ConsumerOrderListData(
-    val storeImage: String,
-    val storeName: String,
-    val priceProduct: String,
-    val orderDate: String
+    var orderIdx: Int,
+    var userName: String,
+    var userProfileImg: String?,
+    var totalPrice: Int,
+    var dessertName: String,
+    var pickUpDate: String
 )

@@ -16,6 +16,7 @@ import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityConsumerStoreMainBinding
 import com.codepatissier.keki.src.main.consumer.store.model.ConsumerStoreMainResponse
 import com.codepatissier.keki.src.main.consumer.store.order.ConsumerOrderActivity
+import com.codepatissier.keki.src.main.consumer.store.order.list.ConsumerOrderListActivity
 import com.codepatissier.keki.util.viewpager.storemain.consumer.ConsumerStoreMainDialog
 import com.codepatissier.keki.util.viewpager.storemain.consumer.ConsumerStoreMainTabAdapter
 import com.google.firebase.storage.FirebaseStorage
@@ -132,7 +133,8 @@ class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>
         binding.tvOrder.setOnClickListener{
             //var intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
             // 주문하기
-            var intent = Intent(this, ConsumerOrderActivity::class.java)
+            // var intent = Intent(this, ConsumerOrderActivity::class.java)
+            var intent = Intent(this, ConsumerOrderListActivity::class.java)
             startActivity(intent)
         }
 
