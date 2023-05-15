@@ -946,5 +946,67 @@
     <dimen name="like_empty_layout_margin_top">244.7dp</dimen>
     <dimen name="like_empty_layout_margin_bottom">289dp</dimen>
 
+    <!-- order information -->
+    <dimen name="order_information_tv_bold_size">16sp</dimen>
+    <dimen name="order_information_tv_order_status_margin_left">26dp</dimen>
+    <dimen name="order_information_cls_order_status_margin_top">19dp</dimen>
+    <dimen name="order_information_tv_sm_size">11sp</dimen>
+    <dimen name="order_information_tv_sm_order_status_margin_top">5dp</dimen>
+    <dimen name="order_information_img_order_status_margin_left">28dp</dimen>
+    <dimen name="order_information_cls_order_content_margin_top">10dp</dimen>
+    <dimen name="order_information_img_order_content_margin_width">0dp</dimen>
+    <dimen name="order_information_img_order_content_margin_height">601dp</dimen>
+    <dimen name="order_information_tv_order_date_margin_top">50dp</dimen>
+    <dimen name="order_information_tv_order_date_margin_left">36dp</dimen>
+    <dimen name="order_information_tv_width">0dp</dimen>
+    <dimen name="order_information_tv_product_name_margin_Top">20dp</dimen>
+    <dimen name="order_information_tv_margin_left_right">36dp</dimen>
+    <dimen name="order_information_tv_md_size">14sp</dimen>
+    <dimen name="order_information_tv_md_margin_top">15dp</dimen>
+    <dimen name="order_information_tv_md_margin_left_right">44dp</dimen>
+    <dimen name="order_information_tv_sm_margin_top">5dp</dimen>
+    <dimen name="order_information_iv_division_width">0dp</dimen>
+    <dimen name="order_information_iv_division_margin_top">10dp</dimen>
+    <dimen name="order_information_iv_request_img_width_height">61dp</dimen>
+    <dimen name="order_information_iv_request_img_margin_left">10dp</dimen>
+    <dimen name="order_information_img_order_consumer_content_height">182dp</dimen>
+    <dimen name="order_information_tv_consumer_margin_top">36dp</dimen>
+    <dimen name="order_information_tv_consumer_md_margin_top">11dp</dimen>
+    <dimen name="order_information_iv_store_profile_width_heignt">60dp</dimen>
+    <dimen name="order_information_tv_store_name_margin_top">22dp</dimen>
+    <dimen name="order_information_tv_store_name_margin_left">15dp</dimen>
+    <dimen name="order_information_tv_store_account_content_margin_left">10dp</dimen>
+    <dimen name="order_information_tv_cancel_size">20sp</dimen>
+    <dimen name="order_information_tv_cancel_marginTop">30dp</dimen>
+    <dimen name="order_information_cls_cancel_content_margin_top">20dp</dimen>
+    <dimen name="order_information_cancel_tv_margin_top">12dp</dimen>
+    <dimen name="order_cancel_information_img_order_content_margin_height">530dp</dimen>
 
+    <!-- order cancel dialog -->
+    <dimen name="order_cancel_dialog_elevation">3dp</dimen>
+    <dimen name="order_cancel_dialog_width">288dp</dimen>
+    <dimen name="order_cancel_dialog_height">173dp</dimen>
+    <dimen name="order_cancel_tv_title_height">26dp</dimen>
+    <dimen name="order_cancel_tv_title_margin_top">23dp</dimen>
+    <dimen name="order_cancel_tv_title_size">18sp</dimen>
+    <dimen name="order_cancel_tv_content_margin_top">10dp</dimen>
+    <dimen name="order_cancel_tv_content_size">11sp</dimen>
+    <dimen name="order_cancel_btn_width">109dp</dimen>
+    <dimen name="order_cancel_btn_height">36dp</dimen>
+    <dimen name="order_cancel_btn_margin_top">20dp</dimen>
+    <dimen name="order_cancel_btn_margin_bottom">35dp</dimen>
+    <dimen name="order_cancel_btn_chain_margin">15dp</dimen>
+    <dimen name="order_cancel_btn_text_size">16sp</dimen>
+
+    <!-- order information dialog -->
+    <dimen name="order_information_dialog_elevation">3dp</dimen>
+    <dimen name="order_information_dialog_width">288dp</dimen>
+    <dimen name="order_information_dialog_height">138dp</dimen>
+    <dimen name="order_information_img_del_width_height">10dp</dimen>
+    <dimen name="order_information_img_del_margin_top_right">15dp</dimen>
+    <dimen name="order_information_tv_title_height">26dp</dimen>
+    <dimen name="order_information_tv_title_margin_top">23dp</dimen>
+    <dimen name="order_information_tv_title_size">18sp</dimen>
+    <dimen name="order_information_tv_content_margin_top">8dp</dimen>
+    <dimen name="order_information_tv_content_size">11sp</dimen>
 </resources>
