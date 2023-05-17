@@ -15,6 +15,7 @@ import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityConsumerStoreMainBinding
 import com.codepatissier.keki.src.main.consumer.store.model.ConsumerStoreMainResponse
+import com.codepatissier.keki.src.main.consumer.store.order.ConsumerOrderActivity
 import com.codepatissier.keki.util.viewpager.storemain.consumer.ConsumerStoreMainDialog
 import com.codepatissier.keki.util.viewpager.storemain.consumer.ConsumerStoreMainTabAdapter
 import com.google.firebase.storage.FirebaseStorage
@@ -128,10 +129,13 @@ class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>
         setViewMore(binding.tvStoreDetail, binding.tvViewMore)
 
         // 버튼 클릭시 주문링크로 이동
-//        binding.tvOrder.setOnClickListener{
-//            var intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
-//            startActivity(intent)
-//        }
+        binding.tvOrder.setOnClickListener{
+            //var intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
+            // 주문하기
+            var intent = Intent(this, ConsumerOrderActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
     override fun onGetStoreMainFailure(message: String) {

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/order_list_store_name_padding_top"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_order_list_seller"
+        android:layout_width="@dimen/order_list_recycler_seller_img_size"
+        android:layout_height="@dimen/order_list_recycler_seller_img_size"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/ic_seller"
+        />
+
+    <TextView
+        android:id="@+id/tv_order_store_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/order_list_store_name"
+        android:textSize="@dimen/order_list_store_txt_size"
+        android:fontFamily="@font/notosanskr_regular"
+        android:textColor="@color/black"
+        android:includeFontPadding="false"
+        app:layout_constraintStart_toEndOf="@+id/iv_order_list_seller"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="@dimen/order_list_store_name_margin_start"/>
+
+    <TextView
+        android:id="@+id/tv_order_price_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tv_order_store_name"
+        app:layout_constraintStart_toEndOf="@+id/iv_order_list_seller"
+        android:text="@string/order_list_price_and_product"
+        android:textSize="@dimen/order_list_price_product_date_txt_size"
+        android:layout_marginStart="@dimen/order_list_store_name_margin_start"
+        android:layout_marginTop="@dimen/order_list_price_product_date_txt_margin_top"
+        android:textColor="@color/brown_grey"
+        android:includeFontPadding="false"/>
+
+    <ImageView
+        android:id="@+id/iv_order_list_chevron_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_chevron_right"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_order_store_name"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_order_store_name"
+        android:layout_marginEnd="@dimen/order_list_chevron_right_margin_end"/>
+
+    <TextView
+        android:id="@+id/tv_order_list_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_order_store_name"
+        android:text="@string/order_list_date"
+        android:layout_marginTop="@dimen/order_list_price_product_date_txt_margin_top"
+        android:includeFontPadding="false"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/order_list_view_height"
+        app:layout_constraintTop_toBottomOf="@+id/tv_order_price_product"
+        android:layout_marginTop="@dimen/order_list_view_margin_top"
+        android:background="@color/my_page_line"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
