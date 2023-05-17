@@ -1,10 +1,13 @@
 package com.codepatissier.keki.src.main.consumer.search.map
 
 import android.Manifest
+import android.R
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Location
 import android.location.LocationManager
 import android.net.Uri
 import android.os.Bundle
@@ -14,6 +17,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityMapBinding
+import net.daum.mf.map.api.MapPOIItem
+import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
 
 
@@ -22,8 +27,6 @@ class MapActivity: BaseActivity<ActivityMapBinding>(ActivityMapBinding::inflate)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // 위치추적 버튼
         if (checkLocationService()) {
             // GPS가 켜져있을 경우
             permissionCheck()
@@ -33,7 +36,6 @@ class MapActivity: BaseActivity<ActivityMapBinding>(ActivityMapBinding::inflate)
             }
 
         backClicked()
-
     }
 
     private fun backClicked(){
@@ -107,8 +109,25 @@ class MapActivity: BaseActivity<ActivityMapBinding>(ActivityMapBinding::inflate)
     }
 
     // 위치추적 시작
+    @SuppressLint("MissingPermission")
     private fun startTracking() {
         binding.mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
-    }
 
+        val lm: LocationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        val userNowLocation: Location? = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+        //위도 , 경도
+        val uLatitude = userNowLocation?.latitude
+        val uLongitude = userNowLocation?.longitude
+        val uNowPosition = MapPoint.mapPointWithGeoCoord(uLatitude!!, uLongitude!!)
+        //현재 위치에 마커 찍기
+        val customMarker = MapPOIItem()
+        customMarker.itemName = "Custom Marker"
+        //customMarker.tag = 2
+        customMarker.mapPoint = uNowPosition
+        customMarker.markerType = MapPOIItem.MarkerType.CustomImage // 마커타입을 커스텀 마커로 지정.
+        customMarker.customImageResourceId = R.drawable.star_on
+        customMarker.isCustomImageAutoscale = false // hdpi, xhdpi 등 안드로이드 플랫폼의 스케일을 사용할 경우 지도 라이브러리의 스케일 기능을 꺼줌.
+        customMarker.setCustomImageAnchor(0.5f, 1.0f) // 마커 이미지중 기준이 되는 위치(앵커포인트) 지정 - 마커 이미지 좌측 상단 기준 x(0.0f ~ 1.0f), y(0.0f ~ 1.0f) 값.
+        binding.mapView.addPOIItem(customMarker)
+    }
 }
