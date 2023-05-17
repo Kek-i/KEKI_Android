@@ -7,8 +7,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/dialog_map_shop"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_width="@dimen/map_dialog_width"
+        android:layout_height="@dimen/map_dialog_height"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -17,9 +17,9 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/cv_shop_photo"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_marginLeft="24dp"
+            android:layout_width="@dimen/map_dialog_cv_width"
+            android:layout_height="@dimen/map_dialog_cv_height"
+            android:layout_marginLeft="@dimen/map_dialog_cv_marginLeft"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -28,31 +28,30 @@
         <TextView
             android:id="@+id/tv_map_shop_title"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/my_page_logout_tv_title_height"
-            android:layout_marginTop="18dp"
-            android:layout_marginLeft="108dp"
+            android:layout_height="@dimen/map_dialog_tv_map_shop_title_height"
+            android:layout_marginTop="@dimen/map_dialog_tv_map_shop_title_marginTop"
+            android:layout_marginLeft="@dimen/map_dialog_tv_map_shop_title_marginLeft"
             android:fontFamily="@font/notosanskr_bold"
             android:includeFontPadding="false"
             android:text="케키팜"
             android:textColor="@color/black"
-            android:textSize="@dimen/my_page_logout_tv_title_size"
+            android:textSize="@dimen/map_dialog_tv_map_shop_title_text_size"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_logout_dialog_content"
+            android:id="@+id/tv_map_shop_content"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginLeft="108dp"
+            android:layout_marginTop="@dimen/map_dialog_tv_map_shop_content_marginTop"
+            android:layout_marginLeft="@dimen/map_dialog_tv_map_shop_content_marginLeft"
             app:layout_constraintTop_toBottomOf="@id/tv_map_shop_title"
             app:layout_constraintStart_toStartOf="parent"
             android:text="사랑과 정성을 담아 제작하는 레터링 케이크집"
             android:textColor="@color/black"
-            android:textSize="@dimen/my_page_logout_tv_content_size"
+            android:textSize="@dimen/map_dialog_tv_map_shop_content_text_size"
             android:fontFamily="@font/notosanskr_regular"
-            android:includeFontPadding="false"
-            />
+            android:includeFontPadding="false" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
