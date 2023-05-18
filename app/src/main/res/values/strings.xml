@@ -193,6 +193,10 @@
     <string name="my_page_notice">공지사항</string>]
     <string name="my_page_app_condition">약관안내</string>
     <string name="my_page_personal_info">개인정보처리방침</string>
+    <string name="my_page_tv_order_waiting">주문 대기</string>
+    <string name="my_page_tv_order_in">제작중</string>
+    <string name="my_page_tv_pickup_waiting">픽업 대기</string>
+    <string name="my_page_tv_chevron_right_all">전체 내역</string>
 
     <!-- my page condition -->
     <string name="my_page_condition_comment_main">케키 서비스 이용약관</string>

@@ -107,6 +107,151 @@
                     app:layout_constraintTop_toBottomOf="@+id/tv_nick_name"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <!-- 3차 UI 추가 -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_chart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/my_page_order_chart_cl_marginTop"
+                android:layout_marginLeft="@dimen/my_page_order_chart_cl_marginLeft"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+                app:layout_constraintBottom_toTopOf="@id/tv_account">
+
+                <FrameLayout
+                    android:id="@+id/framelayout"
+                    android:layout_width="@dimen/my_page_order_chart_fl_width"
+                    android:layout_height="match_parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" >
+
+                    <ImageView
+                        android:id="@+id/iv_order_waiting"
+                        android:layout_width="@dimen/my_page_order_chart_bg_nemo_width"
+                        android:layout_height="@dimen/my_page_order_chart_bg_nemo_height"
+                        android:layout_gravity="left|bottom"
+                        android:src="@drawable/bg_nemo_purple"/>
+
+                    <TextView
+                        android:id="@+id/tv_order_waiting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|bottom"
+                        android:layout_marginLeft="@dimen/my_page_order_chart_bg_nemo1_tv_marginLeft"
+                        android:layout_marginBottom="@dimen/my_page_order_chart_bg_nemo_tv_marginBottom"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/notosanskr_regular"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/my_page_order_chart_bg_nemo_tv_text_size"
+                        android:text="@string/my_page_tv_order_waiting" />
+
+                    <TextView
+                        android:id="@+id/tv_order_waiting_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|bottom"
+                        android:layout_marginLeft="@dimen/my_page_order_chart_bg_nemo1_number_tv_marginLeft"
+                        android:layout_marginBottom="@dimen/my_page_order_chart_bg_nemo_number_tv_marginBottom"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/notosanskr_bold"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/my_page_order_chart_bg_nemo_number_tv_text_size"
+                        android:text="0" />
+
+                    <ImageView
+                        android:id="@+id/iv_order_in"
+                        android:layout_width="@dimen/my_page_order_chart_bg_nemo_width"
+                        android:layout_height="@dimen/my_page_order_chart_bg_nemo_height"
+                        android:layout_gravity="center|bottom"
+                        android:src="@drawable/bg_nemo_yellow" />
+                    <TextView
+                        android:id="@+id/tv_order_in"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|bottom"
+                        android:layout_marginLeft="@dimen/my_page_order_chart_bg_nemo2_tv_marginLeft"
+                        android:layout_marginBottom="@dimen/my_page_order_chart_bg_nemo_tv_marginBottom"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/notosanskr_regular"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/my_page_order_chart_bg_nemo_tv_text_size"
+                        android:text="@string/my_page_tv_order_in" />
+
+                    <TextView
+                        android:id="@+id/tv_order_in_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|bottom"
+                        android:layout_marginLeft="@dimen/my_page_order_chart_bg_nemo2_number_tv_marginLeft"
+                        android:layout_marginBottom="@dimen/my_page_order_chart_bg_nemo_number_tv_marginBottom"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/notosanskr_bold"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/my_page_order_chart_bg_nemo_number_tv_text_size"
+                        android:text="1" />
+
+                    <ImageView
+                        android:id="@+id/iv_pickup_waiting"
+                        android:layout_width="@dimen/my_page_order_chart_bg_nemo_with_pin_width"
+                        android:layout_height="@dimen/my_page_order_chart_bg_nemo_with_pin_height"
+                        android:layout_gravity="right|center_vertical"
+                        android:src="@drawable/bg_nemo_pink"/>
+
+                    <TextView
+                        android:id="@+id/tv_pickup_waiting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|bottom"
+                        android:layout_marginRight="@dimen/my_page_order_chart_bg_nemo3_tv_marginRight"
+                        android:layout_marginBottom="@dimen/my_page_order_chart_bg_nemo_tv_marginBottom"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/notosanskr_regular"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/my_page_order_chart_bg_nemo_tv_text_size"
+                        android:text="@string/my_page_tv_pickup_waiting" />
+
+                    <TextView
+                        android:id="@+id/tv_pickup_waiting_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|bottom"
+                        android:layout_marginRight="@dimen/my_page_order_chart_bg_nemo3_number_tv_marginRight"
+                        android:layout_marginBottom="@dimen/my_page_order_chart_bg_nemo_number_tv_marginBottom"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/notosanskr_bold"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/my_page_order_chart_bg_nemo_number_tv_text_size"
+                        android:text="0" />
+                </FrameLayout>
+
+                <ImageView
+                    android:id="@+id/mypage_iv_chevron_right_all"
+                    android:layout_width="@dimen/mypage_iv_chevron_right_all_width"
+                    android:layout_height="@dimen/mypage_iv_chevron_right_all_height"
+                    app:layout_constraintStart_toEndOf="@id/framelayout"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginLeft="@dimen/mypage_iv_chevron_right_all_marginLeft"
+                    android:layout_marginTop="@dimen/mypage_iv_chevron_right_all_marginTop"
+                    android:src="@drawable/ic_chevron_right"/>
+
+                <TextView
+                    android:id="@+id/tv_chevron_right_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:layout_constraintStart_toEndOf="@id/framelayout"
+                    app:layout_constraintTop_toBottomOf="@id/mypage_iv_chevron_right_all"
+                    android:layout_marginLeft="@dimen/mypage_tv_chevron_right_all_marginLeft"
+                    android:layout_marginTop="@dimen/mypage_tv_chevron_right_all_marginTop"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/notosanskr_regular"
+                    android:includeFontPadding="false"
+                    android:textSize="@dimen/mypage_tv_chevron_right_all_text_size"
+                    android:text="@string/my_page_tv_chevron_right_all"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!--3차 UI 끝 -->
+
             <TextView
                 android:id="@+id/tv_account"
                 android:layout_width="wrap_content"
@@ -119,7 +264,7 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/my_page_text_size"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/cl_chart" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout2"

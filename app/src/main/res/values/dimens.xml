@@ -628,6 +628,38 @@
     <dimen name="my_page_notification_height">60dp</dimen>
     <dimen name="my_page_app_info_height">158dp</dimen>
 
+    <!-- my page order chart-->
+
+    <dimen name="my_page_order_chart_cl_marginTop">32dp</dimen>
+    <dimen name="my_page_order_chart_cl_marginLeft">24dp</dimen>
+    <dimen name="my_page_order_chart_fl_width">270dp</dimen>
+    <dimen name="my_page_order_chart_bg_nemo_width">70dp</dimen>
+    <dimen name="my_page_order_chart_bg_nemo_height">80dp</dimen>
+    <dimen name="my_page_order_chart_bg_nemo_with_pin_width">77dp</dimen>
+    <dimen name="my_page_order_chart_bg_nemo_with_pin_height">96dp</dimen>
+    <dimen name="my_page_order_chart_bg_nemo_tv_marginBottom">10dp</dimen>
+    <dimen name="my_page_order_chart_bg_nemo_tv_text_size">11sp</dimen>
+    <dimen name="my_page_order_chart_bg_nemo1_tv_marginLeft">15dp</dimen>
+    <dimen name="my_page_order_chart_bg_nemo2_tv_marginLeft">3dp</dimen>
+    <dimen name="my_page_order_chart_bg_nemo3_tv_marginRight">15dp</dimen>
+
+    <dimen name="my_page_order_chart_bg_nemo_number_tv_marginBottom">25dp</dimen>
+    <dimen name="my_page_order_chart_bg_nemo_number_tv_text_size">35sp</dimen>
+    <dimen name="my_page_order_chart_bg_nemo1_number_tv_marginLeft">25dp</dimen>
+    <dimen name="my_page_order_chart_bg_nemo2_number_tv_marginLeft">3dp</dimen>
+    <dimen name="my_page_order_chart_bg_nemo3_number_tv_marginRight">30dp</dimen>
+
+    <dimen name="mypage_iv_chevron_right_all_width">8dp</dimen>
+    <dimen name="mypage_iv_chevron_right_all_height">16dp</dimen>
+    <dimen name="mypage_iv_chevron_right_all_marginLeft">38dp</dimen>
+    <dimen name="mypage_iv_chevron_right_all_marginTop">35dp</dimen>
+    <dimen name="mypage_tv_chevron_right_all_marginLeft">20dp</dimen>
+    <dimen name="mypage_tv_chevron_right_all_marginTop">10dp</dimen>
+    <dimen name="mypage_tv_chevron_right_all_text_size">11sp</dimen>
+
+
+
+
     <!-- my page switch -->
     <dimen name="my_page_switch_track_width">51dp</dimen>
     <dimen name="my_page_switch_track_height">27dp</dimen>
