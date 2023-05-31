@@ -38,8 +38,8 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="@dimen/order_information_scv_height"
+        android:layout_marginTop="@dimen/order_information_scv_margin_top"
         app:layout_constraintTop_toBottomOf="@id/topBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,15 +78,15 @@
 
         <ImageView
             android:id="@+id/img_order_back"
-            android:layout_width="@dimen/order_information_img_order_content_margin_width"
+            android:layout_width="@dimen/order_information_img_order_content_width"
             android:layout_height="@dimen/order_cancel_information_img_order_content_margin_height"
             android:src="@drawable/order_information_back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_order_cancel"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginStart="-12dp"
-            android:layout_marginEnd="-12dp"
+            android:layout_marginStart="@dimen/order_information_img_order_content_margin_start_end"
+            android:layout_marginEnd="@dimen/order_information_img_order_content_margin_start_end"
             android:scaleType="fitXY"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
