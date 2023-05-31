@@ -1,5 +1,6 @@
 package com.codepatissier.keki.src.main.seller.store
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -14,6 +15,7 @@ import com.codepatissier.keki.databinding.FragmentSellerStoreMainBinding
 import com.codepatissier.keki.src.main.seller.mypage.SellerMyPageService
 import com.codepatissier.keki.src.main.seller.mypage.SellerMyPageView
 import com.codepatissier.keki.src.main.seller.mypage.model.SellerMyPageResponse
+import com.codepatissier.keki.src.main.seller.mypage.orderlist.SellerOrderListActivity
 import com.codepatissier.keki.util.viewpager.storemain.seller.SellerStoreMainDialog
 import com.codepatissier.keki.util.viewpager.storemain.seller.SellerStoreMainTabAdapter
 import com.google.firebase.storage.FirebaseStorage
@@ -122,6 +124,7 @@ class SellerStoreMainFragment : BaseFragment<FragmentSellerStoreMainBinding>(Fra
             }
         }
     }
+
 }
 
 

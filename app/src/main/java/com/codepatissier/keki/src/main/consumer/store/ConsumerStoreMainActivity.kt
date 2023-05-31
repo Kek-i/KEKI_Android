@@ -16,6 +16,7 @@ import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityConsumerStoreMainBinding
 import com.codepatissier.keki.src.main.consumer.store.model.ConsumerStoreMainResponse
 import com.codepatissier.keki.src.main.consumer.store.order.ConsumerOrderActivity
+import com.codepatissier.keki.src.main.consumer.store.order.list.ConsumerOrderListActivity
 import com.codepatissier.keki.util.viewpager.storemain.consumer.ConsumerStoreMainDialog
 import com.codepatissier.keki.util.viewpager.storemain.consumer.ConsumerStoreMainTabAdapter
 import com.google.firebase.storage.FirebaseStorage

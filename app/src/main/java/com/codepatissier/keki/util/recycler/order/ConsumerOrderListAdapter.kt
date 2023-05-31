@@ -31,10 +31,15 @@ class ConsumerOrderListAdapter(val context: FragmentActivity?): RecyclerView.Ada
         var fbStoreage: FirebaseStorage?= null
         private val storeImage: ImageView = binding.ivOrderListSeller
         private val storeName: TextView = binding.tvOrderStoreName
-        private val priceProduct: TextView = binding.tvOrderPriceProduct
-        private val orderDate: TextView = binding.tvOrderListDate
+        private val totalPriceDessertName: TextView = binding.tvOrderPriceProduct
+        private val pickUpDate: TextView = binding.tvOrderListDate
+        private var orderIdx: Int = 0
 
         fun bind(item: ConsumerOrderListData){
+            orderIdx = item.orderIdx
+            storeName.text = item.userName
+            totalPriceDessertName.text = item.totalPrice.toString() + " | " + item.dessertName
+            pickUpDate.text = item.pickUpDate.substring(0, 10)
 
 
             itemView.setOnClickListener {
