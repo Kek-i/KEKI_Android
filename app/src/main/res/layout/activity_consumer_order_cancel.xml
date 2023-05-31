@@ -35,16 +35,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/iv_product_feed_setting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/store_product_detail_setting_marginTop"
-            android:layout_marginEnd="@dimen/store_product_detail_setting_marginEnd"
-            android:src="@drawable/ic_report"/>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
     <ScrollView
         android:layout_width="match_parent"
@@ -86,6 +76,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
+        <ImageView
+            android:id="@+id/img_order_back"
+            android:layout_width="@dimen/order_information_img_order_content_margin_width"
+            android:layout_height="@dimen/order_cancel_information_img_order_content_margin_height"
+            android:src="@drawable/order_information_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_order_cancel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="-12dp"
+            android:layout_marginEnd="-12dp"
+            android:scaleType="fitXY"/>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cls_order_content"
             android:layout_width="match_parent"
@@ -94,16 +97,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_order_cancel">
-
-            <ImageView
-                android:layout_width="@dimen/order_information_img_order_content_margin_width"
-                android:layout_height="@dimen/order_cancel_information_img_order_content_margin_height"
-                android:src="@drawable/order_information_back"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:scaleType="fitXY"/>
 
             <TextView
                 android:id="@+id/tv_order_date"
