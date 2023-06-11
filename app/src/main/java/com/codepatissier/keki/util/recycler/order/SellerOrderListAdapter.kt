@@ -1,5 +1,6 @@
 package com.codepatissier.keki.util.recycler.order
 
+import android.content.Intent
 import android.media.Image
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.codepatissier.keki.databinding.ItemOrderListBinding
+import com.codepatissier.keki.src.main.seller.mypage.orderInformation.SellerOrderInformationActivity
 import com.google.firebase.storage.FirebaseStorage
 
 class SellerOrderListAdapter(val context: FragmentActivity?): RecyclerView.Adapter<ViewHolder>() {
@@ -42,11 +44,10 @@ class SellerOrderListAdapter(val context: FragmentActivity?): RecyclerView.Adapt
             pickUpDate.text = item.pickUpDate.substring(0, 10)
 
             itemView.setOnClickListener {
-                /*
-                val intent = Intent(itemView.context, )
+                val intent = Intent(itemView.context, SellerOrderInformationActivity::class.java)
                 intent.putExtra("orderIdx", item.orderIdx)
                 intent.run{itemView.context?.startActivity(intent)}
-                 */
+
             }
         }
     }
