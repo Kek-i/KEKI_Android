@@ -38,6 +38,15 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    splits{
+        abi{
+            enable true
+            reset()
+            include 'arm64-v8a', 'armeabi', 'armeabi-v7a'
+            universalApk true
+        }
+    }
 }
 
 dependencies {
@@ -89,4 +98,7 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.5"
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.3.3'
 
+//  kakao map
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation files('libs/libDaumMapAndroid.jar')
 }

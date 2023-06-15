@@ -946,6 +946,33 @@
     <dimen name="like_empty_layout_margin_top">244.7dp</dimen>
     <dimen name="like_empty_layout_margin_bottom">289dp</dimen>
 
+    <!-- map -->
+    <dimen name="map_ll_height">61dp</dimen>
+    <dimen name="map_ic_back_left">14dp</dimen>
+    <dimen name="map_ic_back_top">21dp</dimen>
+    <dimen name="map_main_text_left">25dp</dimen>
+    <dimen name="map_main_text_top">15dp</dimen>
+    <dimen name="map_main_text_size">20sp</dimen>
+    <dimen name="map_mv_height">0dp</dimen>
+    <dimen name="map_mv_width">0dp</dimen>
+
+    <dimen name="map_dialog_height">100dp</dimen>
+    <dimen name="map_dialog_width">0dp</dimen>
+    <dimen name="map_dialog_cv_height">64dp</dimen>
+    <dimen name="map_dialog_cv_width">64dp</dimen>
+    <dimen name="map_dialog_cv_marginLeft">24dp</dimen>
+
+    <dimen name="map_dialog_tv_map_shop_title_height">26dp</dimen>
+    <dimen name="map_dialog_tv_map_shop_title_marginTop">18dp</dimen>
+    <dimen name="map_dialog_tv_map_shop_title_marginLeft">108dp</dimen>
+    <dimen name="map_dialog_tv_map_shop_title_text_size">18sp</dimen>
+    <dimen name="map_dialog_tv_map_shop_content_marginTop">6dp</dimen>
+    <dimen name="map_dialog_tv_map_shop_content_marginLeft">108dp</dimen>
+    <dimen name="map_dialog_tv_map_shop_content_text_size">11sp</dimen>
+
+
+
+=======
     <!-- order information -->
     <dimen name="order_information_tv_bold_size">16sp</dimen>
     <dimen name="order_information_tv_order_status_margin_left">26dp</dimen>
@@ -1014,4 +1041,5 @@
     <dimen name="order_information_tv_title_size">18sp</dimen>
     <dimen name="order_information_tv_content_margin_top">8dp</dimen>
     <dimen name="order_information_tv_content_size">11sp</dimen>
+
 </resources>

@@ -165,5 +165,19 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabCustomSize="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="12dp"
+            android:src="@drawable/ic_map"
+            android:backgroundTint="@color/pinkish">
+
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

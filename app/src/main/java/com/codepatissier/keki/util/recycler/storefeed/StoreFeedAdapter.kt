@@ -1,8 +1,6 @@
 package com.codepatissier.keki.util.recycler.storefeed
 
 import android.content.Intent
-import android.graphics.drawable.Drawable
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -21,7 +19,7 @@ import com.codepatissier.keki.src.main.consumer.store.ConsumerStoreMainActivity
 import com.codepatissier.keki.src.main.consumer.store.storefeed.ConsumerStoreDetailFeedActivity
 import com.codepatissier.keki.src.main.consumer.store.storefeed.report.ConsumerStoreDetailFeedDialog
 import com.codepatissier.keki.src.main.consumer.store.storefeed.DetailImageAdapter
-import com.codepatissier.keki.src.main.seller.store.productfeed.SellerStoreFeedDetailActivity
+import com.codepatissier.keki.src.main.seller.store.productfeed.SellerProductFeedDetailActivity
 import com.google.firebase.storage.FirebaseStorage
 
 class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<ViewHolder>() {
@@ -97,7 +95,7 @@ class StoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
         }
 
         fun bind(item: StoreFeedData){
-            if(SellerStoreFeedDetailActivity().seller)
+            if(SellerProductFeedDetailActivity().seller)
                 binding.ivStoreFeedHeartOff.isGone = true
 
             nickname.text = item.storeName

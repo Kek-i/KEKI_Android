@@ -11,6 +11,7 @@ import com.codepatissier.keki.config.ApplicationClass.Companion.Authorization
 import com.codepatissier.keki.config.ApplicationClass.Companion.sSharedPreferences
 import com.codepatissier.keki.config.BaseFragment
 import com.codepatissier.keki.databinding.FragmentConsumerSearchBinding
+import com.codepatissier.keki.src.main.consumer.search.map.MapActivity
 import com.codepatissier.keki.src.main.consumer.search.model.MainSearchesResponse
 import com.codepatissier.keki.src.main.consumer.search.model.PatchSearchResponse
 import com.codepatissier.keki.src.main.consumer.search.searchresult.ConsumerSearchActivity
@@ -28,6 +29,7 @@ class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(Fragm
         showLoadingDialog(requireContext())
         clickDeleteSearchHistory()
         callMainSearches()
+        moveToMapPage()
 
     }
 
@@ -125,6 +127,14 @@ class ConsumerSearchFragment : BaseFragment<FragmentConsumerSearchBinding>(Fragm
         })
 
     }
+
+    private fun moveToMapPage(){
+        binding.fabMap.setOnClickListener {
+            val intent = Intent(context, MapActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
 
     override fun onGetMainSearchesSuccess(response: MainSearchesResponse) {
         dismissLoadingDialog()
