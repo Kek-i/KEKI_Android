@@ -89,6 +89,7 @@
                     android:fontFamily="@font/notosanskr_bold"
                     android:includeFontPadding="false"
                     android:textColor="@color/black"
+                    android:text="00이님,"
                     android:textSize="@dimen/my_page_comment_text_size"
                     app:layout_constraintStart_toEndOf="@id/iv_profile"
                     app:layout_constraintTop_toTopOf="parent" />

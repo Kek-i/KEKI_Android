@@ -218,7 +218,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/et4_profile_setting" />
 
             <EditText
-                android:id="@+id/et6_profile_setting"
+                android:id="@+id/et5_profile_setting"
                 android:layout_width="@dimen/seller_setting_et_width"
                 android:layout_height="@dimen/seller_setting_et_height"
                 android:layout_marginLeft="@dimen/seller_setting_et_marginLeft"
@@ -240,7 +240,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_seller_profile_setting" />
 
             <EditText
-                android:id="@+id/et7_profile_setting"
+                android:id="@+id/et6_profile_setting"
                 android:layout_width="@dimen/seller_setting_et_width"
                 android:layout_height="@dimen/seller_setting_et_height"
                 android:layout_marginLeft="@dimen/seller_setting_et_marginLeft"
@@ -259,10 +259,10 @@
                 android:inputType="textNoSuggestions"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et6_profile_setting" />
+                app:layout_constraintTop_toBottomOf="@+id/et5_profile_setting" />
 
             <EditText
-                android:id="@+id/et8_profile_setting"
+                android:id="@+id/et7_profile_setting"
                 android:layout_width="@dimen/seller_setting_et_width"
                 android:layout_height="@dimen/seller_setting_et7_height"
                 android:layout_marginLeft="@dimen/seller_setting_et_marginLeft"
@@ -281,10 +281,10 @@
                 android:inputType="textNoSuggestions"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et7_profile_setting" />
+                app:layout_constraintTop_toBottomOf="@+id/et6_profile_setting" />
 
             <EditText
-                android:id="@+id/et9_profile_setting"
+                android:id="@+id/et8_profile_setting"
                 android:layout_width="@dimen/seller_setting_et_width"
                 android:layout_height="@dimen/seller_setting_et_height"
                 android:layout_marginLeft="@dimen/seller_setting_et_marginLeft"
@@ -304,7 +304,7 @@
                 android:digits="0123456789-"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et8_profile_setting" />
+                app:layout_constraintTop_toBottomOf="@+id/et7_profile_setting" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
