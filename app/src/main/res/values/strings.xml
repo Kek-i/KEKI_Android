@@ -193,6 +193,10 @@
     <string name="my_page_notice">공지사항</string>]
     <string name="my_page_app_condition">약관안내</string>
     <string name="my_page_personal_info">개인정보처리방침</string>
+    <string name="my_page_tv_order_waiting">주문 대기</string>
+    <string name="my_page_tv_order_in">제작중</string>
+    <string name="my_page_tv_pickup_waiting">픽업 대기</string>
+    <string name="my_page_tv_chevron_right_all">전체 내역</string>
 
     <!-- my page condition -->
     <string name="my_page_condition_comment_main">케키 서비스 이용약관</string>
@@ -250,7 +254,8 @@
     <string name="seller_profile_setting_et1">가게이름을 입력해주세요.</string>
     <string name="seller_profile_setting_et2">가게주소를 입력해주세요.</string>
     <string name="seller_profile_setting_et3">간단히 가게를 소개해주세요. (최대 100자)</string>
-    <string name="seller_profile_setting_et4">주문 링크를 입력해주세요.</string>
+    <string name="seller_profile_setting_et4">가게계좌/예금주명을 입력해주세요.</string>
+    <string name="seller_profile_setting_et5">사업자 정보를 입력해주세요.</string>
     <string name="seller_profile_setting_et6">대표자명을 입력해주세요.</string>
     <string name="seller_profile_setting_et7">사업자등록증에 표기된 사업자주소\n입력해주세요.</string>
     <string name="seller_profile_setting_et8">사업자등록번호를 입력해주세요.</string>

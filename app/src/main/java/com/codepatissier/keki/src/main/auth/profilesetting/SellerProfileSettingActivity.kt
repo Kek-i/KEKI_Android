@@ -60,7 +60,7 @@ class SellerProfileSettingActivity : BaseActivity<ActivitySellerProfileSettingBi
             val nickname = binding.et1ProfileSetting.text.toString()
             val address = binding.et2ProfileSetting.text.toString()
             val introduction = binding.et3ProfileSetting.text.toString()
-            val orderUrl = binding.et4ProfileSetting.text.toString()
+            val bankAccount = binding.et4ProfileSetting.text.toString()
             val brandName = binding.et5ProfileSetting.text.toString()
             val businessName = binding.et6ProfileSetting.text.toString()
             val businessAddress = binding.et7ProfileSetting.text.toString()
@@ -71,7 +71,7 @@ class SellerProfileSettingActivity : BaseActivity<ActivitySellerProfileSettingBi
             if (nickname != null && address != null) {
                 firebaseUpload()
                 val postStoreSignupRequest =
-                    PostStoreSignupRequest(profileImg,  nickname, address,introduction , orderUrl, businessName, brandName, businessAddress,businessNumber)
+                    PostStoreSignupRequest(profileImg,  nickname, address,introduction , bankAccount, businessName, brandName, businessAddress,businessNumber)
                 StoreSignupService(this).tryPostStoreSignup(postStoreSignupRequest)
             } else {
 
