@@ -7,7 +7,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class ConsumerOrderService(val consumerOrderView: ConsumerOrderView) {
-    fun tryGetConsumerOrderScreen(storeIdx: Int){
+    fun tryGetConsumerOrderScreen(storeIdx: Long){
         val consumerScreenOrderRetrofitInterface = ApplicationClass.sRetrofit.create(ConsumerOrderRetrofitInterface::class.java)
         consumerScreenOrderRetrofitInterface.getConsumerOrderScreen(storeIdx).enqueue(object : Callback<ConsumerGetOrderScreenResponse>{
             override fun onResponse(

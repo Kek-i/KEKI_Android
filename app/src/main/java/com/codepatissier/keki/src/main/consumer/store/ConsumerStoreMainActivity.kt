@@ -134,6 +134,7 @@ class ConsumerStoreMainActivity : BaseActivity<ActivityConsumerStoreMainBinding>
             //var intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
             // 주문하기
             var intent = Intent(this, ConsumerOrderActivity::class.java)
+            intent.putExtra("storeIdx", storeIdx)
             startActivity(intent)
         }
 

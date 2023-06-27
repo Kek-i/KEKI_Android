@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View.GONE
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codepatissier.keki.R
@@ -31,7 +32,10 @@ class ConsumerOrderActivity : BaseActivity<ActivityConsumerOrderBinding>(Activit
         super.onCreate(savedInstanceState)
 
         navigateToStoreMain()
+        val storeIdx = intent.getLongExtra("storeIdx", -1)
+        Log.d("storeIdx", storeIdx.toString())
         showLoadingDialog(this)
+        ConsumerOrderService(this).tryGetConsumerOrderScreen(storeIdx!!)
         setListenerToDatePicker()
         initFeedImage()
         completeOrder()
@@ -132,6 +136,11 @@ class ConsumerOrderActivity : BaseActivity<ActivityConsumerOrderBinding>(Activit
 
     override fun onGetConsumerOrderScreenSuccess(response: ConsumerGetOrderScreenResponse) {
         dismissLoadingDialog()
+
+        binding.tvOrderSellerName.text = response.result.storeName
+        binding.tvOrderSellerAccount.text = response.result.accountNumber + " " + response.result.accountHolder
+
+        // binding.tvConsumerDetailName.text = response.result.
     }
 
     override fun onGetConsumerOrderScreenFailure(message: String) {
