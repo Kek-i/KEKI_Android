@@ -68,6 +68,10 @@ class ConsumerMyPageFragment : BaseFragment<FragmentConsumerMyPageBinding>
         val nim = getString(R.string.my_page_tv_nickname)
         binding.tvNickName.text = response.result.nickname + nim
 
+        binding.tvOrderWaitingNumber.text = response.result.orderWaiting.toString()
+        binding.tvOrderInNumber.text = response.result.progressing.toString()
+        binding.tvPickupWaitingNumber.text = response.result.pickupWaiting.toString()
+
         if(response.result.profileImg != null){
             // 이미지 가져오기
             var storageRef = fbStorage?.reference?.child(response.result.profileImg)
