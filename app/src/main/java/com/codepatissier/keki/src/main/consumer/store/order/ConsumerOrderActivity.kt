@@ -12,6 +12,7 @@ import com.codepatissier.keki.config.BaseActivity
 import com.codepatissier.keki.databinding.ActivityConsumerOrderBinding
 import com.codepatissier.keki.src.main.consumer.store.order.finish.ConsumerOrderCompleteActivity
 import com.codepatissier.keki.src.main.consumer.store.order.list.ConsumerOrderListActivity
+import com.codepatissier.keki.src.main.consumer.store.order.model.ConsumerGetOrderScreenResponse
 import com.codepatissier.keki.util.recycler.storefeedadd.FeedImageAdapter
 import gun0912.tedimagepicker.builder.TedImagePicker
 import gun0912.tedimagepicker.builder.type.MediaType
@@ -19,7 +20,8 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 
-class ConsumerOrderActivity : BaseActivity<ActivityConsumerOrderBinding>(ActivityConsumerOrderBinding::inflate) {
+class ConsumerOrderActivity : BaseActivity<ActivityConsumerOrderBinding>(ActivityConsumerOrderBinding::inflate)
+    , ConsumerOrderView{
 
     private val maxImage = 5
     private lateinit var feedImageAdapter: FeedImageAdapter
@@ -29,6 +31,7 @@ class ConsumerOrderActivity : BaseActivity<ActivityConsumerOrderBinding>(Activit
         super.onCreate(savedInstanceState)
 
         navigateToStoreMain()
+        showLoadingDialog(this)
         setListenerToDatePicker()
         initFeedImage()
         completeOrder()
@@ -125,5 +128,14 @@ class ConsumerOrderActivity : BaseActivity<ActivityConsumerOrderBinding>(Activit
             //val intent = Intent(this, ConsumerOrderListActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    override fun onGetConsumerOrderScreenSuccess(response: ConsumerGetOrderScreenResponse) {
+        dismissLoadingDialog()
+    }
+
+    override fun onGetConsumerOrderScreenFailure(message: String) {
+        dismissLoadingDialog()
+        showCustomToast("오류 : $message")
     }
 }
