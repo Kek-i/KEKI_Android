@@ -10,7 +10,7 @@ data class Result(
     val totalPrice:Int,
     val request:String,
     val pickupDate:Date,
-    val userInfo:UserInfo,
-    val orderImgs:OrderImgs,
-    val optionOrders:OptionOrders
+    val userInfo:ArrayList<UserInfo>,
+    val orderImgs:ArrayList<OrderImgs>,
+    val optionOrders:ArrayList<OptionOrders>
 )

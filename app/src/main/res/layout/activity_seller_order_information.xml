@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topBar"
@@ -479,25 +479,18 @@
                     android:textSize="@dimen/order_information_tv_md_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_request_content" />
-
-                <ImageView
-                    android:id="@+id/iv_request_img"
-                    android:layout_width="@dimen/order_information_iv_request_img_width_height"
+                
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_request_img"
+                    android:layout_width="0dp"
                     android:layout_height="@dimen/order_information_iv_request_img_width_height"
                     android:layout_marginLeft="@dimen/order_information_tv_md_margin_left_right"
                     android:layout_marginTop="@dimen/order_information_iv_division_margin_top"
-                    android:src="@drawable/bg_rectangle_radius_10_off_white"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_request_img" />
-
-                <ImageView
-                    android:layout_width="@dimen/order_information_iv_request_img_width_height"
-                    android:layout_height="@dimen/order_information_iv_request_img_width_height"
-                    android:layout_marginLeft="@dimen/order_information_iv_request_img_margin_left"
-                    android:layout_marginTop="@dimen/order_information_iv_division_margin_top"
-                    android:src="@drawable/bg_rectangle_radius_10_off_white"
-                    app:layout_constraintStart_toEndOf="@id/iv_request_img"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_request_img" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_request_img"
+                    tools:listitem="@layout/item_order_information_recycler"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
                 <ImageView
                     android:layout_width="@dimen/order_information_img_order_content_width"

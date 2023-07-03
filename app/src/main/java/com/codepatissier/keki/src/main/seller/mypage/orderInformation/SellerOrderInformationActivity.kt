@@ -20,7 +20,21 @@ class SellerOrderInformationActivity : BaseActivity<ActivitySellerOrderInformati
     }
 
     override fun onGetSellerOrderInformationSuccess(response: SellerOrderInformationResponse) {
-        println(response)
+//        binding.tvOrderDate.setText(response.result.date)
+        binding.tvProductName.setText(response.result.dessertName)
+        var optionDescription : String = ""
+        var optionPrice: Int = 0
+        for(option in response.result.optionOrders){
+            optionDescription = optionDescription + "\n" +option.optionDescription
+            optionPrice +=  Integer.parseInt(option.optionPrice)
+        }
+        var totalPrice = response.result.totalPrice + optionPrice
+        binding.tvDesignAddContent.setText(optionDescription)
+        binding.tvProductPriceContent.setText(response.result.totalPrice.toString() +'원')
+        binding.tvExtraPriceContent.setText(optionPrice.toString() + '원')
+        binding.tvTotalContent.setText(totalPrice.toString() + '원')
+        binding.tvPickupDateContent.setText(response.result.pickupDate.toString())
+        binding.tvRequestContent.setText(response.result.request)
     }
 
     override fun onGetSellerOrderInformationFailure(message: String) {
