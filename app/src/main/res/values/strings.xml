@@ -92,6 +92,9 @@
     <string name="order_complete_thanks_txt">감사합니다 :-)</string>
     <string name="order_complete_ok">확인</string>
     <string name="order_complete_order_list">주문 내역</string>
+    
+    <string name="order_screen_example">왕딸기 케이크</string>
+    <string name="order_screen_example_cost">+27,000원</string>
 
     <!-- order list -->
     <string name="order_list_number_waiting">1</string>
