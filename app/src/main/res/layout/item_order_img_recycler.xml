@@ -10,6 +10,7 @@
         android:id="@+id/cv"
         android:layout_width="@dimen/order_information_iv_request_img_width_height"
         android:layout_height="@dimen/order_information_iv_request_img_width_height"
+        android:layout_marginRight="@dimen/order_information_iv_request_img_margin_left"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

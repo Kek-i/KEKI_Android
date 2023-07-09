@@ -2,9 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topBar"
         android:layout_width="match_parent"
@@ -229,24 +231,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_request_content" />
 
-            <ImageView
-                android:id="@+id/iv_request_img"
-                android:layout_width="@dimen/order_information_iv_request_img_width_height"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_request_img"
+                android:layout_width="0dp"
                 android:layout_height="@dimen/order_information_iv_request_img_width_height"
-                android:src="@drawable/bg_rectangle_radius_10_off_white"
-                android:layout_marginTop="@dimen/order_information_iv_division_margin_top"
                 android:layout_marginLeft="@dimen/order_information_tv_md_margin_left_right"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_request_img"/>
-
-            <ImageView
-                android:layout_width="@dimen/order_information_iv_request_img_width_height"
-                android:layout_height="@dimen/order_information_iv_request_img_width_height"
-                android:src="@drawable/bg_rectangle_radius_10_off_white"
+                android:layout_marginRight="@dimen/order_information_tv_md_margin_left_right"
                 android:layout_marginTop="@dimen/order_information_iv_division_margin_top"
-                android:layout_marginLeft="@dimen/order_information_iv_request_img_margin_left"
-                app:layout_constraintStart_toEndOf="@id/iv_request_img"
-                app:layout_constraintTop_toBottomOf="@+id/tv_request_img"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_request_img"
+                tools:listitem="@layout/item_order_img_recycler"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal"/>
 
             <ImageView
                 android:id="@+id/iv_division"
@@ -259,7 +256,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:scaleType="fitXY"
-                app:layout_constraintTop_toBottomOf="@id/iv_request_img"/>
+                app:layout_constraintTop_toBottomOf="@id/rv_request_img"/>
 
             <TextView
                 android:id="@+id/tv_consumer"
