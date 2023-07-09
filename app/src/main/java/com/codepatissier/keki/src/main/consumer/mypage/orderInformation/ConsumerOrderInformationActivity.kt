@@ -1,6 +1,8 @@
 package com.codepatissier.keki.src.main.consumer.mypage.orderInformation
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.PopupMenu
 import com.bumptech.glide.Glide
 import com.codepatissier.keki.R
 import com.codepatissier.keki.config.BaseActivity
@@ -10,12 +12,17 @@ import com.codepatissier.keki.src.main.consumer.mypage.orderInformation.model.Or
 import com.codepatissier.keki.src.main.consumer.store.ConsumerStoreMainService
 import com.codepatissier.keki.src.main.consumer.store.ConsumerStoreMainView
 import com.codepatissier.keki.src.main.consumer.store.model.ConsumerStoreMainResponse
+import com.codepatissier.keki.src.main.seller.store.storefeed.storedetail.delete.SellerStoreDetailFeedDeleteDialog
+import com.codepatissier.keki.src.main.seller.store.storefeed.storeedit.SellerStoreFeedEditActivity
 import com.codepatissier.keki.util.recycler.order.OrderImgListAdapter
+import com.codepatissier.keki.util.viewpager.storemain.consumer.ConsumerOrderCancelDialog
+import com.codepatissier.keki.util.viewpager.storemain.consumer.ConsumerOrderInformationDialog
 import com.google.firebase.storage.FirebaseStorage
 
 class ConsumerOrderInformationActivity : BaseActivity<ActivityConsumerOrderInformationBinding>(ActivityConsumerOrderInformationBinding::inflate), ConsumerOrderInformationView,
     ConsumerStoreMainView {
     var orderIdx : Int = 0
+    lateinit var status : String
     val ORDERSTATUS:Array<String> = arrayOf("주문대기", "제작중", "픽업대기", "픽업완료")
     lateinit var orderImgListAdapter: OrderImgListAdapter
     private val orderImgListDatas = mutableListOf<String>()
@@ -27,6 +34,7 @@ class ConsumerOrderInformationActivity : BaseActivity<ActivityConsumerOrderInfor
 
         fbStorage = FirebaseStorage.getInstance()
 
+        setting()
         getOrderIdx()
         showLoadingDialog(this)
         ConsumerOrderInformationService(this).tryGetConsumerOrderInformation(orderIdx)
@@ -70,7 +78,8 @@ class ConsumerOrderInformationActivity : BaseActivity<ActivityConsumerOrderInfor
     override fun onGetConsumerOrderInformationSuccess(response: ConsumerOrderInformationResponse) {
         dismissLoadingDialog()
 
-        orderStatus(response.result.orderStatus)
+        status = response.result.orderStatus
+        orderStatus(status)
 
         showLoadingDialog(this)
         ConsumerStoreMainService(this).tryGetStoreMain(response.result.storeInfo.storeIdx)
@@ -114,6 +123,42 @@ class ConsumerOrderInformationActivity : BaseActivity<ActivityConsumerOrderInfor
         }
         orderImgListAdapter.orderImgListDatas = orderImgListDatas
         orderImgListAdapter.notifyDataSetChanged()
+    }
+
+    // 주문 수정, 삭제
+    private fun setting(){
+        binding.ivProductFeedSetting.setOnClickListener {
+            var popupMenu = PopupMenu(this, it)
+            popupMenu.menuInflater?.inflate(R.menu.popup_menu_delete_seller_store_feed_detail, popupMenu.menu)
+            popupMenu.show()
+            popupMenu.setOnMenuItemClickListener {
+                when(it.itemId){
+                    R.id.popup_modify -> {
+                        if(status == ORDERSTATUS[0]){
+
+                        }else{
+                            val informationDialog = ConsumerOrderInformationDialog(this)
+                            informationDialog.show()
+                        }
+                        return@setOnMenuItemClickListener true
+                    }
+                    R.id.popup_delete -> {
+                        if(status == ORDERSTATUS[0]){
+                            val cancelDialog = ConsumerOrderCancelDialog(this)
+                            cancelDialog.orderIdx = orderIdx
+                            cancelDialog.show()
+                        }else{
+                            val informationDialog = ConsumerOrderInformationDialog(this)
+                            informationDialog.show()
+                        }
+                        return@setOnMenuItemClickListener true
+                    }
+                    else -> {
+                        return@setOnMenuItemClickListener false
+                    }
+                }
+            }
+        }
     }
 
     // 판매자 프로필 가져오기 성공 시

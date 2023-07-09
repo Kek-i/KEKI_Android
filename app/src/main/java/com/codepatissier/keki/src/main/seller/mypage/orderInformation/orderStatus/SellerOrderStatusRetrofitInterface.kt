@@ -7,7 +7,7 @@ import retrofit2.http.Body
 import retrofit2.http.PATCH
 
 interface SellerOrderStatusRetrofitInterface {
-    @PATCH("orderStatus")
+    @PATCH("/orders/status")
     fun patchOrderStatus(
         @Body parameter : SellerOrderStatusEditBody
     ) : Call<SellerOrderStatusEditResponse>

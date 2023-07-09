@@ -16,6 +16,7 @@
         android:elevation="@dimen/order_information_dialog_elevation">
 
         <ImageView
+            android:id="@+id/iv_delete"
             android:layout_width="@dimen/order_information_img_del_width_height"
             android:layout_height="@dimen/order_information_img_del_width_height"
             android:src="@drawable/drawable_delete_ic_resize"

@@ -8,8 +8,8 @@ import retrofit2.Response
 
 class ConsumerOrderInformationService(val consumerOrderInformationView: ConsumerOrderInformationView) {
     fun tryGetConsumerOrderInformation(orderIdx:Int){
-        val sellerOrderInformationRetrofitInterface  = ApplicationClass.sRetrofit.create(ConsumerOrderInformationRetrofitInterface::class.java)
-        sellerOrderInformationRetrofitInterface.getConsumerOrderInformation(orderIdx).enqueue(object:Callback<ConsumerOrderInformationResponse>{
+        val consumerOrderInformationRetrofitInterface  = ApplicationClass.sRetrofit.create(ConsumerOrderInformationRetrofitInterface::class.java)
+        consumerOrderInformationRetrofitInterface.getConsumerOrderInformation(orderIdx).enqueue(object:Callback<ConsumerOrderInformationResponse>{
             override fun onResponse(
                 call: Call<ConsumerOrderInformationResponse>,
                 response: Response<ConsumerOrderInformationResponse>
