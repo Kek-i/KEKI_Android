@@ -42,18 +42,24 @@ class HomeStoreAdapter(val context: FragmentActivity?): RecyclerView.Adapter<Vie
 
         fun bind(item: HomeStoreData){
             name.text = item.name
+            if (item.img.startsWith("http")){
+                Glide.with(context!!)
+                    .load(item.img)
+                    .centerCrop()
+                    .into(img)
+            }else{
+                fbStorage = FirebaseStorage.getInstance()
+                var storageRef = fbStorage?.reference?.child(item.img)
 
-//            if(item.img != null) {
-//                fbStorage = FirebaseStorage.getInstance()
-//                var storageRef = fbStorage?.reference?.child(item.img)
-//
-//                storageRef?.downloadUrl?.addOnCompleteListener {
-                    Glide.with(context!!)
-                        .load(item.img)
-                        .centerCrop()
-                        .into(img)
-//                }
-//            }
+                storageRef?.downloadUrl?.addOnCompleteListener {
+                    if(it.isSuccessful){
+                        Glide.with(context!!)
+                            .load(it.result)
+                            .centerCrop()
+                            .into(img)
+                    }
+                }
+            }
 
             cardView.bringToFront()
 

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/dialog_order_cancel"
+        android:layout_width="@dimen/order_cancel_dialog_width"
+        android:layout_height="@dimen/order_cancel_dialog_height"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/bg_rectangle_radius_20_white_no_padding"
+        android:elevation="@dimen/order_cancel_dialog_elevation">
+
+        <TextView
+            android:id="@+id/tv_order_cancel_dialog_title"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/order_cancel_tv_title_height"
+            android:layout_marginTop="@dimen/order_cancel_tv_title_margin_top"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/dialog_order_cancel_title"
+            android:textColor="@color/black"
+            android:textSize="@dimen/order_cancel_tv_title_size"
+            android:fontFamily="@font/notosanskr_bold"
+            android:includeFontPadding="false"
+            />
+
+        <TextView
+            android:id="@+id/tv_order_cancel_dialog_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/order_cancel_tv_content_margin_top"
+            app:layout_constraintTop_toBottomOf="@id/tv_order_cancel_dialog_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/order_cancel_tv_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/order_cancel_tv_content_size"
+            android:fontFamily="@font/notosanskr_regular"
+            android:includeFontPadding="false"
+            android:textAlignment="center"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_yes"
+            android:layout_width="@dimen/order_cancel_btn_width"
+            android:layout_height="@dimen/order_cancel_btn_height"
+            android:layout_marginTop="@dimen/order_cancel_btn_margin_top"
+            android:layout_marginEnd="@dimen/order_cancel_btn_chain_margin"
+            android:layout_marginBottom="@dimen/order_cancel_btn_margin_bottom"
+            app:layout_constraintTop_toBottomOf="@id/tv_order_cancel_dialog_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_no"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            android:text="@string/order_cancel_tv_yes"
+            android:textColor="@color/black"
+            android:textSize="@dimen/order_cancel_btn_text_size"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
+            android:background="@drawable/bg_rectangle_radius_10_white_2_no_padding"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_no"
+            android:layout_width="@dimen/order_cancel_btn_width"
+            android:layout_height="@dimen/order_cancel_btn_height"
+            android:layout_marginTop="@dimen/order_cancel_btn_margin_top"
+            android:layout_marginBottom="@dimen/order_cancel_btn_margin_bottom"
+            app:layout_constraintTop_toBottomOf="@id/tv_order_cancel_dialog_content"
+            app:layout_constraintStart_toEndOf="@id/btn_yes"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/order_cancel_tv_no"
+            android:textColor="@color/black"
+            android:textSize="@dimen/order_cancel_btn_text_size"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
+            android:background="@drawable/bg_rectangle_radius_10_light_pink_no_padding"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

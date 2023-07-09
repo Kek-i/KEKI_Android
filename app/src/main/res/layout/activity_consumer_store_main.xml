@@ -57,7 +57,7 @@
                 android:id="@+id/iv_profile"
                 android:layout_width="@dimen/store_main_profile_width_height"
                 android:layout_height="@dimen/store_main_profile_width_height"
-                android:background="@drawable/bg_oval_light_yellow"
+                android:background="@drawable/ic_seller"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

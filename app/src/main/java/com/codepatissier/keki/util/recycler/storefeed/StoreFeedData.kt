@@ -4,6 +4,7 @@ data class StoreFeedData(
     val postIdx: Long,
     val dessertName: String,
     val description: String,
+    val storeIdx: Long,
     val postImgUrls: List<String>,
     val tags: List<String>,
     val storeName: String,

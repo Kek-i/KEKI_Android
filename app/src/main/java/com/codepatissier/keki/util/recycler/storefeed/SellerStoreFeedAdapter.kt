@@ -81,6 +81,7 @@ class SellerStoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapt
         private val thirdTag: TextView = binding.tvStoreFeedThirdTag
         private val tagArray = arrayOf(firstTag, secondTag, thirdTag)
         private var postIdx : Long? = null
+        private var storeIdx: Long? = null
         var fbStorage : FirebaseStorage?= null
         val defaultImg = R.drawable.ic_seller
 
@@ -96,6 +97,7 @@ class SellerStoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapt
             nickname.text = item.storeName
             cakeName.text = item.dessertName
             postIdx = item.postIdx
+            storeIdx = item.storeIdx
 
             val width = getItemWidth()/3
 
@@ -105,18 +107,31 @@ class SellerStoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapt
             }
 
             if(item.storeProfileImg != null){
-                fbStorage = FirebaseStorage.getInstance()
-                var storageRef = fbStorage?.reference?.child(item.storeProfileImg)
-
-                storageRef?.downloadUrl?.addOnCompleteListener {
+                if (item.storeProfileImg.startsWith("http")){
                     Glide.with(context!!)
-                        .load(it.result)
+                        .load(item.storeProfileImg)
                         .placeholder(defaultImg)
                         .error(defaultImg)
                         .fallback(defaultImg)
-                        .override(width,width)
+                        .override(width, width)
                         .centerCrop()
                         .into(sellerImg)
+                }else {
+                    fbStorage = FirebaseStorage.getInstance()
+                    var storageRef = fbStorage?.reference?.child(item.storeProfileImg)
+
+                    storageRef?.downloadUrl?.addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            Glide.with(context!!)
+                                .load(it.result)
+                                .placeholder(defaultImg)
+                                .error(defaultImg)
+                                .fallback(defaultImg)
+                                .override(width, width)
+                                .centerCrop()
+                                .into(sellerImg)
+                        }
+                    }
                 }
 
             }
@@ -159,6 +174,7 @@ class SellerStoreFeedAdapter(val context: FragmentActivity?): RecyclerView.Adapt
         private fun navigateToStoreMain(){
             binding.tvStoreFeedSellerNickname.setOnClickListener {
                 val intent = Intent(itemView.context, ConsumerStoreMainActivity::class.java)
+                intent.putExtra("storeIdx", storeIdx)
                 intent.putExtra("nickname", binding.tvStoreFeedSellerNickname.text)
                 itemView.context.startActivity(intent)
             }
